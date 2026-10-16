@@ -4607,11 +4607,11 @@
         ['БАЛЬЖИНОВ Александр', 'expelled'], ['БОГДАНОВА Валерия'], ['БОХАН Данил'], ['БЫСТРОВ Кирилл'], ['ВОЙЛОКОВА Вероника'], ['ГЛАДКОВ Богдан'], ['ИБРАТУЛЛОЕВА Луиза'], ['ИЛЬЯНОК Савелий'],
         ['ИМАМБАЕВ Марк'], ['КАМЕНЧУК Александр'], ['КИРКИНА Кира'], ['КУЗНЕЦОВ Вячеслав'], ['МИХАЛЬЦЕВИЧ Даниил'], ['СТАДНИК Валерия'], ['ТРАНЬКОВ Константин'], ['ХРАМОВ Фёдор'],
         ['ЧЕРНЫХ Константин'], ['ЧУРИНА Милана'], ['ШЕИНА Эвелина'], ['АКУЛОВ Илья', 'expelled'], ['АСАДУЛЛИН Дамир'], ['БАЛАШОВ Иван', 'ghost'], ['БОГДАНОВ Матвей'], ['ВАСИЛЬЕВ Никита'],
-        ['ГРИГОРЬЕВ Иван'], ['ГРИГОРЬЕВА Софья'], ['ИВАНОВ Арсений'], ['КАТАЕВА Анастасия'], ['МАРКОВА Марина'], ['НОВИКОВА Дарьяна', 'ghost'], ['ФИЛАТОВА Софья'], ['Игнатенок Арина']
+        ['ГРИГОРЬЕВ Иван'], ['ГРИГОРЬЕВА Софья'], ['ИВАНОВ Арсений'], ['КАТАЕВА Анастасия'], ['МАРКОВА Марина'], ['НОВИКОВА Дарьяна', 'ghost'], ['ФИЛАТОВА Софья'], ['ИГНАТЕНОК Арина']
       ].map((x, i) => ({id: 'r' + (i + 1), n: i + 1, name: x[0], flag: (x[1] === 'expelled' || x[1] === 'ghost') ? x[1] : '', admin: x[1] === 'admin', sub: i < 19 ? '1' : '2'}));
       const ROSTER_BY_ID = {}; ROSTER.forEach(r => {ROSTER_BY_ID[r.id] = r;});
-      /* Фамилия «Игнатенок Арина» (r32) видна в списке всем, но выбрать её может только админ (студентам она недоступна: это проверяет и сервер).
-         Админ определяется ТОЛЬКО записью в таблице admins в Supabase и при этом может быть обычным студентом. */
+      /* Админ — тот, кто вошёл под этим email (проверяет и сервер в правилах доступа). Он же может быть студентом: фамилия r32 доступна только ему. */
+      const ADMIN_EMAIL = 'arina.admin@politeshik.local';
       const ADMIN_RID = 'r32';
       const FLAG_LABEL = {expelled: 'отчислен(а)', ghost: 'мёртвая душа'};
       /* Лимит пропусков без уважительной причины: 24 часа (1 пара = 2 академических часа). Предупреждение — когда осталось 4 часа. */
@@ -4789,13 +4789,13 @@
             const {data: {session}} = await supa.auth.getSession();
             if (!session) {C.status = 'offline'; C.err = 'not-logged'; return;}
             C.uid = session.user.id; C.me = {id: session.user.id, name: session.user.email || 'user', isOwner: false};
-            try {
-              const {data: ad} = await supa.from('admins').select('uid').eq('uid', C.uid).maybeSingle();
-              if (ad) C.me.isOwner = true;
+            try {                                              // админ = вошедший под ADMIN_EMAIL (почту подтверждает сервер входа)
+              let em = session.user.email || '';
+              try {const {data: {user}} = await supa.auth.getUser(); if (user && user.email) em = user.email;} catch (e) { }
+              if (em.toLowerCase() === ADMIN_EMAIL) C.me.isOwner = true;
             } catch (e) { }
             C.isAdmin = !!C.me.isOwner; C.status = 'online';
-            C.adminUids = new Set(C.isAdmin ? [C.uid] : []);
-            if (C.isAdmin) {try {const {data: all} = await supa.from('admins').select('uid'); (all || []).forEach(x => C.adminUids.add(x.uid));} catch (e) { }}
+            C.adminUids = new Set(C.isAdmin ? [C.uid] : []);          // единственный админ — это вы
             Store.bind(C.uid);
             watchClaims();
             const ps = await DB.doc('profiles/' + C.uid).get();
