@@ -3949,7 +3949,14 @@
       }
     }
 
-    /* ---------- Адаптив ---------- */
+    /* ---------- Сообщения админа, переписка, предупреждение ---------- */
+.msg.admin .bubble{background:var(--accent-soft);border:1px solid var(--accent)}
+.msg-name{font-size:11px;font-weight:800;color:var(--accent-text);margin-bottom:3px}
+.adm-av{display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:800;border-radius:50%;width:38px;height:38px;font-size:13px;flex:none}
+.thread{max-height:220px;overflow:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px 10px;margin-bottom:8px;background:var(--surface2)}
+.thr{margin-bottom:8px}.thr small{color:var(--muted)}.thr-admin b{color:var(--accent-text)}
+.warn{padding:10px 12px;border-radius:var(--radius);background:var(--yellow-bg);color:var(--yellow);margin:8px 0;font-size:13px;text-align:left}
+/* ---------- Адаптив ---------- */
     @media (max-width:900px) {
       .sidebar {
         display: none
@@ -4610,8 +4617,8 @@
         ['ГРИГОРЬЕВ Иван'], ['ГРИГОРЬЕВА Софья'], ['ИВАНОВ Арсений'], ['КАТАЕВА Анастасия'], ['МАРКОВА Марина'], ['НОВИКОВА Дарьяна', 'ghost'], ['ФИЛАТОВА Софья'], ['ИГНАТЕНОК Арина']
       ].map((x, i) => ({id: 'r' + (i + 1), n: i + 1, name: x[0], flag: (x[1] === 'expelled' || x[1] === 'ghost') ? x[1] : '', admin: x[1] === 'admin', sub: i < 19 ? '1' : '2'}));
       const ROSTER_BY_ID = {}; ROSTER.forEach(r => {ROSTER_BY_ID[r.id] = r;});
-      /* Админ — тот, кто вошёл под этим email (проверяет и сервер в правилах доступа). Он же может быть студентом: фамилия r32 доступна только ему. */
-      const ADMIN_EMAIL = 'arina.admin@politeshik.local';
+      /* Фамилия «ИГНАТЕНОК Арина» (r32) — фамилия админа. Чтобы её занять, нужен секретный пароль: его проверяет СЕРВЕР (функция become_admin),
+         после чего аккаунт попадает в таблицу admins. Админ при этом остаётся и обычным студентом. */
       const ADMIN_RID = 'r32';
       const FLAG_LABEL = {expelled: 'отчислен(а)', ghost: 'мёртвая душа'};
       /* Лимит пропусков без уважительной причины: 24 часа (1 пара = 2 академических часа). Предупреждение — когда осталось 4 часа. */
@@ -4789,10 +4796,9 @@
             const {data: {session}} = await supa.auth.getSession();
             if (!session) {C.status = 'offline'; C.err = 'not-logged'; return;}
             C.uid = session.user.id; C.me = {id: session.user.id, name: session.user.email || 'user', isOwner: false};
-            try {                                              // админ = вошедший под ADMIN_EMAIL (почту подтверждает сервер входа)
-              let em = session.user.email || '';
-              try {const {data: {user}} = await supa.auth.getUser(); if (user && user.email) em = user.email;} catch (e) { }
-              if (em.toLowerCase() === ADMIN_EMAIL) C.me.isOwner = true;
+            try {                                              // админ = есть запись в таблице admins (её делает только сервер после секретного пароля)
+              const {data: ad} = await supa.from('admins').select('uid').eq('uid', C.uid).maybeSingle();
+              if (ad) C.me.isOwner = true;
             } catch (e) { }
             C.isAdmin = !!C.me.isOwner; C.status = 'online';
             C.adminUids = new Set(C.isAdmin ? [C.uid] : []);          // единственный админ — это вы
@@ -4811,7 +4817,8 @@
           C.loaded = true;
         };
 
-        C.put = (path, build) => { };
+        /* запись документа в облако (раньше была пустой заглушкой: «Готово» в «Просьбах», «Проставить н» и сообщения студенту не сохранялись) */
+        C.put = (path, build) => {Promise.resolve().then(() => build()).then(obj => writeDoc(path, obj), () => { });};
         const writeDoc = (path, obj) => DB.doc(path).set(obj).catch(e => {C.err = String(e && e.message || e);});
         C.pushAtt = async () => {
           if (Store.s.meta.pendingAtt) {
@@ -5032,7 +5039,7 @@
           if (c.msgs.length > 80) c.msgs = c.msgs.slice(-80);
           if (from === 'bot' && document.hidden) Notifier.show('chat', 'Политешик', String(text).slice(0, 100), {tag: 'chat'});
         },
-        unread() {const c = Chat.st(); return c.msgs.filter(m => m.from === 'bot' && m.t > (c.readAt || '')).length;},
+        unread() {const c = Chat.st(); return c.msgs.filter(m => (m.from === 'bot' || m.from === 'admin') && m.t > (c.readAt || '')).length;},
         markRead() {const c = Chat.st(); c.readAt = new Date().toISOString(); Store.save();},
         window(w) {                                                   // окно напоминания: [9:00 накануне, 9:00 дня работы)
           const end = U.fromISO(w.date); end.setHours(9, 0, 0, 0);
@@ -5668,7 +5675,7 @@
         {id: 'teachers', ico: '👩‍🏫', label: 'Преподаватели', short: 'Препод.'},
         {id: 'cabinet', ico: '👤', label: 'Личный кабинет', short: 'Кабинет'},
         {id: 'group', ico: '🛡️', label: 'Группа (админ)', short: 'Группа', admin: true},
-        {id: 'journal', ico: '📁', label: 'Журнал посещаемости', short: 'Журнал', admin: true},
+        {id: 'journal', ico: '📁', label: 'Журнал', short: 'Журнал'},
         {id: 'settings', ico: '⚙️', label: 'Настройки', short: 'Настройки'}
       ];
       const NAV_BOTTOM = ['dashboard', 'schedule', 'attendance', 'hw', 'subjects', 'chat', 'more'];
@@ -6031,7 +6038,7 @@
           '<div class="card set-sec"><h2>Расписание</h2>' +
           '<div class="set-row"><div><b>Сейчас идёт: ' + WEEK_NAME[cur] + '</b><p>Если чередование перепутано — поменяйте местами числитель и знаменатель</p></div><button class="btn" data-action="swap-week">🔁 Поменять местами</button></div>' +
           '<div class="set-row"><div><b>Время пар</b><p>Звонки: ' + (s.settings.pairs.some(p => p.start) ? 'заданы' : 'не заданы') + ' · пар в сетке: ' + s.settings.pairs.length + '</p></div><button class="btn" data-action="times">⏱ Настроить</button></div></div>' +
-          '<div class="card set-sec"><h2>Аккаунт и облако</h2><div class="set-row"><div><b>' + (Cloud.status === 'online' ? '☁️ Подключено' + (Cloud.isAdmin ? ' · админ группы' : '') : Cloud.status === 'pending' ? 'Подключение…' : 'Без облака') + '</b><p>' + (Cloud.status === 'online' ? 'Вы вошли через свой аккаунт Claude. Отметки, справки и чат синхронизируются с админом группы.' : 'Откройте приложение по приглашению админа и войдите в Claude — тогда заработают общая посещаемость, справки и общие работы.') + '</p></div>' + (Cloud.status === 'online' ? '<button class="btn" data-action="profile-edit">✏️ Профиль</button>' : '') + '</div>' + (Cloud.err ? '<div class="warn">Облако ответило ошибкой: ' + U.esc(Cloud.err) + '</div>' : '') + '</div>' +
+          '<div class="card set-sec"><h2>Аккаунт и облако</h2><div class="set-row"><div><b>' + (Cloud.status === 'online' ? '☁️ Подключено' + (Cloud.isAdmin ? ' · админ группы' : '') : Cloud.status === 'pending' ? 'Подключение…' : 'Без облака') + '</b><p>' + (Cloud.status === 'online' ? 'Вы вошли в Политешик. Отметки, справки и чат синхронизируются с админом группы.' : 'Откройте приложение по приглашению админа и войдите в Claude — тогда заработают общая посещаемость, справки и общие работы.') + '</p></div>' + (Cloud.status === 'online' ? '<div class="head-actions"><button class="btn" data-action="profile-edit">✏️ Профиль</button><button class="btn danger" data-action="logout">Выйти из аккаунта</button></div>' : '') + '</div>' + (Cloud.err ? '<div class="warn">Облако ответило ошибкой: ' + U.esc(Cloud.err) + '</div>' : '') + '</div>' +
           '<div class="card set-sec"><h2>Как приложение</h2>' +
           '<div class="set-row"><div><b>Установка</b><p>Компьютер: Safari — «Файл → Добавить в Dock», Chrome или Edge — меню → «Установить…». iPhone и iPad: «Поделиться» → «На экран Домой». Если такого пункта нет — добавьте страницу в закладки.</p></div>' + (installEvt ? '<button class="btn primary" data-action="install">📲 Установить</button>' : '') + '</div>' +
           '<div class="set-row"><div><b>Обновления</b><p>Новые версии выходят по той же ссылке — достаточно обновить страницу. Ваши данные лежат в браузере и при обновлении сохраняются.</p></div></div></div>' +
@@ -6135,17 +6142,17 @@
         const body = c.msgs.map(m => {
           const t = new Date(m.t), day = U.iso(t), me = m.from === 'me';
           let sep = ''; if (day !== last) {last = day; sep = '<div class="day-sep">' + (day === U.iso(U.today()) ? 'Сегодня' : U.esc(U.fmtShort(t))) + '</div>';}
-          return sep + '<div class="msg ' + (me ? 'me' : 'bot') + '">' + (me ? '' : '<div class="msg-av">' + Mascot.svg(m.mood || 'happy', 38) + '</div>') + '<div class="bubble">' + U.esc(m.text).replace(/\n/g, '<br>') +
+          return sep + '<div class="msg ' + (me ? 'me' : 'bot') + (m.from === 'admin' ? ' admin' : '') + '">' + (me ? '' : m.from === 'admin' ? '<div class="msg-av adm-av">ИА</div>' : '<div class="msg-av">' + Mascot.svg(m.mood || 'happy', 38) + '</div>') + '<div class="bubble">' + (m.from === 'admin' ? '<div class="msg-name">Игнатенок Арина · админ</div>' : '') + U.esc(m.text).replace(/\n/g, '<br>') +
             (m.links ? '<div class="qr">' + m.links.map((l, i) => '<button class="chipbtn" data-action="chat-go" data-mid="' + m.id + '" data-i="' + i + '">' + U.esc(l.l) + '</button>').join('') + '</div>' : '') +
             (m.ask && !m.done ? '<div class="qr"><button class="chipbtn yes" data-action="chat-ans" data-wk="' + U.esc(m.ask) + '" data-v="y">✅ Готов(а)</button><button class="chipbtn no" data-action="chat-ans" data-wk="' + U.esc(m.ask) + '" data-v="n">😬 Не готов(а)</button></div>' : '') +
             (m.req && !m.done ? '<div class="qr"><button class="chipbtn yes" data-action="req-admin" data-mid="' + m.id + '" data-date="' + m.req + '">Да, попросить админа</button><button class="chipbtn" data-action="req-skip" data-mid="' + m.id + '">Не надо</button></div>' : '') +
             '<small>' + U.pad(t.getHours()) + ':' + U.pad(t.getMinutes()) + '</small></div></div>';
         }).join('');
-        return '<div class="chat-wrap"><div class="chat-head"><div class="chat-av">' + Mascot.svg(Mascot.current(), 46) + '</div><div><b>Политешик</b><small>житель приложения · пишет за сутки до работы</small></div></div>' +
+        return '<div class="chat-wrap"><div class="chat-head"><div class="chat-av">' + Mascot.svg(Mascot.current(), 46) + '</div><div><b>Игнатенок Арина · админ</b><small>и Политешик — житель приложения: он отвечает сразу, админ — когда зайдёт</small></div></div>' +
           '<div class="chat-box" id="chat-box">' + (body || '<div class="empty">Пока тихо…</div>') + '</div>' +
           '<div class="faq-row" aria-label="Заготовленные вопросы">' + faqItems().map((f, i) => '<button class="faq-b" data-action="faq-ask" data-i="' + i + '">' + U.esc(f.q) + '</button>').join('') + '</div>' +
           '<div class="chat-quick">' + ['Что сегодня?', 'Что завтра?', 'Какие работы?', 'Помощь'].map(q => '<button class="fchip" data-action="chat-quick" data-q="' + q + '">' + q + '</button>').join('') + '</div>' +
-          '<div class="chat-in" data-form="chat"><input class="input" id="chatIn" name="t" placeholder="Напиши Политешику…" autocomplete="off"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>';
+          '<div class="chat-in" data-form="chat"><input class="input" id="chatIn" name="t" placeholder="Напиши Политешику или админу…" autocomplete="off"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>';
       }
 
       /* ---------- 6.8 Личный кабинет ---------- */
@@ -6155,7 +6162,7 @@
           '<div class="about-meta"><span class="tag">группа ' + GROUP_NAME + '</span> ' + (s.settings.subgroup ? '<span class="tag">подгруппа ' + U.esc(s.settings.subgroup) + '</span> ' : '') +
           '<span class="tag">за неделю: ' + (w.pct == null ? '—' : w.pct + '%') + ' · п ' + w.p + ' · о ' + w.l + ' · н ' + w.a + '</span></div></div>' +
           '<label class="field" style="margin:12px 0 0"><span>О себе (до 500 символов)</span><textarea class="input" id="about-text" rows="3" maxlength="500" placeholder="Расскажи о себе в паре предложений…">' + U.esc(s.settings.about || '') + '</textarea></label>' +
-          '<div class="head-actions" style="margin-top:8px"><button class="btn primary sm" data-action="about-save">Сохранить</button></div></section>';
+          '<div class="head-actions" style="margin-top:8px"><button class="btn primary sm" data-action="about-save">Сохранить</button>' + (Cloud.status === 'online' ? '<button class="btn ghost sm" data-action="logout">Выйти из аккаунта</button>' : '') + '</div></section>';
       }
       function winnerPlaque() {
         return Rating.mine().map(r => '<div class="card plaque">🥇 Победитель ' + U.esc(r.label.replace(/^month:|^sem:/, '')) + ': <b>' + U.esc(r.prize) + '</b> — обратись к админу</div>').join('');
@@ -6297,8 +6304,25 @@
         const cls = effs.includes('н') ? 'no' : effs.includes('о') ? 'late' : effs.includes('у') ? 'exc' : effs.every(x => x === 'п') ? 'ok' : '';
         return '<td class="jc ' + cls + '" data-action="stud-open" data-id="' + e.id + '" data-date="' + di + '" title="' + prs.map((p, i) => p.pair + '-я: ' + (effs[i] ? ST_INFO[effs[i]][0] : 'не отмечено')).join('; ') + '">' + effs.map(x => x || '?').join('') + '</td>';
       }
+      /* Журнал студента: только его собственные отметки по дням, без кнопок правки */
+      function viewJournalSelf() {
+        const s = Store.s, today = U.iso(U.today()); if (!ui.attMonth) ui.attMonth = today.slice(0, 7);
+        const marks = s.attendance.marks, certs = Cloud.my.certs, sub = s.settings.subgroup, days = journalDays(ui.attMonth);
+        const st = Att.stats(marks, certs, sub, ui.attMonth + '-01', monthEnd(ui.attMonth));
+        const cell = di => {
+          const prs = Att.pairs(di, sub); if (!prs.length) return '<td class="jc dim">·</td>';
+          const effs = prs.map(p => Att.eff(marks, certs, di, p.pair)), cls = effs.includes('н') ? 'no' : effs.includes('о') ? 'late' : effs.includes('у') ? 'exc' : effs.every(x => x === 'п') ? 'ok' : '';
+          return '<td class="jc ' + cls + '" title="' + prs.map((p, i) => p.pair + '-я: ' + (effs[i] ? ST_INFO[effs[i]][0] : 'не отмечено')).join('; ') + '">' + effs.map(x => x || '?').join('') + '</td>';
+        };
+        const head = days.map(d => {const dt = U.fromISO(d); return '<th class="jh">' + dt.getDate() + '<small>' + DAYS[U.dayIdx(dt)] + '</small></th>';}).join('');
+        return '<div class="page-head"><div><h1>📁 Журнал</h1><p>Твоя посещаемость по дням. Только просмотр: отметки ставятся на странице «Посещаемость».</p></div></div>' +
+          '<div class="period"><div class="monthnav"><button class="icon-btn" data-action="att-month" data-d="-1" aria-label="Предыдущий месяц">◀</button><b>' + monthName(ui.attMonth) + '</b><button class="icon-btn" data-action="att-month" data-d="1" aria-label="Следующий месяц"' + (ui.attMonth >= today.slice(0, 7) ? ' disabled' : '') + '>▶</button></div></div>' +
+          statCards(st) + absCard(Att.absHours(marks, certs, sub)) +
+          (days.length ? '<div class="jwrap"><table class="jt"><thead><tr><th class="c1">Я</th>' + head + '</tr></thead><tbody><tr><td class="c1"><b>' + U.esc(((Cloud.profile || {}).name) || 'Мои отметки') + '</b></td>' + days.map(cell).join('') + '</tr></tbody></table></div>' +
+            '<div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>справка · «?» — не отмечено</div>' : '<div class="empty">В этом месяце ещё нет учебных дней с 15.10.2026</div>');
+      }
       function viewJournal() {
-        if (!Cloud.isAdmin) return '<div class="empty"><div class="mini-mascot">' + Mascot.svg('worried', 80) + '</div>Журнал доступен только админу группы</div>';
+        if (!Cloud.isAdmin) return viewJournalSelf();
         const today = U.iso(U.today()); if (!ui.attMonth) ui.attMonth = today.slice(0, 7);
         const days = journalDays(ui.attMonth), rows = rosterRows(), mrange = [ui.attMonth + '-01', monthEnd(ui.attMonth)];
         const calc = x => x.e ? Att.stats(x.e.marks, x.e.certs, x.e.p.subgroup, mrange[0], mrange[1]) : null;
@@ -6390,7 +6414,7 @@
       }
       /* ---------- 6.10 «Ещё» (мобильное меню) ---------- */
       function viewMore() {
-        const items = [['teachers', '👩‍🏫', 'Преподаватели'], ['cabinet', '👤', 'Личный кабинет'], ['rating', '🏆', 'Рейтинг группы']].concat(Cloud.isAdmin ? [['group', '🛡️', 'Группа (админ)'], ['journal', '📁', 'Журнал (админ)']] : []).concat([['settings', '⚙️', 'Настройки']]);
+        const items = [['teachers', '👩‍🏫', 'Преподаватели'], ['cabinet', '👤', 'Личный кабинет'], ['rating', '🏆', 'Рейтинг группы']].concat([['journal', '📁', 'Журнал']]).concat(Cloud.isAdmin ? [['group', '🛡️', 'Группа (админ)']] : []).concat([['settings', '⚙️', 'Настройки']]);
         return '<div class="page-head"><div><h1>Ещё</h1><p>Разделы Политешика</p></div></div><div class="tiles">' + items.map(t => '<button class="tile" data-action="nav" data-tab="' + t[0] + '"><span>' + t[1] + '</span>' + t[2] + '</button>').join('') + '</div>';
       }
 
@@ -6549,6 +6573,14 @@
         if (!data) {box.innerHTML = '<div class="empty">Не удалось загрузить файл</div>'; return;}
         box.innerHTML = /^data:image\//.test(data) ? '<img src="' + data + '" alt="' + U.esc(title) + '">' : '<div class="empty">Это не изображение — скачайте файл</div>';
       }
+      /* Переписка со студентом: видны его сообщения, ответы Политешика и ваши сообщения «Игнатенок Арина · админ» */
+      function adminThread(uid) {
+        const d = Cloud.adm.chat[uid] || {msgs: []}, nm = (Cloud.adm.profiles[uid] || {}).name || 'Студент';
+        const who = m => m.from === 'admin' ? 'Игнатенок Арина · админ' : m.from === 'me' ? nm : 'Политешик';
+        const list = (d.msgs || []).slice(-20);
+        return '<div class="thread" id="adm-thread">' + (list.length ? list.map(m => '<div class="thr thr-' + m.from + '"><b>' + U.esc(who(m)) + '</b> <small>' + U.esc(fmtAgo(m.t)) + '</small><div>' + U.esc(m.text).replace(/\n/g, '<br>') + '</div></div>').join('') : '<p class="md-help">Сообщений пока нет.</p>') + '</div>' +
+          '<div class="chat-in"><input class="input" id="adm-msg-text" placeholder="Сообщение студенту" autocomplete="off"><button class="btn primary" data-action="adm-msg" data-uid="' + uid + '">Отправить</button></div>';
+      }
       function openStudent(uid, date0) {
         const r = studentRows().find(x => x.id === uid); if (!r) return;
         ui.stud = {uid, date: date0 || (ui.stud && ui.stud.uid === uid ? ui.stud.date : U.iso(U.today()))};
@@ -6558,6 +6590,7 @@
           '<p class="md-help" style="margin:0 0 10px">Заходил(а): ' + U.esc(fmtAgo(r.p.seen)) + (r.p.subgroup ? ' · подгруппа ' + U.esc(r.p.subgroup) : '') + ' · период: ' + (ui.attScope === 'all' ? 'с 15.10.2026' : monthName(ui.attMonth)) + '</p>' +
           statCards(r.st) + absCard(Att.absHours(r.marks, r.certs, r.p.subgroup)) + '<h3 style="margin:14px 0 8px">По предметам</h3>' + subjTable(r.st) +
           '<h3 style="margin:16px 0 8px">Справки и больничные</h3>' + (certs.length ? '<div class="items">' + certs.map(c => '<div class="item"><div class="item-main"><div class="item-title">' + (c.kind === 'Больничный' ? '🏥' : '📄') + ' ' + U.esc(c.kind) + ' · ' + U.esc(U.fmtShort(U.fromISO(c.from))) + ' — ' + U.esc(U.fmtShort(U.fromISO(c.to))) + '</div>' + (c.note ? '<div class="item-meta"><span class="tag">' + U.esc(c.note) + '</span></div>' : '') + '</div><div class="item-actions"><button class="btn sm" data-action="cert-view" data-uid="' + uid + '" data-id="' + c.id + '">🖼️ Фото</button></div></div>').join('') + '</div>' : '<div class="empty" style="padding:14px">Справок нет</div>') +
+          '<h3 style="margin:16px 0 8px">✉️ Переписка</h3>' + adminThread(uid) +
           '<h3 style="margin:16px 0 8px">Исправить отметки за день</h3>' +
           '<div class="field"><input class="input" type="date" id="stud-date" data-change="stud-date" value="' + date + '" min="' + ATT_START + '" max="' + today + '"></div><div id="stud-day">' + attDayHtml(date, marks, certs, r.p.subgroup, uid, false) + '</div>' +
           '</div>', {wide: true, noFocus: true});
@@ -6675,7 +6708,8 @@
         profile(r) {
           const first = !Cloud.hasCabinet(), sg = val(r, 'subgroup');
           const rid = first ? val(r, 'rid') : Cloud.profile.rid, ro = ROSTER_BY_ID[rid];
-          if (!ro || ro.flag || (ro.id === ADMIN_RID && !Cloud.isAdmin)) {UI.shake($('.modal') || $('.gate-card')); return toast('Выберите свою фамилию из списка');}
+          if (!ro || ro.flag) {UI.shake($('.modal') || $('.gate-card')); return toast('Выберите свою фамилию из списка');}
+          if (first && ro.id === ADMIN_RID && !Cloud.isAdmin) {ui.secret = {rid, sg}; $('#gate').dataset.mode = ''; App.render(); return;}   // фамилия админа: сначала секретный пароль
           (async () => {
             if (first) {
               const c = await Cloud.claim(rid);
@@ -6746,6 +6780,27 @@
           if (!r.ok) {toast('Ошибка: ' + r.msg); return;}
           toast('Аккаунт создан! Выбери свою фамилию из списка.');
           App.render(true);
+        },
+        async 'secret-do'(el) {
+          const f = el.closest('[data-form]'), v = ((f && f.querySelector('[name=secret]')) || {}).value || '', st = ui.secret;
+          if (!st) return; if (!v) return toast('Введите секретный пароль');
+          let good = false;
+          try {const {data, error} = await supa.rpc('become_admin', {p_secret: v}); if (error) throw error; good = data === true;}
+          catch (e) {return toast(/не задан/i.test(e.message || '') ? 'Секретный пароль ещё не задан в Supabase' : (e.message || 'Не удалось проверить пароль'));}
+          if (!good) {ui.secret = null; $('#gate').dataset.mode = ''; toast('Неверный секретный пароль'); App.render(); return;}   // обратно к выбору фамилии
+          await Cloud.init();                                              // сервер теперь знает, что вы админ: подтягиваем права и админские данные
+          if (!Cloud.isAdmin) return toast('Не удалось получить права админа');
+          const c = await Cloud.claim(st.rid); if (!c.ok) return toast('Не удалось занять фамилию');
+          try {await Cloud.saveProfile(st.rid, st.sg);} catch (e) {return toast('Не удалось создать кабинет');}
+          ui.secret = null; $('#gate').dataset.mode = ''; UI.locked = false; UI.close(); Chat.tick(); App.render(true); toast('Добро пожаловать, админ!');
+        },
+        'secret-back'() {ui.secret = null; $('#gate').dataset.mode = ''; App.render();},
+        async 'logout-now'() {await Cloud.logout();},                      // без подтверждения: окно подтверждения скрыто за экраном входа
+        'adm-msg'(el) {
+          const uid = el.dataset.uid, inp = $('#adm-msg-text'), text = ((inp && inp.value) || '').trim(); if (!uid || !text) return;
+          const d = Cloud.adm.chat[uid] || {msgs: [], answers: {}, asked: {}, follow: {}, flags: {}, reqs: [], updated: ''}, now = new Date().toISOString();
+          d.msgs = (d.msgs || []).concat([{id: U.uid('m'), t: now, from: 'admin', text}]); d.updated = now; Cloud.adm.chat[uid] = d;
+          Cloud.put('chat/' + uid, () => Cloud.adm.chat[uid]); openStudent(uid, ui.stud && ui.stud.date); toast('Сообщение отправлено');
         },
         async 'logout'() {
           if (!await UI.confirm('Выйти из аккаунта? Данные останутся в облаке.', 'Выйти')) return;
@@ -7137,7 +7192,7 @@
         /* Что показывать вместо приложения: loading — подключаемся, register — нет личного кабинета, offline — нет входа */
         gateMode() {
           if (Cloud.status === 'pending') return 'loading';
-          if (Cloud.status === 'online' && !Cloud.hasCabinet()) return Cloud.claimsLoaded ? 'register' : 'loading';
+          if (Cloud.status === 'online' && !Cloud.hasCabinet()) return Cloud.claimsLoaded ? (ui.secret ? 'secret' : 'register') : 'loading';
           if (Cloud.status === 'offline' && !ui.localOk) return 'offline';
           return '';
         },
@@ -7157,15 +7212,27 @@
             g.innerHTML = '<div class="gate-card"><div class="gate-mascot">' + Mascot.svg('thinking', 110) + '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p></div>';
             return '';
           }
+          if (needClaim && mode === 'secret' && ui.secret) {                 // экран секретного пароля
+            g.innerHTML = '<div class="gate-card"><div class="gate-mascot">' + Mascot.svg('thinking', 110) + '</div><h1>Политешик</h1><p class="gate-sub">Секретный пароль админа</p>' +
+              '<p class="gate-text">«' + U.esc(ROSTER_BY_ID[ui.secret.rid].name) + '» — фамилия админа группы. Чтобы продолжить, введите секретный пароль.</p>' +
+              '<div class="warn secret-warn" hidden>Секретный пароль ещё не задан. Задайте его в Supabase: скрипт politeshik_rls.sql (строка с ПРИДУМАЙТЕ_СЕКРЕТНЫЙ_ПАРОЛЬ).</div>' +
+              '<div data-form="secret"><label class="field"><span>Секретный пароль</span><input class="input" name="secret" type="password" autocomplete="off" placeholder="••••••••"></label>' +
+              '<button class="btn primary big" data-action="secret-do">Войти</button></div>' +
+              '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="secret-back">← Назад к выбору фамилии</button>' +
+              '<button class="btn ghost" style="margin-top:6px;width:100%" data-action="logout-now">Выйти из аккаунта</button></div>';
+            try {supa.rpc('admin_secret_is_set').then(r => {if (r && r.data === false) {const w = g.querySelector('.secret-warn'); if (w) w.hidden = false;}});} catch (e) { }
+            const f0 = g.querySelector('input'); if (f0) setTimeout(() => {try {f0.focus();} catch (e) { } }, 80);
+            return '';
+          }
           if (needClaim) {
-            const avail = ROSTER.filter(r => !r.flag), taken = r => Cloud.claims[r.id] && Cloud.claims[r.id] !== Cloud.uid, locked = r => r.id === ADMIN_RID && !Cloud.isAdmin;
+            const avail = ROSTER.filter(r => !r.flag), taken = r => Cloud.claims[r.id] && Cloud.claims[r.id] !== Cloud.uid, locked = r => false;
             g.innerHTML = '<div class="gate-card"><div class="gate-mascot">' + Mascot.svg('cheer', 120) + '</div><h1>Политешик</h1><p class="gate-sub">Создай личный кабинет</p>' +
               '<p class="gate-text">Ты вошёл(ла). Теперь выбери свою фамилию из списка группы — её нельзя будет сменить.</p>' +
               '<div data-form="profile">' +
-              field('Это я', '<select class="input" name="rid" data-change="rid-pick"><option value="">— выбери свою фамилию —</option>' + avail.map(r => '<option value="' + r.id + '"' + (taken(r) || locked(r) ? ' disabled' : '') + '>' + U.esc(r.name) + (taken(r) ? ' — занято' : locked(r) ? ' — только для админа' : '') + '</option>').join('') + '</select>') +
+              field('Это я', '<select class="input" name="rid" data-change="rid-pick"><option value="">— выбери свою фамилию —</option>' + avail.map(r => '<option value="' + r.id + '"' + (taken(r) || locked(r) ? ' disabled' : '') + '>' + U.esc(r.name) + (taken(r) ? ' — занято' : (r.id === ADMIN_RID && !Cloud.isAdmin) ? ' — нужен секретный пароль' : '') + '</option>').join('') + '</select>') +
               field('Подгруппа', '<select class="input" name="subgroup"><option value="">выбери</option><option value="1">1 подгруппа</option><option value="2">2 подгруппа</option></select>') +
               '<button class="btn primary big" data-action="save-form">Создать кабинет и войти</button></div>' +
-              '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="logout">Выйти из аккаунта</button>' +
+              '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="logout-now">Выйти из аккаунта</button>' +
               '<small class="gate-foot">Одну фамилию может занять только один аккаунт. Если выбрали не ту — напишите админу.</small></div>';
             return '';
           }
@@ -7189,7 +7256,7 @@
           if (gm) {App.renderGate(gm); return;}
           document.body.classList.toggle('ro', !canEdit());
           if (document.body.classList.contains('gated')) {document.body.classList.remove('gated'); const g = $('#gate'); g.hidden = true; g.innerHTML = ''; g.dataset.mode = ''; animate = true;}
-          if (!Views[ui.tab] || ((ui.tab === 'group' || ui.tab === 'journal') && !Cloud.isAdmin)) ui.tab = 'dashboard';
+          if (!Views[ui.tab] || (ui.tab === 'group' && !Cloud.isAdmin)) ui.tab = 'dashboard';
           const v = $('#view');
           v.innerHTML = Views[ui.tab]();
           const at = $('.tab.on'); if (at && at.scrollIntoView) {try {at.scrollIntoView({inline: 'center', block: 'nearest'});} catch (e) { } }
