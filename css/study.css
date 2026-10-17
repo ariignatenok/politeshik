@@ -1,0 +1,334 @@
+.deck-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.deck-stat {
+  min-width: 200px;
+  flex: 1;
+  max-width: 340px;
+}
+
+.deck-stat b {
+  font-size: 22px;
+}
+
+.deck-stat small {
+  color: var(--muted);
+  margin-left: 8px;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--surface2);
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6);
+  border-radius: 99px;
+  transition: width 0.35s ease;
+}
+
+.chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.chk input {
+  accent-color: var(--accent);
+}
+
+.crows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.crow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  transition: 0.15s;
+}
+
+.crow:hover {
+  border-color: var(--accent);
+  transform: translateX(2px);
+}
+
+.crow .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  flex: none;
+}
+
+.crow.ok .dot {
+  background: var(--green);
+}
+
+.crow-q {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.crow .tag {
+  flex: none;
+  max-width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.study {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.study-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.study-n {
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.flip {
+  margin: 18px 0;
+  min-height: 260px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.flip:hover,
+.flip:focus-visible {
+  border-color: var(--accent);
+}
+
+.face {
+  flex: 1;
+  padding: 26px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.face > small {
+  color: var(--accent-text);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+
+.face.front {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.qtxt {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.tap {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.face.back {
+  max-height: 60vh;
+  overflow-y: auto;
+  cursor: default;
+}
+
+.study-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.study-actions .btn {
+  min-width: 160px;
+  padding: 12px 18px;
+}
+
+.study.done {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.study.done .big {
+  font-size: 56px;
+}
+
+.fgroup {
+  margin: 22px 0 10px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fgroup:first-child {
+  margin-top: 4px;
+}
+
+.fgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.fcard {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  animation: rise 0.3s ease both;
+}
+
+.ftitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-right: 64px;
+}
+
+.fexpr {
+  font-family: "Cambria Math", "STIX Two Math", Cambria, Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  margin: 8px 0;
+  overflow-x: auto;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.fexpr sub,
+.fexpr sup,
+#fm-preview sub,
+#fm-preview sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+.fnote {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.fact {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+}
+
+.fact .icon-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+.fcard:hover .fact .icon-btn {
+  opacity: 1;
+}
+
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 0.2em;
+  font-size: 0.95em;
+  line-height: 1.25;
+}
+
+.frac > span {
+  padding: 0 0.25em;
+}
+
+.frac > span:first-child {
+  border-bottom: 1.5px solid currentColor;
+}
+
+#fm-preview {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--surface2);
+  font-family: Cambria, Georgia, serif;
+  font-size: 19px;
+  min-height: 42px;
+  overflow-x: auto;
+}
+
+.tabs .tag {
+  margin-left: 2px;
+}
+
+@media (max-width: 760px) {
+  .flip {
+    min-height: 200px;
+  }
+
+  .face {
+    padding: 20px 16px;
+  }
+
+  .qtxt {
+    font-size: 19px;
+  }
+
+  .fgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .study-actions .btn {
+    flex: 1;
+    min-width: 0;
+  }
+}

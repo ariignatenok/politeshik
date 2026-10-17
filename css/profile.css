@@ -1,0 +1,281 @@
+.av-em {
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.av-img {
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.avbtn {
+  position: relative;
+  border: 0;
+  background: none;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.avbtn .av-edit {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+}
+
+.about-card {
+  margin-bottom: 16px;
+}
+
+.about-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.about-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.av-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 8px;
+}
+
+.av-pick {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: none;
+  padding: 2px;
+  transition: 0.15s;
+}
+
+.av-pick:hover,
+.av-pick.on {
+  border-color: var(--accent);
+  transform: scale(1.06);
+}
+
+.plaque {
+  margin-bottom: 12px;
+  border-color: var(--yellow);
+  background: var(--yellow-bg);
+  font-weight: 600;
+}
+
+.ach-head {
+  margin-bottom: 6px;
+}
+
+.ach-head h2 {
+  font-size: 20px;
+}
+
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.ach {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  opacity: 0.6;
+  filter: grayscale(0.85);
+  transition: 0.2s;
+}
+
+.ach.got {
+  opacity: 1;
+  filter: none;
+  border-color: var(--yellow);
+  box-shadow:
+    0 0 0 1px var(--yellow-bg),
+    var(--shadow);
+}
+
+.ach-ico {
+  font-size: 30px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--surface2);
+  flex: none;
+}
+
+.ach.got .ach-ico {
+  background: var(--yellow-bg);
+}
+
+.ach-t b {
+  display: block;
+}
+
+.ach-t small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.ach-d {
+  color: var(--yellow) !important;
+}
+
+.progress.sm {
+  height: 5px;
+  margin: 4px 0 2px;
+}
+
+.rank {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.rank-row.me {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.rank-row.t1 {
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.25), transparent);
+}
+
+.rank-row.t2 {
+  background: linear-gradient(90deg, rgba(203, 213, 225, 0.25), transparent);
+}
+
+.rank-row.t3 {
+  background: linear-gradient(90deg, rgba(217, 119, 6, 0.22), transparent);
+}
+
+.rk-p {
+  width: 34px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.rk-n {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.rk-n small {
+  color: var(--muted);
+}
+
+.rk-s {
+  font-weight: 800;
+  color: var(--accent-text);
+}
+
+.prize-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  border-color: var(--yellow);
+}
+
+.prize-bar small,
+.myplace small {
+  display: block;
+  color: var(--muted);
+}
+
+.myplace {
+  text-align: right;
+}
+
+.prize-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.prize-form .input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.faq-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 2px;
+  scrollbar-width: thin;
+}
+
+.faq-b {
+  flex: none;
+  max-width: 260px;
+  white-space: normal;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.faq-b:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.faq-ed {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface2);
+}
+
+.study-link {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
