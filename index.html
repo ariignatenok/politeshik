@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Политешик — учебный планировщик</title>
+  <meta name="theme-color" content="#0c0e16">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Политешик">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/theme-boot.js"></script>
+</head>
+
+<body>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo" id="brand-mascot"></div>
+        <div><b>Политешик</b><small id="side-date"></small></div>
+      </div>
+      <nav class="nav" id="nav-side"></nav>
+      <div class="side-foot">
+        <button class="btn ghost" data-action="theme" id="theme-btn-side">Тема</button>
+      </div>
+    </aside>
+    <div class="content">
+      <header class="topbar"><b class="tb-brand"><span id="top-mascot"></span> Политешик</b><button class="icon-btn"
+          data-action="theme" id="theme-btn-top" aria-label="Сменить тему">Тема</button></header>
+      <main id="view" class="view"></main>
+    </div>
+  </div>
+  <nav class="tabbar" id="nav-bottom"></nav>
+  <button class="fab" id="fab" data-action="add-work" aria-label="Добавить работу">＋</button>
+  <div id="bgfx" aria-hidden="true"></div>
+  <div id="theme-pop" class="theme-pop" hidden></div>
+  <div id="net-badge" hidden>Нет сети: офлайн-режим</div>
+  <div id="gate" hidden></div>
+  <div id="modal-root"></div>
+  <div id="confirm-root"></div>
+  <div id="toast"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/data/cards.js"></script>
+  <script src="js/data/notes.js"></script>
+  <script src="js/data/formulas.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/markdown.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/mascot.js"></script>
+  <script src="js/roster.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/images.js"></script>
+  <script src="js/attendance.js"></script>
+  <script src="js/works.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/dm.js"></script>
+  <script src="js/news.js"></script>
+  <script src="js/permissions.js"></script>
+  <script src="js/changes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/achievements.js"></script>
+  <script src="js/rating.js"></script>
+  <script src="js/faq.js"></script>
+  <script src="js/selectors.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/schedule.js"></script>
+  <script src="js/views/subjects.js"></script>
+  <script src="js/views/teachers.js"></script>
+  <script src="js/views/settings.js"></script>
+  <script src="js/views/attendance.js"></script>
+  <script src="js/views/chat.js"></script>
+  <script src="js/views/news.js"></script>
+  <script src="js/views/cabinet.js"></script>
+  <script src="js/views/group.js"></script>
+  <script src="js/views/journal.js"></script>
+  <script src="js/views/homework.js"></script>
+  <script src="js/views/rating.js"></script>
+  <script src="js/views/more.js"></script>
+  <script src="js/dialogs.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/actions/auth.js"></script>
+  <script src="js/actions/settings.js"></script>
+  <script src="js/actions/works.js"></script>
+  <script src="js/actions/schedule.js"></script>
+  <script src="js/actions/subjects.js"></script>
+  <script src="js/actions/attendance.js"></script>
+  <script src="js/actions/chats.js"></script>
+  <script src="js/actions/cabinet.js"></script>
+  <script src="js/actions/group.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
