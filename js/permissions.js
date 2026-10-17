@@ -1,0 +1,71 @@
+'use strict';
+
+/**
+ * Проверяет, может ли пользователь править общие данные.
+ * @returns {boolean} true, если условие выполнено.
+ */
+const canEdit = () => Cloud.status !== 'online' || Cloud.isAdmin;
+const RO_ACTIONS = new Set([
+  'add-work',
+  'hw-add',
+  'news-add',
+  'news-del',
+  'att-edit',
+  'edit-item',
+  'del-item',
+  'subj-add',
+  'subj-edit',
+  'subj-del',
+  'note-add',
+  'card-add',
+  'card-edit',
+  'card-del',
+  'formula-add',
+  'formula-edit',
+  'formula-del',
+  'link-del',
+  't-add',
+  't-edit',
+  't-del',
+  'reset',
+  'clear',
+  'restore-content',
+  'times',
+  'cell-add',
+  'cell-edit',
+  'pair-add',
+  'pair-del',
+  'chg-cancel',
+  'chg-replace',
+  'chg-del'
+]);
+const RO_FORMS = new Set([
+  'news',
+  'att-edit',
+  'hwg',
+  'work',
+  'hw',
+  'hw-new',
+  'card',
+  'formula',
+  'subject',
+  'teacher',
+  'link-new',
+  'times',
+  'lesson',
+  'change'
+]);
+/**
+ * Проверяет, запрещено ли студенту действие кнопки.
+ * @param {HTMLElement} el Кнопка с data-action.
+ * @returns {boolean} true, если условие выполнено.
+ */
+function roBlocked(el) {
+  if (canEdit()) return false;
+  const a = el.dataset.action;
+  if (a === 'note-edit' || a === 'note-del') {
+    const n = Store.s.notes.find(x => x.id === el.dataset.id);
+    return !!(n && n.subjectId);
+  }
+  return RO_ACTIONS.has(a);
+}
