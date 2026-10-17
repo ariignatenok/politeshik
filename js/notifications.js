@@ -79,7 +79,12 @@ const Notifier = {
       try {
         if (navigator.serviceWorker && navigator.serviceWorker.controller && navigator.serviceWorker.ready)
           navigator.serviceWorker.ready.then(r =>
-            r.showNotification(title, {body, tag: opts.tag || type, icon: 'icon-192.png'})
+            r.showNotification(title, {
+              body,
+              tag: opts.tag || type,
+              icon: 'assets/icon-192.png',
+              badge: 'assets/icon-192.png'
+            })
           );
         else new Notification(title, {body, tag: opts.tag || type});
         shown = true;
