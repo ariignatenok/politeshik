@@ -196,6 +196,7 @@ const Store = (() => {
     load,
     save,
     commit() {
+      if (Cloud.isAdmin) s.meta.localEditAt = new Date().toISOString();
       save();
       App.render();
       if (Cloud.isAdmin) {

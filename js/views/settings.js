@@ -84,20 +84,22 @@ function viewSettings() {
         ICONS.warning +
         ' Браузер не разрешает сохранять данные на этом устройстве — изменения пропадут после закрытия. Делайте экспорт в JSON.</div>') +
     '<div class="card set-sec"><h2>Внешний вид</h2><div class="set-row" style="align-items:flex-start"><div><b>Тема оформления</b><p>7 тем; выбор сохраняется в профиле</p></div><div class="theme-grid">' +
-    THEMES.map(
-      t =>
-        '<button class="' +
-        (s.settings.theme === t.id ? 'on' : '') +
-        '" data-action="set-theme" data-theme="' +
-        t.id +
-        '"><span class="sw" style="background:' +
-        t.sw +
-        '"></span>' +
-        t.ico +
-        ' ' +
-        t.name +
-        '</button>'
-    ).join('') +
+    Themes.available()
+      .map(
+        t =>
+          '<button class="' +
+          (s.settings.theme === t.id ? 'on' : '') +
+          '" data-action="set-theme" data-theme="' +
+          t.id +
+          '"><span class="sw" style="background:' +
+          t.sw +
+          '"></span>' +
+          t.ico +
+          ' ' +
+          t.name +
+          '</button>'
+      )
+      .join('') +
     '</div></div></div>' +
     notifSettings() +
     '<div class="card set-sec"><h2>Расписание</h2>' +

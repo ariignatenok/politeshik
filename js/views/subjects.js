@@ -124,6 +124,7 @@ function noteList(sb) {
           ) +
           '</p><small>' +
           new Date(n.updated).toLocaleDateString('ru-RU') +
+          ((n.files || []).length ? ' · ' + ICONS.paperclip + ' ' + n.files.length : '') +
           '</small></button>'
       )
       .join('') +

@@ -104,7 +104,8 @@ const Cloud = (() => {
             const {data, error} = await supa
               .from('docs')
               .select('path,data')
-              .like('path', p + '%');
+              .like('path', p + '%')
+              .not('path', 'like', p + '%/%');
             if (error) throw error;
             const direct = (data || []).filter(r => r.path.slice(p.length).indexOf('/') === -1);
             cb({docs: direct.map(r => ({id: r.path.slice(p.length), data: () => r.data}))});
@@ -142,15 +143,85 @@ const Cloud = (() => {
   };
 
   /**
+   * Считает подпись расписания, которое сейчас лежит в этом устройстве.
+   * @returns {string} Строка.
+   */
+  function localCfgSig() {
+    const s = Store.s;
+    return JSON.stringify([
+      s.schedule,
+      s.settings.pairs,
+      s.settings.numeratorAnchor,
+      s.subjects.map(x => ({id: x.id, name: x.name, short: x.short, color: x.color}))
+    ]);
+  }
+  /**
+   * Решает, что делать админу при расхождении данных устройства и облака.
+   * @param {string} baseKey Ключ, где хранится подпись последней сверки.
+   * @param {string} cloudSig Подпись данных в облаке.
+   * @param {string} localSig Подпись данных на этом устройстве.
+   * @param {string} cloudUpdated Время обновления данных в облаке, ISO.
+   * @returns {string} same, take (взять облако) или keep (отправить своё).
+   */
+  function adminDecide(baseKey, cloudSig, localSig, cloudUpdated) {
+    const meta = Store.s.meta,
+      base = meta[baseKey];
+    if (cloudSig === localSig) {
+      meta[baseKey] = cloudSig;
+      return 'same';
+    }
+    if (base === undefined) return meta.localEditAt && meta.localEditAt > (cloudUpdated || '') ? 'keep' : 'take';
+    if (localSig === base) return 'take';
+    if (cloudSig === base) return 'keep';
+    return 'take';
+  }
+  /**
+   * Сверяет общий контент админа (ДЗ, предметы, конспекты, карточки) с облаком.
+   * @param {Object} x Общий контент из облака.
+   * @param {string} cloudSig Подпись контента в облаке.
+   */
+  function syncAdminExtra(x, cloudSig) {
+    const act = adminDecide('extraBase', cloudSig, C.extraSigOf(C.buildExtra()), x.updated);
+    C.syncedExtra = true;
+    if (act === 'take') {
+      applyExtra(x);
+      Store.s.meta.extraBase = cloudSig;
+      Store.save();
+      App.renderSoft();
+    } else if (act === 'keep') C.pushExtra();
+    else Store.save();
+  }
+  /**
    * Применяет к приложению общее расписание группы.
    * @param {Object} cfg Расписание группы.
    */
   function applyConfig(cfg) {
+    const s = Store.s;
     if (C.isAdmin) {
-      C.cfgSig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]);
+      const cloudSig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]),
+        act = adminDecide('cfgBase', cloudSig, localCfgSig(), cfg.updated);
+      C.syncedCfg = true;
+      C.cfgSig = cloudSig;
+      if (act === 'keep') {
+        C.pushConfig();
+      }
+      if (act !== 'take') return;
+      s.schedule = (cfg.schedule || []).map(l =>
+        Object.assign({start: '', end: '', who: '', room: '', subgroup: ''}, l)
+      );
+      if (Array.isArray(cfg.pairs) && cfg.pairs.length)
+        s.settings.pairs = cfg.pairs.map(p => ({start: p.start || '', end: p.end || ''}));
+      if (cfg.anchor) s.settings.numeratorAnchor = cfg.anchor;
+      (cfg.subjects || []).forEach(x => {
+        const have = s.subjects.find(y => y.id === x.id);
+        if (have) Object.assign(have, {name: x.name, short: x.short, color: x.color});
+        else s.subjects.push(Object.assign({links: [], hasFormulas: false, formulas: []}, x));
+      });
+      s.meta.cfgBase = cloudSig;
+      Store.save();
+      App.renderSoft();
       return;
     }
-    const s = Store.s;
     s.schedule = (cfg.schedule || []).map(l => Object.assign({start: '', end: '', who: '', room: '', subgroup: ''}, l));
     if (Array.isArray(cfg.pairs) && cfg.pairs.length)
       s.settings.pairs = cfg.pairs.map(p => ({start: p.start || '', end: p.end || ''}));
@@ -230,7 +301,10 @@ const Cloud = (() => {
     DB.doc('group/config').onSnapshot(snap => {
       C.cfg = snap.exists ? clone(snap.data()) : null;
       if (C.cfg) applyConfig(C.cfg);
-      else if (C.isAdmin) C.pushConfig(true);
+      else if (C.isAdmin) {
+        C.syncedCfg = true;
+        C.pushConfig(true);
+      }
     });
     DB.doc('group/works').onSnapshot(snap => {
       C.gworks = snap.exists ? clone(snap.data().items || []) : [];
@@ -238,10 +312,15 @@ const Cloud = (() => {
     });
     DB.doc('group/extra').onSnapshot(snap => {
       if (snap.exists) {
-        const x = clone(snap.data());
-        C.extraSig = C.extraSigOf(x);
-        if (!C.isAdmin) applyExtra(x);
-      } else if (C.isAdmin) C.pushExtra(true);
+        const x = clone(snap.data()),
+          cloudSig = C.extraSigOf(x);
+        C.extraSig = cloudSig;
+        if (C.isAdmin) syncAdminExtra(x, cloudSig);
+        else applyExtra(x);
+      } else if (C.isAdmin) {
+        C.syncedExtra = true;
+        C.pushExtra(true);
+      }
     });
     DB.doc('group/changes').onSnapshot(snap => {
       C.changes = snap.exists ? clone(snap.data().items || []) : [];
@@ -414,7 +493,7 @@ const Cloud = (() => {
    * @param {boolean} force Отправить даже без изменений.
    */
   C.pushConfig = force => {
-    if (!C.isAdmin) return;
+    if (!C.isAdmin || (!force && !C.syncedCfg)) return;
     const s = Store.s,
       cfg = {
         schedule: s.schedule,
@@ -426,6 +505,8 @@ const Cloud = (() => {
     const sig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]);
     if (!force && sig === C.cfgSig) return;
     C.cfgSig = sig;
+    Store.s.meta.cfgBase = sig;
+    Store.save();
     writeDoc('group/config', cfg);
   };
   /**
@@ -435,14 +516,13 @@ const Cloud = (() => {
    */
   C.extraSigOf = x => JSON.stringify([x.teachers, x.subjects, x.homework, x.notes, x.cards]);
   /**
-   * Отправляет общий контент админа в облако.
-   * @param {boolean} force Отправить даже без изменений.
+   * Собирает общий контент админа из локальных данных.
+   * @returns {Object} преподаватели, предметы, ДЗ, конспекты, карточки.
    */
-  C.pushExtra = force => {
-    if (!C.isAdmin) return;
+  C.buildExtra = () => {
     const s = Store.s,
       isSeed = id => String(id).indexOf('sd_') === 0;
-    const x = {
+    return {
       teachers: s.teachers,
       subjects: s.subjects,
       homework: s.homework.map(h => ({id: h.id, subjectId: h.subjectId, text: h.text, deadline: h.deadline})),
@@ -451,6 +531,14 @@ const Cloud = (() => {
         .filter(c => !isSeed(c.id))
         .map(c => ({id: c.id, subjectId: c.subjectId, cat: c.cat, q: c.q, a: c.a, link: c.link || ''}))
     };
+  };
+  /**
+   * Отправляет общий контент админа в облако.
+   * @param {boolean} force Отправить даже без изменений.
+   */
+  C.pushExtra = force => {
+    if (!C.isAdmin || (!force && !C.syncedExtra)) return;
+    const x = C.buildExtra();
     const sig = C.extraSigOf(x);
     if (!force && sig === C.extraSig) return;
     if (sig.length > 230000) {
@@ -458,6 +546,8 @@ const Cloud = (() => {
       return;
     }
     C.extraSig = sig;
+    Store.s.meta.extraBase = sig;
+    Store.save();
     writeDoc('group/extra', Object.assign({}, x, {updated: new Date().toISOString()}));
   };
   /**
@@ -619,6 +709,57 @@ const Cloud = (() => {
     else cur[key] = st;
     C.adm.att[uid] = {marks: cur, updated: new Date().toISOString()};
     writeDoc('attendance/' + uid, C.adm.att[uid]);
+  };
+  /**
+   * Загружает файл конспекта в облако.
+   * @param {Object} f Файл конспекта: id, name, type, size, data.
+   */
+  C.addNoteFile = async f => {
+    await DB.doc('group/file/' + f.id).set({data: f.data, name: f.name, type: f.type, size: f.size});
+  };
+  /**
+   * Загружает файл конспекта.
+   * @param {string} id Идентификатор файла.
+   * @returns {Promise<Object|null>} имя, тип и содержимое в виде data-URL.
+   */
+  C.getNoteFile = async id => {
+    const d = await DB.doc('group/file/' + id).get();
+    return d.exists ? d.data() : null;
+  };
+  /**
+   * Удаляет файл конспекта из облака.
+   * @param {string} id Идентификатор файла.
+   */
+  C.delNoteFile = async id => {
+    try {
+      await DB.doc('group/file/' + id).delete();
+    } catch (e) {}
+  };
+  /**
+   * Подтверждает справку студента или снимает подтверждение (админ).
+   * @param {string} uid Идентификатор студента.
+   * @param {string} id Идентификатор справки.
+   * @param {boolean} ok Подтверждена ли справка.
+   */
+  C.setCertStatus = (uid, id, ok) => {
+    const items = ((C.adm.certs[uid] || {}).items || []).map(c =>
+      c.id === id ? Object.assign({}, c, {confirmed: !!ok, confirmedAt: ok ? new Date().toISOString() : ''}) : c
+    );
+    C.adm.certs[uid] = {items};
+    writeDoc('certs/' + uid, {items});
+  };
+  /**
+   * Удаляет справку студента вместе с фото (админ).
+   * @param {string} uid Идентификатор студента.
+   * @param {string} id Идентификатор справки.
+   */
+  C.admDelCert = async (uid, id) => {
+    const items = ((C.adm.certs[uid] || {}).items || []).filter(c => c.id !== id);
+    C.adm.certs[uid] = {items};
+    writeDoc('certs/' + uid, {items});
+    try {
+      await DB.doc('certs/' + uid + '/img/' + id).delete();
+    } catch (e) {}
   };
   /**
    * Сохраняет несколько отметок студента за день (админ).

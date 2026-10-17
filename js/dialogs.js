@@ -346,20 +346,93 @@ function openSubjectForm(id) {
 function openNoteReader(id) {
   const n = Store.s.notes.find(x => x.id === id);
   if (!n) return;
+  const editable = canEdit() || !n.subjectId;
+  const files = (n.files || [])
+    .map(
+      f =>
+        '<div class="note-file"><div class="note-file-info"><b>' +
+        U.esc(f.name) +
+        '</b><small>' +
+        sizeText(f.size) +
+        '</small></div><button class="btn primary sm" data-action="note-file-dl" data-id="' +
+        f.id +
+        '" data-name="' +
+        U.esc(f.name) +
+        '">' +
+        ICONS.paperclip +
+        ' Скачать файл</button></div>'
+    )
+    .join('');
   UI.open(
     n.title || 'Конспект',
     '<div class="md">' +
       Md.render(n.text) +
-      '</div><div class="modal-foot" style="margin-top:18px"><button class="btn danger left" data-action="note-del" data-id="' +
-      id +
-      '">Удалить</button>' +
-      '<button class="btn" data-action="modal-close">Закрыть</button><button class="btn primary" data-action="note-edit" data-id="' +
-      id +
-      '">' +
-      ICONS.pencil +
-      ' Редактировать</button></div>',
+      '</div>' +
+      (files ? '<div class="note-files">' + files + '</div>' : '') +
+      '<div class="modal-foot" style="margin-top:18px">' +
+      (editable ? '<button class="btn danger left" data-action="note-del" data-id="' + id + '">Удалить</button>' : '') +
+      '<button class="btn" data-action="modal-close">Закрыть</button>' +
+      (editable
+        ? '<button class="btn primary" data-action="note-edit" data-id="' +
+          id +
+          '">' +
+          ICONS.pencil +
+          ' Редактировать</button>'
+        : '') +
+      '</div>',
     {wide: true, noFocus: true}
   );
+}
+const NOTE_FILE_MAX = 5 * 1024 * 1024;
+/**
+ * Строит список файлов в редакторе конспекта.
+ * @returns {string} HTML.
+ */
+function noteFilesEditHtml() {
+  return ui.noteFiles.length
+    ? ui.noteFiles
+        .map(
+          f =>
+            '<div class="note-file"><div class="note-file-info"><b>' +
+            U.esc(f.name) +
+            '</b><small>' +
+            sizeText(f.size) +
+            (f.data ? ' · новый' : '') +
+            '</small></div><button class="icon-btn" data-action="note-file-rm" data-id="' +
+            f.id +
+            '" aria-label="Убрать файл">' +
+            ICONS.wastebasket +
+            '</button></div>'
+        )
+        .join('')
+    : '<small class="md-help">Файлов нет</small>';
+}
+/**
+ * Принимает выбранный PDF или фото для конспекта: проверяет тип и размер, сжимает изображения.
+ * @param {HTMLInputElement} input Поле выбора файла.
+ */
+async function handleNoteFile(input) {
+  const f = input.files && input.files[0];
+  input.value = '';
+  if (!f) return;
+  const isImg = /^image\//.test(f.type),
+    isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name);
+  if (!isImg && !isPdf) return toast('Подходят PDF и фотографии');
+  if (!isImg && f.size > NOTE_FILE_MAX) return toast('PDF больше 5 МБ: сожмите файл');
+  try {
+    const data = isImg ? await compressImage(f) : await readDataUrl(f);
+    ui.noteFiles.push({
+      id: U.uid('nf'),
+      name: isImg ? f.name.replace(/\.[^.]+$/, '') + '.jpg' : f.name,
+      type: isImg ? 'image/jpeg' : 'application/pdf',
+      size: isImg ? Math.round(data.length * 0.75) : f.size,
+      data
+    });
+    const box = $('#note-files');
+    if (box) box.innerHTML = noteFilesEditHtml();
+  } catch (e) {
+    toast('Не удалось обработать файл');
+  }
 }
 /**
  * Открывает редактор конспекта.
@@ -367,13 +440,17 @@ function openNoteReader(id) {
  * @param {string} sid Идентификатор предмета.
  */
 function openNoteEditor(id, sid) {
-  const n = id ? Store.s.notes.find(x => x.id === id) : {title: '', text: ''};
+  const n = id ? Store.s.notes.find(x => x.id === id) : {title: '', text: '', files: []},
+    sidv = sid === undefined ? ui.subjectId || '' : sid;
+  ui.noteFiles = (n.files || []).map(f => Object.assign({}, f));
+  ui.noteRemoved = [];
+  const withFiles = canEdit() && sidv && Cloud.status === 'online';
   UI.open(
     id ? 'Редактировать конспект' : 'Новый конспект',
     '<div data-form="note" data-id="' +
       (id || '') +
       '" data-sid="' +
-      U.esc(sid === undefined ? ui.subjectId || '' : sid) +
+      U.esc(sidv) +
       '" class="editor">' +
       '<input class="input" name="title" placeholder="Заголовок" value="' +
       U.esc(n.title) +
@@ -382,6 +459,13 @@ function openNoteEditor(id, sid) {
       U.esc(n.text) +
       '</textarea>' +
       '<div class="md" id="note-preview" hidden></div>' +
+      (withFiles
+        ? '<div class="note-files-edit"><div id="note-files">' +
+          noteFilesEditHtml() +
+          '</div><label class="btn sm">' +
+          ICONS.paperclip +
+          ' Прикрепить файл<input type="file" accept="application/pdf,image/*" data-change="note-file" hidden></label> <small class="md-help">PDF или фото, до 5 МБ</small></div>'
+        : '') +
       '<div class="md-help"># заголовок · **жирный** · *курсив* · ==выделение== · `код` · - список · 1. нумерация · &gt; цитата · | таблица |</div>' +
       '<div class="modal-foot"><button class="btn left" data-action="preview-toggle">' +
       ICONS.eye +
@@ -654,7 +738,13 @@ function openStudent(uid, date0) {
                 ' — ' +
                 U.esc(U.fmtShort(U.fromISO(c.to))) +
                 '</div>' +
-                (c.note ? '<div class="item-meta"><span class="tag">' + U.esc(c.note) + '</span></div>' : '') +
+                '<div class="item-meta">' +
+                (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +
+                '<span class="tag status ' +
+                (c.confirmed ? 'prep' : 'past') +
+                '">' +
+                (c.confirmed ? 'Подтверждена админом' : 'Ждёт подтверждения') +
+                '</span></div>' +
                 '</div><div class="item-actions"><button class="btn sm" data-action="cert-view" data-uid="' +
                 uid +
                 '" data-id="' +

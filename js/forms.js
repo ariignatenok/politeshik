@@ -159,16 +159,36 @@ const Forms = {
       UI.shake($('.modal'));
       return toast('Конспект пустой');
     }
-    const rec = {title: title || 'Без заголовка', text, updated: new Date().toISOString()};
-    if (r.dataset.id)
-      Object.assign(
-        Store.s.notes.find(n => n.id === r.dataset.id),
-        rec
-      );
-    else Store.s.notes.push(Object.assign({id: U.uid('n'), subjectId: r.dataset.sid}, rec));
-    UI.close();
-    Store.commit();
-    toast('Конспект сохранён');
+    const files = ui.noteFiles || [],
+      fresh = files.filter(f => f.data),
+      removed = ui.noteRemoved || [];
+    if ((fresh.length || removed.length) && Cloud.status !== 'online')
+      return toast('Файлы можно прикреплять после входа в аккаунт');
+    const rec = {
+      title: title || 'Без заголовка',
+      text,
+      updated: new Date().toISOString(),
+      files: files.map(f => ({id: f.id, name: f.name, type: f.type, size: f.size}))
+    };
+    const save = () => {
+      if (r.dataset.id)
+        Object.assign(
+          Store.s.notes.find(n => n.id === r.dataset.id),
+          rec
+        );
+      else Store.s.notes.push(Object.assign({id: U.uid('n'), subjectId: r.dataset.sid}, rec));
+      removed.forEach(id => Cloud.delNoteFile(id));
+      ui.noteFiles = [];
+      ui.noteRemoved = [];
+      UI.close();
+      Store.commit();
+      toast('Конспект сохранён');
+    };
+    if (!fresh.length) return save();
+    toast('Загружаю файлы…');
+    Promise.all(fresh.map(f => Cloud.addNoteFile(f))).then(save, () =>
+      toast('Не удалось загрузить файл: он слишком большой или нет доступа')
+    );
   },
   /**
    * Сохраняет преподавателя.

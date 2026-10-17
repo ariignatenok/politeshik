@@ -96,7 +96,8 @@ const UI = {
    * Применяет сохранённую тему оформления.
    */
   applyTheme() {
-    const t = THEME_IDS.indexOf(Store.s.settings.theme) >= 0 ? Store.s.settings.theme : 'dark',
+    const saved = Store.s.settings.theme,
+      t = Themes.available().some(x => x.id === saved) ? saved : 'dark',
       th = THEMES.find(x => x.id === t);
     document.documentElement.setAttribute('data-theme', t);
     try {

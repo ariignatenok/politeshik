@@ -122,11 +122,7 @@ Object.assign(A, {
       async data => {
         if (!data) return toast('Файл не найден');
         const blob = await (await fetch(data)).blob();
-        if (Cloud.dl) {
-          try {
-            await Cloud.dl.save({filename: f.name || f.title, data: blob});
-          } catch (e) {}
-        } else toast('Скачивание недоступно в этом режиме');
+        downloadBlob(blob, f.name || f.title);
       },
       () => toast('Не удалось открыть файл')
     );

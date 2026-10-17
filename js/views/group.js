@@ -388,6 +388,134 @@ function grpFaq() {
   );
 }
 /**
+ * Собирает справки и больничные всех студентов, новые сверху.
+ * @returns {Array<Object>} Массив.
+ */
+function allCerts() {
+  const out = [];
+  enteredRows().forEach(e =>
+    e.certs.forEach(c => out.push({uid: e.id, name: e.p.name || 'Студент', sub: e.p.subgroup || '', c}))
+  );
+  return out.sort(
+    (a, b) =>
+      String(b.c.from).localeCompare(String(a.c.from)) || String(b.c.at || '').localeCompare(String(a.c.at || ''))
+  );
+}
+/**
+ * Считает, сколько дней действует справка.
+ * @param {Object} c Справка.
+ * @returns {number} Число.
+ */
+function certDays(c) {
+  return U.dayDiff(U.fromISO(c.from), U.fromISO(c.to)) + 1;
+}
+/**
+ * Строит строку справки с кнопками «Фото», «Подтвердить» и «Удалить».
+ * @param {Object} x Справка с данными студента.
+ * @returns {string} HTML.
+ */
+function certRow(x) {
+  const c = x.c,
+    ok = !!c.confirmed;
+  return (
+    '<div class="item sick-item' +
+    (ok ? '' : ' u-yellow') +
+    '"><div class="item-main"><div class="item-title">' +
+    (c.kind === 'Больничный' ? ICONS.hospital : ICONS.document) +
+    ' ' +
+    U.esc(x.name) +
+    '</div><div class="item-meta">' +
+    '<span class="tag">' +
+    U.esc(c.kind) +
+    '</span><span class="tag">' +
+    U.esc(U.fmtShort(U.fromISO(c.from))) +
+    ' — ' +
+    U.esc(U.fmtShort(U.fromISO(c.to))) +
+    ' · ' +
+    certDays(c) +
+    ' ' +
+    U.plural(certDays(c), 'день', 'дня', 'дней') +
+    '</span>' +
+    (x.sub ? '<span class="tag">подгруппа ' + U.esc(x.sub) + '</span>' : '') +
+    (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +
+    '<span class="tag status ' +
+    (ok ? 'prep' : 'past') +
+    '">' +
+    (ok ? 'Подтверждена' : 'Ждёт подтверждения') +
+    '</span></div></div>' +
+    '<div class="sick-actions"><button class="btn sm" data-action="cert-view" data-uid="' +
+    x.uid +
+    '" data-id="' +
+    c.id +
+    '">' +
+    ICONS.picture +
+    ' Фото</button>' +
+    '<button class="btn sm' +
+    (ok ? '' : ' primary') +
+    '" data-action="cert-ok" data-uid="' +
+    x.uid +
+    '" data-id="' +
+    c.id +
+    '" data-ok="' +
+    (ok ? '0' : '1') +
+    '">' +
+    (ok ? 'Снять подтверждение' : '✓ Подтвердить') +
+    '</button>' +
+    '<button class="icon-btn" data-action="cert-adm-del" data-uid="' +
+    x.uid +
+    '" data-id="' +
+    c.id +
+    '" aria-label="Удалить справку">' +
+    ICONS.wastebasket +
+    '</button></div></div>'
+  );
+}
+/**
+ * Строит вкладку «Больничные».
+ * @returns {string} HTML.
+ */
+function grpSick() {
+  const all = allCerts(),
+    f = ui.sickFilter,
+    today = U.iso(U.today());
+  const list = all.filter(x => f === 'all' || (f === 'new' ? !x.c.confirmed : x.c.confirmed));
+  const waiting = all.filter(x => !x.c.confirmed).length,
+    now = all.filter(x => x.c.from <= today && x.c.to >= today).length;
+  /**
+   * Строит кнопку фильтра справок.
+   * @param {string} id Значение фильтра.
+   * @param {string} label Подпись кнопки.
+   * @returns {string} HTML.
+   */
+  const chip = (id, label) =>
+    '<button class="fchip' +
+    (f === id ? ' on' : '') +
+    '" data-action="sick-filter" data-f="' +
+    id +
+    '">' +
+    label +
+    '</button>';
+  return (
+    '<div class="grid-stats"><div class="stat"><b>' +
+    all.length +
+    '</b><small>всего справок</small></div><div class="stat' +
+    (waiting ? ' red' : '') +
+    '"><b>' +
+    waiting +
+    '</b><small>ждут подтверждения</small></div><div class="stat"><b>' +
+    now +
+    '</b><small>действуют сегодня</small></div></div>' +
+    '<div class="chips">' +
+    chip('all', 'Все') +
+    chip('new', 'Ждут подтверждения') +
+    chip('ok', 'Подтверждённые') +
+    '</div>' +
+    (list.length
+      ? '<div class="items">' + list.map(certRow).join('') + '</div>'
+      : empty(ICONS.stethoscope, all.length ? 'В этом списке пусто' : 'Студенты пока не прикрепляли справок'))
+  );
+}
+/**
  * Отрисовывает раздел «Группа».
  * @returns {string} HTML.
  */
@@ -400,10 +528,12 @@ function viewGroup() {
     );
   if (!ui.attMonth) ui.attMonth = U.iso(U.today()).slice(0, 7);
   const nreq = pendingReqs().length,
+    newCerts = allCerts().filter(x => !x.c.confirmed).length,
     tabs = [
       ['today', ICONS.calendarDay + ' Сегодня'],
       ['students', ICONS.users + ' Список группы'],
       ['reqs', ICONS.bell + ' Просьбы' + (nreq ? ' (' + nreq + ')' : '')],
+      ['sick', ICONS.hospital + ' Больничные' + (newCerts ? ' (' + newCerts + ')' : '')],
       ['works', ICONS.megaphone + ' Работы группы'],
       ['faq', ICONS.questionMark + ' Вопросы Политешика']
     ];
@@ -437,8 +567,10 @@ function viewGroup() {
         ? grpWorks()
         : ui.grpTab === 'reqs'
           ? grpReqs()
-          : ui.grpTab === 'faq'
-            ? grpFaq()
-            : grpToday())
+          : ui.grpTab === 'sick'
+            ? grpSick()
+            : ui.grpTab === 'faq'
+              ? grpFaq()
+              : grpToday())
   );
 }

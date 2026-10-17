@@ -2,6 +2,32 @@
 
 Object.assign(A, {
   /**
+   * Переключает фильтр на вкладке «Больничные».
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'sick-filter'(el) {
+    ui.sickFilter = el.dataset.f;
+    App.render();
+  },
+  /**
+   * Подтверждает справку или снимает подтверждение.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'cert-ok'(el) {
+    Cloud.setCertStatus(el.dataset.uid, el.dataset.id, el.dataset.ok === '1');
+    toast(el.dataset.ok === '1' ? 'Справка подтверждена' : 'Подтверждение снято');
+    App.render();
+  },
+  /**
+   * Удаляет справку студента после подтверждения.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'cert-adm-del'(el) {
+    if (!(await UI.confirm('Удалить справку? Дни снова станут обычными пропусками.', 'Удалить'))) return;
+    await Cloud.admDelCert(el.dataset.uid, el.dataset.id);
+    App.render();
+  },
+  /**
    * Открывает карточку студента.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */

@@ -231,6 +231,7 @@ const App = {
     App.render(true);
     Cloud.init().then(() => {
       UI.applyTheme();
+      Themes.announce();
       Chat.tick();
       Profile.push();
       Ach.check();

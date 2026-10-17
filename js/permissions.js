@@ -8,6 +8,9 @@ const canEdit = () => Cloud.status !== 'online' || Cloud.isAdmin;
 const RO_ACTIONS = new Set([
   'add-work',
   'hw-add',
+  'cert-ok',
+  'cert-adm-del',
+  'note-file-rm',
   'news-add',
   'news-del',
   'att-edit',

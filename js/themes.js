@@ -9,6 +9,14 @@ const THEMES = [
   {id: 'garden', ico: ICONS.herb, name: 'Сад', sw: '#2f9e44'},
   {id: 'magic', ico: ICONS.sparkles, name: 'Магия', sw: '#a78bfa'}
 ];
+const SEASONAL = [
+  {id: 'autumn', ico: ICONS.fallenLeaf, name: 'Осень', sw: '#ff9f1c', from: [9, 1], to: [11, 30]},
+  {id: 'winter', ico: ICONS.snowflake, name: 'Зима', sw: '#7cc4ff', from: [12, 1], to: [2, 29]},
+  {id: 'valentine', ico: ICONS.heartArrow, name: '14 февраля', sw: '#ff4d8d', from: [2, 13], to: [2, 15]},
+  {id: 'defender', ico: ICONS.militaryMedal, name: '23 февраля', sw: '#c9b458', from: [2, 22], to: [2, 24]},
+  {id: 'womens', ico: ICONS.tulip, name: '8 Марта', sw: '#e0568f', from: [3, 7], to: [3, 9]}
+];
+THEMES.push(...SEASONAL.map(t => Object.assign({season: true}, t)));
 const THEME_IDS = THEMES.map(t => t.id);
 const Themes = {
   /**
@@ -212,4 +220,36 @@ const Themes = {
     }
     return '';
   }
+};
+
+/**
+ * Проверяет, попадает ли дата в период действия сезонной темы.
+ * @param {Object} t Сезонная тема с границами from и to.
+ * @param {Date} date Проверяемая дата.
+ * @returns {boolean} true, если условие выполнено.
+ */
+Themes.inSeason = (t, date) => {
+  const md = (date.getMonth() + 1) * 100 + date.getDate(),
+    a = t.from[0] * 100 + t.from[1],
+    b = t.to[0] * 100 + t.to[1];
+  return a <= b ? md >= a && md <= b : md >= a || md <= b;
+};
+/**
+ * Возвращает темы, доступные в указанный день: обычные всегда, сезонные только в свой период.
+ * @param {Date} date День проверки (необязательно).
+ * @returns {Array<Object>} Массив.
+ */
+Themes.available = date => THEMES.filter(t => !t.season || Themes.inSeason(t, date || new Date()));
+/**
+ * Один раз за сезон сообщает, что появилась новая тема.
+ */
+Themes.announce = () => {
+  const meta = Store.s.meta,
+    seen = meta.seenThemes || (meta.seenThemes = []),
+    year = new Date().getFullYear();
+  const fresh = Themes.available().filter(t => t.season && !seen.includes(t.id + ':' + year));
+  if (!fresh.length) return;
+  fresh.forEach(t => seen.push(t.id + ':' + year));
+  Store.save();
+  toast('Новая тема: ' + fresh.map(t => t.name).join(', ') + '. Включить её можно кнопкой темы.');
 };

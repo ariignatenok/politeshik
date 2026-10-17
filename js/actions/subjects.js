@@ -90,11 +90,39 @@ Object.assign(A, {
     openNoteEditor(el.dataset.id);
   },
   /**
+   * Убирает файл из редактируемого конспекта.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'note-file-rm'(el) {
+    const f = ui.noteFiles.find(x => x.id === el.dataset.id);
+    if (!f) return;
+    ui.noteFiles = ui.noteFiles.filter(x => x.id !== f.id);
+    if (!f.data) ui.noteRemoved.push(f.id);
+    const box = $('#note-files');
+    if (box) box.innerHTML = noteFilesEditHtml();
+  },
+  /**
+   * Скачивает файл, прикреплённый к конспекту.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'note-file-dl'(el) {
+    if (Cloud.status !== 'online') return toast('Файл хранится в облаке: нужен вход в аккаунт');
+    toast('Скачиваю файл…');
+    try {
+      const f = await Cloud.getNoteFile(el.dataset.id);
+      if (!f || !f.data) return toast('Файл не найден');
+      downloadBlob(await (await fetch(f.data)).blob(), f.name || el.dataset.name || 'file');
+    } catch (e) {
+      toast('Не удалось скачать файл');
+    }
+  },
+  /**
    * Удаляет конспект.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   async 'note-del'(el) {
     if (!(await UI.confirm('Удалить конспект?'))) return;
+    ((Store.s.notes.find(n => n.id === el.dataset.id) || {}).files || []).forEach(f => Cloud.delNoteFile(f.id));
     Store.s.notes = Store.s.notes.filter(n => n.id !== el.dataset.id);
     UI.close();
     Store.commit();

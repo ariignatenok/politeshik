@@ -147,6 +147,7 @@ document.addEventListener('change', e => {
   }
   if (k === 'cert-file') handleDraftFile(e.target, true);
   if (k === 'work-file') handleDraftFile(e.target, false);
+  if (k === 'note-file') handleNoteFile(e.target);
   if (k === 'att-edit-date') {
     const f = e.target.closest('[data-form]');
     if (f && e.target.value >= ATT_START && e.target.value <= U.iso(U.today()))

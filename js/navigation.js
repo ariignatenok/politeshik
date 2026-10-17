@@ -3,6 +3,9 @@
 const ui = {
   tab: 'dashboard',
   chatWith: null,
+  sickFilter: 'all',
+  noteFiles: [],
+  noteRemoved: [],
   dashFilter: 'all',
   schedWeek: null,
   schedDay: null,

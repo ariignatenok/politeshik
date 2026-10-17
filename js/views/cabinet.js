@@ -147,7 +147,13 @@ function viewCabinetMain() {
               ' — ' +
               U.esc(U.fmtShort(U.fromISO(c.to))) +
               '</div>' +
-              (c.note ? '<div class="item-meta"><span class="tag">' + U.esc(c.note) + '</span></div>' : '') +
+              '<div class="item-meta">' +
+              (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +
+              '<span class="tag status ' +
+              (c.confirmed ? 'prep' : 'past') +
+              '">' +
+              (c.confirmed ? 'Подтверждена админом' : 'Ждёт подтверждения') +
+              '</span></div>' +
               '</div><div class="item-actions"><button class="icon-btn" data-action="cert-view" data-uid="' +
               Cloud.uid +
               '" data-id="' +

@@ -248,3 +248,29 @@ function relLabel(date) {
   if (n === 2) return 'Послезавтра';
   return 'Через ' + n + ' ' + U.plural(n, 'день', 'дня', 'дней');
 }
+
+/**
+ * Сохраняет файл на устройство пользователя.
+ * @param {Blob} blob Содержимое файла.
+ * @param {string} name Имя файла.
+ */
+function downloadBlob(blob, name) {
+  const url = URL.createObjectURL(blob),
+    a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+/**
+ * Переводит размер файла в читаемый вид (КБ или МБ).
+ * @param {number} bytes Размер в байтах.
+ * @returns {string} Строка.
+ */
+function sizeText(bytes) {
+  return bytes >= 1048576
+    ? (bytes / 1048576).toFixed(1).replace('.', ',') + ' МБ'
+    : Math.max(1, Math.round((bytes || 0) / 1024)) + ' КБ';
+}

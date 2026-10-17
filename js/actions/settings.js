@@ -24,18 +24,20 @@ Object.assign(A, {
       pop.hidden = true;
       return;
     }
-    pop.innerHTML = THEMES.map(
-      t =>
-        '<button class="' +
-        (Store.s.settings.theme === t.id ? 'on' : '') +
-        '" data-action="set-theme" data-theme="' +
-        t.id +
-        '"><span class="ti">' +
-        t.ico +
-        '</span>' +
-        t.name +
-        '</button>'
-    ).join('');
+    pop.innerHTML = Themes.available()
+      .map(
+        t =>
+          '<button class="' +
+          (Store.s.settings.theme === t.id ? 'on' : '') +
+          '" data-action="set-theme" data-theme="' +
+          t.id +
+          '"><span class="ti">' +
+          t.ico +
+          '</span>' +
+          t.name +
+          '</button>'
+      )
+      .join('');
     const r = el.getBoundingClientRect();
     pop.hidden = false;
     const w = pop.offsetWidth || 220,
@@ -49,7 +51,7 @@ Object.assign(A, {
    */
   'set-theme'(el) {
     const id = el.dataset.theme;
-    if (THEME_IDS.indexOf(id) < 0) return;
+    if (!Themes.available().some(x => x.id === id)) return;
     Store.s.settings.theme = id;
     Store.save();
     UI.applyTheme();
