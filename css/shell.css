@@ -1,0 +1,284 @@
+:root {
+  --sidebar-w: 248px;
+  --tabbar-h: 72px;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html {
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body.scroll-locked {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.shell {
+  display: block;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: var(--sidebar-w);
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-top: calc(22px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+}
+
+.content {
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin-left: var(--sidebar-w);
+  overflow-x: clip;
+}
+
+.view {
+  width: 100%;
+}
+
+.chat-wrap {
+  height: calc(100vh - 110px - env(safe-area-inset-top, 0px));
+  height: calc(100dvh - 110px - env(safe-area-inset-top, 0px));
+}
+
+.set-row {
+  flex-wrap: wrap;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+  width: 100%;
+  max-width: 100%;
+}
+
+.grid-stats,
+.att-stats {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.stat b {
+  font-size: clamp(26px, 8vw, 56px);
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .content {
+    margin-left: 0;
+    padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  }
+
+  .tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 50;
+  }
+
+  .view {
+    padding-bottom: 40px;
+  }
+
+  .chat-wrap {
+    height: calc(100vh - var(--tabbar-h) - 120px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    height: calc(100dvh - var(--tabbar-h) - 120px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  }
+
+  .grid-stats,
+  .att-stats {
+    gap: 8px;
+  }
+}
+
+body.gated .sidebar,
+body.gated .tabbar,
+body.gated .topbar {
+  display: none;
+}
+
+body.gated .content {
+  margin-left: 0;
+  padding-bottom: 0;
+}
+
+.err-card {
+  border: 1px solid rgba(255, 77, 109, 0.4);
+}
+
+.err-card p {
+  margin: 0 0 10px;
+}
+
+#boot-banner {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  padding: 10px 16px;
+  background: #ff4d6d;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.relax-intro,
+.relax-done {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.relax-done {
+  flex-direction: column;
+  text-align: center;
+}
+
+.relax-list {
+  display: grid;
+  gap: 10px;
+}
+
+.relax-item {
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--surface2);
+  color: var(--text);
+  text-align: left;
+}
+
+.relax-item small {
+  color: var(--muted);
+}
+
+.relax-live {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.relax-stage {
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 200px;
+}
+
+.relax-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--accent), color-mix(in srgb, var(--accent) 55%, transparent));
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 45%, transparent);
+  transition: transform var(--dur, 4s) ease-in-out;
+}
+
+.relax-circle.big {
+  transform: scale(2);
+}
+
+.relax-phase {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.relax-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--surface2);
+  overflow: hidden;
+}
+
+.relax-bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 1s linear;
+}
+
+.week-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 8px 10px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.week-nav .icon-btn {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.week-label {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  text-align: center;
+}
+
+.week-label b {
+  font-size: 17px;
+}
+
+.week-label small {
+  color: var(--muted);
+}
+
+.empty-week {
+  margin-bottom: 14px;
+  color: var(--muted);
+  text-align: center;
+}

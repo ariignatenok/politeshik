@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'b1ceb54ba1e';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -15,6 +15,7 @@ const SHELL = [
   'css/admin.css',
   'css/attendance-edit.css',
   'css/base.css',
+  'css/celebrate.css',
   'css/chats.css',
   'css/components.css',
   'css/features.css',
@@ -32,6 +33,7 @@ const SHELL = [
   'css/schedule.css',
   'css/screens.css',
   'css/seasonal.css',
+  'css/shell.css',
   'css/study.css',
   'css/style.css',
   'css/subjects.css',
@@ -52,8 +54,10 @@ const SHELL = [
   'js/app.js',
   'js/attendance.js',
   'js/backup.js',
+  'js/birthday.js',
   'js/changes.js',
   'js/chat.js',
+  'js/confetti.js',
   'js/content.js',
   'js/data/cards.js',
   'js/data/formulas.js',
@@ -78,7 +82,10 @@ const SHELL = [
   'js/pwa.js',
   'js/quickadd.js',
   'js/rating.js',
+  'js/relax.js',
   'js/roster.js',
+  'js/safe.js',
+  'js/scrolllock.js',
   'js/search.js',
   'js/seed.js',
   'js/selectors.js',
@@ -86,11 +93,13 @@ const SHELL = [
   'js/skeleton.js',
   'js/store.js',
   'js/supabase.js',
+  'js/support.js',
   'js/teacher.js',
   'js/theme-boot.js',
   'js/themes.js',
   'js/ui.js',
   'js/utils.js',
+  'js/version.js',
   'js/views.js',
   'js/views/attendance.js',
   'js/views/cabinet.js',
@@ -106,6 +115,7 @@ const SHELL = [
   'js/views/settings.js',
   'js/views/subjects.js',
   'js/views/teachers.js',
+  'js/weeks.js',
   'js/works.js'
 ];
 const EXTERNAL_SCRIPTS = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'];
@@ -149,7 +159,11 @@ function withTimeout(network) {
  */
 async function networkFirst(request) {
   const cache = await caches.open(CACHE_NAME);
-  const network = fetch(request);
+  const network = fetch(
+    request.mode === 'navigate'
+      ? new Request(request.url, {cache: 'no-cache'})
+      : new Request(request, {cache: 'no-cache'})
+  );
   try {
     const response = await withTimeout(network);
     if (response && response.ok) cache.put(request, response.clone());
