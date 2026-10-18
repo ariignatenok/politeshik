@@ -2,14 +2,6 @@
 
 Object.assign(A, {
   /**
-   * Переключает неделю расписания: числитель или знаменатель.
-   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
-   */
-  'sched-week'(el) {
-    ui.schedWeek = el.dataset.week;
-    App.render();
-  },
-  /**
    * Выбирает день недели в мобильном расписании.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
@@ -23,10 +15,14 @@ Object.assign(A, {
    */
   'cell-add'(el) {
     if (lockSched()) return;
-    openLessonForm(null, {
-      day: +el.dataset.day,
-      pair: +el.dataset.pair
-    });
+    openLessonForm(
+      null,
+      {
+        day: +el.dataset.day,
+        pair: +el.dataset.pair
+      },
+      ui.schedWs
+    );
   },
   /**
    * Открывает правку пары.
@@ -41,8 +37,8 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   'chg-cancel'(el) {
-    const l = Store.s.schedule.find(x => x.id === el.dataset.id),
-      date = ($('#chg-date') || {}).value,
+    const date = ($('#chg-date') || {}).value,
+      l = Weeks.find(el.dataset.id, Weeks.start(date || U.today())),
       err = Changes.check(l, date);
     if (err) return toast(err);
     Changes.upsert({
@@ -61,8 +57,8 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   'chg-replace'(el) {
-    const l = Store.s.schedule.find(x => x.id === el.dataset.id),
-      date = ($('#chg-date') || {}).value,
+    const date = ($('#chg-date') || {}).value,
+      l = Weeks.find(el.dataset.id, Weeks.start(date || U.today())),
       err = Changes.check(l, date);
     if (err) return toast(err);
     UI.close();
@@ -86,11 +82,35 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   async 'lesson-del'(el) {
-    const id = el.closest('[data-form]').dataset.id;
-    if (!(await UI.confirm('Удалить эту пару из расписания?'))) return;
-    Store.s.schedule = Store.s.schedule.filter(l => l.id !== id);
+    const form = el.closest('[data-form]'),
+      id = form.dataset.id,
+      ws = form.dataset.ws || Weeks.start(U.today());
+    if (!(await UI.confirm('Убрать эту пару на неделе ' + Weeks.label(ws) + '?', 'Убрать'))) return;
+    Weeks.removeLesson(ws, id);
     UI.close();
     Store.commit();
+    toast('Пара убрана на этой неделе');
+  },
+  /**
+   * Удаляет пару из шаблона всех недель.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'lesson-del-all'(el) {
+    const form = el.closest('[data-form]'),
+      id = form.dataset.id,
+      ws = form.dataset.ws || Weeks.start(U.today());
+    if (
+      !(await UI.confirm(
+        'Удалить пару из шаблона? Недели без собственных правок потеряют её, недели с правками не изменятся.',
+        'Удалить'
+      ))
+    )
+      return;
+    Store.s.schedule = Store.s.schedule.filter(l => l.id !== id);
+    if (Weeks.has(ws)) Weeks.removeLesson(ws, id);
+    UI.close();
+    Store.commit();
+    toast('Пара удалена из шаблона');
   },
   /**
    * Открывает форму времени пар.
@@ -122,6 +142,9 @@ Object.assign(A, {
     if (!(await UI.confirm('Убрать ' + n + '-ю пару? Занятия в ней тоже удалятся.', 'Убрать'))) return;
     Store.s.settings.pairs.pop();
     Store.s.schedule = Store.s.schedule.filter(l => l.pair < n);
+    Object.keys(Store.s.weeks).forEach(k => {
+      Store.s.weeks[k] = Store.s.weeks[k].filter(l => l.pair < n);
+    });
     Store.save();
     openTimesForm();
     App.render();

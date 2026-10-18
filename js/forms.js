@@ -104,31 +104,19 @@ const Forms = {
       subjectId: sid,
       day: +val(form, 'day'),
       pair: +val(form, 'pair'),
-      week: radio(form, 'week') || 'both',
       room: val(form, 'room').trim(),
       subgroup: val(form, 'subgroup').trim(),
       who: val(form, 'who').trim(),
       start: val(form, 'start'),
       end: val(form, 'end')
     };
-    if (form.dataset.id)
-      Object.assign(
-        state.schedule.find(l => l.id === form.dataset.id),
-        rec
-      );
-    else
-      state.schedule.push(
-        Object.assign(
-          {
-            id: U.uid('l')
-          },
-          rec
-        )
-      );
-    ui.schedWeek = rec.week === 'both' ? ui.schedWeek : rec.week;
+    const everyWeek = !!(form.querySelector('[name=everyWeek]') || {}).checked,
+      ws = form.dataset.ws || Weeks.start(U.today());
+    if (everyWeek && !form.dataset.id) rec.week = 'both';
+    Weeks.saveLesson(ws, rec, form.dataset.id || '', everyWeek);
     UI.close();
     Store.commit();
-    toast('Пара сохранена');
+    toast(everyWeek ? 'Пара сохранена в шаблоне для всех недель' : 'Пара сохранена на этой неделе');
   },
   /**
    * Сохраняет время пар.
@@ -522,7 +510,10 @@ const Forms = {
         App.render(true);
         toast(first ? 'Добро пожаловать в Политешик!' : 'Сохранено');
       },
-      () => toast('Не удалось создать кабинет — проверьте доступ')
+      () =>
+        toast(
+          first ? 'Не удалось создать кабинет — проверьте доступ' : 'Не удалось сохранить профиль — проверьте связь'
+        )
     );
   },
   /**

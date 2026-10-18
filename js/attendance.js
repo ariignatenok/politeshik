@@ -19,7 +19,7 @@ const Att = {
    */
   dayView(date, sub) {
     const d = U.fromISO(date),
-      ls = lessonsFor(U.dayIdx(d), weekType(d)).filter(l => Att.subOk(l, sub)),
+      ls = Weeks.on(date).filter(l => Att.subOk(l, sub)),
       by = new Map();
     ls.forEach(l => {
       if (!by.has(l.pair)) by.set(l.pair, []);

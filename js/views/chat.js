@@ -91,7 +91,7 @@ function viewBotChat() {
     ['Что сегодня?', 'Что завтра?', 'Какие работы?', 'Помощь']
       .map(q => '<button class="fchip" data-action="chat-quick" data-q="' + q + '">' + q + '</button>')
       .join('') +
-    '<button class="fchip hug-chip" data-action="hug">Мне нужна поддержка</button></div>' +
+    '<button class="fchip hug-chip" data-action="hug">Мне нужна поддержка</button><button class="fchip hug-chip" data-action="relax-open">Психологическая помощь</button></div>' +
     '<div class="chat-in" data-form="chat"><input class="input" id="chatIn" name="t" placeholder="Напиши Политешику…" autocomplete="off"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
   );
 }
@@ -169,29 +169,44 @@ function viewChatListStudent() {
  */
 function viewChatListAdmin() {
   const pins = (Cloud.profile && Cloud.profile.pins) || [],
-    list = Dm.threads();
+    list = Dm.threads(),
+    chat = Chat.st(),
+    lastBot = chat.msgs[chat.msgs.length - 1];
+  const botRow = chatRow({
+    id: 'bot',
+    title: 'Политешик (Житель)',
+    subtitle: 'Отчёты, поддержка и напоминания',
+    preview: lastBot ? lastBot.text : '',
+    time: lastBot ? chatTime(lastBot.t) : '',
+    unread: Chat.unread(),
+    pinned: true,
+    avatar: Mascot.svg(Mascot.current(), 44)
+  });
+  const rows = list
+    .map(t =>
+      chatRow({
+        id: t.uid,
+        title: Dm.nameOf(t.uid),
+        preview: (Dm.isMine(t.last) ? 'Вы: ' : '') + t.last.body,
+        time: chatTime(t.last.created_at),
+        unread: t.unread,
+        pinned: pins.includes(t.uid),
+        avatar: avatarOf((Cloud.adm.profiles[t.uid] || {}).avatar, 44)
+      })
+    )
+    .join('');
   return (
-    '<div class="page-head"><div><h1>Чаты</h1><p>Переписка со студентами: закреплённые сверху, остальные по времени последнего сообщения.</p></div>' +
+    '<div class="page-head"><div><h1>Чаты</h1><p>Политешик закреплён сверху, затем переписка со студентами: закреплённые, остальные по времени последнего сообщения.</p></div>' +
     '<div class="head-actions"><button class="btn primary" data-action="dm-new">Новый чат</button></div></div>' +
+    '<div class="chat-list">' +
+    botRow +
+    rows +
+    '</div>' +
     (list.length
-      ? '<div class="chat-list">' +
-        list
-          .map(t =>
-            chatRow({
-              id: t.uid,
-              title: Dm.nameOf(t.uid),
-              preview: (Dm.isMine(t.last) ? 'Вы: ' : '') + t.last.body,
-              time: chatTime(t.last.created_at),
-              unread: t.unread,
-              pinned: pins.includes(t.uid),
-              avatar: avatarOf((Cloud.adm.profiles[t.uid] || {}).avatar, 44)
-            })
-          )
-          .join('') +
-        '</div>'
+      ? ''
       : Dm.loaded
-        ? empty(ICONS.speech, 'Переписок пока нет. Нажмите «Новый чат», чтобы написать студенту.')
-        : Skeleton.card(4))
+        ? empty(ICONS.speech, 'Переписок со студентами пока нет. Нажмите «Новый чат», чтобы написать.')
+        : Skeleton.card(2))
   );
 }
 /**
@@ -282,7 +297,8 @@ function viewDmThread(uid) {
 function viewChat() {
   if (Cloud.status !== 'online') return viewBotChat();
   if (Cloud.isTeacher) return viewDmThread(Cloud.uid);
-  if (Cloud.isAdmin) return ui.chatWith ? viewDmThread(ui.chatWith) : viewChatListAdmin();
+  if (Cloud.isAdmin)
+    return ui.chatWith === 'bot' ? viewBotChat() : ui.chatWith ? viewDmThread(ui.chatWith) : viewChatListAdmin();
   if (ui.chatWith === 'bot') return viewBotChat();
   if (ui.chatWith === 'admin') return viewDmThread(Cloud.uid);
   return viewChatListStudent();

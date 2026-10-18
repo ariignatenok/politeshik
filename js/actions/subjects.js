@@ -60,6 +60,9 @@ Object.assign(A, {
     state.notes = state.notes.filter(n => n.subjectId !== id);
     state.cards = state.cards.filter(c => c.subjectId !== id);
     state.schedule = state.schedule.filter(l => l.subjectId !== id);
+    Object.keys(state.weeks).forEach(k => {
+      state.weeks[k] = state.weeks[k].filter(l => l.subjectId !== id);
+    });
     state.works.forEach(w => {
       if (w.subjectId === id) w.subjectId = '';
     });

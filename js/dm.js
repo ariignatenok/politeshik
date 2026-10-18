@@ -195,5 +195,5 @@ const Dm = {
  * @returns {number} Число.
  */
 function chatUnread() {
-  return (Cloud.isAdmin ? 0 : Chat.unread()) + Dm.unreadTotal();
+  return (Cloud.isTeacher ? 0 : Chat.unread()) + Dm.unreadTotal();
 }

@@ -62,7 +62,7 @@ const Support = {
    * @returns {boolean} отправлено ли сообщение.
    */
   comfortOnce() {
-    if (Cloud.isAdmin || Cloud.isTeacher) return false;
+    if (Cloud.isTeacher) return false;
     const meta = Store.s.meta,
       today = U.iso(U.today());
     if (meta.comfortAt === today) return false;
@@ -157,7 +157,9 @@ const Support = {
       '</div></div>' +
       '<p class="mood-note">' +
       U.esc(current ? Support.moods[current] : Support.dailyPhrase()) +
-      '</p></section>'
+      '</p>' +
+      (current === 'bad' ? '<button class="btn sm" data-action="relax-open">Психологическая помощь</button>' : '') +
+      '</section>'
     );
   }
 };

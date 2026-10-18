@@ -287,11 +287,11 @@ function viewDashboard() {
     WEEK_NAME[cur] +
     '</p></div>' +
     '<div class="head-actions"><button class="btn primary" data-action="add-work">＋ Добавить работу</button></div></div>' +
-    heroHtml() +
-    Support.moodHtml() +
-    Birthday.bannerHtml() +
-    notifBanner() +
-    widgetHtml() +
+    Safe.html('hero', heroHtml) +
+    Safe.html('mood', () => Support.moodHtml()) +
+    Safe.html('birthday', () => Birthday.bannerHtml()) +
+    Safe.html('notifications', notifBanner) +
+    Safe.html('widget', widgetHtml) +
     '<div class="grid-stats">' +
     '<div class="stat red"><b>' +
     urgent +

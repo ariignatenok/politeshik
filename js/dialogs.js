@@ -190,12 +190,12 @@ function openChangeForm(pre) {
  * @param {string} date Дата.
  */
 function openLessonForm(id, pre, date) {
-  const state = Store.s;
+  const state = Store.s,
+    ws = Weeks.start(date || ui.schedWs || U.today());
   const l = id
-    ? state.schedule.find(x => x.id === id)
+    ? Weeks.find(id, ws)
     : Object.assign(
         {
-          week: ui.schedWeek || 'both',
           day: 0,
           pair: 1,
           subjectId: (
@@ -211,6 +211,8 @@ function openLessonForm(id, pre, date) {
         },
         pre || {}
       );
+  if (!l) return toast('Эта пара не найдена на выбранной неделе');
+  const inTemplate = !!(id && state.schedule.some(x => x.id === id));
   const pairOpts = state.settings.pairs
     .map(
       (p, i) =>
@@ -228,24 +230,12 @@ function openLessonForm(id, pre, date) {
   const dayOpts = DAYS_FULL.map(
     (d, i) => '<option value="' + i + '"' + (l.day === i ? ' selected' : '') + '>' + d + '</option>'
   ).join('');
-  /**
-   * Строит переключатель недели в форме пары.
-   * @param {string} v Выбранный тип недели.
-   * @param {string} t Имя поля.
-   * @returns {string} HTML.
-   */
-  const wk = (v, t) =>
-    '<label><input type="radio" name="week" value="' +
-    v +
-    '"' +
-    (l.week === v ? ' checked' : '') +
-    '><span>' +
-    t +
-    '</span></label>';
   UI.open(
     id ? 'Изменить пару' : 'Новая пара',
     '<div data-form="lesson" data-id="' +
       (id || '') +
+      '" data-ws="' +
+      ws +
       '">' +
       field(
         'Предмет',
@@ -260,11 +250,6 @@ function openLessonForm(id, pre, date) {
       field('День', '<select class="input" name="day">' + dayOpts + '</select>') +
       field('Пара', '<select class="input" name="pair">' + pairOpts + '</select>') +
       '</div>' +
-      '<div class="field"><span class="lbl">Неделя</span><div class="seg">' +
-      wk('both', 'Каждая') +
-      wk('num', 'Числитель') +
-      wk('den', 'Знаменатель') +
-      '</div></div>' +
       '<div class="row2">' +
       field('Кабинет', '<input class="input" name="room" value="' + U.esc(l.room) + '" placeholder="215">') +
       field(
@@ -283,7 +268,14 @@ function openLessonForm(id, pre, date) {
       ) +
       field('Конец', '<input class="input" type="time" name="end" value="' + U.esc(l.end) + '">') +
       '</div>' +
+      '<p class="md-help">Сохранится только для недели ' +
+      Weeks.label(ws) +
+      '.</p>' +
+      '<label class="check-row"><input type="checkbox" name="everyWeek"> Повторять каждую неделю (изменить шаблон)</label>' +
       (id && canEdit() ? chgControls(l, date) : '') +
+      (id && inTemplate && canEdit()
+        ? '<button class="btn ghost" data-action="lesson-del-all">Удалить из шаблона (все недели)</button>'
+        : '') +
       foot(id ? 'lesson-del' : null) +
       '</div>',
     {

@@ -92,9 +92,9 @@ const Changes = {
    * @returns {string} дата.
    */
   nextDate(l) {
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 56; i++) {
       const d = U.addDays(U.today(), i);
-      if (U.dayIdx(d) === l.day && (l.week === 'both' || weekType(d) === l.week)) return U.iso(d);
+      if (Weeks.on(d).some(x => x.id === l.id)) return U.iso(d);
     }
     return U.iso(U.today());
   },
@@ -110,8 +110,7 @@ const Changes = {
     const d = U.fromISO(date);
     if (U.dayIdx(d) !== l.day)
       return 'Эта пара идёт в «' + DAYS_FULL[l.day] + '», а выбранная дата — «' + DAYS_FULL[U.dayIdx(d)] + '»';
-    if (l.week !== 'both' && weekType(d) !== l.week)
-      return 'В эту дату идёт другая неделя (нужен ' + WEEK_NAME[l.week] + ')';
+    if (!Weeks.on(date).some(x => x.id === l.id)) return 'В выбранную дату этой пары нет в расписании';
     return '';
   }
 };

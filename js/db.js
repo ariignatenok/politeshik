@@ -205,7 +205,8 @@ const Cloud = (() => {
         name: x.name,
         short: x.short,
         color: x.color
-      }))
+      })),
+      state.weeks
     ]);
   }
   /**
@@ -251,7 +252,7 @@ const Cloud = (() => {
   function applyConfig(cfg) {
     const state = Store.s;
     if (C.isAdmin) {
-      const cloudSig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]),
+      const cloudSig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects, cfg.weeks || {}]),
         act = adminDecide('cfgBase', cloudSig, localCfgSig(), cfg.updated);
       C.syncedCfg = true;
       C.cfgSig = cloudSig;
@@ -271,6 +272,7 @@ const Cloud = (() => {
           l
         )
       );
+      state.weeks = cfg.weeks && typeof cfg.weeks === 'object' ? cfg.weeks : {};
       if (Array.isArray(cfg.pairs) && cfg.pairs.length)
         state.settings.pairs = cfg.pairs.map(p => ({
           start: p.start || '',
@@ -314,6 +316,7 @@ const Cloud = (() => {
         l
       )
     );
+    state.weeks = cfg.weeks && typeof cfg.weeks === 'object' ? cfg.weeks : {};
     if (Array.isArray(cfg.pairs) && cfg.pairs.length)
       state.settings.pairs = cfg.pairs.map(p => ({
         start: p.start || '',
@@ -596,6 +599,7 @@ const Cloud = (() => {
    */
   C.init = async function () {
     try {
+      C.initAt = C.initAt || Date.now();
       if (!supa) {
         C.status = 'offline';
         C.err = 'no-supabase-lib';
@@ -735,6 +739,7 @@ const Cloud = (() => {
     const state = Store.s,
       cfg = {
         schedule: state.schedule,
+        weeks: state.weeks,
         pairs: state.settings.pairs,
         anchor: state.settings.numeratorAnchor,
         subjects: state.subjects.map(x => ({
@@ -745,7 +750,7 @@ const Cloud = (() => {
         })),
         updated: new Date().toISOString()
       };
-    const sig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]);
+    const sig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects, cfg.weeks || {}]);
     if (!force && sig === C.cfgSig) return;
     C.cfgSig = sig;
     Store.s.meta.cfgBase = sig;

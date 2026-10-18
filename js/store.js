@@ -197,13 +197,15 @@ const Store = (() => {
           },
           x
         )
-      )
+      ),
+      weeks: d.weeks && typeof d.weeks === 'object' && !Array.isArray(d.weeks) ? d.weeks : {}
     };
   }
   /**
    * Обновляет данные до текущей версии.
    */
   function ensureSeed() {
+    if (!s.weeks || typeof s.weeks !== 'object' || Array.isArray(s.weeks)) s.weeks = {};
     const v = s.settings.seedVersion || 1;
     if (v < 2) Content.migrate(s);
     if (v < 3) Content.migrateSchedule(s);

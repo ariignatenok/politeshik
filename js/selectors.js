@@ -33,11 +33,3 @@ const pairTime = n => {
  * @returns {string} Строка.
  */
 const lessonTime = l => (l.start && l.end ? l.start + '–' + l.end : pairTime(l.pair));
-/**
- * Возвращает пары шаблона на день и тип недели.
- * @param {number} day Номер дня недели, понедельник равен 0.
- * @param {string} week Тип недели.
- * @returns {Array<Object>} Массив.
- */
-const lessonsFor = (day, week) =>
-  Store.s.schedule.filter(l => l.day === day && (l.week === 'both' || l.week === week)).sort((a, b) => a.pair - b.pair);

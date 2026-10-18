@@ -47,9 +47,7 @@ function lessonChip(l, wide, state, date) {
  * @returns {string} HTML.
  */
 function cellChips(d, n, date, wide) {
-  const ls = Store.s.schedule.filter(
-      l => l.day === d && l.pair === n && (l.week === 'both' || l.week === ui.schedWeek)
-    ),
+  const ls = Weeks.on(date).filter(l => l.pair === n),
     ch = Changes.at(date, n);
   let h = ls.map(l => lessonChip(l, wide, ch ? (ch.type === 'cancel' ? 'cancel' : 'replaced') : '', date)).join('');
   if (ch && ch.type === 'replace') {
@@ -109,17 +107,20 @@ function changesCard() {
  */
 function viewSchedule() {
   const state = Store.s,
-    cur = weekType(new Date()),
     pairs = state.settings.pairs,
+    todayIso = U.iso(U.today()),
+    currentWs = Weeks.start(todayIso),
     todayIdx = U.dayIdx(new Date());
-  if (!ui.schedWeek) ui.schedWeek = cur;
-  if (ui.schedDay == null) ui.schedDay = todayIdx;
-  const w = ui.schedWeek,
-    isCur = w === cur;
-  const monday = (() => {
-    const b = U.mondayOf(U.today());
-    return weekType(b) === w ? b : U.addDays(b, 7);
-  })();
+  if (!ui.schedWs) ui.schedWs = currentWs;
+  const ws = ui.schedWs,
+    isCur = ws === currentWs,
+    monday = U.fromISO(ws),
+    type = weekType(monday),
+    explicit = Weeks.has(ws);
+  if (ui.schedDay == null || ui.schedDayWs !== ws) {
+    ui.schedDay = isCur ? todayIdx : 0;
+    ui.schedDayWs = ws;
+  }
   /**
    * Форматирует дату как ДД.ММ.
    * @param {string} iso Дата в формате ГГГГ-ММ-ДД.
@@ -186,9 +187,7 @@ function viewSchedule() {
     pairs
       .map((p, pi) => {
         const n = pi + 1,
-          ls = Store.s.schedule.filter(
-            l => l.day === ui.schedDay && l.pair === n && (l.week === 'both' || l.week === w)
-          ),
+          ls = Weeks.on(wdates[ui.schedDay]).filter(l => l.pair === n),
           chh = cellChips(ui.schedDay, n, wdates[ui.schedDay], true);
         return (
           '<div class="l-row"><div class="l-num"><b>' +
@@ -213,21 +212,30 @@ function viewSchedule() {
       })
       .join('') +
     '</div>';
-  const noTimes = !pairs.some(p => p.start && p.end);
+  const nav =
+    '<div class="week-nav"><button class="icon-btn" data-action="sched-nav" data-step="-1" aria-label="Предыдущая неделя">←</button>' +
+    '<div class="week-label"><b>' +
+    Weeks.label(ws) +
+    '</b><small>' +
+    (isCur ? 'Текущая неделя · ' : '') +
+    WEEK_NAME[type] +
+    ' · ' +
+    (explicit ? 'изменена' : 'по шаблону') +
+    '</small></div>' +
+    '<button class="icon-btn" data-action="sched-nav" data-step="1" aria-label="Следующая неделя">→</button>' +
+    (isCur ? '' : '<button class="btn sm" data-action="sched-today">Сегодня</button>') +
+    '</div>';
+  const noTimes = !pairs.some(p => p.start && p.end),
+    emptyWeek = !Weeks.lessons(ws).length;
   return (
-    '<div class="page-head"><div><h1>Расписание</h1><p>Сейчас идёт ' +
-    WEEK_NAME[cur] +
-    '. Нажмите на ячейку, чтобы добавить или изменить пару.</p></div>' +
-    '<div class="head-actions"><div class="seg" role="group" aria-label="Тип недели">' +
-    '<button class="' +
-    (w === 'num' ? 'on' : '') +
-    '" data-action="sched-week" data-week="num">Числитель</button>' +
-    '<button class="' +
-    (w === 'den' ? 'on' : '') +
-    '" data-action="sched-week" data-week="den">Знаменатель</button></div>' +
+    '<div class="page-head"><div><h1>Расписание</h1><p>Каждая неделя своя: правки сохраняются только для выбранной недели.</p></div>' +
+    '<div class="head-actions"><button class="btn" data-action="sched-copy-next">Копировать на след. неделю</button>' +
+    (explicit ? '<button class="btn" data-action="sched-reset">Сбросить к шаблону</button>' : '') +
     '<button class="btn" data-action="times">' +
     ICONS.stopwatch +
     ' Время пар</button></div></div>' +
+    nav +
+    (emptyWeek ? '<div class="card empty-week">На эту неделю расписание ещё не добавлено.</div>' : '') +
     changesCard() +
     grid +
     list +
@@ -236,6 +244,6 @@ function viewSchedule() {
         ICONS.stopwatch +
         ' Время звонков пока не задано — нажмите «Время пар» или на номер пары.</p>'
       : '') +
-    '<p class="hint">Для пар «через неделю» выберите в форме числитель или знаменатель.</p>'
+    '<p class="hint">Чтобы пара повторялась каждую неделю, отметьте в форме «Повторять каждую неделю».</p>'
   );
 }

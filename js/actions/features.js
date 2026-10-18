@@ -105,5 +105,80 @@ Object.assign(A, {
   async 'news-like'(el) {
     await News.like(el.dataset.id);
     App.render();
+  },
+  /**
+   * Листает расписание на неделю назад или вперёд.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'sched-nav'(el) {
+    ui.schedWs = Weeks.shift(ui.schedWs || Weeks.start(U.today()), +el.dataset.step);
+    ui.schedDayWs = ui.schedWs;
+    App.render();
+  },
+  /**
+   * Возвращает расписание к текущей неделе.
+   */
+  'sched-today'() {
+    ui.schedWs = Weeks.start(U.today());
+    ui.schedDay = U.dayIdx(new Date());
+    ui.schedDayWs = ui.schedWs;
+    App.render();
+  },
+  /**
+   * Возвращает выбранную неделю к шаблону.
+   */
+  async 'sched-reset'() {
+    const ws = ui.schedWs;
+    if (!ws || !Weeks.has(ws)) return;
+    if (
+      !(await UI.confirm('Вернуть неделю ' + Weeks.label(ws) + ' к шаблону? Правки этой недели пропадут.', 'Вернуть'))
+    )
+      return;
+    Weeks.reset(ws);
+    Store.commit();
+    toast('Неделя возвращена к шаблону');
+  },
+  /**
+   * Копирует расписание этой недели на следующую.
+   */
+  async 'sched-copy-next'() {
+    const ws = ui.schedWs,
+      next = Weeks.shift(ws, 1);
+    if (
+      Weeks.has(next) &&
+      !(await UI.confirm('На следующей неделе уже есть свои правки. Заменить их копией этой недели?', 'Заменить'))
+    )
+      return;
+    Weeks.copy(ws, next);
+    Weeks.prune();
+    Store.commit();
+    toast('Скопировано на неделю ' + Weeks.label(next));
+  },
+  /**
+   * Открывает дыхательные упражнения.
+   */
+  'relax-open'() {
+    Relax.open();
+  },
+  /**
+   * Запускает выбранное упражнение.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'relax-start'(el) {
+    Relax.start(el.dataset.id);
+  },
+  /**
+   * Возвращает к списку упражнений.
+   */
+  'relax-menu'() {
+    Relax.stop();
+    const body = document.querySelector('#modal-root .modal-body');
+    if (body) body.innerHTML = Relax.menuHtml();
+  },
+  /**
+   * Перезагружает страницу.
+   */
+  'reload-app'() {
+    window.location.reload();
   }
 });

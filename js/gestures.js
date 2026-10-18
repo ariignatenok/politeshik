@@ -48,9 +48,14 @@ const Gestures = {
    */
   swipe(kind, direction) {
     if (kind !== 'sched') return;
-    const next = Math.max(0, Math.min(6, ui.schedDay + (direction === 'left' ? 1 : -1)));
-    if (next === ui.schedDay) return;
+    const step = direction === 'left' ? 1 : -1;
+    let next = ui.schedDay + step;
+    if (next < 0 || next > 6) {
+      ui.schedWs = Weeks.shift(ui.schedWs || Weeks.start(U.today()), step);
+      next = next < 0 ? 6 : 0;
+    }
     ui.schedDay = next;
+    ui.schedDayWs = ui.schedWs || Weeks.start(U.today());
     App.render();
     const list = $('.sched-list');
     if (!list) return;

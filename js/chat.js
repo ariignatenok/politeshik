@@ -36,7 +36,7 @@ const Chat = {
    * @param {Object} extra Дополнительные поля (необязательно).
    */
   push(from, text, extra) {
-    if (Cloud.isAdmin || Cloud.isTeacher) return;
+    if (Cloud.isTeacher) return;
     const c = Chat.st();
     c.msgs.push(
       Object.assign(
@@ -91,7 +91,7 @@ const Chat = {
    * @returns {boolean} изменился ли чат.
    */
   tick() {
-    if (Cloud.isAdmin || Cloud.isTeacher) return false;
+    if (Cloud.isTeacher) return false;
     if (Cloud.status === 'online' && !(Cloud.chatLoaded && Cloud.attLoaded && Cloud.certsLoaded)) return false;
     const c = Chat.st(),
       now = new Date();
@@ -109,7 +109,7 @@ const Chat = {
       changed = true;
     }
     allWorks().forEach(w => {
-      if (w.done) return;
+      if (w.done || Cloud.isAdmin) return;
       const win = Chat.window(w);
       if (now < win.start || now >= win.end) return;
       const wk = w.id + '@' + w.date,
@@ -155,7 +155,7 @@ const Chat = {
         changed = true;
       }
     });
-    if (Chat.missCheck()) changed = true;
+    if (!Cloud.isAdmin && Chat.missCheck()) changed = true;
     if (Chat.absCheck()) changed = true;
     if (Chat.monthly()) changed = true;
     if (changed) Chat.save();
