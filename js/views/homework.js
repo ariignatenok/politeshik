@@ -124,7 +124,7 @@ function viewHw() {
             past.map(hwRow).join('') +
             '</div></details>'
           : '')
-      : empty(ICONS.check, 'Домашки пока нет'))
+      : emptyMascot('Ура, домашки нет!', 'happy'))
   );
 }
 /**

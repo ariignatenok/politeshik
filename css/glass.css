@@ -1,0 +1,55 @@
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .overlay {
+    background: rgba(5, 7, 15, 0.42);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .modal,
+  #theme-pop {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--text) 8%, transparent),
+        color-mix(in srgb, var(--text) 2%, transparent)
+      ),
+      color-mix(in srgb, var(--surface) 72%, transparent);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    backdrop-filter: blur(22px) saturate(150%);
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.38),
+      inset 0 0 0 1px color-mix(in srgb, var(--text) 9%, transparent);
+  }
+
+  .topbar {
+    background: color-mix(in srgb, var(--bg) 62%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  }
+
+  @media (min-width: 901px) {
+    .view > .page-head:first-child {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      margin: -36px -32px 24px;
+      padding: 22px 32px 14px;
+      background: color-mix(in srgb, var(--bg) 60%, transparent);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      backdrop-filter: blur(16px) saturate(160%);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
+    }
+  }
+}
+
+.card,
+.stat,
+.wg,
+.item,
+.chat-row,
+.news-card,
+.note-card {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}

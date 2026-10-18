@@ -57,3 +57,11 @@ const NAV_BOTTOM = ['dashboard', 'schedule', 'attendance', 'hw', 'subjects', 'ch
  * @returns {string} HTML.
  */
 const empty = (ico, text) => '<div class="empty"><b>' + ico + '</b>' + text + '</div>';
+/**
+ * Строит пустое состояние с Политешиком и подписью.
+ * @param {string} text Подпись под Политешиком.
+ * @param {string} mood Настроение Политешика (необязательно).
+ * @returns {string} HTML.
+ */
+const emptyMascot = (text, mood) =>
+  '<div class="empty empty-mascot">' + Mascot.svg(mood || 'happy', 104, 'empty-av') + '<p>' + text + '</p></div>';

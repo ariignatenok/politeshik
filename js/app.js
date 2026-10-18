@@ -160,6 +160,8 @@ const App = {
       v.classList.remove('rise');
       void v.offsetWidth;
       v.classList.add('rise');
+      clearTimeout(App.riseTimer);
+      App.riseTimer = setTimeout(() => v.classList.remove('rise'), 900);
     }
     const unread = chatUnread(),
       badge = n => (n ? '<span class="badge">' + n + '</span>' : '');

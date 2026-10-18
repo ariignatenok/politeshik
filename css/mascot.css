@@ -1,6 +1,6 @@
 .mascot .m-body {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
+  transform-box: view-box;
+  transform-origin: 60px 110px;
   animation: breathe 3.4s ease-in-out infinite;
 }
 
@@ -190,4 +190,121 @@
   font-weight: 700;
   box-shadow: var(--shadow);
   max-width: 230px;
+}
+
+.mascot {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#walker .mascot,
+#cheer-toast .mascot {
+  cursor: default;
+}
+
+.mascot.m-has-hat .m-cap {
+  display: none;
+}
+
+.mascot.m-has-hold .m-arm.r.base {
+  visibility: hidden;
+}
+
+.mascot .m-arm.r,
+.mascot .m-hold {
+  transform-box: view-box;
+  transform-origin: 93px 78px;
+}
+
+.mascot .m-deer-head {
+  transform-box: fill-box;
+  transform-origin: 15% 90%;
+  animation: deer-nod 2.6s ease-in-out infinite;
+}
+
+@keyframes deer-nod {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-9deg);
+  }
+}
+
+.mascot .m-heart {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: heart-float 3.2s ease-in-out infinite;
+}
+
+.mascot .m-heart.h2 {
+  animation-delay: 0.8s;
+}
+
+.mascot .m-heart.h3 {
+  animation-delay: 1.6s;
+}
+
+@keyframes heart-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.92);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.mascot.m-react {
+  animation: m-hop 0.9s cubic-bezier(0.3, 0.7, 0.4, 1) both;
+}
+
+@keyframes m-hop {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+
+  14% {
+    transform: translateY(0) scale(1.08, 0.9);
+  }
+
+  40% {
+    transform: translateY(-16%) scale(0.96, 1.07);
+  }
+
+  66% {
+    transform: translateY(0) scale(1.06, 0.94);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.mascot.m-react .m-arm.r,
+.mascot.m-react .m-hold {
+  animation: m-wave 0.9s ease-in-out both;
+}
+
+@keyframes m-wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  20%,
+  50%,
+  80% {
+    transform: rotate(-38deg);
+  }
+
+  35%,
+  65% {
+    transform: rotate(-12deg);
+  }
 }

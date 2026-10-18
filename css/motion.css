@@ -1,0 +1,223 @@
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+#view.rise {
+  animation: none;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item) {
+  animation: card-in 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(6) {
+  animation-delay: 0.25s;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(7) {
+  animation-delay: 0.3s;
+}
+
+#view.rise :is(.hero, .wg, .stat, .card, .chat-row, .news-card, .note-card, .items > .item):nth-child(8) {
+  animation-delay: 0.35s;
+}
+
+.btn,
+.icon-btn,
+.nav-btn,
+.fchip,
+.chat-row,
+.tab,
+.stat.link,
+.note-card,
+.fab {
+  transition:
+    transform 0.12s ease,
+    background-color 0.15s,
+    box-shadow 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.btn:active,
+.icon-btn:active,
+.nav-btn:active,
+.fchip:active,
+.chat-row:active,
+.tab:active,
+.stat.link:active,
+.note-card:active,
+.fab:active {
+  transform: scale(0.96);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 38%, var(--surface2)) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 38%, var(--surface2));
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 65%, var(--surface2));
+  background-clip: padding-box;
+}
+
+@keyframes sk-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.sk {
+  display: block;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--muted) 24%, transparent);
+  animation: sk-pulse 1.4s ease-in-out infinite;
+}
+
+.sk-line {
+  height: 14px;
+}
+
+.sk-line.lg {
+  height: 30px;
+}
+
+.sk-line.sm {
+  height: 10px;
+}
+
+.sk-w30 {
+  width: 30%;
+}
+
+.sk-w40 {
+  width: 40%;
+}
+
+.sk-w60 {
+  width: 60%;
+}
+
+.sk-w80 {
+  width: 80%;
+}
+
+.sk-circle {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.sk-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.sk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface2);
+}
+
+.sk-row > div {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+}
+
+.sk-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sk-stat {
+  height: 120px;
+  border-radius: var(--radius-lg);
+}
+
+.sk-head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 640px) {
+  .sk-stats {
+    gap: 10px;
+  }
+
+  .sk-stat {
+    height: 92px;
+  }
+}
+
+.empty-mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 36px 12px 40px;
+}
+
+.empty-mascot p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}

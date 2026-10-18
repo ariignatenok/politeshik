@@ -77,7 +77,7 @@ function hwList(sb) {
   const hs = Store.s.homework
     .filter(h => h.subjectId === sb.id)
     .sort((a, b) => hwUpcoming(b) - hwUpcoming(a) || ((a.deadline || '9999') > (b.deadline || '9999') ? 1 : -1));
-  if (!hs.length) return empty(ICONS.check, 'Домашки пока нет');
+  if (!hs.length) return emptyMascot('Ура, домашки нет!', 'happy');
   return '<div class="items">' + hs.map(hwRow).join('') + '</div>';
 }
 
