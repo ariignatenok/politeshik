@@ -94,6 +94,14 @@ const ACH = [
     t: c => c.comments >= 1
   },
   {
+    id: 'comeback',
+    g: 'Учёба',
+    ico: ICONS.muscle,
+    name: 'Возвращение',
+    desc: 'Сходил(а) на пару после напоминания Политешика',
+    t: c => c.comeback
+  },
+  {
     id: 'comment10',
     g: 'Общение',
     ico: ICONS.speakingHead,
@@ -250,6 +258,11 @@ const Ach = {
       examPerfect: m.examPerfect,
       dmSent: Dm.msgs.filter(x => x.thread_uid === Cloud.uid && x.sender === Cloud.uid).length,
       comments: News.comments.filter(x => x.author === Cloud.uid).length,
+      comeback:
+        !!Store.s.meta.motivationAt &&
+        Object.keys(Store.s.attendance.marks).some(
+          k => k.slice(0, 10) >= Store.s.meta.motivationAt && Store.s.attendance.marks[k] === 'п'
+        ),
       msgs: state.chat.msgs.filter(x => x.from === 'me').length + (m.msgSent || 0),
       photos: m.photos || 0,
       cabinet: Cloud.status !== 'online' || Cloud.hasCabinet(),
@@ -286,6 +299,9 @@ const Ach = {
         setTimeout(
           () => {
             Mascot.celebrate(ICONS.trophy + ' ' + a.ico + ' ' + a.name);
+            Confetti.burst({
+              count: 60
+            });
             Notifier.show('ach', 'Ты получил ачивку!', a.ico + ' ' + a.name + ' — ' + a.desc, {
               tag: 'ach' + a.id
             });

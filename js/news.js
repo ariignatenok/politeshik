@@ -3,6 +3,7 @@
 const News = {
   items: [],
   comments: [],
+  likes: [],
   loaded: false,
   timer: null,
   sig: '',
@@ -11,7 +12,7 @@ const News = {
    */
   async refresh() {
     if (!supa || Cloud.status !== 'online' || !Cloud.hasCabinet()) return;
-    const [n, c] = await Promise.all([
+    const [n, c, l] = await Promise.all([
       supa
         .from('news')
         .select('*')
@@ -28,13 +29,21 @@ const News = {
         .order('created_at', {
           ascending: true
         })
-        .limit(2000)
+        .limit(2000),
+      supa.from('news_likes').select('news_id,uid').limit(5000)
     ]);
     if (n.error || c.error) return;
-    const sig = n.data.map(x => x.id + x.title).join(',') + '|' + c.data.map(x => x.id).join(',');
+    const likeRows = l.error ? [] : l.data;
+    const sig =
+      n.data.map(x => x.id + x.title).join(',') +
+      '|' +
+      c.data.map(x => x.id).join(',') +
+      '|' +
+      likeRows.map(x => x.news_id + x.uid).join(',');
     const fresh = News.loaded && !Cloud.isAdmin && n.data.length > News.items.length ? n.data[0] : null;
     News.items = n.data;
     News.comments = c.data;
+    News.likes = likeRows;
     if (sig === News.sig) {
       News.loaded = true;
       return;
@@ -52,10 +61,41 @@ const News = {
    */
   start() {
     if (News.timer) return;
-    News.refresh();
+    News.refresh().then(() => Birthday.ensurePosts());
     News.timer = setInterval(() => {
       if (!document.hidden) News.refresh();
     }, 20000);
+  },
+  /**
+   * Возвращает лайки новости.
+   * @param {string} newsId Идентификатор новости.
+   * @returns {Array<Object>} Массив.
+   */
+  likesOf(newsId) {
+    return News.likes.filter(l => l.news_id === newsId);
+  },
+  /**
+   * Ставит или снимает свой лайк новости.
+   * @param {string} newsId Идентификатор новости.
+   */
+  async like(newsId) {
+    const mine = News.likes.some(l => l.news_id === newsId && l.uid === Cloud.uid);
+    if (mine) {
+      News.likes = News.likes.filter(l => !(l.news_id === newsId && l.uid === Cloud.uid));
+      await supa.from('news_likes').delete().eq('news_id', newsId).eq('uid', Cloud.uid);
+    } else {
+      News.likes = News.likes.concat([
+        {
+          news_id: newsId,
+          uid: Cloud.uid
+        }
+      ]);
+      const {error} = await supa.from('news_likes').insert({
+        news_id: newsId
+      });
+      if (error) News.likes = News.likes.filter(l => !(l.news_id === newsId && l.uid === Cloud.uid));
+    }
+    await News.refresh();
   },
   /**
    * Возвращает комментарии новости.

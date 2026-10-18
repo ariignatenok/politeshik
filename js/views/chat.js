@@ -26,6 +26,7 @@ function viewBotChat() {
         (me ? '' : '<div class="msg-av">' + Mascot.svg(m.mood || 'happy', 38) + '</div>') +
         '<div class="bubble">' +
         U.esc(m.text).replace(/\n/g, '<br>') +
+        (m.sticker ? Support.stickerHtml() : '') +
         (m.links
           ? '<div class="qr">' +
             m.links
@@ -90,7 +91,7 @@ function viewBotChat() {
     ['Что сегодня?', 'Что завтра?', 'Какие работы?', 'Помощь']
       .map(q => '<button class="fchip" data-action="chat-quick" data-q="' + q + '">' + q + '</button>')
       .join('') +
-    '</div>' +
+    '<button class="fchip hug-chip" data-action="hug">Мне нужна поддержка</button></div>' +
     '<div class="chat-in" data-form="chat"><input class="input" id="chatIn" name="t" placeholder="Напиши Политешику…" autocomplete="off"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
   );
 }

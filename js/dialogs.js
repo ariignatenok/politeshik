@@ -674,6 +674,17 @@ function openProfileForm() {
           (sg === '2' ? ' selected' : '') +
           '>2 подгруппа</option></select>'
       ) +
+      field(
+        'Дата рождения',
+        '<input class="input" type="date" name="birthday" min="1940-01-01" max="' +
+          U.iso(U.today()) +
+          '" value="' +
+          U.esc(p.birthday || '') +
+          '">'
+      ) +
+      '<label class="check-row"><input type="checkbox" name="birthdayPublic"' +
+      (p.birthdayPublic === false ? '' : ' checked') +
+      '> Поздравлять меня в новостях группы</label>' +
       '<p class="md-help">Фамилию изменить нельзя — её выбирают один раз из списка группы. Ошиблись? Напишите админу.</p>' +
       '<div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">Сохранить</button></div></div>'
   );

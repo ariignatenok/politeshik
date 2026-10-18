@@ -511,6 +511,7 @@ const Forms = {
         }
       }
       await Cloud.saveProfile(rid, sg);
+      if (!first && !(await Birthday.saveFromForm(form))) return false;
       return true;
     })().then(
       ok => {
@@ -550,6 +551,7 @@ const Forms = {
       () => {
         UI.close();
         App.render();
+        Support.comfortOnce();
         Sick.show(cert);
       },
       () => toast('Не удалось загрузить: файл слишком большой или нет доступа')

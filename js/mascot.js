@@ -174,6 +174,75 @@ const Mascot = {
           'h)"><path d="M30 34C38 28 46 34 42 42C36 46 28 42 30 34Z" fill="#46562b"/><path d="M74 26C84 28 90 38 82 44C74 44 68 34 74 26Z" fill="#46562b"/><path d="M50 22C58 18 66 22 62 28C56 30 48 28 50 22Z" fill="#8a7b4c"/></g><path d="M22 52C40 59 80 59 98 52C96 47 90 46 86 46L34 46C30 46 24 47 22 52Z" fill="#55672f" stroke="#3a4524" stroke-width="2.5" stroke-linejoin="round"/><path d="M60 29L63 36L70.5 36.5L64.8 41.2L66.8 48.4L60 44.4L53.2 48.4L55.2 41.2L49.5 36.5L57 36Z" fill="#e5484d" stroke="#8f1424" stroke-width="1.2" stroke-linejoin="round" transform="translate(0 -2) scale(1)"/></g>'
       });
     }
+    if (season === 'birthday') {
+      const balloon = (x, y, fill, edge, cls) =>
+        '<g class="m-balloon ' +
+        cls +
+        '"><path d="M' +
+        x +
+        ' ' +
+        (y + 12) +
+        'C' +
+        (x + 1) +
+        ' ' +
+        (y + 40) +
+        ' ' +
+        (x - 3) +
+        ' ' +
+        (y + 58) +
+        ' ' +
+        (x - 2) +
+        ' ' +
+        (y + 72) +
+        '" fill="none" stroke="#9fb3c8" stroke-width="1.2"/><ellipse cx="' +
+        x +
+        '" cy="' +
+        y +
+        '" rx="8" ry="10" fill="' +
+        fill +
+        '" stroke="' +
+        edge +
+        '" stroke-width="1.6"/><path d="M' +
+        (x - 2) +
+        ' ' +
+        (y + 10) +
+        'L' +
+        (x + 2) +
+        ' ' +
+        (y + 10) +
+        'L' +
+        x +
+        ' ' +
+        (y + 13) +
+        'Z" fill="' +
+        edge +
+        '"/><path d="M' +
+        (x - 4) +
+        ' ' +
+        (y - 5) +
+        'C' +
+        (x - 3) +
+        ' ' +
+        (y - 8) +
+        ' ' +
+        (x - 1) +
+        ' ' +
+        (y - 8) +
+        ' ' +
+        x +
+        ' ' +
+        (y - 7) +
+        '" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".7"/></g>';
+      return Object.assign({}, none, {
+        hat: '<g class="m-hat" data-acc="partyhat"><path d="M60 6L35 50H85Z" fill="#ff5fa2" stroke="#b0205f" stroke-width="2.5" stroke-linejoin="round"/><path d="M47 32L73 32M42 42L78 42" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="6" r="5" fill="#7cc7ff" stroke="#3b95d9" stroke-width="1.5"/><path d="M35 50Q60 58 85 50" fill="none" stroke="#b0205f" stroke-width="2.5"/></g>',
+        front:
+          '<g data-acc="balloons">' +
+          balloon(104, 18, '#ff4d6d', '#b0203d', 'b1') +
+          balloon(114, 32, '#4dabf7', '#1c6fb0', 'b2') +
+          balloon(94, 30, '#ffd84d', '#b08a00', 'b3') +
+          '</g>'
+      });
+    }
     return Object.assign({}, none, {
       hold: hold(
         'bouquet',
@@ -190,9 +259,10 @@ const Mascot = {
    * @param {string} mood Настроение Политешика.
    * @param {number} size Размер в пикселях (необязательно).
    * @param {string} extraCls Дополнительный CSS-класс.
+   * @param {Object} opts Дополнительные параметры.
    * @returns {string} SVG.
    */
-  svg(mood, size, extraCls) {
+  svg(mood, size, extraCls, opts) {
     mood = mood || 'happy';
     size = size || 64;
     const ink = '#1f2d3a',
@@ -202,7 +272,7 @@ const Mascot = {
         's;animation-delay:' +
         (Math.random() * 3).toFixed(2) +
         's';
-    const season = Mascot.activeSeason(),
+    const season = opts && opts.season !== undefined ? opts.season : Mascot.activeSeason(),
       acc = Mascot.accessories(season, mood, 'mc' + ++Mascot.seq);
     const eyes = (dx, dy, ry) =>
       '<g class="m-eyes" style="' +

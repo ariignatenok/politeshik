@@ -76,5 +76,34 @@ Object.assign(A, {
     });
     App.render(true);
     toast(Mascot.enabled() ? 'Наряд Политешика включён' : 'Наряд Политешика выключен');
+  },
+  /**
+   * Сохраняет настроение дня.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  mood(el) {
+    Support.setMood(el.dataset.v);
+  },
+  /**
+   * Отправляет обнимашки в чате с Политешиком.
+   */
+  hug() {
+    Support.hug();
+  },
+  /**
+   * Запускает праздничное конфетти.
+   */
+  'bday-confetti'() {
+    Confetti.burst({
+      count: 110
+    });
+  },
+  /**
+   * Ставит или снимает лайк новости.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'news-like'(el) {
+    await News.like(el.dataset.id);
+    App.render();
   }
 });

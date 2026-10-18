@@ -380,6 +380,36 @@ const Cloud = (() => {
     Store.save();
   }
   /**
+   * Сливает чат Политешика из облака с локальным: сообщения не теряются, отметки «сделано» объединяются.
+   * @param {Object} local Локальный чат.
+   * @param {Object} cloud Чат из облака.
+   * @returns {Object} объединённый чат.
+   */
+  function mergeChat(local, cloud) {
+    const byId = {};
+    (cloud.msgs || []).forEach(m => {
+      byId[m.id] = m;
+    });
+    (local.msgs || []).forEach(m => {
+      byId[m.id] = byId[m.id]
+        ? Object.assign({}, m, byId[m.id], {
+            done: !!(m.done || byId[m.id].done)
+          })
+        : m;
+    });
+    const msgs = Object.keys(byId)
+      .map(id => byId[id])
+      .sort((a, b) => String(a.t).localeCompare(String(b.t)));
+    return Object.assign({}, local, cloud, {
+      msgs,
+      answers: Object.assign({}, cloud.answers, local.answers),
+      asked: Object.assign({}, cloud.asked, local.asked),
+      follow: Object.assign({}, cloud.follow, local.follow),
+      flags: Object.assign({}, cloud.flags, local.flags),
+      reqs: cloud.reqs && cloud.reqs.length >= (local.reqs || []).length ? cloud.reqs : local.reqs || []
+    });
+  }
+  /**
    * Подписывается на свои данные студента.
    */
   function watchOwn() {
@@ -405,11 +435,13 @@ const Cloud = (() => {
     });
     DB.doc('chat/' + C.uid).onSnapshot(snap => {
       if (snap.exists) {
-        const c = clone(snap.data());
-        Store.s.chat = Object.assign(Chat.blank(), c, {
+        const cloudChat = clone(snap.data()),
+          merged = mergeChat(Store.s.chat, cloudChat);
+        Store.s.chat = Object.assign(Chat.blank(), merged, {
           readAt: Store.s.chat.readAt || ''
         });
         Store.save();
+        if (merged.msgs.length > (cloudChat.msgs || []).length) C.pushChat();
       } else if (!snap.exists && Store.s.chat.msgs.length) C.pushChat();
       C.chatLoaded = true;
       App.renderSoft();
@@ -818,6 +850,12 @@ const Cloud = (() => {
     if (!r || r.flag) return false;
     if (p.rid === ADMIN_RID && !C.isAdmin) return false;
     return true;
+  };
+  /**
+   * Сразу записывает текущий профиль в облако и ждёт завершения.
+   */
+  C.saveProfileNow = async () => {
+    await DB.doc('profiles/' + C.uid).set(C.profile);
   };
   /**
    * Сохраняет профиль студента.

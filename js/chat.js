@@ -159,6 +159,7 @@ const Chat = {
     if (Chat.absCheck()) changed = true;
     if (Chat.monthly()) changed = true;
     if (changed) Chat.save();
+    if (Support.checkAttendance()) changed = true;
     return changed;
   },
   /**

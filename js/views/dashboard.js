@@ -288,6 +288,8 @@ function viewDashboard() {
     '</p></div>' +
     '<div class="head-actions"><button class="btn primary" data-action="add-work">＋ Добавить работу</button></div></div>' +
     heroHtml() +
+    Support.moodHtml() +
+    Birthday.bannerHtml() +
     notifBanner() +
     widgetHtml() +
     '<div class="grid-stats">' +
@@ -344,6 +346,7 @@ function viewDashboard() {
  * @returns {string} HTML.
  */
 function heroHtml() {
+  if (Birthday.mine()) return Birthday.heroHtml();
   const state = Store.s,
     now = new Date(),
     today = U.iso(U.today()),
