@@ -47,7 +47,7 @@ const Notifier = {
     if (!Notifier.supported()) return 'unsupported';
     try {
       return await Notification.requestPermission();
-    } catch (e) {
+    } catch (error) {
       return 'denied';
     }
   },
@@ -60,7 +60,6 @@ const Notifier = {
     const h = (d || new Date()).getHours();
     return h >= 23 || h < 7;
   },
-
   /**
    * Показывает уведомление с учётом настроек и тихих часов.
    * @param {string} type Тип: pairs, works, changes, chat, ach или digest.
@@ -86,12 +85,20 @@ const Notifier = {
               badge: 'assets/icon-192.png'
             })
           );
-        else new Notification(title, {body, tag: opts.tag || type});
+        else
+          new Notification(title, {
+            body,
+            tag: opts.tag || type
+          });
         shown = true;
-      } catch (e) {}
+      } catch (error) {}
     }
     if (!shown) UI.toast(ICONS.bell + ' ' + title + (body ? ': ' + body : ''));
-    Notifier.last = {type, title, body};
+    Notifier.last = {
+      type,
+      title,
+      body
+    };
     (Notifier.log = Notifier.log || []).push(Notifier.last);
     return true;
   }
@@ -111,17 +118,16 @@ const Reminders = {
    * Проверяет, не пора ли напомнить о паре, работе или итогах недели.
    */
   tick() {
-    if (App.gateMode()) return;
-    const s = Store.s,
+    if (App.gateMode() || Cloud.isTeacher) return;
+    const state = Store.s,
       c = Notifier.cfg(),
       now = new Date(),
       sent = Reminders.sent();
     let dirty = false;
     const today = U.iso(now);
-
     if (c.pairs) {
-      Att.pairs(today, s.settings.subgroup).forEach(pr => {
-        const p = s.settings.pairs[pr.pair - 1];
+      Att.pairs(today, state.settings.subgroup).forEach(pr => {
+        const p = state.settings.pairs[pr.pair - 1];
         if (!p || !p.start) return;
         const lesson = pr.lessons[0];
         if (c.mute[lesson.subjectId]) return;
@@ -141,19 +147,22 @@ const Reminders = {
         if (mins <= c.lead && mins > 5 && !sent['p1|' + key]) {
           sent['p1|' + key] = now.getTime();
           dirty = true;
-          Notifier.show('pairs', 'Скоро пара', text, {tag: 'pair' + key});
+          Notifier.show('pairs', 'Скоро пара', text, {
+            tag: 'pair' + key
+          });
         } else if (mins <= 5 && mins > 0 && !sent['p2|' + key]) {
           const first = sent['p1|' + key];
           if (!first || Reminders.lastTouch < first) {
             sent['p2|' + key] = 1;
             if (!first) sent['p1|' + key] = now.getTime();
             dirty = true;
-            Notifier.show('pairs', 'Пара через ' + mins + ' мин', text, {tag: 'pair2' + key});
+            Notifier.show('pairs', 'Пара через ' + mins + ' мин', text, {
+              tag: 'pair2' + key
+            });
           }
         }
       });
     }
-
     if (c.works) {
       dashItems()
         .filter(i => !i.done)
@@ -165,22 +174,25 @@ const Reminders = {
             sent['w2|' + k] = 1;
             sent['w24|' + k] = 1;
             dirty = true;
-            Notifier.show('works', 'Срок через 2 часа', '«' + i.title + '»', {tag: 'w2' + k});
+            Notifier.show('works', 'Срок через 2 часа', '«' + i.title + '»', {
+              tag: 'w2' + k
+            });
           } else if (h <= 24 && !sent['w24|' + k]) {
             sent['w24|' + k] = 1;
             dirty = true;
-            Notifier.show('works', 'Срок через 24 часа', '«' + i.title + '»', {tag: 'w24' + k});
+            Notifier.show('works', 'Срок через 24 часа', '«' + i.title + '»', {
+              tag: 'w24' + k
+            });
           }
         });
     }
-
     if (c.digest && now.getDay() === 0 && now.getHours() === 19 && now.getMinutes() < 30) {
       const wk = 'dg|' + today;
       if (!sent[wk]) {
         sent[wk] = 1;
         dirty = true;
         const mon = U.iso(U.mondayOf(now)),
-          st = Att.stats(s.attendance.marks, Cloud.my.certs, s.settings.subgroup, mon, today);
+          st = Att.stats(state.attendance.marks, Cloud.my.certs, state.settings.subgroup, mon, today);
         const next = allWorks()
           .filter(w => !w.done)
           .sort(byDue)[0];
@@ -197,14 +209,16 @@ const Reminders = {
             st.a +
             ')' +
             (next ? '. Ближайшее: «' + next.title + '»' : ''),
-          {tag: 'digest', urgent: false}
+          {
+            tag: 'digest',
+            urgent: false
+          }
         );
       }
     }
     if (dirty) Store.save();
   }
 };
-
 const Notice = {
   /**
    * Сообщает студенту о новых отменах и заменах пар.
@@ -222,9 +236,14 @@ const Notice = {
       dirty = true;
       if (first || c.date < U.iso(U.today())) return;
       const d = Changes.describe(c);
-      Chat.push('bot', (c.type === 'cancel' ? ICONS.crossMark + ' ' : ICONS.repeat + ' ') + d.body, {mood: 'worried'});
+      Chat.push('bot', (c.type === 'cancel' ? ICONS.crossMark + ' ' : ICONS.repeat + ' ') + d.body, {
+        mood: 'worried'
+      });
       Chat.save();
-      Notifier.show('changes', d.title, d.body, {urgent: c.date === U.iso(U.today()), tag: 'chg' + c.id});
+      Notifier.show('changes', d.title, d.body, {
+        urgent: c.date === U.iso(U.today()),
+        tag: 'chg' + c.id
+      });
     });
     if (dirty) Store.save();
   },
@@ -240,7 +259,9 @@ const Notice = {
       if (m.wonSeen[r.key]) return;
       m.wonSeen[r.key] = 1;
       Store.save();
-      Chat.push('bot', ICONS.trophy + ' Ты занял 1 место! Приз: ' + r.prize + '. Обратись к админу.', {mood: 'cheer'});
+      Chat.push('bot', ICONS.trophy + ' Ты занял 1 место! Приз: ' + r.prize + '. Обратись к админу.', {
+        mood: 'cheer'
+      });
       Chat.save();
       Notifier.show('ach', ICONS.trophy + ' Ты занял 1 место!', 'Приз: ' + r.prize + '. Обратись к админу.', {
         tag: 'won' + r.key
@@ -269,7 +290,9 @@ const Notice = {
         .map(r => r.name + ' — ' + U.fmtShort(U.fromISO(r.date)))
         .slice(0, 3)
         .join('; '),
-      {tag: 'req'}
+      {
+        tag: 'req'
+      }
     );
   }
 };

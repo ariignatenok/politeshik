@@ -67,7 +67,12 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   'avatar-pick'(el) {
-    Store.s.settings.avatar = el.dataset.id ? {k: 'm', id: el.dataset.id} : null;
+    Store.s.settings.avatar = el.dataset.id
+      ? {
+          k: 'm',
+          id: el.dataset.id
+        }
+      : null;
     Store.save();
     Profile.push();
     UI.close();

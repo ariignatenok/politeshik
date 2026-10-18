@@ -90,7 +90,13 @@ Object.assign(A, {
     const uid = el.dataset.uid,
       doc = Cloud.adm.chat[uid];
     if (!doc) return;
-    doc.reqs = (doc.reqs || []).map(r => (r.date === el.dataset.date ? Object.assign({}, r, {done: true}) : r));
+    doc.reqs = (doc.reqs || []).map(r =>
+      r.date === el.dataset.date
+        ? Object.assign({}, r, {
+            done: true
+          })
+        : r
+    );
     Cloud.put('chat/' + uid, () => Cloud.adm.chat[uid]);
     App.render();
   },

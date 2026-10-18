@@ -12,10 +12,9 @@ const lockSched = () => {
   return false;
 };
 let installEvt = null;
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault();
-  installEvt = e;
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  installEvt = event;
   if (ui.tab === 'settings') App.render();
 });
-
 const A = {};

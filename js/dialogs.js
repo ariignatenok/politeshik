@@ -50,7 +50,6 @@ const foot = (del, okLabel) =>
   '<button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">' +
   (okLabel || 'Сохранить') +
   '</button></div>';
-
 /**
  * Открывает форму работы.
  * @param {string} id Идентификатор записи.
@@ -58,7 +57,14 @@ const foot = (del, okLabel) =>
 function openWorkForm(id) {
   const w = id
     ? Store.s.works.find(x => x.id === id)
-    : {title: '', type: 'Работа', subjectId: '', date: '', time: '', notes: ''};
+    : {
+        title: '',
+        type: 'Работа',
+        subjectId: '',
+        date: '',
+        time: '',
+        notes: ''
+      };
   UI.open(
     id ? 'Изменить работу' : 'Новая работа',
     '<div data-form="work" data-id="' +
@@ -104,7 +110,6 @@ function openHwForm(id) {
       '</div>'
   );
 }
-
 /**
  * Строит блок отмены или замены пары на дату.
  * @param {Object} l Пара.
@@ -132,8 +137,16 @@ function chgControls(l, date) {
  * @param {Object} pre Предзаполненные значения.
  */
 function openChangeForm(pre) {
-  const s = Store.s,
-    p = Object.assign({date: '', pair: 1, subjectId: '', reason: ''}, pre || {});
+  const state = Store.s,
+    p = Object.assign(
+      {
+        date: '',
+        pair: 1,
+        subjectId: '',
+        reason: ''
+      },
+      pre || {}
+    );
   UI.open(
     'Замена пары',
     '<div data-form="change">' +
@@ -142,7 +155,7 @@ function openChangeForm(pre) {
       field(
         'Пара',
         '<select class="input" name="pair">' +
-          s.settings.pairs
+          state.settings.pairs
             .map(
               (x, i) =>
                 '<option value="' +
@@ -177,15 +190,19 @@ function openChangeForm(pre) {
  * @param {string} date Дата.
  */
 function openLessonForm(id, pre, date) {
-  const s = Store.s;
+  const state = Store.s;
   const l = id
-    ? s.schedule.find(x => x.id === id)
+    ? state.schedule.find(x => x.id === id)
     : Object.assign(
         {
           week: ui.schedWeek || 'both',
           day: 0,
           pair: 1,
-          subjectId: (s.subjects[0] || {id: '__new'}).id,
+          subjectId: (
+            state.subjects[0] || {
+              id: '__new'
+            }
+          ).id,
           room: '',
           subgroup: '',
           who: '',
@@ -194,7 +211,7 @@ function openLessonForm(id, pre, date) {
         },
         pre || {}
       );
-  const pairOpts = s.settings.pairs
+  const pairOpts = state.settings.pairs
     .map(
       (p, i) =>
         '<option value="' +
@@ -269,7 +286,9 @@ function openLessonForm(id, pre, date) {
       (id && canEdit() ? chgControls(l, date) : '') +
       foot(id ? 'lesson-del' : null) +
       '</div>',
-    {wide: false}
+    {
+      wide: false
+    }
   );
 }
 /**
@@ -307,7 +326,13 @@ function openTimesForm() {
  * @param {string} id Идентификатор записи.
  */
 function openSubjectForm(id) {
-  const x = id ? subj(id) : {name: '', short: '', color: COLORS[Store.s.subjects.length % COLORS.length]};
+  const x = id
+    ? subj(id)
+    : {
+        name: '',
+        short: '',
+        color: COLORS[Store.s.subjects.length % COLORS.length]
+      };
   UI.open(
     id ? 'Изменить предмет' : 'Новый предмет',
     '<div data-form="subject" data-id="' +
@@ -380,7 +405,10 @@ function openNoteReader(id) {
           ' Редактировать</button>'
         : '') +
       '</div>',
-    {wide: true, noFocus: true}
+    {
+      wide: true,
+      noFocus: true
+    }
   );
 }
 const NOTE_FILE_MAX = 5 * 1024 * 1024;
@@ -430,7 +458,7 @@ async function handleNoteFile(input) {
     });
     const box = $('#note-files');
     if (box) box.innerHTML = noteFilesEditHtml();
-  } catch (e) {
+  } catch (error) {
     toast('Не удалось обработать файл');
   }
 }
@@ -440,7 +468,13 @@ async function handleNoteFile(input) {
  * @param {string} sid Идентификатор предмета.
  */
 function openNoteEditor(id, sid) {
-  const n = id ? Store.s.notes.find(x => x.id === id) : {title: '', text: '', files: []},
+  const n = id
+      ? Store.s.notes.find(x => x.id === id)
+      : {
+          title: '',
+          text: '',
+          files: []
+        },
     sidv = sid === undefined ? ui.subjectId || '' : sid;
   ui.noteFiles = (n.files || []).map(f => Object.assign({}, f));
   ui.noteRemoved = [];
@@ -470,7 +504,9 @@ function openNoteEditor(id, sid) {
       '<div class="modal-foot"><button class="btn left" data-action="preview-toggle">' +
       ICONS.eye +
       ' Предпросмотр</button><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">Сохранить</button></div></div>',
-    {wide: true}
+    {
+      wide: true
+    }
   );
 }
 /**
@@ -478,11 +514,16 @@ function openNoteEditor(id, sid) {
  * @param {string} id Идентификатор записи.
  */
 function openCardForm(id) {
-  const s = Store.s;
+  const state = Store.s;
   const c = id
-    ? s.cards.find(x => x.id === id)
-    : {subjectId: ui.subjectId, cat: ui.cardCat && ui.cardCat !== 'all' ? ui.cardCat : '', q: '', a: ''};
-  const cats = [...new Set(s.cards.filter(x => x.subjectId === c.subjectId && x.cat).map(x => x.cat))];
+    ? state.cards.find(x => x.id === id)
+    : {
+        subjectId: ui.subjectId,
+        cat: ui.cardCat && ui.cardCat !== 'all' ? ui.cardCat : '',
+        q: '',
+        a: ''
+      };
+  const cats = [...new Set(state.cards.filter(x => x.subjectId === c.subjectId && x.cat).map(x => x.cat))];
   UI.open(
     id ? 'Изменить карточку' : 'Новая карточка',
     '<div data-form="card" data-id="' +
@@ -513,7 +554,9 @@ function openCardForm(id) {
       ) +
       foot(null) +
       '</div>',
-    {wide: true}
+    {
+      wide: true
+    }
   );
 }
 /**
@@ -557,7 +600,10 @@ function openCardReader(id) {
           ' Изменить</button>'
         : '') +
       '</div>',
-    {wide: true, noFocus: true}
+    {
+      wide: true,
+      noFocus: true
+    }
   );
 }
 /**
@@ -566,7 +612,14 @@ function openCardReader(id) {
  */
 function openFormulaForm(id) {
   const sb = subj(ui.subjectId);
-  const f = id ? sb.formulas.find(x => x.id === id) : {group: '', title: '', f: '', note: ''};
+  const f = id
+    ? sb.formulas.find(x => x.id === id)
+    : {
+        group: '',
+        title: '',
+        f: '',
+        note: ''
+      };
   const groups = [...new Set(sb.formulas.map(x => x.group).filter(Boolean))];
   UI.open(
     id ? 'Изменить формулу' : 'Новая формула',
@@ -602,7 +655,6 @@ function openFormulaForm(id) {
       '</div>'
   );
 }
-
 /**
  * Открывает форму профиля.
  */
@@ -676,11 +728,14 @@ function openFileForm() {
  * @param {Promise<string>} promise Загрузка изображения.
  */
 async function showImage(title, promise) {
-  UI.open(title, '<div class="img-box"><div class="empty">Загрузка…</div></div>', {wide: true, noFocus: true});
+  UI.open(title, '<div class="img-box"><div class="empty">Загрузка…</div></div>', {
+    wide: true,
+    noFocus: true
+  });
   let data = null;
   try {
     data = await promise;
-  } catch (e) {}
+  } catch (error) {}
   const box = $('#modal-root .img-box');
   if (!box) return;
   if (!data) {
@@ -691,7 +746,6 @@ async function showImage(title, promise) {
     ? '<img src="' + data + '" alt="' + U.esc(title) + '">'
     : '<div class="empty">Это не изображение — скачайте файл</div>';
 }
-
 /**
  * Открывает карточку студента для админа.
  * @param {string} uid Идентификатор студента.
@@ -700,7 +754,10 @@ async function showImage(title, promise) {
 function openStudent(uid, date0) {
   const r = studentRows().find(x => x.id === uid);
   if (!r) return;
-  ui.stud = {uid, date: date0 || (ui.stud && ui.stud.uid === uid ? ui.stud.date : U.iso(U.today()))};
+  ui.stud = {
+    uid,
+    date: date0 || (ui.stud && ui.stud.uid === uid ? ui.stud.date : U.iso(U.today()))
+  };
   const rg = attRange(),
     today = U.iso(U.today());
   const marks = r.marks,
@@ -767,7 +824,10 @@ function openStudent(uid, date0) {
       attDayHtml(date, marks, certs, r.p.subgroup, uid, false) +
       '</div>' +
       '</div>',
-    {wide: true, noFocus: true}
+    {
+      wide: true,
+      noFocus: true
+    }
   );
 }
 /**
@@ -777,7 +837,14 @@ function openStudent(uid, date0) {
 function openGWorkForm(id) {
   const w = id
     ? Cloud.gworks.find(x => x.id === id)
-    : {title: '', type: 'Работа', subjectId: '', date: '', time: '', notes: ''};
+    : {
+        title: '',
+        type: 'Работа',
+        subjectId: '',
+        date: '',
+        time: '',
+        notes: ''
+      };
   if (!w) return;
   UI.open(
     id ? 'Изменить работу группы' : 'Работа для всей группы',
@@ -840,13 +907,18 @@ async function handleDraftFile(input, imageOnly) {
       input.value = '';
     } else if (f.size <= 170000) {
       const data = await readDataUrl(f);
-      ui.draft = {data, name: f.name, type: f.type || 'application/octet-stream', size: f.size};
+      ui.draft = {
+        data,
+        name: f.name,
+        type: f.type || 'application/octet-stream',
+        size: f.size
+      };
       if (prev) prev.textContent = 'Файл готов: ' + f.name + ' (' + Math.max(1, Math.round(f.size / 1024)) + ' КБ)';
     } else {
       toast('Файл слишком большой (до ~170 КБ). Сделайте фото или сожмите файл.');
       input.value = '';
     }
-  } catch (e) {
+  } catch (error) {
     toast('Не удалось обработать файл');
     input.value = '';
   }
@@ -858,7 +930,14 @@ async function handleDraftFile(input, imageOnly) {
 function openTeacherForm(id) {
   const t = id
     ? Store.s.teachers.find(x => x.id === id)
-    : {name: '', subjectIds: [], email: '', phone: '', room: '', notes: ''};
+    : {
+        name: '',
+        subjectIds: [],
+        email: '',
+        phone: '',
+        room: '',
+        notes: ''
+      };
   UI.open(
     id ? 'Изменить преподавателя' : 'Новый преподаватель',
     '<div data-form="teacher" data-id="' +
@@ -889,7 +968,6 @@ function openTeacherForm(id) {
       '</div>'
   );
 }
-
 /**
  * Открывает форму новости.
  */

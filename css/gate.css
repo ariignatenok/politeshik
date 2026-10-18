@@ -111,3 +111,7 @@ body.gated .fab {
 #toast {
   z-index: 120;
 }
+
+body.gated .fab-wrap {
+  display: none !important;
+}

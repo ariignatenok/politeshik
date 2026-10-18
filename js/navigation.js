@@ -2,6 +2,9 @@
 
 const ui = {
   tab: 'dashboard',
+  loginRole: 'student',
+  loginDraft: null,
+  activating: false,
   chatWith: null,
   sickFilter: 'all',
   noteFiles: [],
@@ -35,19 +38,85 @@ const ui = {
   fQuery: ''
 };
 const NAV_ALL = [
-  {id: 'dashboard', ico: ICONS.house, label: 'Главная', short: 'Главная'},
-  {id: 'schedule', ico: ICONS.calendar, label: 'Расписание', short: 'Пары'},
-  {id: 'attendance', ico: ICONS.check, label: 'Посещаемость', short: 'Отметки'},
-  {id: 'hw', ico: ICONS.memo, label: 'Домашка (ДЗ)', short: 'ДЗ'},
-  {id: 'subjects', ico: ICONS.books, label: 'Предметы', short: 'Предметы'},
-  {id: 'news', ico: ICONS.newspaper, label: 'Новости', short: 'Новости'},
-  {id: 'chat', ico: ICONS.speech, label: 'Чаты', short: 'Чаты'},
-  {id: 'rating', ico: ICONS.trophy, label: 'Рейтинг группы', short: 'Рейтинг'},
-  {id: 'teachers', ico: ICONS.teacher, label: 'Преподаватели', short: 'Препод.'},
-  {id: 'cabinet', ico: ICONS.user, label: 'Личный кабинет', short: 'Кабинет'},
-  {id: 'group', ico: ICONS.shield, label: 'Группа (админ)', short: 'Группа', admin: true},
-  {id: 'journal', ico: ICONS.folder, label: 'Журнал', short: 'Журнал'},
-  {id: 'settings', ico: ICONS.gear, label: 'Настройки', short: 'Настройки'}
+  {
+    id: 'dashboard',
+    ico: ICONS.house,
+    label: 'Главная',
+    short: 'Главная'
+  },
+  {
+    id: 'schedule',
+    ico: ICONS.calendar,
+    label: 'Расписание',
+    short: 'Пары'
+  },
+  {
+    id: 'attendance',
+    ico: ICONS.check,
+    label: 'Посещаемость',
+    short: 'Отметки'
+  },
+  {
+    id: 'hw',
+    ico: ICONS.memo,
+    label: 'Домашка (ДЗ)',
+    short: 'ДЗ'
+  },
+  {
+    id: 'subjects',
+    ico: ICONS.books,
+    label: 'Предметы',
+    short: 'Предметы'
+  },
+  {
+    id: 'news',
+    ico: ICONS.newspaper,
+    label: 'Новости',
+    short: 'Новости'
+  },
+  {
+    id: 'chat',
+    ico: ICONS.speech,
+    label: 'Чаты',
+    short: 'Чаты'
+  },
+  {
+    id: 'rating',
+    ico: ICONS.trophy,
+    label: 'Рейтинг группы',
+    short: 'Рейтинг'
+  },
+  {
+    id: 'teachers',
+    ico: ICONS.teacher,
+    label: 'Преподаватели',
+    short: 'Препод.'
+  },
+  {
+    id: 'cabinet',
+    ico: ICONS.user,
+    label: 'Личный кабинет',
+    short: 'Кабинет'
+  },
+  {
+    id: 'group',
+    ico: ICONS.shield,
+    label: 'Группа (админ)',
+    short: 'Группа',
+    admin: true
+  },
+  {
+    id: 'journal',
+    ico: ICONS.folder,
+    label: 'Журнал',
+    short: 'Журнал'
+  },
+  {
+    id: 'settings',
+    ico: ICONS.gear,
+    label: 'Настройки',
+    short: 'Настройки'
+  }
 ];
 const NAV_BOTTOM = ['dashboard', 'schedule', 'attendance', 'hw', 'subjects', 'chat', 'more'];
 /**
@@ -65,3 +134,18 @@ const empty = (ico, text) => '<div class="empty"><b>' + ico + '</b>' + text + '<
  */
 const emptyMascot = (text, mood) =>
   '<div class="empty empty-mascot">' + Mascot.svg(mood || 'happy', 104, 'empty-av') + '<p>' + text + '</p></div>';
+/**
+ * Возвращает пункты бокового меню для роли пользователя.
+ * @returns {Array<Object>} Массив.
+ */
+function navItems() {
+  if (Cloud.isTeacher) return Teacher.tabs.map(id => NAV_ALL.find(t => t.id === id)).filter(Boolean);
+  return NAV_ALL.filter(t => !t.admin || Cloud.isAdmin);
+}
+/**
+ * Возвращает вкладки нижней панели для роли пользователя.
+ * @returns {Array<string>} Массив.
+ */
+function bottomNav() {
+  return Cloud.isTeacher ? Teacher.tabs.slice() : NAV_BOTTOM;
+}

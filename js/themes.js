@@ -1,22 +1,101 @@
 'use strict';
 
 const THEMES = [
-  {id: 'light', ico: ICONS.sun, name: 'Светлая', sw: '#6366f1'},
-  {id: 'dark', ico: ICONS.moon, name: 'Тёмная', sw: '#1a1f31'},
-  {id: 'barbie', ico: ICONS.heart, name: 'Барби', sw: '#ff2d95'},
-  {id: 'ocean', ico: ICONS.wave, name: 'Океан', sw: '#14b8c4'},
-  {id: 'space', ico: ICONS.galaxy, name: 'Космос', sw: '#8b7bff'},
-  {id: 'garden', ico: ICONS.herb, name: 'Сад', sw: '#2f9e44'},
-  {id: 'magic', ico: ICONS.sparkles, name: 'Магия', sw: '#a78bfa'}
+  {
+    id: 'light',
+    ico: ICONS.sun,
+    name: 'Светлая',
+    sw: '#6366f1'
+  },
+  {
+    id: 'dark',
+    ico: ICONS.moon,
+    name: 'Тёмная',
+    sw: '#1a1f31'
+  },
+  {
+    id: 'barbie',
+    ico: ICONS.heart,
+    name: 'Барби',
+    sw: '#ff2d95'
+  },
+  {
+    id: 'ocean',
+    ico: ICONS.wave,
+    name: 'Океан',
+    sw: '#14b8c4'
+  },
+  {
+    id: 'space',
+    ico: ICONS.galaxy,
+    name: 'Космос',
+    sw: '#8b7bff'
+  },
+  {
+    id: 'garden',
+    ico: ICONS.herb,
+    name: 'Сад',
+    sw: '#2f9e44'
+  },
+  {
+    id: 'magic',
+    ico: ICONS.sparkles,
+    name: 'Магия',
+    sw: '#a78bfa'
+  }
 ];
 const SEASONAL = [
-  {id: 'autumn', ico: ICONS.fallenLeaf, name: 'Осень', sw: '#ff9f1c', from: [9, 1], to: [11, 30]},
-  {id: 'winter', ico: ICONS.snowflake, name: 'Зима', sw: '#7cc4ff', from: [12, 1], to: [2, 29]},
-  {id: 'valentine', ico: ICONS.heartArrow, name: '14 февраля', sw: '#ff4d8d', from: [2, 13], to: [2, 15]},
-  {id: 'defender', ico: ICONS.militaryMedal, name: '23 февраля', sw: '#c9b458', from: [2, 22], to: [2, 24]},
-  {id: 'womens', ico: ICONS.tulip, name: '8 Марта', sw: '#e0568f', from: [3, 7], to: [3, 9]}
+  {
+    id: 'autumn',
+    ico: ICONS.fallenLeaf,
+    name: 'Осень',
+    sw: '#ff9f1c',
+    from: [9, 1],
+    to: [11, 30]
+  },
+  {
+    id: 'winter',
+    ico: ICONS.snowflake,
+    name: 'Зима',
+    sw: '#7cc4ff',
+    from: [12, 1],
+    to: [2, 29]
+  },
+  {
+    id: 'valentine',
+    ico: ICONS.heartArrow,
+    name: '14 февраля',
+    sw: '#ff4d8d',
+    from: [2, 13],
+    to: [2, 15]
+  },
+  {
+    id: 'defender',
+    ico: ICONS.militaryMedal,
+    name: '23 февраля',
+    sw: '#c9b458',
+    from: [2, 22],
+    to: [2, 24]
+  },
+  {
+    id: 'womens',
+    ico: ICONS.tulip,
+    name: '8 Марта',
+    sw: '#e0568f',
+    from: [3, 7],
+    to: [3, 9]
+  }
 ];
-THEMES.push(...SEASONAL.map(t => Object.assign({season: true}, t)));
+THEMES.push(
+  ...SEASONAL.map(t =>
+    Object.assign(
+      {
+        season: true
+      },
+      t
+    )
+  )
+);
 const THEME_IDS = THEMES.map(t => t.id);
 const Themes = {
   /**
@@ -31,7 +110,6 @@ const Themes = {
       return s / 233280;
     };
   },
-
   /**
    * Строит фоновый SVG-слой темы.
    * @param {string} id Идентификатор темы.
@@ -221,7 +299,6 @@ const Themes = {
     return '';
   }
 };
-
 /**
  * Проверяет, попадает ли дата в период действия сезонной темы.
  * @param {Object} t Сезонная тема с границами from и to.

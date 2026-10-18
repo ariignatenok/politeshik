@@ -5,7 +5,7 @@
  * @returns {Array<Object>} Массив.
  */
 function allWorks() {
-  const s = Store.s,
+  const state = Store.s,
     out = [],
     seen = new Set();
   if (Cloud.status === 'online')
@@ -24,7 +24,7 @@ function allWorks() {
       });
       seen.add(w.title + '|' + w.date);
     });
-  s.works.forEach(w => {
+  state.works.forEach(w => {
     if (!seen.has(w.title + '|' + w.date))
       out.push({
         kind: 'work',
@@ -41,7 +41,6 @@ function allWorks() {
   });
   return out;
 }
-
 /**
  * Проверяет, что срок ДЗ ещё не прошёл или не указан.
  * @param {Object} h ДЗ.

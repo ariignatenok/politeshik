@@ -7,7 +7,7 @@
 function notifSettings() {
   const c = Notifier.cfg(),
     p = Notifier.perm(),
-    s = Store.s;
+    state = Store.s;
   const permTxt =
     p === 'granted'
       ? ICONS.check + ' Разрешены в браузере'
@@ -54,7 +54,7 @@ function notifSettings() {
       .join('') +
     '</div></div>' +
     '<div class="set-row" style="align-items:flex-start"><div><b>Предметы без напоминаний</b><p>Отметьте предметы, о парах которых напоминать не нужно</p></div><div class="checks">' +
-    s.subjects
+    state.subjects
       .map(
         x =>
           '<label><input type="checkbox" data-change="notif-mute" data-id="' +
@@ -74,8 +74,9 @@ function notifSettings() {
  * @returns {string} HTML.
  */
 function viewSettings() {
-  const s = Store.s,
+  const state = Store.s,
     cur = weekType(new Date());
+  if (Cloud.isTeacher) return Teacher.settingsHtml();
   return (
     '<div class="page-head"><div><h1>Настройки</h1><p>Тема, чётность недели и резервная копия данных</p></div></div>' +
     (Store.persistent
@@ -88,7 +89,7 @@ function viewSettings() {
       .map(
         t =>
           '<button class="' +
-          (s.settings.theme === t.id ? 'on' : '') +
+          (state.settings.theme === t.id ? 'on' : '') +
           '" data-action="set-theme" data-theme="' +
           t.id +
           '"><span class="sw" style="background:' +
@@ -100,7 +101,10 @@ function viewSettings() {
           '</button>'
       )
       .join('') +
-    '</div></div></div>' +
+    '</div></div>' +
+    '<div class="set-row"><div><b>Наряд Политешика</b><p>Сезонные и праздничные аксессуары</p></div><button class="btn" data-action="mascot-acc">' +
+    (Mascot.enabled() ? 'Включён' : 'Выключен') +
+    '</button></div></div>' +
     notifSettings() +
     '<div class="card set-sec"><h2>Расписание</h2>' +
     '<div class="set-row"><div><b>Сейчас идёт: ' +
@@ -109,9 +113,9 @@ function viewSettings() {
     ICONS.repeat +
     ' Поменять местами</button></div>' +
     '<div class="set-row"><div><b>Время пар</b><p>Звонки: ' +
-    (s.settings.pairs.some(p => p.start) ? 'заданы' : 'не заданы') +
+    (state.settings.pairs.some(p => p.start) ? 'заданы' : 'не заданы') +
     ' · пар в сетке: ' +
-    s.settings.pairs.length +
+    state.settings.pairs.length +
     '</p></div><button class="btn" data-action="times">' +
     ICONS.stopwatch +
     ' Настроить</button></div></div>' +

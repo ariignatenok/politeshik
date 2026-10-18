@@ -6,7 +6,7 @@ const App = {
    * @returns {string} режим экрана входа или пустая строка.
    */
   gateMode() {
-    if (Cloud.status === 'pending') return 'loading';
+    if (Cloud.status === 'pending' || ui.activating) return 'loading';
     if (Cloud.status === 'online' && !Cloud.hasCabinet())
       return Cloud.claimsLoaded ? (ui.secret ? 'secret' : 'register') : 'loading';
     if (Cloud.status === 'offline' && !ui.localOk) return 'offline';
@@ -34,7 +34,7 @@ const App = {
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
         Mascot.svg('thinking', 110) +
-        '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p></div>';
+        '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p><div class="sk-gate"><span class="sk sk-line sk-w80"></span><span class="sk sk-line sk-w60"></span><span class="sk sk-line sk-w40"></span></div></div>';
       return '';
     }
     if (needClaim && mode === 'secret' && ui.secret) {
@@ -57,13 +57,13 @@ const App = {
             if (w) w.hidden = false;
           }
         });
-      } catch (e) {}
+      } catch (error) {}
       const f0 = g.querySelector('input');
       if (f0)
         setTimeout(() => {
           try {
             f0.focus();
-          } catch (e) {}
+          } catch (error) {}
         }, 80);
       return '';
     }
@@ -104,27 +104,50 @@ const App = {
         '<small class="gate-foot">Одну фамилию может занять только один аккаунт. Если выбрали не ту — напишите админу.</small></div>';
       return '';
     }
+    const teacherMode = ui.loginRole === 'teacher',
+      draft = ui.loginDraft || {};
     g.innerHTML =
       '<div class="gate-card">' +
       '<div class="gate-mascot">' +
       Mascot.svg('wink', 110) +
       '</div>' +
-      '<h1>Политешик</h1><p class="gate-sub">Вход в приложение</p>' +
-      '<p class="gate-text">Войди, чтобы отмечаться на парах, писать заметки и общаться с админом. Данные сохраняются в облаке.</p>' +
+      '<h1>Политешик</h1><p class="gate-sub">' +
+      (teacherMode ? 'Вход для преподавателя' : 'Вход в приложение') +
+      '</p>' +
+      '<div class="seg role-seg" role="group" aria-label="Кто вы"><button class="' +
+      (teacherMode ? '' : 'on') +
+      '" data-action="login-role" data-role="student">Я студент</button><button class="' +
+      (teacherMode ? 'on' : '') +
+      '" data-action="login-role" data-role="teacher">Я преподаватель</button></div>' +
+      '<p class="gate-text">' +
+      (teacherMode
+        ? 'Преподаватель видит расписание, журнал посещаемости (только чтение), новости и чат с админом группы.'
+        : 'Войди, чтобы отмечаться на парах, писать заметки и общаться с админом. Данные сохраняются в облаке.') +
+      '</p>' +
       '<div data-form="login">' +
-      '<label class="field"><span>Email</span><input class="input" name="email" type="email" placeholder="ivan@mail.ru" autocomplete="email"></label>' +
-      '<label class="field"><span>Пароль (минимум 6 символов)</span><input class="input" name="password" type="password" placeholder="••••••" autocomplete="current-password"></label>' +
+      '<label class="field"><span>Email</span><input class="input" name="email" type="email" placeholder="ivan@mail.ru" autocomplete="email" value="' +
+      U.esc(draft.email || '') +
+      '"></label>' +
+      '<label class="field"><span>Пароль аккаунта (минимум 6 символов)</span><input class="input" name="password" type="password" placeholder="••••••" autocomplete="current-password"></label>' +
+      (teacherMode
+        ? '<label class="field"><span>Как к вам обращаться</span><input class="input" name="teacher_name" type="text" placeholder="Иван Петрович" autocomplete="name"></label>' +
+          '<label class="field"><span>Пароль преподавателя (его выдаёт админ группы)</span><input class="input" name="teacher_secret" type="password" placeholder="••••••••" autocomplete="off"></label>'
+        : '') +
       '<button class="btn primary big" data-action="login-do">Войти</button>' +
       '<button class="btn big" style="margin-top:10px" data-action="signup-do">Зарегистрироваться</button>' +
       '</div>' +
-      '<small class="gate-foot">Впервые здесь? Нажми «Зарегистрироваться», введи свою почту и пароль. Затем выбери свою фамилию из списка группы.</small>' +
+      '<small class="gate-foot">' +
+      (teacherMode
+        ? 'Впервые здесь? Нажмите «Зарегистрироваться»: введите почту, пароль аккаунта и пароль преподавателя.'
+        : 'Впервые здесь? Нажми «Зарегистрироваться», введи свою почту и пароль. Затем выбери свою фамилию из списка группы.') +
+      '</small>' +
       '</div>';
     const f = g.querySelector('input');
     if (f)
       setTimeout(() => {
         try {
           f.focus();
-        } catch (e) {}
+        } catch (error) {}
       }, 80);
     return '';
   },
@@ -147,14 +170,18 @@ const App = {
       g.dataset.mode = '';
       animate = true;
     }
-    if (!Views[ui.tab] || (ui.tab === 'group' && !Cloud.isAdmin)) ui.tab = 'dashboard';
+    if (!Views[ui.tab] || (ui.tab === 'group' && !Cloud.isAdmin) || (Cloud.isTeacher && !Teacher.allows(ui.tab)))
+      ui.tab = Cloud.isTeacher ? 'schedule' : 'dashboard';
     const v = $('#view');
-    v.innerHTML = Views[ui.tab]();
+    v.innerHTML = Cloud.status === 'online' && !Cloud.ready ? Skeleton.forTab(ui.tab) : Views[ui.tab]();
     const at = $('.tab.on');
     if (at && at.scrollIntoView) {
       try {
-        at.scrollIntoView({inline: 'center', block: 'nearest'});
-      } catch (e) {}
+        at.scrollIntoView({
+          inline: 'center',
+          block: 'nearest'
+        });
+      } catch (error) {}
     }
     if (animate) {
       v.classList.remove('rise');
@@ -165,7 +192,7 @@ const App = {
     }
     const unread = chatUnread(),
       badge = n => (n ? '<span class="badge">' + n + '</span>' : '');
-    $('#nav-side').innerHTML = NAV_ALL.filter(t => !t.admin || Cloud.isAdmin)
+    $('#nav-side').innerHTML = navItems()
       .map(
         t =>
           '<button class="nav-btn' +
@@ -180,24 +207,33 @@ const App = {
           '</button>'
       )
       .join('');
-    $('#nav-bottom').innerHTML = NAV_BOTTOM.map(id => {
-      const t = id === 'more' ? {id: 'more', ico: '☰', short: 'Ещё'} : NAV_ALL.find(x => x.id === id),
-        on = id === 'more' ? MORE_TABS.includes(ui.tab) : ui.tab === id;
-      return (
-        '<button class="nav-btn' +
-        (on ? ' on' : '') +
-        '" data-action="nav" data-tab="' +
-        t.id +
-        '"><span class="ico">' +
-        t.ico +
-        '</span>' +
-        t.short +
-        (id === 'chat' ? badge(unread) : '') +
-        '</button>'
-      );
-    }).join('');
+    $('#nav-bottom').innerHTML = bottomNav()
+      .map(id => {
+        const t =
+            id === 'more'
+              ? {
+                  id: 'more',
+                  ico: '☰',
+                  short: 'Ещё'
+                }
+              : NAV_ALL.find(x => x.id === id),
+          on = id === 'more' ? MORE_TABS.includes(ui.tab) : ui.tab === id;
+        return (
+          '<button class="nav-btn' +
+          (on ? ' on' : '') +
+          '" data-action="nav" data-tab="' +
+          t.id +
+          '"><span class="ico">' +
+          t.ico +
+          '</span>' +
+          t.short +
+          (id === 'chat' ? badge(unread) : '') +
+          '</button>'
+        );
+      })
+      .join('');
     $('#side-date').textContent = U.fmtLong(new Date());
-    $('#fab').style.display = ui.tab === 'dashboard' ? '' : 'none';
+    QuickAdd.sync();
     const mo = Mascot.current(),
       bm = $('#brand-mascot'),
       tm = $('#top-mascot');
@@ -214,7 +250,6 @@ const App = {
       if (bx) bx.scrollTop = bx.scrollHeight;
     }
   },
-
   /**
    * Перерисовывает экран, если пользователь сейчас не вводит текст и не открыто окно.
    */
@@ -241,7 +276,6 @@ const App = {
       News.start();
       App.render(true);
     });
-
     setInterval(() => {
       if ($('#modal-root').firstChild || $('#confirm-root').firstChild) return;
       const ch = Chat.tick();
@@ -250,7 +284,6 @@ const App = {
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden && Chat.tick()) App.renderSoft();
     });
-
     const setNet = () => {
       const b = $('#net-badge');
       if (b) b.hidden = navigator.onLine !== false;
@@ -272,7 +305,9 @@ const App = {
         () => {
           Reminders.lastTouch = Date.now();
         },
-        {passive: true}
+        {
+          passive: true
+        }
       )
     );
     setInterval(() => {
@@ -284,7 +319,6 @@ const App = {
       Reminders.tick();
       Ach.check();
     }, 1500);
-
     const roStyle = document.createElement('style');
     roStyle.textContent =
       [...RO_ACTIONS]

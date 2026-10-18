@@ -45,10 +45,11 @@ const ROSTER_BY_ID = {};
 ROSTER.forEach(r => {
   ROSTER_BY_ID[r.id] = r;
 });
-
 const ADMIN_RID = 'r32';
-const FLAG_LABEL = {expelled: 'отчислен(а)', ghost: 'мёртвая душа'};
-
+const FLAG_LABEL = {
+  expelled: 'отчислен(а)',
+  ghost: 'мёртвая душа'
+};
 const ABS_LIMIT = 24,
   ABS_WARN_LEFT = 4,
   PAIR_HOURS = 2;
@@ -75,6 +76,9 @@ const monthEnd = ym => {
  */
 const monthName = ym => {
   const p = ym.split('-').map(Number);
-  const n = new Intl.DateTimeFormat('ru-RU', {month: 'long', year: 'numeric'}).format(new Date(p[0], p[1] - 1, 1));
+  const n = new Intl.DateTimeFormat('ru-RU', {
+    month: 'long',
+    year: 'numeric'
+  }).format(new Date(p[0], p[1] - 1, 1));
   return n.charAt(0).toUpperCase() + n.slice(1);
 };

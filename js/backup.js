@@ -8,7 +8,6 @@ const Backup = {
   json() {
     return JSON.stringify(Store.s, null, 2);
   },
-
   /**
    * Скачивает резервную копию файлом.
    */
@@ -18,26 +17,33 @@ const Backup = {
     let dl = null;
     try {
       if (window.claude && typeof window.claude.use === 'function') dl = await window.claude.use('downloads');
-    } catch (e) {}
+    } catch (error) {}
     if (dl) {
       try {
-        await dl.save({filename: name, data: text});
+        await dl.save({
+          filename: name,
+          data: text
+        });
         toast('Файл сохранён');
-      } catch (e) {
-        if (!e || e.code !== 'declined') toast('Не удалось сохранить — скопируйте текст');
-        if (!e || e.code !== 'declined') Backup.show();
+      } catch (error) {
+        if (!error || error.code !== 'declined') toast('Не удалось сохранить — скопируйте текст');
+        if (!error || error.code !== 'declined') Backup.show();
       }
       return;
     }
     try {
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([text], {type: 'application/json'}));
+      a.href = URL.createObjectURL(
+        new Blob([text], {
+          type: 'application/json'
+        })
+      );
       a.download = name;
       document.body.appendChild(a);
       a.click();
       a.remove();
       toast('Скачивание запущено');
-    } catch (e) {
+    } catch (error) {
       Backup.show();
     }
   },
@@ -54,7 +60,10 @@ const Backup = {
         '<div class="modal-foot"><button class="btn" data-action="modal-close">Закрыть</button><button class="btn primary" data-action="copy-json">' +
         ICONS.clipboard +
         ' Копировать</button></div>',
-      {wide: true, noFocus: true}
+      {
+        wide: true,
+        noFocus: true
+      }
     );
   },
   /**
@@ -66,7 +75,7 @@ const Backup = {
     try {
       await navigator.clipboard.writeText(ta.value);
       toast('Скопировано');
-    } catch (e) {
+    } catch (error) {
       ta.select();
       try {
         document.execCommand('copy');
@@ -84,10 +93,11 @@ const Backup = {
       'Импорт: вставьте JSON',
       '<textarea class="input" id="import-text" rows="12" placeholder="{ &quot;subjects&quot;: [...] }" style="font-family:ui-monospace,Menlo,monospace;font-size:12px"></textarea>' +
         '<div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="import-run">Импортировать</button></div>',
-      {wide: true}
+      {
+        wide: true
+      }
     );
   },
-
   /**
    * Загружает данные из текста резервной копии.
    * @param {string} text Текст резервной копии.
@@ -96,7 +106,7 @@ const Backup = {
     let d;
     try {
       d = JSON.parse(text);
-    } catch (e) {
+    } catch (error) {
       return toast('Это не JSON — проверьте текст');
     }
     const keys = ['subjects', 'teachers', 'works', 'homework', 'notes', 'schedule'];
@@ -126,7 +136,7 @@ const Backup = {
             r.readAsText(f);
           }));
       await Backup.run(text);
-    } catch (e) {
+    } catch (error) {
       toast('Не удалось прочитать файл');
     }
     input.value = '';

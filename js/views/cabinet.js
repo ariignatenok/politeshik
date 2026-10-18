@@ -5,7 +5,7 @@
  * @returns {string} HTML.
  */
 function aboutCard() {
-  const s = Store.s,
+  const state = Store.s,
     w = Profile.weekStats();
   return (
     '<section class="card about-card"><div class="about-top"><button class="cab-av avbtn" data-action="avatar-open" title="Сменить аватар" aria-label="Сменить аватар">' +
@@ -16,7 +16,7 @@ function aboutCard() {
     '<div class="about-meta"><span class="tag">группа ' +
     GROUP_NAME +
     '</span> ' +
-    (s.settings.subgroup ? '<span class="tag">подгруппа ' + U.esc(s.settings.subgroup) + '</span> ' : '') +
+    (state.settings.subgroup ? '<span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span> ' : '') +
     '<span class="tag">за неделю: ' +
     (w.pct == null ? '—' : w.pct + '%') +
     ' · п ' +
@@ -27,7 +27,7 @@ function aboutCard() {
     w.a +
     '</span></div></div>' +
     '<label class="field" style="margin:12px 0 0"><span>О себе (до 500 символов)</span><textarea class="input" id="about-text" rows="3" maxlength="500" placeholder="Расскажи о себе в паре предложений…">' +
-    U.esc(s.settings.about || '') +
+    U.esc(state.settings.about || '') +
     '</textarea></label>' +
     '<div class="head-actions" style="margin-top:8px"><button class="btn primary sm" data-action="about-save">Сохранить</button>' +
     (Cloud.status === 'online' ? '<button class="btn ghost sm" data-action="logout">Выйти из аккаунта</button>' : '') +
@@ -78,14 +78,14 @@ function viewCabinet() {
  * @returns {string} HTML.
  */
 function viewCabinetMain() {
-  const s = Store.s,
+  const state = Store.s,
     online = Cloud.status === 'online',
     today = U.iso(U.today()),
     ym = today.slice(0, 7);
-  const name = (Cloud.profile && Cloud.profile.name) || s.settings.displayName || 'Гость';
-  const st = Att.stats(s.attendance.marks, Cloud.my.certs, s.settings.subgroup, ym + '-01', monthEnd(ym));
+  const name = (Cloud.profile && Cloud.profile.name) || state.settings.displayName || 'Гость';
+  const st = Att.stats(state.attendance.marks, Cloud.my.certs, state.settings.subgroup, ym + '-01', monthEnd(ym));
   const certs = Cloud.my.certs.slice().sort((a, b) => b.from.localeCompare(a.from));
-  const notes = s.notes.filter(n => !n.subjectId).sort(noteSort);
+  const notes = state.notes.filter(n => !n.subjectId).sort(noteSort);
   /**
    * Возвращает название предмета по идентификатору.
    * @param {string} id Идентификатор записи.
@@ -103,7 +103,7 @@ function viewCabinetMain() {
     '</h1><p>' +
     (Cloud.isAdmin ? '<span class="tag adm">админ-студент</span> ' : '') +
     (online ? '<span class="tag">' + ICONS.cloud + ' в сети</span>' : '<span class="tag">без облака</span>') +
-    (s.settings.subgroup ? ' <span class="tag">подгруппа ' + U.esc(s.settings.subgroup) + '</span>' : '') +
+    (state.settings.subgroup ? ' <span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span>' : '') +
     ' <span class="tag">группа ' +
     GROUP_NAME +
     '</span></p></div></div>' +
@@ -112,7 +112,7 @@ function viewCabinetMain() {
     '</div></div>' +
     aboutCard() +
     winnerPlaque() +
-    absCard(Att.absHours(s.attendance.marks, Cloud.my.certs, s.settings.subgroup)) +
+    absCard(Att.absHours(state.attendance.marks, Cloud.my.certs, state.settings.subgroup)) +
     '<div class="dash-cols"><section class="card"><h2>Моя посещаемость · ' +
     monthName(ym) +
     ' <button class="btn sm" data-action="nav" data-tab="attendance">Открыть</button></h2>' +

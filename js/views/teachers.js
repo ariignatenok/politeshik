@@ -5,10 +5,10 @@
  * @returns {string} HTML.
  */
 function teacherCards() {
-  const s = Store.s,
+  const state = Store.s,
     q = U.norm(ui.teacherQuery),
     sf = ui.teacherSubject;
-  const list = s.teachers
+  const list = state.teachers
     .filter(
       t =>
         (sf === 'all' || t.subjectIds.includes(sf)) &&
@@ -75,7 +75,7 @@ function teacherCards() {
  * @returns {string} HTML.
  */
 function viewTeachers() {
-  const s = Store.s;
+  const state = Store.s;
   return (
     '<div class="page-head"><div><h1>Преподаватели</h1><p>Контакты, требования и заметки</p></div><div class="head-actions"><button class="btn primary" data-action="t-add">＋ Преподаватель</button></div></div>' +
     '<div class="searchbar"><input class="input" id="tQ" placeholder="' +
@@ -84,7 +84,7 @@ function viewTeachers() {
     U.esc(ui.teacherQuery) +
     '" data-input="teacher-search">' +
     '<select class="input" data-change="teacher-filter" aria-label="Фильтр по предмету"><option value="all">Все предметы</option>' +
-    s.subjects
+    state.subjects
       .map(
         x =>
           '<option value="' +

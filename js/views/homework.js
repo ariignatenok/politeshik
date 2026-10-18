@@ -31,8 +31,16 @@ function hwRow(h) {
         '</small>'
       : '<small>Срок не указан</small>') +
     '</div>' +
+    '<div class="item-actions">' +
+    (h.deadline && !past
+      ? '<button class="icon-btn" data-action="ics-item" data-id="' +
+        h.id +
+        '" title="Добавить в календарь" aria-label="Добавить в календарь">' +
+        ICONS.calendarDay +
+        '</button>'
+      : '') +
     (canEdit()
-      ? '<div class="item-actions"><button class="icon-btn" data-action="edit-item" data-kind="hw" data-id="' +
+      ? '<button class="icon-btn" data-action="edit-item" data-kind="hw" data-id="' +
         h.id +
         '" aria-label="Изменить">' +
         ICONS.pencil +
@@ -40,9 +48,9 @@ function hwRow(h) {
         h.id +
         '" aria-label="Удалить">' +
         ICONS.wastebasket +
-        '</button></div>'
+        '</button>'
       : '') +
-    '</div>'
+    '</div></div>'
   );
 }
 /**
@@ -50,10 +58,10 @@ function hwRow(h) {
  * @returns {string} HTML.
  */
 function viewHw() {
-  const s = Store.s,
+  const state = Store.s,
     f = ui.hwSubject || 'all';
-  const subs = s.subjects.filter(x => s.homework.some(h => h.subjectId === x.id));
-  const hs = s.homework.filter(h => f === 'all' || h.subjectId === f);
+  const subs = state.subjects.filter(x => state.homework.some(h => h.subjectId === x.id));
+  const hs = state.homework.filter(h => f === 'all' || h.subjectId === f);
   /**
    * Сравнивает ДЗ по сроку для сортировки.
    * @param {Object} a Первое ДЗ.
@@ -85,10 +93,11 @@ function viewHw() {
       : '';
   return (
     '<div class="page-head"><div><h1>Домашка</h1><p>Домашние задания со сроками сдачи. Контрольные и зачёты на паре — на «Главной».</p></div>' +
-    (canEdit()
-      ? '<div class="head-actions"><button class="btn primary" data-action="hw-add">＋ Добавить ДЗ</button></div>'
-      : '') +
-    '</div>' +
+    '<div class="head-actions"><button class="btn" data-action="ics-all">' +
+    ICONS.calendarDay +
+    ' Все дедлайны в календарь</button>' +
+    (canEdit() ? '<button class="btn primary" data-action="hw-add">＋ Добавить ДЗ</button>' : '') +
+    '</div></div>' +
     '<div class="grid-stats"><div class="stat"><b>' +
     soon.length +
     '</b><small>со сроком впереди</small></div><div class="stat"><b>' +
@@ -131,7 +140,7 @@ function viewHw() {
  * Открывает форму нового ДЗ.
  */
 function openHwNewForm() {
-  const s = Store.s;
+  const state = Store.s;
   UI.open(
     'Новое домашнее задание',
     '<div data-form="hwg">' +

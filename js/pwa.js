@@ -13,5 +13,4 @@ function registerServiceWorker() {
   });
   navigator.serviceWorker.register('service-worker.js').catch(() => {});
 }
-
 window.addEventListener('load', registerServiceWorker);

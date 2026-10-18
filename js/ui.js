@@ -30,7 +30,7 @@ const UI = {
       setTimeout(() => {
         try {
           f.focus();
-        } catch (e) {}
+        } catch (error) {}
       }, 60);
   },
   /**
@@ -62,8 +62,8 @@ const UI = {
       };
       $('#cf-no').onclick = () => done(false);
       $('#cf-yes').onclick = () => done(true);
-      root.firstChild.addEventListener('click', e => {
-        if (e.target === root.firstChild) done(false);
+      root.firstChild.addEventListener('click', event => {
+        if (event.target === root.firstChild) done(false);
       });
     });
   },
@@ -102,7 +102,7 @@ const UI = {
     document.documentElement.setAttribute('data-theme', t);
     try {
       window.localStorage.setItem('politeshik:theme', t);
-    } catch (e) {}
+    } catch (error) {}
     const a = $('#theme-btn-side'),
       b = $('#theme-btn-top');
     if (a) a.textContent = th.ico + ' Тема: ' + th.name;

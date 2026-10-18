@@ -4,9 +4,13 @@ const SUPA_URL = 'https://mrxqzzaayyaiwyarwqsg.supabase.co';
 const SUPA_KEY = 'sb_publishable_l6d7ITCOELD83veX6pV_fg_iee8Gizv';
 const supa =
   window.supabase && window.supabase.createClient
-    ? window.supabase.createClient(SUPA_URL, SUPA_KEY, {auth: {persistSession: true, autoRefreshToken: true}})
+    ? window.supabase.createClient(SUPA_URL, SUPA_KEY, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true
+        }
+      })
     : null;
-
 /**
  * Переводит ошибку входа Supabase в понятное сообщение.
  * @param {Object} e Ошибка Supabase.

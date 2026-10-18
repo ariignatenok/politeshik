@@ -54,12 +54,14 @@ const Profile = {
    * Копирует аватар, «О себе» и достижения в профиль в облаке.
    */
   push() {
-    if (Cloud.status !== 'online' || !Cloud.profile) return;
-    const s = Store.s;
+    if (Cloud.status !== 'online' || !Cloud.profile || Cloud.isTeacher) return;
+    const state = Store.s;
     Cloud.profile.avatar = myAvatar();
-    Cloud.profile.about = s.settings.about || '';
-    Cloud.profile.ach = s.ach || {};
-    Cloud.profile.stats = {cards: s.cards.filter(c => c.known).length};
+    Cloud.profile.about = state.settings.about || '';
+    Cloud.profile.ach = state.ach || {};
+    Cloud.profile.stats = {
+      cards: state.cards.filter(c => c.known).length
+    };
     Cloud.pushProfile();
   },
   /**

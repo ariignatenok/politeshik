@@ -1,6 +1,11 @@
 'use strict';
 
-const ST_INFO = {п: ['Присутствую', 'ok'], о: ['Опоздал(а)', 'late'], н: ['Нет', 'no'], у: ['По справке', 'exc']};
+const ST_INFO = {
+  п: ['Присутствую', 'ok'],
+  о: ['Опоздал(а)', 'late'],
+  н: ['Нет', 'no'],
+  у: ['По справке', 'exc']
+};
 /**
  * Строит кнопки статусов п, о, н для пары.
  * @param {string} date Дата в формате ГГГГ-ММ-ДД.
@@ -36,7 +41,6 @@ const statusBtns = (date, pair, cur, uid, locked) =>
     )
     .join('') +
   '</div>';
-
 /**
  * Строит список пар дня с кнопками отметок.
  * @param {string} date Дата в формате ГГГГ-ММ-ДД.
@@ -97,7 +101,6 @@ function attDayHtml(date, marks, certs, sub, uid, locked) {
     '</div>'
   );
 }
-
 /**
  * Выбирает цвет процента посещаемости.
  * @param {number} p Процент посещаемости.
@@ -257,7 +260,6 @@ function periodControls() {
  */
 const attRange = () =>
   ui.attScope === 'all' ? [ATT_START, '9999-12-31'] : [ui.attMonth + '-01', monthEnd(ui.attMonth)];
-
 /**
  * Строит карточку лимита пропусков.
  * @param {number} h Часы пропусков.
@@ -315,13 +317,13 @@ const absCell = e => {
  */
 function viewAttendance() {
   const today = U.iso(U.today()),
-    s = Store.s;
+    state = Store.s;
   if (!ui.attDate) ui.attDate = today;
   if (!ui.attMonth) ui.attMonth = today.slice(0, 7);
   const date = ui.attDate,
-    marks = s.attendance.marks,
+    marks = state.attendance.marks,
     certs = Cloud.my.certs,
-    sub = s.settings.subgroup;
+    sub = state.settings.subgroup;
   const locked = date < ATT_START || date > today || (Cloud.status === 'online' && date !== today),
     rg = attRange(),
     st = Att.stats(marks, certs, sub, rg[0], rg[1]);

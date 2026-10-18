@@ -129,7 +129,14 @@ const ACH = [
     t: c => c.photos >= 10,
     p: c => [Math.min(c.photos, 10), 10]
   },
-  {id: 'newbie', g: 'Особые', ico: ICONS.seedling, name: 'Новичок', desc: 'Создал кабинет', t: c => c.cabinet},
+  {
+    id: 'newbie',
+    g: 'Особые',
+    ico: ICONS.seedling,
+    name: 'Новичок',
+    desc: 'Создал кабинет',
+    t: c => c.cabinet
+  },
   {
     id: 'owl',
     g: 'Особые',
@@ -180,13 +187,13 @@ const Ach = {
    * @returns {Object} показатели: отметки, серии, карточки, сообщения.
    */
   ctx() {
-    const s = Store.s,
-      marks = s.attendance.marks,
+    const state = Store.s,
+      marks = state.attendance.marks,
       certs = Cloud.my.certs,
-      sub = s.settings.subgroup,
+      sub = state.settings.subgroup,
       today = U.iso(U.today()),
       now = new Date(),
-      m = s.meta;
+      m = state.meta;
     let streak = 0,
       cur = 0;
     for (let d = U.fromISO(ATT_START), e = U.fromISO(today); d <= e; d = U.addDays(d, 1)) {
@@ -239,11 +246,11 @@ const Ach = {
       perfectMonth,
       progress,
       semPerfect,
-      known: s.cards.filter(c => c.known).length,
+      known: state.cards.filter(c => c.known).length,
       examPerfect: m.examPerfect,
       dmSent: Dm.msgs.filter(x => x.thread_uid === Cloud.uid && x.sender === Cloud.uid).length,
       comments: News.comments.filter(x => x.author === Cloud.uid).length,
-      msgs: s.chat.msgs.filter(x => x.from === 'me').length + (m.msgSent || 0),
+      msgs: state.chat.msgs.filter(x => x.from === 'me').length + (m.msgSent || 0),
       photos: m.photos || 0,
       cabinet: Cloud.status !== 'online' || Cloud.hasCabinet(),
       owl: m.owl || h >= 23,
@@ -257,17 +264,17 @@ const Ach = {
    * @returns {Array<Object>|undefined} только что полученные достижения.
    */
   check() {
-    if (App.gateMode()) return;
-    const s = Store.s,
+    if (App.gateMode() || Cloud.isTeacher) return;
+    const state = Store.s,
       now = new Date(),
       h = now.getHours();
-    if (h >= 23) s.meta.owl = true;
-    if (h < 7) s.meta.early = true;
+    if (h >= 23) state.meta.owl = true;
+    if (h < 7) state.meta.early = true;
     const c = Ach.ctx(),
       fresh = [];
     ACH.forEach(a => {
-      if (!s.ach[a.id] && a.t(c)) {
-        s.ach[a.id] = now.toISOString();
+      if (!state.ach[a.id] && a.t(c)) {
+        state.ach[a.id] = now.toISOString();
         fresh.push(a);
       }
     });
@@ -279,7 +286,9 @@ const Ach = {
         setTimeout(
           () => {
             Mascot.celebrate(ICONS.trophy + ' ' + a.ico + ' ' + a.name);
-            Notifier.show('ach', 'Ты получил ачивку!', a.ico + ' ' + a.name + ' — ' + a.desc, {tag: 'ach' + a.id});
+            Notifier.show('ach', 'Ты получил ачивку!', a.ico + ' ' + a.name + ' — ' + a.desc, {
+              tag: 'ach' + a.id
+            });
           },
           base + i * 3900
         )
@@ -287,15 +296,14 @@ const Ach = {
     }
     return fresh;
   },
-
   /**
    * Строит страницу достижений с прогрессом.
    * @returns {string} HTML.
    */
   html() {
-    const s = Store.s,
+    const state = Store.s,
       c = Ach.ctx(),
-      got = ACH.filter(a => s.ach[a.id]).length;
+      got = ACH.filter(a => state.ach[a.id]).length;
     const groups = [...new Set(ACH.map(a => a.g))];
     return (
       '<div class="ach-head"><h2>Открыто ' +
@@ -313,7 +321,7 @@ const Ach = {
             '</h3><div class="ach-grid">' +
             ACH.filter(a => a.g === g)
               .map(a => {
-                const at = s.ach[a.id],
+                const at = state.ach[a.id],
                   hid = a.hidden && !at,
                   pr = a.p && !at ? a.p(c) : null;
                 return (

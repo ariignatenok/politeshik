@@ -21,8 +21,16 @@ const Cloud = (() => {
     cfgSig: '',
     gworks: [],
     chatLoaded: false,
-    my: {certs: [], files: []},
-    adm: {profiles: {}, att: {}, certs: {}, chat: {}},
+    my: {
+      certs: [],
+      files: []
+    },
+    adm: {
+      profiles: {},
+      att: {},
+      certs: {},
+      chat: {}
+    },
     err: '',
     pending: 0,
     admReady: false,
@@ -35,7 +43,6 @@ const Cloud = (() => {
    * @returns {*} копия.
    */
   const clone = o => JSON.parse(JSON.stringify(o));
-
   /**
    * Создаёт доступ к одному документу таблицы docs.
    * @param {string} path Путь документа.
@@ -46,10 +53,17 @@ const Cloud = (() => {
       async get() {
         const {data, error} = await supa.from('docs').select('data').eq('path', path).maybeSingle();
         if (error) throw error;
-        return {exists: !!data, data: () => (data ? data.data : null)};
+        return {
+          exists: !!data,
+          data: () => (data ? data.data : null)
+        };
       },
       async set(obj) {
-        const {error} = await supa.from('docs').upsert({path, data: obj, updated: new Date().toISOString()});
+        const {error} = await supa.from('docs').upsert({
+          path,
+          data: obj,
+          updated: new Date().toISOString()
+        });
         if (error) throw error;
       },
       async delete() {
@@ -60,30 +74,51 @@ const Cloud = (() => {
         return colAPI(path + '/' + name);
       },
       async acquire({holder}) {
-        const {error} = await supa
-          .from('docs')
-          .insert({path, data: {uid: holder, at: new Date().toISOString()}, updated: new Date().toISOString()});
+        const {error} = await supa.from('docs').insert({
+          path,
+          data: {
+            uid: holder,
+            at: new Date().toISOString()
+          },
+          updated: new Date().toISOString()
+        });
         if (error && error.code === '23505') {
           const {data} = await supa.from('docs').select('data').eq('path', path).maybeSingle();
-          if (data && data.data && data.data.uid === holder) return {acquired: true};
-          return {acquired: false};
+          if (data && data.data && data.data.uid === holder)
+            return {
+              acquired: true
+            };
+          return {
+            acquired: false
+          };
         }
-        if (error) return {acquired: false, error};
-        return {acquired: true};
+        if (error)
+          return {
+            acquired: false,
+            error
+          };
+        return {
+          acquired: true
+        };
       },
       onSnapshot(cb, errCb) {
         const run = async () => {
           try {
             const {data, error} = await supa.from('docs').select('data').eq('path', path).maybeSingle();
             if (error) throw error;
-            cb({exists: !!data, data: () => (data ? data.data : null)});
-          } catch (e) {
-            if (errCb) errCb(e);
+            cb({
+              exists: !!data,
+              data: () => (data ? data.data : null)
+            });
+          } catch (error) {
+            if (errCb) errCb(error);
           }
         };
         run();
         const id = setInterval(run, 20000);
-        return {unsubscribe: () => clearInterval(id)};
+        return {
+          unsubscribe: () => clearInterval(id)
+        };
       }
     };
   }
@@ -108,26 +143,40 @@ const Cloud = (() => {
               .not('path', 'like', p + '%/%');
             if (error) throw error;
             const direct = (data || []).filter(r => r.path.slice(p.length).indexOf('/') === -1);
-            cb({docs: direct.map(r => ({id: r.path.slice(p.length), data: () => r.data}))});
-          } catch (e) {
-            if (errCb) errCb(e);
+            cb({
+              docs: direct.map(r => ({
+                id: r.path.slice(p.length),
+                data: () => r.data
+              }))
+            });
+          } catch (error) {
+            if (errCb) errCb(error);
           }
         };
         run();
         const id = setInterval(run, 20000);
-        return {unsubscribe: () => clearInterval(id)};
+        return {
+          unsubscribe: () => clearInterval(id)
+        };
       }
     };
   }
   const DB = {
-    /**  * Возвращает доступ к документу по пути.  * @param {string} p Путь документа.  * @returns {Object} Объект.  */ doc: p =>
-      docAPI(p),
-    /**  * Возвращает доступ к группе документов.  * @param {string} n Префикс пути.  * @returns {Object} Объект.  */ collection:
-      n => colAPI(n)
+    /**
+     * Возвращает доступ к документу по пути.
+     * @param {string} p Путь документа.
+     * @returns {Object} Объект.
+     */
+    doc: p => docAPI(p),
+    /**
+     * Возвращает доступ к группе документов.
+     * @param {string} n Префикс пути.
+     * @returns {Object} Объект.
+     */
+    collection: n => colAPI(n)
   };
   C.db = DB;
   C.adminUids = new Set();
-
   C.dl = {
     async save({filename, data}) {
       const blob = new Blob([data]);
@@ -141,18 +190,22 @@ const Cloud = (() => {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
   };
-
   /**
    * Считает подпись расписания, которое сейчас лежит в этом устройстве.
    * @returns {string} Строка.
    */
   function localCfgSig() {
-    const s = Store.s;
+    const state = Store.s;
     return JSON.stringify([
-      s.schedule,
-      s.settings.pairs,
-      s.settings.numeratorAnchor,
-      s.subjects.map(x => ({id: x.id, name: x.name, short: x.short, color: x.color}))
+      state.schedule,
+      state.settings.pairs,
+      state.settings.numeratorAnchor,
+      state.subjects.map(x => ({
+        id: x.id,
+        name: x.name,
+        short: x.short,
+        color: x.color
+      }))
     ]);
   }
   /**
@@ -196,7 +249,7 @@ const Cloud = (() => {
    * @param {Object} cfg Расписание группы.
    */
   function applyConfig(cfg) {
-    const s = Store.s;
+    const state = Store.s;
     if (C.isAdmin) {
       const cloudSig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]),
         act = adminDecide('cfgBase', cloudSig, localCfgSig(), cfg.updated);
@@ -206,29 +259,79 @@ const Cloud = (() => {
         C.pushConfig();
       }
       if (act !== 'take') return;
-      s.schedule = (cfg.schedule || []).map(l =>
-        Object.assign({start: '', end: '', who: '', room: '', subgroup: ''}, l)
+      state.schedule = (cfg.schedule || []).map(l =>
+        Object.assign(
+          {
+            start: '',
+            end: '',
+            who: '',
+            room: '',
+            subgroup: ''
+          },
+          l
+        )
       );
       if (Array.isArray(cfg.pairs) && cfg.pairs.length)
-        s.settings.pairs = cfg.pairs.map(p => ({start: p.start || '', end: p.end || ''}));
-      if (cfg.anchor) s.settings.numeratorAnchor = cfg.anchor;
+        state.settings.pairs = cfg.pairs.map(p => ({
+          start: p.start || '',
+          end: p.end || ''
+        }));
+      if (cfg.anchor) state.settings.numeratorAnchor = cfg.anchor;
       (cfg.subjects || []).forEach(x => {
-        const have = s.subjects.find(y => y.id === x.id);
-        if (have) Object.assign(have, {name: x.name, short: x.short, color: x.color});
-        else s.subjects.push(Object.assign({links: [], hasFormulas: false, formulas: []}, x));
+        const have = state.subjects.find(y => y.id === x.id);
+        if (have)
+          Object.assign(have, {
+            name: x.name,
+            short: x.short,
+            color: x.color
+          });
+        else
+          state.subjects.push(
+            Object.assign(
+              {
+                links: [],
+                hasFormulas: false,
+                formulas: []
+              },
+              x
+            )
+          );
       });
-      s.meta.cfgBase = cloudSig;
+      state.meta.cfgBase = cloudSig;
       Store.save();
       App.renderSoft();
       return;
     }
-    s.schedule = (cfg.schedule || []).map(l => Object.assign({start: '', end: '', who: '', room: '', subgroup: ''}, l));
+    state.schedule = (cfg.schedule || []).map(l =>
+      Object.assign(
+        {
+          start: '',
+          end: '',
+          who: '',
+          room: '',
+          subgroup: ''
+        },
+        l
+      )
+    );
     if (Array.isArray(cfg.pairs) && cfg.pairs.length)
-      s.settings.pairs = cfg.pairs.map(p => ({start: p.start || '', end: p.end || ''}));
-    if (cfg.anchor) s.settings.numeratorAnchor = cfg.anchor;
+      state.settings.pairs = cfg.pairs.map(p => ({
+        start: p.start || '',
+        end: p.end || ''
+      }));
+    if (cfg.anchor) state.settings.numeratorAnchor = cfg.anchor;
     (cfg.subjects || []).forEach(x => {
-      if (!s.subjects.some(y => y.id === x.id))
-        s.subjects.push(Object.assign({links: [], hasFormulas: false, formulas: []}, x));
+      if (!state.subjects.some(y => y.id === x.id))
+        state.subjects.push(
+          Object.assign(
+            {
+              links: [],
+              hasFormulas: false,
+              formulas: []
+            },
+            x
+          )
+        );
     });
     Store.save();
   }
@@ -237,25 +340,45 @@ const Cloud = (() => {
    * @param {Object} x Общий контент админа.
    */
   function applyExtra(x) {
-    const s = Store.s;
-    if (Array.isArray(x.teachers)) s.teachers = x.teachers;
+    const state = Store.s;
+    if (Array.isArray(x.teachers)) state.teachers = x.teachers;
     if (Array.isArray(x.subjects))
-      s.subjects = x.subjects.map(sb => Object.assign({links: [], hasFormulas: false, formulas: []}, sb));
-    if (Array.isArray(x.homework)) s.homework = x.homework.map(h => Object.assign({}, h));
+      state.subjects = x.subjects.map(sb =>
+        Object.assign(
+          {
+            links: [],
+            hasFormulas: false,
+            formulas: []
+          },
+          sb
+        )
+      );
+    if (Array.isArray(x.homework)) state.homework = x.homework.map(h => Object.assign({}, h));
     if (Array.isArray(x.notes))
-      s.notes = s.notes.filter(n => String(n.id).indexOf('sd_') === 0 || !n.subjectId).concat(x.notes);
+      state.notes = state.notes.filter(n => String(n.id).indexOf('sd_') === 0 || !n.subjectId).concat(x.notes);
     if (Array.isArray(x.cards)) {
       const known = {};
-      s.cards.forEach(c => {
+      state.cards.forEach(c => {
         if (c.known) known[c.id] = true;
       });
-      s.cards = s.cards
+      state.cards = state.cards
         .filter(c => String(c.id).indexOf('sd_') === 0)
-        .concat(x.cards.map(c => Object.assign({known: !!known[c.id]}, c, {known: !!known[c.id]})));
+        .concat(
+          x.cards.map(c =>
+            Object.assign(
+              {
+                known: !!known[c.id]
+              },
+              c,
+              {
+                known: !!known[c.id]
+              }
+            )
+          )
+        );
     }
     Store.save();
   }
-
   /**
    * Подписывается на свои данные студента.
    */
@@ -283,7 +406,9 @@ const Cloud = (() => {
     DB.doc('chat/' + C.uid).onSnapshot(snap => {
       if (snap.exists) {
         const c = clone(snap.data());
-        Store.s.chat = Object.assign(Chat.blank(), c, {readAt: Store.s.chat.readAt || ''});
+        Store.s.chat = Object.assign(Chat.blank(), c, {
+          readAt: Store.s.chat.readAt || ''
+        });
         Store.save();
       } else if (!snap.exists && Store.s.chat.msgs.length) C.pushChat();
       C.chatLoaded = true;
@@ -299,12 +424,15 @@ const Cloud = (() => {
    */
   function watchGroup() {
     DB.doc('group/config').onSnapshot(snap => {
+      const first = !C.ready;
+      C.ready = true;
       C.cfg = snap.exists ? clone(snap.data()) : null;
       if (C.cfg) applyConfig(C.cfg);
       else if (C.isAdmin) {
         C.syncedCfg = true;
         C.pushConfig(true);
       }
+      if (first) App.renderSoft();
     });
     DB.doc('group/works').onSnapshot(snap => {
       C.gworks = snap.exists ? clone(snap.data().items || []) : [];
@@ -334,6 +462,56 @@ const Cloud = (() => {
     DB.doc('group/faq').onSnapshot(snap => {
       C.faq = snap.exists ? clone(snap.data().items || null) : null;
     });
+  }
+  /**
+   * Подписывается на данные журнала для преподавателя: отметки, студенты и справки без подробностей.
+   */
+  function watchTeacher() {
+    /**
+     * Загружает студентов и справки (только даты) для журнала преподавателя.
+     */
+    const refresh = async () => {
+      try {
+        const [st, ce] = await Promise.all([supa.rpc('teacher_students'), supa.rpc('teacher_certs')]);
+        const profiles = {},
+          certs = {};
+        (st.data || []).forEach(r => {
+          profiles[r.uid] = {
+            name: r.name,
+            rid: r.rid,
+            subgroup: r.subgroup || ''
+          };
+        });
+        (ce.data || []).forEach(r => {
+          (certs[r.uid] = certs[r.uid] || {
+            items: []
+          }).items.push({
+            id: r.uid + r.date_from,
+            kind: 'Справка',
+            from: r.date_from,
+            to: r.date_to,
+            confirmed: r.confirmed
+          });
+        });
+        C.adm.profiles = profiles;
+        C.adm.certs = certs;
+      } catch (error) {}
+      C.admReady = true;
+      App.renderSoft();
+    };
+    DB.collection('attendance').onSnapshot(
+      snap => {
+        const m = {};
+        snap.docs.forEach(x => {
+          m[x.id] = clone(x.data());
+        });
+        C.adm.att = m;
+        App.renderSoft();
+      },
+      () => {}
+    );
+    refresh();
+    if (!C.teacherTimer) C.teacherTimer = setInterval(refresh, 30000);
   }
   /**
    * Подписывается на данные всех студентов (только админ).
@@ -381,7 +559,6 @@ const Cloud = (() => {
       App.renderSoft();
     });
   }
-
   /**
    * Подключается к облаку: проверяет сессию, права админа и запускает подписки.
    */
@@ -401,11 +578,20 @@ const Cloud = (() => {
         return;
       }
       C.uid = session.user.id;
-      C.me = {id: session.user.id, name: session.user.email || 'user', isOwner: false};
+      C.me = {
+        id: session.user.id,
+        name: session.user.email || 'user',
+        isOwner: false
+      };
       try {
         const {data: ad} = await supa.from('admins').select('uid').eq('uid', C.uid).maybeSingle();
         if (ad) C.me.isOwner = true;
-      } catch (e) {}
+      } catch (error) {}
+      C.isTeacher = false;
+      try {
+        const {data: tc} = await supa.from('teachers').select('uid').eq('uid', C.uid).maybeSingle();
+        if (tc) C.isTeacher = true;
+      } catch (error) {}
       C.isAdmin = !!C.me.isOwner;
       C.status = 'online';
       C.adminUids = new Set(C.isAdmin ? [C.uid] : []);
@@ -413,6 +599,16 @@ const Cloud = (() => {
       watchClaims();
       const ps = await DB.doc('profiles/' + C.uid).get();
       C.profile = ps.exists ? clone(ps.data()) : null;
+      if (C.isTeacher && !C.profile) {
+        C.profile = {
+          role: 'teacher',
+          name: 'Преподаватель',
+          joined: new Date().toISOString()
+        };
+        await DB.doc('profiles/' + C.uid)
+          .set(C.profile)
+          .catch(() => {});
+      }
       if (C.hasCabinet()) {
         if (C.profile.theme && THEME_IDS.indexOf(C.profile.theme) >= 0 && Store.s.settings.theme !== C.profile.theme) {
           Store.s.settings.theme = C.profile.theme;
@@ -420,20 +616,27 @@ const Cloud = (() => {
         Store.s.settings.subgroup = C.profile.subgroup || '';
         Store.s.settings.displayName = C.profile.name || '';
         C.profile.seen = new Date().toISOString();
-        DB.doc('profiles/' + C.uid)
+        await DB.doc('profiles/' + C.uid)
           .set(C.profile)
           .catch(() => {});
       }
       watchOwn();
       watchGroup();
       if (C.isAdmin) watchAdmin();
-    } catch (e) {
+      if (C.isTeacher) watchTeacher();
+      clearTimeout(C.readyTimer);
+      C.readyTimer = setTimeout(() => {
+        if (!C.ready) {
+          C.ready = true;
+          App.renderSoft();
+        }
+      }, 3500);
+    } catch (error) {
       C.status = 'offline';
-      C.err = String((e && e.message) || e);
+      C.err = String((error && error.message) || error);
     }
     C.loaded = true;
   };
-
   /**
    * Записывает документ в облако.
    * @param {string} path Путь документа.
@@ -469,9 +672,12 @@ const Cloud = (() => {
           cm = sn.exists ? sn.data().marks || {} : {};
         Store.s.attendance.marks = Object.assign({}, cm, Store.s.attendance.marks);
         Store.save();
-      } catch (e) {}
+      } catch (error) {}
     }
-    writeDoc('attendance/' + C.uid, {marks: Store.s.attendance.marks, updated: new Date().toISOString()});
+    writeDoc('attendance/' + C.uid, {
+      marks: Store.s.attendance.marks,
+      updated: new Date().toISOString()
+    });
   };
   /**
    * Отправляет состояние чата с Политешиком в облако.
@@ -494,12 +700,17 @@ const Cloud = (() => {
    */
   C.pushConfig = force => {
     if (!C.isAdmin || (!force && !C.syncedCfg)) return;
-    const s = Store.s,
+    const state = Store.s,
       cfg = {
-        schedule: s.schedule,
-        pairs: s.settings.pairs,
-        anchor: s.settings.numeratorAnchor,
-        subjects: s.subjects.map(x => ({id: x.id, name: x.name, short: x.short, color: x.color})),
+        schedule: state.schedule,
+        pairs: state.settings.pairs,
+        anchor: state.settings.numeratorAnchor,
+        subjects: state.subjects.map(x => ({
+          id: x.id,
+          name: x.name,
+          short: x.short,
+          color: x.color
+        })),
         updated: new Date().toISOString()
       };
     const sig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects]);
@@ -520,16 +731,28 @@ const Cloud = (() => {
    * @returns {Object} преподаватели, предметы, ДЗ, конспекты, карточки.
    */
   C.buildExtra = () => {
-    const s = Store.s,
+    const state = Store.s,
       isSeed = id => String(id).indexOf('sd_') === 0;
     return {
-      teachers: s.teachers,
-      subjects: s.subjects,
-      homework: s.homework.map(h => ({id: h.id, subjectId: h.subjectId, text: h.text, deadline: h.deadline})),
-      notes: s.notes.filter(n => n.subjectId && !isSeed(n.id)),
-      cards: s.cards
+      teachers: state.teachers,
+      subjects: state.subjects,
+      homework: state.homework.map(h => ({
+        id: h.id,
+        subjectId: h.subjectId,
+        text: h.text,
+        deadline: h.deadline
+      })),
+      notes: state.notes.filter(n => n.subjectId && !isSeed(n.id)),
+      cards: state.cards
         .filter(c => !isSeed(c.id))
-        .map(c => ({id: c.id, subjectId: c.subjectId, cat: c.cat, q: c.q, a: c.a, link: c.link || ''}))
+        .map(c => ({
+          id: c.id,
+          subjectId: c.subjectId,
+          cat: c.cat,
+          q: c.q,
+          a: c.a,
+          link: c.link || ''
+        }))
     };
   };
   /**
@@ -548,16 +771,29 @@ const Cloud = (() => {
     C.extraSig = sig;
     Store.s.meta.extraBase = sig;
     Store.save();
-    writeDoc('group/extra', Object.assign({}, x, {updated: new Date().toISOString()}));
+    writeDoc(
+      'group/extra',
+      Object.assign({}, x, {
+        updated: new Date().toISOString()
+      })
+    );
   };
   /**
    * Сохраняет отмены и замены пар.
    */
-  C.saveChanges = () => writeDoc('group/changes', {items: C.changes, updated: new Date().toISOString()});
+  C.saveChanges = () =>
+    writeDoc('group/changes', {
+      items: C.changes,
+      updated: new Date().toISOString()
+    });
   /**
    * Сохраняет вопросы Политешика.
    */
-  C.saveFaq = () => writeDoc('group/faq', {items: C.faq, updated: new Date().toISOString()});
+  C.saveFaq = () =>
+    writeDoc('group/faq', {
+      items: C.faq,
+      updated: new Date().toISOString()
+    });
   /**
    * Сохраняет рейтинг.
    * @param {Object} obj Рейтинг.
@@ -566,12 +802,17 @@ const Cloud = (() => {
   /**
    * Сохраняет работы группы.
    */
-  C.saveGworks = () => writeDoc('group/works', {items: C.gworks, updated: new Date().toISOString()});
+  C.saveGworks = () =>
+    writeDoc('group/works', {
+      items: C.gworks,
+      updated: new Date().toISOString()
+    });
   /**
    * Проверяет, создан ли у пользователя личный кабинет.
    * @returns {boolean} true, если условие выполнено.
    */
   C.hasCabinet = () => {
+    if (C.isTeacher) return true;
     const p = C.profile,
       r = p && ROSTER_BY_ID[p.rid];
     if (!r || r.flag) return false;
@@ -585,12 +826,18 @@ const Cloud = (() => {
    */
   C.saveProfile = async (rid, subgroup) => {
     const r = ROSTER_BY_ID[rid];
-    C.profile = Object.assign({joined: new Date().toISOString()}, C.profile || {}, {
-      rid,
-      name: r.name,
-      subgroup,
-      seen: new Date().toISOString()
-    });
+    C.profile = Object.assign(
+      {
+        joined: new Date().toISOString()
+      },
+      C.profile || {},
+      {
+        rid,
+        name: r.name,
+        subgroup,
+        seen: new Date().toISOString()
+      }
+    );
     Store.s.settings.subgroup = subgroup;
     Store.s.settings.displayName = r.name;
     Store.save();
@@ -603,18 +850,41 @@ const Cloud = (() => {
    */
   C.claim = async rid => {
     const ro = ROSTER_BY_ID[rid];
-    if (!ro || ro.flag) return {ok: false, why: 'bad'};
+    if (!ro || ro.flag)
+      return {
+        ok: false,
+        why: 'bad'
+      };
     try {
       const ref = DB.doc('claims/' + rid);
-      const lease = await ref.acquire({holder: C.uid});
-      if (!lease.acquired) return {ok: false, why: 'taken'};
+      const lease = await ref.acquire({
+        holder: C.uid
+      });
+      if (!lease.acquired)
+        return {
+          ok: false,
+          why: 'taken'
+        };
       const s = await ref.get(),
         d = s.exists ? s.data() : null;
-      if (d && d.uid && d.uid !== C.uid) return {ok: false, why: 'taken'};
-      if (!d || d.uid !== C.uid) await ref.set({uid: C.uid, at: new Date().toISOString()});
-      return {ok: true};
-    } catch (e) {
-      return {ok: false, why: 'denied'};
+      if (d && d.uid && d.uid !== C.uid)
+        return {
+          ok: false,
+          why: 'taken'
+        };
+      if (!d || d.uid !== C.uid)
+        await ref.set({
+          uid: C.uid,
+          at: new Date().toISOString()
+        });
+      return {
+        ok: true
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        why: 'denied'
+      };
     }
   };
   /**
@@ -625,10 +895,10 @@ const Cloud = (() => {
   C.release = async (rid, uid) => {
     try {
       if (rid) await DB.doc('claims/' + rid).delete();
-    } catch (e) {}
+    } catch (error) {}
     try {
       if (uid) await DB.doc('profiles/' + uid).delete();
-    } catch (e) {}
+    } catch (error) {}
     if (uid) delete C.adm.profiles[uid];
     if (rid) delete C.claims[rid];
   };
@@ -639,9 +909,21 @@ const Cloud = (() => {
    */
   C.addCert = async (meta, dataUrl) => {
     const id = U.uid('c');
-    await DB.doc('certs/' + C.uid + '/img/' + id).set({data: dataUrl});
-    C.my.certs = C.my.certs.concat([Object.assign({id, at: new Date().toISOString()}, meta)]);
-    writeDoc('certs/' + C.uid, {items: C.my.certs});
+    await DB.doc('certs/' + C.uid + '/img/' + id).set({
+      data: dataUrl
+    });
+    C.my.certs = C.my.certs.concat([
+      Object.assign(
+        {
+          id,
+          at: new Date().toISOString()
+        },
+        meta
+      )
+    ]);
+    writeDoc('certs/' + C.uid, {
+      items: C.my.certs
+    });
   };
   /**
    * Удаляет справку.
@@ -649,10 +931,12 @@ const Cloud = (() => {
    */
   C.delCert = async id => {
     C.my.certs = C.my.certs.filter(c => c.id !== id);
-    writeDoc('certs/' + C.uid, {items: C.my.certs});
+    writeDoc('certs/' + C.uid, {
+      items: C.my.certs
+    });
     try {
       await DB.doc('certs/' + C.uid + '/img/' + id).delete();
-    } catch (e) {}
+    } catch (error) {}
   };
   /**
    * Загружает фото справки.
@@ -672,9 +956,21 @@ const Cloud = (() => {
   C.addFile = async (meta, dataUrl) => {
     const id = U.uid('f'),
       base = 'data/users/' + C.uid + '/cab';
-    await DB.doc(base + '/blobs/' + id).set({data: dataUrl});
-    C.my.files = C.my.files.concat([Object.assign({id, at: new Date().toISOString()}, meta)]);
-    writeDoc(base, {files: C.my.files});
+    await DB.doc(base + '/blobs/' + id).set({
+      data: dataUrl
+    });
+    C.my.files = C.my.files.concat([
+      Object.assign(
+        {
+          id,
+          at: new Date().toISOString()
+        },
+        meta
+      )
+    ]);
+    writeDoc(base, {
+      files: C.my.files
+    });
   };
   /**
    * Удаляет личный файл.
@@ -683,10 +979,12 @@ const Cloud = (() => {
   C.delFile = async id => {
     const base = 'data/users/' + C.uid + '/cab';
     C.my.files = C.my.files.filter(f => f.id !== id);
-    writeDoc(base, {files: C.my.files});
+    writeDoc(base, {
+      files: C.my.files
+    });
     try {
       await DB.doc(base + '/blobs/' + id).delete();
-    } catch (e) {}
+    } catch (error) {}
   };
   /**
    * Загружает личный файл.
@@ -707,7 +1005,10 @@ const Cloud = (() => {
     const cur = Object.assign({}, (C.adm.att[uid] || {}).marks || {});
     if (cur[key] === st) delete cur[key];
     else cur[key] = st;
-    C.adm.att[uid] = {marks: cur, updated: new Date().toISOString()};
+    C.adm.att[uid] = {
+      marks: cur,
+      updated: new Date().toISOString()
+    };
     writeDoc('attendance/' + uid, C.adm.att[uid]);
   };
   /**
@@ -715,7 +1016,12 @@ const Cloud = (() => {
    * @param {Object} f Файл конспекта: id, name, type, size, data.
    */
   C.addNoteFile = async f => {
-    await DB.doc('group/file/' + f.id).set({data: f.data, name: f.name, type: f.type, size: f.size});
+    await DB.doc('group/file/' + f.id).set({
+      data: f.data,
+      name: f.name,
+      type: f.type,
+      size: f.size
+    });
   };
   /**
    * Загружает файл конспекта.
@@ -733,7 +1039,7 @@ const Cloud = (() => {
   C.delNoteFile = async id => {
     try {
       await DB.doc('group/file/' + id).delete();
-    } catch (e) {}
+    } catch (error) {}
   };
   /**
    * Подтверждает справку студента или снимает подтверждение (админ).
@@ -743,10 +1049,19 @@ const Cloud = (() => {
    */
   C.setCertStatus = (uid, id, ok) => {
     const items = ((C.adm.certs[uid] || {}).items || []).map(c =>
-      c.id === id ? Object.assign({}, c, {confirmed: !!ok, confirmedAt: ok ? new Date().toISOString() : ''}) : c
+      c.id === id
+        ? Object.assign({}, c, {
+            confirmed: !!ok,
+            confirmedAt: ok ? new Date().toISOString() : ''
+          })
+        : c
     );
-    C.adm.certs[uid] = {items};
-    writeDoc('certs/' + uid, {items});
+    C.adm.certs[uid] = {
+      items
+    };
+    writeDoc('certs/' + uid, {
+      items
+    });
   };
   /**
    * Удаляет справку студента вместе с фото (админ).
@@ -755,11 +1070,31 @@ const Cloud = (() => {
    */
   C.admDelCert = async (uid, id) => {
     const items = ((C.adm.certs[uid] || {}).items || []).filter(c => c.id !== id);
-    C.adm.certs[uid] = {items};
-    writeDoc('certs/' + uid, {items});
+    C.adm.certs[uid] = {
+      items
+    };
+    writeDoc('certs/' + uid, {
+      items
+    });
     try {
       await DB.doc('certs/' + uid + '/img/' + id).delete();
-    } catch (e) {}
+    } catch (error) {}
+  };
+  /**
+   * Сохраняет профиль преподавателя с именем.
+   * @param {string} name Имя преподавателя.
+   */
+  C.saveTeacherName = async name => {
+    const clean =
+      String(name || '')
+        .trim()
+        .slice(0, 60) || 'Преподаватель';
+    C.profile = Object.assign({}, C.profile || {}, {
+      role: 'teacher',
+      name: clean,
+      seen: new Date().toISOString()
+    });
+    await DB.doc('profiles/' + C.uid).set(C.profile);
   };
   /**
    * Сохраняет несколько отметок студента за день (админ).
@@ -778,7 +1113,10 @@ const Cloud = (() => {
       Store.save();
       C.pushAtt();
     } else {
-      C.adm.att[uid] = {marks: cur, updated: new Date().toISOString()};
+      C.adm.att[uid] = {
+        marks: cur,
+        updated: new Date().toISOString()
+      };
       writeDoc('attendance/' + uid, C.adm.att[uid]);
     }
   };
@@ -793,7 +1131,6 @@ const Cloud = (() => {
    * @returns {boolean} true, если условие выполнено.
    */
   C.locked = () => C.status === 'online' && !C.isAdmin && !!C.cfg;
-
   /**
    * Входит по email и паролю.
    * @param {string} email Адрес электронной почты.
@@ -801,11 +1138,24 @@ const Cloud = (() => {
    * @returns {Promise<Object>} ok и сообщение об ошибке.
    */
   C.login = async (email, password) => {
-    if (!supa) return {ok: false, msg: 'Библиотека Supabase не загрузилась. Проверьте интернет и обновите страницу.'};
-    const {error} = await supa.auth.signInWithPassword({email, password});
-    if (error) return {ok: false, msg: friendlyAuthError(error)};
+    if (!supa)
+      return {
+        ok: false,
+        msg: 'Библиотека Supabase не загрузилась. Проверьте интернет и обновите страницу.'
+      };
+    const {error} = await supa.auth.signInWithPassword({
+      email,
+      password
+    });
+    if (error)
+      return {
+        ok: false,
+        msg: friendlyAuthError(error)
+      };
     await C.init();
-    return {ok: true};
+    return {
+      ok: true
+    };
   };
   /**
    * Регистрирует аккаунт.
@@ -814,14 +1164,30 @@ const Cloud = (() => {
    * @returns {Promise<Object>} ok и сообщение об ошибке.
    */
   C.signup = async (email, password) => {
-    if (!supa) return {ok: false, msg: 'Библиотека Supabase не загрузилась.'};
-    const {data, error} = await supa.auth.signUp({email, password});
-    if (error) return {ok: false, msg: friendlyAuthError(error)};
+    if (!supa)
+      return {
+        ok: false,
+        msg: 'Библиотека Supabase не загрузилась.'
+      };
+    const {data, error} = await supa.auth.signUp({
+      email,
+      password
+    });
+    if (error)
+      return {
+        ok: false,
+        msg: friendlyAuthError(error)
+      };
     if (data.session) {
       await C.init();
-      return {ok: true};
+      return {
+        ok: true
+      };
     }
-    return {ok: false, msg: 'Проверьте почту и подтвердите регистрацию, потом войдите.'};
+    return {
+      ok: false,
+      msg: 'Проверьте почту и подтвердите регистрацию, потом войдите.'
+    };
   };
   /**
    * Выходит из аккаунта и перезагружает страницу.
@@ -830,6 +1196,5 @@ const Cloud = (() => {
     if (supa) await supa.auth.signOut();
     location.reload();
   };
-
   return C;
 })();

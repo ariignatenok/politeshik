@@ -46,7 +46,6 @@ const Md = (() => {
    * @returns {boolean} true, если условие выполнено.
    */
   const isBlock = l => /^(#{1,3}\s|```|~~~|>\s?|\s*[-*]\s+|\s*\d+[.)]\s+|-{3,}\s*$|\|)/.test(l);
-
   /**
    * Преобразует текст конспекта в HTML.
    * @param {string} src Исходный текст.
@@ -141,5 +140,8 @@ const Md = (() => {
     }
     return out.join('');
   }
-  return {render, inline};
+  return {
+    render,
+    inline
+  };
 })();

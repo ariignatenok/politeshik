@@ -21,9 +21,10 @@ const Fm = (() => {
     }
     return h;
   }
-  return {render};
+  return {
+    render
+  };
 })();
-
 const Content = (() => {
   let cache = null;
   /**
@@ -33,9 +34,17 @@ const Content = (() => {
   const data = () => {
     if (!cache) {
       try {
-        cache = {cards: SEED_CARDS, notes: SEED_NOTES, formulas: SEED_FORMULAS};
-      } catch (e) {
-        cache = {cards: [], notes: [], formulas: {}};
+        cache = {
+          cards: SEED_CARDS,
+          notes: SEED_NOTES,
+          formulas: SEED_FORMULAS
+        };
+      } catch (error) {
+        cache = {
+          cards: [],
+          notes: [],
+          formulas: {}
+        };
       }
     }
     return cache;
@@ -58,13 +67,27 @@ const Content = (() => {
     const ids = new Set(s.cards.map(c => c.id).concat(s.notes.map(n => n.id)));
     (C.cards || []).forEach(c => {
       if (has(c.subjectId) && !ids.has(c.id)) {
-        s.cards.push({id: c.id, subjectId: c.subjectId, cat: c.cat, q: c.q, a: c.a, known: false});
+        s.cards.push({
+          id: c.id,
+          subjectId: c.subjectId,
+          cat: c.cat,
+          q: c.q,
+          a: c.a,
+          known: false
+        });
         added++;
       }
     });
     (C.notes || []).forEach(n => {
       if (has(n.subjectId) && !ids.has(n.id)) {
-        s.notes.push({id: n.id, subjectId: n.subjectId, title: n.title, text: n.text, order: n.order, updated: now});
+        s.notes.push({
+          id: n.id,
+          subjectId: n.subjectId,
+          title: n.title,
+          text: n.text,
+          order: n.order,
+          updated: now
+        });
         added++;
       }
     });
@@ -84,7 +107,6 @@ const Content = (() => {
     });
     return added;
   }
-
   /**
    * Обновляет данные версии 1 до версии 2.
    * @param {Object} s Данные приложения.
@@ -94,7 +116,6 @@ const Content = (() => {
     s.notes = s.notes.filter(n => !legacy.some(l => l.title === n.title && l.text === n.text));
     apply(s);
   }
-
   const NUM_FULL = [
     [0, 1, 's_eng', '441', 'подгр.1', 'Кузнецова Л.И.'],
     [0, 2, 's_mdk0102', '215', '', 'Васильев С.Ю.'],
@@ -131,7 +152,6 @@ const Content = (() => {
         });
     });
   }
-
   /**
    * Исправляет подгруппы английского по преподавателям.
    * @param {Object} s Данные приложения.
@@ -147,5 +167,10 @@ const Content = (() => {
       if (t.id === 't_gusarova' && t.notes === 'Подгруппа 1 (английский).') t.notes = 'Подгруппа 2 (английский).';
     });
   }
-  return {apply, migrate, migrateSchedule, migrateEnglish};
+  return {
+    apply,
+    migrate,
+    migrateSchedule,
+    migrateEnglish
+  };
 })();

@@ -15,10 +15,20 @@ const News = {
       supa
         .from('news')
         .select('*')
-        .order('news_date', {ascending: false})
-        .order('created_at', {ascending: false})
+        .order('news_date', {
+          ascending: false
+        })
+        .order('created_at', {
+          ascending: false
+        })
         .limit(100),
-      supa.from('news_comments').select('*').order('created_at', {ascending: true}).limit(2000)
+      supa
+        .from('news_comments')
+        .select('*')
+        .order('created_at', {
+          ascending: true
+        })
+        .limit(2000)
     ]);
     if (n.error || c.error) return;
     const sig = n.data.map(x => x.id + x.title).join(',') + '|' + c.data.map(x => x.id).join(',');
@@ -32,7 +42,9 @@ const News = {
     News.sig = sig;
     News.loaded = true;
     if (fresh && document.hidden)
-      Notifier.show('chat', 'Новость: ' + fresh.title, String(fresh.body).slice(0, 100), {tag: 'news'});
+      Notifier.show('chat', 'Новость: ' + fresh.title, String(fresh.body).slice(0, 100), {
+        tag: 'news'
+      });
     App.renderSoft();
   },
   /**
@@ -79,7 +91,11 @@ const News = {
    * @returns {Promise<boolean>} true, если условие выполнено.
    */
   async add(title, body, date) {
-    const {error} = await supa.from('news').insert({title, body, news_date: date});
+    const {error} = await supa.from('news').insert({
+      title,
+      body,
+      news_date: date
+    });
     if (error) {
       toast('Не удалось опубликовать: ' + error.message);
       return false;
@@ -110,7 +126,10 @@ const News = {
       .trim()
       .slice(0, 1000);
     if (!text) return false;
-    const {error} = await supa.from('news_comments').insert({news_id: newsId, body: text});
+    const {error} = await supa.from('news_comments').insert({
+      news_id: newsId,
+      body: text
+    });
     if (error) {
       toast('Не удалось отправить комментарий: ' + error.message);
       return false;

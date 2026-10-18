@@ -5,7 +5,7 @@
  * @returns {Array<Object>} Массив.
  */
 function dashItems() {
-  const s = Store.s,
+  const state = Store.s,
     a = allWorks().map(w => ({
       kind: w.kind,
       id: w.id,
@@ -17,7 +17,7 @@ function dashItems() {
       done: w.done,
       g: w.g
     }));
-  s.homework.forEach(h => {
+  state.homework.forEach(h => {
     if (h.deadline)
       a.push({
         kind: 'hw',
@@ -33,7 +33,6 @@ function dashItems() {
   });
   return a;
 }
-
 /**
  * Возвращает контрольные, зачёты и работы на паре.
  * @returns {Array<Object>} Массив.
@@ -58,7 +57,6 @@ function workItems() {
  * @returns {number} Число.
  */
 const byDue = (a, b) => dueDate(a.date, a.time) - dueDate(b.date, b.time);
-
 /**
  * Строит строку работы со сроком и статусом.
  * @param {Object} i Работа или ДЗ со сроком.
@@ -93,8 +91,16 @@ function itemRow(i) {
     '</b><small>Срок сдачи: ' +
     shortDate(i.date) +
     '</small></div>' +
+    '<div class="item-actions">' +
+    (past
+      ? ''
+      : '<button class="icon-btn" data-action="ics-item" data-id="' +
+        i.id +
+        '" title="Добавить в календарь" aria-label="Добавить в календарь">' +
+        ICONS.calendarDay +
+        '</button>') +
     (editable
-      ? '<div class="item-actions"><button class="icon-btn" data-action="' +
+      ? '<button class="icon-btn" data-action="' +
         (i.g ? 'gwork-edit' : 'edit-item') +
         '" data-kind="' +
         i.kind +
@@ -111,12 +117,11 @@ function itemRow(i) {
         i.id +
         '" title="Удалить" aria-label="Удалить">' +
         ICONS.wastebasket +
-        '</button></div>'
+        '</button>'
       : '') +
-    '</div>'
+    '</div></div>'
   );
 }
-
 /**
  * Строит строку пары сегодняшнего дня.
  * @param {Object} pr Пара дня.
@@ -153,24 +158,28 @@ function dayRow(pr) {
     '</div></div></div>'
   );
 }
-
 /**
  * Находит ближайшую пару.
  * @returns {Object|null} Объект.
  */
 function nextLesson() {
-  const s = Store.s,
+  const state = Store.s,
     now = new Date();
   for (let i = 0; i < 8; i++) {
     const d = U.addDays(U.today(), i),
       di = U.iso(d);
-    for (const pr of Att.dayView(di, s.settings.subgroup)) {
+    for (const pr of Att.dayView(di, state.settings.subgroup)) {
       if (pr.state === 'cancel') continue;
-      const p = s.settings.pairs[pr.pair - 1];
+      const p = state.settings.pairs[pr.pair - 1];
       if (!p || !p.start) continue;
       const hm = p.start.split(':').map(Number),
         st = new Date(d.getFullYear(), d.getMonth(), d.getDate(), hm[0], hm[1]);
-      if (st > now) return {pr, l: pr.lessons[0], at: st};
+      if (st > now)
+        return {
+          pr,
+          l: pr.lessons[0],
+          at: st
+        };
     }
   }
   return null;
@@ -192,14 +201,14 @@ function untilText(ms) {
  * @returns {string} HTML.
  */
 function widgetHtml() {
-  const s = Store.s,
+  const state = Store.s,
     now = new Date(),
     nl = nextLesson(),
     dl = workItems()
       .filter(i => !i.done)
       .sort(byDue)[0];
   const ym = U.iso(now).slice(0, 7),
-    st = Att.stats(s.attendance.marks, Cloud.my.certs, s.settings.subgroup, ym + '-01', monthEnd(ym));
+    st = Att.stats(state.attendance.marks, Cloud.my.certs, state.settings.subgroup, ym + '-01', monthEnd(ym));
   const sb = nl && subj(nl.l.subjectId);
   return (
     '<div class="widget" aria-label="Виджет">' +
@@ -239,8 +248,8 @@ function widgetHtml() {
  * @returns {string} HTML.
  */
 function notifBanner() {
-  const s = Store.s;
-  if (!Notifier.supported() || Notifier.perm() !== 'default' || s.settings.notifAsked) return '';
+  const state = Store.s;
+  if (!Notifier.supported() || Notifier.perm() !== 'default' || state.settings.notifAsked) return '';
   return (
     '<div class="card notif-banner"><div><b>' +
     ICONS.bell +
@@ -252,7 +261,7 @@ function notifBanner() {
  * @returns {string} HTML.
  */
 function viewDashboard() {
-  const s = Store.s,
+  const state = Store.s,
     now = new Date(),
     cur = weekType(now);
   const all = workItems();
@@ -269,9 +278,8 @@ function viewDashboard() {
     const n = U.dayDiff(U.today(), U.fromISO(i.date));
     return n >= 0 && n <= 7;
   }).length;
-  const hwOpen = s.homework.filter(hwUpcoming).length;
-  const dv = Att.dayView(U.iso(now), s.settings.subgroup);
-
+  const hwOpen = state.homework.filter(hwUpcoming).length;
+  const dv = Att.dayView(U.iso(now), state.settings.subgroup);
   return (
     '<div class="page-head"><div><h1>Главная</h1><p>' +
     U.esc(U.fmtLong(now)) +
@@ -293,6 +301,9 @@ function viewDashboard() {
     hwOpen +
     '</b><small>ДЗ впереди →</small></div></div>' +
     '<div class="dash-cols"><section class="card"><h2>Ближайшие работы <small class="sub-h">контрольные, зачёты и работы на паре</small></h2>' +
+    '<div class="head-actions" style="margin:-6px 0 10px"><button class="btn ghost sm" data-action="ics-all">' +
+    ICONS.calendarDay +
+    ' Все дедлайны в календарь</button></div>' +
     (types.length > 1
       ? '<div class="chips"><button class="fchip' +
         (ui.dashFilter === 'all' ? ' on' : '') +
@@ -328,27 +339,26 @@ function viewDashboard() {
     '</section></div>'
   );
 }
-
 /**
  * Строит приветствие Политешика.
  * @returns {string} HTML.
  */
 function heroHtml() {
-  const s = Store.s,
+  const state = Store.s,
     now = new Date(),
     today = U.iso(U.today()),
-    sub = s.settings.subgroup,
+    sub = state.settings.subgroup,
     ps = Att.pairs(today, sub);
   const pending = allWorks()
       .filter(w => !w.done)
       .sort(byDue)[0],
-    name = ((Cloud.profile && Cloud.profile.name) || s.settings.displayName || '').split(/\s+/)[1] || '';
+    name = ((Cloud.profile && Cloud.profile.name) || state.settings.displayName || '').split(/\s+/)[1] || '';
   let text,
     mood = Mascot.current(),
     btn = '';
   const needMark =
     today >= ATT_START &&
-    ps.some(p => !s.attendance.marks[today + '|' + p.pair] && !Att.covered(Cloud.my.certs, today));
+    ps.some(p => !state.attendance.marks[today + '|' + p.pair] && !Att.covered(Cloud.my.certs, today));
   if (pending && urgency(pending.date, pending.time) !== 'none') {
     text =
       ICONS.alarmClock +

@@ -53,17 +53,17 @@ Object.assign(A, {
     const sb = subj(ui.subjectId);
     if (!(await UI.confirm('Удалить предмет «' + sb.name + '» вместе с домашкой, конспектами и парами в расписании?')))
       return;
-    const s = Store.s,
+    const state = Store.s,
       id = sb.id;
-    s.subjects = s.subjects.filter(x => x.id !== id);
-    s.homework = s.homework.filter(h => h.subjectId !== id);
-    s.notes = s.notes.filter(n => n.subjectId !== id);
-    s.cards = s.cards.filter(c => c.subjectId !== id);
-    s.schedule = s.schedule.filter(l => l.subjectId !== id);
-    s.works.forEach(w => {
+    state.subjects = state.subjects.filter(x => x.id !== id);
+    state.homework = state.homework.filter(h => h.subjectId !== id);
+    state.notes = state.notes.filter(n => n.subjectId !== id);
+    state.cards = state.cards.filter(c => c.subjectId !== id);
+    state.schedule = state.schedule.filter(l => l.subjectId !== id);
+    state.works.forEach(w => {
       if (w.subjectId === id) w.subjectId = '';
     });
-    s.teachers.forEach(t => {
+    state.teachers.forEach(t => {
       t.subjectIds = t.subjectIds.filter(x => x !== id);
     });
     ui.subjectId = null;
@@ -112,7 +112,7 @@ Object.assign(A, {
       const f = await Cloud.getNoteFile(el.dataset.id);
       if (!f || !f.data) return toast('Файл не найден');
       downloadBlob(await (await fetch(f.data)).blob(), f.name || el.dataset.name || 'file');
-    } catch (e) {
+    } catch (error) {
       toast('Не удалось скачать файл');
     }
   },
@@ -217,7 +217,15 @@ Object.assign(A, {
     let ids = filteredCards(sb).map(c => c.id);
     if (!ids.length) return toast('Нет карточек для заучивания');
     if (ui.cardShuffle) ids = U.shuffle(ids);
-    ui.study = {sid: sb.id, ids, i: 0, flip: false, yes: 0, no: 0, missed: []};
+    ui.study = {
+      sid: sb.id,
+      ids,
+      i: 0,
+      flip: false,
+      yes: 0,
+      no: 0,
+      missed: []
+    };
     App.render(true);
   },
   /**
@@ -227,7 +235,16 @@ Object.assign(A, {
     const sb = subj(ui.subjectId),
       ids = U.shuffle(deckCards(sb).map(c => c.id)).slice(0, 20);
     if (ids.length < 5) return toast('Для экзамена нужно хотя бы 5 карточек');
-    ui.study = {sid: sb.id, ids, i: 0, flip: false, yes: 0, no: 0, missed: [], exam: true};
+    ui.study = {
+      sid: sb.id,
+      ids,
+      i: 0,
+      flip: false,
+      yes: 0,
+      no: 0,
+      missed: [],
+      exam: true
+    };
     App.render(true);
   },
   /**
@@ -236,7 +253,15 @@ Object.assign(A, {
   'study-missed'() {
     const st = ui.study;
     if (!st) return;
-    ui.study = {sid: st.sid, ids: U.shuffle(st.missed.slice()), i: 0, flip: false, yes: 0, no: 0, missed: []};
+    ui.study = {
+      sid: st.sid,
+      ids: U.shuffle(st.missed.slice()),
+      i: 0,
+      flip: false,
+      yes: 0,
+      no: 0,
+      missed: []
+    };
     App.render();
   },
   /**

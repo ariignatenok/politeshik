@@ -27,19 +27,19 @@
         <div class="brand-logo" id="brand-mascot"></div>
         <div><b>Политешик</b><small id="side-date"></small></div>
       </div>
+      <button class="side-search" data-action="search-open"><span>Поиск</span><kbd></kbd></button>
       <nav class="nav" id="nav-side"></nav>
       <div class="side-foot">
         <button class="btn ghost" data-action="theme" id="theme-btn-side">Тема</button>
       </div>
     </aside>
     <div class="content">
-      <header class="topbar"><b class="tb-brand"><span id="top-mascot"></span> Политешик</b><button class="icon-btn"
-          data-action="theme" id="theme-btn-top" aria-label="Сменить тему">Тема</button></header>
+      <header class="topbar"><b class="tb-brand"><span id="top-mascot"></span> Политешик</b><span class="tb-actions"><button class="icon-btn" data-action="search-open" aria-label="Поиск">Поиск</button><button class="icon-btn" data-action="theme" id="theme-btn-top" aria-label="Сменить тему">Тема</button></span></header>
       <main id="view" class="view"></main>
     </div>
   </div>
   <nav class="tabbar" id="nav-bottom"></nav>
-  <button class="fab" id="fab" data-action="add-work" aria-label="Добавить работу">＋</button>
+  <div class="fab-wrap" id="fab-wrap" hidden><div class="fab-menu" id="fab-menu" hidden></div><button class="fab" id="fab" data-action="fab-toggle" aria-label="Быстро добавить" aria-expanded="false">＋</button></div>
   <div id="bgfx" aria-hidden="true"></div>
   <div id="theme-pop" class="theme-pop" hidden></div>
   <div id="net-badge" hidden>Нет сети: офлайн-режим</div>
@@ -67,6 +67,10 @@
   <script src="js/chat.js"></script>
   <script src="js/dm.js"></script>
   <script src="js/news.js"></script>
+  <script src="js/teacher.js"></script>
+  <script src="js/skeleton.js"></script>
+  <script src="js/sick.js"></script>
+  <script src="js/ics.js"></script>
   <script src="js/permissions.js"></script>
   <script src="js/changes.js"></script>
   <script src="js/notifications.js"></script>
@@ -104,8 +108,12 @@
   <script src="js/actions/chats.js"></script>
   <script src="js/actions/cabinet.js"></script>
   <script src="js/actions/group.js"></script>
+  <script src="js/actions/features.js"></script>
   <script src="js/backup.js"></script>
   <script src="js/events.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/quickadd.js"></script>
+  <script src="js/gestures.js"></script>
   <script src="js/views.js"></script>
   <script src="js/app.js"></script>
 </body>

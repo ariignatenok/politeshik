@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -17,6 +17,7 @@ const SHELL = [
   'css/base.css',
   'css/chats.css',
   'css/components.css',
+  'css/features.css',
   'css/fintech.css',
   'css/gate.css',
   'css/glass.css',
@@ -42,6 +43,7 @@ const SHELL = [
   'js/actions/auth.js',
   'js/actions/cabinet.js',
   'js/actions/chats.js',
+  'js/actions/features.js',
   'js/actions/group.js',
   'js/actions/schedule.js',
   'js/actions/settings.js',
@@ -62,7 +64,9 @@ const SHELL = [
   'js/events.js',
   'js/faq.js',
   'js/forms.js',
+  'js/gestures.js',
   'js/icons.js',
+  'js/ics.js',
   'js/images.js',
   'js/markdown.js',
   'js/mascot.js',
@@ -72,12 +76,17 @@ const SHELL = [
   'js/permissions.js',
   'js/profile.js',
   'js/pwa.js',
+  'js/quickadd.js',
   'js/rating.js',
   'js/roster.js',
+  'js/search.js',
   'js/seed.js',
   'js/selectors.js',
+  'js/sick.js',
+  'js/skeleton.js',
   'js/store.js',
   'js/supabase.js',
+  'js/teacher.js',
   'js/theme-boot.js',
   'js/themes.js',
   'js/ui.js',

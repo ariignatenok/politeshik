@@ -4,7 +4,6 @@ const Store = (() => {
   let KEY = 'studyPlanner';
   let s = null,
     persistent = true;
-
   /**
    * Читает данные из localStorage.
    * @returns {string|null} Строка.
@@ -12,7 +11,7 @@ const Store = (() => {
   const lsGet = () => {
     try {
       return window.localStorage.getItem(KEY);
-    } catch (e) {
+    } catch (error) {
       persistent = false;
       return null;
     }
@@ -24,11 +23,10 @@ const Store = (() => {
   const lsSet = v => {
     try {
       window.localStorage.setItem(KEY, v);
-    } catch (e) {
+    } catch (error) {
       persistent = false;
     }
   };
-
   /**
    * Приводит сохранённые данные к актуальной структуре.
    * @param {Object} d Сохранённые данные.
@@ -47,13 +45,33 @@ const Store = (() => {
      * @param {string} p Префикс идентификатора.
      * @returns {Array<Object>} Массив.
      */
-    const withId = (a, p) => a.map(x => Object.assign({id: U.uid(p)}, x));
+    const withId = (a, p) =>
+      a.map(x =>
+        Object.assign(
+          {
+            id: U.uid(p)
+          },
+          x
+        )
+      );
     const st = Object.assign(Seed.defaultSettings(), d.settings && typeof d.settings === 'object' ? d.settings : {});
     if (!Array.isArray(st.pairs) || !st.pairs.length) st.pairs = Seed.defaultSettings().pairs;
-    st.pairs = st.pairs.map(p => ({start: (p && p.start) || '', end: (p && p.end) || ''}));
+    st.pairs = st.pairs.map(p => ({
+      start: (p && p.start) || '',
+      end: (p && p.end) || ''
+    }));
     const att = (d.attendance && typeof d.attendance.marks === 'object' && d.attendance.marks) || {};
     const ch = Object.assign(
-      {msgs: [], answers: {}, asked: {}, follow: {}, flags: {}, reqs: [], updated: '', readAt: ''},
+      {
+        msgs: [],
+        answers: {},
+        asked: {},
+        follow: {},
+        flags: {},
+        reqs: [],
+        updated: '',
+        readAt: ''
+      },
       d.chat && typeof d.chat === 'object' ? d.chat : {}
     );
     if (!Array.isArray(ch.msgs)) ch.msgs = [];
@@ -64,46 +82,124 @@ const Store = (() => {
     return {
       version: 1,
       settings: st,
-      attendance: {marks: att},
+      attendance: {
+        marks: att
+      },
       chat: ch,
       ach: d.ach && typeof d.ach === 'object' ? d.ach : {},
       meta: d.meta && typeof d.meta === 'object' ? d.meta : {},
       changes: Array.isArray(d.changes) ? d.changes.filter(x => x && typeof x === 'object') : [],
       subjects: withId(arr('subjects'), 's').map(x =>
-        Object.assign({name: 'Без названия', short: '', color: COLORS[0], links: [], hasFormulas: false}, x, {
-          links: Array.isArray(x.links) ? x.links : [],
-          formulas: (Array.isArray(x.formulas) ? x.formulas : [])
-            .filter(f => f && typeof f === 'object')
-            .map(f => Object.assign({id: U.uid('f'), group: '', title: '', f: '', note: ''}, f))
-        })
+        Object.assign(
+          {
+            name: 'Без названия',
+            short: '',
+            color: COLORS[0],
+            links: [],
+            hasFormulas: false
+          },
+          x,
+          {
+            links: Array.isArray(x.links) ? x.links : [],
+            formulas: (Array.isArray(x.formulas) ? x.formulas : [])
+              .filter(f => f && typeof f === 'object')
+              .map(f =>
+                Object.assign(
+                  {
+                    id: U.uid('f'),
+                    group: '',
+                    title: '',
+                    f: '',
+                    note: ''
+                  },
+                  f
+                )
+              )
+          }
+        )
       ),
       teachers: withId(arr('teachers'), 't').map(x =>
-        Object.assign({name: '', subjectIds: [], email: '', phone: '', room: '', notes: ''}, x, {
-          subjectIds: Array.isArray(x.subjectIds) ? x.subjectIds : []
-        })
+        Object.assign(
+          {
+            name: '',
+            subjectIds: [],
+            email: '',
+            phone: '',
+            room: '',
+            notes: ''
+          },
+          x,
+          {
+            subjectIds: Array.isArray(x.subjectIds) ? x.subjectIds : []
+          }
+        )
       ),
       works: withId(arr('works'), 'w').map(x =>
         Object.assign(
-          {title: '', type: 'Работа', subjectId: '', date: U.iso(new Date()), time: '', notes: '', done: false},
+          {
+            title: '',
+            type: 'Работа',
+            subjectId: '',
+            date: U.iso(new Date()),
+            time: '',
+            notes: '',
+            done: false
+          },
           x
         )
       ),
       homework: withId(arr('homework'), 'h').map(x =>
-        Object.assign({subjectId: '', text: '', deadline: '', done: false}, x)
+        Object.assign(
+          {
+            subjectId: '',
+            text: '',
+            deadline: '',
+            done: false
+          },
+          x
+        )
       ),
-      cards: withId(arr('cards'), 'c').map(x => Object.assign({subjectId: '', cat: '', q: '', a: '', known: false}, x)),
+      cards: withId(arr('cards'), 'c').map(x =>
+        Object.assign(
+          {
+            subjectId: '',
+            cat: '',
+            q: '',
+            a: '',
+            known: false
+          },
+          x
+        )
+      ),
       notes: withId(arr('notes'), 'n').map(x =>
-        Object.assign({subjectId: '', title: '', text: '', updated: new Date().toISOString()}, x)
+        Object.assign(
+          {
+            subjectId: '',
+            title: '',
+            text: '',
+            updated: new Date().toISOString()
+          },
+          x
+        )
       ),
       schedule: withId(arr('schedule'), 'l').map(x =>
         Object.assign(
-          {day: 0, pair: 1, week: 'both', subjectId: '', room: '', subgroup: '', who: '', start: '', end: ''},
+          {
+            day: 0,
+            pair: 1,
+            week: 'both',
+            subjectId: '',
+            room: '',
+            subgroup: '',
+            who: '',
+            start: '',
+            end: ''
+          },
           x
         )
       )
     };
   }
-
   /**
    * Обновляет данные до текущей версии.
    */
@@ -124,11 +220,11 @@ const Store = (() => {
       try {
         s = normalize(JSON.parse(raw));
         ok = true;
-      } catch (e) {}
+      } catch (error) {}
       if (ok) {
         try {
           ensureSeed();
-        } catch (e) {}
+        } catch (error) {}
         save();
         return;
       }
@@ -142,7 +238,6 @@ const Store = (() => {
   function save() {
     lsSet(JSON.stringify(s));
   }
-
   /**
    * Привязывает хранилище к аккаунту пользователя.
    * @param {string} uid Идентификатор пользователя.
@@ -156,22 +251,22 @@ const Store = (() => {
     try {
       owner = window.localStorage.getItem(mk);
       raw = window.localStorage.getItem(key);
-    } catch (e) {}
+    } catch (error) {}
     if (raw) {
       try {
         s = normalize(JSON.parse(raw));
         try {
           ensureSeed();
-        } catch (e) {}
+        } catch (error) {}
         KEY = key;
         save();
         return;
-      } catch (e) {}
+      } catch (error) {}
     }
     if (!owner) {
       try {
         window.localStorage.setItem(mk, uid);
-      } catch (e) {}
+      } catch (error) {}
       KEY = key;
       save();
       return;
@@ -208,7 +303,7 @@ const Store = (() => {
       s = normalize(data);
       try {
         ensureSeed();
-      } catch (e) {}
+      } catch (error) {}
       save();
       App.render();
     },

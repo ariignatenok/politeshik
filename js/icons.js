@@ -28,6 +28,7 @@ const ICONS = {
   clover: '\u{1F340}',
   coffee: '\u{2615}',
   crossMark: '\u{274C}',
+  cryingFace: '\u{1F622}',
   document: '\u{1F4C4}',
   door: '\u{1F6AA}',
   duck: '\u{1F986}',

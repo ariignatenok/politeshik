@@ -75,6 +75,8 @@ function viewNews() {
     head +
     (News.items.length
       ? News.items.map(newsCard).join('')
-      : empty(ICONS.newspaper, News.loaded ? 'Новостей пока нет.' : 'Загружаем новости…'))
+      : News.loaded
+        ? empty(ICONS.newspaper, 'Новостей пока нет.')
+        : Skeleton.card(3))
   );
 }

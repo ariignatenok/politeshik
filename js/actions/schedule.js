@@ -23,7 +23,10 @@ Object.assign(A, {
    */
   'cell-add'(el) {
     if (lockSched()) return;
-    openLessonForm(null, {day: +el.dataset.day, pair: +el.dataset.pair});
+    openLessonForm(null, {
+      day: +el.dataset.day,
+      pair: +el.dataset.pair
+    });
   },
   /**
    * Открывает правку пары.
@@ -42,7 +45,13 @@ Object.assign(A, {
       date = ($('#chg-date') || {}).value,
       err = Changes.check(l, date);
     if (err) return toast(err);
-    Changes.upsert({type: 'cancel', date, pair: l.pair, subjectId: l.subjectId, reason: ''});
+    Changes.upsert({
+      type: 'cancel',
+      date,
+      pair: l.pair,
+      subjectId: l.subjectId,
+      reason: ''
+    });
     UI.close();
     App.render();
     toast('Пара отменена на ' + U.fmtShort(U.fromISO(date)) + '. Студенты увидят «ОТМЕНЕНА»');
@@ -57,7 +66,11 @@ Object.assign(A, {
       err = Changes.check(l, date);
     if (err) return toast(err);
     UI.close();
-    openChangeForm({date, pair: l.pair, subjectId: l.subjectId});
+    openChangeForm({
+      date,
+      pair: l.pair,
+      subjectId: l.subjectId
+    });
   },
   /**
    * Убирает отмену или замену пары.
@@ -93,7 +106,10 @@ Object.assign(A, {
     const m = $('#modal-root [data-form="times"]');
     if (m) Forms.times(m);
     if (Store.s.settings.pairs.length >= 10) return toast('Максимум 10 пар');
-    Store.s.settings.pairs.push({start: '', end: ''});
+    Store.s.settings.pairs.push({
+      start: '',
+      end: ''
+    });
     Store.save();
     openTimesForm();
     App.render();

@@ -1,6 +1,9 @@
 'use strict';
 
-const RATING_W = {att: 0.8, cards: 0.2};
+const RATING_W = {
+  att: 0.8,
+  cards: 0.2
+};
 const Rating = {
   /**
    * Описывает периоды рейтинга: месяц, семестр, всё время.
@@ -12,17 +15,26 @@ const Rating = {
       y = t.getFullYear(),
       first = t.getMonth() < 6;
     return {
-      month: {key: 'month:' + ym, label: monthName(ym), from: ym + '-01', to: monthEnd(ym)},
+      month: {
+        key: 'month:' + ym,
+        label: monthName(ym),
+        from: ym + '-01',
+        to: monthEnd(ym)
+      },
       semester: {
         key: 'sem:' + y + '-' + (first ? 2 : 1),
         label: (first ? 'Весенний' : 'Осенний') + ' семестр ' + y,
         from: first ? y + '-01-01' : y + '-09-01',
         to: first ? y + '-06-30' : y + '-12-31'
       },
-      all: {key: 'all', label: 'Всё время', from: ATT_START, to: '9999-12-31'}
+      all: {
+        key: 'all',
+        label: 'Всё время',
+        from: ATT_START,
+        to: '9999-12-31'
+      }
     };
   },
-
   /**
    * Считает баллы студентов за период (только админ).
    * @param {Object} p Период рейтинга.
@@ -88,24 +100,40 @@ const Rating = {
         }))
       };
     });
-
     const today = U.iso(U.today());
     Object.keys(doc.prizes).forEach(key => {
       if (doc.results[key]) return;
       let p = null;
       if (key.indexOf('month:') === 0) {
         const ym = key.slice(6);
-        p = {from: ym + '-01', to: monthEnd(ym)};
+        p = {
+          from: ym + '-01',
+          to: monthEnd(ym)
+        };
       } else if (key.indexOf('sem:') === 0) {
-        const m = /sem:(\d+)-(\d)/.exec(key);
-        if (m)
+        const match = /sem:(\d+)-(\d)/.exec(key);
+        if (match)
           p =
-            m[2] === '1' ? {from: m[1] + '-09-01', to: m[1] + '-12-31'} : {from: m[1] + '-01-01', to: m[1] + '-06-30'};
+            match[2] === '1'
+              ? {
+                  from: match[1] + '-09-01',
+                  to: match[1] + '-12-31'
+                }
+              : {
+                  from: match[1] + '-01-01',
+                  to: match[1] + '-06-30'
+                };
       }
       if (p && p.to < today) {
         const w = Rating.rows(p)[0];
         if (w)
-          doc.results[key] = {rid: w.rid, name: w.name, prize: doc.prizes[key].text, at: now.toISOString(), label: key};
+          doc.results[key] = {
+            rid: w.rid,
+            name: w.name,
+            prize: doc.prizes[key].text,
+            at: now.toISOString(),
+            label: key
+          };
       }
     });
     Cloud.ratings = doc;
@@ -118,9 +146,20 @@ const Rating = {
    * @param {string} text Описание приза.
    */
   setPrize(key, text) {
-    const old = Cloud.ratings || {periods: {}, prizes: {}, results: {}};
-    const doc = Object.assign({}, old, {prizes: Object.assign({}, old.prizes || {}), results: old.results || {}});
-    if (text) doc.prizes[key] = {text, at: new Date().toISOString()};
+    const old = Cloud.ratings || {
+      periods: {},
+      prizes: {},
+      results: {}
+    };
+    const doc = Object.assign({}, old, {
+      prizes: Object.assign({}, old.prizes || {}),
+      results: old.results || {}
+    });
+    if (text)
+      doc.prizes[key] = {
+        text,
+        at: new Date().toISOString()
+      };
     else delete doc.prizes[key];
     Cloud.ratings = doc;
     Cloud.saveRatings(doc);
@@ -136,6 +175,13 @@ const Rating = {
     if (!R || !rid) return [];
     return Object.keys(R.results || {})
       .filter(k => R.results[k].rid === rid)
-      .map(k => Object.assign({key: k}, R.results[k]));
+      .map(k =>
+        Object.assign(
+          {
+            key: k
+          },
+          R.results[k]
+        )
+      );
   }
 };

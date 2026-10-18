@@ -24,8 +24,11 @@ const COLORS = [
   '#f97316',
   '#84cc16'
 ];
-const WEEK_NAME = {num: 'числитель', den: 'знаменатель', both: 'каждая неделя'};
-
+const WEEK_NAME = {
+  num: 'числитель',
+  den: 'знаменатель',
+  both: 'каждая неделя'
+};
 const U = {
   /**
    * Создаёт короткий уникальный идентификатор с префиксом.
@@ -41,7 +44,14 @@ const U = {
   esc: s =>
     String(s == null ? '' : s).replace(
       /[&<>"']/g,
-      c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]
+      c =>
+        ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        })[c]
     ),
   /**
    * Дополняет число нулём слева до двух знаков.
@@ -49,7 +59,6 @@ const U = {
    * @returns {string} Строка.
    */
   pad: n => String(n).padStart(2, '0'),
-
   /**
    * Переводит дату в формат ГГГГ-ММ-ДД.
    * @param {Date} d Дата.
@@ -121,13 +130,23 @@ const U = {
    * @param {Date} d Дата.
    * @returns {string} Строка.
    */
-  fmtShort: d => new Intl.DateTimeFormat('ru-RU', {weekday: 'short', day: 'numeric', month: 'short'}).format(d),
+  fmtShort: d =>
+    new Intl.DateTimeFormat('ru-RU', {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short'
+    }).format(d),
   /**
    * Форматирует дату полностью.
    * @param {Date} d Дата.
    * @returns {string} Строка.
    */
-  fmtLong: d => new Intl.DateTimeFormat('ru-RU', {weekday: 'long', day: 'numeric', month: 'long'}).format(d),
+  fmtLong: d =>
+    new Intl.DateTimeFormat('ru-RU', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long'
+    }).format(d),
   /**
    * Подбирает форму слова по числу.
    * @param {number} n Число.
@@ -182,7 +201,6 @@ const U = {
     return a;
   }
 };
-
 /**
  * Определяет тип недели по дате: числитель или знаменатель.
  * @param {Date|string} date Дата.
@@ -193,7 +211,6 @@ function weekType(date) {
   const w = Math.round(U.dayDiff(anchor, U.mondayOf(date)) / 7);
   return ((w % 2) + 2) % 2 === 0 ? 'num' : 'den';
 }
-
 /**
  * Строит момент срока сдачи; без времени срок заканчивается в конце дня.
  * @param {string} date Дата.
@@ -248,7 +265,6 @@ function relLabel(date) {
   if (n === 2) return 'Послезавтра';
   return 'Через ' + n + ' ' + U.plural(n, 'день', 'дня', 'дней');
 }
-
 /**
  * Сохраняет файл на устройство пользователя.
  * @param {Blob} blob Содержимое файла.

@@ -5,7 +5,6 @@ const Mascot = {
   lastWalk: 0,
   seq: 0,
   seasonOverride: null,
-
   /**
    * Определяет по дате сезонный или праздничный наряд Политешика.
    * @param {Date} date Проверяемая дата (необязательно).
@@ -21,7 +20,6 @@ const Mascot = {
     if (md >= 901 && md <= 1130) return 'autumn';
     return '';
   },
-
   /**
    * Проверяет, не отключены ли сезонные аксессуары в настройках.
    * @returns {boolean} true, если условие выполнено.
@@ -29,11 +27,10 @@ const Mascot = {
   enabled() {
     try {
       return Store.s.settings.mascotAccessories !== false;
-    } catch (e) {
+    } catch (error) {
       return true;
     }
   },
-
   /**
    * Возвращает наряд, который надет сегодня (с учётом отключения и пробной подмены).
    * @returns {string} Строка.
@@ -42,7 +39,6 @@ const Mascot = {
     if (!Mascot.enabled()) return '';
     return Mascot.seasonOverride !== null ? Mascot.seasonOverride : Mascot.season(new Date());
   },
-
   /**
    * Рисует SVG-слои сезонных аксессуаров: шапку, предмет в лапке, камуфляж и спутников.
    * @param {string} season Наряд: autumn, winter, valentine, defender или womens.
@@ -51,7 +47,14 @@ const Mascot = {
    * @returns {Object} defs, back, camo, hat, hold, front.
    */
   accessories(season, mood, id) {
-    const none = {defs: '', back: '', camo: '', hat: '', hold: '', front: ''};
+    const none = {
+      defs: '',
+      back: '',
+      camo: '',
+      hat: '',
+      hold: '',
+      front: ''
+    };
     if (!season) return none;
     const cheer = mood === 'cheer',
       rot = cheer ? 32 : -18,
@@ -182,7 +185,6 @@ const Mascot = {
       )
     });
   },
-
   /**
    * Рисует Политешика с заданным настроением.
    * @param {string} mood Настроение Политешика.
@@ -341,7 +343,6 @@ const Mascot = {
       '</svg>'
     );
   },
-
   /**
    * Запускает реакцию Политешика на клик: прыжок и взмах лапой.
    * @param {SVGElement} el SVG Политешика, по которому кликнули.
@@ -354,17 +355,15 @@ const Mascot = {
     clearTimeout(el.reactTimer);
     el.reactTimer = setTimeout(() => el.classList.remove('m-react'), 950);
   },
-
   /**
    * Подключает реакцию на клик ко всем Политешикам на странице.
    */
   bindReactions() {
-    document.addEventListener('click', e => {
-      const m = e.target && e.target.closest ? e.target.closest('svg.mascot') : null;
+    document.addEventListener('click', event => {
+      const m = event.target && event.target.closest ? event.target.closest('svg.mascot') : null;
       if (m) Mascot.react(m);
     });
   },
-
   /**
    * Определяет настроение по обстановке: время суток, сроки, пропуски.
    * @returns {string} настроение.
@@ -383,7 +382,7 @@ const Mascot = {
         return hh > 0 && hh < 24;
       });
       abs = Att.absHours(Store.s.attendance.marks, Cloud.my.certs, Store.s.settings.subgroup);
-    } catch (e) {}
+    } catch (error) {}
     if (abs >= ABS_LIMIT) return 'sad';
     const asks = Chat.st()
       .msgs.filter(m => m.ask)
@@ -392,7 +391,6 @@ const Mascot = {
     if (soon || abs > 20) return 'worried';
     return 'happy';
   },
-
   /**
    * Показывает праздничное сообщение с прыгающим жителем.
    * @param {string} text Текст праздничного сообщения.
@@ -411,7 +409,6 @@ const Mascot = {
     }, 3700);
     if (typeof App !== 'undefined') App.renderSoft();
   },
-
   /**
    * Пробегает жителем по нижнему краю экрана при переходе между разделами.
    */
@@ -428,5 +425,4 @@ const Mascot = {
     setTimeout(() => w.remove(), 2800);
   }
 };
-
 Mascot.bindReactions();

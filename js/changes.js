@@ -34,7 +34,14 @@ const Changes = {
     const rest = Changes.items().filter(c => !(c.date === ch.date && c.pair === ch.pair));
     Changes.save(
       rest.concat([
-        Object.assign({id: U.uid('x'), createdBy: Cloud.uid || 'local', createdAt: new Date().toISOString()}, ch)
+        Object.assign(
+          {
+            id: U.uid('x'),
+            createdBy: Cloud.uid || 'local',
+            createdAt: new Date().toISOString()
+          },
+          ch
+        )
       ])
     );
   },

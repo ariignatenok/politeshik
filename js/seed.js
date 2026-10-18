@@ -7,7 +7,10 @@ const Seed = (() => {
    * @param {string} url Адрес.
    * @returns {Object} Объект.
    */
-  const link = (title, url) => ({title, url});
+  const link = (title, url) => ({
+    title,
+    url
+  });
   const A_PROG = link('Программирование, Python и веб — карточки', 'https://claude.ai/artifact/6cMYRZyv6BWsxhMj1zfShf');
   const A_NET = link('Компьютерные сети — карточки', 'https://claude.ai/artifact/8cKMSDR1nMJUMZRh5m7r5q');
   const A_DB = link('Базы данных — основы и карточки', 'https://claude.ai/artifact/Df9oWqoHwfhf1F1yEhoNW1');
@@ -15,7 +18,6 @@ const Seed = (() => {
     'Всё к зачёту — сети, программирование, базы данных',
     'https://claude.ai/artifact/6QhbKTWbBLXMAfumnY6NdX'
   );
-
   /**
    * Возвращает настройки по умолчанию.
    * @returns {Object} Объект.
@@ -27,15 +29,29 @@ const Seed = (() => {
       displayName: '',
       numeratorAnchor: '2026-10-12',
       pairs: [
-        {start: '', end: ''},
-        {start: '', end: ''},
-        {start: '', end: ''},
-        {start: '', end: ''},
-        {start: '', end: ''}
+        {
+          start: '',
+          end: ''
+        },
+        {
+          start: '',
+          end: ''
+        },
+        {
+          start: '',
+          end: ''
+        },
+        {
+          start: '',
+          end: ''
+        },
+        {
+          start: '',
+          end: ''
+        }
       ]
     };
   }
-
   /**
    * Возвращает старые короткие заметки для обновления данных.
    * @returns {Array<Object>} Массив.
@@ -49,7 +65,13 @@ const Seed = (() => {
      * @param {Array<string>} lines Строки конспекта.
      * @returns {Object} Объект.
      */
-    const N = (sid, title, lines) => ({id: U.uid('n'), subjectId: sid, title, text: lines.join('\n'), updated: now});
+    const N = (sid, title, lines) => ({
+      id: U.uid('n'),
+      subjectId: sid,
+      title,
+      text: lines.join('\n'),
+      updated: now
+    });
     const notes = [
       N('s_evm', 'Матрицы, определители, Крамер — формулы', [
         '## Матрицы',
@@ -130,7 +152,6 @@ const Seed = (() => {
     ];
     return notes;
   }
-
   /**
    * Создаёт стартовые данные: предметы, преподавателей, расписание и работы.
    * @returns {Object} Объект.
@@ -174,7 +195,6 @@ const Seed = (() => {
       S('s_mdk0102', 'МДК.01.02 Проектирование и разработка интерфейсов пользователя', 'МДК.01.02', COLORS[11]),
       S('s_pe', 'Физическая культура', 'Физра', '#94a3b8')
     ];
-
     /**
      * Создаёт стартового преподавателя.
      * @param {string} id Идентификатор.
@@ -249,7 +269,6 @@ const Seed = (() => {
       T('t_vasiliev', 'Васильев С.Ю.', ['s_mdk0101', 's_mdk0102']),
       T('t_madaev', 'Мадаев Р.А.', ['s_pe'])
     ];
-
     /**
      * Создаёт стартовую пару расписания.
      * @param {number} day День недели.
@@ -294,7 +313,6 @@ const Seed = (() => {
       L(4, 2, 'den', 's_pe', '', '', 'Мадаев Р.А.'),
       L(4, 3, 'den', 's_bzhd', '', '', 'Симоненко С.И.'),
       L(4, 4, 'den', 's_mdk0101', '', '', 'Васильев С.Ю.'),
-
       L(0, 1, 'num', 's_eng', '441', 'подгр.1', 'Кузнецова Л.И.'),
       L(0, 2, 'num', 's_mdk0102', '215', '', 'Васильев С.Ю.'),
       L(1, 1, 'num', 's_oap', '428', '', 'Данилова О.С.'),
@@ -315,7 +333,6 @@ const Seed = (() => {
       L(4, 3, 'num', 's_hist', '547', '', 'Зубарев А.А.'),
       L(4, 4, 'num', 's_pe', 'ск7', '', 'Мадаев Р.А.')
     ];
-
     /**
      * Создаёт стартовую работу.
      * @param {string} title Название.
@@ -339,10 +356,11 @@ const Seed = (() => {
       W('Работа №4 по ЭВМ', 'Работа', 's_evm', '2026-10-20'),
       W('Работа по ОАП', 'Работа', 's_oap', '2026-10-22')
     ];
-
     const st = {
       version: 1,
-      settings: Object.assign(defaultSettings(), {seedVersion: 4}),
+      settings: Object.assign(defaultSettings(), {
+        seedVersion: 4
+      }),
       subjects,
       teachers,
       works,
@@ -350,8 +368,19 @@ const Seed = (() => {
       cards: [],
       notes: [],
       schedule,
-      attendance: {marks: {}},
-      chat: {msgs: [], answers: {}, asked: {}, follow: {}, flags: {}, reqs: [], updated: '', readAt: ''},
+      attendance: {
+        marks: {}
+      },
+      chat: {
+        msgs: [],
+        answers: {},
+        asked: {},
+        follow: {},
+        flags: {},
+        reqs: [],
+        updated: '',
+        readAt: ''
+      },
       ach: {},
       meta: {},
       changes: []
@@ -359,5 +388,9 @@ const Seed = (() => {
     Content.apply(st);
     return st;
   }
-  return {make, defaultSettings, legacyNotes};
+  return {
+    make,
+    defaultSettings,
+    legacyNotes
+  };
 })();

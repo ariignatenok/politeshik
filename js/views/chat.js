@@ -94,7 +94,6 @@ function viewBotChat() {
     '<div class="chat-in" data-form="chat"><input class="input" id="chatIn" name="t" placeholder="Напиши Политешику…" autocomplete="off"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
   );
 }
-
 /**
  * Форматирует время сообщения для списка чатов.
  * @param {string} iso Момент сообщения, ISO.
@@ -189,7 +188,9 @@ function viewChatListAdmin() {
           )
           .join('') +
         '</div>'
-      : empty(ICONS.speech, 'Переписок пока нет. Нажмите «Новый чат», чтобы написать студенту.'))
+      : Dm.loaded
+        ? empty(ICONS.speech, 'Переписок пока нет. Нажмите «Новый чат», чтобы написать студенту.')
+        : Skeleton.card(4))
   );
 }
 /**
@@ -245,7 +246,8 @@ function viewDmThread(uid) {
     })
     .join('');
   return (
-    '<div class="chat-wrap"><div class="chat-head"><button class="icon-btn" data-action="chat-back" aria-label="К списку чатов">←</button>' +
+    '<div class="chat-wrap"><div class="chat-head">' +
+    (Cloud.isTeacher ? '' : '<button class="icon-btn" data-action="chat-back" aria-label="К списку чатов">←</button>') +
     (admin ? avatarOf((Cloud.adm.profiles[uid] || {}).avatar, 46) : '<span class="adm-av big">ИА</span>') +
     '<div><b>' +
     U.esc(admin ? Dm.nameOf(uid) : 'Игнатенок Арина (Админ)') +
@@ -278,6 +280,7 @@ function viewDmThread(uid) {
  */
 function viewChat() {
   if (Cloud.status !== 'online') return viewBotChat();
+  if (Cloud.isTeacher) return viewDmThread(Cloud.uid);
   if (Cloud.isAdmin) return ui.chatWith ? viewDmThread(ui.chatWith) : viewChatListAdmin();
   if (ui.chatWith === 'bot') return viewBotChat();
   if (ui.chatWith === 'admin') return viewDmThread(Cloud.uid);

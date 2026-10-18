@@ -8,10 +8,9 @@ const Att = {
    * @returns {boolean} true, если условие выполнено.
    */
   subOk(l, sub) {
-    const m = /подгр\.?\s*(\d)/i.exec(l.subgroup || '');
-    return !m || !sub || m[1] === String(sub);
+    const match = /подгр\.?\s*(\d)/i.exec(l.subgroup || '');
+    return !match || !sub || match[1] === String(sub);
   },
-
   /**
    * Строит пары дня с учётом отмен и замен.
    * @param {string} date Дата.
@@ -26,7 +25,13 @@ const Att = {
       if (!by.has(l.pair)) by.set(l.pair, []);
       by.get(l.pair).push(l);
     });
-    const out = [...by].map(e => ({pair: e[0], lessons: e[1], state: 'ok', change: null, orig: null}));
+    const out = [...by].map(e => ({
+      pair: e[0],
+      lessons: e[1],
+      state: 'ok',
+      change: null,
+      orig: null
+    }));
     Changes.items()
       .filter(c => c.date === date)
       .forEach(c => {
@@ -55,7 +60,14 @@ const Att = {
           pr.change = c;
           pr.orig = pr.lessons;
           pr.lessons = [rl];
-        } else out.push({pair: c.pair, lessons: [rl], state: 'replace', change: c, orig: []});
+        } else
+          out.push({
+            pair: c.pair,
+            lessons: [rl],
+            state: 'replace',
+            change: c,
+            orig: []
+          });
       });
     return out.sort((a, b) => a.pair - b.pair);
   },
@@ -97,7 +109,6 @@ const Att = {
    * @returns {number|null} процент или null без данных.
    */
   pct: (a, b) => (b > 0 ? Math.round((a * 100) / b) : null),
-
   /**
    * Считает часы пропусков без уважительной причины.
    * @param {Object<string,string>} marks Отметки вида {"дата|пара": статус}.
@@ -113,7 +124,11 @@ const Att = {
    */
   zone(h) {
     const left = Math.max(0, ABS_LIMIT - h);
-    return {h, left, cls: h >= ABS_LIMIT ? 'red' : left <= ABS_WARN_LEFT ? 'warn' : 'ok'};
+    return {
+      h,
+      left,
+      cls: h >= ABS_LIMIT ? 'red' : left <= ABS_WARN_LEFT ? 'warn' : 'ok'
+    };
   },
   /**
    * Считает статистику посещаемости за период.
@@ -126,7 +141,16 @@ const Att = {
    */
   stats(marks, certs, sub, from, to) {
     const today = U.iso(U.today()),
-      r = {total: 0, p: 0, l: 0, a: 0, x: 0, u: 0, bySubj: {}, byDay: {}};
+      r = {
+        total: 0,
+        p: 0,
+        l: 0,
+        a: 0,
+        x: 0,
+        u: 0,
+        bySubj: {},
+        byDay: {}
+      };
     const start = from < ATT_START ? ATT_START : from,
       end = to > today ? today : to;
     if (start > end) {
@@ -138,7 +162,16 @@ const Att = {
       Att.pairs(di, sub).forEach(pr => {
         const st = Att.eff(marks, certs, di, pr.pair),
           sid = pr.lessons[0].subjectId;
-        const b = r.bySubj[sid] || (r.bySubj[sid] = {p: 0, l: 0, a: 0, x: 0, u: 0, total: 0});
+        const b =
+          r.bySubj[sid] ||
+          (r.bySubj[sid] = {
+            p: 0,
+            l: 0,
+            a: 0,
+            x: 0,
+            u: 0,
+            total: 0
+          });
         r.total++;
         b.total++;
         if (st === 'п') {

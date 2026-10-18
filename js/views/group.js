@@ -12,7 +12,6 @@ function fmtAgo(iso) {
   const tm = U.pad(d.getHours()) + ':' + U.pad(d.getMinutes());
   return n === 0 ? 'сегодня ' + tm : n === 1 ? 'вчера ' + tm : U.fmtShort(d);
 }
-
 /**
  * Собирает данные вошедших в приложение студентов.
  * @returns {Array<Object>} Массив.
@@ -20,12 +19,21 @@ function fmtAgo(iso) {
 function enteredRows() {
   const P = Cloud.adm.profiles,
     rg = attRange();
-  return Object.keys(P).map(id => {
-    const p = P[id],
-      marks = (Cloud.adm.att[id] || {}).marks || {},
-      certs = (Cloud.adm.certs[id] || {}).items || [];
-    return {id, p, r: ROSTER_BY_ID[p.rid] || null, certs, marks, st: Att.stats(marks, certs, p.subgroup, rg[0], rg[1])};
-  });
+  return Object.keys(P)
+    .filter(id => P[id].role !== 'teacher')
+    .map(id => {
+      const p = P[id],
+        marks = (Cloud.adm.att[id] || {}).marks || {},
+        certs = (Cloud.adm.certs[id] || {}).items || [];
+      return {
+        id,
+        p,
+        r: ROSTER_BY_ID[p.rid] || null,
+        certs,
+        marks,
+        st: Att.stats(marks, certs, p.subgroup, rg[0], rg[1])
+      };
+    });
 }
 /**
  * Возвращает вошедших студентов в порядке списка группы.
@@ -46,11 +54,25 @@ function rosterRows() {
   ent.forEach(e => {
     if (e.r) (by[e.r.id] = by[e.r.id] || []).push(e);
   });
-  const out = ROSTER.map(r => ({r, e: (by[r.id] || [])[0] || null, dup: (by[r.id] || []).length > 1}));
+  const out = ROSTER.map(r => ({
+    r,
+    e: (by[r.id] || [])[0] || null,
+    dup: (by[r.id] || []).length > 1
+  }));
   ent
     .filter(e => !e.r)
     .forEach(e =>
-      out.push({r: {id: null, n: '', name: e.p.name || 'Без имени', flag: '', extra: true}, e, dup: false})
+      out.push({
+        r: {
+          id: null,
+          n: '',
+          name: e.p.name || 'Без имени',
+          flag: '',
+          extra: true
+        },
+        e,
+        dup: false
+      })
     );
   return out;
 }
@@ -75,7 +97,6 @@ const nameCell = x =>
  * @returns {boolean} true, если условие выполнено.
  */
 const markedOn = (e, date) => !!e && Object.keys(e.marks).some(k => k.indexOf(date + '|') === 0);
-
 /**
  * Строит вкладку «Список группы».
  * @returns {string} HTML.
@@ -156,7 +177,6 @@ function grpStudents() {
     ' освобождает фамилию: студент сможет войти заново (если он выбрал не ту фамилию).</p>'
   );
 }
-
 /**
  * Строит вкладку «Сегодня».
  * @returns {string} HTML.
@@ -217,12 +237,17 @@ function grpToday() {
           : '<span class="pill">нет отметок</span>'
         : '<span class="dim">—</span>') +
       '</td>' +
-      Array.from({length: np}, (_, i) => {
-        const n = i + 1;
-        if (!e || !has.has(n)) return '<td class="dim">·</td>';
-        const s = Att.eff(e.marks, e.certs, date, n);
-        return '<td><span class="sym ' + (ST_INFO[s] ? ST_INFO[s][1] : 'none') + '">' + (s || '?') + '</span></td>';
-      }).join('') +
+      Array.from(
+        {
+          length: np
+        },
+        (_, i) => {
+          const n = i + 1;
+          if (!e || !has.has(n)) return '<td class="dim">·</td>';
+          const s = Att.eff(e.marks, e.certs, date, n);
+          return '<td><span class="sym ' + (ST_INFO[s] ? ST_INFO[s][1] : 'none') + '">' + (s || '?') + '</span></td>';
+        }
+      ).join('') +
       '<td>' +
       (e
         ? '<button class="btn sm" data-action="att-edit" data-id="' +
@@ -237,7 +262,12 @@ function grpToday() {
   return (
     head +
     '<div class="tbl-wrap"><table class="grid-tbl"><thead><tr><th>№</th><th>Студент</th><th>Вошёл</th><th>Отметки</th>' +
-    Array.from({length: np}, (_, i) => '<th>' + (i + 1) + '</th>').join('') +
+    Array.from(
+      {
+        length: np
+      },
+      (_, i) => '<th>' + (i + 1) + '</th>'
+    ).join('') +
     '<th></th></tr></thead><tbody>' +
     active.map(row).join('') +
     all
@@ -247,7 +277,6 @@ function grpToday() {
     '</tbody></table></div>'
   );
 }
-
 /**
  * Строит вкладку «Работы группы».
  * @returns {string} HTML.
@@ -317,7 +346,6 @@ function grpWorks() {
     '<p class="hint">Эти работы видят все студенты, а Политешик за сутки до срока спрашивает у каждого, готов ли он.</p>'
   );
 }
-
 /**
  * Собирает невыполненные просьбы студентов.
  * @returns {Array<Object>} Массив.
@@ -326,7 +354,13 @@ function pendingReqs() {
   const out = [];
   Object.keys(Cloud.adm.chat).forEach(uid => {
     ((Cloud.adm.chat[uid] || {}).reqs || []).forEach(r => {
-      if (!r.done) out.push({uid, date: r.date, at: r.at, name: (Cloud.adm.profiles[uid] || {}).name || 'Без имени'});
+      if (!r.done)
+        out.push({
+          uid,
+          date: r.date,
+          at: r.at,
+          name: (Cloud.adm.profiles[uid] || {}).name || 'Без имени'
+        });
     });
   });
   return out.sort((a, b) => String(a.at).localeCompare(String(b.at)));
@@ -394,7 +428,14 @@ function grpFaq() {
 function allCerts() {
   const out = [];
   enteredRows().forEach(e =>
-    e.certs.forEach(c => out.push({uid: e.id, name: e.p.name || 'Студент', sub: e.p.subgroup || '', c}))
+    e.certs.forEach(c =>
+      out.push({
+        uid: e.id,
+        name: e.p.name || 'Студент',
+        sub: e.p.subgroup || '',
+        c
+      })
+    )
   );
   return out.sort(
     (a, b) =>

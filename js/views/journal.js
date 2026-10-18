@@ -51,18 +51,17 @@ function jCell(e, di) {
     '</td>'
   );
 }
-
 /**
  * Отрисовывает журнал студента (только его отметки).
  * @returns {string} HTML.
  */
 function viewJournalSelf() {
-  const s = Store.s,
+  const state = Store.s,
     today = U.iso(U.today());
   if (!ui.attMonth) ui.attMonth = today.slice(0, 7);
-  const marks = s.attendance.marks,
+  const marks = state.attendance.marks,
     certs = Cloud.my.certs,
-    sub = s.settings.subgroup,
+    sub = state.settings.subgroup,
     days = journalDays(ui.attMonth);
   const st = Att.stats(marks, certs, sub, ui.attMonth + '-01', monthEnd(ui.attMonth));
   /**
@@ -128,10 +127,12 @@ function viewJournalSelf() {
 }
 /**
  * Отрисовывает журнал всей группы для админа.
+ * @param {boolean} asTeacher Показывать ли журнал в режиме преподавателя: только чтение (необязательно).
  * @returns {string} HTML.
  */
-function viewJournal() {
-  if (!Cloud.isAdmin) return viewJournalSelf();
+function viewJournal(asTeacher) {
+  if (Cloud.isTeacher && !asTeacher) return Teacher.readOnly(viewJournal(true));
+  if (!Cloud.isAdmin && !asTeacher) return viewJournalSelf();
   const today = U.iso(U.today());
   if (!ui.attMonth) ui.attMonth = today.slice(0, 7);
   const days = journalDays(ui.attMonth),
@@ -144,12 +145,22 @@ function viewJournal() {
    */
   const calc = x => (x.e ? Att.stats(x.e.marks, x.e.certs, x.e.p.subgroup, mrange[0], mrange[1]) : null);
   const active = rows.filter(x => !x.r.flag && !x.r.admin),
-    withSt = active.map(x => ({x, st: calc(x)})).filter(y => y.st && y.st.pct != null);
+    withSt = active
+      .map(x => ({
+        x,
+        st: calc(x)
+      }))
+      .filter(y => y.st && y.st.pct != null);
   const avg = withSt.length ? Math.round(withSt.reduce((s, y) => s + y.st.pct, 0) / withSt.length) : null;
   const low = withSt.filter(y => y.st.pct < 70);
   const notIn = active.filter(x => !x.e),
     noMark = active.filter(x => x.e && !markedOn(x.e, today));
-  const zl = active.filter(x => x.e).map(x => ({x, h: Att.absHours(x.e.marks, x.e.certs, x.e.p.subgroup)}));
+  const zl = active
+    .filter(x => x.e)
+    .map(x => ({
+      x,
+      h: Att.absHours(x.e.marks, x.e.certs, x.e.p.subgroup)
+    }));
   const redL = zl.filter(y => Att.zone(y.h).cls === 'red'),
     warnL = zl.filter(y => Att.zone(y.h).cls === 'warn');
   /**

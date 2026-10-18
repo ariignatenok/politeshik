@@ -53,4 +53,10 @@ const FAQ_DEFAULT = [
  * Возвращает вопросы и ответы Политешика (свои или стандартные).
  * @returns {Array<Object>} Массив.
  */
-const faqItems = () => (Cloud.faq && Cloud.faq.length ? Cloud.faq : FAQ_DEFAULT.map(x => ({q: x[0], a: x[1]})));
+const faqItems = () =>
+  Cloud.faq && Cloud.faq.length
+    ? Cloud.faq
+    : FAQ_DEFAULT.map(x => ({
+        q: x[0],
+        a: x[1]
+      }));

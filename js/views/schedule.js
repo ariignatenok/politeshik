@@ -38,7 +38,6 @@ function lessonChip(l, wide, state, date) {
     '</button>'
   );
 }
-
 /**
  * Строит содержимое ячейки расписания с отменами и заменами.
  * @param {number} d Номер дня недели.
@@ -109,9 +108,9 @@ function changesCard() {
  * @returns {string} HTML.
  */
 function viewSchedule() {
-  const s = Store.s,
+  const state = Store.s,
     cur = weekType(new Date()),
-    pairs = s.settings.pairs,
+    pairs = state.settings.pairs,
     todayIdx = U.dayIdx(new Date());
   if (!ui.schedWeek) ui.schedWeek = cur;
   if (ui.schedDay == null) ui.schedDay = todayIdx;
@@ -128,7 +127,6 @@ function viewSchedule() {
    */
   const wdates = DAYS.map((_, i) => U.iso(U.addDays(monday, i))),
     dm = iso => iso.slice(8) + '.' + iso.slice(5, 7);
-
   let grid =
     '<div class="sched-grid"><div></div>' +
     DAYS.map(
@@ -163,7 +161,6 @@ function viewSchedule() {
     }
   });
   grid += '</div>';
-
   const dayTabs =
     '<div class="day-tabs">' +
     DAYS.map(
@@ -179,7 +176,7 @@ function viewSchedule() {
     ).join('') +
     '</div>';
   const list =
-    '<div class="sched-list">' +
+    '<div class="sched-list" data-swipe="sched">' +
     dayTabs +
     '<h3 style="margin-bottom:12px">' +
     DAYS_FULL[ui.schedDay] +
@@ -216,7 +213,6 @@ function viewSchedule() {
       })
       .join('') +
     '</div>';
-
   const noTimes = !pairs.some(p => p.start && p.end);
   return (
     '<div class="page-head"><div><h1>Расписание</h1><p>Сейчас идёт ' +

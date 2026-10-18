@@ -28,17 +28,17 @@ function linkLabel(sb) {
  * @returns {string} HTML.
  */
 function subjectCards() {
-  const s = Store.s,
+  const state = Store.s,
     q = U.norm(ui.subjQuery);
-  const list = s.subjects.filter(x => !q || U.norm(x.name + ' ' + x.short).includes(q));
+  const list = state.subjects.filter(x => !q || U.norm(x.name + ' ' + x.short).includes(q));
   if (!list.length) return empty(ICONS.books, 'Ничего не найдено');
   return (
     '<div class="cards">' +
     list
       .map(x => {
-        const hw = s.homework.filter(h => h.subjectId === x.id && !h.done).length,
-          nn = s.notes.filter(n => n.subjectId === x.id).length,
-          cc = s.cards.filter(c => c.subjectId === x.id).length;
+        const hw = state.homework.filter(h => h.subjectId === x.id && !h.done).length,
+          nn = state.notes.filter(n => n.subjectId === x.id).length,
+          cc = state.cards.filter(c => c.subjectId === x.id).length;
         const tt = teachersOf(x.id)
           .map(t => surname(t.name))
           .join(', ');
@@ -80,7 +80,6 @@ function hwList(sb) {
   if (!hs.length) return emptyMascot('Ура, домашки нет!', 'happy');
   return '<div class="items">' + hs.map(hwRow).join('') + '</div>';
 }
-
 /**
  * Сравнивает конспекты для сортировки.
  * @param {Object} a Первый конспект.
@@ -162,7 +161,6 @@ function linkList(sb) {
     '</div>'
   );
 }
-
 /**
  * Возвращает карточки предмета.
  * @param {Object} sb Предмет.
@@ -397,7 +395,6 @@ function studyAnswer(known) {
   Profile.push();
   Ach.check();
 }
-
 /**
  * Строит список формул.
  * @param {Object} sb Предмет.
@@ -462,13 +459,12 @@ function formulasBody(sb) {
     '</div>'
   );
 }
-
 /**
  * Отрисовывает экран «Предметы».
  * @returns {string} HTML.
  */
 function viewSubjects() {
-  const s = Store.s;
+  const state = Store.s;
   if (!ui.subjectId || !subj(ui.subjectId)) {
     ui.subjectId = null;
     return (
@@ -486,8 +482,8 @@ function viewSubjects() {
   }
   const sb = subj(ui.subjectId);
   const tabs0 = [
-    ['hw', ICONS.memo + ' Домашка', s.homework.filter(h => h.subjectId === sb.id && !h.done).length],
-    ['notes', ICONS.notebook + ' Конспекты', s.notes.filter(n => n.subjectId === sb.id).length],
+    ['hw', ICONS.memo + ' Домашка', state.homework.filter(h => h.subjectId === sb.id && !h.done).length],
+    ['notes', ICONS.notebook + ' Конспекты', state.notes.filter(n => n.subjectId === sb.id).length],
     ['cards', ICONS.jokerCard + ' Карточки', deckCards(sb).length]
   ];
   const tabs = noNotes(sb) ? tabs0.filter(t => t[0] !== 'notes') : tabs0;

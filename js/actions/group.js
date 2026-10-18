@@ -80,7 +80,10 @@ Object.assign(A, {
         });
         if (cur) {
           const id = x.e.id;
-          Cloud.adm.att[id] = {marks: cur, updated: new Date().toISOString()};
+          Cloud.adm.att[id] = {
+            marks: cur,
+            updated: new Date().toISOString()
+          };
           Cloud.put('attendance/' + id, () => Cloud.adm.att[id]);
         }
       });
@@ -133,7 +136,12 @@ Object.assign(A, {
    */
   async 'grp-csv'() {
     const rows = [['Студент', 'Подгруппа', 'Дата', 'Пара', 'Предмет', 'Статус']],
-      names = {п: 'присутствовал', о: 'опоздал', н: 'не был', у: 'по справке'};
+      names = {
+        п: 'присутствовал',
+        о: 'опоздал',
+        н: 'не был',
+        у: 'по справке'
+      };
     studentRows().forEach(r => {
       for (let d = U.fromISO(ATT_START), e = U.today(); d <= e; d = U.addDays(d, 1)) {
         const di = U.iso(d);
@@ -149,9 +157,12 @@ Object.assign(A, {
     const csv = '\ufeff' + rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(';')).join('\n');
     if (Cloud.dl) {
       try {
-        await Cloud.dl.save({filename: 'politeshik-poseshchaemost-' + U.iso(new Date()) + '.csv', data: csv});
-      } catch (e) {
-        if (!e || e.code !== 'declined') toast('Не удалось сохранить файл');
+        await Cloud.dl.save({
+          filename: 'politeshik-poseshchaemost-' + U.iso(new Date()) + '.csv',
+          data: csv
+        });
+      } catch (error) {
+        if (!error || error.code !== 'declined') toast('Не удалось сохранить файл');
       }
     } else toast('Скачивание недоступно в этом режиме');
   },

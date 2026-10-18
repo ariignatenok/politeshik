@@ -5,7 +5,16 @@ const Chat = {
    * Создаёт пустое состояние чата с Политешиком.
    * @returns {Object} Объект.
    */
-  blank: () => ({msgs: [], answers: {}, asked: {}, follow: {}, flags: {}, reqs: [], updated: '', readAt: ''}),
+  blank: () => ({
+    msgs: [],
+    answers: {},
+    asked: {},
+    follow: {},
+    flags: {},
+    reqs: [],
+    updated: '',
+    readAt: ''
+  }),
   /**
    * Возвращает состояние чата с Политешиком.
    * @returns {Object} Объект.
@@ -27,12 +36,24 @@ const Chat = {
    * @param {Object} extra Дополнительные поля (необязательно).
    */
   push(from, text, extra) {
-    if (Cloud.isAdmin) return;
+    if (Cloud.isAdmin || Cloud.isTeacher) return;
     const c = Chat.st();
-    c.msgs.push(Object.assign({id: U.uid('m'), t: new Date().toISOString(), from, text}, extra || {}));
+    c.msgs.push(
+      Object.assign(
+        {
+          id: U.uid('m'),
+          t: new Date().toISOString(),
+          from,
+          text
+        },
+        extra || {}
+      )
+    );
     if (c.msgs.length > 80) c.msgs = c.msgs.slice(-80);
     if (from === 'bot' && document.hidden)
-      Notifier.show('chat', 'Политешик', String(text).slice(0, 100), {tag: 'chat'});
+      Notifier.show('chat', 'Политешик', String(text).slice(0, 100), {
+        tag: 'chat'
+      });
   },
   /**
    * Считает непрочитанные сообщения Политешика.
@@ -60,14 +81,17 @@ const Chat = {
     end.setHours(9, 0, 0, 0);
     const start = new Date(end);
     start.setDate(start.getDate() - 1);
-    return {start, end};
+    return {
+      start,
+      end
+    };
   },
   /**
    * Раз в минуту проверяет, не пора ли Политешику писать.
    * @returns {boolean} изменился ли чат.
    */
   tick() {
-    if (Cloud.isAdmin) return false;
+    if (Cloud.isAdmin || Cloud.isTeacher) return false;
     if (Cloud.status === 'online' && !(Cloud.chatLoaded && Cloud.attLoaded && Cloud.certsLoaded)) return false;
     const c = Chat.st(),
       now = new Date();
@@ -78,7 +102,9 @@ const Chat = {
         'Привет! Я Политешик — житель этого приложения ' +
           ICONS.seedling +
           '\nЗа сутки до работы я напишу тебе и спрошу, готов(а) ли ты. Если нет — пришлю конспекты и карточки. Ещё могу рассказать про пары и работы: спроси «что сегодня?» или «какие работы?».',
-        {mood: 'wink'}
+        {
+          mood: 'wink'
+        }
       );
       changed = true;
     }
@@ -105,7 +131,10 @@ const Chat = {
             U.fmtShort(U.fromISO(w.date)) +
             (w.time ? ', ' + w.time : '') +
             ')\n\nТы готов(а)?',
-          {mood: 'worried', ask: wk}
+          {
+            mood: 'worried',
+            ask: wk
+          }
         );
         c.asked[wk] = now.toISOString();
         changed = true;
@@ -117,7 +146,10 @@ const Chat = {
             '»? Осталось ' +
             Math.max(1, Math.round((win.end - now) / 36e5)) +
             ' ч. Теперь готов(а)?',
-          {mood: 'happy', ask: wk}
+          {
+            mood: 'happy',
+            ask: wk
+          }
         );
         c.follow[wk] = '';
         changed = true;
@@ -129,22 +161,21 @@ const Chat = {
     if (changed) Chat.save();
     return changed;
   },
-
   /**
    * Напоминает об отметке за прошлый день и предлагает попросить админа.
    * @returns {boolean} true, если условие выполнено.
    */
   missCheck() {
     const c = Chat.st(),
-      s = Store.s;
+      state = Store.s;
     c.flags = c.flags || {};
     let changed = false;
     for (let i = 1; i <= 7; i++) {
       const d = U.iso(U.addDays(U.today(), -i));
       if (d < ATT_START) break;
-      const prs = Att.pairs(d, s.settings.subgroup);
+      const prs = Att.pairs(d, state.settings.subgroup);
       if (!prs.length) continue;
-      const miss = prs.filter(p => !s.attendance.marks[d + '|' + p.pair] && !Att.covered(Cloud.my.certs, d));
+      const miss = prs.filter(p => !state.attendance.marks[d + '|' + p.pair] && !Att.covered(Cloud.my.certs, d));
       if (miss.length && !c.flags['miss:' + d]) {
         c.flags['miss:' + d] = 1;
         Chat.push('bot', 'Привет! Ты не отметился за ' + U.fmtShort(U.fromISO(d)) + '. Напомнить админу?', {
@@ -167,7 +198,12 @@ const Chat = {
     c.msgs.forEach(m => {
       if (m.id === mid) m.done = true;
     });
-    if (!c.reqs.some(r => r.date === date)) c.reqs.push({date, at: new Date().toISOString(), done: false});
+    if (!c.reqs.some(r => r.date === date))
+      c.reqs.push({
+        date,
+        at: new Date().toISOString(),
+        done: false
+      });
     Chat.push('me', 'Да, попросить админа');
     Chat.push(
       'bot',
@@ -175,7 +211,9 @@ const Chat = {
         U.fmtShort(U.fromISO(date)) +
         '. Он увидит её и отметит сам ' +
         ICONS.okHand,
-      {mood: 'happy'}
+      {
+        mood: 'happy'
+      }
     );
     Chat.save();
     App.render();
@@ -188,22 +226,23 @@ const Chat = {
     const it = faqItems()[i];
     if (!it) return;
     Chat.push('me', it.q);
-    Chat.push('bot', it.a.replace(/\[дата\]/g, U.fmtShort(U.today())), {mood: 'happy'});
+    Chat.push('bot', it.a.replace(/\[дата\]/g, U.fmtShort(U.today())), {
+      mood: 'happy'
+    });
     Store.s.meta.msgSent = (Store.s.meta.msgSent || 0) + 1;
     Chat.save();
     App.render();
     Ach.check();
   },
-
   /**
    * Предупреждает о приближении к лимиту пропусков и о красной зоне.
    * @returns {boolean} true, если условие выполнено.
    */
   absCheck() {
     const c = Chat.st(),
-      s = Store.s;
+      state = Store.s;
     c.flags = c.flags || {};
-    const h = Att.absHours(s.attendance.marks, Cloud.my.certs, s.settings.subgroup),
+    const h = Att.absHours(state.attendance.marks, Cloud.my.certs, state.settings.subgroup),
       last = c.flags.abs || 0;
     if (h === last) return false;
     c.flags.abs = h;
@@ -225,7 +264,9 @@ const Chat = {
               ' ч пропусков без уважительной причины из ' +
               ABS_LIMIT +
               ' разрешённых. Больше пропускать нельзя!\nЕсли пропуски были по болезни, прикрепи справку или больничный в личном кабинете.',
-        {mood: 'worried'}
+        {
+          mood: 'worried'
+        }
       );
     } else if (z.cls === 'warn') {
       Chat.push(
@@ -240,27 +281,28 @@ const Chat = {
           ' из ' +
           ABS_LIMIT +
           ').\nХоди на пары и готовься — лимит почти исчерпан.',
-        {mood: 'worried'}
+        {
+          mood: 'worried'
+        }
       );
     }
     return true;
   },
-
   /**
    * Присылает итоги прошедшего месяца.
    * @returns {boolean} true, если условие выполнено.
    */
   monthly() {
     const c = Chat.st(),
-      s = Store.s;
+      state = Store.s;
     c.flags = c.flags || {};
     const t = U.today(),
       pm = U.iso(new Date(t.getFullYear(), t.getMonth() - 1, 1)).slice(0, 7);
     if (pm < ATT_START.slice(0, 7) || (c.flags.report || '') >= pm) return false;
     if (Cloud.isAdmin && !Cloud.admReady) return false;
-    const sub = s.settings.subgroup,
-      st = Att.stats(s.attendance.marks, Cloud.my.certs, sub, pm + '-01', monthEnd(pm));
-    const total = Att.absHours(s.attendance.marks, Cloud.my.certs, sub),
+    const sub = state.settings.subgroup,
+      st = Att.stats(state.attendance.marks, Cloud.my.certs, sub, pm + '-01', monthEnd(pm));
+    const total = Att.absHours(state.attendance.marks, Cloud.my.certs, sub),
       z = Att.zone(total);
     let text = ICONS.barChart + ' Итоги месяца: ' + monthName(pm) + '\n';
     text += st.total
@@ -289,8 +331,13 @@ const Chat = {
         : z.cls === 'warn'
           ? '\n' + ICONS.circleOrange + ' Осталось ' + z.left + ' ч пропусков — ходи на пары и готовься.'
           : '\n' + ICONS.circleGreen + ' С лимитом всё в порядке: осталось ' + z.left + ' ч.';
-    Chat.push('bot', text, {mood: z.cls === 'ok' ? 'cheer' : 'worried'});
-    if (Cloud.isAdmin) Chat.push('bot', Chat.groupSummary(pm), {mood: 'happy'});
+    Chat.push('bot', text, {
+      mood: z.cls === 'ok' ? 'cheer' : 'worried'
+    });
+    if (Cloud.isAdmin)
+      Chat.push('bot', Chat.groupSummary(pm), {
+        mood: 'happy'
+      });
     c.flags.report = pm;
     return true;
   },
@@ -311,7 +358,12 @@ const Chat = {
       const marks = (Cloud.adm.att[id] || {}).marks || {},
         certs = (Cloud.adm.certs[id] || {}).items || [],
         h = Att.absHours(marks, certs, p.subgroup);
-      rows.push({name: r.name, st: Att.stats(marks, certs, p.subgroup, pm + '-01', monthEnd(pm)), h, z: Att.zone(h)});
+      rows.push({
+        name: r.name,
+        st: Att.stats(marks, certs, p.subgroup, pm + '-01', monthEnd(pm)),
+        h,
+        z: Att.zone(h)
+      });
     });
     const wp = rows.filter(x => x.st.pct != null),
       avg = wp.length ? Math.round(wp.reduce((a, x) => a + x.st.pct, 0) / wp.length) : null;
@@ -355,9 +407,14 @@ const Chat = {
       if (m.ask === wk) m.done = true;
     });
     Chat.push('me', yes ? 'Готов(а) ' + ICONS.check : 'Не готов(а) ' + ICONS.grimace);
-    c.answers[wk] = {a: yes ? 'y' : 'n', at: now.toISOString()};
+    c.answers[wk] = {
+      a: yes ? 'y' : 'n',
+      at: now.toISOString()
+    };
     if (yes) {
-      Chat.push('bot', 'Отлично! Желаю удачи на работе — у тебя всё получится! ' + ICONS.clover, {mood: 'cheer'});
+      Chat.push('bot', 'Отлично! Желаю удачи на работе — у тебя всё получится! ' + ICONS.clover, {
+        mood: 'cheer'
+      });
     } else {
       const sid = w && w.subjectId,
         sb = subj(sid);
@@ -365,22 +422,50 @@ const Chat = {
         const ns = Store.s.notes.filter(n => n.subjectId === sid).sort(noteSort),
           cards = Store.s.cards.filter(x => x.subjectId === sid).length,
           links = [];
-        ns.slice(0, 3).forEach(n => links.push({l: ICONS.notebook + ' ' + n.title, sid, tab: 'notes', nid: n.id}));
-        if (ns.length > 3) links.push({l: ICONS.notebook + ' Все конспекты (' + ns.length + ')', sid, tab: 'notes'});
-        if (cards) links.push({l: ICONS.jokerCard + ' Учить карточки (' + cards + ')', sid, tab: 'cards', study: true});
-        if (sb.hasFormulas && sb.formulas.length) links.push({l: '∑ Формулы', sid, tab: 'formulas'});
+        ns.slice(0, 3).forEach(n =>
+          links.push({
+            l: ICONS.notebook + ' ' + n.title,
+            sid,
+            tab: 'notes',
+            nid: n.id
+          })
+        );
+        if (ns.length > 3)
+          links.push({
+            l: ICONS.notebook + ' Все конспекты (' + ns.length + ')',
+            sid,
+            tab: 'notes'
+          });
+        if (cards)
+          links.push({
+            l: ICONS.jokerCard + ' Учить карточки (' + cards + ')',
+            sid,
+            tab: 'cards',
+            study: true
+          });
+        if (sb.hasFormulas && sb.formulas.length)
+          links.push({
+            l: '∑ Формулы',
+            sid,
+            tab: 'formulas'
+          });
         Chat.push(
           'bot',
           'Ничего страшного — время ещё есть! На подготовку 24 часа: с 9:00 до 9:00 следующего дня. Вот материалы по предмету «' +
             sb.name +
             '»:',
-          {mood: 'happy', links: links.length ? links : undefined}
+          {
+            mood: 'happy',
+            links: links.length ? links : undefined
+          }
         );
       } else
         Chat.push(
           'bot',
           'Ничего страшного — время ещё есть! Повтори темы по этой работе, у тебя 24 часа: с 9:00 до 9:00 следующего дня.',
-          {mood: 'happy'}
+          {
+            mood: 'happy'
+          }
         );
       Chat.push('bot', 'Готовься, а я загляну позже и спрошу, как дела ' + ICONS.muscle);
       const end = w ? Chat.window(w).end : new Date(now.getTime() + 864e5);
@@ -439,7 +524,9 @@ const Chat = {
       ans =
         'Я пишу за сутки до работы, спрашиваю, готов(а) ли ты, и присылаю конспекты и карточки. Ещё отвечаю на «работы», «что сегодня?» и «что завтра?».';
     else ans = 'Пока я умею отвечать на «работы», «что сегодня?», «что завтра?» и «помощь» ' + ICONS.faceSmile;
-    Chat.push('bot', ans, {mood});
+    Chat.push('bot', ans, {
+      mood
+    });
     Chat.save();
     App.render();
   }

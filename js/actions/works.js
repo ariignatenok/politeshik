@@ -28,9 +28,9 @@ Object.assign(A, {
    */
   async 'del-item'(el) {
     if (!(await UI.confirm('Удалить эту запись?'))) return;
-    const s = Store.s;
-    if (el.dataset.kind === 'work') s.works = s.works.filter(x => x.id !== el.dataset.id);
-    else s.homework = s.homework.filter(x => x.id !== el.dataset.id);
+    const state = Store.s;
+    if (el.dataset.kind === 'work') state.works = state.works.filter(x => x.id !== el.dataset.id);
+    else state.homework = state.homework.filter(x => x.id !== el.dataset.id);
     Store.commit();
   },
   /**

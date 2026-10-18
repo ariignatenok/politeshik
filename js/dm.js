@@ -14,7 +14,9 @@ const Dm = {
     let q = supa
       .from('chat')
       .select('id,thread_uid,sender,body,created_at,read_by_admin,read_by_student')
-      .order('created_at', {ascending: false})
+      .order('created_at', {
+        ascending: false
+      })
       .limit(1500);
     if (!Cloud.isAdmin) q = q.eq('thread_uid', Cloud.uid);
     const {data, error} = await q;
@@ -40,7 +42,9 @@ const Dm = {
         'chat',
         Cloud.isAdmin ? Dm.nameOf(fresh.thread_uid) : 'Игнатенок Арина (Админ)',
         String(fresh.body).slice(0, 100),
-        {tag: 'dm'}
+        {
+          tag: 'dm'
+        }
       );
     App.renderSoft();
   },
@@ -110,7 +114,13 @@ const Dm = {
   threads() {
     const by = {};
     Dm.msgs.forEach(m => {
-      const t = by[m.thread_uid] || (by[m.thread_uid] = {uid: m.thread_uid, last: m, unread: 0});
+      const t =
+        by[m.thread_uid] ||
+        (by[m.thread_uid] = {
+          uid: m.thread_uid,
+          last: m,
+          unread: 0
+        });
       t.last = m;
       if (Dm.isIncoming(m) && !m.read_by_admin) t.unread++;
     });
@@ -132,7 +142,12 @@ const Dm = {
       .trim()
       .slice(0, 4000);
     if (!body) return false;
-    const {error} = await supa.from('chat').insert({thread_uid: uid, sender: Cloud.uid, kind: 'text', body});
+    const {error} = await supa.from('chat').insert({
+      thread_uid: uid,
+      sender: Cloud.uid,
+      kind: 'text',
+      body
+    });
     if (error) {
       toast('Не удалось отправить: ' + error.message);
       return false;
@@ -154,7 +169,9 @@ const Dm = {
     });
     let q = supa
       .from('chat')
-      .update({[flag]: true})
+      .update({
+        [flag]: true
+      })
       .eq('thread_uid', uid)
       .eq(flag, false);
     q = Cloud.isAdmin ? q.eq('sender', uid) : q.neq('sender', Cloud.uid);
@@ -173,7 +190,6 @@ const Dm = {
     Cloud.pushProfile();
   }
 };
-
 /**
  * Считает все непрочитанные сообщения для бейджа меню.
  * @returns {number} Число.
