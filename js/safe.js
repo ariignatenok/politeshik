@@ -16,6 +16,9 @@ const Safe = {
     Gestures: 'js/gestures.js',
     Weeks: 'js/weeks.js',
     Relax: 'js/relax.js',
+    CampusMap: 'js/campusmap.js',
+    Solutions: 'js/solutions.js',
+    Focus: 'js/focus.js',
     ScrollLock: 'js/scrolllock.js',
     Mascot: 'js/mascot.js'
   },

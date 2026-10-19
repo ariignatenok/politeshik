@@ -525,6 +525,7 @@ const Cloud = (() => {
             kind: 'Справка',
             from: r.date_from,
             to: r.date_to,
+            pairs: Array.isArray(r.pairs) ? r.pairs : undefined,
             confirmed: r.confirmed
           });
         });
@@ -995,7 +996,7 @@ const Cloud = (() => {
         meta
       )
     ]);
-    writeDoc('certs/' + C.uid, {
+    return writeDoc('certs/' + C.uid, {
       items: C.my.certs
     });
   };
@@ -1199,6 +1200,118 @@ const Cloud = (() => {
       else delete C.adm.att[uid];
     }
     return result;
+  };
+  C.mapPoints = {};
+  C.solutions = {};
+  /**
+   * Загружает документы верхнего уровня по префиксу пути.
+   * @param {string} prefix Префикс пути.
+   * @returns {Promise<Array<Object>>} Массив.
+   */
+  const listTopLevel = async prefix => {
+    const {data, error} = await supa
+      .from('docs')
+      .select('path,data')
+      .like('path', prefix + '/%')
+      .not('path', 'like', prefix + '/%/%');
+    if (error) throw error;
+    return data || [];
+  };
+  /**
+   * Загружает точки группы на карте.
+   * @returns {Promise<boolean>} удалось ли.
+   */
+  C.refreshMap = async () => {
+    try {
+      const points = {};
+      (await listTopLevel('map')).forEach(row => {
+        points[row.path.slice(4)] = row.data;
+      });
+      C.mapPoints = points;
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
+   * Сохраняет свою точку на карте.
+   * @param {Object} point Этаж, x, y, имя, время.
+   */
+  C.saveMapPoint = point => writeDoc('map/' + C.uid, point);
+  /**
+   * Удаляет свою точку с карты.
+   * @returns {Promise<Object>} результат.
+   */
+  C.clearMapPoint = async () => {
+    try {
+      await DB.doc('map/' + C.uid).delete();
+      return {
+        ok: true
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: String((error && error.message) || error)
+      };
+    }
+  };
+  /**
+   * Загружает готовые решения группы.
+   * @returns {Promise<boolean>} удалось ли.
+   */
+  C.refreshSolutions = async () => {
+    try {
+      const all = {};
+      (await listTopLevel('solutions')).forEach(row => {
+        all[row.path.slice(10)] = Array.isArray(row.data.items) ? row.data.items : [];
+      });
+      C.solutions = all;
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
+   * Сохраняет список решений автора.
+   * @param {Array<Object>} items Решения.
+   * @param {string} uid Автор (для админа), необязательно.
+   */
+  C.saveSolutions = (items, uid) =>
+    writeDoc('solutions/' + (uid || C.uid), {
+      items
+    });
+  /**
+   * Сохраняет файл решения.
+   * @param {Object} file Файл решения.
+   */
+  C.addSolutionFile = file =>
+    writeDoc('solutions/' + C.uid + '/file/' + file.id, {
+      data: file.data,
+      name: file.name,
+      type: file.type,
+      size: file.size
+    });
+  /**
+   * Загружает файл решения.
+   * @param {string} uid Автор.
+   * @param {string} id Файл.
+   * @returns {Promise<Object|null>} Объект.
+   */
+  C.getSolutionFile = async (uid, id) => {
+    const doc = await DB.doc('solutions/' + uid + '/file/' + id).get();
+    return doc.exists ? doc.data() : null;
+  };
+  /**
+   * Удаляет файл решения.
+   * @param {string} uid Автор.
+   * @param {string} id Файл.
+   */
+  C.delSolutionFile = async (uid, id) => {
+    try {
+      await DB.doc('solutions/' + uid + '/file/' + id).delete();
+    } catch (error) {
+      return;
+    }
   };
   /**
    * Отправляет профиль в облако.

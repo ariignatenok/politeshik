@@ -688,23 +688,83 @@ function openCertForm() {
   ui.draft = null;
   const t = U.iso(U.today());
   UI.open(
-    'Справка или больничный',
+    'Справка, больничный или записка',
     '<div data-form="cert">' +
       '<div class="row2">' +
-      field('Тип', '<select class="input" name="kind"><option>Справка</option><option>Больничный</option></select>') +
+      field(
+        'Тип',
+        '<select class="input" name="kind" data-change="cert-kind"><option>Справка</option><option>Больничный</option><option>Записка</option></select>'
+      ) +
       field(
         'Комментарий (необязательно)',
         '<input class="input" name="note" placeholder="Например: врач, поликлиника">'
       ) +
       '</div>' +
-      '<div class="row2">' +
+      '<div class="cert-range"><div class="row2">' +
       field('С какого дня', '<input class="input" type="date" name="from" value="' + t + '">') +
       field('По какой день (включительно)', '<input class="input" type="date" name="to" value="' + t + '">') +
-      '</div>' +
+      '</div></div>' +
+      '<div class="cert-note" hidden>' +
+      field(
+        'Дата записки',
+        '<input class="input" type="date" name="noteDate" min="' +
+          ATT_START +
+          '" value="' +
+          t +
+          '" data-change="cert-note-date">'
+      ) +
+      '<div class="field"><span class="lbl">Пары, на которые записка</span><div id="note-pairs">' +
+      notePairsHtml(t) +
+      '</div></div></div>' +
       '<div class="field"><span class="lbl">Фото или скриншот</span><input class="input" type="file" name="file" accept="image/*" data-change="cert-file"><div id="draft-prev" class="md-help">Фото сожмётся автоматически. PDF не подходит — сделайте фото страницы.</div></div>' +
-      '<p class="md-help">Документ увидят только вы и админ группы. Загружайте только страницу, которая подтверждает дни отсутствия.</p>' +
+      '<p class="md-help">Документ увидят только вы и админ группы. Записка действует только на выбранные пары, остальные пары дня считаются как обычно.</p>' +
       foot(null, 'Прикрепить') +
       '</div>'
+  );
+}
+/**
+ * Строит список пар дня для записки.
+ * @param {string} date День ГГГГ-ММ-ДД.
+ * @returns {string} HTML.
+ */
+function notePairsHtml(date) {
+  const pairs = Att.pairs(date, Store.s.settings.subgroup);
+  if (!pairs.length) return '<p class="md-help">В этот день у вас нет пар.</p>';
+  return pairs
+    .map(pr => {
+      const sb = subj(pr.lessons[0].subjectId),
+        time = pairTime(pr.pair);
+      return (
+        '<label class="check-row"><input type="checkbox" name="pair" value="' +
+        pr.pair +
+        '"> ' +
+        pr.pair +
+        ' пара · ' +
+        U.esc(sb ? sb.short || sb.name : '') +
+        (time ? ' · ' + time : '') +
+        '</label>'
+      );
+    })
+    .join('');
+}
+/**
+ * Строит пояснение о справке или записке на день.
+ * @param {Array<Object>} certs Справки.
+ * @param {string} day День ГГГГ-ММ-ДД.
+ * @returns {string} HTML.
+ */
+function certDayNote(certs, day) {
+  if (Att.covered(certs, day))
+    return '<p class="md-help">В этот день у студента справка: пары считаются «по справке».</p>';
+  const notes = (certs || []).filter(c => c.pairs && c.pairs.length && c.from <= day && day <= c.to);
+  if (!notes.length) return '';
+  const pairs = [...new Set([].concat(...notes.map(c => c.pairs)))].sort((a, b) => a - b);
+  return (
+    '<p class="md-help">В этот день есть записка на ' +
+    U.plural(pairs.length, 'пару', 'пары', 'пар') +
+    ' ' +
+    pairs.join(', ') +
+    ': они считаются «по справке», остальные пары как обычно.</p>'
   );
 }
 /**
@@ -1060,9 +1120,7 @@ function openAttendanceEditor(uid, date) {
           today +
           '">'
       ) +
-      (Att.covered(r.certs, day)
-        ? '<p class="md-help">В этот день у студента справка: пары считаются «по справке».</p>'
-        : '') +
+      certDayNote(r.certs, day) +
       (prs.length ? prs.map(row).join('') : '<div class="empty">В этот день у студента пар нет</div>') +
       '<div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">Сохранить</button></div></div>'
   );

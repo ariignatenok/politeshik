@@ -198,7 +198,8 @@ const Store = (() => {
           x
         )
       ),
-      weeks: d.weeks && typeof d.weeks === 'object' && !Array.isArray(d.weeks) ? d.weeks : {}
+      weeks: d.weeks && typeof d.weeks === 'object' && !Array.isArray(d.weeks) ? d.weeks : {},
+      map: d.map && typeof d.map === 'object' ? d.map : null
     };
   }
   /**

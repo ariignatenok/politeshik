@@ -286,7 +286,11 @@ function viewDashboard() {
     ' · идёт ' +
     WEEK_NAME[cur] +
     '</p></div>' +
-    '<div class="head-actions"><button class="btn primary" data-action="add-work">＋ Добавить работу</button></div></div>' +
+    '<div class="head-actions"><button class="btn' +
+    (Focus.running() ? ' live' : '') +
+    '" data-action="focus-open">' +
+    Focus.buttonLabel() +
+    '</button><button class="btn primary" data-action="add-work">＋ Добавить работу</button></div></div>' +
     Safe.html('hero', heroHtml) +
     Safe.html('mood', () => Support.moodHtml()) +
     Safe.html('birthday', () => Birthday.bannerHtml()) +
@@ -361,7 +365,7 @@ function heroHtml() {
     btn = '';
   const needMark =
     today >= ATT_START &&
-    ps.some(p => !state.attendance.marks[today + '|' + p.pair] && !Att.covered(Cloud.my.certs, today));
+    ps.some(p => !state.attendance.marks[today + '|' + p.pair] && !Att.coveredPair(Cloud.my.certs, today, p.pair));
   if (pending && urgency(pending.date, pending.time) !== 'none') {
     text =
       ICONS.alarmClock +

@@ -359,6 +359,11 @@ const Mascot = {
       mouth = '<ellipse cx="60" cy="88" rx="3" ry="2.2" fill="' + ink + '"/>';
       extra =
         '<g class="m-zzz" fill="#8aa0c6" font-family="system-ui,sans-serif" font-weight="800"><text x="88" y="46" font-size="14">Z</text><text x="98" y="32" font-size="11">z</text><text x="106" y="20" font-size="9">z</text></g>';
+    } else if (mood === 'meditate') {
+      eyeSvg = line('M40 77 q6 6 12 0') + line('M68 77 q6 6 12 0');
+      mouth = line('M53 87 q7 5 14 0');
+      extra =
+        '<g class="m-aura" fill="none" stroke="#9be7b4" stroke-width="2"><circle cx="60" cy="62" r="54"/><circle cx="60" cy="62" r="46" opacity=".5"/></g>';
     } else if (mood === 'wink') {
       eyeSvg =
         '<ellipse cx="46" cy="75" rx="5" ry="6.2" fill="' +
@@ -700,6 +705,7 @@ const Mascot = {
    * @returns {string} настроение.
    */
   current() {
+    if (typeof Focus !== 'undefined' && Focus.running()) return 'meditate';
     if (Date.now() < Mascot.cheerUntil) return 'cheer';
     const chosenMood = Mascot.userMood();
     if (chosenMood) return chosenMood;

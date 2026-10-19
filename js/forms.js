@@ -537,32 +537,93 @@ const Forms = {
    * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
    */
   cert(form) {
-    const from = val(form, 'from'),
+    const kind = val(form, 'kind'),
+      isNote = kind === 'Записка';
+    let from,
+      to,
+      pairs = [];
+    if (isNote) {
+      from = to = val(form, 'noteDate');
+      pairs = [...form.querySelectorAll('[name=pair]:checked')].map(x => +x.value).sort((a, b) => a - b);
+      if (!from || from < ATT_START) {
+        UI.shake($('.modal'));
+        return toast('Выберите дату записки');
+      }
+      if (!pairs.length) {
+        UI.shake($('.modal'));
+        return toast('Отметьте пары, на которые записка');
+      }
+    } else {
+      from = val(form, 'from');
       to = val(form, 'to');
-    if (!from || !to || to < from) {
-      UI.shake($('.modal'));
-      return toast('Проверьте даты');
+      if (!from || !to || to < from) {
+        UI.shake($('.modal'));
+        return toast('Проверьте даты');
+      }
     }
     if (!ui.draft || !ui.draft.data) {
       UI.shake($('.modal'));
-      return toast('Прикрепите фото справки');
+      return toast('Прикрепите фото');
     }
-    if (Cloud.status !== 'online') return toast('Нужен вход через приглашение, чтобы справка дошла до админа');
+    if (Cloud.status !== 'online') return toast('Нужен вход через приглашение, чтобы документ дошёл до админа');
     const cert = {
-      kind: val(form, 'kind'),
+      kind,
       from,
       to,
       note: val(form, 'note').trim()
     };
+    if (isNote) cert.pairs = pairs;
     Cloud.addCert(cert, ui.draft.data).then(
-      () => {
+      result => {
+        if (result && result.ok === false) return toast('Не удалось сохранить: ' + result.error);
         UI.close();
         App.render();
-        Support.comfortOnce();
-        Sick.show(cert);
+        if (isNote)
+          toast(
+            'Записка прикреплена: ' +
+              U.plural(pairs.length, 'пара', 'пары', 'пар') +
+              ' ' +
+              pairs.join(', ') +
+              ' считаются «по справке»'
+          );
+        else {
+          Support.comfortOnce();
+          Sick.show(cert);
+        }
       },
       () => toast('Не удалось загрузить: файл слишком большой или нет доступа')
     );
+  },
+  /**
+   * Публикует готовое решение: загружает файлы и сохраняет запись. Асинхронно, окно не закрывается при ошибке.
+   * @param {HTMLElement} form Форма решения.
+   */
+  async solution(form) {
+    const title = val(form, 'title').trim(),
+      text = val(form, 'text').trim(),
+      files = ui.solFiles || [];
+    if (!title && !text && !files.length) {
+      UI.shake($('.modal'));
+      return toast('Добавьте название, текст или файл');
+    }
+    if (!form.dataset.sid) return toast('Откройте предмет, чтобы добавить решение');
+    const button = form.querySelector('[data-action="save-form"]');
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Публикуем…';
+    }
+    const result = await Solutions.save(form.dataset.sid, title || 'Решение', text);
+    if (!result.ok) {
+      if (button) {
+        button.disabled = false;
+        button.textContent = 'Опубликовать';
+      }
+      return toast('Не удалось опубликовать: ' + result.error);
+    }
+    ui.solFiles = [];
+    UI.close();
+    App.render();
+    toast('Решение опубликовано');
   },
   /**
    * Сохраняет личный файл.

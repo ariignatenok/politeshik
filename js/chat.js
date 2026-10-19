@@ -179,7 +179,9 @@ const Chat = {
       if (d < ATT_START) break;
       const prs = Att.pairs(d, state.settings.subgroup);
       if (!prs.length) continue;
-      const miss = prs.filter(p => !state.attendance.marks[d + '|' + p.pair] && !Att.covered(Cloud.my.certs, d));
+      const miss = prs.filter(
+        p => !state.attendance.marks[d + '|' + p.pair] && !Att.coveredPair(Cloud.my.certs, d, p.pair)
+      );
       if (miss.length && !c.flags['miss:' + d]) {
         c.flags['miss:' + d] = 1;
         Chat.push('bot', 'Привет! Ты не отметился за ' + U.fmtShort(U.fromISO(d)) + '. Напомнить админу?', {

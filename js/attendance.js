@@ -86,7 +86,18 @@ const Att = {
    * @param {string} date Дата.
    * @returns {boolean} true, если условие выполнено.
    */
-  covered: (certs, date) => (certs || []).some(c => c.from <= date && date <= c.to),
+  covered: (certs, date) => (certs || []).some(c => c.from <= date && date <= c.to && !(c.pairs && c.pairs.length)),
+  /**
+   * Проверяет, покрыта ли справкой или запиской конкретная пара.
+   * @param {Array<Object>} certs Справки.
+   * @param {string} date День ГГГГ-ММ-ДД.
+   * @param {number} pair Номер пары.
+   * @returns {boolean} true, если условие выполнено.
+   */
+  coveredPair: (certs, date, pair) =>
+    (certs || []).some(
+      c => c.from <= date && date <= c.to && (!(c.pairs && c.pairs.length) || c.pairs.indexOf(pair) >= 0)
+    ),
   /**
    * Вычисляет итоговый статус пары с учётом справки.
    * @param {Object} marks Отметки.
@@ -97,7 +108,7 @@ const Att = {
    */
   eff(marks, certs, date, pair) {
     const m = marks[date + '|' + pair],
-      cov = Att.covered(certs, date);
+      cov = Att.coveredPair(certs, date, pair);
     if (m === 'н' && cov) return 'у';
     if (!m && cov) return 'у';
     return m || '';

@@ -173,7 +173,8 @@ const App = {
     if (!Views[ui.tab] || (ui.tab === 'group' && !Cloud.isAdmin) || (Cloud.isTeacher && !Teacher.allows(ui.tab)))
       ui.tab = Cloud.isTeacher ? 'schedule' : 'dashboard';
     const v = $('#view');
-    v.innerHTML = Safe.html(
+    const sameScreen = !animate && App.shown === ui.tab && !!v.firstChild;
+    const html = Safe.html(
       'view:' + ui.tab,
       () =>
         Cloud.status === 'online' && !Cloud.ready && Date.now() - (Cloud.initAt || 0) < 4000
@@ -181,15 +182,17 @@ const App = {
           : Views[ui.tab](),
       Safe.card(ui.tab)
     );
-    const at = $('.tab.on');
-    if (at && at.scrollIntoView) {
-      try {
-        at.scrollIntoView({
-          inline: 'center',
-          block: 'nearest'
-        });
-      } catch (error) {}
+    const fingerprint = App.fingerprint(html);
+    if (!(sameScreen && fingerprint === App.shownKey)) {
+      const snapshot = sameScreen ? App.scrollSnapshot(v) : null;
+      if (sameScreen) v.style.minHeight = v.offsetHeight + 'px';
+      v.innerHTML = html;
+      if (snapshot) App.scrollRestore(v, snapshot);
+      v.style.minHeight = '';
     }
+    App.shown = ui.tab;
+    App.shownKey = fingerprint;
+    App.centerTab();
     if (animate) {
       v.classList.remove('rise');
       void v.offsetWidth;
@@ -258,6 +261,65 @@ const App = {
     }
   },
   /**
+   * Убирает из HTML случайные подробности (задержки морганий, номера слоёв), чтобы понять, изменился ли экран на самом деле.
+   * @param {string} html HTML экрана.
+   * @returns {string} Строка.
+   */
+  fingerprint(html) {
+    return html.replace(/animation-duration:[\d.]+s;animation-delay:[\d.]+s/g, '').replace(/mc\d+/g, 'mc');
+  },
+  /**
+   * Запоминает положение прокрутки страницы и внутренних блоков перед перерисовкой.
+   * @param {HTMLElement} root Корень экрана.
+   * @returns {Object} Объект.
+   */
+  scrollSnapshot(root) {
+    const spots = [];
+    root.querySelectorAll('*').forEach(el => {
+      if (!el.scrollLeft && !el.scrollTop) return;
+      const same = Array.prototype.filter.call(root.querySelectorAll('*'), x => x.className === el.className);
+      spots.push({
+        cls: el.className,
+        nth: same.indexOf(el),
+        left: el.scrollLeft,
+        top: el.scrollTop
+      });
+    });
+    return {
+      x: window.scrollX,
+      y: window.scrollY,
+      spots
+    };
+  },
+  /**
+   * Возвращает прокрутку на прежнее место после перерисовки.
+   * @param {HTMLElement} root Корень экрана.
+   * @param {Object} snapshot Сохранённое положение.
+   */
+  scrollRestore(root, snapshot) {
+    if (Math.abs(window.scrollY - snapshot.y) > 1 || Math.abs(window.scrollX - snapshot.x) > 1)
+      window.scrollTo(snapshot.x, snapshot.y);
+    snapshot.spots.forEach(spot => {
+      const same = Array.prototype.filter.call(root.querySelectorAll('*'), x => x.className === spot.cls),
+        el = same[spot.nth];
+      if (el) {
+        el.scrollLeft = spot.left;
+        el.scrollTop = spot.top;
+      }
+    });
+  },
+  /**
+   * Прокручивает полосу вкладок так, чтобы активная была по центру, не трогая саму страницу.
+   */
+  centerTab() {
+    const tab = $('.tab.on'),
+      bar = tab ? tab.parentElement : null;
+    if (!bar || bar.scrollWidth <= bar.clientWidth) return;
+    const delta =
+      tab.getBoundingClientRect().left - bar.getBoundingClientRect().left - (bar.clientWidth - tab.offsetWidth) / 2;
+    if (Math.abs(delta) > 4) bar.scrollLeft += delta;
+  },
+  /**
    * Перерисовывает экран, если пользователь сейчас не вводит текст и не открыто окно.
    */
   renderSoft() {
@@ -277,6 +339,8 @@ const App = {
       .catch(error => Safe.report('init', error))
       .then(() => {
         Safe.run('mascot', () => Mascot.syncFromProfile());
+        Safe.run('focus', () => Focus.restore());
+        Safe.run('solutions', () => Cloud.refreshSolutions());
         Safe.run('theme', () => UI.applyTheme());
         Safe.run('announce', () => Themes.announce());
         Safe.run('chat', () => Chat.tick());

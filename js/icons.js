@@ -122,5 +122,6 @@ const ICONS = {
   users: '\u{1F465}',
   warning: '\u{26A0}\u{FE0F}',
   wastebasket: '\u{1F5D1}\u{FE0F}',
-  wave: '\u{1F30A}'
+  wave: '\u{1F30A}',
+  worldMap: '\u{1F5FA}\u{FE0F}'
 };

@@ -140,13 +140,11 @@ function viewCabinetMain() {
           .map(
             c =>
               '<div class="item"><div class="item-main"><div class="item-title">' +
-              (c.kind === 'Больничный' ? ICONS.hospital : ICONS.document) +
+              (c.kind === 'Больничный' ? ICONS.hospital : c.kind === 'Записка' ? ICONS.memo : ICONS.document) +
               ' ' +
               U.esc(c.kind) +
               ' · ' +
-              U.esc(U.fmtShort(U.fromISO(c.from))) +
-              ' — ' +
-              U.esc(U.fmtShort(U.fromISO(c.to))) +
+              U.esc(certPeriod(c)) +
               '</div>' +
               '<div class="item-meta">' +
               (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +

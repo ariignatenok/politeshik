@@ -87,6 +87,12 @@ const NAV_ALL = [
     short: 'Рейтинг'
   },
   {
+    id: 'map',
+    ico: ICONS.worldMap,
+    label: 'Карта',
+    short: 'Карта'
+  },
+  {
     id: 'teachers',
     ico: ICONS.teacher,
     label: 'Преподаватели',

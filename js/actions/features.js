@@ -204,5 +204,92 @@ Object.assign(A, {
     Mascot.resetLook();
     App.render();
     toast('Политешик снова обычный');
+  },
+  /**
+   * Переключает этаж на карте.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'map-floor'(el) {
+    ui.mapFloor = +el.dataset.floor;
+    ui.mapPlacing = false;
+    App.render();
+  },
+  /**
+   * Включает режим постановки точки «Я здесь».
+   */
+  'map-here'() {
+    ui.mapPlacing = !ui.mapPlacing;
+    App.render();
+  },
+  /**
+   * Убирает свою точку с карты.
+   */
+  async 'map-clear'() {
+    await CampusMap.clear();
+    toast('Точка убрана');
+  },
+  /**
+   * Открывает форму готового ДЗ.
+   */
+  'sol-add'() {
+    openSolutionForm();
+  },
+  /**
+   * Удаляет готовое решение.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'sol-del'(el) {
+    if (!(await UI.confirm('Удалить это решение?', 'Удалить'))) return;
+    const result = await Solutions.remove(el.dataset.uid, el.dataset.id);
+    if (!result.ok) return toast('Не удалось удалить: ' + result.error);
+    App.render();
+    toast('Решение удалено');
+  },
+  /**
+   * Скачивает файл решения.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'sol-file-dl'(el) {
+    toast('Скачиваю файл…');
+    try {
+      const file = await Cloud.getSolutionFile(el.dataset.uid, el.dataset.id);
+      if (!file || !file.data) return toast('Файл не найден');
+      downloadBlob(await (await fetch(file.data)).blob(), file.name || el.dataset.name || 'file');
+    } catch (error) {
+      toast('Не удалось скачать файл');
+    }
+  },
+  /**
+   * Убирает файл из формы решения.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'sol-file-rm'(el) {
+    ui.solFiles.splice(+el.dataset.index, 1);
+    const box = document.getElementById('sol-files');
+    if (box) box.innerHTML = solutionFilesHtml();
+  },
+  /**
+   * Открывает фокус-режим.
+   */
+  'focus-open'() {
+    Focus.open();
+  },
+  /**
+   * Запускает фокус-таймер.
+   */
+  'focus-start'() {
+    Focus.start();
+  },
+  /**
+   * Останавливает фокус-таймер.
+   */
+  'focus-stop'() {
+    Focus.stop();
+  },
+  /**
+   * Запускает фокус-таймер заново.
+   */
+  'focus-restart'() {
+    Focus.restart();
   }
 });

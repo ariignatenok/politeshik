@@ -148,6 +148,23 @@ document.addEventListener('change', event => {
   if (k === 'cert-file') handleDraftFile(event.target, true);
   if (k === 'work-file') handleDraftFile(event.target, false);
   if (k === 'note-file') handleNoteFile(event.target);
+  if (k === 'sol-file') handleSolutionFile(event.target);
+  if (k === 'focus-sound') {
+    Store.s.settings.focusSound = event.target.checked;
+    Store.save();
+  }
+  if (k === 'cert-kind') {
+    const modal = event.target.closest('.modal') || document,
+      isNote = event.target.value === 'Записка',
+      range = modal.querySelector('.cert-range'),
+      note = modal.querySelector('.cert-note');
+    if (range) range.hidden = isNote;
+    if (note) note.hidden = !isNote;
+  }
+  if (k === 'cert-note-date') {
+    const box = document.getElementById('note-pairs');
+    if (box) box.innerHTML = notePairsHtml(event.target.value);
+  }
   if (k === 'att-edit-date') {
     const f = event.target.closest('[data-form]');
     if (f && event.target.value >= ATT_START && event.target.value <= U.iso(U.today()))

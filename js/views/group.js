@@ -451,6 +451,26 @@ function certDays(c) {
   return U.dayDiff(U.fromISO(c.from), U.fromISO(c.to)) + 1;
 }
 /**
+ * Проверяет, что справка — записка на отдельные пары.
+ * @param {Object} c Справка.
+ * @returns {boolean} true, если условие выполнено.
+ */
+function isNoteCert(c) {
+  return !!(c.pairs && c.pairs.length);
+}
+/**
+ * Подписывает период или пары справки.
+ * @param {Object} c Справка.
+ * @returns {string} Строка.
+ */
+function certPeriod(c) {
+  if (isNoteCert(c))
+    return (
+      U.fmtShort(U.fromISO(c.from)) + ', ' + U.plural(c.pairs.length, 'пара', 'пары', 'пар') + ' ' + c.pairs.join(', ')
+    );
+  return U.fmtShort(U.fromISO(c.from)) + ' — ' + U.fmtShort(U.fromISO(c.to));
+}
+/**
  * Строит строку справки с кнопками «Фото», «Подтвердить» и «Удалить».
  * @param {Object} x Справка с данными студента.
  * @returns {string} HTML.
@@ -462,20 +482,15 @@ function certRow(x) {
     '<div class="item sick-item' +
     (ok ? '' : ' u-yellow') +
     '"><div class="item-main"><div class="item-title">' +
-    (c.kind === 'Больничный' ? ICONS.hospital : ICONS.document) +
+    (c.kind === 'Больничный' ? ICONS.hospital : c.kind === 'Записка' ? ICONS.memo : ICONS.document) +
     ' ' +
     U.esc(x.name) +
     '</div><div class="item-meta">' +
     '<span class="tag">' +
     U.esc(c.kind) +
     '</span><span class="tag">' +
-    U.esc(U.fmtShort(U.fromISO(c.from))) +
-    ' — ' +
-    U.esc(U.fmtShort(U.fromISO(c.to))) +
-    ' · ' +
-    certDays(c) +
-    ' ' +
-    U.plural(certDays(c), 'день', 'дня', 'дней') +
+    U.esc(certPeriod(c)) +
+    (isNoteCert(c) ? '' : ' · ' + certDays(c) + ' ' + U.plural(certDays(c), 'день', 'дня', 'дней')) +
     '</span>' +
     (x.sub ? '<span class="tag">подгруппа ' + U.esc(x.sub) + '</span>' : '') +
     (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +

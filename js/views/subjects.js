@@ -488,6 +488,7 @@ function viewSubjects() {
   ];
   const tabs = noNotes(sb) ? tabs0.filter(t => t[0] !== 'notes') : tabs0;
   if (sb.hasFormulas) tabs.push(['formulas', '∑ Формулы', sb.formulas.length]);
+  tabs.push(['solutions', ICONS.check + ' Готовое ДЗ', Solutions.count(sb.id)]);
   tabs.push(['links', ICONS.link + ' Материалы', sb.links.length]);
   if (!tabs.some(t => t[0] === ui.subjTab)) ui.subjTab = 'hw';
   let body = '';
@@ -511,6 +512,8 @@ function viewSubjects() {
     body = cardsBody(sb);
   } else if (ui.subjTab === 'formulas') {
     body = formulasBody(sb);
+  } else if (ui.subjTab === 'solutions') {
+    body = solutionsBody(sb);
   } else {
     body =
       '<div class="inline-add" data-form="link-new" style="grid-template-columns:1fr 1.4fr auto"><input class="input" name="title" placeholder="Название"><input class="input" name="url" placeholder="https://…"><button class="btn primary" data-action="save-form">Добавить</button></div><div id="link-list">' +

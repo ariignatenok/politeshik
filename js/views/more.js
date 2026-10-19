@@ -9,7 +9,8 @@ function viewMore() {
     ['news', ICONS.newspaper, 'Новости'],
     ['teachers', ICONS.teacher, 'Преподаватели'],
     ['cabinet', ICONS.user, 'Личный кабинет'],
-    ['rating', ICONS.trophy, 'Рейтинг группы']
+    ['rating', ICONS.trophy, 'Рейтинг группы'],
+    ['map', ICONS.worldMap, 'Карта']
   ]
     .concat([['journal', ICONS.folder, 'Журнал']])
     .concat(Cloud.isAdmin ? [['group', ICONS.shield, 'Группа (админ)']] : [])

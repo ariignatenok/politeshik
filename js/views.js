@@ -11,9 +11,10 @@ const Views = {
   teachers: viewTeachers,
   cabinet: viewCabinet,
   rating: viewRating,
+  map: viewMap,
   group: viewGroup,
   journal: viewJournal,
   more: viewMore,
   settings: viewSettings
 };
-const MORE_TABS = ['news', 'teachers', 'cabinet', 'rating', 'group', 'journal', 'settings', 'more'];
+const MORE_TABS = ['news', 'teachers', 'cabinet', 'rating', 'map', 'group', 'journal', 'settings', 'more'];
