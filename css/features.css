@@ -350,3 +350,55 @@
   gap: 10px;
   margin-top: 16px;
 }
+
+.my-mascot-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.my-preview {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 180px;
+  height: 180px;
+  border-radius: var(--radius-lg);
+  background: var(--surface2);
+}
+
+.my-controls {
+  flex: 1;
+  min-width: 240px;
+}
+
+.my-controls h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.my-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.my-chip {
+  padding: 8px 14px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--surface2);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.my-chip.on {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}

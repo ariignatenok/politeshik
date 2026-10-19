@@ -332,3 +332,71 @@ body {
   transform-origin: center;
   animation: spin-s 60s linear infinite;
 }
+
+:root[data-theme="cleangirl"] {
+  --bg: #f6f0e6;
+  --bg-image: linear-gradient(180deg, #f9ece6 0, #f6f0e6 38%, #eef0e2 100%);
+  --surface: #fffdf8;
+  --surface2: #f1eadc;
+  --border: rgba(98, 88, 60, 0.16);
+  --text: #35322a;
+  --muted: #6f6a5b;
+  --accent: #a9b98a;
+  --accent-hover: #b7c69b;
+  --accent-soft: rgba(138, 154, 98, 0.2);
+  --accent-text: #4a5a30;
+  --on-accent: #2b3418;
+  --red: #a8353f;
+  --red-bg: rgba(196, 80, 90, 0.1);
+  --yellow: #8f5f10;
+  --yellow-bg: rgba(226, 168, 60, 0.18);
+  --green: #2f6f3a;
+  --mark: rgba(244, 205, 212, 0.65);
+  --shadow: 0 1px 2px rgba(98, 88, 60, 0.08), 0 12px 28px rgba(98, 88, 60, 0.09);
+  color-scheme: light;
+}
+
+:root[data-theme="cleangirl"] body {
+  background-image: var(--bg-image);
+  background-attachment: fixed;
+}
+
+:root[data-theme="cleangirl"] .btn.primary,
+:root[data-theme="cleangirl"] .fab-wrap .fab {
+  box-shadow: 0 6px 16px rgba(138, 154, 98, 0.35);
+}
+
+:root[data-theme="cleangirl"] .nav-btn.on {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+:root[data-theme="cleangirl"] .day-tab.on,
+:root[data-theme="cleangirl"] .adm-av {
+  color: var(--on-accent);
+}
+
+:root[data-theme="cleangirl"] .cal-d.none {
+  color: var(--muted);
+  opacity: 1;
+}
+
+:root[data-theme="cleangirl"] .g-day small,
+:root[data-theme="cleangirl"] .l-num small {
+  color: var(--muted);
+  opacity: 1;
+}
+
+:root[data-theme="cleangirl"] .g-day.today small {
+  color: var(--accent-text);
+}
+
+:root[data-theme="cleangirl"] .avatar {
+  color: #1b1f1a;
+}
+
+:root[data-theme="cleangirl"] .lesson small,
+:root[data-theme="cleangirl"] .lesson .who {
+  color: var(--text);
+  opacity: 0.82;
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'b1ceb54ba1e';
+const CACHE_VERSION = 'b56bc5d2de3';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
