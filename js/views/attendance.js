@@ -258,8 +258,11 @@ function periodControls() {
  * Возвращает границы выбранного периода.
  * @returns {Array<string>} начало и конец.
  */
-const attRange = () =>
-  ui.attScope === 'all' ? [ATT_START, '9999-12-31'] : [ui.attMonth + '-01', monthEnd(ui.attMonth)];
+const attRange = () => {
+  if (ui.attScope === 'all') return [ATT_START, '9999-12-31'];
+  if (!ui.attMonth) ui.attMonth = U.iso(U.today()).slice(0, 7);
+  return [ui.attMonth + '-01', monthEnd(ui.attMonth)];
+};
 /**
  * Строит карточку лимита пропусков.
  * @param {number} h Часы пропусков.

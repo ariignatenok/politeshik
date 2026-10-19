@@ -77,10 +77,8 @@ const Chat = {
    * @returns {Object} начало и конец окна.
    */
   window(w) {
-    const end = U.fromISO(w.date);
-    end.setHours(9, 0, 0, 0);
-    const start = new Date(end);
-    start.setDate(start.getDate() - 1);
+    const end = dueDate(w.date, w.time || '09:00'),
+      start = new Date(end.getTime() - 24 * 36e5);
     return {
       start,
       end
@@ -92,7 +90,12 @@ const Chat = {
    */
   tick() {
     if (Cloud.isTeacher) return false;
-    if (Cloud.status === 'online' && !(Cloud.chatLoaded && Cloud.attLoaded && Cloud.certsLoaded)) return false;
+    if (
+      Cloud.status === 'online' &&
+      !(Cloud.chatLoaded && Cloud.attLoaded && Cloud.certsLoaded) &&
+      Date.now() - (Cloud.initAt || 0) < 6000
+    )
+      return false;
     const c = Chat.st(),
       now = new Date();
     let changed = false;
@@ -109,7 +112,7 @@ const Chat = {
       changed = true;
     }
     allWorks().forEach(w => {
-      if (w.done || Cloud.isAdmin) return;
+      if (w.done) return;
       const win = Chat.window(w);
       if (now < win.start || now >= win.end) return;
       const wk = w.id + '@' + w.date,

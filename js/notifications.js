@@ -171,18 +171,24 @@ const Reminders = {
             k = i.kind + i.id + '@' + i.date;
           if (h <= 0) return;
           if (h <= 2 && !sent['w2|' + k]) {
-            sent['w2|' + k] = 1;
-            sent['w24|' + k] = 1;
-            dirty = true;
-            Notifier.show('works', 'Срок через 2 часа', '«' + i.title + '»', {
-              tag: 'w2' + k
-            });
+            if (
+              Notifier.show('works', 'Срок через 2 часа', '«' + i.title + '»', {
+                tag: 'w2' + k
+              })
+            ) {
+              sent['w2|' + k] = 1;
+              sent['w24|' + k] = 1;
+              dirty = true;
+            }
           } else if (h <= 24 && !sent['w24|' + k]) {
-            sent['w24|' + k] = 1;
-            dirty = true;
-            Notifier.show('works', 'Срок через 24 часа', '«' + i.title + '»', {
-              tag: 'w24' + k
-            });
+            if (
+              Notifier.show('works', 'Срок через 24 часа', '«' + i.title + '»', {
+                tag: 'w24' + k
+              })
+            ) {
+              sent['w24|' + k] = 1;
+              dirty = true;
+            }
           }
         });
     }

@@ -180,5 +180,29 @@ Object.assign(A, {
    */
   'reload-app'() {
     window.location.reload();
+  },
+  /**
+   * Включает или выключает аксессуар Политешика.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'my-acc'(el) {
+    Mascot.setAccessory(el.dataset.id);
+    App.render();
+  },
+  /**
+   * Выбирает эмоцию дня Политешика.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'my-mood'(el) {
+    Mascot.chooseMood(el.dataset.mood);
+    App.render();
+  },
+  /**
+   * Возвращает Политешика к обычному виду.
+   */
+  'my-mascot-reset'() {
+    Mascot.resetLook();
+    App.render();
+    toast('Политешик снова обычный');
   }
 });

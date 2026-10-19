@@ -111,6 +111,7 @@ function viewCabinetMain() {
     (online ? '<button class="btn" data-action="profile-edit">' + ICONS.pencil + ' Профиль</button>' : '') +
     '</div></div>' +
     aboutCard() +
+    Safe.html('my-mascot', () => Mascot.cardHtml()) +
     winnerPlaque() +
     absCard(Att.absHours(state.attendance.marks, Cloud.my.certs, state.settings.subgroup)) +
     '<div class="dash-cols"><section class="card"><h2>Моя посещаемость · ' +

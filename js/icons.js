@@ -69,6 +69,7 @@ const ICONS = {
   medalBronze: '\u{1F949}',
   medalGold: '\u{1F947}',
   medalSilver: '\u{1F948}',
+  meditating: '\u{1F9D8}',
   megaphone: '\u{1F4E3}',
   memo: '\u{1F4DD}',
   militaryMedal: '\u{1F396}\u{FE0F}',

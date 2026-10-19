@@ -42,6 +42,12 @@ const THEMES = [
     ico: ICONS.sparkles,
     name: 'Магия',
     sw: '#a78bfa'
+  },
+  {
+    id: 'cleangirl',
+    ico: ICONS.meditating,
+    name: 'Clean Girl',
+    sw: '#a9b98a'
   }
 ];
 const SEASONAL = [
@@ -268,6 +274,134 @@ const Themes = {
       }
       b += leaf(520, H, 1.6, -70, '#6ec26a', '0.5') + leaf(760, H, 1.3, -110, '#59b455', '1.5');
       return svg('<g opacity=".55">' + b + '</g>');
+    }
+    if (id === 'cleangirl') {
+      const beige = '#eadfca',
+        edge = '#cdbf9f',
+        olive = '#b8c79a',
+        oliveEdge = '#8fa073',
+        blush = '#f4cdd4',
+        blushEdge = '#d79aa6',
+        cream = '#fff7ea';
+      const mat = (x, y, rot, fill, line) =>
+        '<g transform="translate(' +
+        x +
+        ' ' +
+        y +
+        ') rotate(' +
+        rot +
+        ')"><rect width="170" height="38" rx="19" fill="' +
+        fill +
+        '" stroke="' +
+        line +
+        '" stroke-width="2.5"/><circle cx="19" cy="19" r="13" fill="none" stroke="' +
+        line +
+        '" stroke-width="2.5"/><circle cx="19" cy="19" r="6" fill="none" stroke="' +
+        line +
+        '" stroke-width="2.5"/><rect x="92" y="-4" width="12" height="46" rx="4" fill="' +
+        cream +
+        '" stroke="' +
+        line +
+        '" stroke-width="2"/></g>';
+      const dumbbell = (x, y, rot, fill, line) =>
+        '<g transform="translate(' +
+        x +
+        ' ' +
+        y +
+        ') rotate(' +
+        rot +
+        ')" fill="' +
+        fill +
+        '" stroke="' +
+        line +
+        '" stroke-width="2.5"><rect x="-52" y="-5" width="104" height="10" rx="5"/><rect x="-66" y="-26" width="15" height="52" rx="6"/><rect x="-82" y="-18" width="13" height="36" rx="5"/><rect x="51" y="-26" width="15" height="52" rx="6"/><rect x="69" y="-18" width="13" height="36" rx="5"/></g>';
+      const ball = (x, y, r, fill, line) =>
+        '<g transform="translate(' +
+        x +
+        ' ' +
+        y +
+        ')"><circle r="' +
+        r +
+        '" fill="' +
+        fill +
+        '" stroke="' +
+        line +
+        '" stroke-width="2.5"/><path d="M' +
+        -r * 0.6 +
+        ' ' +
+        -r * 0.5 +
+        'Q' +
+        -r * 0.2 +
+        ' ' +
+        -r * 0.9 +
+        ' ' +
+        r * 0.3 +
+        ' ' +
+        -r * 0.8 +
+        '" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".7"/></g>';
+      const matcha = (x, y, s) =>
+        '<g transform="translate(' +
+        x +
+        ' ' +
+        y +
+        ') scale(' +
+        s +
+        ')"><path d="M-46 0H46Q42 52 0 52Q-42 52 -46 0Z" fill="' +
+        cream +
+        '" stroke="' +
+        edge +
+        '" stroke-width="3"/><ellipse cy="0" rx="46" ry="9" fill="#a9c27a" stroke="' +
+        oliveEdge +
+        '" stroke-width="3"/><path d="M-20 -4Q0 6 20 -4" fill="none" stroke="#f2f7e4" stroke-width="3" stroke-linecap="round"/></g>';
+      const sprig = (x, y, rot, s) =>
+        '<g transform="translate(' +
+        x +
+        ' ' +
+        y +
+        ') rotate(' +
+        rot +
+        ') scale(' +
+        s +
+        ')"><path d="M0 0C10 -50 8 -110 0 -160" fill="none" stroke="' +
+        oliveEdge +
+        '" stroke-width="3"/>' +
+        [-130, -105, -80, -55, -30]
+          .map(
+            (yy, i) =>
+              '<path d="M2 ' +
+              yy +
+              'C' +
+              (i % 2 ? 34 : -34) +
+              ' ' +
+              (yy - 22) +
+              ' ' +
+              (i % 2 ? 40 : -40) +
+              ' ' +
+              (yy + 4) +
+              ' 2 ' +
+              yy +
+              'Z" fill="' +
+              olive +
+              '" stroke="' +
+              oliveEdge +
+              '" stroke-width="2"/>'
+          )
+          .join('') +
+        '</g>';
+      return svg(
+        '<g opacity=".6">' +
+          mat(60, 640, -12, beige, edge) +
+          mat(900, 120, 14, blush, blushEdge) +
+          dumbbell(1050, 660, -20, olive, oliveEdge) +
+          dumbbell(150, 140, 18, blush, blushEdge) +
+          ball(1110, 330, 62, olive, oliveEdge) +
+          ball(70, 420, 48, blush, blushEdge) +
+          matcha(260, 700, 1) +
+          matcha(980, 520, 0.8) +
+          sprig(40, 330, 8, 1) +
+          sprig(1160, 560, -10, 1) +
+          '</g>'
+      );
     }
     if (id === 'magic') {
       let b =

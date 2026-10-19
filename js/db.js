@@ -660,6 +660,7 @@ const Cloud = (() => {
       watchGroup();
       if (C.isAdmin) watchAdmin();
       if (C.isTeacher) watchTeacher();
+      Safe.run('mascot', () => Mascot.syncFromProfile());
       clearTimeout(C.readyTimer);
       C.readyTimer = setTimeout(() => {
         if (!C.ready) {
@@ -692,12 +693,42 @@ const Cloud = (() => {
    * @param {Object} obj Данные документа.
    * @returns {Promise} Результат выполнения.
    */
-  const writeDoc = (path, obj) =>
-    DB.doc(path)
-      .set(obj)
-      .catch(e => {
-        C.err = String((e && e.message) || e);
-      });
+  const writeDoc = async (path, obj) => {
+    try {
+      await DB.doc(path).set(obj);
+      return {
+        ok: true
+      };
+    } catch (first) {
+      try {
+        if (supa && supa.auth && supa.auth.refreshSession) await supa.auth.refreshSession();
+        await DB.doc(path).set(obj);
+        return {
+          ok: true
+        };
+      } catch (error) {
+        C.err = String((error && error.message) || error);
+        C.writeFailed(path);
+        return {
+          ok: false,
+          error: C.err
+        };
+      }
+    }
+  };
+  /**
+   * Один раз в несколько секунд сообщает, что запись в облако не удалась.
+   * @param {string} path Путь документа в таблице docs.
+   */
+  C.writeFailed = path => {
+    if (Date.now() - (C.lastWriteToast || 0) < 8000) return;
+    C.lastWriteToast = Date.now();
+    toast(
+      'Не удалось сохранить в облаке (' +
+        path.split('/')[0] +
+        '). Проверьте интернет; если не помогает, выйдите и войдите заново.'
+    );
+  };
   /**
    * Отправляет свои отметки в облако с учётом правок админа.
    */
@@ -710,7 +741,7 @@ const Cloud = (() => {
         Store.save();
       } catch (error) {}
     }
-    writeDoc('attendance/' + C.uid, {
+    return writeDoc('attendance/' + C.uid, {
       marks: Store.s.attendance.marks,
       updated: new Date().toISOString()
     });
@@ -1144,24 +1175,30 @@ const Cloud = (() => {
    * @param {string} uid Идентификатор студента.
    * @param {Object<string,string>} changes Отметки вида {"дата|пара": статус или пустая строка}.
    */
-  C.saveMarksFor = (uid, changes) => {
-    const cur = Object.assign({}, uid === C.uid ? Store.s.attendance.marks : (C.adm.att[uid] || {}).marks || {});
+  C.saveMarksFor = async (uid, changes) => {
+    const own = uid === C.uid,
+      before = own ? null : C.adm.att[uid];
+    const cur = Object.assign({}, own ? Store.s.attendance.marks : (C.adm.att[uid] || {}).marks || {});
     Object.keys(changes).forEach(k => {
       if (changes[k]) cur[k] = changes[k];
       else delete cur[k];
     });
-    if (uid === C.uid) {
+    if (own) {
       Store.s.attendance.marks = cur;
       Store.s.meta.pendingAtt = true;
       Store.save();
-      C.pushAtt();
-    } else {
-      C.adm.att[uid] = {
-        marks: cur,
-        updated: new Date().toISOString()
-      };
-      writeDoc('attendance/' + uid, C.adm.att[uid]);
+      return C.pushAtt();
     }
+    C.adm.att[uid] = {
+      marks: cur,
+      updated: new Date().toISOString()
+    };
+    const result = await writeDoc('attendance/' + uid, C.adm.att[uid]);
+    if (!result.ok) {
+      if (before) C.adm.att[uid] = before;
+      else delete C.adm.att[uid];
+    }
+    return result;
   };
   /**
    * Отправляет профиль в облако.

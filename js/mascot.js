@@ -273,7 +273,8 @@ const Mascot = {
         (Math.random() * 3).toFixed(2) +
         's';
     const season = opts && opts.season !== undefined ? opts.season : Mascot.activeSeason(),
-      acc = Mascot.accessories(season, mood, 'mc' + ++Mascot.seq);
+      acc = Mascot.accessories(season, mood, 'mc' + ++Mascot.seq),
+      me = Mascot.userLayers(mood, season);
     const eyes = (dx, dy, ry) =>
       '<g class="m-eyes" style="' +
       es +
@@ -373,7 +374,7 @@ const Mascot = {
       'mascot m-' +
       mood +
       (season ? ' m-season-' + season : '') +
-      (acc.hat ? ' m-has-hat' : '') +
+      (acc.hat || me.hat ? ' m-has-hat' : '') +
       (acc.hold ? ' m-has-hold' : '') +
       (extraCls ? ' ' + extraCls : '');
     return (
@@ -402,15 +403,275 @@ const Mascot = {
       '" opacity=".7"/>' +
       eyeSvg +
       mouth +
+      me.neck +
+      me.face +
       '<g class="m-cap">' +
       cap +
       '</g>' +
-      acc.hat +
+      (me.hat || acc.hat) +
       acc.hold +
       '</g>' +
       acc.front +
       extra +
       '</svg>'
+    );
+  },
+  userItems: [
+    {
+      id: 'glasses',
+      name: 'Очки'
+    },
+    {
+      id: 'earrings',
+      name: 'Сережки'
+    },
+    {
+      id: 'hat',
+      name: 'Шляпка'
+    },
+    {
+      id: 'bow',
+      name: 'Бабочка'
+    },
+    {
+      id: 'beret',
+      name: 'Беретик'
+    },
+    {
+      id: 'lashes',
+      name: 'Реснички'
+    }
+  ],
+  userMoods: [
+    {
+      id: 'cheer',
+      name: 'Радостный'
+    },
+    {
+      id: 'thinking',
+      name: 'Задумчивый'
+    },
+    {
+      id: 'sleepy',
+      name: 'Сонный'
+    },
+    {
+      id: 'angry',
+      name: 'Боевой'
+    }
+  ],
+  /**
+   * Возвращает выбор внешнего вида Политешика у текущего пользователя.
+   * @returns {Object} аксессуары и эмоция.
+   */
+  chosen() {
+    try {
+      const own = Store.s.settings.mascot;
+      return own && typeof own === 'object'
+        ? own
+        : {
+            acc: [],
+            mood: ''
+          };
+    } catch (error) {
+      return {
+        acc: [],
+        mood: ''
+      };
+    }
+  },
+  /**
+   * Возвращает выбранные пользователем аксессуары.
+   * @returns {Array<string>} Массив.
+   */
+  userAcc() {
+    const own = Mascot.chosen();
+    return Array.isArray(own.acc) ? own.acc.filter(id => Mascot.userItems.some(item => item.id === id)) : [];
+  },
+  /**
+   * Возвращает выбранную пользователем «эмоцию дня» или пустую строку.
+   * @returns {string} Строка.
+   */
+  userMood() {
+    const own = Mascot.chosen();
+    return Mascot.userMoods.some(m => m.id === own.mood) ? own.mood : '';
+  },
+  /**
+   * Возвращает подпись выбранных аксессуаров, чтобы вовремя перерисовать маскота в шапке.
+   * @returns {string} Строка.
+   */
+  signature() {
+    return Mascot.userAcc().join('+');
+  },
+  /**
+   * Рисует личные аксессуары поверх базового Политешика: очки, сережки, бабочку, шляпку, беретик, реснички.
+   * @param {string} mood Настроение Политешика.
+   * @param {string} season Наряд или пустая строка.
+   * @returns {Object} hat, face, neck.
+   */
+  userLayers(mood, season) {
+    const own = Mascot.userAcc(),
+      has = id => own.indexOf(id) >= 0,
+      out = {
+        hat: '',
+        face: '',
+        neck: ''
+      };
+    const lift =
+        mood === 'cheer'
+          ? 3
+          : mood === 'sleepy'
+            ? 7
+            : mood === 'sad'
+              ? 5
+              : mood === 'worried'
+                ? 1
+                : mood === 'thinking'
+                  ? -3
+                  : 0,
+      shift = mood === 'thinking' ? -1.5 : 0;
+    if (has('lashes')) {
+      out.face +=
+        '<g data-acc="u-lashes" transform="translate(' +
+        shift +
+        ' ' +
+        lift +
+        ')" fill="none" stroke="#1f2d3a" stroke-width="1.9" stroke-linecap="round"><path d="M41 70L37.5 67M45 68.6L43.5 65M49.5 69L50.5 65.5M79 70L82.5 67M75 68.6L76.5 65M70.5 69L69.5 65.5"/></g>';
+    }
+    if (has('glasses')) {
+      out.face +=
+        '<g data-acc="u-glasses" fill="#bfe3ff" fill-opacity=".22" stroke="#2b2f3a" stroke-width="2.6" stroke-linecap="round"><circle cx="46" cy="75" r="11"/><circle cx="74" cy="75" r="11"/><path d="M57 74Q60 71 63 74" fill="none"/><path d="M35 73L27 70M85 73L93 70" fill="none"/></g>';
+    }
+    if (has('earrings')) {
+      const drop = x =>
+        '<circle cx="' +
+        x +
+        '" cy="77" r="1.7" fill="#ffc83d"/><path d="M' +
+        x +
+        ' 78.5V84" stroke="#e0a800" stroke-width="1.3"/><circle cx="' +
+        x +
+        '" cy="86" r="3.1" fill="#ff8fc8" stroke="#d93a7d" stroke-width="1.2"/>';
+      out.face += '<g data-acc="u-earrings">' + drop(23.5) + drop(96.5) + '</g>';
+    }
+    if (has('bow')) {
+      out.neck =
+        '<g data-acc="u-bow" fill="#ff6fa5" stroke="#d93a7d" stroke-width="1.8" stroke-linejoin="round"><path d="M60 101L47 95V107Z"/><path d="M60 101L73 95V107Z"/><circle cx="60" cy="101" r="3.8" fill="#ff4f93"/></g>';
+    }
+    if (season !== 'birthday') {
+      if (has('hat')) {
+        out.hat =
+          '<g class="m-hat" data-acc="u-hat"><ellipse cx="60" cy="48" rx="41" ry="9" fill="#ead9b4" stroke="#a98d5a" stroke-width="2.5"/><path d="M38 47C38 28 48 20 60 20C72 20 82 28 82 47Z" fill="#f3e5c4" stroke="#a98d5a" stroke-width="2.5" stroke-linejoin="round"/><path d="M38.5 41Q60 47 81.5 41" fill="none" stroke="#ff8fb8" stroke-width="5"/><g transform="translate(77 37)"><circle cx="-3" cy="0" r="3" fill="#fff" stroke="#e58aa8" stroke-width="1"/><circle cx="3" cy="0" r="3" fill="#fff" stroke="#e58aa8" stroke-width="1"/><circle cx="0" cy="-3" r="3" fill="#fff" stroke="#e58aa8" stroke-width="1"/><circle cx="0" cy="3" r="3" fill="#fff" stroke="#e58aa8" stroke-width="1"/><circle r="2" fill="#ffd166"/></g></g>';
+      } else if (has('beret')) {
+        out.hat =
+          '<g class="m-hat" data-acc="u-beret" transform="rotate(7 60 40)"><path d="M26 46C24 30 44 20 66 22C88 24 98 36 92 48C70 54 44 54 26 46Z" fill="#f6b6c9" stroke="#c2708a" stroke-width="2.5" stroke-linejoin="round"/><path d="M30 47C48 55 72 55 90 48" fill="none" stroke="#c2708a" stroke-width="3"/><path d="M62 22C62 17 66 15 69 18" fill="none" stroke="#c2708a" stroke-width="3" stroke-linecap="round"/><path d="M40 32C48 27 58 26 66 27" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/></g>';
+      }
+    }
+    return out;
+  },
+  /**
+   * Включает или выключает аксессуар (шляпка и беретик не сочетаются) и сохраняет выбор.
+   * @param {string} id Идентификатор аксессуара.
+   */
+  setAccessory(id) {
+    const own = Mascot.chosen(),
+      acc = Array.isArray(own.acc) ? own.acc.slice() : [],
+      at = acc.indexOf(id);
+    if (at >= 0) acc.splice(at, 1);
+    else {
+      acc.push(id);
+      const rival = id === 'hat' ? 'beret' : id === 'beret' ? 'hat' : '';
+      if (rival && acc.indexOf(rival) >= 0) acc.splice(acc.indexOf(rival), 1);
+    }
+    Store.s.settings.mascot = {
+      acc,
+      mood: own.mood || ''
+    };
+    Mascot.persist();
+  },
+  /**
+   * Запоминает «эмоцию дня» Политешика (пустая строка — автоматически).
+   * @param {string} id Идентификатор эмоции или пустая строка.
+   */
+  chooseMood(id) {
+    const own = Mascot.chosen();
+    Store.s.settings.mascot = {
+      acc: Array.isArray(own.acc) ? own.acc : [],
+      mood: Mascot.userMoods.some(m => m.id === id) ? id : ''
+    };
+    Mascot.persist();
+  },
+  /**
+   * Снимает все аксессуары и возвращает автоматическую эмоцию.
+   */
+  resetLook() {
+    Store.s.settings.mascot = {
+      acc: [],
+      mood: ''
+    };
+    Mascot.persist();
+  },
+  /**
+   * Сохраняет внешний вид Политешика на устройстве и в профиле в облаке.
+   */
+  persist() {
+    Store.save();
+    if (Cloud.status === 'online' && Cloud.profile) {
+      Cloud.profile.mascot = JSON.parse(JSON.stringify(Mascot.chosen()));
+      Cloud.pushProfile();
+    }
+    ['brand-mascot', 'top-mascot'].forEach(id => {
+      const node = document.getElementById(id);
+      if (node) node.dataset.m = '';
+    });
+  },
+  /**
+   * Подтягивает внешний вид Политешика из профиля в облаке после входа.
+   */
+  syncFromProfile() {
+    const saved = Cloud.profile && Cloud.profile.mascot;
+    if (!saved || typeof saved !== 'object') return;
+    Store.s.settings.mascot = {
+      acc: Array.isArray(saved.acc) ? saved.acc : [],
+      mood: saved.mood || ''
+    };
+    Store.save();
+  },
+  /**
+   * Строит карточку «Мой Политешик» с предпросмотром и выбором.
+   * @returns {string} HTML.
+   */
+  cardHtml() {
+    if (Cloud.isTeacher) return '';
+    const own = Mascot.userAcc(),
+      mood = Mascot.userMood();
+    const chip = (action, key, value, label, on) =>
+      '<button class="my-chip' +
+      (on ? ' on' : '') +
+      '" data-action="' +
+      action +
+      '" data-' +
+      key +
+      '="' +
+      value +
+      '" aria-pressed="' +
+      on +
+      '">' +
+      label +
+      '</button>';
+    const items = Mascot.userItems.map(i => chip('my-acc', 'id', i.id, i.name, own.indexOf(i.id) >= 0)).join('');
+    const moods =
+      chip('my-mood', 'mood', '', 'Авто', !mood) +
+      Mascot.userMoods.map(m => chip('my-mood', 'mood', m.id, m.name, mood === m.id)).join('');
+    return (
+      '<section class="card my-mascot"><h2>Мой Политешик</h2><div class="my-mascot-body"><div class="my-preview">' +
+      Mascot.svg(Mascot.current(), 150) +
+      '</div><div class="my-controls">' +
+      '<h3>Аксессуары</h3><div class="my-chips">' +
+      items +
+      '</div><h3>Эмоция дня</h3><div class="my-chips">' +
+      moods +
+      '</div>' +
+      '<button class="btn sm ghost" data-action="my-mascot-reset">Сбросить</button><p class="md-help">Виден только вам: у других студентов и у админа Политешик остаётся обычным.</p></div></div></section>'
     );
   },
   /**
@@ -440,6 +701,8 @@ const Mascot = {
    */
   current() {
     if (Date.now() < Mascot.cheerUntil) return 'cheer';
+    const chosenMood = Mascot.userMood();
+    if (chosenMood) return chosenMood;
     const now = new Date(),
       h = now.getHours();
     if (h >= 23 || h < 7) return 'sleepy';

@@ -429,13 +429,29 @@ const Forms = {
    * Сохраняет отметки студента за день.
    * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
    */
-  'att-edit'(form) {
+  async 'att-edit'(form) {
     const changes = {};
     form.querySelectorAll('.ed-row').forEach(row => {
-      const ch = row.querySelector('input:checked');
-      changes[form.dataset.date + '|' + row.dataset.pair] = ch ? ch.value : '';
+      const checked = row.querySelector('input:checked');
+      changes[form.dataset.date + '|' + row.dataset.pair] = checked ? checked.value : '';
     });
-    Cloud.saveMarksFor(form.dataset.uid, changes);
+    if (!Object.keys(changes).length) {
+      UI.close();
+      return toast('В этот день у студента нет пар, отмечать нечего');
+    }
+    const button = form.querySelector('[data-action="save-form"]');
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Сохраняем…';
+    }
+    const result = await Cloud.saveMarksFor(form.dataset.uid, changes);
+    if (!result.ok) {
+      if (button) {
+        button.disabled = false;
+        button.textContent = 'Сохранить';
+      }
+      return toast('Не удалось сохранить посещаемость: ' + result.error);
+    }
     UI.close();
     toast('Посещаемость сохранена');
     App.render();

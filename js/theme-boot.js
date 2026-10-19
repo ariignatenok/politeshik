@@ -8,7 +8,7 @@ try {
   }
   if (
     savedTheme &&
-    /^(light|dark|barbie|ocean|space|garden|magic|autumn|winter|valentine|defender|womens)$/.test(savedTheme)
+    /^(light|dark|barbie|ocean|space|garden|magic|cleangirl|autumn|winter|valentine|defender|womens)$/.test(savedTheme)
   ) {
     document.documentElement.setAttribute('data-theme', savedTheme);
   }

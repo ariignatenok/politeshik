@@ -244,12 +244,12 @@ const App = {
     const mo = Mascot.current(),
       bm = $('#brand-mascot'),
       tm = $('#top-mascot');
-    if (bm && bm.dataset.m !== mo) {
-      bm.dataset.m = mo;
+    if (bm && bm.dataset.m !== mo + Mascot.signature()) {
+      bm.dataset.m = mo + Mascot.signature();
       bm.innerHTML = Mascot.svg(mo, 44);
     }
-    if (tm && tm.dataset.m !== mo) {
-      tm.dataset.m = mo;
+    if (tm && tm.dataset.m !== mo + Mascot.signature()) {
+      tm.dataset.m = mo + Mascot.signature();
       tm.innerHTML = Mascot.svg(mo, 26);
     }
     if (ui.tab === 'chat') {
@@ -276,6 +276,7 @@ const App = {
     Cloud.init()
       .catch(error => Safe.report('init', error))
       .then(() => {
+        Safe.run('mascot', () => Mascot.syncFromProfile());
         Safe.run('theme', () => UI.applyTheme());
         Safe.run('announce', () => Themes.announce());
         Safe.run('chat', () => Chat.tick());
