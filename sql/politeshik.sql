@@ -232,7 +232,7 @@ create or replace function public.doc_owner(p text) returns text
 language sql immutable as $$
   select case
     when p like 'data/users/%' then split_part(p, '/', 3)
-    when split_part(p, '/', 1) in ('profiles', 'attendance', 'certs', 'chat') then split_part(p, '/', 2)
+    when split_part(p, '/', 1) in ('profiles', 'attendance', 'certs', 'chat', 'map', 'solutions') then split_part(p, '/', 2)
     else null end
 $$;
 
@@ -249,6 +249,7 @@ revoke all on public.docs from anon;
 create policy docs_select on public.docs for select using (
   auth.uid() is not null and tenant_id = (select public.current_tenant()) and (
     split_part(path, '/', 1) in ('group', 'claims')
+    or (split_part(path, '/', 1) in ('map', 'solutions') and not public.is_teacher())
     or public.doc_owner(path) = auth.uid()::text
     or public.is_admin()));
 -- преподаватель читает только отметки посещаемости (для журнала); справки, чаты и профили ему не видны
@@ -298,6 +299,20 @@ begin
       end if;
     end loop;
   end if;
+  if split_part(new.path, '/', 1) = 'map' then
+    if array_length(string_to_array(new.path, '/'), 1) <> 2
+       or coalesce((new.data ->> 'floor')::int, 0) not between 1 and 5
+       or coalesce((new.data ->> 'x')::numeric, -1) not between 0 and 100
+       or coalesce((new.data ->> 'y')::numeric, -1) not between 0 and 100
+       or char_length(coalesce(new.data ->> 'name', '')) > 40 then
+      raise exception 'Неверная точка на карте';
+    end if;
+  end if;
+  if split_part(new.path, '/', 1) = 'solutions' and array_length(string_to_array(new.path, '/'), 1) = 2 then
+    if jsonb_typeof(new.data -> 'items') is distinct from 'array' or jsonb_array_length(new.data -> 'items') > 200 then
+      raise exception 'Неверный список решений';
+    end if;
+  end if;
   return new;
 end $$;
 drop trigger if exists trg_docs_guard on public.docs;
@@ -314,12 +329,13 @@ begin
     where d.tenant_id = public.current_tenant() and d.path ~ '^profiles/[^/]+$' and coalesce(d.data ->> 'rid', '') <> ''
       and not exists (select 1 from public.teachers t where t.uid::text = split_part(d.path, '/', 2));
 end $$;
-create or replace function public.teacher_certs() returns table (uid text, date_from text, date_to text, confirmed boolean)
+drop function if exists public.teacher_certs();
+create function public.teacher_certs() returns table (uid text, date_from text, date_to text, confirmed boolean, pairs jsonb)
 language plpgsql stable security definer set search_path = public as $$
 begin
   if not (public.is_teacher() or public.is_admin()) then raise exception 'Только для преподавателя'; end if;
   return query
-    select split_part(d.path, '/', 2), i.value ->> 'from', i.value ->> 'to', coalesce((i.value ->> 'confirmed')::boolean, false)
+    select split_part(d.path, '/', 2), i.value ->> 'from', i.value ->> 'to', coalesce((i.value ->> 'confirmed')::boolean, false), i.value -> 'pairs'
     from public.docs d, jsonb_array_elements(coalesce(d.data -> 'items', '[]'::jsonb)) i
     where d.tenant_id = public.current_tenant() and d.path ~ '^certs/[^/]+$';
 end $$;

@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'b56bc5d2de3';
+const CACHE_VERSION = 'bd2e9ee9758';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -12,6 +12,11 @@ const SHELL = [
   'assets/icon-192.png',
   'assets/icon-512.png',
   'assets/icon-maskable-512.png',
+  'assets/map-1.jpg',
+  'assets/map-2.jpg',
+  'assets/map-3.jpg',
+  'assets/map-4.jpg',
+  'assets/map-5.jpg',
   'css/admin.css',
   'css/attendance-edit.css',
   'css/base.css',
@@ -55,6 +60,7 @@ const SHELL = [
   'js/attendance.js',
   'js/backup.js',
   'js/birthday.js',
+  'js/campusmap.js',
   'js/changes.js',
   'js/chat.js',
   'js/confetti.js',
@@ -67,6 +73,7 @@ const SHELL = [
   'js/dm.js',
   'js/events.js',
   'js/faq.js',
+  'js/focus.js',
   'js/forms.js',
   'js/gestures.js',
   'js/icons.js',
@@ -91,6 +98,7 @@ const SHELL = [
   'js/selectors.js',
   'js/sick.js',
   'js/skeleton.js',
+  'js/solutions.js',
   'js/store.js',
   'js/supabase.js',
   'js/support.js',
