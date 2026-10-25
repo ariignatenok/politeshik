@@ -7,47 +7,62 @@ Object.assign(A, {
    */
   async 'login-do'(el) {
     const f = el.closest('[data-form="login"]') || $('#gate');
-    const email = (f.querySelector('[name=email]') || {}).value || '';
-    const password = (f.querySelector('[name=password]') || {}).value || '';
-    const secret = (f.querySelector('[name=teacher_secret]') || {}).value || '',
-      teacherName = (f.querySelector('[name=teacher_name]') || {}).value || '';
-    const asTeacher = ui.loginRole === 'teacher';
-    if (!email || !password) {
-      toast('Введи email и пароль');
-      return;
-    }
-    if (asTeacher && !secret.trim()) {
-      toast('Введите пароль преподавателя');
-      return;
+    const read = name => (f.querySelector('[name=' + name + ']') || {}).value || '';
+    const email = read('email').trim(),
+      password = read('password'),
+      secret = read('teacher_secret'),
+      teacherName = read('teacher_name').trim();
+    const role = ui.loginRole || 'student',
+      asTeacher = role === 'teacher',
+      extra = role === 'parent' || role === 'staff';
+    ui.loginDraft = {
+      email,
+      teacher_name: teacherName,
+      person_name: read('person_name'),
+      child_name: read('child_name'),
+      person_note: read('person_note')
+    };
+    if (!email || !password) return toast('Введите почту и пароль');
+    if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
+    if (extra) {
+      const problem = Roles.checkExtra(role, f);
+      if (problem) return toast(problem);
     }
     el.disabled = true;
     el.textContent = 'Входим…';
-    ui.activating = asTeacher;
-    const r = await Cloud.login(email.trim(), password);
-    el.disabled = false;
-    el.textContent = 'Войти';
-    if (!r.ok) {
-      ui.activating = false;
-      toast('Ошибка: ' + r.msg);
-      return;
-    }
-    if (asTeacher && !Cloud.isTeacher) {
-      const t = await Teacher.activate(secret, teacherName);
-      if (!t.ok) {
-        ui.activating = false;
-        await supa.auth.signOut();
-        await Cloud.init();
-        $('#gate').dataset.mode = '';
-        App.render(true);
-        toast(t.msg);
-        return;
+    ui.activating = asTeacher || extra;
+    try {
+      const result = await Cloud.login(email, password);
+      if (!result.ok) return toast('Ошибка: ' + result.msg);
+      if (asTeacher && !Cloud.realTeacher) {
+        const activation = await Teacher.activate(secret, teacherName);
+        if (!activation.ok) {
+          toast(activation.msg);
+          await Roles.dropSession();
+          return;
+        }
       }
+      if (extra && !Cloud.member) {
+        const reg = await Roles.registerExtra(role, f);
+        if (!reg.ok) {
+          toast(reg.msg);
+          await Roles.dropSession();
+          return;
+        }
+        await Cloud.init();
+      }
+      ui.loginDraft = null;
+    } catch (error) {
+      toast('Не удалось войти: ' + (error && error.message ? error.message : 'проверьте связь'));
+    } finally {
+      ui.activating = false;
+      if (el.isConnected) {
+        el.disabled = false;
+        el.textContent = 'Войти';
+      }
+      $('#gate').dataset.mode = '';
+      App.render(true);
     }
-    ui.activating = false;
-    Chat.tick();
-    Ach.check();
-    App.render(true);
-    toast('Добро пожаловать!');
   },
   /**
    * Регистрация нового аккаунта по email и паролю.
@@ -55,51 +70,63 @@ Object.assign(A, {
    */
   async 'signup-do'(el) {
     const f = el.closest('[data-form="login"]') || $('#gate');
-    const email = (f.querySelector('[name=email]') || {}).value || '';
-    const password = (f.querySelector('[name=password]') || {}).value || '';
-    const secret = (f.querySelector('[name=teacher_secret]') || {}).value || '',
-      teacherName = (f.querySelector('[name=teacher_name]') || {}).value || '';
-    const asTeacher = ui.loginRole === 'teacher';
-    if (!email || !password) {
-      toast('Введи email и пароль');
-      return;
-    }
-    if (password.length < 6) {
-      toast('Пароль минимум 6 символов');
-      return;
-    }
-    if (asTeacher && !secret.trim()) {
-      toast('Введите пароль преподавателя');
-      return;
+    const read = name => (f.querySelector('[name=' + name + ']') || {}).value || '';
+    const email = read('email').trim(),
+      password = read('password'),
+      secret = read('teacher_secret'),
+      teacherName = read('teacher_name').trim();
+    const role = ui.loginRole || 'student',
+      asTeacher = role === 'teacher',
+      extra = role === 'parent' || role === 'staff';
+    ui.loginDraft = {
+      email,
+      teacher_name: teacherName,
+      person_name: read('person_name'),
+      child_name: read('child_name'),
+      person_note: read('person_note')
+    };
+    if (!email || !password) return toast('Введите почту и пароль');
+    if (password.length < 6) return toast('Пароль должен быть не короче 6 символов');
+    if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
+    if (extra) {
+      const problem = Roles.checkExtra(role, f);
+      if (problem) return toast(problem);
     }
     el.disabled = true;
     el.textContent = 'Создаём…';
-    ui.activating = asTeacher;
-    const r = await Cloud.signup(email.trim(), password);
-    el.disabled = false;
-    el.textContent = 'Зарегистрироваться';
-    if (!r.ok) {
-      ui.activating = false;
-      toast('Ошибка: ' + r.msg);
-      return;
-    }
-    if (asTeacher) {
-      const t = await Teacher.activate(secret, teacherName);
-      ui.activating = false;
-      if (!t.ok) {
-        await supa.auth.signOut();
-        await Cloud.init();
-        $('#gate').dataset.mode = '';
-        App.render(true);
-        toast('Аккаунт создан, но ' + t.msg.charAt(0).toLowerCase() + t.msg.slice(1));
-        return;
+    ui.activating = asTeacher || extra;
+    try {
+      const result = await Cloud.signup(email, password);
+      if (!result.ok) return toast('Ошибка: ' + result.msg);
+      if (asTeacher) {
+        const activation = await Teacher.activate(secret, teacherName);
+        if (!activation.ok) {
+          toast(activation.msg);
+          await Roles.dropSession();
+          return;
+        }
       }
+      if (extra) {
+        const reg = await Roles.registerExtra(role, f);
+        if (!reg.ok) {
+          toast(reg.msg);
+          await Roles.dropSession();
+          return;
+        }
+        await Cloud.init();
+      }
+      ui.loginDraft = null;
+    } catch (error) {
+      toast('Не удалось создать аккаунт: ' + (error && error.message ? error.message : 'проверьте связь'));
+    } finally {
+      ui.activating = false;
+      if (el.isConnected) {
+        el.disabled = false;
+        el.textContent = 'Создать аккаунт';
+      }
+      $('#gate').dataset.mode = '';
       App.render(true);
-      toast('Добро пожаловать!');
-      return;
     }
-    toast('Аккаунт создан! Выбери свою фамилию из списка.');
-    App.render(true);
   },
   /**
    * Проверяет секретный пароль админа на сервере и завершает создание кабинета админа.

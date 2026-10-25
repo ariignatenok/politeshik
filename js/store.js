@@ -211,7 +211,7 @@ const Store = (() => {
     if (v < 2) Content.migrate(s);
     if (v < 3) Content.migrateSchedule(s);
     if (v < 4) Content.migrateEnglish(s);
-    s.settings.seedVersion = 4;
+    s.settings.seedVersion = 5;
   }
   /**
    * Загружает состояние приложения.
@@ -327,7 +327,7 @@ const Store = (() => {
           theme: s.settings.theme,
           numeratorAnchor: s.settings.numeratorAnchor,
           pairs: s.settings.pairs,
-          seedVersion: 4
+          seedVersion: 5
         }
       });
       save();

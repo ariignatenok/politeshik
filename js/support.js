@@ -36,7 +36,7 @@ const Support = {
    * @returns {boolean} отправлено ли сообщение.
    */
   checkAttendance() {
-    if (Cloud.isAdmin || Cloud.isTeacher) return false;
+    if (Cloud.isAdmin || Cloud.isStaff) return false;
     const meta = Store.s.meta,
       today = U.iso(U.today()),
       monthStart = today.slice(0, 7) + '-01';
@@ -62,7 +62,7 @@ const Support = {
    * @returns {boolean} отправлено ли сообщение.
    */
   comfortOnce() {
-    if (Cloud.isTeacher) return false;
+    if (Cloud.isStaff) return false;
     const meta = Store.s.meta,
       today = U.iso(U.today());
     if (meta.comfortAt === today) return false;
@@ -135,7 +135,7 @@ const Support = {
    * @returns {string} HTML.
    */
   moodHtml() {
-    if (Cloud.isTeacher) return '';
+    if (Cloud.isStaff) return '';
     const current = Support.moodToday(),
       btn = (value, icon, label) =>
         '<button class="mood-btn' +

@@ -499,15 +499,21 @@ const Cloud = (() => {
     });
   }
   /**
-   * Подписывается на данные журнала для преподавателя: отметки, студенты и справки без подробностей.
+   * Подгружает студентов, отметки и справки для преподавателя или куратора раз в 30 секунд.
+   * @param {string} kind Teacher или curator.
    */
-  function watchTeacher() {
+  function watchStaff(kind) {
     /**
      * Загружает студентов и справки (только даты) для журнала преподавателя.
      */
     const refresh = async () => {
       try {
-        const [st, ce] = await Promise.all([supa.rpc('teacher_students'), supa.rpc('teacher_certs')]);
+        const timed = request =>
+          Promise.race([
+            request,
+            new Promise((resolve, reject) => setTimeout(() => reject(new Error('timeout')), 9000))
+          ]);
+        const [st, ce] = await Promise.all([timed(supa.rpc(kind + '_students')), timed(supa.rpc(kind + '_certs'))]);
         const profiles = {},
           certs = {};
         (st.data || []).forEach(r => {
@@ -629,14 +635,25 @@ const Cloud = (() => {
         const {data: tc} = await supa.from('teachers').select('uid').eq('uid', C.uid).maybeSingle();
         if (tc) C.isTeacher = true;
       } catch (error) {}
+      C.realTeacher = C.isTeacher;
+      C.member = null;
+      C.memberKnown = false;
+      try {
+        const {data: mb, error: mbErr} = await supa.from('members').select('*').eq('uid', C.uid).maybeSingle();
+        if (!mbErr) {
+          C.member = mb;
+          C.memberKnown = true;
+        }
+      } catch (error) {}
       C.isAdmin = !!C.me.isOwner;
+      C.realAdmin = C.isAdmin;
       C.status = 'online';
       C.adminUids = new Set(C.isAdmin ? [C.uid] : []);
       Store.bind(C.uid);
       watchClaims();
       const ps = await DB.doc('profiles/' + C.uid).get();
       C.profile = ps.exists ? clone(ps.data()) : null;
-      if (C.isTeacher && !C.profile) {
+      if (C.realTeacher && !C.profile) {
         C.profile = {
           role: 'teacher',
           name: 'Преподаватель',
@@ -646,7 +663,11 @@ const Cloud = (() => {
           .set(C.profile)
           .catch(() => {});
       }
-      if (C.hasCabinet()) {
+      if (C.memberKnown && !C.member && C.profile && C.profile.rid && !C.realAdmin && !C.realTeacher) {
+        await C.requestAccess('student', C.profile.name || '');
+      }
+      C.applyRole();
+      if (C.hasCabinet() && C.profile) {
         if (C.profile.theme && THEME_IDS.indexOf(C.profile.theme) >= 0 && Store.s.settings.theme !== C.profile.theme) {
           Store.s.settings.theme = C.profile.theme;
         }
@@ -659,8 +680,14 @@ const Cloud = (() => {
       }
       watchOwn();
       watchGroup();
-      if (C.isAdmin) watchAdmin();
-      if (C.isTeacher) watchTeacher();
+      if (C.realAdmin) watchAdmin();
+      if (C.realTeacher) watchStaff('teacher');
+      else if (C.realRole === 'curator') watchStaff('curator');
+      if (C.realRole === 'parent' || C.realAdmin) {
+        C.loadChild();
+        clearInterval(C.childTimer);
+        C.childTimer = setInterval(C.loadChild, 30000);
+      }
       Safe.run('mascot', () => Mascot.syncFromProfile());
       clearTimeout(C.readyTimer);
       C.readyTimer = setTimeout(() => {
@@ -881,11 +908,13 @@ const Cloud = (() => {
    * @returns {boolean} true, если условие выполнено.
    */
   C.hasCabinet = () => {
-    if (C.isTeacher) return true;
+    if (C.isStaff) return true;
+    if (C.member && C.member.requested_role && C.member.requested_role !== 'student' && C.member.status !== 'approved')
+      return true;
     const p = C.profile,
       r = p && ROSTER_BY_ID[p.rid];
     if (!r || r.flag) return false;
-    if (p.rid === ADMIN_RID && !C.isAdmin) return false;
+    if (p.rid === ADMIN_RID && !C.realAdmin) return false;
     return true;
   };
   /**
@@ -1311,6 +1340,278 @@ const Cloud = (() => {
       await DB.doc('solutions/' + uid + '/file/' + id).delete();
     } catch (error) {
       return;
+    }
+  };
+  /**
+   * Определяет роль (с учётом режима просмотра владельца) и выставляет признаки доступа.
+   */
+  C.applyRole = () => {
+    C.realRole = C.realAdmin
+      ? 'admin'
+      : C.realTeacher
+        ? 'teacher'
+        : C.member
+          ? C.member.status === 'approved'
+            ? C.member.role
+            : C.member.status
+          : 'student';
+    const owner = C.realAdmin && C.profile && C.profile.rid === ADMIN_RID,
+      view = owner ? Store.s.settings.viewAs : '';
+    let role = C.realRole;
+    if (view && ['student', 'curator', 'teacher', 'parent', 'department'].indexOf(view) >= 0) role = view;
+    C.role = role;
+    C.isAdmin = role === 'admin';
+    C.isTeacher = role === 'teacher';
+    C.isCurator = role === 'curator';
+    C.isDepartment = role === 'department';
+    C.isParent = role === 'parent';
+    C.isStaff = C.isTeacher || C.isCurator || C.isDepartment || C.isParent;
+  };
+  /**
+   * Перечитывает свою заявку и роль.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.refreshMember = async () => {
+    try {
+      const {data, error} = await supa.from('members').select('*').eq('uid', C.uid).maybeSingle();
+      if (error) return false;
+      C.member = data;
+      C.memberKnown = true;
+      C.applyRole();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
+   * Подаёт заявку на доступ.
+   * @param {string} kind Student, parent или staff.
+   * @param {string} name ФИО.
+   * @param {string} child ФИО ребёнка.
+   * @param {string} note Комментарий.
+   * @returns {Promise<Object>} результат.
+   */
+  C.requestAccess = async (kind, name, child, note) => {
+    try {
+      const {data, error} = await supa.rpc('request_access', {
+        p_role: kind,
+        p_name: name || '',
+        p_child: child || '',
+        p_note: note || ''
+      });
+      if (error)
+        return {
+          ok: false,
+          error: error.message
+        };
+      await C.refreshMember();
+      return {
+        ok: true,
+        status: data
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: String((error && error.message) || error)
+      };
+    }
+  };
+  C.requests = [];
+  C.groups = [];
+  C.pendingCount = 0;
+  C.reqAt = 0;
+  C.needApproval = true;
+  /**
+   * Загружает заявки, группы и настройку одобрения для старосты.
+   * @param {boolean} force Обновить без паузы.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.loadRequests = async force => {
+    if (!C.realAdmin || (!force && Date.now() - C.reqAt < 6000)) return false;
+    C.reqAt = Date.now();
+    try {
+      const [list, groups, need] = await Promise.all([
+        supa.rpc('list_access_requests'),
+        supa.from('groups').select('id,name,curator_uid'),
+        supa.rpc('require_approval')
+      ]);
+      if (list.error) return false;
+      const before = JSON.stringify([C.requests, C.needApproval, C.pendingCount]);
+      C.requests = list.data || [];
+      C.groups = groups.data || [];
+      C.needApproval = need.data !== false;
+      C.pendingCount = C.requests.filter(r => r.status === 'pending').length;
+      if (before !== JSON.stringify([C.requests, C.needApproval, C.pendingCount])) App.renderSoft();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
+   * Одобряет или отклоняет заявку.
+   * @param {string} uid Заявитель.
+   * @param {boolean} approve Одобрить.
+   * @param {string} role Роль.
+   * @param {string} group Группа.
+   * @param {string} child Ребёнок.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.decide = async (uid, approve, role, group, child) => {
+    const {error} = await supa.rpc('decide_access', {
+      p_uid: uid,
+      p_approve: approve,
+      p_role: role || null,
+      p_group: group || null,
+      p_child: child || null
+    });
+    if (error)
+      return {
+        ok: false,
+        error: error.message
+      };
+    await C.loadRequests(true);
+    return {
+      ok: true
+    };
+  };
+  /**
+   * Меняет роль участника.
+   * @param {string} uid Участник.
+   * @param {string} role Роль.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.setMemberRole = async (uid, role) => {
+    const {error} = await supa.rpc('set_member_role', {
+      p_uid: uid,
+      p_role: role
+    });
+    if (error)
+      return {
+        ok: false,
+        error: error.message
+      };
+    await C.loadRequests(true);
+    return {
+      ok: true
+    };
+  };
+  /**
+   * Включает или выключает обязательное одобрение.
+   * @param {boolean} on Требовать одобрение.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.setRequireApproval = async on => {
+    const {error} = await supa.rpc('set_require_approval', {
+      p_on: on
+    });
+    if (error)
+      return {
+        ok: false,
+        error: error.message
+      };
+    await C.loadRequests(true);
+    return {
+      ok: true
+    };
+  };
+  C.teacherNotes = {};
+  C.consults = [];
+  /**
+   * Загружает личные заметки и консультации сотрудника.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.loadStaffDocs = async () => {
+    try {
+      const notes = await DB.doc('data/users/' + C.uid + '/tnotes').get(),
+        consults = await DB.doc('data/users/' + C.uid + '/consult').get();
+      C.teacherNotes = notes.exists ? notes.data().items || {} : {};
+      C.consults = consults.exists ? consults.data().items || [] : [];
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
+   * Сохраняет заметку о студенте.
+   * @param {string} uid Студент.
+   * @param {string} text Заметка.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.saveTeacherNote = async (uid, text) => {
+    const next = Object.assign({}, C.teacherNotes);
+    if (text) next[uid] = text;
+    else delete next[uid];
+    C.teacherNotes = next;
+    return writeDoc('data/users/' + C.uid + '/tnotes', {
+      items: next
+    });
+  };
+  /**
+   * Сохраняет консультации.
+   * @param {Array<Object>} items Консультации.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.saveConsults = async items => {
+    C.consults = items;
+    return writeDoc('data/users/' + C.uid + '/consult', {
+      items
+    });
+  };
+  C.deptReport = [];
+  /**
+   * Загружает отчёт отделения.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.loadDeptReport = async () => {
+    const {data, error} = await supa.rpc('department_report');
+    if (error)
+      return {
+        ok: false,
+        error: error.message
+      };
+    C.deptReport = data || [];
+    return {
+      ok: true
+    };
+  };
+  C.child = null;
+  C.childLoaded = false;
+  /**
+   * Загружает данные ребёнка для родителя.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.loadChild = async () => {
+    try {
+      let info = null;
+      if (C.realAdmin) {
+        const uid = Store.s.settings.viewChild,
+          profile = uid && (C.adm.profiles || {})[uid];
+        if (profile)
+          info = {
+            uid,
+            name: profile.name,
+            subgroup: profile.subgroup || '',
+            marks: ((C.adm.att || {})[uid] || {}).marks || {}
+          };
+      } else if (C.realRole === 'parent') {
+        const {data} = await supa.rpc('parent_child'),
+          row = data && data[0];
+        if (row) {
+          const doc = await DB.doc('attendance/' + row.uid).get();
+          info = {
+            uid: row.uid,
+            name: row.name,
+            subgroup: row.subgroup || '',
+            marks: doc.exists ? doc.data().marks || {} : {}
+          };
+        }
+      }
+      C.child = info;
+      C.childLoaded = true;
+      return true;
+    } catch (error) {
+      C.childLoaded = true;
+      return false;
     }
   };
   /**

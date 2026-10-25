@@ -515,6 +515,7 @@ const Forms = {
         }
       }
       await Cloud.saveProfile(rid, sg);
+      if (first) await Cloud.requestAccess('student', (Cloud.profile && Cloud.profile.name) || '');
       if (!first && !(await Birthday.saveFromForm(form))) return false;
       return true;
     })().then(
@@ -624,6 +625,60 @@ const Forms = {
     UI.close();
     App.render();
     toast('Решение опубликовано');
+  },
+  /**
+   * Сохраняет личную заметку о студенте.
+   * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
+   */
+  async tnote(form) {
+    const text = val(form, 'text').trim(),
+      result = await Cloud.saveTeacherNote(form.dataset.uid, text);
+    if (!result.ok) return toast('Не удалось сохранить: ' + result.error);
+    UI.close();
+    App.render();
+    toast(text ? 'Заметка сохранена' : 'Заметка удалена');
+  },
+  /**
+   * Сохраняет консультацию.
+   * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
+   */
+  async consult(form) {
+    const time = val(form, 'time');
+    if (!time) {
+      UI.shake($('.modal'));
+      return toast('Укажите время');
+    }
+    const items = (Cloud.consults || []).concat([
+      {
+        id: U.uid('c'),
+        day: +val(form, 'day'),
+        time,
+        room: val(form, 'room').trim(),
+        note: val(form, 'note').trim()
+      }
+    ]);
+    const result = await Cloud.saveConsults(items);
+    if (!result.ok) return toast('Не удалось сохранить: ' + result.error);
+    UI.close();
+    App.render();
+    toast('Консультация добавлена');
+  },
+  /**
+   * Публикует новость отделения во все группы.
+   * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
+   */
+  async 'dept-news'(form) {
+    const title = val(form, 'title').trim(),
+      body = val(form, 'body').trim();
+    if (!title || !body) return toast('Заполните заголовок и текст');
+    const {error} = await supa.from('news').insert({
+      title,
+      body
+    });
+    if (error) return toast('Не удалось опубликовать: ' + error.message);
+    await News.refresh();
+    App.render(true);
+    toast('Новость опубликована во всех группах');
   },
   /**
    * Сохраняет личный файл.

@@ -263,7 +263,7 @@ function viewDmThread(uid) {
     .join('');
   return (
     '<div class="chat-wrap"><div class="chat-head">' +
-    (Cloud.isTeacher ? '' : '<button class="icon-btn" data-action="chat-back" aria-label="К списку чатов">←</button>') +
+    (Cloud.isStaff ? '' : '<button class="icon-btn" data-action="chat-back" aria-label="К списку чатов">←</button>') +
     (admin ? avatarOf((Cloud.adm.profiles[uid] || {}).avatar, 46) : '<span class="adm-av big">ИА</span>') +
     '<div><b>' +
     U.esc(admin ? Dm.nameOf(uid) : 'Игнатенок Арина (Админ)') +
@@ -296,7 +296,7 @@ function viewDmThread(uid) {
  */
 function viewChat() {
   if (Cloud.status !== 'online') return viewBotChat();
-  if (Cloud.isTeacher) return viewDmThread(Cloud.uid);
+  if (Cloud.isStaff) return viewDmThread(Cloud.uid);
   if (Cloud.isAdmin)
     return ui.chatWith === 'bot' ? viewBotChat() : ui.chatWith ? viewDmThread(ui.chatWith) : viewChatListAdmin();
   if (ui.chatWith === 'bot') return viewBotChat();

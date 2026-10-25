@@ -75,7 +75,12 @@ Object.assign(A, {
    */
   'save-form'(el) {
     const f = el.closest('[data-form]');
-    if (f && !canEdit() && (RO_FORMS.has(f.dataset.form) || (f.dataset.form === 'note' && f.dataset.sid)))
+    if (
+      f &&
+      !canEdit() &&
+      !(Cloud.isCurator && f.dataset.form === 'att-edit') &&
+      (RO_FORMS.has(f.dataset.form) || (f.dataset.form === 'note' && f.dataset.sid))
+    )
       return toast('Это может делать только админ группы');
     if (f && Forms[f.dataset.form]) Forms[f.dataset.form](f);
   },

@@ -93,6 +93,62 @@ const NAV_ALL = [
     short: 'Карта'
   },
   {
+    id: 'requests',
+    ico: ICONS.incomingEnvelope,
+    label: 'Заявки',
+    short: 'Заявки',
+    admin: true
+  },
+  {
+    id: 'tdash',
+    ico: ICONS.house,
+    label: 'Дашборд',
+    short: 'Дашборд',
+    staff: true
+  },
+  {
+    id: 'tstudents',
+    ico: ICONS.graduationCap,
+    label: 'Студенты',
+    short: 'Студенты',
+    staff: true
+  },
+  {
+    id: 'tsubjects',
+    ico: ICONS.books,
+    label: 'Предметы',
+    short: 'Предметы',
+    staff: true
+  },
+  {
+    id: 'consult',
+    ico: ICONS.calendar,
+    label: 'Консультации',
+    short: 'Консульт.',
+    staff: true
+  },
+  {
+    id: 'texport',
+    ico: ICONS.outboxTray,
+    label: 'Экспорт',
+    short: 'Экспорт',
+    staff: true
+  },
+  {
+    id: 'dept',
+    ico: ICONS.classicalBuilding,
+    label: 'Отделение',
+    short: 'Отделение',
+    staff: true
+  },
+  {
+    id: 'child',
+    ico: ICONS.chartIncreasing,
+    label: 'Успеваемость ребёнка',
+    short: 'Ребёнок',
+    staff: true
+  },
+  {
     id: 'teachers',
     ico: ICONS.teacher,
     label: 'Преподаватели',
@@ -145,13 +201,16 @@ const emptyMascot = (text, mood) =>
  * @returns {Array<Object>} Массив.
  */
 function navItems() {
-  if (Cloud.isTeacher) return Teacher.tabs.map(id => NAV_ALL.find(t => t.id === id)).filter(Boolean);
-  return NAV_ALL.filter(t => !t.admin || Cloud.isAdmin);
+  const tabs = Roles.tabs();
+  if (tabs) return tabs.map(id => NAV_ALL.find(t => t.id === id)).filter(Boolean);
+  return NAV_ALL.filter(t => (!t.admin || Cloud.isAdmin) && !t.staff);
 }
 /**
  * Возвращает вкладки нижней панели для роли пользователя.
  * @returns {Array<string>} Массив.
  */
 function bottomNav() {
-  return Cloud.isTeacher ? Teacher.tabs.slice() : NAV_BOTTOM;
+  const tabs = Roles.tabs();
+  if (!tabs) return NAV_BOTTOM;
+  return tabs.length <= 5 ? tabs.slice() : tabs.slice(0, 4).concat(['more']);
 }

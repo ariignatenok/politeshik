@@ -6,6 +6,10 @@
  */
 const canEdit = () => Cloud.status !== 'online' || Cloud.isAdmin;
 const RO_ACTIONS = new Set([
+  'sched-import-bundled',
+  'sched-import',
+  'sched-import-check',
+  'sched-import-apply',
   'sched-copy-next',
   'sched-reset',
   'lesson-del-all',
@@ -69,6 +73,7 @@ const RO_FORMS = new Set([
 function roBlocked(el) {
   if (canEdit()) return false;
   const a = el.dataset.action;
+  if (Cloud.isCurator && a === 'att-edit') return false;
   if (a === 'note-edit' || a === 'note-del') {
     const n = Store.s.notes.find(x => x.id === el.dataset.id);
     return !!(n && n.subjectId);

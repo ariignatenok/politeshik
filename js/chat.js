@@ -36,7 +36,7 @@ const Chat = {
    * @param {Object} extra Дополнительные поля (необязательно).
    */
   push(from, text, extra) {
-    if (Cloud.isTeacher) return;
+    if (Cloud.isStaff) return;
     const c = Chat.st();
     c.msgs.push(
       Object.assign(
@@ -89,7 +89,7 @@ const Chat = {
    * @returns {boolean} изменился ли чат.
    */
   tick() {
-    if (Cloud.isTeacher) return false;
+    if (Cloud.isStaff) return false;
     if (
       Cloud.status === 'online' &&
       !(Cloud.chatLoaded && Cloud.attLoaded && Cloud.certsLoaded) &&

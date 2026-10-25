@@ -66,7 +66,7 @@ const Relax = {
    * Открывает окно «Я устал» с упражнениями.
    */
   open() {
-    if (Cloud.isTeacher) return;
+    if (Cloud.isStaff) return;
     Relax.stop();
     UI.open('Я устал', Relax.menuHtml(), {
       noFocus: true

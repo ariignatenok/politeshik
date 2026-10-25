@@ -12,7 +12,7 @@ const Search = {
   collect() {
     const store = Store.s,
       list = [],
-      teacher = Cloud.isTeacher;
+      teacher = Cloud.isStaff;
     store.subjects.forEach(x =>
       list.push({
         group: 'Предметы',
@@ -215,7 +215,7 @@ const Search = {
       return;
     }
     if (go.type === 'subject') {
-      ui.tab = Cloud.isTeacher ? 'schedule' : 'subjects';
+      ui.tab = Roles.allows('subjects') ? 'subjects' : 'schedule';
       ui.subjectId = go.id;
     } else if (go.type === 'hw') ui.tab = 'hw';
     else if (go.type === 'work') ui.tab = 'dashboard';

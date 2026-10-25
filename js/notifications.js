@@ -118,7 +118,7 @@ const Reminders = {
    * Проверяет, не пора ли напомнить о паре, работе или итогах недели.
    */
   tick() {
-    if (App.gateMode() || Cloud.isTeacher) return;
+    if (App.gateMode() || Cloud.isStaff) return;
     const state = Store.s,
       c = Notifier.cfg(),
       now = new Date(),

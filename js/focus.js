@@ -89,7 +89,7 @@ const Focus = {
    * Открывает окно фокус-режима.
    */
   open() {
-    if (Cloud.isTeacher) return;
+    if (Cloud.isStaff) return;
     UI.open('Фокус-режим', Focus.bodyHtml(), {
       noFocus: true
     });
@@ -193,7 +193,7 @@ const Focus = {
    * Запускает фокус на 25 минут.
    */
   start() {
-    if (Cloud.isTeacher) return;
+    if (Cloud.isStaff) return;
     Focus.unlockAudio();
     Focus.begin(Focus.minutes * 60000);
     Focus.sync();

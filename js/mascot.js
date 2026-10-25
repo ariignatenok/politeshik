@@ -646,7 +646,7 @@ const Mascot = {
    * @returns {string} HTML.
    */
   cardHtml() {
-    if (Cloud.isTeacher) return '';
+    if (Cloud.isStaff) return '';
     const own = Mascot.userAcc(),
       mood = Mascot.userMood();
     const chip = (action, key, value, label, on) =>

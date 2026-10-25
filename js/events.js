@@ -148,6 +148,15 @@ document.addEventListener('change', event => {
   if (k === 'cert-file') handleDraftFile(event.target, true);
   if (k === 'work-file') handleDraftFile(event.target, false);
   if (k === 'note-file') handleNoteFile(event.target);
+  if (k === 'member-role')
+    Cloud.setMemberRole(event.target.dataset.uid, event.target.value).then(r =>
+      toast(r.ok ? 'Роль изменена' : 'Не удалось: ' + r.error)
+    );
+  if (k === 'view-child') {
+    Store.s.settings.viewChild = event.target.value;
+    Store.save();
+    Cloud.loadChild().then(() => App.render());
+  }
   if (k === 'sol-file') handleSolutionFile(event.target);
   if (k === 'focus-sound') {
     Store.s.settings.focusSound = event.target.checked;

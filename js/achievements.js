@@ -38,7 +38,7 @@ const ACH = [
   {
     id: 'progress',
     g: 'Посещаемость',
-    ico: ICONS.chartUp,
+    ico: ICONS.chartIncreasing,
     name: 'Прогресс',
     desc: 'Посещаемость выросла на 20%',
     t: c => c.progress
@@ -277,7 +277,7 @@ const Ach = {
    * @returns {Array<Object>|undefined} только что полученные достижения.
    */
   check() {
-    if (App.gateMode() || Cloud.isTeacher) return;
+    if (App.gateMode() || Cloud.isStaff) return;
     const state = Store.s,
       now = new Date(),
       h = now.getHours();

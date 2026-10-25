@@ -8,7 +8,7 @@ const QuickAdd = {
    * @returns {Array<Object>} Массив.
    */
   items() {
-    if (Cloud.isTeacher || document.body.classList.contains('gated')) return [];
+    if (Cloud.isStaff || document.body.classList.contains('gated')) return [];
     if (canEdit()) {
       return [
         {

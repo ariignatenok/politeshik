@@ -131,7 +131,10 @@ function viewJournalSelf() {
  * @returns {string} HTML.
  */
 function viewJournal(asTeacher) {
-  if (Cloud.isTeacher && !asTeacher) return Teacher.readOnly(viewJournal(true));
+  if ((Cloud.isTeacher || Cloud.isCurator) && !asTeacher) {
+    const html = viewJournal(true);
+    return Cloud.isCurator ? html : Teacher.readOnly(html);
+  }
   if (!Cloud.isAdmin && !asTeacher) return viewJournalSelf();
   const today = U.iso(U.today());
   if (!ui.attMonth) ui.attMonth = today.slice(0, 7);

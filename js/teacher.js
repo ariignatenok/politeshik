@@ -1,14 +1,13 @@
 'use strict';
 
 const Teacher = {
-  tabs: ['schedule', 'journal', 'news', 'chat', 'settings'],
   /**
    * Проверяет, доступен ли преподавателю раздел.
    * @param {string} tab Идентификатор раздела.
    * @returns {boolean} true, если условие выполнено.
    */
   allows(tab) {
-    return Teacher.tabs.indexOf(tab) >= 0;
+    return Roles.allows(tab);
   },
   /**
    * Проверяет на сервере пароль преподавателя и включает роль.
@@ -46,12 +45,16 @@ const Teacher = {
       };
     }
     await Cloud.init();
-    if (!Cloud.isTeacher)
+    if (!Cloud.realTeacher)
       return {
         ok: false,
         msg: 'Не удалось получить роль преподавателя'
       };
-    await Cloud.saveTeacherName(name);
+    try {
+      await Cloud.saveTeacherName(name);
+    } catch (error) {
+      Cloud.err = String((error && error.message) || error);
+    }
     return {
       ok: true
     };
@@ -89,6 +92,7 @@ const Teacher = {
       )
       .join('');
     return (
+      Roles.settingsTabs() +
       '<div class="page-head"><div><h1>Настройки</h1><p>Тема оформления и выход из аккаунта</p></div></div>' +
       '<div class="card set-sec"><h2>Внешний вид</h2><div class="set-row" style="align-items:flex-start"><div><b>Тема оформления</b><p>Выбор сохраняется в вашем профиле</p></div><div class="theme-grid">' +
       themes +
@@ -98,9 +102,11 @@ const Teacher = {
       '</button></div></div>' +
       '<div class="card set-sec"><h2>Аккаунт</h2><div class="set-row"><div><b>' +
       ICONS.cloud +
-      ' Подключено · преподаватель</b><p>' +
-      U.esc((Cloud.profile && Cloud.profile.name) || 'Преподаватель') +
-      ': расписание, журнал (только чтение), новости и чат с админом</p></div>' +
+      ' Подключено · ' +
+      (Roles.names[Cloud.role] || '').toLowerCase() +
+      '</b><p>' +
+      U.esc((Cloud.profile && Cloud.profile.name) || Roles.names[Cloud.role] || '') +
+      '</p></div>' +
       '<button class="btn danger" data-action="logout">Выйти из аккаунта</button></div></div>'
     );
   }

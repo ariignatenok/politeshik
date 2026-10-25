@@ -12,9 +12,17 @@ const Views = {
   cabinet: viewCabinet,
   rating: viewRating,
   map: viewMap,
+  requests: viewRequests,
+  tdash: viewTDash,
+  tstudents: viewTStudents,
+  tsubjects: viewTSubjects,
+  consult: viewConsult,
+  texport: viewTExport,
+  dept: viewDept,
+  child: viewChild,
   group: viewGroup,
   journal: viewJournal,
   more: viewMore,
   settings: viewSettings
 };
-const MORE_TABS = ['news', 'teachers', 'cabinet', 'rating', 'map', 'group', 'journal', 'settings', 'more'];
+const MORE_TABS = ['news', 'teachers', 'cabinet', 'rating', 'map', 'requests', 'group', 'journal', 'settings', 'more'];

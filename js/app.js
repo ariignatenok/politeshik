@@ -7,6 +7,8 @@ const App = {
    */
   gateMode() {
     if (Cloud.status === 'pending' || ui.activating) return 'loading';
+    if (Cloud.status === 'online' && (Cloud.role === 'pending' || Cloud.role === 'rejected') && Cloud.hasCabinet())
+      return Cloud.role;
     if (Cloud.status === 'online' && !Cloud.hasCabinet())
       return Cloud.claimsLoaded ? (ui.secret ? 'secret' : 'register') : 'loading';
     if (Cloud.status === 'offline' && !ui.localOk) return 'offline';
@@ -21,7 +23,7 @@ const App = {
     const logged = Cloud.status === 'online';
     const hasCab = logged && Cloud.hasCabinet();
     const needClaim = logged && !hasCab && Cloud.claimsLoaded;
-    if (logged && hasCab) return '';
+    if (logged && hasCab && mode !== 'pending' && mode !== 'rejected') return '';
     document.body.classList.add('gated');
     $('#view').innerHTML = '';
     $('#nav-side').innerHTML = '';
@@ -37,6 +39,23 @@ const App = {
         '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p><div class="sk-gate"><span class="sk sk-line sk-w80"></span><span class="sk sk-line sk-w60"></span><span class="sk sk-line sk-w40"></span></div></div>';
       return '';
     }
+    if (mode === 'pending' || mode === 'rejected') {
+      const rejected = mode === 'rejected';
+      g.innerHTML =
+        '<div class="gate-card"><div class="gate-mascot">' +
+        Mascot.svg(rejected ? 'sad' : 'thinking', 110) +
+        '</div><h1>Политешик</h1><p class="gate-sub">' +
+        (rejected ? 'Заявка отклонена' : 'Заявка отправлена') +
+        '</p><p class="gate-text">' +
+        (rejected
+          ? 'Староста не одобрила доступ. Если это ошибка, напишите ей лично.'
+          : 'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.') +
+        '</p>' +
+        (rejected ? '' : '<button class="btn primary big" data-action="pending-check">Проверить сейчас</button>') +
+        '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="logout-now">Выйти из аккаунта</button></div>';
+      if (!rejected) App.watchPending();
+      return '';
+    }
     if (needClaim && mode === 'secret' && ui.secret) {
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
@@ -45,7 +64,7 @@ const App = {
         '<p class="gate-text">«' +
         U.esc(ROSTER_BY_ID[ui.secret.rid].name) +
         '» — фамилия админа группы. Чтобы продолжить, введите секретный пароль.</p>' +
-        '<div class="warn secret-warn" hidden>Секретный пароль ещё не задан. Задайте его в Supabase: скрипт politeshik_rls.sql (строка с ПРИДУМАЙТЕ_СЕКРЕТНЫЙ_ПАРОЛЬ).</div>' +
+        '<div class="warn secret-warn" hidden>Секретный пароль ещё не задан. Задайте его в Supabase: запустите скрипт politeshik_full.sql (две первые подстановки в первой строке).</div>' +
         '<div data-form="secret"><label class="field"><span>Секретный пароль</span><input class="input" name="secret" type="password" autocomplete="off" placeholder="••••••••"></label>' +
         '<button class="btn primary big" data-action="secret-do">Войти</button></div>' +
         '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="secret-back">← Назад к выбору фамилии</button>' +
@@ -104,44 +123,62 @@ const App = {
         '<small class="gate-foot">Одну фамилию может занять только один аккаунт. Если выбрали не ту — напишите админу.</small></div>';
       return '';
     }
-    const teacherMode = ui.loginRole === 'teacher',
+    const role = ui.loginRole || 'student',
+      teacherMode = role === 'teacher',
       draft = ui.loginDraft || {};
+    const roleBtn = (id, label) =>
+      '<button class="' +
+      (role === id ? 'on' : '') +
+      '" data-action="login-role" data-role="' +
+      id +
+      '">' +
+      label +
+      '</button>';
+    const intro = {
+      student: 'Войдите или создайте аккаунт. Доступ откроется после одобрения старостой.',
+      parent: 'Родитель видит успеваемость и пропуски своего ребёнка. Доступ откроется после одобрения старостой.',
+      staff: 'Куратор или отделение: укажите ФИО и должность, староста назначит роль.',
+      teacher: 'Вход для преподавателя: нужен пароль, который выдали в колледже.'
+    }[role];
+    const extra =
+      role === 'parent'
+        ? '<label class="field"><span>Ваше ФИО</span><input class="input" name="person_name" placeholder="Иванова Мария Петровна" value="' +
+          U.esc(draft.person_name || '') +
+          '"></label><label class="field"><span>ФИО ребёнка (как в списке группы)</span><input class="input" name="child_name" placeholder="Иванов Пётр" value="' +
+          U.esc(draft.child_name || '') +
+          '"></label>'
+        : role === 'staff'
+          ? '<label class="field"><span>Ваше ФИО</span><input class="input" name="person_name" placeholder="Петрова Анна Сергеевна" value="' +
+            U.esc(draft.person_name || '') +
+            '"></label><label class="field"><span>Должность и группа</span><input class="input" name="person_note" placeholder="Куратор группы 3091" value="' +
+            U.esc(draft.person_note || '') +
+            '"></label>'
+          : teacherMode
+            ? '<label class="field"><span>Как к вам обращаться</span><input class="input" name="teacher_name" placeholder="Иван Петрович" value="' +
+              U.esc(draft.teacher_name || '') +
+              '"></label><label class="field"><span>Пароль преподавателя</span><input class="input" name="teacher_secret" type="password" autocomplete="off" placeholder="••••••••"></label>'
+            : '';
     g.innerHTML =
       '<div class="gate-card">' +
       '<div class="gate-mascot">' +
       Mascot.svg('wink', 110) +
       '</div>' +
-      '<h1>Политешик</h1><p class="gate-sub">' +
-      (teacherMode ? 'Вход для преподавателя' : 'Вход в приложение') +
-      '</p>' +
-      '<div class="seg role-seg" role="group" aria-label="Кто вы"><button class="' +
-      (teacherMode ? '' : 'on') +
-      '" data-action="login-role" data-role="student">Я студент</button><button class="' +
-      (teacherMode ? 'on' : '') +
-      '" data-action="login-role" data-role="teacher">Я преподаватель</button></div>' +
+      '<h1>Политешик</h1><div class="role-seg role-seg4">' +
+      roleBtn('student', 'Студент') +
+      roleBtn('parent', 'Родитель') +
+      roleBtn('staff', 'Куратор / отделение') +
+      roleBtn('teacher', 'Преподаватель') +
+      '</div>' +
       '<p class="gate-text">' +
-      (teacherMode
-        ? 'Преподаватель видит расписание, журнал посещаемости (только чтение), новости и чат с админом группы.'
-        : 'Войди, чтобы отмечаться на парах, писать заметки и общаться с админом. Данные сохраняются в облаке.') +
+      intro +
       '</p>' +
-      '<div data-form="login">' +
-      '<label class="field"><span>Email</span><input class="input" name="email" type="email" placeholder="ivan@mail.ru" autocomplete="email" value="' +
+      '<div data-form="login"><label class="field"><span>Эл. почта</span><input class="input" name="email" type="email" autocomplete="email" placeholder="you@mail.ru" value="' +
       U.esc(draft.email || '') +
       '"></label>' +
-      '<label class="field"><span>Пароль аккаунта (минимум 6 символов)</span><input class="input" name="password" type="password" placeholder="••••••" autocomplete="current-password"></label>' +
-      (teacherMode
-        ? '<label class="field"><span>Как к вам обращаться</span><input class="input" name="teacher_name" type="text" placeholder="Иван Петрович" autocomplete="name"></label>' +
-          '<label class="field"><span>Пароль преподавателя (его выдаёт админ группы)</span><input class="input" name="teacher_secret" type="password" placeholder="••••••••" autocomplete="off"></label>'
-        : '') +
-      '<button class="btn primary big" data-action="login-do">Войти</button>' +
-      '<button class="btn big" style="margin-top:10px" data-action="signup-do">Зарегистрироваться</button>' +
-      '</div>' +
-      '<small class="gate-foot">' +
-      (teacherMode
-        ? 'Впервые здесь? Нажмите «Зарегистрироваться»: введите почту, пароль аккаунта и пароль преподавателя.'
-        : 'Впервые здесь? Нажми «Зарегистрироваться», введи свою почту и пароль. Затем выбери свою фамилию из списка группы.') +
-      '</small>' +
-      '</div>';
+      '<label class="field"><span>Пароль</span><input class="input" name="password" type="password" autocomplete="current-password" placeholder="не короче 6 символов"></label>' +
+      extra +
+      '<button class="btn primary big" data-action="login-do">Войти</button><button class="btn big" style="margin-top:8px" data-action="signup-do">Создать аккаунт</button></div>' +
+      '<small class="gate-foot">Пароль хранится в Supabase в зашифрованном виде.</small></div>';
     const f = g.querySelector('input');
     if (f)
       setTimeout(() => {
@@ -170,8 +207,14 @@ const App = {
       g.dataset.mode = '';
       animate = true;
     }
-    if (!Views[ui.tab] || (ui.tab === 'group' && !Cloud.isAdmin) || (Cloud.isTeacher && !Teacher.allows(ui.tab)))
-      ui.tab = Cloud.isTeacher ? 'schedule' : 'dashboard';
+    if (
+      !Views[ui.tab] ||
+      (ui.tab === 'group' && !Cloud.isAdmin) ||
+      (ui.tab === 'requests' && !Cloud.isAdmin) ||
+      (Cloud.isStaff && ui.tab !== 'more' && !Roles.allows(ui.tab)) ||
+      (!Cloud.isStaff && Roles.staffOnly.indexOf(ui.tab) >= 0)
+    )
+      ui.tab = Cloud.isStaff ? Roles.home() : 'dashboard';
     const v = $('#view');
     const sameScreen = !animate && App.shown === ui.tab && !!v.firstChild;
     const html = Safe.html(
@@ -213,7 +256,13 @@ const App = {
           t.ico +
           '</span>' +
           t.label +
-          (t.id === 'chat' ? badge(unread) : t.id === 'news' ? badge(News.unread()) : '') +
+          (t.id === 'chat'
+            ? badge(unread)
+            : t.id === 'news'
+              ? badge(News.unread())
+              : t.id === 'requests'
+                ? badge(Cloud.pendingCount || 0)
+                : '') +
           '</button>'
       )
       .join('');
@@ -227,7 +276,12 @@ const App = {
                   short: 'Ещё'
                 }
               : NAV_ALL.find(x => x.id === id),
-          on = id === 'more' ? MORE_TABS.includes(ui.tab) : ui.tab === id;
+          on =
+            id === 'more'
+              ? Roles.tabs()
+                ? Roles.tabs().slice(4).includes(ui.tab)
+                : MORE_TABS.includes(ui.tab)
+              : ui.tab === id;
         return (
           '<button class="nav-btn' +
           (on ? ' on' : '') +
@@ -320,6 +374,24 @@ const App = {
     if (Math.abs(delta) > 4) bar.scrollLeft += delta;
   },
   /**
+   * Раз в несколько секунд проверяет, одобрили ли заявку.
+   */
+  watchPending() {
+    clearInterval(App.pendingTimer);
+    App.pendingTimer = setInterval(async () => {
+      if (Cloud.role !== 'pending') {
+        clearInterval(App.pendingTimer);
+        return;
+      }
+      await Cloud.refreshMember();
+      if (Cloud.role !== 'pending') {
+        clearInterval(App.pendingTimer);
+        await Cloud.init();
+        App.render(true);
+      }
+    }, 8000);
+  },
+  /**
    * Перерисовывает экран, если пользователь сейчас не вводит текст и не открыто окно.
    */
   renderSoft() {
@@ -339,6 +411,8 @@ const App = {
       .catch(error => Safe.report('init', error))
       .then(() => {
         Safe.run('mascot', () => Mascot.syncFromProfile());
+        Safe.run('requests', () => Cloud.loadRequests(true));
+        Safe.run('staff-docs', () => Cloud.loadStaffDocs());
         Safe.run('focus', () => Focus.restore());
         Safe.run('solutions', () => Cloud.refreshSolutions());
         Safe.run('theme', () => UI.applyTheme());

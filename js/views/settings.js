@@ -76,8 +76,10 @@ function notifSettings() {
 function viewSettings() {
   const state = Store.s,
     cur = weekType(new Date());
-  if (Cloud.isTeacher) return Teacher.settingsHtml();
+  if (Roles.isOwner() && ui.setTab === 'access') return viewAccess();
+  if (Cloud.isStaff) return Teacher.settingsHtml();
   return (
+    Roles.settingsTabs() +
     '<div class="page-head"><div><h1>Настройки</h1><p>Тема, чётность недели и резервная копия данных</p></div></div>' +
     (Store.persistent
       ? ''
