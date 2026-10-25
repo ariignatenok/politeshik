@@ -417,14 +417,18 @@ function viewRequests() {
       field('Роль', '<select class="input" name="role">' + roleOpts(def) + '</select>') +
       field(
         'Группа',
-        '<select class="input" name="group">' +
+        '<select class="input" name="group"><option value=""' +
+          (r.college_group ? ' selected' : '') +
+          '>' +
+          (r.college_group ? 'По группе колледжа ' + U.esc(r.college_group) : 'Как указано в заявке') +
+          '</option>' +
           groups
             .map(
               g =>
                 '<option value="' +
                 U.esc(g.id) +
                 '"' +
-                (g.id === r.group_id ? ' selected' : '') +
+                (!r.college_group && g.id === r.group_id ? ' selected' : '') +
                 '>' +
                 U.esc(g.name) +
                 '</option>'

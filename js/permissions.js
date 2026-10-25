@@ -6,6 +6,7 @@
  */
 const canEdit = () => Cloud.status !== 'online' || Cloud.isAdmin;
 const RO_ACTIONS = new Set([
+  'sched-two-weeks',
   'sched-import-bundled',
   'sched-import',
   'sched-import-check',

@@ -502,5 +502,22 @@ Object.assign(A, {
     UI.close();
     App.render(true);
     toast('Расписание заменено: ' + result.lessons.length + ' пар');
+  },
+  /**
+   * Прикрепляет новое расписание к неделям 26.10 и 02.11 после подтверждения.
+   */
+  async 'sched-two-weeks'() {
+    if (
+      !(await UI.confirm(
+        'Прикрепить новое расписание к неделям 26–31 октября и 2–7 ноября? Остальные недели не изменятся. Копия прежнего скачается файлом.',
+        'Прикрепить'
+      ))
+    )
+      return;
+    ScheduleImport.applyTwoWeeks();
+    ui.schedWs = ScheduleImport.twoWeekStarts[0];
+    ui.schedDayWs = ui.schedWs;
+    App.render(true);
+    toast('Расписание прикреплено к двум неделям: 26.10–31.10 и 02.11–07.11');
   }
 });

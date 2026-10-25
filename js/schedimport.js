@@ -216,6 +216,77 @@ const ScheduleImport = {
       'raspisanie-backup-' + U.iso(U.today()) + '.json'
     );
   },
+  twoWeekStarts: ['2026-10-26', '2026-11-02'],
+  /**
+   * Готовит пары нового расписания для двух конкретных недель (26.10 и 02.11).
+   * @returns {Object} Объект.
+   */
+  twoWeeks() {
+    const weeks = {},
+      kinds = {
+        num: 0,
+        den: 1
+      };
+    ScheduleImport.twoWeekStarts.forEach(start => {
+      weeks[start] = [];
+    });
+    newScheduleLessons().forEach((l, index) => {
+      const list = weeks[ScheduleImport.twoWeekStarts[kinds[l.week] === undefined ? 0 : kinds[l.week]]];
+      list.push(
+        Object.assign({}, l, {
+          id: 'nw26_' + (index + 1),
+          week: 'both'
+        })
+      );
+    });
+    return weeks;
+  },
+  /**
+   * Проверяет, что новое расписание уже прикреплено к обеим неделям.
+   * @returns {boolean} true, если условие выполнено.
+   */
+  isTwoWeeksLoaded() {
+    const map = Store.s.weeks || {};
+    return ScheduleImport.twoWeekStarts.every(
+      start => Array.isArray(map[start]) && map[start].some(l => String(l.id).indexOf('nw26_') === 0)
+    );
+  },
+  /**
+   * Прикрепляет новое расписание к двум неделям, не трогая остальные, очищает отмены и замены этих недель и отправляет в облако.
+   */
+  applyTwoWeeks() {
+    const state = Store.s,
+      weeks = ScheduleImport.twoWeeks(),
+      first = ScheduleImport.twoWeekStarts[0],
+      last = U.iso(U.addDays(U.fromISO(ScheduleImport.twoWeekStarts[1]), 6));
+    downloadBlob(
+      new Blob(
+        [
+          JSON.stringify(
+            {
+              saved: new Date().toISOString(),
+              weeks: ScheduleImport.twoWeekStarts.map(start => ({
+                start,
+                lessons: Weeks.lessons(start)
+              })),
+              changes: Changes.items().filter(c => c.date >= first && c.date <= last)
+            },
+            null,
+            2
+          )
+        ],
+        {
+          type: 'application/json'
+        }
+      ),
+      'raspisanie-2-nedeli-backup-' + U.iso(U.today()) + '.json'
+    );
+    Object.keys(weeks).forEach(start => {
+      state.weeks[start] = weeks[start];
+    });
+    Changes.save(Changes.items().filter(c => !(c.date >= first && c.date <= last)));
+    Store.commit();
+  },
   /**
    * Готовит встроенное расписание (числитель с 26.10, знаменатель со 02.11) в виде результата разбора.
    * @returns {Object} Объект.
@@ -259,12 +330,8 @@ const ScheduleImport = {
  * @returns {string} HTML.
  */
 function scheduleBanner() {
-  if (!Cloud.isAdmin || ScheduleImport.isLoaded()) return '';
-  return (
-    '<div class="card sched-banner"><div><b>Готово новое расписание</b><p>' +
-    NEW_SCHEDULE_TITLE +
-    '. Старые пары будут удалены, копия скачается файлом.</p></div><button class="btn primary" data-action="sched-import-bundled">Загрузить</button></div>'
-  );
+  if (!Cloud.isAdmin || ScheduleImport.isLoaded() || ScheduleImport.isTwoWeeksLoaded()) return '';
+  return '<div class="card sched-banner"><div><b>Новое расписание готово</b><p>Прикрепить к двум неделям: 26–31 октября и 2–7 ноября. Остальные недели не изменятся, копия скачается файлом.</p></div><div class="head-actions"><button class="btn primary" data-action="sched-two-weeks">Прикрепить на 2 недели</button><button class="btn" data-action="sched-import-bundled">Заменить всё расписание</button></div></div>';
 }
 /**
  * Открывает окно замены расписания.
