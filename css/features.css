@@ -683,3 +683,56 @@
     transform: scale(1.04);
   }
 }
+
+.sched-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+  border: 2px solid var(--accent);
+}
+
+.sched-banner p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.role-seg4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.req-card header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.req-card h3 {
+  margin: 0 0 2px;
+}
+
+.role-seg4 {
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 4px;
+  border-radius: 14px;
+  background: var(--surface2);
+}
+
+.role-seg4 button {
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.role-seg4 button.on {
+  background: var(--accent);
+  color: var(--on-accent);
+}

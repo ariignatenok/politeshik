@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bd2e9ee9758';
+const CACHE_VERSION = 'b6583519daf';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -83,6 +83,7 @@ const SHELL = [
   'js/mascot.js',
   'js/navigation.js',
   'js/news.js',
+  'js/newschedule.js',
   'js/notifications.js',
   'js/permissions.js',
   'js/profile.js',
@@ -90,8 +91,11 @@ const SHELL = [
   'js/quickadd.js',
   'js/rating.js',
   'js/relax.js',
+  'js/roles.js',
+  'js/rolesviews.js',
   'js/roster.js',
   'js/safe.js',
+  'js/schedimport.js',
   'js/scrolllock.js',
   'js/search.js',
   'js/seed.js',
