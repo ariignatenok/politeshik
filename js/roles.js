@@ -22,7 +22,9 @@ const Roles = {
    * @returns {Array<string>|null} Массив.
    */
   tabs() {
-    return Roles.tabsByRole[Cloud.role] || null;
+    const list = Roles.tabsByRole[Cloud.role];
+    if (!list) return null;
+    return Roles.isOwner() ? list.concat(['access']) : list;
   },
   /**
    * Проверяет, доступна ли вкладка текущей роли.
@@ -46,22 +48,35 @@ const Roles = {
    * @returns {boolean} true, если условие выполнено.
    */
   isOwner() {
-    return !!(Cloud.realAdmin && Cloud.profile && Cloud.profile.rid === ADMIN_RID);
+    const profile = Cloud.profile;
+    return !!(
+      Cloud.realAdmin &&
+      profile &&
+      (profile.rid === ADMIN_RID || /^ИГНАТЕНОК\s+Арина/i.test(String(profile.name || '')))
+    );
   },
   /**
    * Строит переключатель «Настройки / Доступы» для владельца.
    * @returns {string} HTML.
    */
   settingsTabs() {
-    if (!Roles.isOwner()) return '';
-    const tab = ui.setTab || 'main';
-    return (
-      '<div class="tabs"><button class="tab' +
-      (tab === 'main' ? ' on' : '') +
-      '" data-action="set-tab" data-tab="main">Настройки</button><button class="tab' +
-      (tab === 'access' ? ' on' : '') +
-      '" data-action="set-tab" data-tab="access">Доступы</button></div>'
-    );
+    if (Roles.isOwner())
+      return (
+        '<div class="tabs"><button class="tab' +
+        (ui.tab === 'access' ? '' : ' on') +
+        '" data-action="set-tab" data-tab="main">Настройки</button><button class="tab' +
+        (ui.tab === 'access' ? ' on' : '') +
+        '" data-action="set-tab" data-tab="access">Доступы</button></div>'
+      );
+    if (Cloud.realAdmin)
+      return (
+        '<p class="md-help">Вкладка «Доступы» открывается только для аккаунта Игнатенок Арина. Сейчас в профиле: «' +
+        U.esc((Cloud.profile && Cloud.profile.name) || '—') +
+        '», код ' +
+        U.esc((Cloud.profile && Cloud.profile.rid) || '—') +
+        '.</p>'
+      );
+    return '';
   },
   /**
    * Возвращает фамилию вошедшего (первое слово имени).

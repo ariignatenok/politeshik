@@ -100,6 +100,13 @@ const NAV_ALL = [
     admin: true
   },
   {
+    id: 'access',
+    ico: ICONS.key,
+    label: 'Доступы',
+    short: 'Доступы',
+    owner: true
+  },
+  {
     id: 'tdash',
     ico: ICONS.house,
     label: 'Дашборд',
@@ -203,7 +210,7 @@ const emptyMascot = (text, mood) =>
 function navItems() {
   const tabs = Roles.tabs();
   if (tabs) return tabs.map(id => NAV_ALL.find(t => t.id === id)).filter(Boolean);
-  return NAV_ALL.filter(t => (!t.admin || Cloud.isAdmin) && !t.staff);
+  return NAV_ALL.filter(t => (!t.admin || Cloud.isAdmin) && !t.staff && (!t.owner || Roles.isOwner()));
 }
 /**
  * Возвращает вкладки нижней панели для роли пользователя.

@@ -20,12 +20,13 @@ function viewMore() {
         ]
           .concat([['journal', ICONS.folder, 'Журнал']])
           .concat(
-            Cloud.isAdmin
+            (Cloud.isAdmin
               ? [
                   ['requests', ICONS.incomingEnvelope, 'Заявки'],
                   ['group', ICONS.shield, 'Группа (админ)']
                 ]
               : []
+            ).concat(Roles.isOwner() ? [['access', ICONS.key, 'Доступы']] : [])
           )
           .concat([['settings', ICONS.gear, 'Настройки']]);
   return (

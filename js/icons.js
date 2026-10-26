@@ -64,6 +64,7 @@ const ICONS = {
   inboxTray: '\u{1F4E5}',
   incomingEnvelope: '\u{1F4E8}',
   jokerCard: '\u{1F0CF}',
+  key: '\u{1F511}',
   lightBulb: '\u{1F4A1}',
   link: '\u{1F517}',
   locked: '\u{1F512}',

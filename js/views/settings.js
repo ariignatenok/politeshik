@@ -76,7 +76,6 @@ function notifSettings() {
 function viewSettings() {
   const state = Store.s,
     cur = weekType(new Date());
-  if (Roles.isOwner() && ui.setTab === 'access') return viewAccess();
   if (Cloud.isStaff) return Teacher.settingsHtml();
   return (
     Roles.settingsTabs() +

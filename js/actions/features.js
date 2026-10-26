@@ -323,7 +323,8 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   'set-tab'(el) {
-    ui.setTab = el.dataset.tab;
+    ui.tab = el.dataset.tab === 'access' ? 'access' : 'settings';
+    ui.setTab = 'main';
     App.render(true);
   },
   /**
@@ -336,8 +337,7 @@ Object.assign(A, {
     Store.save();
     Cloud.applyRole();
     await Cloud.loadChild();
-    ui.tab = 'settings';
-    ui.setTab = 'access';
+    ui.tab = 'access';
     App.render(true);
     toast('Режим просмотра: ' + Roles.names[Cloud.role]);
   },
