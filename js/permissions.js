@@ -6,6 +6,13 @@
  */
 const canEdit = () => Cloud.status !== 'online' || Cloud.isAdmin;
 const RO_ACTIONS = new Set([
+  'user-ban',
+  'user-unban',
+  'user-delete',
+  'users-refresh',
+  'gcode-new',
+  'gcode-off',
+  'gcode-require',
   'sched-two-weeks',
   'sched-import-bundled',
   'sched-import',

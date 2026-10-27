@@ -148,6 +148,10 @@ document.addEventListener('change', event => {
   if (k === 'cert-file') handleDraftFile(event.target, true);
   if (k === 'work-file') handleDraftFile(event.target, false);
   if (k === 'note-file') handleNoteFile(event.target);
+  if (k === 'user-q') {
+    ui.userQuery = event.target.value;
+    App.render();
+  }
   if (k === 'member-role')
     Cloud.setMemberRole(event.target.dataset.uid, event.target.value).then(r =>
       toast(r.ok ? 'Роль изменена' : 'Не удалось: ' + r.error)

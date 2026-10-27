@@ -20,7 +20,8 @@ Object.assign(A, {
       teacher_name: teacherName,
       person_name: read('person_name'),
       child_name: read('child_name'),
-      person_note: read('person_note')
+      person_note: read('person_note'),
+      group_code: read('group_code')
     };
     if (!email || !password) return toast('Введите почту и пароль');
     if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
@@ -83,10 +84,23 @@ Object.assign(A, {
       teacher_name: teacherName,
       person_name: read('person_name'),
       child_name: read('child_name'),
-      person_note: read('person_note')
+      person_note: read('person_note'),
+      group_code: read('group_code')
     };
     if (!email || !password) return toast('Введите почту и пароль');
     if (password.length < 6) return toast('Пароль должен быть не короче 6 символов');
+    if (role === 'student' || role === 'parent') {
+      const code = read('group_code').trim();
+      const check = await supa.rpc('check_group_code', {
+        p_code: code
+      });
+      if (check.error) return toast(check.error.message);
+      if (check.data !== true) return toast(code ? 'Неверный код группы' : 'Введите код группы: его выдаёт староста');
+      ui.groupCode = code;
+      try {
+        window.localStorage.setItem('politeshik:gc', code);
+      } catch (error) {}
+    }
     if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
     if (extra) {
       const problem = Roles.checkExtra(role, f);

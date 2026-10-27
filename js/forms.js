@@ -515,7 +515,16 @@ const Forms = {
         }
       }
       await Cloud.saveProfile(rid, sg);
-      if (first) await Cloud.requestAccess('student', (Cloud.profile && Cloud.profile.name) || '');
+      if (first) {
+        const asked = await Cloud.requestAccess(
+          'student',
+          (Cloud.profile && Cloud.profile.name) || '',
+          '',
+          '',
+          Roles.storedCode()
+        );
+        if (!asked.ok) toast(asked.error);
+      }
       if (!first && !(await Birthday.saveFromForm(form))) return false;
       return true;
     })().then(
@@ -592,7 +601,7 @@ const Forms = {
           Sick.show(cert);
         }
       },
-      () => toast('Не удалось загрузить: файл слишком большой или нет доступа')
+      error => toast('Не удалось прикрепить: ' + ((error && error.message) || 'файл слишком большой или нет доступа'))
     );
   },
   /**

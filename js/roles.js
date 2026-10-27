@@ -79,6 +79,29 @@ const Roles = {
     return '';
   },
   /**
+   * Возвращает введённый при регистрации код группы.
+   * @returns {string} Строка.
+   */
+  storedCode() {
+    try {
+      return ui.groupCode || window.localStorage.getItem('politeshik:gc') || '';
+    } catch (error) {
+      return ui.groupCode || '';
+    }
+  },
+  /**
+   * Проверяет, что аккаунт — студент группы (или староста) и подходит для списков.
+   * @param {string} uid Идентификатор пользователя.
+   * @returns {boolean} true, если условие выполнено.
+   */
+  countsAsStudent(uid) {
+    const profile = (Cloud.adm.profiles || {})[uid];
+    if (!profile || !profile.rid) return false;
+    if (['teacher', 'parent', 'curator', 'department', 'staff'].indexOf(profile.role) >= 0) return false;
+    const member = (Cloud.memberMap || {})[uid];
+    return !member || (member.status === 'approved' && (member.role === 'student' || member.role === 'admin'));
+  },
+  /**
    * Возвращает фамилию вошедшего (первое слово имени).
    * @returns {string} Строка.
    */
@@ -108,6 +131,7 @@ const Roles = {
   studentList() {
     const profiles = Cloud.adm.profiles || {};
     return Object.keys(profiles)
+      .filter(uid => Roles.countsAsStudent(uid))
       .map(uid => ({
         uid,
         name: profiles[uid].name || 'Студент',
@@ -209,7 +233,7 @@ const Roles = {
         ok: false,
         msg: 'Введите ФИО ребёнка: фамилию и имя, как в списке группы'
       };
-    const result = await Cloud.requestAccess(kind, name, child, note);
+    const result = await Cloud.requestAccess(kind, name, child, note, kind === 'parent' ? Roles.storedCode() : '');
     if (!result.ok)
       return {
         ok: false,

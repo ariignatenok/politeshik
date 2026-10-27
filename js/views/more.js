@@ -23,6 +23,7 @@ function viewMore() {
             (Cloud.isAdmin
               ? [
                   ['requests', ICONS.incomingEnvelope, 'Заявки'],
+                  ['users', ICONS.busts, 'Пользователи'],
                   ['group', ICONS.shield, 'Группа (админ)']
                 ]
               : []

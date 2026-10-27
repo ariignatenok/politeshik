@@ -86,7 +86,8 @@ const Att = {
    * @param {string} date Дата.
    * @returns {boolean} true, если условие выполнено.
    */
-  covered: (certs, date) => (certs || []).some(c => c.from <= date && date <= c.to && !(c.pairs && c.pairs.length)),
+  covered: (certs, date) =>
+    (certs || []).some(c => c.confirmed === true && c.from <= date && date <= c.to && !(c.pairs && c.pairs.length)),
   /**
    * Проверяет, покрыта ли справкой или запиской конкретная пара.
    * @param {Array<Object>} certs Справки.
@@ -96,7 +97,11 @@ const Att = {
    */
   coveredPair: (certs, date, pair) =>
     (certs || []).some(
-      c => c.from <= date && date <= c.to && (!(c.pairs && c.pairs.length) || c.pairs.indexOf(pair) >= 0)
+      c =>
+        c.confirmed === true &&
+        c.from <= date &&
+        date <= c.to &&
+        (!(c.pairs && c.pairs.length) || c.pairs.indexOf(pair) >= 0)
     ),
   /**
    * Вычисляет итоговый статус пары с учётом справки.

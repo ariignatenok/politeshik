@@ -107,6 +107,13 @@ const NAV_ALL = [
     owner: true
   },
   {
+    id: 'users',
+    ico: ICONS.busts,
+    label: 'Пользователи',
+    short: 'Люди',
+    admin: true
+  },
+  {
     id: 'tdash',
     ico: ICONS.house,
     label: 'Дашборд',

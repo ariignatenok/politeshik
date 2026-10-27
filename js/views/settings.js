@@ -70,10 +70,10 @@ function notifSettings() {
   );
 }
 /**
- * Отрисовывает экран «Настройки».
+ * Строит экран «Настройки» без карточки кода группы.
  * @returns {string} HTML.
  */
-function viewSettings() {
+function viewSettingsBase() {
   const state = Store.s,
     cur = weekType(new Date());
   if (Cloud.isStaff) return Teacher.settingsHtml();
@@ -168,4 +168,11 @@ function viewSettings() {
     ' Очистить</button></div></div>' +
     '<p class="hint">Данные хранятся только в этом браузере (localStorage, ключ studyPlanner).</p>'
   );
+}
+/**
+ * Отрисовывает экран «Настройки».
+ * @returns {string} HTML.
+ */
+function viewSettings() {
+  return viewSettingsBase() + (Cloud.isAdmin ? groupCodeCard() : '');
 }

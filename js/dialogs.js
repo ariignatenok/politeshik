@@ -756,8 +756,12 @@ function notePairsHtml(date) {
 function certDayNote(certs, day) {
   if (Att.covered(certs, day))
     return '<p class="md-help">В этот день у студента справка: пары считаются «по справке».</p>';
-  const notes = (certs || []).filter(c => c.pairs && c.pairs.length && c.from <= day && day <= c.to);
-  if (!notes.length) return '';
+  const waiting = (certs || []).filter(c => !c.confirmed && c.from <= day && day <= c.to);
+  const notes = (certs || []).filter(c => c.confirmed && c.pairs && c.pairs.length && c.from <= day && day <= c.to);
+  if (!notes.length)
+    return waiting.length
+      ? '<p class="md-help">В этот день есть справка или записка на проверке: она начнёт учитываться после подтверждения.</p>'
+      : '';
   const pairs = [...new Set([].concat(...notes.map(c => c.pairs)))].sort((a, b) => a - b);
   return (
     '<p class="md-help">В этот день есть записка на ' +

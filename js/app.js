@@ -7,7 +7,11 @@ const App = {
    */
   gateMode() {
     if (Cloud.status === 'pending' || ui.activating) return 'loading';
-    if (Cloud.status === 'online' && (Cloud.role === 'pending' || Cloud.role === 'rejected') && Cloud.hasCabinet())
+    if (
+      Cloud.status === 'online' &&
+      ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(Cloud.role) >= 0 &&
+      (Cloud.role !== 'pending' || Cloud.member)
+    )
       return Cloud.role;
     if (Cloud.status === 'online' && !Cloud.hasCabinet())
       return Cloud.claimsLoaded ? (ui.secret ? 'secret' : 'register') : 'loading';
@@ -23,7 +27,7 @@ const App = {
     const logged = Cloud.status === 'online';
     const hasCab = logged && Cloud.hasCabinet();
     const needClaim = logged && !hasCab && Cloud.claimsLoaded;
-    if (logged && hasCab && mode !== 'pending' && mode !== 'rejected') return '';
+    if (logged && hasCab && ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0) return '';
     document.body.classList.add('gated');
     $('#view').innerHTML = '';
     $('#nav-side').innerHTML = '';
@@ -31,7 +35,9 @@ const App = {
     g.hidden = false;
     if (g.dataset.mode === mode) return '';
     g.dataset.mode = mode;
-    const busy = Cloud.status === 'pending' || (logged && !Cloud.claimsLoaded);
+    const busy =
+      Cloud.status === 'pending' ||
+      (logged && !Cloud.claimsLoaded && ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0);
     if (busy) {
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
@@ -39,21 +45,44 @@ const App = {
         '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p><div class="sk-gate"><span class="sk sk-line sk-w80"></span><span class="sk sk-line sk-w60"></span><span class="sk sk-line sk-w40"></span></div></div>';
       return '';
     }
-    if (mode === 'pending' || mode === 'rejected') {
-      const rejected = mode === 'rejected';
+    if (['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) >= 0) {
+      const copy = {
+        pending: [
+          'Ваша заявка на рассмотрении',
+          'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.',
+          'thinking'
+        ],
+        rejected: ['Заявка отклонена', 'Староста не одобрила доступ. Если это ошибка, напишите ей лично.', 'sad'],
+        banned: [
+          'Вы заблокированы администратором',
+          'Доступ к приложению закрыт. Если это ошибка, свяжитесь со старостой группы.',
+          'sad'
+        ],
+        unknown: [
+          'Не удалось проверить доступ',
+          'Проверьте интернет и попробуйте ещё раз. Пока доступ не подтверждён, приложение закрыто.',
+          'worried'
+        ],
+        nocode: [
+          'Нужен код группы',
+          'Введите код, который выдала староста, чтобы отправить заявку на доступ.',
+          'thinking'
+        ]
+      }[mode];
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
-        Mascot.svg(rejected ? 'sad' : 'thinking', 110) +
+        Mascot.svg(copy[2], 110) +
         '</div><h1>Политешик</h1><p class="gate-sub">' +
-        (rejected ? 'Заявка отклонена' : 'Заявка отправлена') +
+        copy[0] +
         '</p><p class="gate-text">' +
-        (rejected
-          ? 'Староста не одобрила доступ. Если это ошибка, напишите ей лично.'
-          : 'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.') +
+        copy[1] +
         '</p>' +
-        (rejected ? '' : '<button class="btn primary big" data-action="pending-check">Проверить сейчас</button>') +
+        (mode === 'nocode'
+          ? '<div data-form="code"><label class="field"><span>Код группы</span><input class="input" name="group_code" autocomplete="off" placeholder="25290909-3091-XXXXX"></label><button class="btn primary big" data-action="code-send">Отправить заявку</button></div>'
+          : '') +
+        (mode === 'unknown' ? '<button class="btn primary big" data-action="pending-check">Повторить</button>' : '') +
         '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="logout-now">Выйти из аккаунта</button></div>';
-      if (!rejected) App.watchPending();
+      if (mode !== 'nocode') App.watchPending();
       return '';
     }
     if (needClaim && mode === 'secret' && ui.secret) {
@@ -140,6 +169,12 @@ const App = {
       staff: 'Куратор или отделение: укажите ФИО и должность, староста назначит роль.',
       teacher: 'Вход для преподавателя: нужен пароль, который выдали в колледже.'
     }[role];
+    const codeField =
+      role === 'student' || role === 'parent'
+        ? '<label class="field"><span>Код группы (его выдаёт староста)</span><input class="input" name="group_code" autocomplete="off" placeholder="25290909-3091-XXXXX" value="' +
+          U.esc(draft.group_code || '') +
+          '"></label>'
+        : '';
     const extra =
       role === 'parent'
         ? '<label class="field"><span>Ваше ФИО</span><input class="input" name="person_name" placeholder="Иванова Мария Петровна" value="' +
@@ -177,6 +212,7 @@ const App = {
       '"></label>' +
       '<label class="field"><span>Пароль</span><input class="input" name="password" type="password" autocomplete="current-password" placeholder="не короче 6 символов"></label>' +
       extra +
+      codeField +
       '<button class="btn primary big" data-action="login-do">Войти</button><button class="btn big" style="margin-top:8px" data-action="signup-do">Создать аккаунт</button></div>' +
       '<small class="gate-foot">Пароль хранится в Supabase в зашифрованном виде.</small></div>';
     const f = g.querySelector('input');
@@ -212,6 +248,7 @@ const App = {
       (ui.tab === 'group' && !Cloud.isAdmin) ||
       (ui.tab === 'requests' && !Cloud.isAdmin) ||
       (ui.tab === 'access' && !Roles.isOwner()) ||
+      (ui.tab === 'users' && !Cloud.isAdmin) ||
       (Cloud.isStaff && ui.tab !== 'more' && !Roles.allows(ui.tab)) ||
       (!Cloud.isStaff && Roles.staffOnly.indexOf(ui.tab) >= 0)
     )
@@ -380,16 +417,18 @@ const App = {
   watchPending() {
     clearInterval(App.pendingTimer);
     App.pendingTimer = setInterval(async () => {
-      if (Cloud.role !== 'pending') {
+      const waiting = () => ['pending', 'rejected', 'banned', 'unknown'].indexOf(Cloud.role) >= 0,
+        before = Cloud.role;
+      if (!waiting()) {
         clearInterval(App.pendingTimer);
         return;
       }
       await Cloud.refreshMember();
-      if (Cloud.role !== 'pending') {
+      if (!waiting()) {
         clearInterval(App.pendingTimer);
         await Cloud.init();
         App.render(true);
-      }
+      } else if (Cloud.role !== before) App.render(true);
     }, 8000);
   },
   /**

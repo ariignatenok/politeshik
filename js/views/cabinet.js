@@ -149,9 +149,9 @@ function viewCabinetMain() {
               '<div class="item-meta">' +
               (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +
               '<span class="tag status ' +
-              (c.confirmed ? 'prep' : 'past') +
+              (c.confirmed ? 'prep' : 'review') +
               '">' +
-              (c.confirmed ? 'Подтверждена админом' : 'Ждёт подтверждения') +
+              (c.confirmed ? 'Подтверждена админом' : 'На проверке') +
               '</span></div>' +
               '</div><div class="item-actions"><button class="icon-btn" data-action="cert-view" data-uid="' +
               Cloud.uid +

@@ -20,7 +20,7 @@ function enteredRows() {
   const P = Cloud.adm.profiles,
     rg = attRange();
   return Object.keys(P)
-    .filter(id => P[id].role !== 'teacher')
+    .filter(id => Roles.countsAsStudent(id))
     .map(id => {
       const p = P[id],
         marks = (Cloud.adm.att[id] || {}).marks || {},
@@ -213,7 +213,7 @@ function grpToday() {
       : '');
   /**
    * Строит строку таблицы «Сегодня».
-   * @param {Object} x Строка списка группы.
+   * @param {Object} x Строка данных.
    * @returns {string} HTML.
    */
   const row = x => {
@@ -497,7 +497,7 @@ function certRow(x) {
     '<span class="tag status ' +
     (ok ? 'prep' : 'past') +
     '">' +
-    (ok ? 'Подтверждена' : 'Ждёт подтверждения') +
+    (ok ? 'Подтверждена' : 'На проверке') +
     '</span></div></div>' +
     '<div class="sick-actions"><button class="btn sm" data-action="cert-view" data-uid="' +
     x.uid +
@@ -587,7 +587,7 @@ function viewGroup() {
     newCerts = allCerts().filter(x => !x.c.confirmed).length,
     tabs = [
       ['today', ICONS.calendarDay + ' Сегодня'],
-      ['students', ICONS.users + ' Список группы'],
+      ['students', ICONS.busts + ' Список группы'],
       ['reqs', ICONS.bell + ' Просьбы' + (nreq ? ' (' + nreq + ')' : '')],
       ['sick', ICONS.hospital + ' Больничные' + (newCerts ? ' (' + newCerts + ')' : '')],
       ['works', ICONS.megaphone + ' Работы группы'],

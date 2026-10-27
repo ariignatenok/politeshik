@@ -664,7 +664,7 @@ const Cloud = (() => {
           .catch(() => {});
       }
       if (C.memberKnown && !C.member && C.profile && C.profile.rid && !C.realAdmin && !C.realTeacher) {
-        await C.requestAccess('student', C.profile.name || '');
+        await C.requestAccess('student', C.profile.name || '', '', '', Roles.storedCode());
       }
       C.applyRole();
       if (C.hasCabinet() && C.profile) {
@@ -689,6 +689,14 @@ const Cloud = (() => {
         C.childTimer = setInterval(C.loadChild, 30000);
       }
       Safe.run('mascot', () => Mascot.syncFromProfile());
+      clearInterval(C.statusTimer);
+      C.statusTimer = setInterval(async () => {
+        const closed = ['pending', 'rejected', 'banned', 'unknown', 'nocode'];
+        if (C.status !== 'online' || C.realAdmin || closed.indexOf(C.role) >= 0) return;
+        const before = C.role;
+        await C.refreshMember();
+        if (C.role !== before && closed.indexOf(C.role) >= 0) App.render(true);
+      }, 10000);
       clearTimeout(C.readyTimer);
       C.readyTimer = setTimeout(() => {
         if (!C.ready) {
@@ -1346,15 +1354,22 @@ const Cloud = (() => {
    * Определяет роль (с учётом режима просмотра владельца) и выставляет признаки доступа.
    */
   C.applyRole = () => {
+    const blocked = C.member && (C.member.status === 'banned' || C.member.status === 'rejected');
     C.realRole = C.realAdmin
       ? 'admin'
-      : C.realTeacher
-        ? 'teacher'
-        : C.member
-          ? C.member.status === 'approved'
-            ? C.member.role
-            : C.member.status
-          : 'student';
+      : blocked
+        ? C.member.status
+        : C.realTeacher
+          ? 'teacher'
+          : C.member
+            ? C.member.status === 'approved'
+              ? C.member.role
+              : C.member.status
+            : !C.memberKnown
+              ? 'unknown'
+              : C.profile && C.profile.rid
+                ? 'nocode'
+                : 'student';
     const owner = C.realAdmin && C.profile && C.profile.rid === ADMIN_RID,
       view = owner ? Store.s.settings.viewAs : '';
     let role = C.realRole;
@@ -1389,15 +1404,17 @@ const Cloud = (() => {
    * @param {string} name ФИО.
    * @param {string} child ФИО ребёнка.
    * @param {string} note Комментарий.
+   * @param {string} code Код группы.
    * @returns {Promise<Object>} результат.
    */
-  C.requestAccess = async (kind, name, child, note) => {
+  C.requestAccess = async (kind, name, child, note, code) => {
     try {
       const {data, error} = await supa.rpc('request_access', {
         p_role: kind,
         p_name: name || '',
         p_child: child || '',
-        p_note: note || ''
+        p_note: note || '',
+        p_code: code || ''
       });
       if (error)
         return {
@@ -1439,6 +1456,13 @@ const Cloud = (() => {
       const before = JSON.stringify([C.requests, C.needApproval, C.pendingCount]);
       C.requests = list.data || [];
       C.groups = groups.data || [];
+      C.memberMap = {};
+      C.requests.forEach(r => {
+        C.memberMap[r.uid] = {
+          status: r.status,
+          role: r.role
+        };
+      });
       C.needApproval = need.data !== false;
       C.pendingCount = C.requests.filter(r => r.status === 'pending').length;
       if (before !== JSON.stringify([C.requests, C.needApproval, C.pendingCount])) App.renderSoft();
@@ -1613,6 +1637,78 @@ const Cloud = (() => {
       C.childLoaded = true;
       return false;
     }
+  };
+  C.users = [];
+  C.usersLoaded = false;
+  C.usersAt = 0;
+  C.memberMap = {};
+  /**
+   * Загружает список всех аккаунтов для старосты.
+   * @param {boolean} force Обновить без паузы.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.loadUsers = async force => {
+    if (!C.realAdmin || (!force && Date.now() - C.usersAt < 6000)) return false;
+    C.usersAt = Date.now();
+    try {
+      const {data, error} = await supa.rpc('admin_users');
+      if (error) return false;
+      const before = JSON.stringify(C.users);
+      C.users = data || [];
+      C.usersLoaded = true;
+      C.users.forEach(u => {
+        C.memberMap[u.uid] = {
+          status: u.status,
+          role: u.role
+        };
+      });
+      if (before !== JSON.stringify(C.users)) App.renderSoft();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  C.groupCodes = [];
+  C.codeRequired = true;
+  C.codesAt = 0;
+  /**
+   * Загружает коды группы и настройку обязательности кода.
+   * @param {boolean} force Обновить без паузы.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.loadGroupCodes = async force => {
+    if (!C.realAdmin || (!force && Date.now() - C.codesAt < 6000)) return false;
+    C.codesAt = Date.now();
+    try {
+      const [list, need] = await Promise.all([supa.rpc('list_group_codes'), supa.rpc('require_code')]);
+      if (list.error) return false;
+      const before = JSON.stringify([C.groupCodes, C.codeRequired]);
+      C.groupCodes = list.data || [];
+      C.codeRequired = need.data !== false;
+      if (before !== JSON.stringify([C.groupCodes, C.codeRequired])) App.renderSoft();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
+   * Вызывает функцию управления кодами и обновляет список.
+   * @param {string} name Имя функции.
+   * @param {Object} params Параметры.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.groupCodeCall = async (name, params) => {
+    const {data, error} = await supa.rpc(name, params || {});
+    if (error)
+      return {
+        ok: false,
+        error: error.message
+      };
+    await C.loadGroupCodes(true);
+    return {
+      ok: true,
+      data
+    };
   };
   /**
    * Отправляет профиль в облако.

@@ -298,13 +298,12 @@ Object.assign(A, {
    */
   'login-role'(el) {
     const form = el.closest('.gate-card');
-    ui.loginDraft = Object.assign({}, ui.loginDraft || {}, {
-      email: (form.querySelector('[name=email]') || {}).value || '',
-      person_name: (form.querySelector('[name=person_name]') || {}).value || '',
-      child_name: (form.querySelector('[name=child_name]') || {}).value || '',
-      person_note: (form.querySelector('[name=person_note]') || {}).value || '',
-      teacher_name: (form.querySelector('[name=teacher_name]') || {}).value || ''
+    const draft = Object.assign({}, ui.loginDraft || {});
+    ['email', 'person_name', 'child_name', 'person_note', 'teacher_name', 'group_code'].forEach(name => {
+      const input = form.querySelector('[name=' + name + ']');
+      if (input) draft[name] = input.value;
     });
+    ui.loginDraft = draft;
     ui.loginRole = el.dataset.role;
     $('#gate').dataset.mode = '';
     App.render(true);
@@ -519,5 +518,155 @@ Object.assign(A, {
     ui.schedDayWs = ui.schedWs;
     App.render(true);
     toast('Расписание прикреплено к двум неделям: 26.10–31.10 и 02.11–07.11');
+  },
+  /**
+   * Выбирает фильтр списка пользователей.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  'user-filter'(el) {
+    ui.userFilter = el.dataset.id;
+    App.render();
+  },
+  /**
+   * Обновляет список пользователей.
+   */
+  async 'users-refresh'() {
+    await Cloud.loadUsers(true);
+    App.render();
+  },
+  /**
+   * Банит пользователя после подтверждения.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'user-ban'(el) {
+    const user = Cloud.users.find(u => u.uid === el.dataset.uid);
+    if (
+      !user ||
+      !(await UI.confirm(
+        'Забанить ' +
+          (user.full_name || user.email) +
+          '? Доступ закроется сразу, при входе будет написано, что аккаунт заблокирован.',
+        'Забанить'
+      ))
+    )
+      return;
+    const result = await Users.act('admin_set_status', {
+      p_uid: user.uid,
+      p_status: 'banned'
+    });
+    toast(result.ok ? 'Пользователь забанен' : 'Не удалось: ' + result.error);
+  },
+  /**
+   * Снимает бан.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'user-unban'(el) {
+    const result = await Users.act('admin_set_status', {
+      p_uid: el.dataset.uid,
+      p_status: 'approved'
+    });
+    toast(result.ok ? 'Бан снят' : 'Не удалось: ' + result.error);
+  },
+  /**
+   * Удаляет аккаунт пользователя и его данные после подтверждения.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'user-delete'(el) {
+    const user = Cloud.users.find(u => u.uid === el.dataset.uid);
+    if (
+      !user ||
+      !(await UI.confirm(
+        'Удалить аккаунт ' +
+          user.email +
+          ' и все его данные? Эту почту можно будет зарегистрировать заново, а ФИО освободится (занять его снова можно только с кодом группы).',
+        'Удалить'
+      ))
+    )
+      return;
+    const result = await Users.act('admin_delete_user', {
+      p_uid: user.uid
+    });
+    toast(result.ok ? 'Аккаунт удалён' : 'Не удалось: ' + result.error);
+  },
+  /**
+   * Генерирует новый код группы.
+   */
+  async 'gcode-new'() {
+    if (
+      Cloud.groupCodes.some(c => c.active) &&
+      !(await UI.confirm('Создать новый код? Прежний перестанет работать.', 'Создать'))
+    )
+      return;
+    const result = await Cloud.groupCodeCall('create_group_code');
+    if (!result.ok) return toast('Не удалось: ' + result.error);
+    App.render();
+    toast('Новый код: ' + result.data);
+  },
+  /**
+   * Отключает код группы.
+   */
+  async 'gcode-off'() {
+    const active = Cloud.groupCodes.find(c => c.active);
+    if (
+      !active ||
+      !(await UI.confirm('Отключить код ' + active.code + '? Зарегистрироваться по нему будет нельзя.', 'Отключить'))
+    )
+      return;
+    const result = await Cloud.groupCodeCall('disable_group_code', {
+      p_code: active.code
+    });
+    toast(result.ok ? 'Код отключён' : 'Не удалось: ' + result.error);
+    App.render();
+  },
+  /**
+   * Включает или выключает обязательный код при регистрации.
+   */
+  async 'gcode-require'() {
+    const result = await Cloud.groupCodeCall('set_require_code', {
+      p_on: Cloud.codeRequired === false
+    });
+    toast(
+      result.ok
+        ? Cloud.codeRequired
+          ? 'Код при регистрации включён'
+          : 'Код при регистрации выключен'
+        : 'Не удалось: ' + result.error
+    );
+    App.render();
+  },
+  /**
+   * Копирует код группы.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'gcode-copy'(el) {
+    try {
+      await navigator.clipboard.writeText(el.dataset.code);
+      toast('Код скопирован');
+    } catch (error) {
+      toast('Скопируйте код вручную: ' + el.dataset.code);
+    }
+  },
+  /**
+   * Отправляет заявку с кодом группы.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'code-send'(el) {
+    const form = el.closest('[data-form="code"]'),
+      code = ((form.querySelector('[name=group_code]') || {}).value || '').trim();
+    if (!code) return toast('Введите код группы');
+    const asParent = Cloud.profile && Cloud.profile.role === 'parent',
+      result = await Cloud.requestAccess(
+        asParent ? 'parent' : 'student',
+        (Cloud.profile && Cloud.profile.name) || '',
+        '',
+        '',
+        code
+      );
+    if (!result.ok) return toast(result.error);
+    ui.groupCode = code;
+    try {
+      window.localStorage.setItem('politeshik:gc', code);
+    } catch (error) {}
+    App.render(true);
   }
 });
