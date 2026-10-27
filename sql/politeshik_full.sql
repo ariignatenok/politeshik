@@ -268,15 +268,24 @@ begin
   insert into public.members (tenant_id, uid, role, status, email, decided_at) values (public.current_tenant(), auth.uid(), 'admin', 'approved', coalesce((select a.email from auth.users a where a.id = auth.uid()), ''), now()) on conflict (tenant_id, uid) do update set role = 'admin', status = 'approved', email = excluded.email;
   return true;
 end $$;
-create or replace function public.become_teacher(p_secret text) returns boolean
+drop function if exists public.become_teacher(text);
+create or replace function public.become_teacher(p_secret text, p_name text default '') returns boolean
 language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); mail text;
 begin
   if auth.uid() is null then raise exception 'Нужно войти в аккаунт'; end if;
   if public.is_teacher() then return true; end if;
   if public.is_admin() then raise exception 'Этот аккаунт уже админ'; end if;
+  if not public.email_ok() then raise exception 'Подтвердите почту'; end if;
+  if exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = t and m.status = 'banned') then raise exception 'Вы заблокированы администратором'; end if;
   if not public.check_secret('teacher_pass', p_secret) then return false; end if;
-  insert into public.teachers (uid, tenant_id) values (auth.uid(), public.current_tenant()) on conflict (uid) do nothing;
-  insert into public.members (tenant_id, uid, role, status, email, decided_at) values (public.current_tenant(), auth.uid(), 'teacher', 'approved', coalesce((select a.email from auth.users a where a.id = auth.uid()), ''), now()) on conflict (tenant_id, uid) do update set role = 'teacher', status = 'approved', email = excluded.email;
+  select a.email into mail from auth.users a where a.id = auth.uid();
+  insert into public.members (tenant_id, uid, role, status, requested_role, full_name, email)
+    values (t, auth.uid(), 'teacher', 'pending', 'teacher', left(coalesce(p_name, ''), 120), coalesce(mail, ''))
+    on conflict (tenant_id, uid) do update set requested_role = 'teacher',
+      full_name = case when excluded.full_name <> '' then excluded.full_name else public.members.full_name end,
+      email = excluded.email
+      where public.members.status <> 'approved';
   return true;
 end $$;
 create or replace function public.admin_secret_is_set() returns boolean
@@ -287,15 +296,15 @@ create or replace function public.teacher_secret_is_set() returns boolean
 language sql stable security definer set search_path = public as $$
   select exists (select 1 from public.settings s where s.tenant_id = public.current_tenant() and s.key = 'teacher_pass')
 $$;
-revoke all on function public.become_admin(text), public.become_teacher(text), public.admin_secret_is_set(), public.teacher_secret_is_set() from public, anon;
-grant execute on function public.become_admin(text), public.become_teacher(text), public.admin_secret_is_set(), public.teacher_secret_is_set() to authenticated;
+revoke all on function public.become_admin(text), public.become_teacher(text, text), public.admin_secret_is_set(), public.teacher_secret_is_set() from public, anon;
+grant execute on function public.become_admin(text), public.become_teacher(text, text), public.admin_secret_is_set(), public.teacher_secret_is_set() to authenticated;
 
 -- 4. Чей это документ: profiles/<uid>, attendance/<uid>, certs/<uid>[/...], chat/<uid>, data/users/<uid>/...
 create or replace function public.doc_owner(p text) returns text
 language sql immutable as $$
   select case
     when p like 'data/users/%' then split_part(p, '/', 3)
-    when split_part(p, '/', 1) in ('profiles', 'attendance', 'certs', 'chat', 'map', 'solutions') then split_part(p, '/', 2)
+    when split_part(p, '/', 1) in ('profiles', 'attendance', 'certs', 'chat', 'map', 'solutions', 'avatars') then split_part(p, '/', 2)
     else null end
 $$;
 
@@ -367,6 +376,13 @@ begin
         end if;
       end if;
     end loop;
+  end if;
+  if split_part(new.path, '/', 1) = 'avatars' then
+    if array_length(string_to_array(new.path, '/'), 1) <> 2 then raise exception 'Неверный путь аватарки'; end if;
+    if public.member_role() = 'parent' then raise exception 'Родителям фото профиля недоступно'; end if;
+    if coalesce(new.data ->> 'v', '') <> '' and not (new.data ->> 'v' ~ '^m[0-9]{1,2}$' or (new.data ->> 'v' like 'data:image/jpeg;base64,%' and char_length(new.data ->> 'v') < 60000)) then
+      raise exception 'Неверный формат фото';
+    end if;
   end if;
   if split_part(new.path, '/', 1) = 'map' then
     if array_length(string_to_array(new.path, '/'), 1) <> 2
@@ -631,12 +647,17 @@ language sql stable security definer set search_path = public as $$
   select coalesce((select s.value from public.settings s where s.tenant_id = public.current_tenant() and s.key = 'require_approval'),
                   nullif(current_setting('app.require_approval', true), ''), 'on') <> 'off'
 $$;
+create or replace function public.email_ok() returns boolean
+language sql stable security definer set search_path = public as $$
+  select coalesce((select case when to_jsonb(u) ? 'email_confirmed_at' then (to_jsonb(u) ->> 'email_confirmed_at') is not null else true end from auth.users u where u.id = auth.uid()), false)
+$$;
 create or replace function public.is_member() returns boolean
 language sql stable security definer set search_path = public as $$
   select auth.uid() is not null and (
     public.is_admin() or public.is_teacher()
-    or exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status = 'approved')
-    or (not public.require_approval() and not exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status = 'rejected')))
+    or (public.email_ok() and (
+      exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status = 'approved')
+      or (not public.require_approval() and not exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status in ('rejected', 'banned'))))))
 $$;
 create or replace function public.member_role() returns text
 language sql stable security definer set search_path = public as $$
@@ -690,10 +711,12 @@ begin
     update public.members set status = 'rejected', decided_at = now(), decided_by = auth.uid() where tenant_id = t and uid = p_uid;
     return;
   end if;
-  r := coalesce(p_role, case m.requested_role when 'parent' then 'parent' when 'staff' then 'curator' else 'student' end);
-  if r not in ('student', 'curator', 'department', 'parent') then raise exception 'Недопустимая роль'; end if;
+  r := coalesce(p_role, case m.requested_role when 'parent' then 'parent' when 'staff' then 'curator' when 'teacher' then 'teacher' else 'student' end);
+  if r not in ('student', 'curator', 'department', 'parent', 'teacher') then raise exception 'Недопустимая роль'; end if;
   update public.members set status = 'approved', role = r, group_id = coalesce(p_group, group_id), child_uid = coalesce(p_child, child_uid), decided_at = now(), decided_by = auth.uid()
     where tenant_id = t and uid = p_uid;
+  if r = 'teacher' then insert into public.teachers (uid, tenant_id) values (p_uid, t) on conflict (uid) do nothing;
+  else delete from public.teachers where uid = p_uid and tenant_id = t; end if;
   if r = 'curator' then update public.groups set curator_uid = p_uid where tenant_id = t and id = coalesce(p_group, m.group_id); end if;
 end $$;
 
@@ -981,6 +1004,7 @@ language plpgsql security definer set search_path = public as $$
 declare t text := public.current_tenant(); u uuid := auth.uid(); cur public.members; asked text; child uuid; hits int; want text; st text; gid text; mail text; role_now text; code_group text;
 begin
   if u is null then raise exception 'Нужно войти в аккаунт'; end if;
+  if not public.email_ok() then raise exception 'Подтвердите почту'; end if;
   if public.is_admin() or public.is_teacher() then return 'approved'; end if;
   asked := case when p_role in ('student', 'parent', 'staff') then p_role else 'student' end;
   select * into cur from public.members m where m.tenant_id = t and m.uid = u;
@@ -1017,6 +1041,7 @@ create policy docs_select on public.docs for select using (
     split_part(path, '/', 1) = 'claims'
     or (split_part(path, '/', 1) = 'group' and public.is_member())
     or (split_part(path, '/', 1) in ('map', 'solutions') and not public.is_teacher() and public.is_member())
+    or (split_part(path, '/', 1) = 'avatars' and public.is_member() and public.member_role() <> 'parent')
     or (public.doc_owner(path) = auth.uid()::text and not public.is_blocked())
     or public.is_admin()));
 drop policy if exists docs_own_insert on public.docs;
