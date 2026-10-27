@@ -25,6 +25,8 @@ function friendlyAuthError(e) {
   if (/invalid api key|apikey/i.test(m)) return 'неверный ключ Supabase в файле (SUPA_KEY)';
   if (/fetch|network|load failed|retryable/i.test(m + c))
     return 'нет связи с Supabase: проверьте интернет и адрес проекта в файле (SUPA_URL)';
+  if (/banned|user_banned/i.test(m + c)) return 'Вы заблокированы администратором';
+  if (/not confirmed|email_not_confirmed/i.test(m + c)) return 'почта ещё не подтверждена';
   if (/rate limit/i.test(m)) return 'слишком много попыток, подождите минуту';
   return m;
 }

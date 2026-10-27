@@ -377,7 +377,7 @@ function viewRequests() {
    * @returns {string} HTML.
    */
   const roleOpts = sel =>
-    ['student', 'curator', 'department', 'parent']
+    ['student', 'curator', 'department', 'parent', 'teacher']
       .map(r => '<option value="' + r + '"' + (r === sel ? ' selected' : '') + '>' + Roles.names[r] + '</option>')
       .join('');
   /**
@@ -386,7 +386,14 @@ function viewRequests() {
    * @returns {string} HTML.
    */
   const card = r => {
-    const def = r.requested_role === 'parent' ? 'parent' : r.requested_role === 'staff' ? 'curator' : 'student';
+    const def =
+      r.requested_role === 'parent'
+        ? 'parent'
+        : r.requested_role === 'staff'
+          ? 'curator'
+          : r.requested_role === 'teacher'
+            ? 'teacher'
+            : 'student';
     return (
       '<article class="card req-card" data-form="req" data-uid="' +
       r.uid +
@@ -400,7 +407,8 @@ function viewRequests() {
       ({
         student: 'студент',
         parent: 'родитель',
-        staff: 'куратор / отделение'
+        staff: 'куратор / отделение',
+        teacher: 'преподаватель'
       }[r.requested_role] || 'студент') +
       '</span></header>' +
       (r.child_name

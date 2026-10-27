@@ -245,6 +245,8 @@ const Roles = {
       joined: new Date().toISOString()
     });
     await Cloud.saveProfileNow().catch(() => {});
+    Cloud.syncConsent();
+    ui.justSubmitted = true;
     return {
       ok: true
     };

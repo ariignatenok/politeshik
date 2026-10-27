@@ -832,7 +832,11 @@ function openStudent(uid, date0) {
     date = ui.stud.date;
   UI.open(
     r.p.name || 'Студент',
-    '<div class="stud-modal"><div class="head-actions" style="margin-bottom:10px"><button class="btn sm primary" data-action="att-edit" data-id="' +
+    '<div class="stud-modal"><div class="stud-head">' +
+      Avatars.html(uid, 56, r.p.avatar) +
+      '<div><b>' +
+      U.esc(r.p.name || 'Студент') +
+      '</b></div></div><div class="head-actions" style="margin-bottom:10px"><button class="btn sm primary" data-action="att-edit" data-id="' +
       uid +
       '">Изменить посещаемость</button><button class="btn sm" data-action="open-chat" data-with="' +
       uid +

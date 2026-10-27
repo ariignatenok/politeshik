@@ -191,7 +191,7 @@ function viewChatListAdmin() {
         time: chatTime(t.last.created_at),
         unread: t.unread,
         pinned: pins.includes(t.uid),
-        avatar: avatarOf((Cloud.adm.profiles[t.uid] || {}).avatar, 44)
+        avatar: Avatars.html(t.uid, 44, (Cloud.adm.profiles[t.uid] || {}).avatar)
       })
     )
     .join('');

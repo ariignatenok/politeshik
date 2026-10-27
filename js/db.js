@@ -626,6 +626,7 @@ const Cloud = (() => {
         name: session.user.email || 'user',
         isOwner: false
       };
+      C.meta = (session.user && session.user.user_metadata) || {};
       try {
         const {data: ad} = await supa.from('admins').select('uid').eq('uid', C.uid).maybeSingle();
         if (ad) C.me.isOwner = true;
@@ -689,6 +690,11 @@ const Cloud = (() => {
         C.childTimer = setInterval(C.loadChild, 30000);
       }
       Safe.run('mascot', () => Mascot.syncFromProfile());
+      Safe.run('consent', () => C.syncConsent());
+      Safe.run('avatars', () => {
+        Avatars.load().then(() => Avatars.publish());
+        Avatars.start();
+      });
       clearInterval(C.statusTimer);
       C.statusTimer = setInterval(async () => {
         const closed = ['pending', 'rejected', 'banned', 'unknown', 'nocode'];
@@ -1711,6 +1717,85 @@ const Cloud = (() => {
     };
   };
   /**
+   * Записывает факт согласия на обработку данных в профиль.
+   * @returns {boolean} true, если условие выполнено.
+   */
+  C.syncConsent = () => {
+    const meta = C.meta || {};
+    if (!C.profile || C.profile.consent || !meta.consent) return false;
+    C.profile.consent = true;
+    C.profile.consent_date = meta.consent_date || new Date().toISOString();
+    C.pushProfile();
+    return true;
+  };
+  const saveProfileBase = C.saveProfile,
+    saveTeacherNameBase = C.saveTeacherName;
+  /**
+   * Сохраняет профиль студента.
+   * @param {string} rid Идентификатор фамилии.
+   * @param {string} subgroup Подгруппа.
+   */
+  C.saveProfile = async (rid, subgroup) => {
+    await saveProfileBase(rid, subgroup);
+    C.syncConsent();
+  };
+  /**
+   * Сохраняет профиль преподавателя с именем.
+   * @param {string} name Имя преподавателя.
+   */
+  C.saveTeacherName = async name => {
+    await saveTeacherNameBase(name);
+    C.syncConsent();
+  };
+  /**
+   * Сохраняет свою аватарку в облаке.
+   * @param {string} value Картинка или фото.
+   */
+  C.saveAvatar = value =>
+    writeDoc('avatars/' + C.uid, {
+      v: value,
+      updated: new Date().toISOString()
+    });
+  /**
+   * Удаляет свою аватарку из облака.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.deleteAvatar = async () => {
+    try {
+      await DB.doc('avatars/' + C.uid).delete();
+      return {
+        ok: true
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: String((error && error.message) || error)
+      };
+    }
+  };
+  /**
+   * Загружает аватарки всех участников.
+   * @returns {Promise<boolean>} true, если условие выполнено.
+   */
+  C.loadAvatars = async () => {
+    try {
+      const {data, error} = await supa
+        .from('docs')
+        .select('path,data')
+        .like('path', 'avatars/%')
+        .not('path', 'like', 'avatars/%/%');
+      if (error) return false;
+      const map = {};
+      (data || []).forEach(row => {
+        if (row.data && row.data.v) map[row.path.slice(8)] = row.data.v;
+      });
+      Avatars.map = map;
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
    * Отправляет профиль в облако.
    */
   C.pushProfile = () => {
@@ -1740,7 +1825,8 @@ const Cloud = (() => {
     if (error)
       return {
         ok: false,
-        msg: friendlyAuthError(error)
+        msg: friendlyAuthError(error),
+        unconfirmed: /not confirmed|email_not_confirmed/i.test((error.code || '') + ' ' + (error.message || ''))
       };
     await C.init();
     return {
@@ -1751,17 +1837,23 @@ const Cloud = (() => {
    * Регистрирует аккаунт.
    * @param {string} email Адрес электронной почты.
    * @param {string} password Пароль.
+   * @param {Object} meta Описание файла.
    * @returns {Promise<Object>} ok и сообщение об ошибке.
    */
-  C.signup = async (email, password) => {
+  C.signup = async (email, password, meta) => {
     if (!supa)
       return {
         ok: false,
         msg: 'Библиотека Supabase не загрузилась.'
       };
+    const options = {
+      data: meta || {},
+      emailRedirectTo: location.origin + location.pathname
+    };
     const {data, error} = await supa.auth.signUp({
       email,
-      password
+      password,
+      options
     });
     if (error)
       return {
@@ -1774,10 +1866,45 @@ const Cloud = (() => {
         ok: true
       };
     }
+    if (data.user)
+      return {
+        ok: false,
+        confirm: true,
+        msg: 'Подтвердите почту'
+      };
     return {
       ok: false,
-      msg: 'Проверьте почту и подтвердите регистрацию, потом войдите.'
+      msg: 'Не удалось создать аккаунт'
     };
+  };
+  /**
+   * Повторно отправляет письмо с подтверждением почты.
+   * @param {string} email Почта.
+   * @returns {Promise<Object>} Объект.
+   */
+  C.resendConfirm = async email => {
+    try {
+      const {error} = await supa.auth.resend({
+        type: 'signup',
+        email,
+        options: {
+          emailRedirectTo: location.origin + location.pathname
+        }
+      });
+      return error
+        ? {
+            ok: false,
+            error: friendlyAuthError(error)
+          }
+        : {
+            ok: true
+          };
+    } catch (error) {
+      return {
+        ok: false,
+        error: String((error && error.message) || error)
+      };
+    }
   };
   /**
    * Выходит из аккаунта и перезагружает страницу.

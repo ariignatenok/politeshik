@@ -299,9 +299,9 @@ Object.assign(A, {
   'login-role'(el) {
     const form = el.closest('.gate-card');
     const draft = Object.assign({}, ui.loginDraft || {});
-    ['email', 'person_name', 'child_name', 'person_note', 'teacher_name', 'group_code'].forEach(name => {
+    ['email', 'person_name', 'child_name', 'person_note', 'teacher_name', 'group_code', 'consent'].forEach(name => {
       const input = form.querySelector('[name=' + name + ']');
-      if (input) draft[name] = input.value;
+      if (input) draft[name] = input.type === 'checkbox' ? input.checked : input.value;
     });
     ui.loginDraft = draft;
     ui.loginRole = el.dataset.role;
@@ -668,5 +668,67 @@ Object.assign(A, {
       window.localStorage.setItem('politeshik:gc', code);
     } catch (error) {}
     App.render(true);
+  },
+  /**
+   * Показывает пояснение к согласию на обработку данных.
+   */
+  'consent-info'() {
+    UI.open('Согласие на обработку персональных данных', Signup.consentText(), {
+      noFocus: true
+    });
+  },
+  /**
+   * Отправляет письмо с подтверждением почты ещё раз.
+   */
+  async 'confirm-resend'() {
+    const email = (ui.confirmEmail || {}).email;
+    if (!email) return;
+    const result = await Cloud.resendConfirm(email);
+    toast(
+      result.ok
+        ? 'Письмо отправлено ещё раз. Проверьте почту и папку «Спам»'
+        : 'Не удалось отправить письмо: ' + result.error
+    );
+  },
+  /**
+   * Возвращает к входу после подтверждения почты.
+   */
+  'confirm-back'() {
+    ui.confirmEmail = null;
+    $('#gate').dataset.mode = '';
+    App.render(true);
+    toast('Теперь войдите с почтой и паролем');
+  },
+  /**
+   * Отправляет заявку после подтверждения почты по ссылке.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'complete-send'(el) {
+    const form = el.closest('[data-form="complete"]'),
+      role = form.dataset.role,
+      read = name => ((form.querySelector('[name=' + name + ']') || {}).value || '').trim();
+    el.disabled = true;
+    try {
+      if (role === 'parent' && read('group_code')) {
+        ui.groupCode = read('group_code');
+        try {
+          window.localStorage.setItem('politeshik:gc', ui.groupCode);
+        } catch (error) {}
+      }
+      if (role === 'teacher') {
+        const activation = await Teacher.activate(read('teacher_secret'), read('teacher_name'));
+        if (!activation.ok) return toast(activation.msg);
+      } else {
+        const problem = Roles.checkExtra(role, form);
+        if (problem) return toast(problem);
+        const registration = await Roles.registerExtra(role, form);
+        if (!registration.ok) return toast(registration.msg);
+        await Cloud.init();
+      }
+    } finally {
+      el.disabled = false;
+      $('#gate').dataset.mode = '';
+      App.render(true);
+    }
   }
 });

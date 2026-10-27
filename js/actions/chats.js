@@ -94,7 +94,7 @@ Object.assign(A, {
                   id: x.id,
                   title: x.p.name || 'Студент',
                   subtitle: 'подгруппа ' + (x.p.subgroup || '—'),
-                  avatar: avatarOf(x.p.avatar, 40)
+                  avatar: Avatars.html(x.id, 40, x.p.avatar)
                 })
               )
               .join('') +

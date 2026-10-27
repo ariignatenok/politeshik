@@ -524,6 +524,7 @@ const Forms = {
           Roles.storedCode()
         );
         if (!asked.ok) toast(asked.error);
+        else ui.justSubmitted = true;
       }
       if (!first && !(await Birthday.saveFromForm(form))) return false;
       return true;

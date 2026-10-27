@@ -7,12 +7,21 @@ const App = {
    */
   gateMode() {
     if (Cloud.status === 'pending' || ui.activating) return 'loading';
+    if (Cloud.status !== 'online' && ui.confirmEmail) return 'confirm';
     if (
       Cloud.status === 'online' &&
       ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(Cloud.role) >= 0 &&
       (Cloud.role !== 'pending' || Cloud.member)
     )
       return Cloud.role;
+    if (
+      Cloud.status === 'online' &&
+      !Cloud.member &&
+      !Cloud.realAdmin &&
+      !Cloud.realTeacher &&
+      ['parent', 'staff', 'teacher'].indexOf((Cloud.meta || {}).signup_role) >= 0
+    )
+      return 'complete';
     if (Cloud.status === 'online' && !Cloud.hasCabinet())
       return Cloud.claimsLoaded ? (ui.secret ? 'secret' : 'register') : 'loading';
     if (Cloud.status === 'offline' && !ui.localOk) return 'offline';
@@ -37,7 +46,10 @@ const App = {
     g.dataset.mode = mode;
     const busy =
       Cloud.status === 'pending' ||
-      (logged && !Cloud.claimsLoaded && ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0);
+      (logged &&
+        !Cloud.claimsLoaded &&
+        mode !== 'complete' &&
+        ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0);
     if (busy) {
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
@@ -45,13 +57,23 @@ const App = {
         '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p><div class="sk-gate"><span class="sk sk-line sk-w80"></span><span class="sk sk-line sk-w60"></span><span class="sk sk-line sk-w40"></span></div></div>';
       return '';
     }
+    if (mode === 'confirm' || mode === 'complete') {
+      g.innerHTML = Signup.gateHtml(mode);
+      return '';
+    }
     if (['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) >= 0) {
       const copy = {
-        pending: [
-          'Ваша заявка на рассмотрении',
-          'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.',
-          'thinking'
-        ],
+        pending: ui.justSubmitted
+          ? [
+              'Заявка отправлена',
+              'Ожидайте одобрения администратора. Страница обновится сама, когда это произойдёт.',
+              'thinking'
+            ]
+          : [
+              'Ваша заявка на рассмотрении',
+              'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.',
+              'thinking'
+            ],
         rejected: ['Заявка отклонена', 'Староста не одобрила доступ. Если это ошибка, напишите ей лично.', 'sad'],
         banned: [
           'Вы заблокированы администратором',
@@ -193,6 +215,12 @@ const App = {
               U.esc(draft.teacher_name || '') +
               '"></label><label class="field"><span>Пароль преподавателя</span><input class="input" name="teacher_secret" type="password" autocomplete="off" placeholder="••••••••"></label>'
             : '';
+    const consentBox =
+      '<label class="consent"><span class="consent-ico">' +
+      ICONS.shield +
+      '</span><input type="checkbox" name="consent" data-change="consent"' +
+      (draft.consent ? ' checked' : '') +
+      '><span>Я даю согласие на обработку моих персональных данных. <a href="#" data-action="consent-info">Подробнее</a></span></label>';
     g.innerHTML =
       '<div class="gate-card">' +
       '<div class="gate-mascot">' +
@@ -213,7 +241,10 @@ const App = {
       '<label class="field"><span>Пароль</span><input class="input" name="password" type="password" autocomplete="current-password" placeholder="не короче 6 символов"></label>' +
       extra +
       codeField +
-      '<button class="btn primary big" data-action="login-do">Войти</button><button class="btn big" style="margin-top:8px" data-action="signup-do">Создать аккаунт</button></div>' +
+      consentBox +
+      '<button class="btn primary big" data-action="login-do">Войти</button><button class="btn big" style="margin-top:8px" data-action="signup-do"' +
+      (draft.consent ? '' : ' disabled') +
+      '>Зарегистрироваться</button></div>' +
       '<small class="gate-foot">Пароль хранится в Supabase в зашифрованном виде.</small></div>';
     const f = g.querySelector('input');
     if (f)

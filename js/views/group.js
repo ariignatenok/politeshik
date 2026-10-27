@@ -82,6 +82,7 @@ function rosterRows() {
  * @returns {string} HTML.
  */
 const nameCell = x =>
+  (x.e ? Avatars.small(x.e.id, x.r.name, 24) : '') +
   '<b>' +
   U.esc(x.r.name) +
   '</b>' +

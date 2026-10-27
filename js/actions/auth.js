@@ -21,7 +21,8 @@ Object.assign(A, {
       person_name: read('person_name'),
       child_name: read('child_name'),
       person_note: read('person_note'),
-      group_code: read('group_code')
+      group_code: read('group_code'),
+      consent: !!(f.querySelector('[name=consent]') || {}).checked
     };
     if (!email || !password) return toast('Введите почту и пароль');
     if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
@@ -29,11 +30,23 @@ Object.assign(A, {
       const problem = Roles.checkExtra(role, f);
       if (problem) return toast(problem);
     }
+    if ((role === 'student' || role === 'parent') && read('group_code').trim()) {
+      ui.groupCode = read('group_code').trim();
+      try {
+        window.localStorage.setItem('politeshik:gc', ui.groupCode);
+      } catch (error) {}
+    }
     el.disabled = true;
     el.textContent = 'Входим…';
     ui.activating = asTeacher || extra;
     try {
       const result = await Cloud.login(email, password);
+      if (result.unconfirmed) {
+        ui.confirmEmail = {
+          email
+        };
+        return;
+      }
       if (!result.ok) return toast('Ошибка: ' + result.msg);
       if (asTeacher && !Cloud.realTeacher) {
         const activation = await Teacher.activate(secret, teacherName);
@@ -85,10 +98,13 @@ Object.assign(A, {
       person_name: read('person_name'),
       child_name: read('child_name'),
       person_note: read('person_note'),
-      group_code: read('group_code')
+      group_code: read('group_code'),
+      consent: !!(f.querySelector('[name=consent]') || {}).checked
     };
     if (!email || !password) return toast('Введите почту и пароль');
     if (password.length < 6) return toast('Пароль должен быть не короче 6 символов');
+    if (!(f.querySelector('[name=consent]') || {}).checked)
+      return toast('Нужно согласие на обработку персональных данных');
     if (role === 'student' || role === 'parent') {
       const code = read('group_code').trim();
       const check = await supa.rpc('check_group_code', {
@@ -110,7 +126,22 @@ Object.assign(A, {
     el.textContent = 'Создаём…';
     ui.activating = asTeacher || extra;
     try {
-      const result = await Cloud.signup(email, password);
+      const meta = {
+        consent: true,
+        consent_date: new Date().toISOString(),
+        signup_role: role,
+        person_name: read('person_name').trim(),
+        child_name: read('child_name').trim(),
+        person_note: read('person_note').trim(),
+        teacher_name: teacherName
+      };
+      const result = await Cloud.signup(email, password, meta);
+      if (result.confirm) {
+        ui.confirmEmail = {
+          email
+        };
+        return;
+      }
       if (!result.ok) return toast('Ошибка: ' + result.msg);
       if (asTeacher) {
         const activation = await Teacher.activate(secret, teacherName);
@@ -136,7 +167,7 @@ Object.assign(A, {
       ui.activating = false;
       if (el.isConnected) {
         el.disabled = false;
-        el.textContent = 'Создать аккаунт';
+        el.textContent = 'Зарегистрироваться';
       }
       $('#gate').dataset.mode = '';
       App.render(true);

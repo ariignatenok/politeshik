@@ -148,6 +148,14 @@ document.addEventListener('change', event => {
   if (k === 'cert-file') handleDraftFile(event.target, true);
   if (k === 'work-file') handleDraftFile(event.target, false);
   if (k === 'note-file') handleNoteFile(event.target);
+  if (k === 'consent') {
+    const card = event.target.closest('.gate-card'),
+      button = card ? card.querySelector('[data-action="signup-do"]') : null;
+    if (button) button.disabled = !event.target.checked;
+    ui.loginDraft = Object.assign({}, ui.loginDraft || {}, {
+      consent: event.target.checked
+    });
+  }
   if (k === 'user-q') {
     ui.userQuery = event.target.value;
     App.render();

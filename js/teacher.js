@@ -24,7 +24,8 @@ const Teacher = {
       };
     try {
       const {data, error} = await supa.rpc('become_teacher', {
-        p_secret: code
+        p_secret: code,
+        p_name: String(name || '').trim()
       });
       if (error)
         return {
@@ -45,11 +46,12 @@ const Teacher = {
       };
     }
     await Cloud.init();
-    if (!Cloud.realTeacher)
+    if (!Cloud.realTeacher && !(Cloud.member && Cloud.member.requested_role === 'teacher'))
       return {
         ok: false,
-        msg: 'Не удалось получить роль преподавателя'
+        msg: 'Не удалось отправить заявку преподавателя'
       };
+    ui.justSubmitted = true;
     try {
       await Cloud.saveTeacherName(name);
     } catch (error) {
@@ -94,6 +96,7 @@ const Teacher = {
     return (
       Roles.settingsTabs() +
       '<div class="page-head"><div><h1>Настройки</h1><p>Тема оформления и выход из аккаунта</p></div></div>' +
+      Avatars.card() +
       '<div class="card set-sec"><h2>Внешний вид</h2><div class="set-row" style="align-items:flex-start"><div><b>Тема оформления</b><p>Выбор сохраняется в вашем профиле</p></div><div class="theme-grid">' +
       themes +
       '</div></div>' +

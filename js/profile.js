@@ -54,6 +54,7 @@ const Profile = {
    * Копирует аватар, «О себе» и достижения в профиль в облаке.
    */
   push() {
+    Avatars.publish();
     if (Cloud.status !== 'online' || !Cloud.profile || Cloud.isStaff) return;
     const state = Store.s;
     Cloud.profile.avatar = myAvatar();
