@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'b3e6e050801';
+const CACHE_VERSION = 'b2161acf5d9';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -98,6 +98,7 @@ const SHELL = [
   'js/schedimport.js',
   'js/scrolllock.js',
   'js/search.js',
+  'js/security.js',
   'js/seed.js',
   'js/selectors.js',
   'js/sick.js',

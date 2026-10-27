@@ -11,7 +11,8 @@
 --  Пароли хранятся только в виде хеша (bcrypt с солью) в таблице settings, закрытой для сайта.
 --
 --  ЧТО СОЗДАЁТСЯ: таблицы (docs, admins, teachers, settings, admin_attempts, chat, news, news_comments,
---  news_likes, birthdays, tenants, analytics), функции ролей и паролей, правила доступа (RLS),
+--  news_likes, birthdays, tenants, analytics, groups, members, group_codes, code_attempts), функции ролей и паролей,
+--  правила доступа (RLS), коды групп для регистрации, блокировка (banned) и удаление пользователей,
 --  карта колледжа, готовое ДЗ, записки на пары, дни рождения, лайки, Realtime.
 -- =====================================================================================
 drop table if exists _inputs;
@@ -72,6 +73,7 @@ select pg_temp.quarantine('news_likes', array['news_id', 'uid', 'created_at'], a
 select pg_temp.quarantine('birthdays', array['uid', 'display_name', 'month', 'day', 'is_public', 'updated'], array[]::text[]);
 select pg_temp.quarantine('groups', array['id', 'name', 'curator_uid', 'created_at'], array[]::text[]);
 select pg_temp.quarantine('members', array['uid', 'role', 'status', 'requested_role', 'full_name', 'child_name', 'child_uid', 'group_id', 'note', 'email', 'created_at', 'decided_at', 'decided_by'], array['members_status_idx', 'members_group_idx']);
+select pg_temp.quarantine('group_codes', array['code', 'group_id', 'active', 'created_by', 'created_at'], array[]::text[]);
 select pg_temp.quarantine('analytics', array['id', 'user_id', 'role', 'action', 'page', 'metadata', 'created_at'], array['analytics_tenant_time_idx', 'analytics_user_idx']);
 
 
@@ -337,6 +339,11 @@ begin
   if split_part(new.path, '/', 1) = 'attendance' and array_length(string_to_array(new.path, '/'), 1) = 2 and public.curator_manages(split_part(new.path, '/', 2)) then return new; end if;
   select d.data into prev from public.docs d where d.tenant_id = new.tenant_id and d.path = new.path;
   if pg_column_size(new.data) > 900000 then raise exception 'Документ слишком большой'; end if;
+  if split_part(new.path, '/', 1) = 'profiles' and array_length(string_to_array(new.path, '/'), 1) = 2 and coalesce(prev ->> 'rid', '') <> '' then
+    if (new.data ->> 'rid') is distinct from (prev ->> 'rid') or (new.data ->> 'name') is distinct from (prev ->> 'name') then
+      raise exception 'ФИО нельзя изменить после регистрации: обратитесь к старосте';
+    end if;
+  end if;
   if split_part(new.path, '/', 1) = 'attendance' then
     om := coalesce(prev -> 'marks', '{}'::jsonb);
     nm := coalesce(new.data -> 'marks', '{}'::jsonb);
@@ -395,7 +402,7 @@ drop function if exists public.teacher_certs();
 create function public.teacher_certs() returns table (uid text, date_from text, date_to text, confirmed boolean, pairs jsonb)
 language plpgsql stable security definer set search_path = public as $$
 begin
-  if not (public.is_teacher() or public.is_admin()) then raise exception 'Только для преподавателя'; end if;
+  if not (public.is_teacher() or public.is_admin()) or public.is_blocked() then raise exception 'Только для преподавателя'; end if;
   return query
     select split_part(d.path, '/', 2), i.value ->> 'from', i.value ->> 'to', coalesce((i.value ->> 'confirmed')::boolean, false), i.value -> 'pairs'
     from public.docs d, jsonb_array_elements(coalesce(d.data -> 'items', '[]'::jsonb)) i
@@ -846,6 +853,241 @@ create policy likes_insert on public.news_likes for insert with check (uid = aut
 drop policy if exists birthdays_read on public.birthdays;
 create policy birthdays_read on public.birthdays for select using (
   tenant_id = (select public.current_tenant()) and public.is_member() and (is_public or uid = auth.uid() or public.is_admin()));
+
+-- 19. БЕЗОПАСНОСТЬ: код группы, блокировка (banned), защита ФИО, список пользователей, бан и удаление
+alter table public.members drop constraint if exists members_status_check;
+alter table public.members add constraint members_status_check check (status in ('pending', 'approved', 'rejected', 'banned'));
+
+create table if not exists public.group_codes (
+  code       text primary key check (code ~ '^[0-9A-Z-]{8,32}$'),
+  tenant_id  text not null default 'group_1',
+  group_id   text references public.groups (id) on delete cascade,
+  active     boolean not null default true,
+  created_by uuid references auth.users (id) on delete set null,
+  created_at timestamptz not null default now()
+);
+create table if not exists public.code_attempts (id bigserial primary key, at timestamptz not null default now());
+alter table public.group_codes enable row level security;
+alter table public.code_attempts enable row level security;
+do $$ declare r record; begin
+  for r in select tablename, policyname from pg_policies where schemaname = 'public' and tablename in ('group_codes', 'code_attempts') loop execute format('drop policy %I on public.%I', r.policyname, r.tablename); end loop;
+end $$;
+drop trigger if exists trg_a_tenant_group_codes on public.group_codes;
+create trigger trg_a_tenant_group_codes before insert or update on public.group_codes for each row execute function public.set_tenant();
+create policy group_codes_admin on public.group_codes for all using (tenant_id = (select public.current_tenant()) and public.is_admin()) with check (tenant_id = (select public.current_tenant()) and public.is_admin());
+revoke all on public.group_codes, public.code_attempts from anon, authenticated;
+grant select on public.group_codes to authenticated;
+
+create or replace function public.require_code() returns boolean
+language sql stable security definer set search_path = public as $$
+  select coalesce((select s.value from public.settings s where s.tenant_id = public.current_tenant() and s.key = 'require_code'),
+                  nullif(current_setting('app.require_code', true), ''), 'on') <> 'off'
+$$;
+create or replace function public.valid_code(p_code text) returns text
+language sql stable security definer set search_path = public as $$
+  select g.group_id from public.group_codes g
+  where g.tenant_id = public.current_tenant() and g.active and g.code = regexp_replace(upper(btrim(coalesce(p_code, ''))), '[^0-9A-Z-]', '', 'g')
+$$;
+create or replace function public.check_group_code(p_code text) returns boolean
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.require_code() then return true; end if;
+  -- пока староста не создала ни одного кода, создать аккаунт можно (чтобы староста смогла войти первой); доступ без кода всё равно не выдаётся
+  if not exists (select 1 from public.group_codes c where c.tenant_id = public.current_tenant() and c.active) then return true; end if;
+  delete from public.code_attempts where at < now() - interval '1 day';
+  if (select count(*) from public.code_attempts where at > now() - interval '10 minutes') > 60 then raise exception 'Слишком много попыток: подождите несколько минут'; end if;
+  if public.valid_code(p_code) is not null then return true; end if;
+  insert into public.code_attempts default values;
+  return false;
+end $$;
+
+create or replace function public.create_group_code(p_group text default null) returns text
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); gid text; label text; alphabet text := 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; suffix text := ''; new_code text; i int;
+begin
+  if not public.is_admin() then raise exception 'Только староста может создавать коды'; end if;
+  gid := coalesce(p_group, (select g.id from public.groups g where g.tenant_id = t order by g.created_at limit 1));
+  select regexp_replace(coalesce((regexp_match(g.name, '([0-9]{8})\s*/\s*([0-9]{4})'))[1] || '-' || (regexp_match(g.name, '([0-9]{8})\s*/\s*([0-9]{4})'))[2], regexp_replace(upper(g.id), '[^0-9A-Z]', '', 'g')), '[^0-9A-Z-]', '', 'g')
+    into label from public.groups g where g.id = gid and g.tenant_id = t;
+  if label is null then raise exception 'Группа не найдена'; end if;
+  loop
+    suffix := '';
+    for i in 1 .. 5 loop suffix := suffix || substr(alphabet, 1 + floor(random() * length(alphabet))::int, 1); end loop;
+    new_code := label || '-' || suffix;
+    exit when not exists (select 1 from public.group_codes c where c.code = new_code);
+  end loop;
+  update public.group_codes set active = false where tenant_id = t and group_id = gid and active;
+  insert into public.group_codes (code, tenant_id, group_id, active, created_by) values (new_code, t, gid, true, auth.uid());
+  return new_code;
+end $$;
+create or replace function public.list_group_codes() returns table (code text, group_id text, group_name text, active boolean, created_at timestamptz)
+language plpgsql stable security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  return query select c.code, c.group_id, coalesce(g.name, ''), c.active, c.created_at from public.group_codes c left join public.groups g on g.id = c.group_id
+    where c.tenant_id = public.current_tenant() order by c.active desc, c.created_at desc;
+end $$;
+create or replace function public.disable_group_code(p_code text) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  update public.group_codes set active = false where tenant_id = public.current_tenant() and code = p_code;
+end $$;
+create or replace function public.set_require_code(p_on boolean) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  insert into public.settings (tenant_id, key, value) values (public.current_tenant(), 'require_code', case when p_on then 'on' else 'off' end)
+    on conflict (tenant_id, key) do update set value = excluded.value, updated = now();
+end $$;
+
+-- заблокированные (banned, rejected) не видят ничего, даже своих данных
+create or replace function public.is_blocked() returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status in ('banned', 'rejected')) and not public.is_admin()
+$$;
+create or replace function public.is_member() returns boolean
+language sql stable security definer set search_path = public as $$
+  select auth.uid() is not null and not public.is_blocked() and (
+    public.is_admin() or public.is_teacher()
+    or exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status = 'approved')
+    or (not public.require_approval() and not exists (select 1 from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant())))
+$$;
+create or replace function public.member_role() returns text
+language sql stable security definer set search_path = public as $$
+  select case when public.is_admin() then 'admin' when public.is_blocked() then 'blocked' when public.is_teacher() then 'teacher'
+    else coalesce((select m.role from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant() and m.status = 'approved'),
+                  case when public.is_member() then 'student' else 'pending' end) end
+$$;
+create or replace function public.my_role() returns text
+language sql stable security definer set search_path = public as $$
+  select case when public.is_admin() then 'admin'
+    when public.is_blocked() then (select m.status from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant())
+    when public.is_teacher() then 'teacher'
+    else coalesce((select case m.status when 'approved' then m.role else m.status end from public.members m where m.uid = auth.uid() and m.tenant_id = public.current_tenant()),
+                  case when public.is_member() then 'student' else 'pending' end) end
+$$;
+revoke all on function public.is_blocked(), public.require_code(), public.valid_code(text) from public, anon;
+grant execute on function public.is_blocked(), public.require_code(), public.valid_code(text) to authenticated;
+revoke all on function public.check_group_code(text) from public;
+grant execute on function public.check_group_code(text) to anon, authenticated;
+revoke all on function public.create_group_code(text), public.list_group_codes(), public.disable_group_code(text), public.set_require_code(boolean) from public, anon;
+grant execute on function public.create_group_code(text), public.list_group_codes(), public.disable_group_code(text), public.set_require_code(boolean) to authenticated;
+
+-- заявка: теперь студент и родитель обязаны ввести код группы
+drop function if exists public.request_access(text, text, text, text);
+create or replace function public.request_access(p_role text, p_name text, p_child text default '', p_note text default '', p_code text default '') returns text
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); u uuid := auth.uid(); cur public.members; asked text; child uuid; hits int; want text; st text; gid text; mail text; role_now text; code_group text;
+begin
+  if u is null then raise exception 'Нужно войти в аккаунт'; end if;
+  if public.is_admin() or public.is_teacher() then return 'approved'; end if;
+  asked := case when p_role in ('student', 'parent', 'staff') then p_role else 'student' end;
+  select * into cur from public.members m where m.tenant_id = t and m.uid = u;
+  if found and cur.status in ('approved', 'rejected', 'banned') then return cur.status; end if;
+  if not found and asked in ('student', 'parent') and public.require_code() then
+    code_group := public.valid_code(p_code);
+    if code_group is null then raise exception 'Неверный код группы: спросите его у старосты'; end if;
+  end if;
+  select a.email into mail from auth.users a where a.id = u;
+  select g.id into gid from public.groups g where g.tenant_id = t order by g.created_at limit 1;
+  gid := coalesce(code_group, gid);
+  if asked = 'parent' and btrim(coalesce(p_child, '')) <> '' then
+    want := lower(split_part(regexp_replace(btrim(p_child), '\s+', ' ', 'g'), ' ', 1) || ' ' || split_part(regexp_replace(btrim(p_child), '\s+', ' ', 'g'), ' ', 2));
+    select count(*), (array_agg(a.id))[1] into hits, child
+    from public.docs d join auth.users a on a.id::text = split_part(d.path, '/', 2)
+    where d.tenant_id = t and d.path like 'profiles/%' and coalesce(d.data ->> 'rid', '') <> ''
+      and lower(split_part(regexp_replace(btrim(coalesce(d.data ->> 'name', '')), '\s+', ' ', 'g'), ' ', 1) || ' ' || split_part(regexp_replace(btrim(coalesce(d.data ->> 'name', '')), '\s+', ' ', 'g'), ' ', 2)) = want;
+    if hits <> 1 then child := null; end if;
+  end if;
+  st := case when asked = 'staff' or public.require_approval() then 'pending' else 'approved' end;
+  role_now := case when asked = 'parent' then 'parent' else 'student' end;
+  insert into public.members (tenant_id, uid, role, status, requested_role, full_name, child_name, child_uid, group_id, note, email)
+    values (t, u, role_now, st, asked, left(coalesce(p_name, ''), 120), left(coalesce(p_child, ''), 120), child, gid, left(coalesce(p_note, ''), 300), coalesce(mail, ''))
+    on conflict (tenant_id, uid) do update set requested_role = excluded.requested_role, full_name = excluded.full_name, child_name = excluded.child_name, child_uid = excluded.child_uid, note = excluded.note, email = excluded.email;
+  return st;
+end $$;
+revoke all on function public.request_access(text, text, text, text, text) from public, anon;
+grant execute on function public.request_access(text, text, text, text, text) to authenticated;
+
+-- правила доступа с учётом блокировки; профиль нельзя удалить (иначе его можно создать заново под другим ФИО)
+drop policy if exists docs_select on public.docs;
+create policy docs_select on public.docs for select using (
+  auth.uid() is not null and tenant_id = (select public.current_tenant()) and (
+    split_part(path, '/', 1) = 'claims'
+    or (split_part(path, '/', 1) = 'group' and public.is_member())
+    or (split_part(path, '/', 1) in ('map', 'solutions') and not public.is_teacher() and public.is_member())
+    or (public.doc_owner(path) = auth.uid()::text and not public.is_blocked())
+    or public.is_admin()));
+drop policy if exists docs_own_insert on public.docs;
+drop policy if exists docs_own_update on public.docs;
+drop policy if exists docs_own_delete on public.docs;
+create policy docs_own_insert on public.docs for insert with check (tenant_id = (select public.current_tenant()) and public.doc_owner(path) = auth.uid()::text and not public.is_blocked() and (split_part(path, '/', 1) = 'profiles' or public.is_member()));
+create policy docs_own_update on public.docs for update
+  using (tenant_id = (select public.current_tenant()) and public.doc_owner(path) = auth.uid()::text and not public.is_blocked() and (split_part(path, '/', 1) = 'profiles' or public.is_member()))
+  with check (tenant_id = (select public.current_tenant()) and public.doc_owner(path) = auth.uid()::text and not public.is_blocked() and (split_part(path, '/', 1) = 'profiles' or public.is_member()));
+create policy docs_own_delete on public.docs for delete using (tenant_id = (select public.current_tenant()) and public.doc_owner(path) = auth.uid()::text and public.is_member() and split_part(path, '/', 1) <> 'profiles');
+
+-- в списках студентов только студенты (и староста)
+create or replace function public.teacher_students() returns table (uid text, name text, rid text, subgroup text)
+language plpgsql stable security definer set search_path = public as $$
+begin
+  if not (public.is_teacher() or public.is_admin()) or public.is_blocked() then raise exception 'Только для преподавателя'; end if;
+  return query
+    select split_part(d.path, '/', 2), d.data ->> 'name', d.data ->> 'rid', d.data ->> 'subgroup'
+    from public.docs d join public.members m on m.uid::text = split_part(d.path, '/', 2) and m.tenant_id = d.tenant_id
+    where d.tenant_id = public.current_tenant() and d.path ~ '^profiles/[^/]+$' and coalesce(d.data ->> 'rid', '') <> ''
+      and m.status = 'approved' and m.role in ('student', 'admin');
+end $$;
+
+-- управление пользователями (только староста)
+create or replace function public.admin_users() returns table (uid uuid, email text, created_at timestamptz, last_sign_in_at timestamptz, role text, status text, requested_role text, full_name text, rid text, group_id text, child_name text, note text)
+language plpgsql stable security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  return query
+    select a.id, a.email::text, a.created_at, a.last_sign_in_at,
+      case when exists (select 1 from public.admins x where x.uid = a.id) then 'admin' when exists (select 1 from public.teachers x where x.uid = a.id) then 'teacher' else coalesce(m.role, 'student') end,
+      coalesce(m.status, 'none'), m.requested_role,
+      coalesce(nullif(p.data ->> 'name', ''), m.full_name, ''), coalesce(p.data ->> 'rid', ''), m.group_id, coalesce(m.child_name, ''), coalesce(m.note, '')
+    from auth.users a
+    left join public.members m on m.uid = a.id and m.tenant_id = public.current_tenant()
+    left join public.docs p on p.tenant_id = public.current_tenant() and p.path = 'profiles/' || a.id::text
+    order by (coalesce(m.status, 'none') in ('pending', 'none')) desc, a.created_at desc;
+end $$;
+create or replace function public.admin_set_status(p_uid uuid, p_status text) returns void
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant();
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  if p_status not in ('banned', 'approved') then raise exception 'Недопустимый статус'; end if;
+  if p_uid = auth.uid() or exists (select 1 from public.admins x where x.uid = p_uid) then raise exception 'Старосту банить нельзя'; end if;
+  insert into public.members (tenant_id, uid, role, status, decided_at, decided_by, email)
+    values (t, p_uid, case when exists (select 1 from public.teachers x where x.uid = p_uid) then 'teacher' else 'student' end, p_status, now(), auth.uid(), coalesce((select a.email from auth.users a where a.id = p_uid), ''))
+    on conflict (tenant_id, uid) do update set status = p_status, decided_at = now(), decided_by = auth.uid();
+  if p_status = 'banned' then
+    begin
+      delete from auth.refresh_tokens where user_id::text = p_uid::text;
+      delete from auth.sessions where user_id = p_uid;
+    exception when others then null;
+    end;
+  end if;
+end $$;
+create or replace function public.admin_delete_user(p_uid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant();
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  if p_uid = auth.uid() or exists (select 1 from public.admins x where x.uid = p_uid) then raise exception 'Старосту удалить нельзя'; end if;
+  delete from public.docs d where d.tenant_id = t and (public.doc_owner(d.path) = p_uid::text or (d.path like 'claims/%' and d.data::text like '%' || p_uid::text || '%'));
+  delete from public.chat where thread_uid = p_uid or sender = p_uid;
+  delete from public.news_comments where author = p_uid;
+  delete from public.news_likes where uid = p_uid;
+  update public.news set created_by = null where created_by = p_uid;
+  delete from auth.users where id = p_uid;
+end $$;
+revoke all on function public.admin_users(), public.admin_set_status(uuid, text), public.admin_delete_user(uuid) from public, anon;
+grant execute on function public.admin_users(), public.admin_set_status(uuid, text), public.admin_delete_user(uuid) to authenticated;
 
 -- 16. Аналитика (читает только админ). Таблица готова; приложение начнёт её заполнять в одном из следующих шагов.
 create table if not exists public.analytics (

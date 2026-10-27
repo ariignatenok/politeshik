@@ -736,3 +736,72 @@
   background: var(--accent);
   color: var(--on-accent);
 }
+
+.tag.status.review {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+}
+
+.users-search {
+  margin: 0 0 12px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.users-tbl {
+  min-width: 940px;
+}
+
+.users-tbl td {
+  vertical-align: middle;
+}
+
+.users-tbl .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.users-tbl .u-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.users-tbl .u-banned td {
+  opacity: 0.7;
+}
+
+.tag.status.ok {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.tag.status.wait {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+}
+
+.tag.status.bad,
+.tag.bad {
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.code-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.code-val {
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--surface2);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
