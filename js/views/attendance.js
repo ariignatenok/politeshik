@@ -239,7 +239,7 @@ function periodControls() {
     (ui.attScope !== 'all' ? 'on' : '') +
     '" data-action="att-scope" data-v="month">Месяц</button><button class="' +
     (ui.attScope === 'all' ? 'on' : '') +
-    '" data-action="att-scope" data-v="all">С 15.10.2026</button></div>' +
+    '" data-action="att-scope" data-v="all">С 01.10.2026</button></div>' +
     (ui.attScope !== 'all'
       ? '<div class="monthnav"><button class="icon-btn" data-action="att-month" data-d="-1" aria-label="Предыдущий месяц">' +
         ICONS.playLeft +
@@ -284,7 +284,7 @@ function absCard(h) {
     ABS_LIMIT +
     ' ч (1 пара = ' +
     PAIR_HOURS +
-    ' ч) · считаю с 15.10.2026</small></div><div class="abs-num">' +
+    ' ч) · считаю с 01.10.2026</small></div><div class="abs-num">' +
     h +
     ' / ' +
     ABS_LIMIT +
@@ -333,7 +333,7 @@ function viewAttendance() {
   const prev = U.iso(U.addDays(U.fromISO(date), -1)),
     next = U.iso(U.addDays(U.fromISO(date), 1));
   return (
-    '<div class="page-head"><div><h1>Посещаемость</h1><p>Отмечайся на каждой паре: <b>п</b> — присутствую, <b>о</b> — опоздал(а), <b>н</b> — нет. Учёт идёт с 15 октября 2026.</p></div></div>' +
+    '<div class="page-head"><div><h1>Посещаемость</h1><p>Отмечайся на каждой паре: <b>п</b> — присутствую, <b>о</b> — опоздал(а), <b>н</b> — нет. Учёт идёт с 1 октября 2026.</p></div></div>' +
     (Cloud.status === 'online'
       ? ''
       : '<div class="warn">' +
@@ -362,7 +362,7 @@ function viewAttendance() {
     (date !== today ? '<button class="btn sm" data-action="att-day" data-date="' + today + '">Сегодня</button>' : '') +
     '</div>' +
     (date < ATT_START
-      ? '<p class="hint">Учёт посещаемости начинается с 15 октября 2026.</p>'
+      ? '<p class="hint">Учёт посещаемости начинается с 1 октября 2026.</p>'
       : date > today
         ? '<p class="hint">Будущие дни отметить нельзя.</p>'
         : locked

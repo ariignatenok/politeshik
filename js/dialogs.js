@@ -841,7 +841,7 @@ function openStudent(uid, date0) {
       U.esc(fmtAgo(r.p.seen)) +
       (r.p.subgroup ? ' · подгруппа ' + U.esc(r.p.subgroup) : '') +
       ' · период: ' +
-      (ui.attScope === 'all' ? 'с 15.10.2026' : monthName(ui.attMonth)) +
+      (ui.attScope === 'all' ? 'с 01.10.2026' : monthName(ui.attMonth)) +
       '</p>' +
       statCards(r.st) +
       absCard(Att.absHours(r.marks, r.certs, r.p.subgroup)) +

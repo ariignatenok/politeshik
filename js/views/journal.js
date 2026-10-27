@@ -122,7 +122,7 @@ function viewJournalSelf() {
         days.map(cell).join('') +
         '</tr></tbody></table></div>' +
         '<div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>справка · «?» — не отмечено</div>'
-      : '<div class="empty">В этом месяце ещё нет учебных дней с 15.10.2026</div>')
+      : '<div class="empty">В этом месяце ещё нет учебных дней с 01.10.2026</div>')
   );
 }
 /**
@@ -194,7 +194,7 @@ function viewJournal(asTeacher) {
         );
       })
       .join('') +
-    '<th>п</th><th>о</th><th>н</th><th>спр.</th><th>%</th><th title="Пропуски без уважительной причины с 15.10.2026, лимит 24 ч">без ув., ч</th></tr>';
+    '<th>п</th><th>о</th><th>н</th><th>спр.</th><th>%</th><th title="Пропуски без уважительной причины с 01.10.2026, лимит 24 ч">без ув., ч</th></tr>';
   const body = rows
     .map(x => {
       const e = x.e,
@@ -295,6 +295,6 @@ function viewJournal(asTeacher) {
         '</thead><tbody>' +
         body +
         '</tbody></table></div><div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>справка · «?» — не отмечено</div>'
-      : '<div class="empty">В этом месяце ещё нет учебных дней с 15.10.2026</div>')
+      : '<div class="empty">В этом месяце ещё нет учебных дней с 01.10.2026</div>')
   );
 }

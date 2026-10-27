@@ -53,7 +53,7 @@ const FLAG_LABEL = {
 const ABS_LIMIT = 24,
   ABS_WARN_LEFT = 4,
   PAIR_HOURS = 2;
-const ATT_START = '2026-10-15';
+const ATT_START = '2026-10-01';
 /**
  * Создаёт глубокую копию данных.
  * @param {*} o Данные.

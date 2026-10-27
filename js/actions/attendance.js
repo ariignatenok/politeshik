@@ -39,7 +39,7 @@ Object.assign(A, {
     const date = el.dataset.date,
       uid = el.dataset.uid || null,
       today = U.iso(U.today());
-    if (!uid && (date < ATT_START || date > today)) return toast('Отмечаться можно с 15.10.2026 и не в будущем');
+    if (!uid && (date < ATT_START || date > today)) return toast('Отмечаться можно с 01.10.2026 и не в будущем');
     Att.set(uid, date, +el.dataset.pair, el.dataset.st);
     Ach.check();
     if (
