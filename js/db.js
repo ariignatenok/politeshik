@@ -1130,6 +1130,7 @@ const Cloud = (() => {
       updated: new Date().toISOString()
     };
     writeDoc('attendance/' + uid, C.adm.att[uid]);
+    GoogleSync.autoMarks(uid, {[key]: cur[key] || ''});
   };
   /**
    * Загружает файл конспекта в облако.
@@ -1243,7 +1244,7 @@ const Cloud = (() => {
     if (!result.ok) {
       if (before) C.adm.att[uid] = before;
       else delete C.adm.att[uid];
-    }
+    } else GoogleSync.autoMarks(uid, changes);
     return result;
   };
   C.mapPoints = {};

@@ -24,6 +24,7 @@ function viewMore() {
               ? [
                   ['requests', ICONS.incomingEnvelope, 'Заявки'],
                   ['users', ICONS.busts, 'Пользователи'],
+                  ['stats', ICONS.barChart, 'Статистика'],
                   ['group', ICONS.shield, 'Группа (админ)']
                 ]
               : []

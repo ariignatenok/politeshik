@@ -114,6 +114,13 @@ const NAV_ALL = [
     admin: true
   },
   {
+    id: 'stats',
+    ico: ICONS.barChart,
+    label: 'Статистика',
+    short: 'Статистика',
+    admin: true
+  },
+  {
     id: 'tdash',
     ico: ICONS.house,
     label: 'Дашборд',

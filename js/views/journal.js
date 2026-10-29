@@ -245,9 +245,12 @@ function viewJournal(asTeacher) {
     ICONS.folder +
     ' Журнал посещаемости</h1><p>Папка админа: посещаемость каждого студента по дням. В клетке — отметки по парам этого дня.</p></div><div class="head-actions">' +
     (Cloud.isAdmin ? '<button class="btn primary" data-action="qa-open">Ввод из журнала</button>' : '') +
+    (Cloud.isAdmin
+      ? '<button class="btn" data-action="gs-open">Синхронизация с Google</button><button class="btn" data-action="gs-quick">Отправить в Google</button>'
+      : '') +
     '<button class="btn" data-action="grp-csv">' +
     ICONS.arrowDown +
-    ' Скачать CSV</button></div></div>' +
+    ' Скачать журнал</button></div></div>' +
     '<div class="period"><div class="monthnav"><button class="icon-btn" data-action="att-month" data-d="-1" aria-label="Предыдущий месяц">' +
     ICONS.playLeft +
     '</button><b>' +

@@ -743,14 +743,15 @@ Object.assign(A, {
   async 'qa-weeks'() {
     if (
       !(await UI.confirm(
-        'Внести расписание за 28.09–17.10 со скриншотов? Правки этих трёх недель будут заменены, остальные недели не изменятся.',
+        'Внести расписание за 28.09–24.10? Правки этих четырёх недель будут заменены (неделя 19–24.10: английский 19.10 для 2 подгруппы и 22.10 для 1 подгруппы), остальные недели не изменятся.',
         'Внести'
       ))
     )
       return;
     QuickAtt.applyWeeks();
-    QuickAtt.open();
-    toast('Расписание начала октября внесено');
+    if (document.querySelector('.qa')) QuickAtt.open();
+    else App.render(true);
+    toast('Расписание внесено: 28.09–24.10');
   },
   /**
    * Заполняет поле списком пар 1–14 октября.
@@ -833,6 +834,7 @@ Object.assign(A, {
       );
       await QuickAtt.reloadAtt();
       QuickAtt.refreshList();
+      GoogleSync.autoKeys(parsed.items.map(i => i.key));
     } finally {
       el.disabled = false;
     }
@@ -860,5 +862,66 @@ Object.assign(A, {
     toast(result.ok ? 'Отменено, убрано отметок: ' + result.data : 'Не удалось: ' + result.error);
     await QuickAtt.reloadAtt();
     QuickAtt.refreshList();
+  },
+  /**
+   * Открывает окно синхронизации с Google Таблицей.
+   */
+  'gs-open'() {
+    GoogleSync.open();
+  },
+  /**
+   * Сохраняет настройки синхронизации.
+   */
+  'gs-save'() {
+    const cfg = GoogleSync.readForm();
+    if (cfg.url && !GoogleSync.isUrl(cfg.url)) return GoogleSync.say('Ссылка должна выглядеть так: https://script.google.com/macros/s/…/exec', true);
+    GoogleSync.say('Сохранено на этом устройстве');
+    App.renderSoft();
+  },
+  /**
+   * Проверяет связь со скриптом Google.
+   */
+  async 'gs-test'() {
+    GoogleSync.readForm();
+    GoogleSync.say('Проверяю…');
+    const res = await GoogleSync.ping();
+    if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
+    GoogleSync.say(res.opaque ? 'Запрос отправлен, но браузер не показывает ответ Google. Откройте таблицу и отправьте отметки.' : 'Связь есть. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')));
+  },
+  /**
+   * Отправляет отметки в Google Таблицу из окна синхронизации.
+   */
+  async 'gs-send'(el) {
+    GoogleSync.readForm();
+    const scope = (document.getElementById('gs-scope') || {}).value === 'month' ? 'month' : 'all',
+      rg = scope === 'month' ? [ui.attMonth + '-01', monthEnd(ui.attMonth)] : [ATT_START, U.iso(U.today())];
+    el.disabled = true;
+    try {
+      GoogleSync.say('Собираю отметки…');
+      const records = await GoogleSync.collect(rg[0], rg[1]);
+      if (!records.length) return GoogleSync.say('Нет отметок за этот период', true);
+      const res = await GoogleSync.send(records, (done, all) => GoogleSync.say('Отправлено ' + done + ' из ' + all + '…'));
+      if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
+      GoogleSync.say(
+        res.opaque
+          ? 'Отправлено: ' + res.total + '. Браузер не показывает ответ Google, проверьте таблицу.'
+          : 'Записано в таблицу: ' + res.written + ' из ' + res.total + (res.skipped.length ? '. Не нашлось места для: ' + res.skipped.length + ' (например: ' + U.esc(res.skipped[0].student + ', ' + res.skipped[0].date + ', ' + res.skipped[0].reason) + ')' : '')
+      );
+      App.renderSoft();
+    } finally {
+      el.disabled = false;
+    }
+  },
+  /**
+   * Быстрая отправка в Google с кнопки журнала.
+   */
+  async 'gs-quick'() {
+    if (!GoogleSync.isUrl(GoogleSync.config().url)) return GoogleSync.open();
+    toast('Отправляю в Google…');
+    const records = await GoogleSync.collect(ATT_START, U.iso(U.today()));
+    if (!records.length) return toast('Нет отметок для отправки');
+    const res = await GoogleSync.send(records);
+    toast(res.ok ? (res.opaque ? 'Отправлено в Google: ' + res.total : 'В Google записано ' + res.written + ' из ' + res.total) : 'Google: ' + res.error);
+    App.renderSoft();
   }
 });

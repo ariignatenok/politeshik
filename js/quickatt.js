@@ -64,7 +64,8 @@ const EARLY_WEEKS = {
   ]
 };
 const QuickAtt = {
-  weekStarts: ['2026-09-28', '2026-10-05', '2026-10-12'],
+  weekStarts: ['2026-09-28', '2026-10-05', '2026-10-12', '2026-10-19'],
+  fixWeek: '2026-10-19',
   lastDay: '2026-10-14',
   /**
    * Готовит пары расписания начала октября для одной недели.
@@ -72,6 +73,7 @@ const QuickAtt = {
    * @returns {Array} Массив.
    */
   lessons(start) {
+    if (start === QuickAtt.fixWeek) return QuickAtt.fixedWeek();
     return EARLY_WEEKS[start].map((row, index) => ({
       id: 'ew26_' + start + '_' + (index + 1),
       day: row[0],
@@ -86,6 +88,43 @@ const QuickAtt = {
     }));
   },
   /**
+   * Строит неделю 19–24 октября: расписание как в шаблоне, но английский стоит только в свои дни —
+   * в понедельник 19.10 для 2 подгруппы (Кузнецова) и в четверг 22.10 для 1 подгруппы (Гусарова). Пара английского идёт одна,
+   * как на неделях 28.09, 05.10 и 12.10, поэтому другие занятия в эти пары не ставятся.
+   * @returns {Array<Object>} Пары недели.
+   */
+  fixedWeek() {
+    const start = QuickAtt.fixWeek,
+      english = [
+        [0, 1, 's_eng', 'Энг 441', 'подгр.2', 'Кузнецова Л.И.'],
+        [3, 1, 's_eng', 'Энг 551', 'подгр.1', 'Гусарова М.Н.']
+      ],
+      keep = Weeks.lessons(start).filter(
+        l => l.subjectId !== 's_eng' && !english.some(e => e[0] === l.day && e[1] === l.pair)
+      );
+    return keep
+      .map(l => Object.assign({}, l))
+      .concat(
+        english.map(e => ({
+          day: e[0],
+          pair: e[1],
+          week: 'both',
+          subjectId: e[2],
+          room: e[3],
+          subgroup: e[4],
+          who: e[5],
+          start: '',
+          end: ''
+        }))
+      )
+      .map((l, index) =>
+        Object.assign(l, {
+          id: 'ew26_' + start + '_' + (index + 1),
+          week: 'both'
+        })
+      );
+  },
+  /**
    * Проверяет, что расписание начала октября уже внесено.
    * @returns {boolean} true, если условие выполнено.
    */
@@ -96,7 +135,7 @@ const QuickAtt = {
     );
   },
   /**
-   * Вносит расписание 28.09–17.10 в три недели.
+   * Вносит расписание 28.09–24.10 в четыре недели.
    */
   applyWeeks() {
     QuickAtt.weekStarts.forEach(start => {
@@ -157,6 +196,14 @@ const QuickAtt = {
       if (names.indexOf(text) < 0) names.push(text);
     });
     return names.join(' / ');
+  },
+  /**
+   * Строит плашку «внесите расписание» для страницы расписания старосты.
+   * @returns {string} HTML или пустая строка.
+   */
+  banner() {
+    if (!Cloud.isAdmin || QuickAtt.isLoaded()) return '';
+    return '<div class="card sched-banner"><div><b>Расписание начала октября и английский</b><p>Внести расписание 28.09–24.10: английский ставится по журналу (19.10 — 2 подгруппа, Кузнецова; 22.10 — 1 подгруппа, Гусарова). Остальные недели не меняются.</p></div><div class="head-actions"><button class="btn primary" data-action="qa-weeks">Внести расписание</button></div></div>';
   },
   /**
    * Выбирает студентов, которые ходят на эту пару.
@@ -336,7 +383,7 @@ const QuickAtt = {
     ).join('<br>');
     const notice = QuickAtt.isLoaded()
       ? ''
-      : '<div class="card qa-warn"><b>Сначала внесите расписание начала октября</b><p>Пары за 28.09–17.10 берутся с ваших скриншотов, без них отметки попадут не к тем предметам.</p><button class="btn primary" data-action="qa-weeks">Внести расписание</button></div>';
+      : '<div class="card qa-warn"><b>Сначала внесите расписание начала октября</b><p>Пары за 28.09–17.10 берутся с ваших скриншотов, а английский на неделе 19–24.10 ставится по журналу: 19.10 — 2 подгруппа (Кузнецова), 22.10 — 1 подгруппа (Гусарова). Без этого отметки попадут не к тем предметам.</p><button class="btn primary" data-action="qa-weeks">Внести расписание</button></div>';
     return (
       '<div class="qa">' +
       notice +

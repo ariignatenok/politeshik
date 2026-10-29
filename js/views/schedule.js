@@ -236,7 +236,7 @@ function viewSchedule() {
   const noTimes = !pairs.some(p => p.start && p.end),
     emptyWeek = !Weeks.lessons(ws).length;
   return (
-    scheduleBanner() +
+    scheduleBanner() + QuickAtt.banner() +
     '<div class="page-head"><div><h1>Расписание</h1><p>Каждая неделя своя: правки сохраняются только для выбранной недели.</p></div>' +
     '<div class="head-actions"><button class="btn" data-action="sched-import">Заменить расписание</button><button class="btn" data-action="sched-copy-next">Копировать на след. неделю</button>' +
     (explicit ? '<button class="btn" data-action="sched-reset">Сбросить к шаблону</button>' : '') +

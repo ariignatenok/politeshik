@@ -135,36 +135,18 @@ Object.assign(A, {
    * Скачивает журнал посещаемости в формате CSV.
    */
   async 'grp-csv'() {
-    const rows = [['Студент', 'Подгруппа', 'Дата', 'Пара', 'Предмет', 'Статус']],
-      names = {
-        п: 'присутствовал',
-        о: 'опоздал',
-        н: 'не был',
-        у: 'по справке'
-      };
-    studentRows().forEach(r => {
-      for (let d = U.fromISO(ATT_START), e = U.today(); d <= e; d = U.addDays(d, 1)) {
-        const di = U.iso(d);
-        Att.pairs(di, r.p.subgroup).forEach(pr => {
-          const st = Att.eff(r.marks, r.certs, di, pr.pair);
-          if (st) {
-            const sb = subj(pr.lessons[0].subjectId);
-            rows.push([r.p.name || '', r.p.subgroup || '', di, pr.pair, sb ? sb.name : '', names[st]]);
-          }
-        });
-      }
-    });
-    const csv = '\ufeff' + rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(';')).join('\n');
-    if (Cloud.dl) {
-      try {
-        await Cloud.dl.save({
-          filename: 'politeshik-poseshchaemost-' + U.iso(new Date()) + '.csv',
-          data: csv
-        });
-      } catch (error) {
-        if (!error || error.code !== 'declined') toast('Не удалось сохранить файл');
-      }
-    } else toast('Скачивание недоступно в этом режиме');
+    toast('Готовлю журнал…');
+    await AttReport.load(true);
+    const items = AttReport.items(ATT_START, U.iso(U.today()));
+    if (!items.length) return toast('Пока нет отметок для выгрузки');
+    try {
+      await Cloud.dl.save({
+        filename: 'politeshik-zhurnal-' + U.iso(new Date()) + '.csv',
+        data: AttReport.csv(items)
+      });
+    } catch (error) {
+      toast('Не удалось сохранить файл');
+    }
   },
   /**
    * Открывает форму преподавателя.

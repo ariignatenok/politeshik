@@ -174,5 +174,5 @@ function viewSettingsBase() {
  * @returns {string} HTML.
  */
 function viewSettings() {
-  return viewSettingsBase() + (Cloud.isAdmin ? groupCodeCard() : '');
+  return viewSettingsBase() + (Cloud.isAdmin ? groupCodeCard() + GoogleSync.card() : '');
 }

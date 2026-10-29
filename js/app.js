@@ -280,6 +280,7 @@ const App = {
       (ui.tab === 'requests' && !Cloud.isAdmin) ||
       (ui.tab === 'access' && !Roles.isOwner()) ||
       (ui.tab === 'users' && !Cloud.isAdmin) ||
+      (ui.tab === 'stats' && !Cloud.isAdmin) ||
       (Cloud.isStaff && ui.tab !== 'more' && !Roles.allows(ui.tab)) ||
       (!Cloud.isStaff && Roles.staffOnly.indexOf(ui.tab) >= 0)
     )
