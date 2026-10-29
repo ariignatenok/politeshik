@@ -484,7 +484,7 @@ const Forms = {
    */
   profile(form) {
     const first = !Cloud.hasCabinet(),
-      sg = val(form, 'subgroup');
+      sg = (ROSTER_BY_ID[first ? val(form, 'rid') : (Cloud.profile || {}).rid] || {}).sub || val(form, 'subgroup');
     const rid = first ? val(form, 'rid') : Cloud.profile.rid,
       ro = ROSTER_BY_ID[rid];
     if (!ro || ro.flag) {

@@ -11,7 +11,15 @@
 function lessonChip(l, wide, state, date) {
   const sb = subj(l.subjectId),
     c = sb ? sb.color : '#94a3b8';
-  const sub = [l.room ? 'ауд. ' + l.room : '', l.subgroup, wide ? l.who : surname(l.who)].filter(Boolean).join(' · ');
+  const gm = /подгр\.?\s*(\d)/i.exec(l.subgroup || ''),
+    rest = gm
+      ? l.subgroup
+          .replace(gm[0], '')
+          .replace(/^[\s·]+|[\s·]+$/g, '')
+      : l.subgroup,
+    name = sb ? (wide ? sb.name : sb.short || sb.name) : 'Без предмета',
+    title = (gm ? name.replace(/\s*\([^)]*\)\s*$/, '') : name) + (gm ? ' (подгр. ' + gm[1] + ')' : '');
+  const sub = [l.room ? 'ауд. ' + l.room : '', rest, wide || gm ? l.who : surname(l.who)].filter(Boolean).join(' · ');
   const t = l.start && l.end ? '<small>' + ICONS.alarmClock + ' ' + l.start + '–' + l.end + '</small>' : '';
   return (
     '<button class="lesson' +
@@ -23,10 +31,10 @@ function lessonChip(l, wide, state, date) {
     '"' +
     (date ? ' data-date="' + date + '"' : '') +
     ' title="' +
-    U.esc((sb ? sb.name : '') + (l.who ? ' — ' + l.who : '')) +
+    U.esc((sb ? sb.name : '') + (gm ? ' (подгр. ' + gm[1] + ')' : '') + (l.who ? ' — ' + l.who : '')) +
     '">' +
     '<b>' +
-    U.esc(sb ? (wide ? sb.name : sb.short || sb.name) : 'Без предмета') +
+    U.esc(title) +
     '</b>' +
     (sub ? '<small>' + U.esc(sub) + '</small>' : '') +
     t +
@@ -47,7 +55,7 @@ function lessonChip(l, wide, state, date) {
  * @returns {string} HTML.
  */
 function cellChips(d, n, date, wide) {
-  const ls = Weeks.on(date).filter(l => l.pair === n),
+  const ls = Att.mine(Weeks.on(date)).filter(l => l.pair === n),
     ch = Changes.at(date, n);
   let h = ls.map(l => lessonChip(l, wide, ch ? (ch.type === 'cancel' ? 'cancel' : 'replaced') : '', date)).join('');
   if (ch && ch.type === 'replace') {
@@ -187,7 +195,7 @@ function viewSchedule() {
     pairs
       .map((p, pi) => {
         const n = pi + 1,
-          ls = Weeks.on(wdates[ui.schedDay]).filter(l => l.pair === n),
+          ls = Att.mine(Weeks.on(wdates[ui.schedDay])).filter(l => l.pair === n),
           chh = cellChips(ui.schedDay, n, wdates[ui.schedDay], true);
         return (
           '<div class="l-row"><div class="l-num"><b>' +

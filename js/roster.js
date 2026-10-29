@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * Номера студентов 1 подгруппы (по списку группы): Богданов, Бохан, Войлокова, Гладков, Ибратуллоева,
+ * Михальцевич, Траньков, Черных, Чурина, Шеина, Васильев, Маркова. Все остальные студенты — 2 подгруппа.
+ * Источник истины — таблица subgroup_assign в базе; этот список нужен, пока облако недоступно.
+ */
+const SUBGROUP1 = [3, 5, 6, 7, 13, 15, 17, 18, 19, 23, 24, 29];
 const ROSTER = [
   ['БАЛЬЖИНОВ Александр', 'expelled'],
   ['БОГДАНОВА Валерия'],
@@ -39,12 +45,22 @@ const ROSTER = [
   name: x[0],
   flag: x[1] === 'expelled' || x[1] === 'ghost' ? x[1] : '',
   admin: x[1] === 'admin',
-  sub: i < 19 ? '1' : '2'
+  sub: SUBGROUP1.indexOf(i + 1) >= 0 ? '1' : '2'
 }));
 const ROSTER_BY_ID = {};
 ROSTER.forEach(r => {
   ROSTER_BY_ID[r.id] = r;
 });
+/**
+ * Применяет закреплённые в облаке подгруппы к списку группы.
+ * @param {Array<Object>} rows Строки вида {rid, subgroup}.
+ */
+function applySubgroups(rows) {
+  (rows || []).forEach(x => {
+    const r = ROSTER_BY_ID[x.rid];
+    if (r && (x.subgroup === '1' || x.subgroup === '2')) r.sub = x.subgroup;
+  });
+}
 const ADMIN_RID = 'r32';
 const FLAG_LABEL = {
   expelled: 'отчислен(а)',

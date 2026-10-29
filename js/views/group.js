@@ -22,9 +22,10 @@ function enteredRows() {
   return Object.keys(P)
     .filter(id => Roles.countsAsStudent(id))
     .map(id => {
-      const p = P[id],
+      const p = Object.assign({}, P[id]),
         marks = (Cloud.adm.att[id] || {}).marks || {},
         certs = (Cloud.adm.certs[id] || {}).items || [];
+      if (ROSTER_BY_ID[p.rid]) p.subgroup = ROSTER_BY_ID[p.rid].sub;
       return {
         id,
         p,

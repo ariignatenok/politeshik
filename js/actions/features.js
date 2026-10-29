@@ -788,6 +788,9 @@ Object.assign(A, {
           (i.absent.length ? U.esc(i.absent.map(n => n + ' ' + name(n)).join(', ')) : 'никого') +
           '; «П» — ' +
           i.present.length +
+          (i.ignored.length
+            ? ' <span class="qa-bad">пропущены (не из подгруппы пары): ' + U.esc(i.ignored.join(', ')) + '</span>'
+            : '') +
           '</div>'
       )
       .join('');

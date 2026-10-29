@@ -652,15 +652,15 @@ function openFormulaForm(id) {
  */
 function openProfileForm() {
   const p = Cloud.profile || {},
-    sg = p.subgroup || Store.s.settings.subgroup || '';
+    sg = (ROSTER_BY_ID[p.rid] || {}).sub || p.subgroup || Store.s.settings.subgroup || '';
   UI.open(
     'Профиль',
     '<div data-form="profile"><div class="field"><span class="lbl">Фамилия и имя</span><div class="static-name">' +
       U.esc(p.name || '') +
       '</div></div>' +
       field(
-        'Подгруппа (для английского и ИТ)',
-        '<select class="input" name="subgroup"><option value="">не выбрана</option><option value="1"' +
+        'Подгруппа (по списку группы, изменить нельзя)',
+        '<select class="input" name="subgroup" disabled><option value="">не выбрана</option><option value="1"' +
           (sg === '1' ? ' selected' : '') +
           '>1 подгруппа</option><option value="2"' +
           (sg === '2' ? ' selected' : '') +

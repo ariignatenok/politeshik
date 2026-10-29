@@ -12,6 +12,15 @@ const Att = {
     return !match || !sub || match[1] === String(sub);
   },
   /**
+   * Оставляет пары, которые видит текущий пользователь: студент — только своей подгруппы, староста и преподаватели — все.
+   * @param {Array<Object>} list Пары расписания.
+   * @returns {Array<Object>} Отфильтрованные пары.
+   */
+  mine(list) {
+    if (Cloud.isAdmin || Cloud.isStaff) return list;
+    return list.filter(l => Att.subOk(l, Store.s.settings.subgroup));
+  },
+  /**
    * Строит пары дня с учётом отмен и замен.
    * @param {string} date Дата.
    * @param {string} sub Подгруппа.

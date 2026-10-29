@@ -108,7 +108,10 @@ document.addEventListener('change', event => {
     const f = event.target.closest('[data-form]'),
       ro = ROSTER_BY_ID[event.target.value],
       sgSel = f && f.querySelector('[name=subgroup]');
-    if (ro && sgSel && !sgSel.value) sgSel.value = ro.sub;
+    if (sgSel) {
+        sgSel.value = ro ? ro.sub : '';
+        sgSel.disabled = !!ro;
+      }
   }
   if (k === 'notif-toggle') {
     const n = Object.assign({}, Store.s.settings.notif || {});

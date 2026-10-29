@@ -238,7 +238,8 @@ const QuickAtt = {
           return;
         }
         const pool = QuickAtt.eligible(info),
-          absent = [];
+          absent = [],
+          ignored = [];
         let bad = '';
         rest
           .split(/[\s,;]+/)
@@ -252,14 +253,7 @@ const QuickAtt = {
               return;
             }
             if (!pool.some(r => r.n === n)) {
-              bad =
-                bad ||
-                '№' +
-                  n +
-                  ' (' +
-                  student.name +
-                  ') не ходит на эту пару: ' +
-                  (student.flag ? FLAG_LABEL[student.flag] : 'другая подгруппа');
+              ignored.push('№' + n + ' ' + student.name.split(' ')[0] + ' (' + (student.flag ? FLAG_LABEL[student.flag] : 'другая подгруппа') + ')');
               return;
             }
             if (absent.indexOf(n) < 0) absent.push(n);
@@ -274,6 +268,7 @@ const QuickAtt = {
           pair,
           title: QuickAtt.title(info),
           absent,
+          ignored,
           present: pool.filter(r => absent.indexOf(r.n) < 0).map(r => r.n)
         });
       });
@@ -345,7 +340,7 @@ const QuickAtt = {
     return (
       '<div class="qa">' +
       notice +
-      '<p class="md-help">По каждой паре впишите номера отсутствующих («нб») из бумажного журнала: номер строки в списке. Знак «-» значит, что отсутствующих нет. Пустая строка пропускается. Остальным студентам этой пары ставится «П». Оценки не нужны. Уже стоящие отметки не меняются.</p>' +
+      '<p class="md-help">По каждой паре впишите номера отсутствующих («нб») из бумажного журнала: номер строки в списке. Знак «-» значит, что отсутствующих нет. Пустая строка пропускается. Остальным студентам этой пары ставится «П». Номера студентов из другой подгруппы пропускаются: им отметка не ставится. Оценки не нужны. Уже стоящие отметки не меняются.</p>' +
       '<div class="head-actions"><button class="btn sm" data-action="qa-fill">Заполнить список пар 1–14 октября</button></div>' +
       '<textarea class="input qa-text" id="qa-text" rows="12" spellcheck="false" placeholder="01.10 1 ИТ: 3 8 30&#10;02.10 2 БЖД: -"></textarea><div id="qa-msg" class="md-help"></div>' +
       '<button class="btn primary big" data-action="qa-apply">Проверить и внести</button>' +

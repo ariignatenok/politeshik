@@ -166,7 +166,7 @@ const App = {
             '</select>'
         ) +
         field(
-          'Подгруппа',
+          'Подгруппа (по списку группы)',
           '<select class="input" name="subgroup"><option value="">выбери</option><option value="1">1 подгруппа</option><option value="2">2 подгруппа</option></select>'
         ) +
         '<button class="btn primary big" data-action="save-form">Создать кабинет и войти</button></div>' +

@@ -520,7 +520,7 @@ const Cloud = (() => {
           profiles[r.uid] = {
             name: r.name,
             rid: r.rid,
-            subgroup: r.subgroup || ''
+            subgroup: (ROSTER_BY_ID[r.rid] || {}).sub || r.subgroup || ''
           };
         });
         (ce.data || []).forEach(r => {
@@ -672,7 +672,8 @@ const Cloud = (() => {
         if (C.profile.theme && THEME_IDS.indexOf(C.profile.theme) >= 0 && Store.s.settings.theme !== C.profile.theme) {
           Store.s.settings.theme = C.profile.theme;
         }
-        Store.s.settings.subgroup = C.profile.subgroup || '';
+        Store.s.settings.subgroup = (ROSTER_BY_ID[C.profile.rid] || {}).sub || C.profile.subgroup || '';
+          C.profile.subgroup = Store.s.settings.subgroup;
         Store.s.settings.displayName = C.profile.name || '';
         C.profile.seen = new Date().toISOString();
         await DB.doc('profiles/' + C.uid)
@@ -691,6 +692,7 @@ const Cloud = (() => {
       }
       Safe.run('mascot', () => Mascot.syncFromProfile());
       Safe.run('consent', () => C.syncConsent());
+      Safe.run('subgroups', () => C.loadSubgroups());
       Safe.run('avatars', () => {
         Avatars.load().then(() => Avatars.publish());
         Avatars.start();
@@ -1620,7 +1622,7 @@ const Cloud = (() => {
           info = {
             uid,
             name: profile.name,
-            subgroup: profile.subgroup || '',
+            subgroup: (ROSTER_BY_ID[profile.rid] || {}).sub || profile.subgroup || '',
             marks: ((C.adm.att || {})[uid] || {}).marks || {}
           };
       } else if (C.realRole === 'parent') {
@@ -1631,7 +1633,7 @@ const Cloud = (() => {
           info = {
             uid: row.uid,
             name: row.name,
-            subgroup: row.subgroup || '',
+            subgroup: (ROSTER_BY_ID[row.rid] || {}).sub || row.subgroup || '',
             marks: doc.exists ? doc.data().marks || {} : {}
           };
         }
@@ -1771,6 +1773,21 @@ const Cloud = (() => {
         ok: false,
         error: String((error && error.message) || error)
       };
+    }
+  };
+  /**
+   * Загружает закреплённые подгруппы студентов из облака.
+   * @returns {Promise<boolean>} true, если список получен.
+   */
+  C.loadSubgroups = async () => {
+    try {
+      const {data, error} = await supa.rpc('subgroup_list');
+      if (error || !data) return false;
+      applySubgroups(data);
+      App.renderSoft();
+      return true;
+    } catch (error) {
+      return false;
     }
   };
   /**
