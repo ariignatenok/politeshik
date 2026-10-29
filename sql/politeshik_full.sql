@@ -1264,3 +1264,74 @@ revoke all on function public.apply_import_for(text, text, text), public.trg_imp
 grant execute on function public.import_attendance(jsonb), public.import_attendance_undo(text), public.import_attendance_summary() to authenticated;
 
 notify pgrst, 'reload schema';
+
+
+-- ============================================================
+-- 21. Подгруппы студентов (закреплены в базе): английский, лабораторные и другие пары «подгр. 1 / подгр. 2»
+-- 1 подгруппа: Богданов М., Бохан, Войлокова, Гладков, Ибратуллоева, Михальцевич, Траньков, Черных, Чурина, Шеина, Васильев, Маркова.
+-- 2 подгруппа: все остальные. Чтобы перевести студента (например, r12) в другую подгруппу, выполните в SQL Editor:
+--   update public.subgroup_assign set subgroup = '1' where rid = 'r12';
+--   и запустите этот скрипт ещё раз: профили студентов выровняются сами. Повторный запуск список не сбрасывает.
+-- ============================================================
+create table if not exists public.subgroup_assign (
+  tenant_id text not null references public.tenants (id) on delete cascade,
+  rid text not null check (rid ~ '^r([1-9]|[12][0-9]|3[0-2])$'),
+  subgroup text not null check (subgroup in ('1', '2')),
+  primary key (tenant_id, rid)
+);
+alter table public.subgroup_assign enable row level security;
+revoke all on public.subgroup_assign from anon, authenticated;
+
+insert into public.subgroup_assign (tenant_id, rid, subgroup)
+select t.id, 'r' || g, case when g in (3, 5, 6, 7, 13, 15, 17, 18, 19, 23, 24, 29) then '1' else '2' end
+from public.tenants t cross join generate_series(1, 32) g
+on conflict (tenant_id, rid) do nothing;
+
+create or replace function public.subgroup_list() returns table (rid text, subgroup text)
+language sql stable security definer set search_path = public as $$
+  select a.rid, a.subgroup from public.subgroup_assign a
+  where a.tenant_id = public.current_tenant() and public.is_member()
+  order by length(a.rid), a.rid
+$$;
+
+create or replace function public.set_subgroup(p_rid text, p_subgroup text) returns int
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); n int;
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  if p_rid !~ '^r([1-9]|[12][0-9]|3[0-2])$' or p_subgroup not in ('1', '2') then raise exception 'Неверные данные'; end if;
+  insert into public.subgroup_assign (tenant_id, rid, subgroup) values (t, p_rid, p_subgroup)
+    on conflict (tenant_id, rid) do update set subgroup = excluded.subgroup;
+  update public.docs d set data = jsonb_set(d.data, '{subgroup}', to_jsonb(p_subgroup))
+    where d.tenant_id = t and d.path like 'profiles/%' and d.path not like 'profiles/%/%' and d.data ->> 'rid' = p_rid;
+  get diagnostics n = row_count;
+  return n;
+end $$;
+
+create or replace function public.trg_force_subgroup() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare s text;
+begin
+  select a.subgroup into s from public.subgroup_assign a where a.tenant_id = new.tenant_id and a.rid = new.data ->> 'rid';
+  if s is not null and new.data ->> 'subgroup' is distinct from s then
+    new.data := jsonb_set(new.data, '{subgroup}', to_jsonb(s));
+  end if;
+  return new;
+end $$;
+drop trigger if exists trg_docs_subgroup on public.docs;
+create trigger trg_docs_subgroup before insert or update on public.docs
+  for each row when (new.path like 'profiles/%' and new.path not like 'profiles/%/%')
+  execute function public.trg_force_subgroup();
+
+do $$
+begin
+  perform set_config('app.import', 'on', true);
+  update public.docs d set data = jsonb_set(d.data, '{subgroup}', to_jsonb(a.subgroup))
+    from public.subgroup_assign a
+    where a.tenant_id = d.tenant_id and d.path like 'profiles/%' and d.path not like 'profiles/%/%'
+      and a.rid = d.data ->> 'rid' and d.data ->> 'subgroup' is distinct from a.subgroup;
+  perform set_config('app.import', 'off', true);
+end $$;
+
+revoke all on function public.subgroup_list(), public.set_subgroup(text, text), public.trg_force_subgroup() from public, anon, authenticated;
+grant execute on function public.subgroup_list(), public.set_subgroup(text, text) to authenticated;
