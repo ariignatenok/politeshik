@@ -730,5 +730,132 @@ Object.assign(A, {
       $('#gate').dataset.mode = '';
       App.render(true);
     }
+  },
+  /**
+   * Открывает окно ввода посещаемости из журнала.
+   */
+  'qa-open'() {
+    QuickAtt.open();
+  },
+  /**
+   * Вносит расписание начала октября после подтверждения.
+   */
+  async 'qa-weeks'() {
+    if (
+      !(await UI.confirm(
+        'Внести расписание за 28.09–17.10 со скриншотов? Правки этих трёх недель будут заменены, остальные недели не изменятся.',
+        'Внести'
+      ))
+    )
+      return;
+    QuickAtt.applyWeeks();
+    QuickAtt.open();
+    toast('Расписание начала октября внесено');
+  },
+  /**
+   * Заполняет поле списком пар 1–14 октября.
+   */
+  'qa-fill'() {
+    if (!QuickAtt.isLoaded()) return toast('Сначала внесите расписание начала октября');
+    const box = document.getElementById('qa-text');
+    if (box) box.value = QuickAtt.template();
+  },
+  /**
+   * Проверяет введённые строки и вносит отметки на сервере.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'qa-apply'(el) {
+    const box = document.getElementById('qa-text'),
+      msg = document.getElementById('qa-msg');
+    const parsed = QuickAtt.parse(box ? box.value : '');
+    if (parsed.errors.length) {
+      msg.innerHTML = parsed.errors.map(error => '<div class="qa-bad">' + U.esc(error) + '</div>').join('');
+      return;
+    }
+    if (!parsed.items.length) {
+      msg.textContent = 'Нет заполненных строк: впишите номера после двоеточия или «-».';
+      return;
+    }
+    const name = n => ROSTER.find(r => r.n === n).name.split(' ')[0];
+    msg.innerHTML = parsed.items
+      .map(
+        i =>
+          '<div><b>' +
+          U.esc(i.date.split('-').reverse().join('.') + ' пара ' + i.pair) +
+          '</b> ' +
+          U.esc(i.title) +
+          ': «Н» — ' +
+          (i.absent.length ? U.esc(i.absent.map(n => n + ' ' + name(n)).join(', ')) : 'никого') +
+          '; «П» — ' +
+          i.present.length +
+          '</div>'
+      )
+      .join('');
+    const nAbs = parsed.items.reduce((s, i) => s + i.absent.length, 0),
+      nPres = parsed.items.reduce((s, i) => s + i.present.length, 0);
+    if (
+      !(await UI.confirm(
+        'Внести пары: ' +
+          parsed.items.length +
+          ' (отметок «Н»: ' +
+          nAbs +
+          ', «П»: ' +
+          nPres +
+          ')? Уже стоящие отметки не изменятся. Проверьте список под полем ввода.',
+        'Внести'
+      ))
+    )
+      return;
+    el.disabled = true;
+    try {
+      const result = await QuickAtt.rpc('import_attendance', {
+        p_items: parsed.items.map(i => ({
+          key: i.key,
+          absent: i.absent.map(n => 'r' + n),
+          present: i.present.map(n => 'r' + n)
+        }))
+      });
+      if (!result.ok) {
+        msg.innerHTML = '<div class="qa-bad">Не удалось внести: ' + U.esc(result.error) + '</div>';
+        return;
+      }
+      box.value = '';
+      msg.textContent = '';
+      toast(
+        'Внесено пар: ' +
+          parsed.items.length +
+          '. Отметки уже зарегистрированным: ' +
+          result.data.applied +
+          ', остальным: при регистрации'
+      );
+      await QuickAtt.reloadAtt();
+      QuickAtt.refreshList();
+    } finally {
+      el.disabled = false;
+    }
+  },
+  /**
+   * Отменяет внесённые из журнала отметки одной пары.
+   * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
+   */
+  async 'qa-undo'(el) {
+    const key = el.dataset.key;
+    if (
+      !(await UI.confirm(
+        'Отменить внесённое за ' +
+          key.split('|')[0].split('-').reverse().slice(0, 2).join('.') +
+          ' пара ' +
+          key.split('|')[1] +
+          '? Эти отметки удалятся у студентов (ручные не затрагиваются).',
+        'Отменить'
+      ))
+    )
+      return;
+    const result = await QuickAtt.rpc('import_attendance_undo', {
+      p_key: key
+    });
+    toast(result.ok ? 'Отменено, убрано отметок: ' + result.data : 'Не удалось: ' + result.error);
+    await QuickAtt.reloadAtt();
+    QuickAtt.refreshList();
   }
 });

@@ -243,7 +243,9 @@ function viewJournal(asTeacher) {
   return (
     '<div class="page-head"><div><h1>' +
     ICONS.folder +
-    ' Журнал посещаемости</h1><p>Папка админа: посещаемость каждого студента по дням. В клетке — отметки по парам этого дня.</p></div><div class="head-actions"><button class="btn" data-action="grp-csv">' +
+    ' Журнал посещаемости</h1><p>Папка админа: посещаемость каждого студента по дням. В клетке — отметки по парам этого дня.</p></div><div class="head-actions">' +
+    (Cloud.isAdmin ? '<button class="btn primary" data-action="qa-open">Ввод из журнала</button>' : '') +
+    '<button class="btn" data-action="grp-csv">' +
     ICONS.arrowDown +
     ' Скачать CSV</button></div></div>' +
     '<div class="period"><div class="monthnav"><button class="icon-btn" data-action="att-month" data-d="-1" aria-label="Предыдущий месяц">' +
