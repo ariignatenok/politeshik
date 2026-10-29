@@ -1268,7 +1268,7 @@ notify pgrst, 'reload schema';
 
 -- ============================================================
 -- 21. Подгруппы студентов (закреплены в базе): английский, лабораторные и другие пары «подгр. 1 / подгр. 2»
--- 1 подгруппа: Богданов М., Бохан, Войлокова, Гладков, Ибратуллоева, Михальцевич, Траньков, Черных, Чурина, Шеина, Васильев, Маркова.
+-- 1 подгруппа: Богданова В., Бохан, Войлокова, Гладков, Ибратуллоева, Михальцевич, Траньков, Черных, Чурина, Шеина, Богданов М., Васильев, Маркова (13 человек).
 -- 2 подгруппа: все остальные. Чтобы перевести студента (например, r12) в другую подгруппу, выполните в SQL Editor:
 --   update public.subgroup_assign set subgroup = '1' where rid = 'r12';
 --   и запустите этот скрипт ещё раз: профили студентов выровняются сами. Повторный запуск список не сбрасывает.
@@ -1283,9 +1283,21 @@ alter table public.subgroup_assign enable row level security;
 revoke all on public.subgroup_assign from anon, authenticated;
 
 insert into public.subgroup_assign (tenant_id, rid, subgroup)
-select t.id, 'r' || g, case when g in (3, 5, 6, 7, 13, 15, 17, 18, 19, 23, 24, 29) then '1' else '2' end
+select t.id, 'r' || g, case when g in (2, 3, 5, 6, 7, 13, 15, 17, 18, 19, 23, 24, 29) then '1' else '2' end
 from public.tenants t cross join generate_series(1, 32) g
 on conflict (tenant_id, rid) do nothing;
+
+-- Исправление (обновление 13): БОГДАНОВА Валерия (r2) — в 1 подгруппе. Выполняется один раз, потом ваши правки не затрагивает.
+do $$
+declare tn record;
+begin
+  for tn in select id from public.tenants loop
+    if not exists (select 1 from public.settings s where s.tenant_id = tn.id and s.key = 'fix_subgroup_13') then
+      update public.subgroup_assign set subgroup = '1' where tenant_id = tn.id and rid = 'r2';
+      insert into public.settings (tenant_id, key, value) values (tn.id, 'fix_subgroup_13', 'done');
+    end if;
+  end loop;
+end $$;
 
 create or replace function public.subgroup_list() returns table (rid text, subgroup text)
 language sql stable security definer set search_path = public as $$
@@ -1335,3 +1347,17 @@ end $$;
 
 revoke all on function public.subgroup_list(), public.set_subgroup(text, text), public.trg_force_subgroup() from public, anon, authenticated;
 grant execute on function public.subgroup_list(), public.set_subgroup(text, text) to authenticated;
+
+
+-- ============================================================
+-- 22. Отчёты по посещаемости: все отметки, внесённые из журнала (для статистики, CSV и Google Таблицы)
+-- ============================================================
+create or replace function public.import_attendance_rows() returns table (rid text, key text, mark text, status text)
+language sql stable security definer set search_path = public as $$
+  select i.rid, i.key, i.mark, i.status
+  from public.attendance_import i
+  where i.tenant_id = public.current_tenant() and public.is_admin()
+  order by length(i.rid), i.rid, i.key
+$$;
+revoke all on function public.import_attendance_rows() from public, anon, authenticated;
+grant execute on function public.import_attendance_rows() to authenticated;

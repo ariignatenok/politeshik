@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'ba7c41d90e2';
+const CACHE_VERSION = 'be3a91b7c44';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -90,6 +90,8 @@ const SHELL = [
   'js/profile.js',
   'js/pwa.js',
   'js/quickadd.js',
+  'js/attreport.js',
+  'js/gsync.js',
   'js/quickatt.js',
   'js/rating.js',
   'js/relax.js',
