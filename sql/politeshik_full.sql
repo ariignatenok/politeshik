@@ -13,6 +13,7 @@
 --  ЧТО СОЗДАЁТСЯ: таблицы (docs, admins, teachers, settings, admin_attempts, chat, news, news_comments,
 --  news_likes, birthdays, tenants, analytics, groups, members, group_codes, code_attempts), функции ролей и паролей,
 --  правила доступа (RLS), коды групп для регистрации, блокировка (banned) и удаление пользователей,
+--  ввод посещаемости из бумажного журнала (attendance_import),
 --  карта колледжа, готовое ДЗ, записки на пары, дни рождения, лайки, Realtime.
 -- =====================================================================================
 drop table if exists _inputs;
@@ -344,6 +345,7 @@ language plpgsql security definer set search_path = public as $$
 declare k text; v jsonb; om jsonb := '{}'::jsonb; nm jsonb; prev jsonb;
         today text := to_char((now() at time zone 'Europe/Moscow')::date, 'YYYY-MM-DD');
 begin
+  if current_setting('app.import', true) = 'on' then return new; end if;
   if public.is_admin() then return new; end if;
   if split_part(new.path, '/', 1) = 'attendance' and array_length(string_to_array(new.path, '/'), 1) = 2 and public.curator_manages(split_part(new.path, '/', 2)) then return new; end if;
   select d.data into prev from public.docs d where d.tenant_id = new.tenant_id and d.path = new.path;
@@ -1147,5 +1149,118 @@ create trigger trg_b_analytics_fill before insert on public.analytics for each r
 revoke all on public.analytics from anon, authenticated;
 grant select, insert on public.analytics to authenticated;
 grant usage, select on sequence public.analytics_id_seq to authenticated;
+
+-- ============================================================
+-- 20. Ввод посещаемости из бумажного журнала (только староста)
+-- ============================================================
+create table if not exists public.attendance_import (
+  tenant_id text not null,
+  rid text not null,
+  key text not null,
+  mark text not null check (mark in ('п', 'н')),
+  status text not null default 'queued' check (status in ('queued', 'applied', 'skipped')),
+  was_applied boolean not null default false,
+  created_at timestamptz not null default now(),
+  primary key (tenant_id, rid, key)
+);
+alter table public.attendance_import enable row level security;
+revoke all on public.attendance_import from anon, authenticated;
+
+create or replace function public.apply_import_for(p_tenant text, p_uid text, p_rid text) returns int
+language plpgsql security definer set search_path = public as $$
+declare cur jsonb; r record; n int := 0;
+begin
+  if not exists (select 1 from public.attendance_import i where i.tenant_id = p_tenant and i.rid = p_rid and i.status = 'queued') then return 0; end if;
+  perform set_config('app.import', 'on', true);
+  select coalesce(d.data -> 'marks', '{}'::jsonb) into cur from public.docs d where d.tenant_id = p_tenant and d.path = 'attendance/' || p_uid;
+  cur := coalesce(cur, '{}'::jsonb);
+  for r in select i.key, i.mark, i.was_applied from public.attendance_import i where i.tenant_id = p_tenant and i.rid = p_rid and i.status = 'queued' loop
+    if (not (cur ? r.key)) or r.was_applied then
+      cur := cur || jsonb_build_object(r.key, r.mark);
+      update public.attendance_import set status = 'applied' where tenant_id = p_tenant and rid = p_rid and key = r.key;
+      n := n + 1;
+    else
+      update public.attendance_import set status = 'skipped' where tenant_id = p_tenant and rid = p_rid and key = r.key;
+    end if;
+  end loop;
+  if n > 0 then
+    insert into public.docs (tenant_id, path, data)
+    values (p_tenant, 'attendance/' || p_uid, jsonb_build_object('marks', cur, 'updated', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"')))
+    on conflict (tenant_id, path) do update
+      set data = jsonb_set(coalesce(public.docs.data, '{}'::jsonb), '{marks}', cur) || jsonb_build_object('updated', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"'));
+  end if;
+  return n;
+end $$;
+
+create or replace function public.trg_import_on_profile() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if coalesce(new.data ->> 'rid', '') <> '' then
+    perform public.apply_import_for(new.tenant_id, split_part(new.path, '/', 2), new.data ->> 'rid');
+  end if;
+  return null;
+end $$;
+drop trigger if exists trg_docs_import on public.docs;
+create trigger trg_docs_import after insert or update on public.docs
+  for each row when (new.path like 'profiles/%' and new.path not like 'profiles/%/%')
+  execute function public.trg_import_on_profile();
+
+create or replace function public.import_attendance(p_items jsonb) returns jsonb
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); it jsonb; k text; v_rid text; applied int := 0; r record;
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  for it in select * from jsonb_array_elements(coalesce(p_items, '[]'::jsonb)) loop
+    k := it ->> 'key';
+    if k is null or k !~ '^\d{4}-\d{2}-\d{2}\|[1-9]$' then raise exception 'Неверная пара: %', coalesce(k, ''); end if;
+    for v_rid in select jsonb_array_elements_text(coalesce(it -> 'absent', '[]'::jsonb)) loop
+      if v_rid !~ '^r([1-9]|[12][0-9]|3[0-2])$' then raise exception 'Неверный номер: %', v_rid; end if;
+      insert into public.attendance_import (tenant_id, rid, key, mark) values (t, v_rid, k, 'н')
+        on conflict (tenant_id, rid, key) do update set mark = 'н', was_applied = (public.attendance_import.status = 'applied'), status = 'queued';
+    end loop;
+    for v_rid in select jsonb_array_elements_text(coalesce(it -> 'present', '[]'::jsonb)) loop
+      if v_rid !~ '^r([1-9]|[12][0-9]|3[0-2])$' then raise exception 'Неверный номер: %', v_rid; end if;
+      insert into public.attendance_import (tenant_id, rid, key, mark) values (t, v_rid, k, 'п')
+        on conflict (tenant_id, rid, key) do update set mark = 'п', was_applied = (public.attendance_import.status = 'applied'), status = 'queued';
+    end loop;
+  end loop;
+  for r in select split_part(d.path, '/', 2) as uid, d.data ->> 'rid' as rid from public.docs d
+           where d.tenant_id = t and d.path like 'profiles/%' and d.path not like 'profiles/%/%' and coalesce(d.data ->> 'rid', '') <> '' loop
+    applied := applied + public.apply_import_for(t, r.uid, r.rid);
+  end loop;
+  return jsonb_build_object('applied', applied, 'queued', (select count(*) from public.attendance_import i where i.tenant_id = t and i.status = 'queued'));
+end $$;
+
+create or replace function public.import_attendance_undo(p_key text) returns int
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); r record; uid text; n int := 0;
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  perform set_config('app.import', 'on', true);
+  for r in select i.rid, i.mark from public.attendance_import i where i.tenant_id = t and i.key = p_key and i.status = 'applied' loop
+    select split_part(d.path, '/', 2) into uid from public.docs d
+      where d.tenant_id = t and d.path like 'profiles/%' and d.path not like 'profiles/%/%' and d.data ->> 'rid' = r.rid limit 1;
+    if uid is not null then
+      update public.docs set data = jsonb_set(data, '{marks}', (data -> 'marks') - p_key)
+        where tenant_id = t and path = 'attendance/' || uid and data -> 'marks' ->> p_key = r.mark;
+      if found then n := n + 1; end if;
+    end if;
+  end loop;
+  delete from public.attendance_import where tenant_id = t and key = p_key;
+  return n;
+end $$;
+
+create or replace function public.import_attendance_summary() returns table (key text, absent bigint, present bigint, applied bigint, queued bigint, skipped bigint)
+language sql security definer set search_path = public as $$
+  select i.key,
+         count(*) filter (where i.mark = 'н'), count(*) filter (where i.mark = 'п'),
+         count(*) filter (where i.status = 'applied'), count(*) filter (where i.status = 'queued'), count(*) filter (where i.status = 'skipped')
+  from public.attendance_import i
+  where i.tenant_id = public.current_tenant() and public.is_admin()
+  group by i.key order by i.key
+$$;
+
+revoke all on function public.apply_import_for(text, text, text), public.trg_import_on_profile(), public.import_attendance(jsonb), public.import_attendance_undo(text), public.import_attendance_summary() from public, anon, authenticated;
+grant execute on function public.import_attendance(jsonb), public.import_attendance_undo(text), public.import_attendance_summary() to authenticated;
 
 notify pgrst, 'reload schema';

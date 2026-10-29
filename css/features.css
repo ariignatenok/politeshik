@@ -890,3 +890,46 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.qa .qa-text {
+  width: 100%;
+  min-height: 200px;
+  margin: 10px 0 6px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.qa .qa-warn {
+  margin-bottom: 12px;
+  border: 1px solid var(--warn, #e0a800);
+}
+
+.qa .qa-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line, rgba(128, 128, 128, 0.2));
+  font-size: 13px;
+}
+
+.qa .qa-legend {
+  max-height: 220px;
+  margin-top: 8px;
+  overflow: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.qa .qa-n {
+  display: inline-block;
+  min-width: 22px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.qa .qa-bad {
+  color: var(--danger, #e5484d);
+}
