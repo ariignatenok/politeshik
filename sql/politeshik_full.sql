@@ -3,12 +3,17 @@
 --  Supabase -> SQL Editor -> New query -> вставить ВСЁ -> Run (на окно «Potential issue» нажмите Run query).
 --  Если на любом шаге будет ошибка, ничего не применится; исправьте и запустите снова.
 --
---  ЧТО НУЖНО ВПИСАТЬ (одна строка ниже, два пароля):
---    ПРИДУМАЙТЕ_ПАРОЛЬ_ПРЕПОДАВАТЕЛЯ  -> пароль для преподавателей (минимум 8 символов)
---    ПРИДУМАЙТЕ_ПАРОЛЬ_АДМИНА         -> ваш секретный пароль админа (минимум 8 символов, не равен первому)
---  Это нужно при первом запуске. При повторном запуске можно оставить оба значения как есть:
---  уже сохранённые пароли не изменятся. Чтобы сменить пароль, впишите новый.
---  Пароли хранятся только в виде хеша (bcrypt с солью) в таблице settings, закрытой для сайта.
+--  ПАРОЛИ (два способа, достаточно одного):
+--   СПОСОБ 1. В строке «create temp table _inputs» ниже (первая строка кода) замените слова-заготовки на свои пароли (минимум 8 символов, пароли должны различаться):
+--       ПРИДУМАЙТЕ_ПАРОЛЬ_ПРЕПОДАВАТЕЛЯ  -> пароль для преподавателей
+--       ПРИДУМАЙТЕ_ПАРОЛЬ_АДМИНА         -> ваш секретный пароль админа
+--     Апострофы вокруг слов оставьте на месте; в самом пароле апострофа (') быть не должно.
+--   СПОСОБ 2. Оставьте заготовки как есть, запустите скрипт, а потом выполните отдельно две команды (подставив свои пароли):
+--       select public.set_admin_secret('ваш_пароль_админа');
+--       select public.set_teacher_secret('ваш_пароль_преподавателей');
+--   Внизу результата скрипт показывает таблицу «Статус паролей»: «задан» или «НЕ ЗАДАН».
+--   При повторном запуске заготовки можно оставить: уже сохранённые пароли не изменятся. Чтобы сменить пароль, впишите новый.
+--   Пароли хранятся только в виде хеша (bcrypt с солью) в таблице settings, закрытой для сайта.
 --
 --  ЧТО СОЗДАЁТСЯ: таблицы (docs, admins, teachers, settings, admin_attempts, chat, news, news_comments,
 --  news_likes, birthdays, tenants, analytics, groups, members, group_codes, code_attempts), функции ролей и паролей,
@@ -19,27 +24,24 @@
 drop table if exists _inputs;
 create temp table _inputs as select 'ПРИДУМАЙТЕ_ПАРОЛЬ_ПРЕПОДАВАТЕЛЯ'::text as teacher_pass, 'ПРИДУМАЙТЕ_ПАРОЛЬ_АДМИНА'::text as admin_pass_new;
 
--- Проверка паролей до любых изменений
+-- Убрать случайные пробелы и кавычки по краям введённых паролей
+update _inputs set
+  teacher_pass = regexp_replace(teacher_pass, '^[[:space:]''"«»“”‘’<>]+|[[:space:]''"«»“”‘’<>]+$', '', 'g'),
+  admin_pass_new = regexp_replace(admin_pass_new, '^[[:space:]''"«»“”‘’<>]+|[[:space:]''"«»“”‘’<>]+$', '', 'g');
+
+-- Проверка введённых паролей до любых изменений (заготовки и пустые значения означают «пароль не менять / задать позже»)
 do $$ declare
   t text := coalesce((select teacher_pass from _inputs), ''); a text := coalesce((select admin_pass_new from _inputs), '');
-  have_t boolean := false; have_a boolean := false;
 begin
-  begin
-    if to_regclass('public.settings') is not null then
-      execute 'select exists (select 1 from public.settings where key = ''teacher_pass'' and value like ''$2%'')' into have_t;
-      execute 'select exists (select 1 from public.settings where key = ''admin_pass'' and value like ''$2%'')' into have_a;
-    end if;
-    if to_regclass('public.admin_secret') is not null then have_a := true; end if;
-  exception when others then have_t := false; have_a := false;
-  end;
-  if (t = '' or t like 'ПРИДУМАЙТЕ%') and not have_t then
-    raise exception 'Пароль преподавателя не заменён: впишите его вместо ПРИДУМАЙТЕ_ПАРОЛЬ_ПРЕПОДАВАТЕЛЯ в первой строке скрипта и запустите снова';
+  if t <> '' and t not like 'ПРИДУМАЙТЕ%' and length(t) < 8 then
+    raise exception 'Пароль преподавателя короче 8 символов: скрипт получил % симв. Впишите пароль вместо ПРИДУМАЙТЕ_ПАРОЛЬ_ПРЕПОДАВАТЕЛЯ в строке «create temp table _inputs» между апострофами (без пробелов и апострофов внутри пароля) или оставьте заготовку и задайте пароль командой select public.set_teacher_secret(''пароль'');', length(t);
   end if;
-  if t <> '' and t not like 'ПРИДУМАЙТЕ%' and length(t) < 8 then raise exception 'Пароль преподавателя короче 8 символов'; end if;
-  if (a = '' or a like 'ПРИДУМАЙТЕ%') and not have_a then
-    raise exception 'Пароль админа ещё не задан: впишите его вместо ПРИДУМАЙТЕ_ПАРОЛЬ_АДМИНА в первой строке скрипта и запустите снова';
+  if a <> '' and a not like 'ПРИДУМАЙТЕ%' and length(a) < 8 then
+    raise exception 'Пароль админа короче 8 символов: скрипт получил % симв. Впишите пароль вместо ПРИДУМАЙТЕ_ПАРОЛЬ_АДМИНА в строке «create temp table _inputs» между апострофами (без пробелов и апострофов внутри пароля) или оставьте заготовку и задайте пароль командой select public.set_admin_secret(''пароль'');', length(a);
   end if;
-  if a <> '' and a not like 'ПРИДУМАЙТЕ%' and length(a) < 8 then raise exception 'Пароль админа короче 8 символов'; end if;
+  if t <> '' and a <> '' and t not like 'ПРИДУМАЙТЕ%' and a not like 'ПРИДУМАЙТЕ%' and t = a then
+    raise exception 'Пароли админа и преподавателя должны различаться';
+  end if;
 end $$;
 
 create extension if not exists pgcrypto;
@@ -490,12 +492,6 @@ grant select, insert, update, delete on public.news, public.news_comments to aut
 do $$ declare a text := coalesce((select admin_pass_new from _inputs), ''); t text := coalesce((select teacher_pass from _inputs), ''); begin
   if a <> '' and a not like 'ПРИДУМАЙТЕ%' then perform public.set_secret('admin_pass', a); end if;
   if t <> '' and t not like 'ПРИДУМАЙТЕ%' then perform public.set_secret('teacher_pass', t); end if;
-  if not exists (select 1 from public.settings s where s.tenant_id = 'group_1' and s.key = 'admin_pass' and s.value like '$2%') then
-    raise exception 'Пароль админа ещё не задан: впишите его вместо ПРИДУМАЙТЕ_ПАРОЛЬ_АДМИНА в первой строке скрипта';
-  end if;
-  if not exists (select 1 from public.settings s where s.tenant_id = 'group_1' and s.key = 'teacher_pass' and s.value like '$2%') then
-    raise exception 'Пароль преподавателя не заменён: впишите его вместо ПРИДУМАЙТЕ_ПАРОЛЬ_ПРЕПОДАВАТЕЛЯ в первой строке скрипта';
-  end if;
 end $$;
 drop table if exists public.admin_secret;
 
@@ -1361,3 +1357,107 @@ language sql stable security definer set search_path = public as $$
 $$;
 revoke all on function public.import_attendance_rows() from public, anon, authenticated;
 grant execute on function public.import_attendance_rows() to authenticated;
+
+-- ============================================================
+-- 23. Удаление пользователей: фамилия и все данные освобождаются при ЛЮБОМ способе удаления аккаунта
+--     (кнопка «Удалить», панель Supabase Authentication -> Users, SQL). Плюс «Разрешить перерегистрацию».
+-- ============================================================
+create or replace function public.purge_user_data(p_uid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  perform set_config('app.import', 'on', true);
+  delete from public.docs d
+    where public.doc_owner(d.path) = p_uid::text
+       or (d.path like 'claims/%' and d.data::text like '%' || p_uid::text || '%');
+  delete from public.chat where thread_uid = p_uid or sender = p_uid;
+  delete from public.news_comments where author = p_uid;
+  delete from public.news_likes where uid = p_uid;
+  update public.news set created_by = null where created_by = p_uid;
+  perform set_config('app.import', 'off', true);
+end $$;
+
+create or replace function public.trg_purge_user() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  perform public.purge_user_data(old.id);
+  return old;
+end $$;
+
+do $$
+begin
+  drop trigger if exists trg_purge_user on auth.users;
+  create trigger trg_purge_user before delete on auth.users for each row execute function public.trg_purge_user();
+exception when others then
+  raise notice 'Триггер на auth.users не создан (%). Удаление аккаунта в панели Supabase не будет освобождать фамилию: пользуйтесь кнопкой «Удалить» во вкладке «Пользователи».', sqlerrm;
+end $$;
+
+create or replace function public.admin_delete_user(p_uid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  if p_uid = auth.uid() or exists (select 1 from public.admins x where x.uid = p_uid) then raise exception 'Старосту удалить нельзя'; end if;
+  perform public.purge_user_data(p_uid);
+  delete from auth.users where id = p_uid;
+end $$;
+
+-- «хвосты» удалённых аккаунтов: занятые фамилии и данные, у которых владельца уже нет в auth.users
+create or replace function public.free_orphan_data() returns int
+language plpgsql security definer set search_path = public as $$
+declare n int;
+begin
+  perform set_config('app.import', 'on', true);
+  with gone as (
+    delete from public.docs d
+    where (d.path like 'claims/%' and coalesce(d.data ->> 'uid', '') ~ '^[0-9a-f-]{36}$'
+           and not exists (select 1 from auth.users u where u.id::text = d.data ->> 'uid'))
+       or (coalesce(public.doc_owner(d.path), '') ~ '^[0-9a-f-]{36}$'
+           and not exists (select 1 from auth.users u where u.id::text = public.doc_owner(d.path)))
+    returning 1
+  ) select count(*) into n from gone;
+  perform set_config('app.import', 'off', true);
+  return n;
+end $$;
+
+create or replace function public.admin_free_orphans() returns int
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  return public.free_orphan_data();
+end $$;
+
+-- «Разрешить перерегистрацию»: фамилия освобождается, кабинет и заявка сбрасываются, сам аккаунт (почта) остаётся
+create or replace function public.admin_reset_registration(p_uid uuid) returns text
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); v_rid text; st text;
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  if p_uid = auth.uid() or exists (select 1 from public.admins x where x.uid = p_uid) then raise exception 'Старосту сбросить нельзя'; end if;
+  if exists (select 1 from public.teachers x where x.uid = p_uid) then raise exception 'У преподавателя нет фамилии в списке группы'; end if;
+  select d.data ->> 'rid' into v_rid from public.docs d where d.tenant_id = t and d.path = 'profiles/' || p_uid::text;
+  perform set_config('app.import', 'on', true);
+  delete from public.docs d
+    where d.tenant_id = t
+      and (d.path in ('profiles/' || p_uid::text, 'avatars/' || p_uid::text)
+           or (d.path like 'claims/%' and d.data::text like '%' || p_uid::text || '%'));
+  perform set_config('app.import', 'off', true);
+  select m.status into st from public.members m where m.tenant_id = t and m.uid = p_uid;
+  if st is not null and st <> 'banned' then
+    delete from public.members m where m.tenant_id = t and m.uid = p_uid;
+  end if;
+  return coalesce(v_rid, '');
+end $$;
+
+revoke all on function public.purge_user_data(uuid), public.trg_purge_user(), public.free_orphan_data(), public.admin_free_orphans(), public.admin_reset_registration(uuid) from public, anon, authenticated;
+grant execute on function public.admin_free_orphans(), public.admin_reset_registration(uuid) to authenticated;
+
+-- Разовая уборка: освободить фамилии аккаунтов, которые уже были удалены ранее (например, в панели Supabase)
+select public.free_orphan_data();
+
+-- ============================================================
+-- Статус паролей (последняя строка результата: её видно в окне ответа Supabase)
+-- ============================================================
+select 'Пароль админа' as "Что", case when exists (select 1 from public.settings x where x.tenant_id = 'group_1' and x.key = 'admin_pass' and x.value like '$2%')
+    then 'задан' else 'НЕ ЗАДАН. Выполните: select public.set_admin_secret(''ваш_пароль'');' end as "Статус"
+union all
+select 'Пароль преподавателей', case when exists (select 1 from public.settings x where x.tenant_id = 'group_1' and x.key = 'teacher_pass' and x.value like '$2%')
+    then 'задан' else 'НЕ ЗАДАН. Выполните: select public.set_teacher_secret(''ваш_пароль'');' end;
