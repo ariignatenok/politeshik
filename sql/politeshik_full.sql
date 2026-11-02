@@ -1450,7 +1450,286 @@ end $$;
 revoke all on function public.purge_user_data(uuid), public.trg_purge_user(), public.free_orphan_data(), public.admin_free_orphans(), public.admin_reset_registration(uuid) from public, anon, authenticated;
 grant execute on function public.admin_free_orphans(), public.admin_reset_registration(uuid) to authenticated;
 
--- Разовая уборка: освободить фамилии аккаунтов, которые уже были удалены ранее (например, в панели Supabase)
+-- ============================================================
+-- 24. Посещаемость и справки привязаны к ФИО (rid), а не к аккаунту.
+--     attendance_by_rid/<rid> и certs_by_rid/<rid> (+ фото certs_by_rid/<rid>/img/<id>) хранят данные студента отдельно от почты.
+--     Удалил или пересоздал аккаунт -> студент снова выбирает своё ФИО -> после одобрения данные возвращаются сами.
+-- ============================================================
+create or replace function public.rid_owner_alive(p_tenant text, p_rid text, p_owner text) returns boolean
+language sql stable security definer set search_path = public as $$
+  select coalesce(p_owner, '') <> ''
+     and exists (select 1 from public.docs d where d.tenant_id = p_tenant and d.path = 'profiles/' || p_owner and d.data ->> 'rid' = p_rid)
+     and exists (select 1 from auth.users a where a.id::text = p_owner)
+$$;
+
+create or replace function public.cert_items_merge(p_old jsonb, p_cur jsonb) returns jsonb
+language sql immutable as $$
+  select coalesce(jsonb_agg(x.v order by x.ord, x.n), '[]'::jsonb) from (
+    select o.value as v, 0 as ord, o.ordinality as n
+      from jsonb_array_elements(coalesce(p_old, '[]'::jsonb)) with ordinality o
+      where not exists (select 1 from jsonb_array_elements(coalesce(p_cur, '[]'::jsonb)) c where c.value ->> 'id' = o.value ->> 'id')
+    union all
+    select e.value, 1, e.ordinality from jsonb_array_elements(coalesce(p_cur, '[]'::jsonb)) with ordinality e
+  ) x
+$$;
+
+-- Копия данных аккаунта в хранилище по ФИО (вызывается триггером при каждой записи и при переносе)
+create or replace function public.rid_mirror_doc(p_tenant text, p_uid text, p_kind text) returns void
+language plpgsql security definer set search_path = public as $$
+declare v_rid text; field text := case p_kind when 'attendance' then 'marks' else 'items' end;
+  src jsonb; arch jsonb; ap text; ownr text; ok boolean; merged jsonb; prev text;
+begin
+  select d.data ->> 'rid' into v_rid from public.docs d where d.tenant_id = p_tenant and d.path = 'profiles/' || p_uid;
+  if coalesce(v_rid, '') = '' then return; end if;
+  select d.data into src from public.docs d where d.tenant_id = p_tenant and d.path = p_kind || '/' || p_uid;
+  if src is null then return; end if;
+  ap := p_kind || '_by_rid/' || v_rid;
+  select d.data into arch from public.docs d where d.tenant_id = p_tenant and d.path = ap;
+  ownr := arch ->> 'owner';
+  if arch is null or ownr = p_uid then ok := true;
+  elsif not public.rid_owner_alive(p_tenant, v_rid, ownr) then
+    ok := exists (select 1 from public.members m where m.tenant_id = p_tenant and m.uid::text = p_uid and m.status = 'approved')
+       or exists (select 1 from public.admins a where a.uid::text = p_uid);
+  else ok := false;
+  end if;
+  if not ok then return; end if;
+  if p_kind = 'attendance' then
+    merged := case when arch is not null and coalesce(ownr, '') <> p_uid then coalesce(arch -> 'marks', '{}'::jsonb) || coalesce(src -> 'marks', '{}'::jsonb) else coalesce(src -> 'marks', '{}'::jsonb) end;
+  else
+    merged := case when arch is not null and coalesce(ownr, '') <> p_uid then public.cert_items_merge(arch -> 'items', src -> 'items') else coalesce(src -> 'items', '[]'::jsonb) end;
+  end if;
+  prev := current_setting('app.import', true);
+  perform set_config('app.import', 'on', true);
+  insert into public.docs (tenant_id, path, data)
+    values (p_tenant, ap, jsonb_build_object('rid', v_rid, field, merged, 'owner', p_uid, 'updated', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"')))
+    on conflict (tenant_id, path) do update set data = excluded.data;
+  perform set_config('app.import', coalesce(nullif(prev, ''), 'off'), true);
+end $$;
+
+create or replace function public.trg_mirror_rid() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if current_setting('app.rid_mirror', true) = 'off' then return null; end if;
+  perform public.rid_mirror_doc(new.tenant_id, split_part(new.path, '/', 2), split_part(new.path, '/', 1));
+  return null;
+end $$;
+drop trigger if exists trg_docs_mirror_rid on public.docs;
+create trigger trg_docs_mirror_rid after insert or update on public.docs
+  for each row when (new.path ~ '^(attendance|certs)/[^/]+$') execute function public.trg_mirror_rid();
+
+-- «Отвязать» данные от аккаунта: сохранить за ФИО (владелец = никто) и убрать из аккаунта. Вызывается при удалении и сбросе.
+create or replace function public.detach_user_data(p_uid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare pr record; kind text; field text; src jsonb; arch jsonb; ap text; ownr text; take boolean; merged jsonb; prev text; prevm text;
+begin
+  prev := current_setting('app.import', true); prevm := current_setting('app.rid_mirror', true);
+  perform set_config('app.import', 'on', true); perform set_config('app.rid_mirror', 'off', true);
+  for pr in select d.tenant_id as t, d.data ->> 'rid' as rid from public.docs d where d.path = 'profiles/' || p_uid::text loop
+    if coalesce(pr.rid, '') = '' then continue; end if;
+    foreach kind in array array['attendance', 'certs'] loop
+      field := case kind when 'attendance' then 'marks' else 'items' end;
+      ap := kind || '_by_rid/' || pr.rid;
+      select d.data into src from public.docs d where d.tenant_id = pr.t and d.path = kind || '/' || p_uid::text;
+      select d.data into arch from public.docs d where d.tenant_id = pr.t and d.path = ap;
+      ownr := arch ->> 'owner';
+      take := arch is null or ownr = p_uid::text or not public.rid_owner_alive(pr.t, pr.rid, ownr);
+      if take and src is not null then
+        if kind = 'attendance' then merged := coalesce(arch -> 'marks', '{}'::jsonb) || coalesce(src -> 'marks', '{}'::jsonb);
+        else merged := public.cert_items_merge(arch -> 'items', src -> 'items'); end if;
+        insert into public.docs (tenant_id, path, data)
+          values (pr.t, ap, jsonb_build_object('rid', pr.rid, field, merged, 'owner', null, 'updated', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"')))
+          on conflict (tenant_id, path) do update set data = excluded.data;
+        if kind = 'certs' then
+          delete from public.docs d where d.tenant_id = pr.t and d.path like 'certs/' || p_uid::text || '/img/%'
+            and exists (select 1 from public.docs x where x.tenant_id = pr.t and x.path = 'certs_by_rid/' || pr.rid || '/img/' || split_part(d.path, '/', 4));
+          update public.docs set path = 'certs_by_rid/' || pr.rid || '/img/' || split_part(path, '/', 4)
+            where tenant_id = pr.t and path like 'certs/' || p_uid::text || '/img/%';
+        end if;
+      elsif arch is not null and ownr = p_uid::text then
+        update public.docs set data = data || jsonb_build_object('owner', null) where tenant_id = pr.t and path = ap;
+      end if;
+      delete from public.docs where tenant_id = pr.t and path = kind || '/' || p_uid::text;
+    end loop;
+  end loop;
+  perform set_config('app.import', coalesce(nullif(prev, ''), 'off'), true);
+  perform set_config('app.rid_mirror', coalesce(nullif(prevm, ''), 'on'), true);
+end $$;
+
+-- «Вернуть» данные из хранилища по ФИО в аккаунт (слияние: то, что уже есть в аккаунте, не затирается)
+create or replace function public.restore_rid_data(p_uid uuid) returns jsonb
+language plpgsql security definer set search_path = public as $$
+declare t text; v_rid text; kind text; arch jsonb; cur jsonb; ownr text; ap text; merged jsonb; prev text; prevm text;
+  n_marks int := 0; n_certs int := 0;
+begin
+  select d.tenant_id, d.data ->> 'rid' into t, v_rid from public.docs d where d.path = 'profiles/' || p_uid::text limit 1;
+  if coalesce(v_rid, '') = '' then return jsonb_build_object('restored', false, 'marks', 0, 'certs', 0); end if;
+  prev := current_setting('app.import', true); prevm := current_setting('app.rid_mirror', true);
+  perform set_config('app.import', 'on', true); perform set_config('app.rid_mirror', 'off', true);
+  foreach kind in array array['attendance', 'certs'] loop
+    ap := kind || '_by_rid/' || v_rid;
+    select d.data into arch from public.docs d where d.tenant_id = t and d.path = ap;
+    if arch is null then continue; end if;
+    ownr := arch ->> 'owner';
+    if coalesce(ownr, '') <> p_uid::text and public.rid_owner_alive(t, v_rid, ownr) then continue; end if;
+    select d.data into cur from public.docs d where d.tenant_id = t and d.path = kind || '/' || p_uid::text;
+    if kind = 'attendance' then
+      select count(*) into n_marks from jsonb_object_keys(coalesce(arch -> 'marks', '{}'::jsonb)) k where not (coalesce(cur -> 'marks', '{}'::jsonb) ? k);
+      merged := coalesce(arch -> 'marks', '{}'::jsonb) || coalesce(cur -> 'marks', '{}'::jsonb);
+      if n_marks > 0 or cur is null then
+        insert into public.docs (tenant_id, path, data) values (t, 'attendance/' || p_uid::text, coalesce(cur, '{}'::jsonb) || jsonb_build_object('marks', merged, 'updated', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"')))
+          on conflict (tenant_id, path) do update set data = excluded.data;
+      end if;
+    else
+      select count(*) into n_certs from jsonb_array_elements(coalesce(arch -> 'items', '[]'::jsonb)) o where not exists (select 1 from jsonb_array_elements(coalesce(cur -> 'items', '[]'::jsonb)) c where c.value ->> 'id' = o.value ->> 'id');
+      merged := public.cert_items_merge(arch -> 'items', cur -> 'items');
+      if n_certs > 0 or cur is null then
+        insert into public.docs (tenant_id, path, data) values (t, 'certs/' || p_uid::text, coalesce(cur, '{}'::jsonb) || jsonb_build_object('items', merged))
+          on conflict (tenant_id, path) do update set data = excluded.data;
+      end if;
+      delete from public.docs d where d.tenant_id = t and d.path like 'certs_by_rid/' || v_rid || '/img/%'
+        and exists (select 1 from public.docs x where x.tenant_id = t and x.path = 'certs/' || p_uid::text || '/img/' || split_part(d.path, '/', 4));
+      update public.docs set path = 'certs/' || p_uid::text || '/img/' || split_part(path, '/', 4)
+        where tenant_id = t and path like 'certs_by_rid/' || v_rid || '/img/%';
+    end if;
+    update public.docs set data = data || jsonb_build_object('owner', p_uid::text) where tenant_id = t and path = ap;
+  end loop;
+  perform set_config('app.import', coalesce(nullif(prev, ''), 'off'), true);
+  perform set_config('app.rid_mirror', coalesce(nullif(prevm, ''), 'on'), true);
+  return jsonb_build_object('restored', n_marks + n_certs > 0, 'marks', n_marks, 'certs', n_certs);
+end $$;
+
+-- Когда заявку студента одобряют, ему возвращаются данные его ФИО
+create or replace function public.trg_members_restore() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  perform public.restore_rid_data(new.uid);
+  return null;
+end $$;
+drop trigger if exists trg_members_restore on public.members;
+create trigger trg_members_restore after insert or update of status, role on public.members
+  for each row when (new.status = 'approved' and new.role in ('student', 'admin')) execute function public.trg_members_restore();
+
+-- Вызывается приложением при входе (подстраховка): подтягивает данные ФИО для одобренного участника
+create or replace function public.sync_my_rid_data() returns jsonb
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'Нужно войти в аккаунт'; end if;
+  if not (public.is_member() or public.is_admin()) then return jsonb_build_object('restored', false, 'marks', 0, 'certs', 0); end if;
+  return public.restore_rid_data(auth.uid());
+end $$;
+
+-- Удаление аккаунта, сброс и уборка «хвостов» теперь сначала сохраняют посещаемость и справки за ФИО
+create or replace function public.purge_user_data(p_uid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  perform public.detach_user_data(p_uid);
+  perform set_config('app.import', 'on', true);
+  delete from public.docs d
+    where public.doc_owner(d.path) = p_uid::text
+       or (d.path like 'claims/%' and d.data::text like '%' || p_uid::text || '%');
+  delete from public.chat where thread_uid = p_uid or sender = p_uid;
+  delete from public.news_comments where author = p_uid;
+  delete from public.news_likes where uid = p_uid;
+  update public.news set created_by = null where created_by = p_uid;
+  perform set_config('app.import', 'off', true);
+end $$;
+
+create or replace function public.free_orphan_data() returns int
+language plpgsql security definer set search_path = public as $$
+declare n int; o record;
+begin
+  for o in select distinct public.doc_owner(d.path) as u from public.docs d
+           where coalesce(public.doc_owner(d.path), '') ~ '^[0-9a-f-]{36}$'
+             and not exists (select 1 from auth.users a where a.id::text = public.doc_owner(d.path)) loop
+    perform public.detach_user_data(o.u::uuid);
+  end loop;
+  perform set_config('app.import', 'on', true);
+  with gone as (
+    delete from public.docs d
+    where (d.path like 'claims/%' and coalesce(d.data ->> 'uid', '') ~ '^[0-9a-f-]{36}$'
+           and not exists (select 1 from auth.users u where u.id::text = d.data ->> 'uid'))
+       or (coalesce(public.doc_owner(d.path), '') ~ '^[0-9a-f-]{36}$'
+           and not exists (select 1 from auth.users u where u.id::text = public.doc_owner(d.path)))
+    returning 1
+  ) select count(*) into n from gone;
+  perform set_config('app.import', 'off', true);
+  return n;
+end $$;
+
+create or replace function public.admin_reset_registration(p_uid uuid) returns text
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); v_rid text; st text;
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  if p_uid = auth.uid() or exists (select 1 from public.admins x where x.uid = p_uid) then raise exception 'Старосту сбросить нельзя'; end if;
+  if exists (select 1 from public.teachers x where x.uid = p_uid) then raise exception 'У преподавателя нет фамилии в списке группы'; end if;
+  select d.data ->> 'rid' into v_rid from public.docs d where d.tenant_id = t and d.path = 'profiles/' || p_uid::text;
+  perform public.detach_user_data(p_uid);
+  perform set_config('app.import', 'on', true);
+  delete from public.docs d
+    where d.tenant_id = t
+      and (d.path in ('profiles/' || p_uid::text, 'avatars/' || p_uid::text)
+           or (d.path like 'claims/%' and d.data::text like '%' || p_uid::text || '%'));
+  perform set_config('app.import', 'off', true);
+  select m.status into st from public.members m where m.tenant_id = t and m.uid = p_uid;
+  if st is not null and st <> 'banned' then
+    delete from public.members m where m.tenant_id = t and m.uid = p_uid;
+  end if;
+  return coalesce(v_rid, '');
+end $$;
+
+-- Админ видит отметки удалённых студентов (для статистики, CSV и Google-таблицы)
+create or replace function public.import_attendance_rows() returns table (rid text, key text, mark text, status text)
+language sql stable security definer set search_path = public as $$
+  select x.rid, x.key, x.mark, x.status from (
+    select i.rid, i.key, i.mark, i.status, 0 as ord from public.attendance_import i where i.tenant_id = public.current_tenant()
+    union all
+    select substr(d.path, length('attendance_by_rid/') + 1), k.key, k.value #>> '{}', 'archived', 1
+      from public.docs d cross join lateral jsonb_each(coalesce(d.data -> 'marks', '{}'::jsonb)) k
+      where d.tenant_id = public.current_tenant() and d.path like 'attendance\_by\_rid/%'
+        and not public.rid_owner_alive(d.tenant_id, substr(d.path, length('attendance_by_rid/') + 1), d.data ->> 'owner')
+  ) x where public.is_admin() order by x.ord, length(x.rid), x.rid, x.key
+$$;
+
+-- Полное стирание данных ФИО (по просьбе человека): только админ, только если у ФИО нет живого аккаунта
+create or replace function public.admin_erase_rid_data(p_rid text) returns int
+language plpgsql security definer set search_path = public as $$
+declare t text := public.current_tenant(); n int; ownr text;
+begin
+  if not public.is_admin() then raise exception 'Только староста'; end if;
+  select d.data ->> 'owner' into ownr from public.docs d where d.tenant_id = t and d.path = 'attendance_by_rid/' || p_rid;
+  if public.rid_owner_alive(t, p_rid, ownr) then raise exception 'У этого ФИО есть действующий аккаунт: сначала удалите его во вкладке «Пользователи»'; end if;
+  perform set_config('app.import', 'on', true);
+  with gone as (delete from public.docs d where d.tenant_id = t and (d.path in ('attendance_by_rid/' || p_rid, 'certs_by_rid/' || p_rid) or d.path like 'certs\_by\_rid/' || p_rid || '/img/%') returning 1)
+  select count(*) into n from gone;
+  perform set_config('app.import', 'off', true);
+  return n;
+end $$;
+
+-- ===== ПЕРЕНОС: сохранить за ФИО всё, что есть сейчас =====
+create or replace function public.rid_backfill() returns table (что text, строк int)
+language plpgsql security definer set search_path = public as $$
+declare p record; k text; a int := 0; c int := 0; skipped int := 0; holder text;
+begin
+  for p in select d.tenant_id as t, split_part(d.path, '/', 2) as uid, d.data ->> 'rid' as rid from public.docs d
+           where d.path ~ '^profiles/[^/]+$' and coalesce(d.data ->> 'rid', '') <> '' loop
+    select cl.data ->> 'uid' into holder from public.docs cl where cl.tenant_id = p.t and cl.path = 'claims/' || p.rid;
+    if holder is not null and holder <> p.uid and public.rid_owner_alive(p.t, p.rid, holder) then skipped := skipped + 1; continue; end if;
+    foreach k in array array['attendance', 'certs'] loop
+      perform public.rid_mirror_doc(p.t, p.uid, k);
+    end loop;
+  end loop;
+  select count(*) into a from public.docs where path like 'attendance\_by\_rid/%';
+  select count(*) into c from public.docs where path like 'certs\_by\_rid/%' and path not like 'certs\_by\_rid/%/%';
+  return query values ('Отметки сохранены за ФИО (документов)', a), ('Справки сохранены за ФИО (документов)', c), ('Дубли аккаунтов пропущены', skipped),
+    ('Данные без профиля (владелец не найден)', (select count(*)::int from public.docs d where d.path ~ '^(attendance|certs)/[^/]+$' and not exists (select 1 from public.docs pf where pf.tenant_id = d.tenant_id and pf.path = 'profiles/' || split_part(d.path, '/', 2) and coalesce(pf.data ->> 'rid', '') <> '')));
+end $$;
+
+revoke all on function public.rid_owner_alive(text, text, text), public.cert_items_merge(jsonb, jsonb), public.rid_mirror_doc(text, text, text), public.trg_mirror_rid(), public.detach_user_data(uuid), public.restore_rid_data(uuid), public.trg_members_restore(), public.purge_user_data(uuid), public.free_orphan_data(), public.rid_backfill(), public.admin_erase_rid_data(text) from public, anon, authenticated;
+revoke all on function public.sync_my_rid_data() from public, anon;
+grant execute on function public.sync_my_rid_data(), public.admin_erase_rid_data(text) to authenticated;
+
+select * from public.rid_backfill();
 select public.free_orphan_data();
 
 -- ============================================================
