@@ -588,6 +588,25 @@ const Cloud = (() => {
     });
   }
   /**
+   * Перечитывает занятые фамилии из облака.
+   * @returns {Promise<boolean>} true, если получилось.
+   */
+  C.loadClaims = async () => {
+    try {
+      const {data, error} = await supa.from('docs').select('path,data').like('path', 'claims/%').not('path', 'like', 'claims/%/%');
+      if (error) return false;
+      const m = {};
+      (data || []).forEach(r => {
+        m[r.path.slice(7)] = (r.data || {}).uid || '';
+      });
+      C.claims = m;
+      App.renderSoft();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
    * Следит за занятыми фамилиями.
    */
   function watchClaims() {
@@ -1392,6 +1411,21 @@ const Cloud = (() => {
     C.isStaff = C.isTeacher || C.isCurator || C.isDepartment || C.isParent;
   };
   /**
+   * Просит базу вернуть посещаемость и справки, сохранённые за ФИО этого студента (после пересоздания аккаунта).
+   * Данные подтянутся в профиль при ближайшем обновлении (до 20 секунд).
+   * @returns {Promise<boolean>} true, если данные были возвращены.
+   */
+  C.syncRidData = async () => {
+    try {
+      const {data, error} = await supa.rpc('sync_my_rid_data');
+      if (error || !data || !data.restored) return false;
+      toast('Ваши отметки и справки вернулись по ФИО');
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+  /**
    * Перечитывает свою заявку и роль.
    * @returns {Promise<boolean>} true, если условие выполнено.
    */
@@ -1402,6 +1436,10 @@ const Cloud = (() => {
       C.member = data;
       C.memberKnown = true;
       C.applyRole();
+      if (C.ridSyncedFor !== C.uid && C.profile && C.profile.rid && (C.realAdmin || (data && data.status === 'approved'))) {
+        C.ridSyncedFor = C.uid;
+        C.syncRidData();
+      }
       return true;
     } catch (error) {
       return false;

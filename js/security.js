@@ -80,17 +80,18 @@ const Users = {
    * @returns {Promise<Object>} Объект.
    */
   async act(name, params) {
-    const {error} = await supa.rpc(name, params);
+    const {data, error} = await supa.rpc(name, params);
     if (error)
       return {
         ok: false,
         error: error.message
       };
-    delete Cloud.adm.profiles[params.p_uid];
+    if (params.p_uid) delete Cloud.adm.profiles[params.p_uid];
     await Promise.all([Cloud.loadUsers(true), Cloud.loadRequests(true)]);
     App.render();
     return {
-      ok: true
+      ok: true,
+      data
     };
   }
 };
@@ -149,6 +150,9 @@ function viewUsers() {
         : (u.status === 'banned'
             ? '<button class="btn sm" data-action="user-unban" data-uid="' + u.uid + '">Разбанить</button>'
             : '<button class="btn sm" data-action="user-ban" data-uid="' + u.uid + '">Забанить</button>') +
+          (u.role === 'teacher'
+            ? ''
+            : '<button class="btn sm" data-action="user-reset" data-uid="' + u.uid + '" title="Освободить фамилию и сбросить кабинет: человек сможет выбрать фамилию заново">Разрешить перерегистрацию</button>') +
           '<button class="btn sm danger" data-action="user-delete" data-uid="' +
           u.uid +
           '">Удалить</button>';
@@ -179,7 +183,7 @@ function viewUsers() {
     );
   };
   return (
-    '<div class="page-head"><div><h1>Пользователи</h1><p>Все аккаунты: кто и с какой почты зарегистрировался. Забанить закрывает доступ сразу, удалить убирает аккаунт и все его данные.</p></div><div class="head-actions"><button class="btn" data-action="users-refresh">Обновить</button></div></div>' +
+    '<div class="page-head"><div><h1>Пользователи</h1><p>Все аккаунты: кто и с какой почты зарегистрировался. Забанить закрывает доступ сразу, удалить убирает аккаунт и личные данные, а фамилия освобождается. Посещаемость и справки сохраняются за ФИО и возвращаются при новой регистрации. «Разрешить перерегистрацию» освобождает фамилию, но оставляет аккаунт.</p></div><div class="head-actions"><button class="btn" data-action="users-free" title="Освободить фамилии аккаунтов, удалённых вне приложения">Освободить фамилии удалённых</button><button class="btn" data-action="users-refresh">Обновить</button></div></div>' +
     '<div class="fchips">' +
     chip('all', 'Все', all.length) +
     chip('pending', 'На проверке', all.filter(u => ['pending', 'none'].indexOf(u.status) >= 0).length) +

@@ -14,6 +14,8 @@ const RO_ACTIONS = new Set(['gs-open', 'gs-save', 'gs-test', 'gs-send', 'gs-quic
   'user-ban',
   'user-unban',
   'user-delete',
+  'user-reset',
+  'users-free',
   'users-refresh',
   'gcode-new',
   'gcode-off',

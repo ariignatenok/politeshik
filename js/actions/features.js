@@ -578,7 +578,7 @@ Object.assign(A, {
       !(await UI.confirm(
         'Удалить аккаунт ' +
           user.email +
-          ' и все его данные? Эту почту можно будет зарегистрировать заново, а ФИО освободится (занять его снова можно только с кодом группы).',
+          ' и личные данные? Эту почту можно будет зарегистрировать заново, а ФИО освободится (занять его снова можно только с кодом группы). Посещаемость и справки сохранятся за ФИО и вернутся, когда человек зарегистрируется заново и вы одобрите заявку.',
         'Удалить'
       ))
     )
@@ -586,7 +586,41 @@ Object.assign(A, {
     const result = await Users.act('admin_delete_user', {
       p_uid: user.uid
     });
-    toast(result.ok ? 'Аккаунт удалён' : 'Не удалось: ' + result.error);
+    if (result.ok) Object.keys(Cloud.claims).forEach(k => {if (Cloud.claims[k] === user.uid) delete Cloud.claims[k];});
+    if (result.ok) await Cloud.loadClaims();
+    toast(result.ok ? 'Аккаунт удалён' + (user.rid ? ', фамилия свободна, отметки и справки сохранены за ФИО' : '') : 'Не удалось: ' + result.error);
+  },
+  /**
+   * Освобождает фамилию и сбрасывает кабинет человека, не удаляя его аккаунт.
+   * @param {HTMLElement} el Кнопка с data-uid.
+   */
+  async 'user-reset'(el) {
+    const user = Cloud.users.find(u => u.uid === el.dataset.uid);
+    if (
+      !user ||
+      !(await UI.confirm(
+        'Разрешить перерегистрацию для ' +
+          user.email +
+          '? Фамилия освободится, личный кабинет и заявка сбросятся, аккаунт (почта) останется. Человек сможет войти и выбрать фамилию заново (нужен код группы) или зарегистрироваться с другой почты. Посещаемость и справки сохранятся за ФИО и вернутся после новой регистрации и вашего одобрения.' +
+          (user.status === 'banned' ? ' Аккаунт забанен: бан сохранится.' : ''),
+        'Разрешить'
+      ))
+    )
+      return;
+    const result = await Users.act('admin_reset_registration', {
+      p_uid: user.uid
+    });
+    if (result.ok) Object.keys(Cloud.claims).forEach(k => {if (Cloud.claims[k] === user.uid) delete Cloud.claims[k];});
+    if (result.ok) await Cloud.loadClaims();
+    toast(result.ok ? 'Готово: фамилия свободна, человек может зарегистрироваться заново' : 'Не удалось: ' + result.error);
+  },
+  /**
+   * Освобождает фамилии аккаунтов, которые удалены вне приложения (например, в панели Supabase).
+   */
+  async 'users-free'() {
+    const result = await Users.act('admin_free_orphans', {});
+    if (result.ok) await Cloud.loadClaims();
+    toast(result.ok ? (result.data ? 'Освобождено записей: ' + result.data : 'Лишних записей нет: все фамилии свободны или заняты живыми аккаунтами') : 'Не удалось: ' + result.error);
   },
   /**
    * Генерирует новый код группы.
