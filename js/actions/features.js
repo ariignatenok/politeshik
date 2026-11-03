@@ -922,7 +922,7 @@ Object.assign(A, {
     if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
     if (res.opaque) return GoogleSync.say('Запрос отправлен, но браузер не показывает ответ Google. Откройте таблицу и отправьте отметки.');
     const ver = res.data && res.data.version;
-    GoogleSync.say('Связь есть' + (ver ? ', версия скрипта ' + U.esc(ver) : '') + '. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')) + (ver === 'v2' ? '' : '<br><b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».'));
+    GoogleSync.say('Связь есть' + (ver ? ', версия скрипта ' + U.esc(ver) : '') + '. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')) + (ver === 'v3' ? '' : '<br><b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».'));
   },
   /**
    * Отправляет отметки в Google Таблицу из окна синхронизации.
@@ -939,15 +939,24 @@ Object.assign(A, {
     await GoogleSync.run(el, true);
   },
   /**
+   * Скачивает журнал выбранного месяца в CSV (для Excel).
+   * @param {HTMLElement} el Кнопка.
+   */
+  async 'gs-xls'(el) {
+    await GoogleSync.xls(el);
+  },
+  /**
    * Быстрая отправка в Google с кнопки журнала.
    */
   async 'gs-quick'() {
-    if (!GoogleSync.isUrl(GoogleSync.config().url)) return GoogleSync.open();
-    toast('Отправляю в Google…');
-    const records = await GoogleSync.collect(ATT_START, U.iso(U.today()));
-    if (!records.length) return toast('Нет отметок для отправки');
-    const res = await GoogleSync.send(records);
-    toast(res.ok ? (res.opaque ? 'Отправлено в Google: ' + res.total : 'В Google записано ' + res.written + ' из ' + res.total + (res.skippedCount ? ', не нашлось места: ' + res.skippedCount : '')) : 'Google: ' + res.error);
+    const cfg = GoogleSync.config();
+    if (!GoogleSync.isUrl(cfg.url)) return GoogleSync.open();
+    const ym = cfg.ym || U.iso(U.today()).slice(0, 7);
+    toast('Отправляю в Google: ' + GoogleSync.monthTitle(ym) + '…');
+    const records = await GoogleSync.collect(ym < ATT_START.slice(0, 7) ? ATT_START : ym + '-01', monthEnd(ym));
+    if (!records.length) return toast('Нет отметок за ' + GoogleSync.monthTitle(ym));
+    const res = await GoogleSync.send(records, null, {meta: GoogleSync.meta(ym, cfg.group)});
+    toast(res.ok ? (res.opaque ? 'Отправлено в Google: ' + res.total : 'В Google (' + GoogleSync.monthTitle(ym) + ') записано ' + res.written + ' из ' + res.total + (res.skippedCount ? ', не нашлось места: ' + res.skippedCount : '')) : 'Google: ' + res.error);
     App.renderSoft();
   }
 });

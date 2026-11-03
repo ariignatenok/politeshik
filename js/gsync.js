@@ -16,7 +16,7 @@ const GoogleSync = {
    * @returns {Object} url, token, auto, last.
    */
   config() {
-    const base = {url: '', token: '', auto: false, last: null};
+    const base = {url: '', token: '', auto: false, last: null, ym: '', group: GROUP_NAME, groups: [GROUP_NAME]};
     try {
       return Object.assign(base, JSON.parse(window.localStorage.getItem(GoogleSync.KEY) || '{}'));
     } catch (error) {
@@ -97,6 +97,71 @@ const GoogleSync = {
   },
 
   /**
+   * Возвращает список месяцев для выбора: с октября 2026 до июня 2027 (и дальше, если уже позже).
+   * @returns {Array<Object>} Объекты {ym, label}.
+   */
+  monthList() {
+    const cur = U.iso(U.today()).slice(0, 7),
+      last = cur > '2027-06' ? cur : '2027-06',
+      out = [];
+    for (let ym = ATT_START.slice(0, 7); ym <= last; ym = GoogleSync.nextMonth(ym)) out.push({ym, label: GoogleSync.monthTitle(ym)});
+    return out;
+  },
+
+  /**
+   * Возвращает название месяца с годом без «г.», например «Ноябрь 2026».
+   * @param {string} ym Месяц ГГГГ-ММ.
+   * @returns {string} Строка.
+   */
+  monthTitle(ym) {
+    const w = monthWord(ym);
+    return w.charAt(0).toUpperCase() + w.slice(1) + ' ' + ym.slice(0, 4);
+  },
+
+  /**
+   * Возвращает следующий месяц.
+   * @param {string} ym Месяц ГГГГ-ММ.
+   * @returns {string} Месяц ГГГГ-ММ.
+   */
+  nextMonth(ym) {
+    const p = ym.split('-').map(Number);
+    return U.iso(new Date(p[0], p[1], 1)).slice(0, 7);
+  },
+
+  /**
+   * Делает параметры месяца и группы для скрипта: {month: «Ноябрь», ym: «2026-11», group}.
+   * @param {string} ym Месяц ГГГГ-ММ.
+   * @param {string} group Номер группы.
+   * @returns {Object} Параметры.
+   */
+  meta(ym, group) {
+    const w = monthWord(ym);
+    return {month: w.charAt(0).toUpperCase() + w.slice(1), ym, group: group || GROUP_NAME};
+  },
+
+  /**
+   * Проверяет номер группы (например 25290909/3091, у заочных с буквой «з» впереди).
+   * @param {string} g Номер.
+   * @returns {boolean} true, если верный.
+   */
+  isGroup(g) {
+    return /^з?\d{8}\/\d{4}$/.test(String(g || '').trim());
+  },
+
+  /**
+   * Возвращает выбранные в окне месяц и группу (или сохранённые раньше).
+   * @returns {Object} {ym, group}.
+   */
+  picked() {
+    const cfg = GoogleSync.config(),
+      val = id => (document.getElementById(id) || {}).value;
+    return {
+      ym: val('gs-month') || cfg.ym || U.iso(U.today()).slice(0, 7),
+      group: (val('gs-group') || cfg.group || GROUP_NAME).trim()
+    };
+  },
+
+  /**
    * Проверяет связь со скриптом.
    * @returns {Promise<Object>} Результат.
    */
@@ -115,19 +180,26 @@ const GoogleSync = {
    */
   async send(records, progress, opts) {
     const cfg = GoogleSync.config(),
-      dry = !!(opts && opts.dry);
+      dry = !!(opts && opts.dry),
+      meta = (opts && opts.meta) || {};
     if (!GoogleSync.isUrl(cfg.url)) return {ok: false, error: 'Ссылка на скрипт не указана'};
-    const out = {ok: true, dry, written: 0, skipped: [], skippedCount: 0, reasons: {}, sample: [], version: '', opaque: false, total: records.length};
+    const out = {ok: true, dry, written: 0, skipped: [], skippedCount: 0, reasons: {}, sample: [], warnings: [], warningCount: 0, addedColumns: 0, sheet: '', created: false, willCreate: false, version: '', opaque: false, total: records.length};
     for (let i = 0; i < records.length; i += 120) {
       const part = records.slice(i, i + 120),
-        res = await GoogleSync.post(cfg, {records: part, dry});
+        res = await GoogleSync.post(cfg, Object.assign({records: part, dry}, meta));
       if (!res.ok) return Object.assign(out, {ok: false, error: res.error});
       if (res.opaque) out.opaque = true;
       const d = res.data || {};
       out.version = d.version || out.version;
+      out.sheet = d.sheet || out.sheet;
+      out.created = out.created || !!d.created;
+      out.willCreate = out.willCreate || !!d.willCreate;
       out.written += d.written || 0;
+      out.addedColumns += d.addedColumns || 0;
       out.skipped = out.skipped.concat(d.skipped || []);
       out.skippedCount += d.skippedCount || (d.skipped || []).length;
+      out.warningCount += d.warningCount || (d.warnings || []).length;
+      if (!out.warnings.length) out.warnings = d.warnings || [];
       Object.keys(d.reasons || {}).forEach(k => {
         out.reasons[k] = (out.reasons[k] || 0) + d.reasons[k];
       });
@@ -147,9 +219,15 @@ const GoogleSync = {
     if (res.opaque)
       return 'Отправлено: ' + res.total + '. Браузер не показывает ответ Google, откройте таблицу и проверьте ячейки.';
     const lines = [(res.dry ? 'Проверка, в таблицу ничего не записано: подойдёт ' : 'Записано в таблицу: ') + res.written + ' из ' + res.total];
-    if (res.version !== 'v2') lines.push('<b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».');
+    if (res.sheet)
+      lines.push('Лист: «' + U.esc(res.sheet) + '»' + (res.created ? ' (создан автоматически)' : res.willCreate ? ' (будет создан при отправке)' : '') + (res.addedColumns ? ', добавлено колонок: ' + res.addedColumns : ''));
+    if (res.version !== 'v3') lines.push('<b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».');
     const why = Object.keys(res.reasons || {}).map(k => k + ' (' + res.reasons[k] + ')');
     if (res.skippedCount) lines.push('Не нашлось места: ' + res.skippedCount + '. Причины: ' + U.esc(why.slice(0, 4).join('; ')));
+    if (res.warningCount) {
+      lines.push('Предупреждений: ' + res.warningCount + ' (записано, но проверьте):');
+      (res.warnings || []).slice(0, 3).forEach(x => lines.push(U.esc(x.student + ', ' + x.date.split('-').reverse().join('.') + ': ' + x.text)));
+    }
     (res.sample || []).slice(0, 4).forEach(s => {
       lines.push(
         U.esc(s.student + ', ' + s.date.split('-').reverse().join('.') + ', пара ' + s.pair + ' «' + s.subject + '» → «' + s.value + '» в ячейку ' + s.cell + ' (колонка «' + s.column + '», день «' + s.day + '», строка «' + s.row + '»)')
@@ -165,17 +243,43 @@ const GoogleSync = {
    */
   async run(el, dry) {
     GoogleSync.readForm();
-    const scope = (document.getElementById('gs-scope') || {}).value === 'month' ? 'month' : 'all',
-      rg = scope === 'month' ? [ui.attMonth + '-01', monthEnd(ui.attMonth)] : [ATT_START, U.iso(U.today())];
+    const pk = GoogleSync.picked();
+    if (!GoogleSync.isGroup(pk.group)) return GoogleSync.say('Номер группы должен быть вида 25290909/3091', true);
+    const rg = [pk.ym < ATT_START.slice(0, 7) ? ATT_START : pk.ym + '-01', monthEnd(pk.ym)];
     el.disabled = true;
     try {
-      GoogleSync.say('Собираю отметки…');
+      GoogleSync.say('Собираю отметки за ' + U.esc(GoogleSync.monthTitle(pk.ym)) + '…');
       const records = await GoogleSync.collect(rg[0], rg[1]);
-      if (!records.length) return GoogleSync.say('Нет отметок за этот период', true);
-      const res = await GoogleSync.send(records, (done, all) => GoogleSync.say((dry ? 'Проверено ' : 'Отправлено ') + done + ' из ' + all + '…'), {dry});
+      if (!records.length) return GoogleSync.say('Нет отметок за ' + U.esc(GoogleSync.monthTitle(pk.ym)), true);
+      const res = await GoogleSync.send(records, (done, all) => GoogleSync.say((dry ? 'Проверено ' : 'Отправлено ') + done + ' из ' + all + '…'), {dry, meta: GoogleSync.meta(pk.ym, pk.group)});
       if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
       GoogleSync.say(GoogleSync.summary(res), res.written === 0 && !res.opaque);
       if (!dry) App.renderSoft();
+    } finally {
+      el.disabled = false;
+    }
+  },
+
+  /**
+   * Скачивает журнал выбранного месяца файлом CSV (открывается в Excel).
+   * @param {HTMLElement} el Кнопка.
+   */
+  async xls(el) {
+    GoogleSync.readForm();
+    const pk = GoogleSync.picked(),
+      rg = [pk.ym < ATT_START.slice(0, 7) ? ATT_START : pk.ym + '-01', monthEnd(pk.ym)];
+    el.disabled = true;
+    try {
+      await AttReport.load(true);
+      const items = AttReport.items(rg[0], rg[1]);
+      if (!items.length) return GoogleSync.say('Нет отметок за ' + U.esc(GoogleSync.monthTitle(pk.ym)), true);
+      await Cloud.dl.save({
+        filename: 'politeshik-zhurnal-' + pk.group.replace(/[^0-9з]+/g, '-') + '-' + pk.ym + '.csv',
+        data: AttReport.csv(items)
+      });
+      GoogleSync.say('Файл за ' + U.esc(GoogleSync.monthTitle(pk.ym)) + ' сохранён (' + items.length + ' строк). Откройте его в Excel: русские буквы и колонки отобразятся сразу.');
+    } catch (error) {
+      GoogleSync.say('Не удалось сохранить файл', true);
     } finally {
       el.disabled = false;
     }
@@ -202,9 +306,15 @@ const GoogleSync = {
     GoogleSync.queue = GoogleSync.queue.concat(records);
     clearTimeout(GoogleSync.timer);
     GoogleSync.timer = setTimeout(async () => {
-      const batch = GoogleSync.queue.splice(0);
-      const res = await GoogleSync.send(batch);
-      if (!res.ok) toast('Google: не удалось отправить отметки. Нажмите «Отправить в Google» позже');
+      const batch = GoogleSync.queue.splice(0),
+        byMonth = {};
+      batch.forEach(r => {
+        (byMonth[r.date.slice(0, 7)] = byMonth[r.date.slice(0, 7)] || []).push(r);
+      });
+      for (const ym of Object.keys(byMonth).sort()) {
+        const res = await GoogleSync.send(byMonth[ym], null, {meta: GoogleSync.meta(ym, GoogleSync.config().group)});
+        if (!res.ok) return toast('Google: не удалось отправить отметки. Нажмите «Отправить в Google» позже');
+      }
     }, 1500);
   },
 
@@ -267,6 +377,7 @@ const GoogleSync = {
    */
   open() {
     const cfg = GoogleSync.config(),
+      pickedYm = cfg.ym || U.iso(U.today()).slice(0, 7),
       f = (label, html) => '<label class="field"><span>' + label + '</span>' + html + '</label>';
     UI.open(
       'Синхронизация с Google Таблицей',
@@ -278,8 +389,10 @@ const GoogleSync = {
         (cfg.auto ? ' checked' : '') +
         '> Отправлять автоматически, когда староста ставит отметку или вносит пары из журнала</label>' +
         '<div class="head-actions" style="margin:8px 0 14px"><button class="btn primary" data-action="gs-save">Сохранить</button><button class="btn" data-action="gs-test">Проверить связь</button></div>' +
-        f('Что отправить', '<select class="input" id="gs-scope"><option value="all">Весь период с 01.10.2026</option><option value="month">Месяц, открытый в журнале</option></select>') +
-        '<div class="head-actions" style="margin-bottom:6px"><button class="btn" data-action="gs-dry">Проверить без записи</button></div>' +
+        f('Выберите месяц', '<select class="input" id="gs-month">' + GoogleSync.monthList().map(m => '<option value="' + m.ym + '"' + (m.ym === pickedYm ? ' selected' : '') + '>' + U.esc(m.label) + '</option>').join('') + '</select>') +
+        f('Выберите группу', '<input class="input" id="gs-group" list="gs-groups" value="' + U.esc(cfg.group || GROUP_NAME) + '" placeholder="25290909/3091" autocomplete="off"><datalist id="gs-groups">' + (cfg.groups || [GROUP_NAME]).map(x => '<option value="' + U.esc(x) + '"></option>').join('') + '</datalist>') +
+        '<p class="md-help">В таблицу уйдут отметки только за выбранный месяц, в лист с его названием (если листа нет, он создастся сам). Номер группы передаётся в скрипт; данные берутся из вашей группы.</p>' +
+        '<div class="head-actions" style="margin-bottom:6px"><button class="btn" data-action="gs-dry">Проверить без записи</button><button class="btn" data-action="gs-xls">' + ICONS.arrowDown + ' Скачать журнал в Excel</button></div>' +
         '<button class="btn primary big" data-action="gs-send">Отправить в Google</button>' +
         '<div id="gs-status" class="md-help" style="margin-top:10px"></div></div>',
       {noFocus: true}
@@ -297,6 +410,17 @@ const GoogleSync = {
   },
 
   /**
+   * Возвращает список сохранённых групп с добавленной новой (если номер верный).
+   * @param {string} g Номер группы.
+   * @returns {Array<string>} Список.
+   */
+  groupsWith(g) {
+    const list = (GoogleSync.config().groups || [GROUP_NAME]).slice();
+    if (GoogleSync.isGroup(g) && list.indexOf(g) < 0) list.push(g);
+    return list.slice(-20);
+  },
+
+  /**
    * Читает поля окна и сохраняет настройки.
    * @returns {Object} Сохранённые настройки.
    */
@@ -305,7 +429,10 @@ const GoogleSync = {
     return GoogleSync.save({
       url: val('gs-url').trim(),
       token: val('gs-token').trim(),
-      auto: !!(document.getElementById('gs-auto') || {}).checked
+      auto: !!(document.getElementById('gs-auto') || {}).checked,
+      ym: val('gs-month') || GoogleSync.config().ym,
+      group: val('gs-group').trim() || GoogleSync.config().group,
+      groups: GoogleSync.groupsWith(val('gs-group').trim())
     });
   }
 };
