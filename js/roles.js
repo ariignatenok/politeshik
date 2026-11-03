@@ -102,6 +102,47 @@ const Roles = {
     return !member || (member.status === 'approved' && (member.role === 'student' || member.role === 'admin'));
   },
   /**
+   * Собирает студентов, вошедших в приложение: один человек (одно ФИО) = одна запись, даже если у него два аккаунта.
+   * Основным берётся аккаунт, который держит ФИО; отметки и справки лишних аккаунтов добавляются, основного приоритетнее.
+   * @returns {Array<Object>} Объекты {id (основной аккаунт), ids (все аккаунты), rid, profile, marks, certs}.
+   */
+  people() {
+    const P = Cloud.adm.profiles || {},
+      byRid = {};
+    Object.keys(P)
+      .filter(id => Roles.countsAsStudent(id))
+      .forEach(id => {
+        (byRid[P[id].rid] = byRid[P[id].rid] || []).push(id);
+      });
+    const marksOf = id => ((Cloud.adm.att || {})[id] || {}).marks || {},
+      certsOf = id => ((Cloud.adm.certs || {})[id] || {}).items || [];
+    return Object.keys(byRid).map(rid => {
+      const ids = byRid[rid],
+        claim = (Cloud.claims || {})[rid],
+        primary =
+          ids.indexOf(claim) >= 0
+            ? claim
+            : ids.find(id => Cloud.adminUids && Cloud.adminUids.has(id)) ||
+              ids.slice().sort((a, b) => Object.keys(marksOf(b)).length - Object.keys(marksOf(a)).length)[0],
+        marks = {},
+        seen = {},
+        certs = [];
+      ids
+        .filter(id => id !== primary)
+        .concat([primary])
+        .forEach(id => Object.assign(marks, marksOf(id)));
+      [primary].concat(ids.filter(id => id !== primary)).forEach(id =>
+        certsOf(id).forEach(c => {
+          const key = c.id || JSON.stringify(c);
+          if (seen[key]) return;
+          seen[key] = true;
+          certs.push(c);
+        })
+      );
+      return {id: primary, ids, rid, profile: P[primary], marks, certs};
+    });
+  },
+  /**
    * Возвращает фамилию вошедшего (первое слово имени).
    * @returns {string} Строка.
    */

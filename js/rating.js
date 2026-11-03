@@ -26,17 +26,15 @@ const Rating = {
    * @returns {Array<Object>} Массив.
    */
   rows(p) {
-    const P = Cloud.adm.profiles,
-      today = U.iso(U.today()),
+    const today = U.iso(U.today()),
       end = p.to > today ? today : p.to,
       out = [];
-    Object.keys(P).forEach(uid => {
-      const pr = P[uid],
+    Roles.people().forEach(x => {
+      const uid = x.id,
+        pr = x.profile,
         r = ROSTER_BY_ID[pr.rid];
       if (!r || r.flag || r.admin) return;
-      const marks = (Cloud.adm.att[uid] || {}).marks || {},
-        certs = (Cloud.adm.certs[uid] || {}).items || [];
-      const st = Att.stats(marks, certs, pr.subgroup, p.from, end),
+      const st = Att.stats(x.marks, x.certs, pr.subgroup, p.from, end),
         att = st.pct == null ? 0 : st.pct;
       const stt = pr.stats || {},
         cards = stt.month === p.from.slice(0, 7) ? Math.min(100, stt.cardsMonth || 0) : 0;

@@ -17,24 +17,20 @@ function fmtAgo(iso) {
  * @returns {Array<Object>} Массив.
  */
 function enteredRows() {
-  const P = Cloud.adm.profiles,
-    rg = attRange();
-  return Object.keys(P)
-    .filter(id => Roles.countsAsStudent(id))
-    .map(id => {
-      const p = Object.assign({}, P[id]),
-        marks = (Cloud.adm.att[id] || {}).marks || {},
-        certs = (Cloud.adm.certs[id] || {}).items || [];
-      if (ROSTER_BY_ID[p.rid]) p.subgroup = ROSTER_BY_ID[p.rid].sub;
-      return {
-        id,
-        p,
-        r: ROSTER_BY_ID[p.rid] || null,
-        certs,
-        marks,
-        st: Att.stats(marks, certs, p.subgroup, rg[0], rg[1])
-      };
-    });
+  const rg = attRange();
+  return Roles.people().map(x => {
+    const p = Object.assign({}, x.profile);
+    if (ROSTER_BY_ID[p.rid]) p.subgroup = ROSTER_BY_ID[p.rid].sub;
+    return {
+      id: x.id,
+      p,
+      r: ROSTER_BY_ID[p.rid] || null,
+      certs: x.certs,
+      marks: x.marks,
+      dupCount: x.ids.length,
+      st: Att.stats(x.marks, x.certs, p.subgroup, rg[0], rg[1])
+    };
+  });
 }
 /**
  * Возвращает вошедших студентов в порядке списка группы.
@@ -58,7 +54,7 @@ function rosterRows() {
   const out = ROSTER.map(r => ({
     r,
     e: (by[r.id] || [])[0] || null,
-    dup: (by[r.id] || []).length > 1
+    dup: !!(by[r.id] || [])[0] && (by[r.id][0].dupCount > 1 || by[r.id].length > 1)
   }));
   ent
     .filter(e => !e.r)
