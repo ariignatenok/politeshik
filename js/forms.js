@@ -380,7 +380,7 @@ const Forms = {
   prize(form) {
     const text = val(form, 'prize').trim();
     if (!text) return toast('Впишите приз');
-    Rating.setPrize(Rating.periods()[ui.ratePeriod || 'month'].key, text);
+    Rating.setPrize(Rating.periods().month.key, text);
     App.render();
     toast('Приз назначен: ' + text);
   },

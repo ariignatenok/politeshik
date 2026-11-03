@@ -6,32 +6,17 @@ const RATING_W = {
 };
 const Rating = {
   /**
-   * Описывает периоды рейтинга: месяц, семестр, всё время.
-   * @returns {Object} Объект.
+   * Описывает период рейтинга: только текущий календарный месяц (1-го числа таблица начинается с нуля).
+   * @returns {Object} Объект с ключом month.
    */
   periods() {
-    const t = U.today(),
-      ym = U.iso(t).slice(0, 7),
-      y = t.getFullYear(),
-      first = t.getMonth() < 6;
+    const ym = U.iso(U.today()).slice(0, 7);
     return {
       month: {
         key: 'month:' + ym,
         label: monthName(ym),
         from: ym + '-01',
         to: monthEnd(ym)
-      },
-      semester: {
-        key: 'sem:' + y + '-' + (first ? 2 : 1),
-        label: (first ? 'Весенний' : 'Осенний') + ' семестр ' + y,
-        from: first ? y + '-01-01' : y + '-09-01',
-        to: first ? y + '-06-30' : y + '-12-31'
-      },
-      all: {
-        key: 'all',
-        label: 'Всё время',
-        from: ATT_START,
-        to: '9999-12-31'
       }
     };
   },
@@ -53,7 +38,8 @@ const Rating = {
         certs = (Cloud.adm.certs[uid] || {}).items || [];
       const st = Att.stats(marks, certs, pr.subgroup, p.from, end),
         att = st.pct == null ? 0 : st.pct;
-      const cards = Math.min(100, (pr.stats || {}).cards || 0);
+      const stt = pr.stats || {},
+        cards = stt.month === p.from.slice(0, 7) ? Math.min(100, stt.cardsMonth || 0) : 0;
       const score = Math.round((RATING_W.att * att + RATING_W.cards * cards) * 10) / 10;
       out.push({
         uid,
@@ -78,10 +64,11 @@ const Rating = {
   compute(force) {
     if (!Cloud.isAdmin || !Cloud.admReady || Cloud.status !== 'online') return false;
     const old = Cloud.ratings || {},
-      now = new Date();
-    if (!force && old.updated && now - new Date(old.updated) < 36e5) return false;
-    const per = Rating.periods(),
-      doc = {
+      now = new Date(),
+      per = Rating.periods(),
+      rolled = !(old.periods && old.periods.month && old.periods.month.key === per.month.key);
+    if (!force && !rolled && old.updated && now - new Date(old.updated) < 36e5) return false;
+    const doc = {
         updated: now.toISOString(),
         periods: {},
         prizes: Object.assign({}, old.prizes || {}),

@@ -112,7 +112,7 @@ function viewJournalSelf() {
     ICONS.playRight +
     '</button></div></div>' +
     statCards(st) +
-    absCard(Att.absHours(marks, certs, sub)) +
+    absCardOf(marks, certs, sub, Att.limitMonth()) +
     (days.length
       ? '<div class="jwrap"><table class="jt"><thead><tr><th class="c1">Я</th>' +
         head +
@@ -162,7 +162,7 @@ function viewJournal(asTeacher) {
     .filter(x => x.e)
     .map(x => ({
       x,
-      h: Att.absHours(x.e.marks, x.e.certs, x.e.p.subgroup)
+      h: Att.absHours(x.e.marks, x.e.certs, x.e.p.subgroup, Att.limitMonth())
     }));
   const redL = zl.filter(y => Att.zone(y.h).cls === 'red'),
     warnL = zl.filter(y => Att.zone(y.h).cls === 'warn');
@@ -194,13 +194,13 @@ function viewJournal(asTeacher) {
         );
       })
       .join('') +
-    '<th>п</th><th>о</th><th>н</th><th>спр.</th><th>%</th><th title="Пропуски без уважительной причины с 01.10.2026, лимит 24 ч">без ув., ч</th></tr>';
+    '<th>п</th><th>о</th><th>н</th><th>спр.</th><th>%</th><th title="Пропуски без уважительной причины за выбранный месяц, лимит 24 ч в месяц">без ув., ч</th></tr>';
   const body = rows
     .map(x => {
       const e = x.e,
         st = calc(x),
         dim = x.r.flag ? 'dimrow' : '',
-        hz = e ? Att.absHours(e.marks, e.certs, e.p.subgroup) : null,
+        hz = e ? Att.absHours(e.marks, e.certs, e.p.subgroup, Att.limitMonth()) : null,
         zz = hz == null ? null : Att.zone(hz);
       return (
         '<tr class="' +

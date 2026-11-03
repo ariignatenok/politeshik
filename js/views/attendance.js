@@ -264,12 +264,15 @@ const attRange = () => {
   return [ui.attMonth + '-01', monthEnd(ui.attMonth)];
 };
 /**
- * Строит карточку лимита пропусков.
+ * Строит карточку лимита пропусков за месяц.
  * @param {number} h Часы пропусков.
+ * @param {string} [ym] Месяц ГГГГ-ММ; по умолчанию текущий.
  * @returns {string} HTML.
  */
-function absCard(h) {
-  const z = Att.zone(h),
+function absCard(h, ym) {
+  const nowM = U.iso(U.today()).slice(0, 7),
+    m = ym || nowM,
+    z = Att.zone(h),
     pct = Math.min(100, Math.round((h * 100) / ABS_LIMIT));
   const msg =
     z.cls === 'red'
@@ -280,11 +283,17 @@ function absCard(h) {
   return (
     '<div class="abs abs-' +
     z.cls +
-    '"><div class="abs-top"><div><b>Пропуски без уважительной причины</b><small>можно до ' +
+    '"><div class="abs-top"><div><b>Лимит пропусков за ' +
+    monthWord(m) +
+    ': ' +
+    h +
+    ' из ' +
     ABS_LIMIT +
-    ' ч (1 пара = ' +
+    ' часов</b><small>Пропуски без уважительной причины · 1 пара = ' +
     PAIR_HOURS +
-    ' ч) · считаю с 01.10.2026</small></div><div class="abs-num">' +
+    ' ч · ' +
+    (m === nowM ? '1-го числа лимит обнуляется и считается заново' : 'это прошедший месяц') +
+    '</small></div><div class="abs-num">' +
     h +
     ' / ' +
     ABS_LIMIT +
@@ -294,6 +303,18 @@ function absCard(h) {
     msg +
     '</p></div>'
   );
+}
+/**
+ * Строит карточку лимита пропусков студента за месяц.
+ * @param {Object<string,string>} marks Отметки.
+ * @param {Array<Object>} certs Справки.
+ * @param {string} sub Подгруппа.
+ * @param {string} [ym] Месяц ГГГГ-ММ; по умолчанию текущий.
+ * @returns {string} HTML.
+ */
+function absCardOf(marks, certs, sub, ym) {
+  const m = ym || U.iso(U.today()).slice(0, 7);
+  return absCard(Att.absHours(marks, certs, sub, m), m);
 }
 /**
  * Проверяет, закрыта ли отметка от правки студентом.
@@ -370,7 +391,7 @@ function viewAttendance() {
           : '') +
     attDayHtml(date, marks, certs, sub, null, locked) +
     '</section>' +
-    absCard(Att.absHours(marks, certs, sub)) +
+    absCardOf(marks, certs, sub, Att.limitMonth()) +
     '<div class="sec-title"><h2>Моя статистика</h2>' +
     periodControls() +
     '</div>' +

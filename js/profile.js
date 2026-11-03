@@ -60,8 +60,18 @@ const Profile = {
     Cloud.profile.avatar = myAvatar();
     Cloud.profile.about = state.settings.about || '';
     Cloud.profile.ach = state.ach || {};
+    const ym = U.iso(U.today()).slice(0, 7),
+      known = state.cards.filter(c => c.known).length;
+    state.meta = state.meta || {};
+    if (!state.meta.cardsBase || state.meta.cardsBase.ym !== ym)
+      state.meta.cardsBase = {
+        ym,
+        n: known
+      };
     Cloud.profile.stats = {
-      cards: state.cards.filter(c => c.known).length
+      cards: known,
+      cardsMonth: Math.max(0, known - state.meta.cardsBase.n),
+      month: ym
     };
     Cloud.pushProfile();
   },

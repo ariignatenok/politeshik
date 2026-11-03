@@ -98,3 +98,14 @@ const monthName = ym => {
   }).format(new Date(p[0], p[1] - 1, 1));
   return n.charAt(0).toUpperCase() + n.slice(1);
 };
+/**
+ * Возвращает название месяца строчными буквами без года (для «за ноябрь»).
+ * @param {string} ym Месяц ГГГГ-ММ.
+ * @returns {string} Строка.
+ */
+const monthWord = ym => {
+  const p = ym.split('-').map(Number);
+  return new Intl.DateTimeFormat('ru-RU', {
+    month: 'long'
+  }).format(new Date(p[0], p[1] - 1, 1));
+};

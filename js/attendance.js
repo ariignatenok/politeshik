@@ -135,13 +135,24 @@ const Att = {
    */
   pct: (a, b) => (b > 0 ? Math.round((a * 100) / b) : null),
   /**
-   * Считает часы пропусков без уважительной причины.
+   * Считает часы пропусков без уважительной причины за один календарный месяц.
+   * Лимит (24 ч) действует в пределах месяца: 1-го числа счёт начинается заново.
    * @param {Object<string,string>} marks Отметки вида {"дата|пара": статус}.
    * @param {Array<Object>} certs Справки студента.
    * @param {string} sub Подгруппа.
+   * @param {string} [ym] Месяц ГГГГ-ММ; по умолчанию текущий.
    * @returns {number} часы.
    */
-  absHours: (marks, certs, sub) => Att.stats(marks, certs, sub, ATT_START, '9999-12-31').a * PAIR_HOURS,
+  absHours: (marks, certs, sub, ym) => {
+    const m = ym || U.iso(U.today()).slice(0, 7),
+      from = m + '-01' < ATT_START ? ATT_START : m + '-01';
+    return Att.stats(marks, certs, sub, from, monthEnd(m)).a * PAIR_HOURS;
+  },
+  /**
+   * Возвращает месяц, за который показывается лимит: выбранный на экранах «Посещаемость» и «Журнал» или текущий.
+   * @returns {string} Месяц ГГГГ-ММ.
+   */
+  limitMonth: () => (ui.attScope !== 'all' && ui.attMonth ? ui.attMonth : U.iso(U.today()).slice(0, 7)),
   /**
    * Определяет зону лимита пропусков.
    * @param {number} h Часы пропусков.

@@ -848,7 +848,7 @@ function openStudent(uid, date0) {
       (ui.attScope === 'all' ? 'с 01.10.2026' : monthName(ui.attMonth)) +
       '</p>' +
       statCards(r.st) +
-      absCard(Att.absHours(r.marks, r.certs, r.p.subgroup)) +
+      absCardOf(r.marks, r.certs, r.p.subgroup, Att.limitMonth()) +
       '<h3 style="margin:14px 0 8px">По предметам</h3>' +
       subjTable(r.st) +
       '<h3 style="margin:16px 0 8px">Справки и больничные</h3>' +

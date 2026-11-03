@@ -113,7 +113,7 @@ function viewCabinetMain() {
     aboutCard() +
     Safe.html('my-mascot', () => Mascot.cardHtml()) +
     winnerPlaque() +
-    absCard(Att.absHours(state.attendance.marks, Cloud.my.certs, state.settings.subgroup)) +
+    absCardOf(state.attendance.marks, Cloud.my.certs, state.settings.subgroup) +
     '<div class="dash-cols"><section class="card"><h2>Моя посещаемость · ' +
     monthName(ym) +
     ' <button class="btn sm" data-action="nav" data-tab="attendance">Открыть</button></h2>' +

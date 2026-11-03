@@ -197,6 +197,15 @@ function untilText(ms) {
   return Math.floor(h / 24) + ' д ' + (h % 24) + ' ч';
 }
 /**
+ * Строит карточку лимита пропусков за текущий месяц для студента.
+ * @returns {string} HTML.
+ */
+function absLimitHtml() {
+  if (Cloud.isStaff) return '';
+  const state = Store.s;
+  return absCardOf(state.attendance.marks, Cloud.my.certs, state.settings.subgroup);
+}
+/**
  * Строит виджет: ближайшая пара, работа и посещаемость.
  * @returns {string} HTML.
  */
@@ -296,6 +305,7 @@ function viewDashboard() {
     Safe.html('birthday', () => Birthday.bannerHtml()) +
     Safe.html('notifications', notifBanner) +
     Safe.html('widget', widgetHtml) +
+    Safe.html('abslimit', absLimitHtml) +
     '<div class="grid-stats">' +
     '<div class="stat red"><b>' +
     urgent +

@@ -267,7 +267,7 @@ const Chat = {
           : ICONS.circleRed +
               ' Ты в красной зоне! У тебя набралось ' +
               h +
-              ' ч пропусков без уважительной причины из ' +
+              ' ч пропусков без уважительной причины в этом месяце из ' +
               ABS_LIMIT +
               ' разрешённых. Больше пропускать нельзя!\nЕсли пропуски были по болезни, прикрепи справку или больничный в личном кабинете.',
         {
@@ -282,7 +282,7 @@ const Chat = {
           z.left +
           ' ' +
           U.plural(z.left, 'час', 'часа', 'часов') +
-          ' пропусков без уважительной причины (набрано ' +
+          ' пропусков без уважительной причины в этом месяце (набрано ' +
           h +
           ' из ' +
           ABS_LIMIT +
@@ -308,7 +308,7 @@ const Chat = {
     if (Cloud.isAdmin && !Cloud.admReady) return false;
     const sub = state.settings.subgroup,
       st = Att.stats(state.attendance.marks, Cloud.my.certs, sub, pm + '-01', monthEnd(pm));
-    const total = Att.absHours(state.attendance.marks, Cloud.my.certs, sub),
+    const total = Att.absHours(state.attendance.marks, Cloud.my.certs, sub, pm),
       z = Att.zone(total);
     let text = ICONS.barChart + ' Итоги месяца: ' + monthName(pm) + '\n';
     text += st.total
@@ -325,18 +325,20 @@ const Chat = {
         (st.u ? ' · не отмечено ' + st.u : '') +
         ')\nПропуски без уважительной причины: ' +
         st.a * PAIR_HOURS +
-        ' ч за месяц, всего ' +
+        ' ч за месяц.\nЛимит пропусков за ' +
+        monthWord(pm) +
+        ': ' +
         total +
         ' из ' +
         ABS_LIMIT +
-        ' ч.'
+        ' часов. С 1-го числа нового месяца лимит начинается заново.'
       : 'В этом месяце пар по расписанию не было.';
     text +=
       z.cls === 'red'
-        ? '\n' + ICONS.circleRed + ' Ты в красной зоне — больше пропускать нельзя!'
+        ? '\n' + ICONS.circleRed + ' За ' + monthWord(pm) + ' лимит пропусков был исчерпан. Новый месяц — новый лимит, береги часы!'
         : z.cls === 'warn'
-          ? '\n' + ICONS.circleOrange + ' Осталось ' + z.left + ' ч пропусков — ходи на пары и готовься.'
-          : '\n' + ICONS.circleGreen + ' С лимитом всё в порядке: осталось ' + z.left + ' ч.';
+          ? '\n' + ICONS.circleOrange + ' За ' + monthWord(pm) + ' оставалось всего ' + z.left + ' ч. В новом месяце лимит начался заново.'
+          : '\n' + ICONS.circleGreen + ' С лимитом за ' + monthWord(pm) + ' всё в порядке: осталось ' + z.left + ' ч.';
     Chat.push('bot', text, {
       mood: z.cls === 'ok' ? 'cheer' : 'worried'
     });
@@ -363,7 +365,7 @@ const Chat = {
       seen[r.id] = true;
       const marks = (Cloud.adm.att[id] || {}).marks || {},
         certs = (Cloud.adm.certs[id] || {}).items || [],
-        h = Att.absHours(marks, certs, p.subgroup);
+        h = Att.absHours(marks, certs, p.subgroup, pm);
       rows.push({
         name: r.name,
         st: Att.stats(marks, certs, p.subgroup, pm + '-01', monthEnd(pm)),

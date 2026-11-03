@@ -13,7 +13,7 @@ Object.assign(A, {
    * Убирает приз за 1 место.
    */
   'prize-del'() {
-    Rating.setPrize(Rating.periods()[ui.ratePeriod || 'month'].key, '');
+    Rating.setPrize(Rating.periods().month.key, '');
     App.render();
   },
   /**

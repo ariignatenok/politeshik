@@ -8,36 +8,36 @@ const MEDAL = [ICONS.medalGold, ICONS.medalSilver, ICONS.medalBronze];
 function viewRating() {
   const R = Cloud.ratings,
     per = Rating.periods(),
-    k = ui.ratePeriod || 'month';
+    k = 'month',
+    ym = per[k].from.slice(0, 7),
+    mw = monthWord(ym);
   const head =
     '<div class="page-head"><div><h1>' +
     ICONS.trophy +
-    ' Рейтинг группы</h1><p>Посещаемость 80% + карточки 20%. Обновляется раз в час.</p></div><div class="head-actions"><div class="seg">' +
-    [
-      ['month', 'Месяц'],
-      ['semester', 'Семестр'],
-      ['all', 'Всё время']
-    ]
-      .map(
-        x =>
-          '<button class="' +
-          (k === x[0] ? 'on' : '') +
-          '" data-action="rate-period" data-p="' +
-          x[0] +
-          '">' +
-          x[1] +
-          '</button>'
-      )
-      .join('') +
-    '</div></div></div>';
+    ' Рейтинг за ' +
+    U.esc(mw) +
+    ' ' +
+    ym.slice(0, 4) +
+    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется раз в час.</p></div></div>';
   if (Cloud.status !== 'online') return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
-  const doc = R && R.periods && R.periods[k],
+  const cur = R && R.periods && R.periods[k],
+    doc = cur && cur.key === per[k].key ? cur : null,
     prize = R && R.prizes && R.prizes[per[k].key];
+  if (Cloud.isAdmin && !doc && Cloud.admReady)
+    setTimeout(() => {
+      if (Rating.compute(true)) App.renderSoft();
+    }, 0);
   if (!doc || !doc.rows.length)
     return (
       head +
       (Cloud.isAdmin ? ratingAdmin(k, per) : '') +
-      empty(ICONS.hourglass, 'Рейтинг ещё не посчитан. Он появится, когда админ откроет приложение.')
+      empty(ICONS.hourglass, 'Рейтинг за ' + mw + ' ещё не посчитан: он появится, когда староста откроет приложение.')
+    );
+  if (!doc.rows.some(x => x.score > 0))
+    return (
+      head +
+      (Cloud.isAdmin ? ratingAdmin(k, per) : '') +
+      empty(ICONS.hourglass, 'За ' + mw + ' пока нет отметок посещаемости: рейтинг появится после первых пар месяца.')
     );
   const rid = Cloud.profile && Cloud.profile.rid,
     mine = doc.rows.find(x => x.rid === rid),
