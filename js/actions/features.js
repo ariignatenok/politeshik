@@ -920,31 +920,23 @@ Object.assign(A, {
     GoogleSync.say('Проверяю…');
     const res = await GoogleSync.ping();
     if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
-    GoogleSync.say(res.opaque ? 'Запрос отправлен, но браузер не показывает ответ Google. Откройте таблицу и отправьте отметки.' : 'Связь есть. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')));
+    if (res.opaque) return GoogleSync.say('Запрос отправлен, но браузер не показывает ответ Google. Откройте таблицу и отправьте отметки.');
+    const ver = res.data && res.data.version;
+    GoogleSync.say('Связь есть' + (ver ? ', версия скрипта ' + U.esc(ver) : '') + '. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')) + (ver === 'v2' ? '' : '<br><b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».'));
   },
   /**
    * Отправляет отметки в Google Таблицу из окна синхронизации.
+   * @param {HTMLElement} el Кнопка.
    */
   async 'gs-send'(el) {
-    GoogleSync.readForm();
-    const scope = (document.getElementById('gs-scope') || {}).value === 'month' ? 'month' : 'all',
-      rg = scope === 'month' ? [ui.attMonth + '-01', monthEnd(ui.attMonth)] : [ATT_START, U.iso(U.today())];
-    el.disabled = true;
-    try {
-      GoogleSync.say('Собираю отметки…');
-      const records = await GoogleSync.collect(rg[0], rg[1]);
-      if (!records.length) return GoogleSync.say('Нет отметок за этот период', true);
-      const res = await GoogleSync.send(records, (done, all) => GoogleSync.say('Отправлено ' + done + ' из ' + all + '…'));
-      if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
-      GoogleSync.say(
-        res.opaque
-          ? 'Отправлено: ' + res.total + '. Браузер не показывает ответ Google, проверьте таблицу.'
-          : 'Записано в таблицу: ' + res.written + ' из ' + res.total + (res.skipped.length ? '. Не нашлось места для: ' + res.skipped.length + ' (например: ' + U.esc(res.skipped[0].student + ', ' + res.skipped[0].date + ', ' + res.skipped[0].reason) + ')' : '')
-      );
-      App.renderSoft();
-    } finally {
-      el.disabled = false;
-    }
+    await GoogleSync.run(el, false);
+  },
+  /**
+   * Проверяет, что куда попадёт, ничего не записывая в таблицу.
+   * @param {HTMLElement} el Кнопка.
+   */
+  async 'gs-dry'(el) {
+    await GoogleSync.run(el, true);
   },
   /**
    * Быстрая отправка в Google с кнопки журнала.
@@ -955,7 +947,7 @@ Object.assign(A, {
     const records = await GoogleSync.collect(ATT_START, U.iso(U.today()));
     if (!records.length) return toast('Нет отметок для отправки');
     const res = await GoogleSync.send(records);
-    toast(res.ok ? (res.opaque ? 'Отправлено в Google: ' + res.total : 'В Google записано ' + res.written + ' из ' + res.total) : 'Google: ' + res.error);
+    toast(res.ok ? (res.opaque ? 'Отправлено в Google: ' + res.total : 'В Google записано ' + res.written + ' из ' + res.total + (res.skippedCount ? ', не нашлось места: ' + res.skippedCount : '')) : 'Google: ' + res.error);
     App.renderSoft();
   }
 });

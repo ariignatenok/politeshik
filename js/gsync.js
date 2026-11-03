@@ -52,10 +52,16 @@ const GoogleSync = {
    * @returns {Object} Данные: дата, пара, предмет, студент, статус и подсказки для поиска колонки.
    */
   record(it) {
+    const same = Att.pairs(it.date, it.r.sub)
+      .filter(x => x.lessons[0].subjectId === it.subjectId)
+      .map(x => x.pair)
+      .sort((a, b) => a - b);
     return {
       date: it.date,
       pair: it.pair,
       slot: QuickAtt.pairsOfDay(it.date).indexOf(it.pair) + 1,
+      nth: same.indexOf(it.pair) + 1,
+      same: same.length,
       subject: it.subject,
       subjectFull: it.subjectFull,
       teacher: it.teacher,
@@ -104,23 +110,75 @@ const GoogleSync = {
    * Отправляет записи пачками.
    * @param {Array<Object>} records Записи для таблицы.
    * @param {Function} progress Функция, получающая (отправлено, всего).
-   * @returns {Promise<Object>} ok, written, skipped, opaque.
+   * @param {Object} opts dry: true, чтобы только проверить, ничего не записывая.
+   * @returns {Promise<Object>} ok, written, skipped, reasons, sample, version, opaque.
    */
-  async send(records, progress) {
-    const cfg = GoogleSync.config();
+  async send(records, progress, opts) {
+    const cfg = GoogleSync.config(),
+      dry = !!(opts && opts.dry);
     if (!GoogleSync.isUrl(cfg.url)) return {ok: false, error: 'Ссылка на скрипт не указана'};
-    const out = {ok: true, written: 0, skipped: [], opaque: false, total: records.length};
+    const out = {ok: true, dry, written: 0, skipped: [], skippedCount: 0, reasons: {}, sample: [], version: '', opaque: false, total: records.length};
     for (let i = 0; i < records.length; i += 120) {
       const part = records.slice(i, i + 120),
-        res = await GoogleSync.post(cfg, {records: part});
+        res = await GoogleSync.post(cfg, {records: part, dry});
       if (!res.ok) return Object.assign(out, {ok: false, error: res.error});
       if (res.opaque) out.opaque = true;
-      out.written += (res.data && res.data.written) || 0;
-      out.skipped = out.skipped.concat((res.data && res.data.skipped) || []);
+      const d = res.data || {};
+      out.version = d.version || out.version;
+      out.written += d.written || 0;
+      out.skipped = out.skipped.concat(d.skipped || []);
+      out.skippedCount += d.skippedCount || (d.skipped || []).length;
+      Object.keys(d.reasons || {}).forEach(k => {
+        out.reasons[k] = (out.reasons[k] || 0) + d.reasons[k];
+      });
+      if (!out.sample.length) out.sample = d.sample || [];
       if (progress) progress(Math.min(records.length, i + 120), records.length);
     }
-    GoogleSync.save({last: {at: new Date().toISOString(), total: out.total, written: out.written, skipped: out.skipped.length, opaque: out.opaque}});
+    if (!dry) GoogleSync.save({last: {at: new Date().toISOString(), total: out.total, written: out.written, skipped: out.skippedCount, opaque: out.opaque}});
     return out;
+  },
+
+  /**
+   * Собирает понятный отчёт о том, что скрипт сделал (или сделал бы).
+   * @param {Object} res Результат send().
+   * @returns {string} HTML.
+   */
+  summary(res) {
+    if (res.opaque)
+      return 'Отправлено: ' + res.total + '. Браузер не показывает ответ Google, откройте таблицу и проверьте ячейки.';
+    const lines = [(res.dry ? 'Проверка, в таблицу ничего не записано: подойдёт ' : 'Записано в таблицу: ') + res.written + ' из ' + res.total];
+    if (res.version !== 'v2') lines.push('<b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».');
+    const why = Object.keys(res.reasons || {}).map(k => k + ' (' + res.reasons[k] + ')');
+    if (res.skippedCount) lines.push('Не нашлось места: ' + res.skippedCount + '. Причины: ' + U.esc(why.slice(0, 4).join('; ')));
+    (res.sample || []).slice(0, 4).forEach(s => {
+      lines.push(
+        U.esc(s.student + ', ' + s.date.split('-').reverse().join('.') + ', пара ' + s.pair + ' «' + s.subject + '» → «' + s.value + '» в ячейку ' + s.cell + ' (колонка «' + s.column + '», день «' + s.day + '», строка «' + s.row + '»)')
+      );
+    });
+    return lines.join('<br>');
+  },
+
+  /**
+   * Собирает отметки за выбранный период и отправляет их (или только проверяет).
+   * @param {HTMLElement} el Нажатая кнопка.
+   * @param {boolean} dry true — проверка без записи.
+   */
+  async run(el, dry) {
+    GoogleSync.readForm();
+    const scope = (document.getElementById('gs-scope') || {}).value === 'month' ? 'month' : 'all',
+      rg = scope === 'month' ? [ui.attMonth + '-01', monthEnd(ui.attMonth)] : [ATT_START, U.iso(U.today())];
+    el.disabled = true;
+    try {
+      GoogleSync.say('Собираю отметки…');
+      const records = await GoogleSync.collect(rg[0], rg[1]);
+      if (!records.length) return GoogleSync.say('Нет отметок за этот период', true);
+      const res = await GoogleSync.send(records, (done, all) => GoogleSync.say((dry ? 'Проверено ' : 'Отправлено ') + done + ' из ' + all + '…'), {dry});
+      if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
+      GoogleSync.say(GoogleSync.summary(res), res.written === 0 && !res.opaque);
+      if (!dry) App.renderSoft();
+    } finally {
+      el.disabled = false;
+    }
   },
 
   /**
@@ -221,6 +279,7 @@ const GoogleSync = {
         '> Отправлять автоматически, когда староста ставит отметку или вносит пары из журнала</label>' +
         '<div class="head-actions" style="margin:8px 0 14px"><button class="btn primary" data-action="gs-save">Сохранить</button><button class="btn" data-action="gs-test">Проверить связь</button></div>' +
         f('Что отправить', '<select class="input" id="gs-scope"><option value="all">Весь период с 01.10.2026</option><option value="month">Месяц, открытый в журнале</option></select>') +
+        '<div class="head-actions" style="margin-bottom:6px"><button class="btn" data-action="gs-dry">Проверить без записи</button></div>' +
         '<button class="btn primary big" data-action="gs-send">Отправить в Google</button>' +
         '<div id="gs-status" class="md-help" style="margin-top:10px"></div></div>',
       {noFocus: true}

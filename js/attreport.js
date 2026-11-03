@@ -115,6 +115,7 @@ const AttReport = {
       date,
       pair,
       st,
+      subjectId: pr.lessons[0].subjectId,
       subject: sb ? sb.short || sb.name : '',
       subjectFull: sb ? sb.name : '',
       teacher: pr.lessons[0].who || '',
