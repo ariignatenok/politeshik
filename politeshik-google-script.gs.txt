@@ -1,6 +1,8 @@
-const VERSION = 'v2';
+const VERSION = 'v3';
 const TOKEN = 'ЗАМЕНИТЕ_НА_СВОЙ_КЛЮЧ';
 const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+const WEEKDAYS = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+const TEMPLATE_FIRST = 'Октябрь';
 const NAME_COLUMN = 1;
 const STATUS_TO_CELL = {'П': 'п', 'О': 'п', 'Н': 'н', 'У': 'Б'};
 const NOTE_CELL = 'З';
@@ -19,7 +21,7 @@ function doPost(e) {
     if (body.action === 'ping') {
       return reply({ok: true, version: VERSION, sheets: SpreadsheetApp.getActiveSpreadsheet().getSheets().map(function (s) { return s.getName(); })});
     }
-    return reply(writeRecords(body.records || [], body.dry === true));
+    return reply(writeRecords(body.records || [], body.dry === true, {month: body.month, ym: body.ym, group: body.group}));
   } catch (err) {
     return reply({ok: false, version: VERSION, error: String(err && err.message ? err.message : err)});
   } finally {
@@ -31,83 +33,211 @@ function reply(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
 
-function writeRecords(records, dry) {
+function monthIndex(opt, records) {
+  const ym = String((opt && opt.ym) || '');
+  if (/^\d{4}-\d{2}$/.test(ym)) return Number(ym.slice(5));
+  const name = String((opt && opt.month) || '').trim().toLowerCase();
+  if (name) {
+    for (let i = 0; i < 12; i++) if (MONTHS[i].toLowerCase() === name || MONTHS[i].toLowerCase().indexOf(name) === 0) return i + 1;
+    if (/^\d{1,2}$/.test(name) && Number(name) >= 1 && Number(name) <= 12) return Number(name);
+  }
+  const d = records.length ? String(records[0].date || '').split('-') : [];
+  return d.length === 3 ? Number(d[1]) : 0;
+}
+
+function writeRecords(records, dry, opt) {
+  if ((opt && (opt.ym || opt.month)) || !records.length) return writeMonth(records, dry, opt);
+  const byMonth = {};
+  records.forEach(function (rec) {
+    const ym = String(rec.date || '').slice(0, 7);
+    (byMonth[ym] = byMonth[ym] || []).push(rec);
+  });
+  const keys = Object.keys(byMonth);
+  if (keys.length === 1) return writeMonth(records, dry, opt);
+  let total = null;
+  keys.sort().forEach(function (ym) {
+    const part = writeMonth(byMonth[ym], dry, {ym: ym, group: opt && opt.group});
+    if (!total) { total = part; return; }
+    total.written += part.written;
+    total.skippedCount += part.skippedCount;
+    total.warningCount += part.warningCount;
+    total.addedColumns += part.addedColumns;
+    total.created = total.created || part.created;
+    total.willCreate = total.willCreate || part.willCreate;
+    total.ok = total.ok && part.ok;
+    total.sheet = total.sheet + ', ' + part.sheet;
+    total.month = total.month + ', ' + part.month;
+    Object.keys(part.reasons).forEach(function (k) { total.reasons[k] = (total.reasons[k] || 0) + part.reasons[k]; });
+    total.sample = total.sample.concat(part.sample).slice(0, MAX_ITEMS_IN_REPLY);
+    total.skipped = total.skipped.concat(part.skipped).slice(0, MAX_ITEMS_IN_REPLY);
+    total.warnings = total.warnings.concat(part.warnings).slice(0, MAX_ITEMS_IN_REPLY);
+  });
+  return total;
+}
+
+function writeMonth(records, dry, opt) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const cache = {};
+  const month = monthIndex(opt, records);
+  const out = {ok: true, version: VERSION, dry: dry, month: month ? MONTHS[month - 1] : '', group: (opt && opt.group) || '', sheet: '', created: false, willCreate: false,
+    written: 0, sample: [], skipped: [], skippedCount: 0, reasons: {}, warnings: [], warningCount: 0, addedColumns: 0};
+  if (!month) { out.ok = false; out.error = 'Не указан месяц'; return out; }
+  const ym = /^\d{4}-\d{2}$/.test(String((opt && opt.ym) || '')) ? opt.ym : '';
+  let sheet = findSheet(ss, month, out.group);
+  let info;
+  if (sheet) {
+    info = sheetInfo(sheet);
+  } else {
+    const template = findTemplate(ss);
+    out.sheet = MONTHS[month - 1];
+    if (dry) {
+      out.willCreate = true;
+      info = virtualInfo(template, records);
+    } else {
+      sheet = createMonthSheet(ss, month, template, records);
+      out.created = true;
+      info = sheetInfo(sheet);
+    }
+  }
+  if (sheet) out.sheet = sheet.getName();
+  const valid = [];
+  records.forEach(function (rec) {
+    if (ym && String(rec.date || '').slice(0, 7) !== ym) {
+      skip(out, rec, 'дата не из выбранного месяца');
+    } else {
+      valid.push(rec);
+    }
+  });
+  planDates(info, valid);
   const writes = {};
   const placed = [];
-  const skipped = [];
-  const reasons = {};
-  records.forEach(function (rec) {
-    const res = placeRecord(ss, cache, rec, writes);
-    if (res.why) {
-      skipped.push({student: rec.student, date: rec.date, pair: rec.pair, reason: res.why});
-      reasons[res.why] = (reasons[res.why] || 0) + 1;
-    } else {
+  valid.forEach(function (rec) {
+    const res = placeRecord(info, rec, writes);
+    if (res.why) skip(out, rec, res.why);
+    else {
       placed.push(res.info);
+      if (res.warn) warn(out, rec, res.warn);
     }
   });
   if (!dry) {
-    Object.keys(writes).forEach(function (sheetName) {
-      const sheet = cache[sheetName].sheet;
-      Object.keys(writes[sheetName]).forEach(function (value) {
-        const cells = writes[sheetName][value];
-        if (!cells.length) return;
-        if (value === '') sheet.getRangeList(cells).clearContent();
-        else sheet.getRangeList(cells).setValue(value);
-      });
+    if (!info.sheet) throw new Error('Лист не создан');
+    materialize(info);
+    Object.keys(writes).forEach(function (value) {
+      const cells = writes[value];
+      if (!cells.length) return;
+      if (value === '') info.sheet.getRangeList(cells).clearContent();
+      else info.sheet.getRangeList(cells).setValue(value);
     });
   }
-  return {
-    ok: true, version: VERSION, dry: dry, written: placed.length,
-    sample: placed.slice(0, MAX_ITEMS_IN_REPLY), skipped: skipped.slice(0, MAX_ITEMS_IN_REPLY),
-    skippedCount: skipped.length, reasons: reasons
-  };
+  out.addedColumns = info.added.length;
+  out.written = placed.length;
+  out.sample = placed.slice(0, MAX_ITEMS_IN_REPLY);
+  return out;
 }
 
-function placeRecord(ss, cache, rec, writes) {
-  const parts = String(rec.date || '').split('-');
-  if (parts.length !== 3) return {why: 'нет даты'};
-  const month = Number(parts[1]);
-  const dm = parts[2] + '.' + parts[1];
-  const sheet = findSheet(ss, month);
-  if (!sheet) return {why: 'нет листа «' + MONTHS[month - 1] + '»'};
-  const info = sheetInfo(cache, sheet);
-  const group = info.groups[dm];
-  if (!group) return {why: 'в таблице нет даты ' + dm};
-  let value = '';
-  if (rec.status) {
-    value = STATUS_TO_CELL[rec.status];
-    if (value === undefined) return {why: 'неизвестный статус «' + rec.status + '»'};
-    if (rec.status === 'У' && String(rec.kind || '').toLowerCase().indexOf('записк') === 0) value = NOTE_CELL;
-  }
-  const col = pickColumn(group, rec, info.subjects);
-  if (col === -1) return {why: 'в колонке по порядку стоит другой предмет, чем «' + (rec.subject || '') + '»'};
-  if (col === -2) return {why: 'несколько колонок английского, не понять какая (нет фамилии преподавателя в заголовке)'};
-  if (!col) return {why: 'нет колонки для пары ' + rec.pair};
-  const row = findRow(info, rec);
-  if (row === -1) return {why: 'фамилия «' + (rec.student || '') + '» в таблице встречается дважды'};
-  if (!row) return {why: 'нет студента «' + (rec.student || rec.n) + '» (номер ' + rec.n + ')'};
-  const a1 = colLetter(col) + row;
-  const bucket = (writes[sheet.getName()] = writes[sheet.getName()] || {});
-  (bucket[value] = bucket[value] || []).push(a1);
-  return {info: {student: rec.student, date: rec.date, pair: rec.pair, subject: rec.subject, value: value, cell: a1, column: info.subjects[col - 1], day: group.label, row: info.names[row]}};
+function skip(out, rec, why) {
+  out.skippedCount++;
+  out.reasons[why] = (out.reasons[why] || 0) + 1;
+  if (out.skipped.length < MAX_ITEMS_IN_REPLY) out.skipped.push({student: rec.student, date: rec.date, pair: rec.pair, reason: why});
 }
 
-function findSheet(ss, month) {
-  const name = MONTHS[month - 1];
-  let sheet = ss.getSheetByName(name);
-  if (sheet) return sheet;
+function warn(out, rec, text) {
+  out.warningCount++;
+  if (out.warnings.length < MAX_ITEMS_IN_REPLY) out.warnings.push({student: rec.student, date: rec.date, pair: rec.pair, text: text});
+}
+
+function findSheet(ss, month, group) {
+  const name = MONTHS[month - 1].toLowerCase();
+  const g = String(group || '').trim().toLowerCase();
+  let exact = null, withGroup = null, starts = null;
+  ss.getSheets().forEach(function (s) {
+    const n = s.getName().trim().toLowerCase();
+    if (n === name) exact = exact || s;
+    else if (n.indexOf(name) === 0) {
+      starts = starts || s;
+      if (g && n.indexOf(g) >= 0) withGroup = withGroup || s;
+    }
+  });
+  return withGroup || exact || starts;
+}
+
+function findTemplate(ss) {
   const all = ss.getSheets();
-  for (let i = 0; i < all.length; i++) {
-    if (all[i].getName().toLowerCase().indexOf(name.toLowerCase()) === 0) return all[i];
+  const order = [];
+  all.forEach(function (s) { if (s.getName().trim().toLowerCase() === TEMPLATE_FIRST.toLowerCase()) order.push(s); });
+  MONTHS.forEach(function (m) { all.forEach(function (s) { if (s.getName().trim().toLowerCase().indexOf(m.toLowerCase()) === 0 && order.indexOf(s) < 0) order.push(s); }); });
+  all.forEach(function (s) { if (order.indexOf(s) < 0) order.push(s); });
+  for (let i = 0; i < order.length; i++) {
+    const info = sheetInfo(order[i]);
+    if (Object.keys(info.rows).length > 0) return order[i];
   }
   return null;
 }
 
-function sheetInfo(cache, sheet) {
-  const key = sheet.getName();
-  if (cache[key]) return cache[key];
+function createMonthSheet(ss, month, template, records) {
+  const name = MONTHS[month - 1];
+  let sheet = null;
+  if (template) {
+    try {
+      const tInfo = sheetInfo(template);
+      sheet = template.copyTo(ss);
+      sheet.setName(name);
+      const lastCol = Math.max(sheet.getLastColumn(), 2);
+      try { sheet.getRange(1, 2, tInfo.subjectRow, lastCol - 1).breakApart(); } catch (e1) { }
+      sheet.getRange(1, 2, tInfo.subjectRow, lastCol - 1).clearContent();
+      const rows = Object.keys(tInfo.names).map(Number);
+      if (rows.length) {
+        sheet.getRange(Math.min.apply(null, rows), 2, Math.max.apply(null, rows) - Math.min.apply(null, rows) + 1, lastCol - 1).clearContent();
+      }
+    } catch (err) {
+      if (sheet) { try { ss.deleteSheet(sheet); } catch (e2) { } }
+      sheet = null;
+    }
+  }
+  if (!sheet) {
+    sheet = ss.insertSheet(name);
+    sheet.getRange(2, 1).setValue('№ ФИО');
+    const list = studentList(records);
+    if (list.length) sheet.getRange(3, 1, list.length, 1).setValues(list.map(function (s) { return [s]; }));
+  }
+  return sheet;
+}
+
+function studentList(records) {
+  const seen = {};
+  const list = [];
+  records.forEach(function (rec) {
+    const n = Number(rec.n) || 0;
+    if (n && !seen[n]) { seen[n] = true; list.push({n: n, text: n + '. ' + String(rec.student || '')}); }
+  });
+  list.sort(function (a, b) { return a.n - b.n; });
+  return list.map(function (x) { return x.text; });
+}
+
+function virtualInfo(template, records) {
+  let base = null;
+  if (template) base = sheetInfo(template);
+  const info = {sheet: null, groups: {}, subjects: [], rows: {}, surRows: {}, surnameOf: {}, names: {}, values: [], dateRow: 1, subjectRow: 2, nextCol: 2, added: [], pending: {}, template: base};
+  if (base) {
+    info.rows = base.rows; info.surRows = base.surRows; info.surnameOf = base.surnameOf; info.names = base.names;
+  } else {
+    const list = studentList(records);
+    list.forEach(function (text, i) { registerRow(info, 3 + i, text); });
+  }
+  return info;
+}
+
+function registerRow(info, r, t) {
+  const m = String(t).match(/^\s*(\d+)\s*[.)]?\s/);
+  const sur = normText(String(t).replace(/^\s*\d+\s*[.)]?\s*/, '').trim().split(/\s+/)[0]);
+  info.names[r] = String(t).trim();
+  if (m) info.rows[Number(m[1])] = r;
+  if (sur) {
+    info.surnameOf[r] = sur;
+    (info.surRows[sur] = info.surRows[sur] || []).push(r);
+  }
+}
+
+function sheetInfo(sheet) {
   const lastCol = Math.max(sheet.getLastColumn(), 2), lastRow = Math.max(sheet.getLastRow(), 3);
   const head = sheet.getRange(1, 1, Math.min(8, lastRow), lastCol).getDisplayValues();
   let dateRow = 1, best = 0;
@@ -131,21 +261,16 @@ function sheetInfo(cache, sheet) {
     }
     if (current) current.cols.push(c + 1);
   }
-  const names = sheet.getRange(1, NAME_COLUMN, lastRow, 1).getDisplayValues();
-  const rows = {}, bySurname = {}, surnameOf = {}, text = {};
-  for (let r = subjectRow + 1; r <= lastRow; r++) {
-    const t = String(names[r - 1][0] || '');
-    const m = t.match(/^\s*(\d+)\s*\./);
-    const sur = normText(t.replace(/^\s*\d+\s*\./, '').trim().split(/\s+/)[0]);
-    text[r] = t.trim();
-    if (m) rows[Number(m[1])] = r;
-    if (sur) {
-      surnameOf[r] = sur;
-      bySurname[sur] = bySurname[sur] ? -1 : r;
-    }
+  const values = sheet.getRange(1, 1, lastRow, lastCol).getDisplayValues();
+  const info = {sheet: sheet, groups: groups, subjects: subjects, rows: {}, surRows: {}, surnameOf: {}, names: {}, values: values, dateRow: dateRow, subjectRow: subjectRow, nextCol: 2, added: [], pending: {}};
+  for (let c = lastCol; c >= 2; c--) {
+    if (String(dates[c - 1] || '').trim() || String(subjects[c - 1] || '').trim()) { info.nextCol = c + 1; break; }
   }
-  cache[key] = {sheet: sheet, groups: groups, subjects: subjects, rows: rows, bySurname: bySurname, surnameOf: surnameOf, names: text};
-  return cache[key];
+  for (let r = subjectRow + 1; r <= lastRow; r++) {
+    const t = String(values[r - 1][0] || '');
+    if (t.trim()) registerRow(info, r, t);
+  }
+  return info;
 }
 
 function dateOf(label) {
@@ -153,11 +278,147 @@ function dateOf(label) {
   return m ? ('0' + m[1]).slice(-2) + '.' + m[2] : '';
 }
 
+function planDates(info, records) {
+  const byDate = {};
+  records.forEach(function (rec) {
+    const p = String(rec.date || '').split('-');
+    if (p.length !== 3) return;
+    const dm = p[2] + '.' + p[1];
+    (byDate[dm] = byDate[dm] || {date: rec.date, items: []}).items.push(rec);
+  });
+  Object.keys(byDate).sort().forEach(function (dm) {
+    if (info.groups[dm]) return;
+    const day = byDate[dm];
+    const cols = [];
+    const seen = {};
+    day.items.slice().sort(function (a, b) { return Number(a.pair) - Number(b.pair); }).forEach(function (rec) {
+      const key = rec.pair + '|' + headerFor(rec);
+      if (seen[key]) return;
+      seen[key] = true;
+      cols.push(headerFor(rec));
+    });
+    const dt = new Date(Number(day.date.slice(0, 4)), Number(day.date.slice(5, 7)) - 1, Number(day.date.slice(8, 10)));
+    const label = WEEKDAYS[dt.getDay()] + ' ' + dm;
+    const group = {cols: [], label: label, added: true};
+    cols.forEach(function (h, i) {
+      const col = info.nextCol++;
+      group.cols.push(col);
+      info.subjects[col - 1] = h;
+      info.added.push({col: col, header: h, label: label, first: i === 0, span: cols.length});
+    });
+    info.groups[dm] = group;
+  });
+}
+
+function headerFor(rec) {
+  const teacher = String(rec.teacher || '').trim().split(/\s+/)[0];
+  if (canon(rec.subject) === 'eng' || canon(rec.subjectFull) === 'eng') return 'Ин.яз' + (teacher ? ' ' + teacher : '');
+  return canon(rec.subject) ? String(rec.subject) : String(rec.subjectFull || rec.subject || '');
+}
+
+function materialize(info) {
+  const sheet = info.sheet;
+  if (!info.added.length) return;
+  let maxCol = 0;
+  info.added.forEach(function (a) { if (a.col > maxCol) maxCol = a.col; });
+  if (sheet.getMaxColumns() < maxCol) sheet.insertColumnsAfter(sheet.getMaxColumns(), maxCol - sheet.getMaxColumns());
+  info.added.forEach(function (a) {
+    if (a.first || a.single) {
+      sheet.getRange(info.dateRow, a.col).setValue(a.label);
+      if (a.first && a.span > 1) { try { sheet.getRange(info.dateRow, a.col, 1, a.span).merge(); } catch (e) { } }
+      try { sheet.getRange(info.dateRow, a.col).setHorizontalAlignment('center'); } catch (e) { }
+    }
+    sheet.getRange(info.subjectRow, a.col).setValue(a.header);
+    try { sheet.getRange(info.subjectRow, a.col).setWrap(true); } catch (e) { }
+  });
+}
+
+function placeRecord(info, rec, writes) {
+  const parts = String(rec.date || '').split('-');
+  if (parts.length !== 3) return {why: 'нет даты'};
+  const dm = parts[2] + '.' + parts[1];
+  const group = info.groups[dm];
+  if (!group) return {why: 'в таблице нет даты ' + dm};
+  let value = '';
+  if (rec.status) {
+    value = STATUS_TO_CELL[rec.status];
+    if (value === undefined) return {why: 'неизвестный статус «' + rec.status + '»'};
+    if (rec.status === 'У' && String(rec.kind || '').toLowerCase().indexOf('записк') === 0) value = NOTE_CELL;
+  }
+  const found = findRow(info, rec);
+  if (!found.row) return {why: found.why};
+  const row = found.row;
+  const pick = pickColumn(group, rec, info.subjects);
+  let col = pick, warning = found.warn || '';
+  if (pick === -2) return {why: 'несколько колонок английского, не понять какая (нет фамилии преподавателя в заголовке)'};
+  if (pick === 0) return {why: 'нет колонки для пары ' + rec.pair};
+  if (pick === -1) {
+    const free = freeColumn(info, group, row);
+    if (free) {
+      col = free;
+      warning = 'предмет «' + (rec.subject || '') + '» не найден в шапке дня: записано в свободную колонку ' + colLetter(free) + (info.subjects[free - 1] ? ' («' + info.subjects[free - 1] + '»)' : '');
+    } else {
+      col = info.nextCol++;
+      group.cols.push(col);
+      info.subjects[col - 1] = headerFor(rec);
+      info.added.push({col: col, header: headerFor(rec), label: group.label, single: true});
+      warning = 'предмет «' + (rec.subject || '') + '» не найден в шапке дня: добавлена новая колонка ' + colLetter(col);
+    }
+  }
+  const a1 = colLetter(col) + row;
+  info.pending[a1] = true;
+  (writes[value] = writes[value] || []).push(a1);
+  return {warn: warning, info: {student: rec.student, date: rec.date, pair: rec.pair, subject: rec.subject, value: value, cell: a1, column: info.subjects[col - 1] || '', day: group.label, row: info.names[row]}};
+}
+
+function freeColumn(info, group, row) {
+  for (let i = 0; i < group.cols.length; i++) {
+    const c = group.cols[i];
+    if (canon(info.subjects[c - 1])) continue;
+    const a1 = colLetter(c) + row;
+    const cur = info.values[row - 1] ? String(info.values[row - 1][c - 1] || '') : '';
+    if (!cur && !info.pending[a1]) return c;
+  }
+  return 0;
+}
+
+function surKey(text) {
+  return normText(String(text || '').trim().split(/\s+/)[0]);
+}
+
 function findRow(info, rec) {
-  const sur = normText(String(rec.student || '').trim().split(/\s+/)[0]);
-  const byNum = rec.n ? info.rows[Number(rec.n)] : 0;
-  if (byNum && (!sur || info.surnameOf[byNum] === sur)) return byNum;
-  if (sur && info.bySurname[sur]) return info.bySurname[sur];
+  const sur = surKey(rec.student), s5 = sur.slice(0, 5);
+  const given = normText(String(rec.student || '').trim().split(/\s+/)[1] || '').slice(0, 3);
+  const n = Number(rec.n) || 0;
+  if (n && info.rows[n]) {
+    const r = info.rows[n], rs = info.surnameOf[r] || '';
+    if (!sur || !rs || rs === sur || rs.slice(0, 5) === s5) return {row: r};
+    const alt = byName(info, sur, s5, given);
+    if (alt) return {row: alt, warn: 'номер ' + n + ' в таблице у «' + info.names[r] + '», а в приложении «' + rec.student + '»: найден по фамилии'};
+    return {row: r, warn: 'номер ' + n + ' в таблице у «' + info.names[r] + '», а в приложении «' + rec.student + '»: записано по номеру'};
+  }
+  const r2 = byName(info, sur, s5, given);
+  if (r2) return {row: r2};
+  return {row: 0, why: 'нет студента «' + (rec.student || rec.n) + '» (номер ' + (rec.n || '—') + ')'};
+}
+
+function byName(info, sur, s5, given) {
+  if (!sur) return 0;
+  const full = info.surRows[sur] || [];
+  if (full.length === 1) return full[0];
+  let pool = full;
+  if (!pool.length) {
+    pool = [];
+    Object.keys(info.surnameOf).forEach(function (r) { if (info.surnameOf[r].slice(0, 5) === s5) pool.push(Number(r)); });
+    if (pool.length === 1) return pool[0];
+  }
+  if (pool.length > 1 && given) {
+    const withGiven = pool.filter(function (r) {
+      const parts = info.names[r].replace(/^\s*\d+\s*[.)]?\s*/, '').trim().split(/\s+/);
+      return normText(parts[1] || '').slice(0, 3) === given;
+    });
+    if (withGiven.length === 1) return withGiven[0];
+  }
   return 0;
 }
 
@@ -165,7 +426,11 @@ function pickColumn(group, rec, subjects) {
   const cols = group.cols;
   const want = canon(rec.subject) || canon(rec.subjectFull);
   const bySlot = cols[(Number(rec.slot) || Number(rec.pair)) - 1];
-  let matches = want ? cols.filter(function (c) { return canon(subjects[c - 1]) === want; }) : [];
+  const names = [normText(rec.subject), normText(rec.subjectFull)];
+  let matches = cols.filter(function (c) {
+    const h = subjects[c - 1];
+    return (want && canon(h) === want) || (normText(h) && names.indexOf(normText(h)) >= 0);
+  });
   if (want === 'eng' && matches.length > 1) {
     const teacher = normText(rec.teacher).slice(0, 6);
     const byTeacher = teacher ? matches.filter(function (c) { return normText(subjects[c - 1]).indexOf(teacher) >= 0; }) : [];
