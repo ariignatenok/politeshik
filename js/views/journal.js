@@ -248,7 +248,9 @@ function viewJournal(asTeacher) {
     (Cloud.isAdmin
       ? '<button class="btn" data-action="gs-open">Синхронизация с Google</button><button class="btn" data-action="gs-quick">Отправить в Google</button>'
       : '') +
-    '<button class="btn" data-action="grp-csv">' +
+    '<button class="btn" data-action="grp-xlsx" title="Таблица как в журнале группы: строки — студенты, столбцы — дни и пары">' +
+    ICONS.arrowDown +
+    ' Скачать в Excel</button><button class="btn" data-action="grp-csv">' +
     ICONS.arrowDown +
     ' Скачать журнал</button></div></div>' +
     '<div class="period"><div class="monthnav"><button class="icon-btn" data-action="att-month" data-d="-1" aria-label="Предыдущий месяц">' +

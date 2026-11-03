@@ -189,6 +189,125 @@ const AttReport = {
   },
 
   /**
+   * Собирает таблицу-матрицу журнала за месяц: строки — студенты, столбцы — дни и пары, как в таблице группы.
+   * @param {string} ym Месяц ГГГГ-ММ.
+   * @param {string} group Номер группы для заголовка.
+   * @returns {Object} spec (для Xlsx.build), days — число дней, columns — число колонок пар, students — число студентов.
+   */
+  matrix(ym, group) {
+    const today = U.iso(U.today()),
+      from = ym + '-01' < ATT_START ? ATT_START : ym + '-01',
+      end = monthEnd(ym),
+      to = end > today ? today : end,
+      WD = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+      people = AttReport.people(),
+      days = [];
+    for (let d = U.fromISO(from), e = U.fromISO(to); d <= e; d = U.addDays(d, 1)) {
+      const di = U.iso(d),
+        cols = [],
+        seen = {};
+      ['1', '2'].forEach(sg =>
+        Att.pairs(di, sg).forEach(pr => {
+          const l = pr.lessons[0],
+            eng = l.subjectId === 's_eng',
+            key = pr.pair + '|' + l.subjectId + '|' + (eng ? l.who || '' : '');
+          if (seen[key]) return;
+          seen[key] = true;
+          const sb = subj(l.subjectId);
+          cols.push({
+            pair: pr.pair,
+            subjectId: l.subjectId,
+            who: eng ? l.who || '' : '',
+            header: eng ? 'Англ. ' + String(l.who || '').split(' ')[0] : sb ? sb.short || sb.name : ''
+          });
+        })
+      );
+      cols.sort((x, y) => x.pair - y.pair || x.header.localeCompare(y.header, 'ru'));
+      if (cols.length)
+        days.push({
+          date: di,
+          label: WD[d.getDay()] + ' ' + di.slice(8) + '.' + di.slice(5, 7),
+          cols
+        });
+    }
+    const first = 2,
+      nDay = days.reduce((s, x) => s + x.cols.length, 0),
+      sumStart = first + nDay,
+      sumHeads = ['П', 'О', 'Н', 'Спр.', '%', 'Пропуски без ув., ч'],
+      r1 = [{v: (group || GROUP_NAME) + ' · ' + AttReport.monthTitle(ym), s: 'head'}],
+      r2 = [{v: '№ ФИО', s: 'head'}],
+      merges = [],
+      widths = [32];
+    let c = first;
+    days.forEach(day => {
+      day.cols.forEach((col, i) => {
+        r1.push(i === 0 ? {v: day.label, s: 'date'} : {v: '', s: 'date'});
+        r2.push({v: col.header, s: 'head'});
+        widths.push(9);
+      });
+      if (day.cols.length > 1) merges.push(Xlsx.col(c) + '1:' + Xlsx.col(c + day.cols.length - 1) + '1');
+      c += day.cols.length;
+    });
+    sumHeads.forEach((h, i) => {
+      r1.push({v: i === 0 ? 'Итого за месяц' : '', s: 'date'});
+      r2.push({v: h, s: 'head'});
+      widths.push(i === 5 ? 14 : 7);
+    });
+    merges.push(Xlsx.col(sumStart) + '1:' + Xlsx.col(sumStart + sumHeads.length - 1) + '1');
+    const letterStyle = {п: 'p', о: 'o', н: 'n', Б: 'b', З: 'z'},
+      rows = [r1, r2];
+    people.forEach(person => {
+      const r = person.r,
+        row = [{v: r.n + '. ' + r.name, s: 'name'}];
+      days.forEach(day =>
+        day.cols.forEach(col => {
+          const it = AttReport.entry(person, day.date, col.pair),
+            same = it && it.subjectId === col.subjectId && (col.who === '' || it.teacher === col.who);
+          if (!same) return row.push({v: '', s: 'blank'});
+          const letter = it.st === 'у' ? (it.kind === 'Записка' ? 'З' : 'Б') : it.st;
+          row.push({v: letter || '', s: letter ? letterStyle[letter] : 'num'});
+        })
+      );
+      const st = Att.stats(person.marks, person.certs, r.sub, from, to);
+      row.push({v: st.p, s: 'num'}, {v: st.l, s: 'num'}, {v: st.a, s: 'num'}, {v: st.x, s: 'num'}, {v: st.pct == null ? '' : st.pct, s: st.pct == null ? 'num' : 'pct'}, {v: Att.absHours(person.marks, person.certs, r.sub, ym), s: 'num'});
+      rows.push(row);
+    });
+    rows.push([]);
+    [
+      ['УСЛОВНЫЕ ОБОЗНАЧЕНИЯ:', 'bold'],
+      ['п — присутствовал', 'note'],
+      ['о — опоздал (считается как присутствие)', 'note'],
+      ['н — без уважительной причины', 'note'],
+      ['Б — больничный / справка (подтверждена старостой)', 'note'],
+      ['З — заявление (записка)', 'note'],
+      ['Серая ячейка — пары у этого студента нет (другая подгруппа). Пустая — отметки нет.', 'note']
+    ].forEach(x => rows.push([{v: x[0], s: x[1]}]));
+    return {
+      spec: {
+        name: AttReport.monthTitle(ym),
+        rows,
+        merges,
+        widths,
+        heights: {1: 44},
+        freeze: {cols: 1, rows: 2}
+      },
+      days: days.length,
+      columns: nDay,
+      students: people.length
+    };
+  },
+
+  /**
+   * Возвращает название месяца с годом без «г.», например «Ноябрь 2026».
+   * @param {string} ym Месяц ГГГГ-ММ.
+   * @returns {string} Строка.
+   */
+  monthTitle(ym) {
+    const w = monthWord(ym);
+    return w.charAt(0).toUpperCase() + w.slice(1) + ' ' + ym.slice(0, 4);
+  },
+
+  /**
    * Рисует круговую диаграмму общей посещаемости группы.
    * @param {Object} t Итоги: p, l, a, x.
    * @returns {string} HTML.

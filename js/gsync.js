@@ -183,7 +183,7 @@ const GoogleSync = {
       dry = !!(opts && opts.dry),
       meta = (opts && opts.meta) || {};
     if (!GoogleSync.isUrl(cfg.url)) return {ok: false, error: 'Ссылка на скрипт не указана'};
-    const out = {ok: true, dry, written: 0, skipped: [], skippedCount: 0, reasons: {}, sample: [], warnings: [], warningCount: 0, addedColumns: 0, sheet: '', created: false, willCreate: false, version: '', opaque: false, total: records.length};
+    const out = {ok: true, dry, written: 0, skipped: [], skippedCount: 0, reasons: {}, sample: [], warnings: [], warningCount: 0, addedColumns: 0, diag: null, sheet: '', created: false, willCreate: false, version: '', opaque: false, total: records.length};
     for (let i = 0; i < records.length; i += 120) {
       const part = records.slice(i, i + 120),
         res = await GoogleSync.post(cfg, Object.assign({records: part, dry}, meta));
@@ -204,6 +204,7 @@ const GoogleSync = {
         out.reasons[k] = (out.reasons[k] || 0) + d.reasons[k];
       });
       if (!out.sample.length) out.sample = d.sample || [];
+      if (!out.diag && d.diag) out.diag = d.diag;
       if (progress) progress(Math.min(records.length, i + 120), records.length);
     }
     if (!dry) GoogleSync.save({last: {at: new Date().toISOString(), total: out.total, written: out.written, skipped: out.skippedCount, opaque: out.opaque}});
@@ -221,8 +222,12 @@ const GoogleSync = {
     const lines = [(res.dry ? 'Проверка, в таблицу ничего не записано: подойдёт ' : 'Записано в таблицу: ') + res.written + ' из ' + res.total];
     if (res.sheet)
       lines.push('Лист: «' + U.esc(res.sheet) + '»' + (res.created ? ' (создан автоматически)' : res.willCreate ? ' (будет создан при отправке)' : '') + (res.addedColumns ? ', добавлено колонок: ' + res.addedColumns : ''));
-    if (res.version !== 'v3') lines.push('<b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».');
+    if (res.version !== 'v4') lines.push('<b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».');
     const why = Object.keys(res.reasons || {}).map(k => k + ' (' + res.reasons[k] + ')');
+    if (res.diag && res.skippedCount && Object.keys(res.reasons || {}).some(k => /нет студента|нет даты/.test(k)))
+      lines.push(
+        'Скрипт видит в листе «' + U.esc(res.diag.sheet) + '»: студентов ' + res.diag.students + (res.diag.firstStudents.length ? ' (например: ' + U.esc(res.diag.firstStudents.slice(0, 3).join('; ')) + ')' : '') + '; даты в строке ' + res.diag.dateRow + ', предметы в строке ' + res.diag.subjectRow + ', ФИО в колонке ' + res.diag.nameColumn + '.'
+      );
     if (res.skippedCount) lines.push('Не нашлось места: ' + res.skippedCount + '. Причины: ' + U.esc(why.slice(0, 4).join('; ')));
     if (res.warningCount) {
       lines.push('Предупреждений: ' + res.warningCount + ' (записано, но проверьте):');
@@ -261,23 +266,22 @@ const GoogleSync = {
   },
 
   /**
-   * Скачивает журнал выбранного месяца файлом CSV (открывается в Excel).
+   * Скачивает журнал выбранного месяца файлом Excel в виде матрицы (студенты × дни и пары).
    * @param {HTMLElement} el Кнопка.
    */
   async xls(el) {
     GoogleSync.readForm();
-    const pk = GoogleSync.picked(),
-      rg = [pk.ym < ATT_START.slice(0, 7) ? ATT_START : pk.ym + '-01', monthEnd(pk.ym)];
+    const pk = GoogleSync.picked();
     el.disabled = true;
     try {
       await AttReport.load(true);
-      const items = AttReport.items(rg[0], rg[1]);
-      if (!items.length) return GoogleSync.say('Нет отметок за ' + U.esc(GoogleSync.monthTitle(pk.ym)), true);
+      const m = AttReport.matrix(pk.ym, pk.group);
+      if (!m.columns) return GoogleSync.say('За ' + U.esc(GoogleSync.monthTitle(pk.ym)) + ' пар по расписанию ещё не было', true);
       await Cloud.dl.save({
-        filename: 'politeshik-zhurnal-' + pk.group.replace(/[^0-9з]+/g, '-') + '-' + pk.ym + '.csv',
-        data: AttReport.csv(items)
+        filename: 'politeshik-zhurnal-' + pk.group.replace(/[^0-9з]+/g, '-') + '-' + pk.ym + '.xlsx',
+        data: Xlsx.build(m.spec)
       });
-      GoogleSync.say('Файл за ' + U.esc(GoogleSync.monthTitle(pk.ym)) + ' сохранён (' + items.length + ' строк). Откройте его в Excel: русские буквы и колонки отобразятся сразу.');
+      GoogleSync.say('Файл за ' + U.esc(GoogleSync.monthTitle(pk.ym)) + ' сохранён: ' + m.students + ' студентов, ' + m.days + ' дней, ' + m.columns + ' колонок пар. Откройте его в Excel.');
     } catch (error) {
       GoogleSync.say('Не удалось сохранить файл', true);
     } finally {
@@ -392,7 +396,7 @@ const GoogleSync = {
         f('Выберите месяц', '<select class="input" id="gs-month">' + GoogleSync.monthList().map(m => '<option value="' + m.ym + '"' + (m.ym === pickedYm ? ' selected' : '') + '>' + U.esc(m.label) + '</option>').join('') + '</select>') +
         f('Выберите группу', '<input class="input" id="gs-group" list="gs-groups" value="' + U.esc(cfg.group || GROUP_NAME) + '" placeholder="25290909/3091" autocomplete="off"><datalist id="gs-groups">' + (cfg.groups || [GROUP_NAME]).map(x => '<option value="' + U.esc(x) + '"></option>').join('') + '</datalist>') +
         '<p class="md-help">В таблицу уйдут отметки только за выбранный месяц, в лист с его названием (если листа нет, он создастся сам). Номер группы передаётся в скрипт; данные берутся из вашей группы.</p>' +
-        '<div class="head-actions" style="margin-bottom:6px"><button class="btn" data-action="gs-dry">Проверить без записи</button><button class="btn" data-action="gs-xls">' + ICONS.arrowDown + ' Скачать журнал в Excel</button></div>' +
+        '<div class="head-actions" style="margin-bottom:6px"><button class="btn" data-action="gs-dry">Проверить без записи</button><button class="btn" data-action="gs-xls">' + ICONS.arrowDown + ' Скачать в Excel (таблица)</button></div>' +
         '<button class="btn primary big" data-action="gs-send">Отправить в Google</button>' +
         '<div id="gs-status" class="md-help" style="margin-top:10px"></div></div>',
       {noFocus: true}

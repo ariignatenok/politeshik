@@ -922,7 +922,7 @@ Object.assign(A, {
     if (!res.ok) return GoogleSync.say(U.esc(res.error), true);
     if (res.opaque) return GoogleSync.say('Запрос отправлен, но браузер не показывает ответ Google. Откройте таблицу и отправьте отметки.');
     const ver = res.data && res.data.version;
-    GoogleSync.say('Связь есть' + (ver ? ', версия скрипта ' + U.esc(ver) : '') + '. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')) + (ver === 'v3' ? '' : '<br><b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».'));
+    GoogleSync.say('Связь есть' + (ver ? ', версия скрипта ' + U.esc(ver) : '') + '. Листы таблицы: ' + U.esc(((res.data && res.data.sheets) || []).join(', ')) + (ver === 'v4' ? '' : '<br><b>Скрипт старой версии:</b> вставьте новый код в Apps Script и сделайте «Развернуть» → «Управление развертываниями» → карандаш → «Новая версия».'));
   },
   /**
    * Отправляет отметки в Google Таблицу из окна синхронизации.

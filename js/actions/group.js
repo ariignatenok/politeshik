@@ -149,6 +149,25 @@ Object.assign(A, {
     }
   },
   /**
+   * Скачивает журнал месяца в Excel в виде матрицы: строки — студенты, столбцы — дни и пары.
+   */
+  async 'grp-xlsx'() {
+    const ym = Att.limitMonth();
+    toast('Готовлю таблицу…');
+    await AttReport.load(true);
+    const m = AttReport.matrix(ym, GROUP_NAME);
+    if (!m.columns) return toast('За ' + AttReport.monthTitle(ym) + ' пар по расписанию ещё не было');
+    try {
+      await Cloud.dl.save({
+        filename: 'politeshik-zhurnal-' + GROUP_NAME.replace(/[^0-9]+/g, '-') + '-' + ym + '.xlsx',
+        data: Xlsx.build(m.spec)
+      });
+      toast('Таблица за ' + AttReport.monthTitle(ym) + ' сохранена');
+    } catch (error) {
+      toast('Не удалось сохранить файл');
+    }
+  },
+  /**
    * Открывает форму преподавателя.
    */
   't-add'() {
