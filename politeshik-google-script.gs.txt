@@ -1,0 +1,218 @@
+const VERSION = 'v2';
+const TOKEN = 'ЗАМЕНИТЕ_НА_СВОЙ_КЛЮЧ';
+const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+const NAME_COLUMN = 1;
+const STATUS_TO_CELL = {'П': 'п', 'О': 'п', 'Н': 'н', 'У': 'Б'};
+const NOTE_CELL = 'З';
+const MAX_ITEMS_IN_REPLY = 30;
+
+function doGet() {
+  return reply({ok: true, version: VERSION, name: 'Политешик', hint: 'Скрипт работает. Данные принимаются методом POST.'});
+}
+
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(25000);
+    const body = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    if (body.token !== TOKEN) return reply({ok: false, error: 'Неверный ключ'});
+    if (body.action === 'ping') {
+      return reply({ok: true, version: VERSION, sheets: SpreadsheetApp.getActiveSpreadsheet().getSheets().map(function (s) { return s.getName(); })});
+    }
+    return reply(writeRecords(body.records || [], body.dry === true));
+  } catch (err) {
+    return reply({ok: false, version: VERSION, error: String(err && err.message ? err.message : err)});
+  } finally {
+    try { lock.releaseLock(); } catch (x) { }
+  }
+}
+
+function reply(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function writeRecords(records, dry) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const cache = {};
+  const writes = {};
+  const placed = [];
+  const skipped = [];
+  const reasons = {};
+  records.forEach(function (rec) {
+    const res = placeRecord(ss, cache, rec, writes);
+    if (res.why) {
+      skipped.push({student: rec.student, date: rec.date, pair: rec.pair, reason: res.why});
+      reasons[res.why] = (reasons[res.why] || 0) + 1;
+    } else {
+      placed.push(res.info);
+    }
+  });
+  if (!dry) {
+    Object.keys(writes).forEach(function (sheetName) {
+      const sheet = cache[sheetName].sheet;
+      Object.keys(writes[sheetName]).forEach(function (value) {
+        const cells = writes[sheetName][value];
+        if (!cells.length) return;
+        if (value === '') sheet.getRangeList(cells).clearContent();
+        else sheet.getRangeList(cells).setValue(value);
+      });
+    });
+  }
+  return {
+    ok: true, version: VERSION, dry: dry, written: placed.length,
+    sample: placed.slice(0, MAX_ITEMS_IN_REPLY), skipped: skipped.slice(0, MAX_ITEMS_IN_REPLY),
+    skippedCount: skipped.length, reasons: reasons
+  };
+}
+
+function placeRecord(ss, cache, rec, writes) {
+  const parts = String(rec.date || '').split('-');
+  if (parts.length !== 3) return {why: 'нет даты'};
+  const month = Number(parts[1]);
+  const dm = parts[2] + '.' + parts[1];
+  const sheet = findSheet(ss, month);
+  if (!sheet) return {why: 'нет листа «' + MONTHS[month - 1] + '»'};
+  const info = sheetInfo(cache, sheet);
+  const group = info.groups[dm];
+  if (!group) return {why: 'в таблице нет даты ' + dm};
+  let value = '';
+  if (rec.status) {
+    value = STATUS_TO_CELL[rec.status];
+    if (value === undefined) return {why: 'неизвестный статус «' + rec.status + '»'};
+    if (rec.status === 'У' && String(rec.kind || '').toLowerCase().indexOf('записк') === 0) value = NOTE_CELL;
+  }
+  const col = pickColumn(group, rec, info.subjects);
+  if (col === -1) return {why: 'в колонке по порядку стоит другой предмет, чем «' + (rec.subject || '') + '»'};
+  if (col === -2) return {why: 'несколько колонок английского, не понять какая (нет фамилии преподавателя в заголовке)'};
+  if (!col) return {why: 'нет колонки для пары ' + rec.pair};
+  const row = findRow(info, rec);
+  if (row === -1) return {why: 'фамилия «' + (rec.student || '') + '» в таблице встречается дважды'};
+  if (!row) return {why: 'нет студента «' + (rec.student || rec.n) + '» (номер ' + rec.n + ')'};
+  const a1 = colLetter(col) + row;
+  const bucket = (writes[sheet.getName()] = writes[sheet.getName()] || {});
+  (bucket[value] = bucket[value] || []).push(a1);
+  return {info: {student: rec.student, date: rec.date, pair: rec.pair, subject: rec.subject, value: value, cell: a1, column: info.subjects[col - 1], day: group.label, row: info.names[row]}};
+}
+
+function findSheet(ss, month) {
+  const name = MONTHS[month - 1];
+  let sheet = ss.getSheetByName(name);
+  if (sheet) return sheet;
+  const all = ss.getSheets();
+  for (let i = 0; i < all.length; i++) {
+    if (all[i].getName().toLowerCase().indexOf(name.toLowerCase()) === 0) return all[i];
+  }
+  return null;
+}
+
+function sheetInfo(cache, sheet) {
+  const key = sheet.getName();
+  if (cache[key]) return cache[key];
+  const lastCol = Math.max(sheet.getLastColumn(), 2), lastRow = Math.max(sheet.getLastRow(), 3);
+  const head = sheet.getRange(1, 1, Math.min(8, lastRow), lastCol).getDisplayValues();
+  let dateRow = 1, best = 0;
+  for (let r = 0; r < head.length; r++) {
+    let n = 0;
+    for (let c = NAME_COLUMN; c < lastCol; c++) if (dateOf(head[r][c])) n++;
+    if (n > best) { best = n; dateRow = r + 1; }
+  }
+  const subjectRow = dateRow + 1;
+  const dates = head[dateRow - 1], subjects = head[subjectRow - 1] || [];
+  const groups = {};
+  let current = null, currentLabel = '';
+  for (let c = NAME_COLUMN; c < lastCol; c++) {
+    const label = String(dates[c] || '').trim();
+    const dm = dateOf(label);
+    if (dm && label !== currentLabel) {
+      current = groups[dm] = groups[dm] || {cols: [], label: label};
+      currentLabel = label;
+    } else if (!dm && label) {
+      current = null; currentLabel = '';
+    }
+    if (current) current.cols.push(c + 1);
+  }
+  const names = sheet.getRange(1, NAME_COLUMN, lastRow, 1).getDisplayValues();
+  const rows = {}, bySurname = {}, surnameOf = {}, text = {};
+  for (let r = subjectRow + 1; r <= lastRow; r++) {
+    const t = String(names[r - 1][0] || '');
+    const m = t.match(/^\s*(\d+)\s*\./);
+    const sur = normText(t.replace(/^\s*\d+\s*\./, '').trim().split(/\s+/)[0]);
+    text[r] = t.trim();
+    if (m) rows[Number(m[1])] = r;
+    if (sur) {
+      surnameOf[r] = sur;
+      bySurname[sur] = bySurname[sur] ? -1 : r;
+    }
+  }
+  cache[key] = {sheet: sheet, groups: groups, subjects: subjects, rows: rows, bySurname: bySurname, surnameOf: surnameOf, names: text};
+  return cache[key];
+}
+
+function dateOf(label) {
+  const m = String(label || '').trim().toLowerCase().match(/^(?:(?:пн|пон|вт|ср|чт|чет|пт|пят|сб|суб|вс|вос)[а-я]*\.?,?\s*)?(\d{1,2})\.(\d{2})(?:\.\d{2,4})?$/);
+  return m ? ('0' + m[1]).slice(-2) + '.' + m[2] : '';
+}
+
+function findRow(info, rec) {
+  const sur = normText(String(rec.student || '').trim().split(/\s+/)[0]);
+  const byNum = rec.n ? info.rows[Number(rec.n)] : 0;
+  if (byNum && (!sur || info.surnameOf[byNum] === sur)) return byNum;
+  if (sur && info.bySurname[sur]) return info.bySurname[sur];
+  return 0;
+}
+
+function pickColumn(group, rec, subjects) {
+  const cols = group.cols;
+  const want = canon(rec.subject) || canon(rec.subjectFull);
+  const bySlot = cols[(Number(rec.slot) || Number(rec.pair)) - 1];
+  let matches = want ? cols.filter(function (c) { return canon(subjects[c - 1]) === want; }) : [];
+  if (want === 'eng' && matches.length > 1) {
+    const teacher = normText(rec.teacher).slice(0, 6);
+    const byTeacher = teacher ? matches.filter(function (c) { return normText(subjects[c - 1]).indexOf(teacher) >= 0; }) : [];
+    if (byTeacher.length) matches = byTeacher;
+    else if (matches.indexOf(bySlot) >= 0) return bySlot;
+    else return -2;
+  }
+  if (matches.length === 1) return matches[0];
+  if (matches.length > 1) {
+    const nth = Number(rec.nth) || 0;
+    if (nth >= 1 && matches[nth - 1]) return matches[nth - 1];
+    return matches.indexOf(bySlot) >= 0 ? bySlot : matches[0];
+  }
+  if (!bySlot) return 0;
+  const there = canon(subjects[bySlot - 1]);
+  if (there && there !== want) return -1;
+  return bySlot;
+}
+
+function normText(s) {
+  const lat = {a: 'а', b: 'в', c: 'с', e: 'е', h: 'н', i: 'и', k: 'к', m: 'м', o: 'о', p: 'р', t: 'т', x: 'х', y: 'у'};
+  return String(s || '').toLowerCase().replace(/ё/g, 'е')
+    .replace(/[a-z]/g, function (ch) { return lat[ch] || ch; })
+    .replace(/[^а-я0-9]/g, '');
+}
+
+function canon(raw) {
+  const s = normText(raw);
+  if (!s) return '';
+  if (s.indexOf('мдк0101') === 0) return 'mdk0101';
+  if (s.indexOf('мдк0102') === 0) return 'mdk0102';
+  if (s.indexOf('мдк0401') === 0) return 'mdk0401';
+  if (/^опбд|^основыпроектир/.test(s)) return 'opbd';
+  if (/^оап|^основыалгоритм/.test(s)) return 'oap';
+  if (/^ит($|в|проф)|^информационныетехн/.test(s)) return 'it';
+  if (/^дм|^дискрет/.test(s)) return 'dm';
+  if (/^эвм|^элементывысш/.test(s)) return 'evm';
+  if (/^бжд|^безопасн/.test(s)) return 'bzhd';
+  if (/^физ/.test(s)) return 'pe';
+  if (/^комп/.test(s)) return 'net';
+  if (/^ист/.test(s)) return 'hist';
+  if (/^ин$|^иняз|^иностр|^англ|^ингусар|^инкузнец/.test(s)) return 'eng';
+  return '';
+}
+
+function colLetter(n) {
+  let s = '';
+  while (n > 0) { const m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); }
+  return s;
+}
