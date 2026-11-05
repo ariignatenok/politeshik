@@ -1070,3 +1070,28 @@
     font-size: 12px;
   }
 }
+
+.gate-or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+  color: var(--muted, #94a3b8);
+  font-size: 12px;
+}
+
+.gate-or::before,
+.gate-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border, rgba(128, 128, 128, 0.3));
+}
+
+.btn.gh {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
