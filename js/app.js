@@ -22,6 +22,18 @@ const App = {
       ['parent', 'staff', 'teacher'].indexOf((Cloud.meta || {}).signup_role) >= 0
     )
       return 'complete';
+    if (
+      Cloud.status === 'online' &&
+      !Cloud.member &&
+      !Cloud.realAdmin &&
+      !Cloud.realTeacher &&
+      !Cloud.profile &&
+      Cloud.provider &&
+      Cloud.provider !== 'email' &&
+      !(Cloud.meta || {}).signup_role &&
+      !ui.oauthStudentOk
+    )
+      return 'oauth';
     if (Cloud.status === 'online' && !Cloud.hasCabinet())
       return Cloud.claimsLoaded ? (ui.secret ? 'secret' : 'register') : 'loading';
     if (Cloud.status === 'offline' && !ui.localOk) return 'offline';
@@ -49,6 +61,7 @@ const App = {
       (logged &&
         !Cloud.claimsLoaded &&
         mode !== 'complete' &&
+        mode !== 'oauth' &&
         ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0);
     if (busy) {
       g.innerHTML =
@@ -57,7 +70,7 @@ const App = {
         '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p><div class="sk-gate"><span class="sk sk-line sk-w80"></span><span class="sk sk-line sk-w60"></span><span class="sk sk-line sk-w40"></span></div></div>';
       return '';
     }
-    if (mode === 'confirm' || mode === 'complete') {
+    if (mode === 'confirm' || mode === 'complete' || mode === 'oauth') {
       g.innerHTML = Signup.gateHtml(mode);
       return '';
     }
@@ -245,7 +258,9 @@ const App = {
       '<button class="btn primary big" data-action="login-do">Войти</button><button class="btn big" style="margin-top:8px" data-action="signup-do"' +
       (draft.consent ? '' : ' disabled') +
       '>Зарегистрироваться</button></div>' +
-      '<small class="gate-foot">Пароль хранится в Supabase в зашифрованном виде.</small></div>';
+      '<div class="gate-or"><span>или</span></div><button class="btn big gh" data-action="oauth-github">' +
+      GITHUB_MARK +
+      ' Войти через GitHub</button><small class="gate-foot">Через GitHub: после входа выберите роль и введите код группы. Пароль хранится в Supabase в зашифрованном виде.</small></div>';
     const f = g.querySelector('input');
     if (f)
       setTimeout(() => {

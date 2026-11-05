@@ -262,5 +262,96 @@ Object.assign(A, {
     ui.localOk = true;
     $('#gate').dataset.mode = '';
     App.render(true);
+  },
+  /**
+   * Открывает вход через GitHub.
+   * @param {HTMLElement} el Кнопка.
+   */
+  async 'oauth-github'(el) {
+    try {
+      window.localStorage.setItem('politeshik:oauthrole', ui.loginRole || 'student');
+    } catch (error) {}
+    el.disabled = true;
+    const res = await Cloud.loginGithub();
+    if (!res.ok) {
+      el.disabled = false;
+      toast(res.msg);
+    }
+  },
+  /**
+   * Переключает роль на экране «Завершите регистрацию» после входа через GitHub.
+   * @param {HTMLElement} el Кнопка с data-role.
+   */
+  'oauth-role'(el) {
+    const form = document.querySelector('[data-form="oauth"]'),
+      read = name => ((form && form.querySelector('[name=' + name + ']')) || {}).value || '';
+    ui.oauthDraft = {
+      group_code: read('group_code'),
+      person_name: read('person_name'),
+      child_name: read('child_name'),
+      person_note: read('person_note'),
+      teacher_name: read('teacher_name'),
+      consent: !!((form && form.querySelector('[name=consent]')) || {}).checked
+    };
+    ui.oauthRole = el.dataset.role;
+    try {
+      window.localStorage.setItem('politeshik:oauthrole', ui.oauthRole);
+    } catch (error) {}
+    $('#gate').dataset.mode = '';
+    App.render();
+  },
+  /**
+   * Завершает регистрацию человека, вошедшего через GitHub: проверяет данные и отправляет заявку.
+   * @param {HTMLElement} el Кнопка.
+   */
+  async 'oauth-send'(el) {
+    const form = el.closest('[data-form="oauth"]'),
+      role = ui.oauthRole || 'student',
+      read = name => ((form.querySelector('[name=' + name + ']') || {}).value || '').trim();
+    if (!(form.querySelector('[name=consent]') || {}).checked) return toast('Нужно согласие на обработку персональных данных');
+    el.disabled = true;
+    try {
+      if (role === 'student' || role === 'parent') {
+        const code = read('group_code'),
+          check = await supa.rpc('check_group_code', {
+            p_code: code
+          });
+        if (check.error) return toast(check.error.message);
+        if (check.data !== true) return toast(code ? 'Неверный код группы' : 'Введите код группы: его выдаёт староста');
+        ui.groupCode = code;
+        try {
+          window.localStorage.setItem('politeshik:gc', code);
+        } catch (error) {}
+      }
+      if (role === 'teacher' && !read('teacher_secret')) return toast('Введите пароль преподавателя');
+      if (role === 'parent' || role === 'staff') {
+        const problem = Roles.checkExtra(role, form);
+        if (problem) return toast(problem);
+      }
+      await Cloud.saveMeta({
+        consent: true,
+        consent_date: new Date().toISOString(),
+        signup_role: role,
+        person_name: read('person_name'),
+        child_name: read('child_name'),
+        person_note: read('person_note'),
+        teacher_name: read('teacher_name')
+      });
+      if (role === 'student') {
+        ui.oauthStudentOk = true;
+      } else if (role === 'teacher') {
+        const activation = await Teacher.activate(read('teacher_secret'), read('teacher_name'));
+        if (!activation.ok) return toast(activation.msg);
+      } else {
+        const registration = await Roles.registerExtra(role, form);
+        if (!registration.ok) return toast(registration.msg);
+        await Cloud.init();
+      }
+      ui.oauthDraft = null;
+    } finally {
+      el.disabled = false;
+      $('#gate').dataset.mode = '';
+      App.render(true);
+    }
   }
 });

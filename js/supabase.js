@@ -7,7 +7,8 @@ const supa =
     ? window.supabase.createClient(SUPA_URL, SUPA_KEY, {
         auth: {
           persistSession: true,
-          autoRefreshToken: true
+          autoRefreshToken: true,
+          detectSessionInUrl: true
         }
       })
     : null;

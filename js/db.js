@@ -640,6 +640,8 @@ const Cloud = (() => {
         return;
       }
       C.uid = session.user.id;
+      C.provider = C.providerOf(session);
+      C.oauthEmail = (session.user && session.user.email) || '';
       C.me = {
         id: session.user.id,
         name: session.user.email || 'user',
@@ -1862,6 +1864,60 @@ const Cloud = (() => {
    * @returns {boolean} true, если условие выполнено.
    */
   C.locked = () => C.status === 'online' && !C.isAdmin && !!C.cfg;
+  /**
+   * Определяет, каким способом человек вошёл: email (почта и пароль) или внешний сервис (github).
+   * @param {Object} session Сессия Supabase.
+   * @returns {string} Название способа входа.
+   */
+  C.providerOf = session => ((session && session.user && session.user.app_metadata) || {}).provider || 'email';
+  /**
+   * Открывает вход через GitHub (окно авторизации GitHub, затем возврат в Политешик).
+   * @returns {Promise<Object>} ok и сообщение об ошибке.
+   */
+  C.loginGithub = async () => {
+    if (!supa)
+      return {
+        ok: false,
+        msg: 'Библиотека Supabase не загрузилась. Проверьте интернет и обновите страницу.'
+      };
+    try {
+      const {error} = await supa.auth.signInWithOAuth({
+        provider: 'github',
+        options: {
+          redirectTo: location.origin + location.pathname
+        }
+      });
+      if (error)
+        return {
+          ok: false,
+          msg: /provider is not enabled|unsupported provider/i.test(String(error.message || '') + String(error.code || ''))
+            ? 'Вход через GitHub ещё не включён в Supabase (Authentication → Sign In / Providers → GitHub).'
+            : friendlyAuthError(error)
+        };
+      return {
+        ok: true
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        msg: friendlyAuthError(error)
+      };
+    }
+  };
+  /**
+   * Сохраняет данные регистрации в аккаунте (согласие, выбранная роль, ФИО).
+   * @param {Object} data Данные.
+   * @returns {Promise<boolean>} true, если сохранилось.
+   */
+  C.saveMeta = async data => {
+    C.meta = Object.assign({}, C.meta || {}, data);
+    try {
+      const {error} = await supa.auth.updateUser({data});
+      return !error;
+    } catch (error) {
+      return false;
+    }
+  };
   /**
    * Входит по email и паролю.
    * @param {string} email Адрес электронной почты.
