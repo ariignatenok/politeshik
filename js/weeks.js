@@ -92,8 +92,29 @@ const Weeks = {
    * @returns {Array<Object>} Массив.
    */
   materialize(weekStart) {
-    if (!Weeks.has(weekStart)) Weeks.map()[weekStart] = Weeks.templateFor(weekStart);
+    const markers = (Weeks.map()[weekStart] || []).filter(l => l.deleted);
+    Weeks.map()[weekStart] = Weeks.lessons(weekStart).map(l => Object.assign({}, l)).concat(markers);
     return Weeks.map()[weekStart];
+  },
+  /**
+   * Закрепляет ручные правки выбранной пары, оставляя остальные пары на автозагрузке.
+   * @param {string} weekStart Понедельник недели.
+   * @param {number} day Номер дня недели.
+   * @param {number} pair Номер пары.
+   */
+  markCell(weekStart, day, pair) {
+    const list = Weeks.materialize(weekStart), cell = list.filter(l => l.day === day && l.pair === pair);
+    cell.forEach(l => { l.manualCell = true; });
+    if (!cell.some(l => l.deleted)) list.push({id: U.uid('manual'), day, pair, manualCell: true, deleted: true});
+  },
+  /**
+   * Закрепляет целую неделю после ручного импорта или копирования.
+   * @param {string} weekStart Понедельник недели.
+   * @param {Array<Object>} lessons Пары недели.
+   */
+  setManualWeek(weekStart, lessons) {
+    Weeks.map()[weekStart] = lessons.map(l => Object.assign({}, l, {manualWeek: true}));
+    if (!lessons.length) Weeks.map()[weekStart].push({id: U.uid('manual'), manualWeek: true, deleted: true});
   },
   /**
    * Возвращает неделю к шаблону: убирает её собственные правки.
@@ -108,7 +129,7 @@ const Weeks = {
    * @param {string} toWeek Куда, понедельник недели.
    */
   copy(fromWeek, toWeek) {
-    Store.s.weeks[toWeek] = Weeks.lessons(fromWeek).map(l => Object.assign({}, l));
+    Weeks.setManualWeek(toWeek, Weeks.lessons(fromWeek));
   },
   /**
    * Удаляет самые старые недели сверх лимита, чтобы документ не разрастался.
@@ -158,9 +179,12 @@ const Weeks = {
    * @param {string} id Идентификатор пары.
    */
   removeLesson(weekStart, id) {
-    const list = Weeks.materialize(weekStart),
+    const lesson = Weeks.find(id, weekStart);
+    if (!lesson) return;
+    Weeks.markCell(weekStart, lesson.day, lesson.pair);
+    const list = Weeks.map()[weekStart],
       index = list.findIndex(l => l.id === id);
-    if (index >= 0) list.splice(index, 1);
+    if (index >= 0) list[index] = Object.assign({}, list[index], {deleted: true});
   },
   /**
    * Сохраняет пару: только для этой недели или для шаблона всех недель.
@@ -170,7 +194,7 @@ const Weeks = {
    * @param {boolean} everyWeek Сохранить в шаблон всех недель.
    */
   saveLesson(weekStart, record, id, everyWeek) {
-    const store = Store.s;
+    const store = Store.s, original = id ? Weeks.find(id, weekStart) : null;
     if (everyWeek) {
       const template = id ? store.schedule.find(l => l.id === id) : null;
       if (template) Object.assign(template, record);
@@ -178,19 +202,24 @@ const Weeks = {
         store.schedule.push(
           Object.assign(
             {
-              id: id || U.uid('l')
+              id: id || U.uid('l'), week: 'both'
             },
             record
           )
         );
-      return;
     }
-    const list = Weeks.materialize(weekStart),
+    if (original) Weeks.markCell(weekStart, original.day, original.pair);
+    Weeks.markCell(weekStart, record.day, record.pair);
+    const list = Weeks.map()[weekStart],
       found = id ? list.find(l => l.id === id) : null;
     const weekly = Object.assign({}, record, {
-      week: 'both'
+      week: 'both', manualCell: true
     });
-    if (found) Object.assign(found, weekly);
+    Object.keys(weekly).filter(k => k.startsWith('source') || k.startsWith('original')).forEach(k => { delete weekly[k]; });
+    if (found) {
+      Object.keys(found).filter(k => k.startsWith('source') || k.startsWith('original')).forEach(k => { delete found[k]; });
+      Object.assign(found, weekly);
+    }
     else
       list.push(
         Object.assign(

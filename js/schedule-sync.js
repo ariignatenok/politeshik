@@ -85,15 +85,17 @@ const ScheduleSync = {
    * @returns {Array<Object>} Пары недели.
    */
   week(start, fallback) {
-    if (!ScheduleSync.snapshot) return fallback;
-    let result = fallback.slice();
+    if (!ScheduleSync.snapshot || fallback.some(l => l.manualWeek)) return fallback.filter(l => !l.deleted);
+    const cells = new Set(fallback.filter(l => l.manualCell).map(l => l.day + '|' + l.pair));
+    let result = fallback.filter(l => !l.manualCell && !l.deleted);
     for (let i = 0; i < 7; i++) {
       const date = U.iso(U.addDays(U.fromISO(start), i)), day = ScheduleSync.day(date);
       if (!day) continue;
       result = result.filter(l => l.day !== i);
       result.push(...day.lessons.map((l, index) => ScheduleSync.lesson(l, date, index)));
     }
-    return result;
+    return result.filter(l => !cells.has(l.day + '|' + l.pair))
+      .concat(fallback.filter(l => l.manualCell && !l.deleted));
   },
   /**
    * Готовит список замен и отмен отдельно для каждой подгруппы.
@@ -104,6 +106,8 @@ const ScheduleSync = {
     const result = [];
     Object.entries(ScheduleSync.snapshot.days).forEach(([date, day]) => {
       day.lessons.forEach((l, index) => {
+        const local = Weeks.map()[Weeks.start(date)] || [];
+        if (local.some(x => x.manualWeek || x.manualCell && x.day === U.dayIdx(U.fromISO(date)) && x.pair === l.lesson_number) || Changes.at(date, l.lesson_number)) return;
         if (l.status === 'ok') return;
         const lesson = ScheduleSync.lesson(l, date, index);
         if (!Att.mine([lesson]).length) return;

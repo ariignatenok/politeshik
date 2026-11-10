@@ -52,7 +52,6 @@ const Att = {
         }
         if (pr.state !== 'ok') pr.change = {reason: pr.lessons.map(l => l.sourceNote).filter(Boolean).join(' · ')};
       });
-      return out.sort((a, b) => a.pair - b.pair);
     }
     Changes.items()
       .filter(c => c.date === date)

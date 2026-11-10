@@ -282,7 +282,7 @@ const ScheduleImport = {
       'raspisanie-2-nedeli-backup-' + U.iso(U.today()) + '.json'
     );
     Object.keys(weeks).forEach(start => {
-      state.weeks[start] = weeks[start];
+      Weeks.setManualWeek(start, weeks[start]);
     });
     Changes.save(Changes.items().filter(c => !(c.date >= first && c.date <= last)));
     Store.commit();
@@ -321,6 +321,11 @@ const ScheduleImport = {
     result.created.forEach(sb => state.subjects.push(sb));
     state.schedule = result.lessons;
     state.weeks = {};
+    if (ScheduleSync.snapshot) {
+      [...new Set(Object.keys(ScheduleSync.snapshot.days).map(date => Weeks.start(date)))].forEach(start => {
+        Weeks.setManualWeek(start, Weeks.templateFor(start));
+      });
+    }
     Changes.save([]);
     Store.commit();
   }

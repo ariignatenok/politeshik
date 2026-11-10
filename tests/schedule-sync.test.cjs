@@ -13,7 +13,7 @@ function app() {
   vm.runInContext(`
     const Store = {s: {subjects: [{id:'s_it',name:'ИТ в профессиональной деятельности'}, {id:'s_opbd',name:'Основы проектирования баз данных'}],
       settings: {numeratorAnchor:'2026-10-12'}, weeks: {}, schedule: []}};
-    const ui = {}, Cloud = {isAdmin:false,isStaff:false}, Changes = {items:()=>[]};
+    const ui = {}, Cloud = {isAdmin:false,isStaff:false}, Changes = {items:()=>[], at:()=>null};
     globalThis.api = {ScheduleSync, Weeks, Att, Store, Cloud};
   `, ctx);
   ctx.api.Store.s.settings.subgroup = '1';
@@ -68,4 +68,51 @@ test('offline and malformed data retain last valid snapshot', async () => {
   const malformed = JSON.parse(JSON.stringify(original));
   malformed.days['2026-11-10'].lessons[0].status = 'unknown';
   assert.equal(ScheduleSync.valid(malformed), false);
+});
+
+test('manual edits survive source refresh, cloud roundtrip and leave other pairs automatic', () => {
+  const {Weeks, Store, ScheduleSync} = app(), ws = '2026-11-09';
+  const original = Weeks.on('2026-11-10')[2];
+  Weeks.saveLesson(ws, {...original, who:'Мой преподаватель', room:'999', subjectId:'s_it'}, original.id, false);
+  const fresh = JSON.parse(JSON.stringify(ScheduleSync.snapshot));
+  fresh.days['2026-11-10'].lessons[2].auditorium = '111';
+  fresh.days['2026-11-10'].lessons[2].classroom = '111';
+  fresh.days['2026-11-10'].lessons[3].teacher = 'Обновлён из ИСПО';
+  ScheduleSync.snapshot = fresh;
+  Store.s.weeks = JSON.parse(JSON.stringify(Store.s.weeks));
+  const edited = Weeks.on('2026-11-10').find(l => l.pair === 3);
+  assert.equal(edited.room, '999');
+  assert.equal(edited.who, 'Мой преподаватель');
+  assert.equal(edited.sourceSubject, undefined);
+  assert.equal(Weeks.on('2026-11-10').find(l => l.pair === 4).who, 'Обновлён из ИСПО');
+  Weeks.reset(ws);
+  assert.equal(Weeks.on('2026-11-10').find(l => l.pair === 3).room, '111');
+});
+
+test('manual deletion, adding to empty day and moving a source lesson survive refresh', () => {
+  const {Weeks, ScheduleSync} = app(), ws = '2026-11-09';
+  const original = Weeks.on('2026-11-10')[2];
+  Weeks.removeLesson(ws, original.id);
+  assert.equal(Weeks.on('2026-11-10').some(l => l.pair === 3), false);
+  Weeks.saveLesson(ws, {day:5,pair:1,subjectId:'s_it',room:'444'}, '', false);
+  assert.equal(Weeks.on('2026-11-14')[0].room, '444');
+  const moving = Weeks.on('2026-11-10').find(l => l.pair === 4);
+  Weeks.saveLesson(ws, {...moving,day:2,pair:5}, moving.id, false);
+  ScheduleSync.snapshot = JSON.parse(JSON.stringify(ScheduleSync.snapshot));
+  assert.equal(Weeks.on('2026-11-10').some(l => l.pair === 4), false);
+  assert.equal(Weeks.on('2026-11-11').some(l => l.pair === 5), true);
+});
+
+test('copying a week persists the copied schedule including free days', () => {
+  const {Weeks} = app();
+  Weeks.copy('2026-11-09', '2026-11-16');
+  assert.equal(Weeks.on('2026-11-16').length, Weeks.on('2026-11-09').length);
+  assert.equal(Weeks.on('2026-11-21').length, 0);
+});
+
+test('repeating an edited source lesson updates both current week and template', () => {
+  const {Weeks} = app(), source = Weeks.on('2026-11-10')[2];
+  Weeks.saveLesson('2026-11-09', {day:1,pair:3,subjectId:'s_it',room:'777'}, source.id, true);
+  assert.equal(Weeks.on('2026-11-10').find(l => l.pair === 3).room, '777');
+  assert.equal(Weeks.templateFor('2026-12-14')[0].room, '777');
 });
