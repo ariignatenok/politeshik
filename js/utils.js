@@ -207,6 +207,10 @@ const U = {
  * @returns {string} Строка.
  */
 function weekType(date) {
+  const iso = typeof date === 'string' ? date : U.iso(date),
+    published = ScheduleSync.day(iso);
+  if (published && published.week_type === 'Числитель') return 'num';
+  if (published && published.week_type === 'Знаменатель') return 'den';
   const anchor = U.fromISO(Store.s.settings.numeratorAnchor);
   const w = Math.round(U.dayDiff(anchor, U.mondayOf(date)) / 7);
   return ((w % 2) + 2) % 2 === 0 ? 'num' : 'den';

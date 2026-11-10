@@ -492,6 +492,7 @@ const App = {
    */
   init() {
     Store.load();
+    ScheduleSync.init();
     UI.applyTheme();
     App.render(true);
     Cloud.init()

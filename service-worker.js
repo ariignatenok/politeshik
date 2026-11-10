@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'ba17c52e8d6';
+const CACHE_VERSION = 'bpolytech20261110';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -135,6 +135,8 @@ const SHELL = [
   'js/views/subjects.js',
   'js/views/teachers.js',
   'js/weeks.js',
+  'js/schedule-sync.js',
+  'data/schedule.json',
   'js/works.js'
 ];
 const EXTERNAL_SCRIPTS = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'];

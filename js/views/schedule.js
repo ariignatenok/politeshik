@@ -17,13 +17,13 @@ function lessonChip(l, wide, state, date) {
           .replace(gm[0], '')
           .replace(/^[\s·]+|[\s·]+$/g, '')
       : l.subgroup,
-    name = sb ? (wide ? sb.name : sb.short || sb.name) : 'Без предмета',
+    name = l.sourceSubject || (sb ? (wide ? sb.name : sb.short || sb.name) : 'Без предмета'),
     title = (gm ? name.replace(/\s*\([^)]*\)\s*$/, '') : name) + (gm ? ' (подгр. ' + gm[1] + ')' : '');
   const sub = [l.room ? 'ауд. ' + l.room : '', rest, wide || gm ? l.who : surname(l.who)].filter(Boolean).join(' · ');
   const t = l.start && l.end ? '<small>' + ICONS.alarmClock + ' ' + l.start + '–' + l.end + '</small>' : '';
   return (
     '<button class="lesson' +
-    (state === 'cancel' ? ' cancelled' : state === 'replaced' ? ' was' : '') +
+    (state === 'cancel' ? ' cancelled' : l.sourceStatus === 'replacement' ? ' repl' : state === 'replaced' ? ' was' : '') +
     '" style="--c:' +
     c +
     '" data-action="cell-edit" data-id="' +
@@ -38,8 +38,13 @@ function lessonChip(l, wide, state, date) {
     '</b>' +
     (sub ? '<small>' + U.esc(sub) + '</small>' : '') +
     t +
+    (l.originalSubject ? '<small>Было: ' + U.esc(l.originalSubject) + '</small>' : '') +
+    (l.originalTeacher || l.originalRoom ? '<small>Ранее: ' + U.esc([l.originalTeacher, l.originalRoom].filter(Boolean).join(' · ')) + '</small>' : '') +
+    (l.sourceNote ? '<small>' + U.esc(l.sourceNote) + '</small>' : '') +
     (state === 'cancel'
       ? '<span class="wk cancel-b">ОТМЕНЕНА</span>'
+      : l.sourceStatus === 'replacement'
+        ? '<span class="wk repl-b">ЗАМЕНА</span>'
       : l.week !== 'both'
         ? '<span class="wk">' + (l.week === 'num' ? 'числ.' : 'знам.') + '</span>'
         : '') +
@@ -56,7 +61,9 @@ function lessonChip(l, wide, state, date) {
  */
 function cellChips(d, n, date, wide) {
   const ls = Att.mine(Weeks.on(date)).filter(l => l.pair === n),
-    ch = Changes.at(date, n);
+    ch = ScheduleSync.day(date) ? null : Changes.at(date, n);
+  if (ScheduleSync.day(date))
+    return ls.map(l => lessonChip(l, wide, l.sourceStatus === 'cancellation' ? 'cancel' : '', date)).join('');
   let h = ls.map(l => lessonChip(l, wide, ch ? (ch.type === 'cancel' ? 'cancel' : 'replaced') : '', date)).join('');
   if (ch && ch.type === 'replace') {
     const sb = subj(ch.newSubjectId);
@@ -79,7 +86,7 @@ function cellChips(d, n, date, wide) {
  */
 function changesCard() {
   const today = U.iso(U.today()),
-    list = Changes.items()
+    list = Changes.items().filter(c => !ScheduleSync.day(c.date)).concat(ScheduleSync.changes())
       .filter(c => c.date >= today)
       .sort((a, b) => (a.date + a.pair).localeCompare(b.date + b.pair));
   if (!list.length) return '';
@@ -95,7 +102,7 @@ function changesCard() {
           (c.type === 'cancel' ? ICONS.crossMark + ' ' : ICONS.repeat + ' ') +
           U.esc(d.body) +
           '</div></div>' +
-          (canEdit()
+          (canEdit() && !c.source
             ? '<div class="item-actions"><button class="icon-btn" data-action="chg-del" data-id="' +
               c.id +
               '" aria-label="Убрать изменение">' +
@@ -115,7 +122,7 @@ function changesCard() {
  */
 function viewSchedule() {
   const state = Store.s,
-    pairs = state.settings.pairs,
+    pairs = state.settings.pairs.slice(),
     todayIso = U.iso(U.today()),
     currentWs = Weeks.start(todayIso),
     todayIdx = U.dayIdx(new Date());
@@ -125,6 +132,9 @@ function viewSchedule() {
     monday = U.fromISO(ws),
     type = weekType(monday),
     explicit = Weeks.has(ws);
+  const automatic = !!ScheduleSync.day(ws),
+    maxPair = Math.max(0, ...Weeks.lessons(ws).map(l => l.pair));
+  while (pairs.length < maxPair) pairs.push({start: '', end: ''});
   if (ui.schedDay == null || ui.schedDayWs !== ws) {
     ui.schedDay = isCur ? todayIdx : 0;
     ui.schedDayWs = ws;
@@ -160,7 +170,7 @@ function viewSchedule() {
       grid +=
         '<div class="g-cell' +
         (isCur && d === todayIdx ? ' today' : '') +
-        '" data-action="cell-add" data-day="' +
+        '"' + (automatic ? '' : ' data-action="cell-add"') + ' data-day="' +
         d +
         '" data-pair="' +
         n +
@@ -204,7 +214,7 @@ function viewSchedule() {
           (pairTime(n) || '') +
           '</small></div><div class="l-body">' +
           chh +
-          (ls.length || chh
+          (automatic ? '' : ls.length || chh
             ? '<button class="btn ghost sm" data-action="cell-add" data-day="' +
               ui.schedDay +
               '" data-pair="' +
@@ -228,7 +238,7 @@ function viewSchedule() {
     (isCur ? 'Текущая неделя · ' : '') +
     WEEK_NAME[type] +
     ' · ' +
-    (explicit ? 'изменена' : 'по шаблону') +
+    (ScheduleSync.day(ws) ? 'из ИСПО' : explicit ? 'изменена' : 'по шаблону') +
     '</small></div>' +
     '<button class="icon-btn" data-action="sched-nav" data-step="1" aria-label="Следующая неделя">→</button>' +
     (isCur ? '' : '<button class="btn sm" data-action="sched-today">Сегодня</button>') +
@@ -236,10 +246,11 @@ function viewSchedule() {
   const noTimes = !pairs.some(p => p.start && p.end),
     emptyWeek = !Weeks.lessons(ws).length;
   return (
-    scheduleBanner() + QuickAtt.banner() +
-    '<div class="page-head"><div><h1>Расписание</h1><p>Каждая неделя своя: правки сохраняются только для выбранной недели.</p></div>' +
-    '<div class="head-actions"><button class="btn" data-action="sched-import">Заменить расписание</button><button class="btn" data-action="sched-copy-next">Копировать на след. неделю</button>' +
-    (explicit ? '<button class="btn" data-action="sched-reset">Сбросить к шаблону</button>' : '') +
+    ScheduleSync.banner() + (ScheduleSync.day(ws) ? '' : scheduleBanner()) + QuickAtt.banner() +
+    '<div class="page-head"><div><h1>Расписание</h1><p>Полученные дни автоматически сверяются с расписанием ИСПО. Вне полученного диапазона показано сохранённое расписание.</p></div>' +
+    '<div class="head-actions">' +
+    (automatic ? '' : '<button class="btn" data-action="sched-import">Заменить расписание</button><button class="btn" data-action="sched-copy-next">Копировать на след. неделю</button>') +
+    (!automatic && explicit ? '<button class="btn" data-action="sched-reset">Сбросить к шаблону</button>' : '') +
     '<button class="btn" data-action="times">' +
     ICONS.stopwatch +
     ' Время пар</button></div></div>' +
@@ -253,6 +264,6 @@ function viewSchedule() {
         ICONS.stopwatch +
         ' Время звонков пока не задано — нажмите «Время пар» или на номер пары.</p>'
       : '') +
-    '<p class="hint">Чтобы пара повторялась каждую неделю, отметьте в форме «Повторять каждую неделю».</p>'
+    (automatic ? '' : '<p class="hint">Чтобы пара повторялась каждую неделю, отметьте в форме «Повторять каждую неделю».</p>')
   );
 }

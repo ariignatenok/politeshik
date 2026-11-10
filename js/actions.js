@@ -4,7 +4,11 @@
  * Сообщает, что расписание закрыто для правки студенту.
  * @returns {boolean} true, если правка запрещена.
  */
-const lockSched = () => {
+const lockSched = allowAutomatic => {
+  if (!allowAutomatic && ScheduleSync.day(ui.schedWs || Weeks.start(U.today()))) {
+    toast('Эта неделя обновляется автоматически из расписания ИСПО');
+    return true;
+  }
   if (Cloud.locked()) {
     toast('Расписание ведёт админ группы');
     return true;

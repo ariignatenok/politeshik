@@ -62,7 +62,8 @@ const Weeks = {
    * @returns {Array<Object>} Массив.
    */
   lessons(weekStart) {
-    return Weeks.has(weekStart) ? Weeks.map()[weekStart] : Weeks.templateFor(weekStart);
+    const local = Weeks.has(weekStart) ? Weeks.map()[weekStart] : Weeks.templateFor(weekStart);
+    return ScheduleSync.week(weekStart, local);
   },
   /**
    * Возвращает пары конкретного дня по расписанию его недели.

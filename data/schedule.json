@@ -1,0 +1,1274 @@
+{
+  "schema": 1,
+  "group": "25290909/3091",
+  "source": "https://polytech-schedule.ru",
+  "checked_at": "2026-11-10",
+  "from": "2026-11-02",
+  "to": "2026-11-21",
+  "days": {
+    "2026-11-02": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Краснопёрова А.Д.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОПБД",
+          "teacher": "Андреев В.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОПБД",
+          "teacher": "Андреев В.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-03": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "БЖД",
+          "teacher": "Симоненко С.И.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-04": {
+      "lessons": []
+    },
+    "2026-11-05": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ДМ с ЭМЛ",
+          "teacher": "Муравьева Ю.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "БЖД",
+          "teacher": "Симоненко С.И.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.02 Проектир. и разраб. интерф. пользов.",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-06": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Кузнецова Л.И.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Техн. созд., администр. и анал. информ. ресурсов",
+          "teacher": "Рябова В.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-07": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Физ. культура",
+          "teacher": "Мадаев Р.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Техн. созд., администр. и анал. информ. ресурсов",
+          "teacher": "Рябова В.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-08": {
+      "lessons": []
+    },
+    "2026-11-09": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Краснопёрова А.Д.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "325_К",
+          "campus": "Э",
+          "classroom": "каб. 325_К (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-10": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОПБД",
+          "teacher": "Андреев В.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-11": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Физ. культура",
+          "teacher": "Мадаев Р.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "СК-7",
+          "campus": "Э",
+          "classroom": "каб. СК-7 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "БЖД",
+          "teacher": "Симоненко С.И.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-12": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОПБД",
+          "teacher": "Андреев В.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ДМ с ЭМЛ",
+          "teacher": "Муравьева Ю.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-13": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Кузнецова Л.И.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Краснопёрова А.Д.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "325_К",
+          "campus": "Э",
+          "classroom": "каб. 325_К (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.02 Проектир. и разраб. интерф. пользов.",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-14": {
+      "lessons": []
+    },
+    "2026-11-15": {
+      "lessons": []
+    },
+    "2026-11-16": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "БЖД",
+          "teacher": "Симоненко С.И.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Физ. культура",
+          "teacher": "Мадаев Р.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "СК-7",
+          "campus": "Э",
+          "classroom": "каб. СК-7 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-17": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОАП_лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "БЖД",
+          "teacher": "Симоненко С.И.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОПБД",
+          "teacher": "Андреев В.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Технология разработки информационных ресурсов",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ДМ с ЭМЛ",
+          "teacher": "Муравьева Ю.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Кузнецова Л.И.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОПБД",
+          "teacher": "Андреев В.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.02 Проектир. и разраб. интерф. пользов.",
+          "teacher": "Васильев С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Техн. созд., администр. и анал. информ. ресурсов",
+          "teacher": "Рябова В.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Техн. созд., администр. и анал. информ. ресурсов",
+          "teacher": "Рябова В.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "Э",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    }
+  }
+}

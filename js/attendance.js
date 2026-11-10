@@ -41,6 +41,19 @@ const Att = {
       change: null,
       orig: null
     }));
+    if (ScheduleSync.day(date)) {
+      out.forEach(pr => {
+        const active = pr.lessons.filter(l => l.sourceStatus !== 'cancellation');
+        if (!active.length) pr.state = 'cancel';
+        else {
+          pr.orig = pr.lessons.filter(l => l.sourceStatus === 'cancellation');
+          pr.lessons = active;
+          if (active.some(l => l.sourceStatus === 'replacement')) pr.state = 'replace';
+        }
+        if (pr.state !== 'ok') pr.change = {reason: pr.lessons.map(l => l.sourceNote).filter(Boolean).join(' · ')};
+      });
+      return out.sort((a, b) => a.pair - b.pair);
+    }
     Changes.items()
       .filter(c => c.date === date)
       .forEach(c => {

@@ -15,6 +15,7 @@ const Safe = {
     QuickAdd: 'js/quickadd.js',
     Gestures: 'js/gestures.js',
     Weeks: 'js/weeks.js',
+    ScheduleSync: 'js/schedule-sync.js',
     Relax: 'js/relax.js',
     CampusMap: 'js/campusmap.js',
     Solutions: 'js/solutions.js',

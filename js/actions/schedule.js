@@ -2,6 +2,12 @@
 
 Object.assign(A, {
   /**
+   * Проверяет опубликованное расписание группы вручную.
+   */
+  'sched-sync'() {
+    ScheduleSync.refresh();
+  },
+  /**
    * Выбирает день недели в мобильном расписании.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
@@ -116,7 +122,7 @@ Object.assign(A, {
    * Открывает форму времени пар.
    */
   times() {
-    if (lockSched()) return;
+    if (lockSched(true)) return;
     openTimesForm();
   },
   /**
