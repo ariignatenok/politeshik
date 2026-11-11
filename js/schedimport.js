@@ -292,6 +292,7 @@ const ScheduleImport = {
    * @returns {Object} Объект.
    */
   bundled() {
+    if (Groups.current !== 'group_1') return {lessons: [], created: [], errors: ['Встроенный архив относится к группе 25290909/3091'], perDay: [0,0,0,0,0,0,0]};
     const lessons = newScheduleLessons(),
       perDay = [0, 0, 0, 0, 0, 0, 0];
     lessons.forEach(l => {
@@ -335,7 +336,7 @@ const ScheduleImport = {
  * @returns {string} HTML.
  */
 function scheduleBanner() {
-  if (!Cloud.isAdmin || ScheduleImport.isLoaded() || ScheduleImport.isTwoWeeksLoaded()) return '';
+  if (Groups.current !== 'group_1' || !Cloud.isAdmin || ScheduleImport.isLoaded() || ScheduleImport.isTwoWeeksLoaded()) return '';
   return '<div class="card sched-banner"><div><b>Новое расписание готово</b><p>Прикрепить к двум неделям: 26–31 октября и 2–7 ноября. Остальные недели не изменятся, копия скачается файлом.</p></div><div class="head-actions"><button class="btn primary" data-action="sched-two-weeks">Прикрепить на 2 недели</button><button class="btn" data-action="sched-import-bundled">Заменить всё расписание</button></div></div>';
 }
 /**
@@ -347,7 +348,7 @@ function openScheduleImport() {
     '<div data-form="sched-import"><p class="md-help">Старые пары (и недели со своими правками) будут удалены, перед этим скачается копия. Формат: по одной паре в строке, поля через точку с запятой, таб или |:</p>' +
       '<pre class="sol-text">день; пара; предмет; преподаватель; аудитория; неделя; подгруппа\nПн; 1; Основы проектирования баз данных; Андреев В.А.; 315\nВт; 2; Английский; Кузнецова Н.; 441; числ.; подгр.1</pre><p class="md-help">Неделя и подгруппа необязательны (неделя: числ., знам. или пусто = каждая).</p>' +
       '<textarea class="input" name="text" rows="10" placeholder="Вставьте расписание"></textarea><div id="sched-import-preview" class="md-help"></div>' +
-      '<div class="head-actions" style="margin-top:12px"><button class="btn" data-action="sched-import-bundled">Загрузить расписание с 26.10</button><button class="btn" data-action="sched-import-check">Проверить</button><button class="btn primary" data-action="sched-import-apply">Заменить расписание</button></div></div>',
+      '<div class="head-actions" style="margin-top:12px">' + (Groups.current === 'group_1' ? '<button class="btn" data-action="sched-import-bundled">Загрузить расписание с 26.10</button>' : '') + '<button class="btn" data-action="sched-import-check">Проверить</button><button class="btn primary" data-action="sched-import-apply">Заменить расписание</button></div></div>',
     {
       noFocus: true
     }

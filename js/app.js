@@ -124,17 +124,17 @@ const App = {
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
         Mascot.svg('thinking', 110) +
-        '</div><h1>Политешик</h1><p class="gate-sub">Секретный пароль админа</p>' +
+        '</div><h1>Политешик</h1><p class="gate-sub">Дополнительный пароль сотрудника</p>' +
         '<p class="gate-text">«' +
         U.esc(ROSTER_BY_ID[ui.secret.rid].name) +
-        '» — фамилия админа группы. Чтобы продолжить, введите секретный пароль.</p>' +
+        '» — защищённая роль группы. Чтобы продолжить, введите дополнительный пароль.</p>' +
         '<div class="warn secret-warn" hidden>Секретный пароль ещё не задан. Задайте его в Supabase: запустите скрипт politeshik_full.sql (две первые подстановки в первой строке).</div>' +
         '<div data-form="secret"><label class="field"><span>Секретный пароль</span><input class="input" name="secret" type="password" autocomplete="off" placeholder="••••••••"></label>' +
         '<button class="btn primary big" data-action="secret-do">Войти</button></div>' +
         '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="secret-back">← Назад к выбору фамилии</button>' +
         '<button class="btn ghost" style="margin-top:6px;width:100%" data-action="logout-now">Выйти из аккаунта</button></div>';
       try {
-        supa.rpc('admin_secret_is_set').then(r => {
+        if (Groups.selected === 'group_1') supa.rpc('admin_secret_is_set').then(r => {
           if (r && r.data === false) {
             const w = g.querySelector('.secret-warn');
             if (w) w.hidden = false;
@@ -159,7 +159,8 @@ const App = {
         Mascot.svg('cheer', 120) +
         '</div><h1>Политешик</h1><p class="gate-sub">Создай личный кабинет</p>' +
         '<p class="gate-text">Ты вошёл(ла). Теперь выбери свою фамилию из списка группы — её нельзя будет сменить.</p>' +
-        '<div data-form="profile">' +
+        '<div data-form="profile">' + Groups.selector(false) +
+        field('Код группы', '<input class="input" name="group_code" autocomplete="off" value="' + U.esc(ui.registrationCode || Roles.storedCode()) + '">') +
         field(
           'Это я',
           '<select class="input" name="rid" data-change="rid-pick"><option value="">— выбери свою фамилию —</option>' +
@@ -277,6 +278,7 @@ const App = {
   render(animate) {
     const gm = App.gateMode();
     if (gm) {
+      const switcher = $('#group-switch'); if (switcher) switcher.innerHTML = '';
       App.renderGate(gm);
       return;
     }
@@ -294,7 +296,8 @@ const App = {
       (ui.tab === 'group' && !Cloud.isAdmin) ||
       (ui.tab === 'requests' && !Cloud.isAdmin) ||
       (ui.tab === 'access' && !Roles.isOwner()) ||
-      (ui.tab === 'users' && !Cloud.isAdmin) ||
+      (ui.tab === 'users' && !Cloud.isAdmin && !Cloud.isDeveloper) ||
+      (ui.tab === 'diagnostics' && !Cloud.isDeveloper && !Cloud.isSuperAdmin) ||
       (ui.tab === 'stats' && !Cloud.isAdmin) ||
       (Cloud.isStaff && ui.tab !== 'more' && !Roles.allows(ui.tab)) ||
       (!Cloud.isStaff && Roles.staffOnly.indexOf(ui.tab) >= 0)
@@ -319,6 +322,12 @@ const App = {
       v.style.minHeight = '';
     }
     App.shown = ui.tab;
+    let groupSwitch = $('#group-switch');
+    if (!groupSwitch) {
+      groupSwitch = document.createElement('div'); groupSwitch.id = 'group-switch';
+      document.querySelector('.content').insertBefore(groupSwitch, document.querySelector('.topbar').nextSibling);
+    }
+    groupSwitch.innerHTML = Cloud.isSuperAdmin ? '<b>Админ Арина · Супер-админ</b>' + Groups.selector(true) : '<p class="hint" style="padding:0 20px">Группа ' + U.esc(Groups.get(Groups.current).number) + '</p>';
     App.shownKey = fingerprint;
     App.centerTab();
     if (animate) {

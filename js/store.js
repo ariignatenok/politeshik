@@ -311,13 +311,16 @@ const Store = (() => {
       App.render();
     },
     restoreContent() {
+      if (Groups.current === 'group_2') {
+        ScheduleSync.populateCatalog(); save(); App.render(); return 0;
+      }
       const n = Content.apply(s);
       save();
       App.render();
       return n;
     },
     reset() {
-      s = Seed.make();
+      s = Groups.current === 'group_2' ? Groups.seed() : Seed.make();
       save();
       App.render();
     },
@@ -327,7 +330,8 @@ const Store = (() => {
           theme: s.settings.theme,
           numeratorAnchor: s.settings.numeratorAnchor,
           pairs: s.settings.pairs,
-          seedVersion: 5
+          seedVersion: 5,
+          groupTenant: s.settings.groupTenant
         }
       });
       save();

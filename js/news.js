@@ -91,6 +91,7 @@ const News = {
         }
       ]);
       const {error} = await supa.from('news_likes').insert({
+      tenant_id: Cloud.tenantId || 'group_1',
         news_id: newsId
       });
       if (error) News.likes = News.likes.filter(l => !(l.news_id === newsId && l.uid === Cloud.uid));
@@ -132,6 +133,7 @@ const News = {
    */
   async add(title, body, date) {
     const {error} = await supa.from('news').insert({
+      tenant_id: Cloud.tenantId || 'group_1',
       title,
       body,
       news_date: date
@@ -167,6 +169,7 @@ const News = {
       .slice(0, 1000);
     if (!text) return false;
     const {error} = await supa.from('news_comments').insert({
+      tenant_id: Cloud.tenantId || 'group_1',
       news_id: newsId,
       body: text
     });

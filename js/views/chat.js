@@ -151,15 +151,7 @@ function viewChatListStudent() {
       unread: Chat.unread(),
       avatar: Mascot.svg(Mascot.current(), 44)
     }) +
-    chatRow({
-      id: 'admin',
-      title: 'Игнатенок Арина (Админ)',
-      subtitle: 'Личная переписка с админом группы',
-      preview: lastDm ? (Dm.isMine(lastDm) ? 'Вы: ' : '') + lastDm.body : '',
-      time: lastDm ? chatTime(lastDm.created_at) : '',
-      unread: Dm.unreadIn(Cloud.uid),
-      avatar: '<span class="adm-av">ИА</span>'
-    }) +
+    supportContactsHtml() +
     '</div>'
   );
 }
@@ -185,8 +177,8 @@ function viewChatListAdmin() {
   const rows = list
     .map(t =>
       chatRow({
-        id: t.uid,
-        title: Dm.nameOf(t.uid),
+        id: t.id,
+        title: Dm.nameOf(t.uid) + (Cloud.isSuperAdmin ? ' · ' + Dm.contactName(t.role) : ''),
         preview: (Dm.isMine(t.last) ? 'Вы: ' : '') + t.last.body,
         time: chatTime(t.last.created_at),
         unread: t.unread,
@@ -200,6 +192,7 @@ function viewChatListAdmin() {
     '<div class="head-actions"><button class="btn primary" data-action="dm-new">Новый чат</button></div></div>' +
     '<div class="chat-list">' +
     botRow +
+    (Cloud.isSuperAdmin ? '' : supportContactsHtml()) +
     rows +
     '</div>' +
     (list.length
@@ -215,8 +208,9 @@ function viewChatListAdmin() {
  * @returns {string} HTML.
  */
 function viewDmThread(uid) {
+  if (uid.includes('|')) { ui.dmRole = uid.split('|')[1]; uid = uid.split('|')[0]; }
   Dm.markRead(uid);
-  const admin = Cloud.isAdmin,
+  const admin = Dm.support() && uid !== Cloud.uid,
     msgs = Dm.threadMsgs(uid),
     pinned = admin && ((Cloud.profile && Cloud.profile.pins) || []).includes(uid);
   let last = '';
@@ -241,7 +235,7 @@ function viewDmThread(uid) {
           ? ''
           : '<div class="msg-av adm-av">' +
             (fromAdmin
-              ? 'ИА'
+              ? U.esc(U.initials(m.sender_label || Dm.contactName(m.recipient_role)))
               : U.esc(
                   Dm.nameOf(uid)
                     .split(' ')
@@ -251,7 +245,7 @@ function viewDmThread(uid) {
                 )) +
             '</div>') +
         '<div class="bubble">' +
-        (fromAdmin && !admin ? '<div class="msg-name">Игнатенок Арина · админ</div>' : '') +
+        (fromAdmin ? '<div class="msg-name">' + U.esc(m.sender_label || (m.sender === Cloud.uid ? (Cloud.isSuperAdmin ? 'Админ Арина' : (Cloud.profile || {}).name || 'Поддержка') : Dm.contactName(m.recipient_role))) + '</div>' : '') +
         U.esc(m.body).replace(/\n/g, '<br>') +
         '<small>' +
         U.pad(t.getHours()) +
@@ -264,9 +258,9 @@ function viewDmThread(uid) {
   return (
     '<div class="chat-wrap"><div class="chat-head">' +
     (Cloud.isStaff ? '' : '<button class="icon-btn" data-action="chat-back" aria-label="К списку чатов">←</button>') +
-    (admin ? avatarOf((Cloud.adm.profiles[uid] || {}).avatar, 46) : '<span class="adm-av big">ИА</span>') +
+    (admin ? avatarOf((Cloud.adm.profiles[uid] || {}).avatar, 46) : '<span class="adm-av big">' + U.esc(U.initials(Dm.contactName(Dm.recipient()))) + '</span>') +
     '<div><b>' +
-    U.esc(admin ? Dm.nameOf(uid) : 'Игнатенок Арина (Админ)') +
+    U.esc(admin ? Dm.nameOf(uid) : Dm.contactName(Dm.recipient())) +
     '</b><small>' +
     (admin ? 'личная переписка' : 'личная переписка с админом группы') +
     '</small></div>' +
@@ -296,10 +290,26 @@ function viewDmThread(uid) {
  */
 function viewChat() {
   if (Cloud.status !== 'online') return viewBotChat();
+  if (ui.chatWith && ui.chatWith.startsWith('contact:')) return viewDmThread(Cloud.uid);
   if (Cloud.isStaff) return viewDmThread(Cloud.uid);
-  if (Cloud.isAdmin)
+  if (Dm.support())
     return ui.chatWith === 'bot' ? viewBotChat() : ui.chatWith ? viewDmThread(ui.chatWith) : viewChatListAdmin();
   if (ui.chatWith === 'bot') return viewBotChat();
   if (ui.chatWith === 'admin') return viewDmThread(Cloud.uid);
   return viewChatListStudent();
+}
+
+/**
+ * Строит отдельные личные переписки с сотрудниками текущей группы.
+ * @returns {string} HTML списка контактов.
+ */
+function supportContactsHtml() {
+  const roles = Groups.current === 'group_2' ? ['admin', 'developer', 'superadmin'] : ['superadmin'];
+  return roles.filter(role => role !== Dm.supportRole()).map(role => {
+    const messages = Dm.threadMsgs(Cloud.uid, role), last = messages[messages.length - 1];
+    return chatRow({id: 'contact:' + role, title: Dm.contactName(role),
+      subtitle: 'Личная переписка', preview: last ? last.body : '', time: last ? chatTime(last.created_at) : '',
+      unread: messages.filter(m => Dm.isIncoming(m) && !m.read_by_student).length,
+      avatar: '<span class="adm-av">' + ({admin: 'ЛП', developer: 'КМ', superadmin: 'АА'}[role]) + '</span>'});
+  }).join('');
 }

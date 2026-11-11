@@ -131,7 +131,7 @@ function viewJournalSelf() {
  * @returns {string} HTML.
  */
 function viewJournal(asTeacher) {
-  if ((Cloud.isTeacher || Cloud.isCurator) && !asTeacher) {
+  if ((Cloud.isTeacher || Cloud.isCurator || Cloud.isDeveloper) && !asTeacher) {
     const html = viewJournal(true);
     return Cloud.isCurator ? html : Teacher.readOnly(html);
   }
@@ -244,7 +244,7 @@ function viewJournal(asTeacher) {
     '<div class="page-head"><div><h1>' +
     ICONS.folder +
     ' Журнал посещаемости</h1><p>Папка админа: посещаемость каждого студента по дням. В клетке — отметки по парам этого дня.</p></div><div class="head-actions">' +
-    (Cloud.isAdmin ? '<button class="btn primary" data-action="qa-open">Ввод из журнала</button>' : '') +
+    (Cloud.isAdmin && Groups.current === 'group_1' ? '<button class="btn primary" data-action="qa-open">Ввод из журнала</button>' : '') +
     (Cloud.isAdmin
       ? '<button class="btn" data-action="gs-open">Синхронизация с Google</button><button class="btn" data-action="gs-quick">Отправить в Google</button>'
       : '') +

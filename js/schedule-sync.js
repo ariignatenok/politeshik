@@ -8,6 +8,41 @@ const ScheduleSync = {
   failed: false,
   busy: false,
   interval: 300000,
+  epoch: 0,
+  file: 'schedule.json',
+  /**
+   * Разделяет источник и офлайн-кэш по группе.
+   * @param {Object} group Проверенная конфигурация группы.
+   */
+  configure(group) {
+    ScheduleSync.epoch++;
+    ScheduleSync.group = group.number;
+    ScheduleSync.file = group.file;
+    ScheduleSync.url = 'https://raw.githubusercontent.com/ariignatenok/politeshik/main/data/' + group.file;
+    ScheduleSync.key = 'politeshik:polytech-schedule:v1:' + group.id;
+    ScheduleSync.snapshot = null;
+    ScheduleSync.busy = false;
+    try {
+      const cached = JSON.parse(localStorage.getItem(ScheduleSync.key));
+      if (ScheduleSync.valid(cached)) ScheduleSync.snapshot = cached;
+    } catch (error) {}
+    ScheduleSync.populateCatalog();
+    ScheduleSync.refresh();
+  },
+  /**
+   * Добавляет предметы и преподавателей только из расписания выбранной группы.
+   */
+  populateCatalog() {
+    if (!ScheduleSync.snapshot || !Store.s) return;
+    Object.values(ScheduleSync.snapshot.days).forEach(day => day.lessons.forEach(lesson => {
+      const subjectId = ScheduleSync.subject(lesson.subject);
+      if (!lesson.teacher) return;
+      const teacher = Store.s.teachers.find(t => t.name === lesson.teacher);
+      if (teacher) {
+        if (!teacher.subjectIds.includes(subjectId)) teacher.subjectIds.push(subjectId);
+      } else Store.s.teachers.push({id: 'polytech_teacher_' + Array.from(lesson.teacher).map(c => c.codePointAt(0).toString(36)).join(''), name: lesson.teacher, subjectIds: [subjectId], email: '', phone: '', room: lesson.classroom || '', notes: ''});
+    }));
+  },
   /**
    * Проверяет весь снимок до замены последней рабочей копии.
    * @param {Object} data Снимок расписания.
@@ -128,14 +163,17 @@ const ScheduleSync = {
    * @returns {Promise<boolean>} Успешная загрузка.
    */
   async fetchSnapshot(url) {
+    const epoch = ScheduleSync.epoch;
     const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 12000);
     try {
       const response = await fetch(url, {cache: 'no-store', signal: controller.signal});
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
+      if (epoch !== ScheduleSync.epoch) return false;
       if (!ScheduleSync.valid(data)) throw new Error('Некорректный ответ расписания');
       if (ScheduleSync.snapshot && data.checked_at < ScheduleSync.snapshot.checked_at) return false;
       ScheduleSync.snapshot = data;
+      ScheduleSync.populateCatalog();
       try { localStorage.setItem(ScheduleSync.key, JSON.stringify(data)); } catch (error) {}
       return true;
     } finally { clearTimeout(timer); }
@@ -147,17 +185,18 @@ const ScheduleSync = {
   async refresh() {
     if (ScheduleSync.busy) return;
     ScheduleSync.busy = true;
+    const epoch = ScheduleSync.epoch;
     try {
       const loaded = await ScheduleSync.fetchSnapshot(ScheduleSync.url + '?t=' + Date.now());
-      ScheduleSync.failed = !loaded;
+      if (epoch === ScheduleSync.epoch) ScheduleSync.failed = !loaded;
     } catch (error) {
+      if (epoch !== ScheduleSync.epoch) return;
       ScheduleSync.failed = true;
       if (!ScheduleSync.snapshot) {
-        try { await ScheduleSync.fetchSnapshot('data/schedule.json'); } catch (ignored) {}
+        try { await ScheduleSync.fetchSnapshot('data/' + ScheduleSync.file); } catch (ignored) {}
       }
     } finally {
-      ScheduleSync.busy = false;
-      App.renderSoft();
+      if (epoch === ScheduleSync.epoch) { ScheduleSync.busy = false; App.renderSoft(); }
     }
   },
   /**

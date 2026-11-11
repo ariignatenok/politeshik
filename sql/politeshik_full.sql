@@ -1,3 +1,9 @@
+do $$ begin
+  if to_regclass('politeshik_private.super_admins') is not null then
+    raise exception 'Установлена многогрупповая версия. Используйте миграции из supabase/migrations: старый установщик заменит правила доступа.';
+  end if;
+end $$;
+
 -- =====================================================================================
 --  ПОЛИТЕШИК: ПОЛНЫЙ скрипт базы данных. Работает на ПУСТОМ проекте Supabase и на уже настроенном (идемпотентный).
 --  Supabase -> SQL Editor -> New query -> вставить ВСЁ -> Run (на окно «Potential issue» нажмите Run query).

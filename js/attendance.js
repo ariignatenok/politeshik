@@ -256,6 +256,7 @@ const Att = {
    * @param {string} st Статус: п, о или н.
    */
   set(uid, date, pair, st) {
+    if (Cloud.tenantId === 'group_2' && !Cloud.isAdmin) return toast('Посещаемость меняют староста и Админ Арина');
     const key = date + '|' + pair;
     if (!uid && Cloud.status === 'online' && date !== U.iso(U.today())) {
       toast(

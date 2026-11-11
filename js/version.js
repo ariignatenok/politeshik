@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'polytech20261110-edit';
+const BUILD = 'multigroup20261111';

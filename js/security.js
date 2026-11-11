@@ -145,7 +145,7 @@ function viewUsers() {
           : 'не указано') +
         '</span>';
     const actions =
-      isAdminRow || mine
+      isAdminRow || mine || !Cloud.isAdmin
         ? '<span class="muted">—</span>'
         : (u.status === 'banned'
             ? '<button class="btn sm" data-action="user-unban" data-uid="' + u.uid + '">Разбанить</button>'
@@ -183,7 +183,7 @@ function viewUsers() {
     );
   };
   return (
-    '<div class="page-head"><div><h1>Пользователи</h1><p>Все аккаунты: кто и с какой почты зарегистрировался. Забанить закрывает доступ сразу, удалить убирает аккаунт и личные данные, а фамилия освобождается. Посещаемость и справки сохраняются за ФИО и возвращаются при новой регистрации. «Разрешить перерегистрацию» освобождает фамилию, но оставляет аккаунт.</p></div><div class="head-actions"><button class="btn" data-action="users-free" title="Освободить фамилии аккаунтов, удалённых вне приложения">Освободить фамилии удалённых</button><button class="btn" data-action="users-refresh">Обновить</button></div></div>' +
+    '<div class="page-head"><div><h1>Пользователи</h1><p>Все аккаунты: кто и с какой почты зарегистрировался. Забанить закрывает доступ сразу, удалить убирает аккаунт и личные данные, а фамилия освобождается. Посещаемость и справки сохраняются за ФИО и возвращаются при новой регистрации. «Разрешить перерегистрацию» освобождает фамилию, но оставляет аккаунт.</p></div><div class="head-actions">' + (Cloud.isSuperAdmin ? '<button class="btn" data-action="users-free" title="Освободить фамилии аккаунтов, удалённых вне приложения">Освободить фамилии удалённых</button>' : '') + '<button class="btn" data-action="users-refresh">Обновить</button></div></div>' +
     '<div class="fchips">' +
     chip('all', 'Все', all.length) +
     chip('pending', 'На проверке', all.filter(u => ['pending', 'none'].indexOf(u.status) >= 0).length) +

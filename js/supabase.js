@@ -5,6 +5,15 @@ const SUPA_KEY = 'sb_publishable_l6d7ITCOELD83veX6pV_fg_iee8Gizv';
 const supa =
   window.supabase && window.supabase.createClient
     ? window.supabase.createClient(SUPA_URL, SUPA_KEY, {
+        global: {
+          fetch(input, init) {
+            const headers = new Headers(init && init.headers);
+            const target = typeof input === 'string' ? input : input.url || String(input);
+            if (target.includes('/rest/v1/') && typeof Cloud !== 'undefined' && Cloud.isSuperAdmin && Cloud.tenantId)
+              headers.set('x-politeshik-group', Cloud.tenantId);
+            return fetch(input, Object.assign({}, init, {headers}));
+          }
+        },
         auth: {
           persistSession: true,
           autoRefreshToken: true,

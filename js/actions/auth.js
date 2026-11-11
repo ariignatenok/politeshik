@@ -183,6 +183,14 @@ Object.assign(A, {
       st = ui.secret;
     if (!st) return;
     if (!v) return toast('Введите секретный пароль');
+    if (st.group) {
+      el.disabled = true;
+      try {
+        Groups.selectRoster(st.group);
+        await Groups.register(st.rid, st.sg, st.code, v);
+      } catch (error) { toast(error.message); el.disabled = false; }
+      return;
+    }
     let good = false;
     try {
       const {data, error} = await supa.rpc('become_admin', {

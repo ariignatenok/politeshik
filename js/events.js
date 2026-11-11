@@ -93,6 +93,14 @@ document.addEventListener('input', event => {
 document.addEventListener('change', event => {
   const k = event.target.dataset && event.target.dataset.change;
   if (!k) return;
+  if (k === 'registration-group') {
+    const code = ($('#gate [name=group_code]') || {}).value || '';
+    Groups.selectRoster(event.target.value);
+    ui.registrationCode = code;
+    Cloud.claims = {}; $('#gate').dataset.mode = ''; App.render();
+    return;
+  }
+  if (k === 'active-group') { Groups.switchTo(event.target.value); return; }
   if (k === 'teacher-filter') {
     ui.teacherSubject = event.target.value;
     $('#t-list').innerHTML = teacherCards();
@@ -110,7 +118,7 @@ document.addEventListener('change', event => {
       sgSel = f && f.querySelector('[name=subgroup]');
     if (sgSel) {
         sgSel.value = ro ? ro.sub : '';
-        sgSel.disabled = !!ro;
+        sgSel.disabled = !!(ro && ro.sub);
       }
   }
   if (k === 'notif-toggle') {

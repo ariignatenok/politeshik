@@ -44,6 +44,14 @@ class ScheduleSyncTest(unittest.TestCase):
         self.assertEqual(result["days"]["2026-11-09"]["lessons"][0]["status"], "cancellation")
         self.assertEqual(result["days"]["2026-11-09"]["lessons"][0]["subgroup"], 2)
 
+    def test_second_group_is_parameterized_and_foreign_lessons_are_rejected(self):
+        group = "26290911/3111"
+        with self.assertRaises(ValueError):
+            sync.build_snapshot(self.response(), {}, self.today, group)
+        self.lesson["group_list"] = [group]
+        result = sync.build_snapshot(self.response(), {}, self.today, group)
+        self.assertEqual(result["group"], group)
+
 
 if __name__ == "__main__":
     unittest.main()

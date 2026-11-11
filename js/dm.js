@@ -7,25 +7,49 @@ const Dm = {
   sig: '',
   error: '',
   /**
+   * Проверяет доступ к рабочим перепискам поддержки своей группы.
+   * @returns {boolean} Признак сотрудника поддержки.
+   */
+  support() { return Cloud.isAdmin || Cloud.isDeveloper; },
+  /**
+   * Возвращает собственную роль поддержки.
+   * @returns {string} Роль.
+   */
+  supportRole() { return Cloud.isSuperAdmin ? 'superadmin' : Cloud.isAdmin ? 'admin' : Cloud.isDeveloper ? 'developer' : ''; },
+  /**
+   * Возвращает выбранного получателя сообщений.
+   * @returns {string} Роль получателя.
+   */
+  recipient() { return ui.dmRole || Dm.supportRole() || (Groups.current === 'group_2' ? 'admin' : 'superadmin'); },
+  /**
+   * Возвращает подпись сотрудника в чате.
+   * @param {string} role Роль получателя.
+   * @returns {string} Имя.
+   */
+  contactName(role) {
+    return {admin: 'Лебедев Петр Андреевич · староста', developer: 'Кузьменков Макар Сергеевич · разработчик', superadmin: 'Админ Арина'}[role] || 'Поддержка';
+  },
+  /**
    * Загружает сообщения личного чата с админом.
    */
   async refresh() {
     if (!supa || Cloud.status !== 'online' || !Cloud.hasCabinet()) return;
     let q = supa
       .from('chat')
-      .select('id,thread_uid,sender,body,created_at,read_by_admin,read_by_student')
+      .select('id,thread_uid,sender,body,created_at,read_by_admin,read_by_student,recipient_role,sender_label')
+      .eq('tenant_id', Cloud.tenantId || 'group_1')
       .order('created_at', {
         ascending: false
       })
       .limit(1500);
-    if (!Cloud.isAdmin) q = q.eq('thread_uid', Cloud.uid);
+    if (!Dm.support()) q = q.eq('thread_uid', Cloud.uid);
     const {data, error} = await q;
     if (error) {
       Dm.error = error.message;
       return;
     }
     const list = data.slice().reverse(),
-      sig = list.map(m => m.id + (Cloud.isAdmin ? m.read_by_admin : m.read_by_student)).join(',');
+      sig = list.map(m => m.id + (m.thread_uid === Cloud.uid ? m.read_by_student : m.read_by_admin)).join(',');
     const incoming = list.filter(Dm.isIncoming),
       prevIncoming = Dm.msgs.filter(Dm.isIncoming);
     const fresh = Dm.loaded && incoming.length > prevIncoming.length ? incoming[incoming.length - 1] : null;
@@ -40,7 +64,7 @@ const Dm = {
     if (fresh && document.hidden)
       Notifier.show(
         'chat',
-        Cloud.isAdmin ? Dm.nameOf(fresh.thread_uid) : 'Игнатенок Арина (Админ)',
+        Dm.support() ? Dm.nameOf(fresh.thread_uid) : Dm.contactName(fresh.recipient_role),
         String(fresh.body).slice(0, 100),
         {
           tag: 'dm'
@@ -64,7 +88,7 @@ const Dm = {
    * @returns {boolean} true, если условие выполнено.
    */
   isIncoming(m) {
-    return Cloud.isAdmin ? m.sender === m.thread_uid : m.sender !== m.thread_uid;
+    return m.sender !== Cloud.uid;
   },
   /**
    * Проверяет, написано ли сообщение текущим пользователем.
@@ -79,8 +103,8 @@ const Dm = {
    * @param {string} uid Идентификатор студента.
    * @returns {Array<Object>} Массив.
    */
-  threadMsgs(uid) {
-    return Dm.msgs.filter(m => m.thread_uid === uid);
+  threadMsgs(uid, role) {
+    return Dm.msgs.filter(m => m.thread_uid === uid && (m.recipient_role || 'superadmin') === (role || Dm.recipient()));
   },
   /**
    * Считает непрочитанные сообщения в переписке.
@@ -88,7 +112,7 @@ const Dm = {
    * @returns {number} Число.
    */
   unreadIn(uid) {
-    const flag = Cloud.isAdmin ? 'read_by_admin' : 'read_by_student';
+    const flag = uid === Cloud.uid ? 'read_by_student' : 'read_by_admin';
     return Dm.threadMsgs(uid).filter(m => Dm.isIncoming(m) && !m[flag]).length;
   },
   /**
@@ -96,8 +120,7 @@ const Dm = {
    * @returns {number} Число.
    */
   unreadTotal() {
-    if (!Cloud.isAdmin) return Dm.unreadIn(Cloud.uid);
-    return Dm.msgs.filter(m => Dm.isIncoming(m) && !m.read_by_admin).length;
+    return Dm.msgs.filter(m => Dm.isIncoming(m) && !m[m.thread_uid === Cloud.uid ? 'read_by_student' : 'read_by_admin']).length;
   },
   /**
    * Возвращает имя студента по идентификатору.
@@ -114,9 +137,13 @@ const Dm = {
   threads() {
     const by = {};
     Dm.msgs.forEach(m => {
+      if (m.thread_uid === Cloud.uid) return;
+      const key = m.thread_uid + '|' + (m.recipient_role || 'superadmin');
       const t =
-        by[m.thread_uid] ||
-        (by[m.thread_uid] = {
+        by[key] ||
+        (by[key] = {
+          id: key,
+          role: m.recipient_role || 'superadmin',
           uid: m.thread_uid,
           last: m,
           unread: 0
@@ -143,6 +170,8 @@ const Dm = {
       .slice(0, 4000);
     if (!body) return false;
     const {error} = await supa.from('chat').insert({
+      tenant_id: Cloud.tenantId || 'group_1',
+      recipient_role: Dm.recipient(),
       thread_uid: uid,
       sender: Cloud.uid,
       kind: 'text',
@@ -161,7 +190,7 @@ const Dm = {
    * @param {string} uid Идентификатор студента.
    */
   async markRead(uid) {
-    const flag = Cloud.isAdmin ? 'read_by_admin' : 'read_by_student',
+    const flag = uid === Cloud.uid ? 'read_by_student' : 'read_by_admin',
       unread = Dm.threadMsgs(uid).filter(m => Dm.isIncoming(m) && !m[flag]);
     if (!unread.length) return;
     unread.forEach(m => {
@@ -173,8 +202,10 @@ const Dm = {
         [flag]: true
       })
       .eq('thread_uid', uid)
+      .eq('tenant_id', Cloud.tenantId || 'group_1')
+      .eq('recipient_role', Dm.recipient())
       .eq(flag, false);
-    q = Cloud.isAdmin ? q.eq('sender', uid) : q.neq('sender', Cloud.uid);
+    q = q.neq('sender', Cloud.uid);
     await q;
   },
   /**

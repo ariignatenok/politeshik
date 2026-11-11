@@ -1,6 +1,6 @@
 'use strict';
 
-const GROUP_NAME = '25290909/3091';
+let GROUP_NAME = '25290909/3091';
 const AVATARS = [
   ['m1', ICONS.faceCool, '#fde68a'],
   ['m2', ICONS.faceNerd, '#bfdbfe'],

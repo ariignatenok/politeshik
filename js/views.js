@@ -1,6 +1,7 @@
 'use strict';
 
 const Views = {
+  diagnostics: viewDiagnostics,
   dashboard: viewDashboard,
   schedule: viewSchedule,
   attendance: viewAttendance,

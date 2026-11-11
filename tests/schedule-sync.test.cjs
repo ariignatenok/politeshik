@@ -44,8 +44,8 @@ test('cancellation in one subgroup does not remove the other subgroup lesson', (
   assert.equal(Att.dayView('2026-11-10', '2')[0].lessons[0].who, 'Новый преподаватель');
   assert.equal(Att.dayView('2026-11-10', '')[0].lessons.length, 1);
   Store.s.settings.subgroup = '2';
-  assert.equal(ScheduleSync.changes().length, 1);
-  assert.equal(ScheduleSync.changes()[0].type, 'replace');
+  assert.equal(ScheduleSync.changes().filter(c => c.date === '2026-11-10').length, 1);
+  assert.equal(ScheduleSync.changes().find(c => c.date === '2026-11-10').type, 'replace');
 });
 
 test('new snapshot removes disappeared lessons and reverts replacements', () => {

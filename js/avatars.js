@@ -38,6 +38,7 @@ const Avatars = {
    * Выкладывает свою аватарку в облако, чтобы её видели остальные.
    */
   async publish() {
+    if (Cloud.isSuperAdmin && Cloud.tenantId !== Cloud.homeTenant) return;
     if (Cloud.status !== 'online' || !Cloud.uid || Cloud.isParent || !Cloud.hasCabinet()) return;
     const value = myAvatar(),
       had = Avatars.map[Cloud.uid] || '';

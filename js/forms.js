@@ -491,6 +491,16 @@ const Forms = {
       UI.shake($('.modal') || $('.gate-card'));
       return toast('Выберите свою фамилию из списка');
     }
+    if (first) {
+      const code = val(form, 'group_code').trim() || ui.registrationCode || Roles.storedCode();
+      ui.registrationCode = code;
+      if ((ro.accessRole || ro.id === ADMIN_RID) && !(Cloud.isAdmin || Cloud.isDeveloper)) {
+        ui.secret = {rid, sg, group: Groups.selected, code};
+        $('#gate').dataset.mode = ''; App.render(); return;
+      }
+      Groups.register(rid, sg, code, '').catch(error => toast(error.message));
+      return;
+    }
     if (first && ro.id === ADMIN_RID && !Cloud.isAdmin) {
       ui.secret = {
         rid,
@@ -682,6 +692,7 @@ const Forms = {
       body = val(form, 'body').trim();
     if (!title || !body) return toast('Заполните заголовок и текст');
     const {error} = await supa.from('news').insert({
+      tenant_id: Cloud.tenantId || 'group_1',
       title,
       body
     });

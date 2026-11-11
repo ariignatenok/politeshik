@@ -4,12 +4,14 @@ const Roles = {
   names: {
     student: 'Студент',
     admin: 'Староста',
+    developer: 'Разработчик',
     curator: 'Куратор',
     teacher: 'Преподаватель',
     parent: 'Родитель',
     department: 'Отделение'
   },
   tabsByRole: {
+    developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'users', 'diagnostics', 'settings'],
     teacher: ['tdash', 'schedule', 'journal', 'tstudents', 'tsubjects', 'consult', 'texport', 'chat', 'settings'],
     curator: ['tdash', 'schedule', 'journal', 'tstudents', 'news', 'chat', 'settings'],
     department: ['dept', 'news', 'settings'],
@@ -48,12 +50,7 @@ const Roles = {
    * @returns {boolean} true, если условие выполнено.
    */
   isOwner() {
-    const profile = Cloud.profile;
-    return !!(
-      Cloud.realAdmin &&
-      profile &&
-      (profile.rid === ADMIN_RID || /^ИГНАТЕНОК\s+Арина/i.test(String(profile.name || '')))
-    );
+    return Cloud.isSuperAdmin === true;
   },
   /**
    * Строит переключатель «Настройки / Доступы» для владельца.
@@ -99,7 +96,7 @@ const Roles = {
     if (!profile || !profile.rid) return false;
     if (['teacher', 'parent', 'curator', 'department', 'staff'].indexOf(profile.role) >= 0) return false;
     const member = (Cloud.memberMap || {})[uid];
-    return !member || (member.status === 'approved' && (member.role === 'student' || member.role === 'admin'));
+    return !member || (member.status === 'approved' && ['student', 'admin', 'developer'].includes(member.role));
   },
   /**
    * Собирает студентов, вошедших в приложение: один человек (одно ФИО) = одна запись, даже если у него два аккаунта.

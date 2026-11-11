@@ -49,9 +49,10 @@ const Cloud = (() => {
    * @returns {Object} методы get, set, delete, acquire.
    */
   function docAPI(path) {
+    const tenant = C.tenantId || 'group_1';
     return {
       async get() {
-        const {data, error} = await supa.from('docs').select('data').eq('path', path).maybeSingle();
+        const {data, error} = await supa.from('docs').select('data').eq('tenant_id', tenant).eq('path', path).maybeSingle();
         if (error) throw error;
         return {
           exists: !!data,
@@ -60,14 +61,15 @@ const Cloud = (() => {
       },
       async set(obj) {
         const {error} = await supa.from('docs').upsert({
+          tenant_id: tenant,
           path,
           data: obj,
           updated: new Date().toISOString()
-        });
+        }, {onConflict: 'tenant_id,path'});
         if (error) throw error;
       },
       async delete() {
-        const {error} = await supa.from('docs').delete().eq('path', path);
+        const {error} = await supa.from('docs').delete().eq('tenant_id', tenant).eq('path', path);
         if (error) throw error;
       },
       collection(name) {
@@ -75,6 +77,7 @@ const Cloud = (() => {
       },
       async acquire({holder}) {
         const {error} = await supa.from('docs').insert({
+          tenant_id: tenant,
           path,
           data: {
             uid: holder,
@@ -83,7 +86,7 @@ const Cloud = (() => {
           updated: new Date().toISOString()
         });
         if (error && error.code === '23505') {
-          const {data} = await supa.from('docs').select('data').eq('path', path).maybeSingle();
+          const {data} = await supa.from('docs').select('data').eq('tenant_id', tenant).eq('path', path).maybeSingle();
           if (data && data.data && data.data.uid === holder)
             return {
               acquired: true
@@ -104,7 +107,7 @@ const Cloud = (() => {
       onSnapshot(cb, errCb) {
         const run = async () => {
           try {
-            const {data, error} = await supa.from('docs').select('data').eq('path', path).maybeSingle();
+            const {data, error} = await supa.from('docs').select('data').eq('tenant_id', tenant).eq('path', path).maybeSingle();
             if (error) throw error;
             cb({
               exists: !!data,
@@ -129,6 +132,7 @@ const Cloud = (() => {
    */
   function colAPI(prefix) {
     const p = prefix + '/';
+    const tenant = C.tenantId || 'group_1';
     return {
       doc(id) {
         return docAPI(p + id);
@@ -139,6 +143,7 @@ const Cloud = (() => {
             const {data, error} = await supa
               .from('docs')
               .select('path,data')
+              .eq('tenant_id', tenant)
               .like('path', p + '%')
               .not('path', 'like', p + '%/%');
             if (error) throw error;
@@ -380,6 +385,7 @@ const Cloud = (() => {
           )
         );
     }
+    ScheduleSync.populateCatalog();
     Store.save();
   }
   /**
@@ -640,12 +646,19 @@ const Cloud = (() => {
         return;
       }
       C.uid = session.user.id;
+      const {data: context, error: contextError} = await supa.rpc('group_context');
+      if (contextError || !context) throw new Error('Не удалось проверить группу и права аккаунта');
+      C.tenantId = context.tenant_id;
+      C.homeTenant = context.home_tenant;
+      C.isSuperAdmin = context.is_super_admin === true;
+      C.isDeveloper = context.is_developer === true;
+      Groups.activate(context);
       C.provider = C.providerOf(session);
       C.oauthEmail = (session.user && session.user.email) || '';
       C.me = {
         id: session.user.id,
         name: session.user.email || 'user',
-        isOwner: false
+        isOwner: context.is_admin === true
       };
       C.meta = (session.user && session.user.user_metadata) || {};
       try {
@@ -667,21 +680,21 @@ const Cloud = (() => {
           C.memberKnown = true;
         }
       } catch (error) {}
+      C.me.isOwner = context.is_admin === true;
       C.isAdmin = !!C.me.isOwner;
       C.realAdmin = C.isAdmin;
       C.status = 'online';
       C.adminUids = new Set(C.isAdmin ? [C.uid] : []);
-      Store.bind(C.uid);
       watchClaims();
       const ps = await DB.doc('profiles/' + C.uid).get();
-      C.profile = ps.exists ? clone(ps.data()) : null;
+      C.profile = C.isSuperAdmin ? clone(context.profile || {}) : ps.exists ? clone(ps.data()) : null;
       if (C.realTeacher && !C.profile) {
         C.profile = {
           role: 'teacher',
           name: 'Преподаватель',
           joined: new Date().toISOString()
         };
-        await DB.doc('profiles/' + C.uid)
+        if (!(C.isSuperAdmin && C.tenantId !== C.homeTenant)) await DB.doc('profiles/' + C.uid)
           .set(C.profile)
           .catch(() => {});
       }
@@ -697,13 +710,13 @@ const Cloud = (() => {
           C.profile.subgroup = Store.s.settings.subgroup;
         Store.s.settings.displayName = C.profile.name || '';
         C.profile.seen = new Date().toISOString();
-        await DB.doc('profiles/' + C.uid)
+        if (!(C.isSuperAdmin && C.tenantId !== C.homeTenant)) await DB.doc('profiles/' + C.uid)
           .set(C.profile)
           .catch(() => {});
       }
-      watchOwn();
+      if (!(C.isSuperAdmin && C.tenantId !== C.homeTenant)) watchOwn();
       watchGroup();
-      if (C.realAdmin) watchAdmin();
+      if (C.realAdmin || C.isDeveloper) watchAdmin();
       if (C.realTeacher) watchStaff('teacher');
       else if (C.realRole === 'curator') watchStaff('curator');
       if (C.realRole === 'parent' || C.realAdmin) {
@@ -798,6 +811,7 @@ const Cloud = (() => {
    * Отправляет свои отметки в облако с учётом правок админа.
    */
   C.pushAtt = async () => {
+    if (C.tenantId === 'group_2' && !C.isAdmin || C.isSuperAdmin && C.tenantId !== C.homeTenant) return {ok: true};
     if (Store.s.meta.pendingAtt) {
       try {
         const sn = await DB.doc('attendance/' + C.uid).get(),
@@ -945,6 +959,7 @@ const Cloud = (() => {
    * @returns {boolean} true, если условие выполнено.
    */
   C.hasCabinet = () => {
+    if (C.isSuperAdmin) return true;
     if (C.isStaff) return true;
     if (C.member && C.member.requested_role && C.member.requested_role !== 'student' && C.member.status !== 'approved')
       return true;
@@ -958,6 +973,7 @@ const Cloud = (() => {
    * Сразу записывает текущий профиль в облако и ждёт завершения.
    */
   C.saveProfileNow = async () => {
+    if (C.isSuperAdmin && C.tenantId !== C.homeTenant) return;
     await DB.doc('profiles/' + C.uid).set(C.profile);
   };
   /**
@@ -1400,7 +1416,7 @@ const Cloud = (() => {
               : C.profile && C.profile.rid
                 ? 'nocode'
                 : 'student';
-    const owner = C.realAdmin && C.profile && C.profile.rid === ADMIN_RID,
+    const owner = C.isSuperAdmin === true,
       view = owner ? Store.s.settings.viewAs : '';
     let role = C.realRole;
     if (view && ['student', 'curator', 'teacher', 'parent', 'department'].indexOf(view) >= 0) role = view;
@@ -1410,6 +1426,7 @@ const Cloud = (() => {
     C.isCurator = role === 'curator';
     C.isDepartment = role === 'department';
     C.isParent = role === 'parent';
+    C.isDeveloper = role === 'developer';
     C.isStaff = C.isTeacher || C.isCurator || C.isDepartment || C.isParent;
   };
   /**
@@ -1471,6 +1488,13 @@ const Cloud = (() => {
           error: error.message
         };
       await C.refreshMember();
+      if (C.member && C.member.tenant_id !== C.tenantId) {
+        const context = await supa.rpc('group_context');
+        if (context.error || !context.data) throw new Error('Не удалось проверить группу');
+        C.tenantId = context.data.tenant_id;
+        C.homeTenant = context.data.home_tenant;
+        Groups.activate(context.data);
+      }
       return {
         ok: true,
         status: data
@@ -1697,7 +1721,7 @@ const Cloud = (() => {
    * @returns {Promise<boolean>} true, если условие выполнено.
    */
   C.loadUsers = async force => {
-    if (!C.realAdmin || (!force && Date.now() - C.usersAt < 6000)) return false;
+    if ((!C.realAdmin && !C.isDeveloper) || (!force && Date.now() - C.usersAt < 6000)) return false;
     C.usersAt = Date.now();
     try {
       const {data, error} = await supa.rpc('admin_users');
@@ -1857,6 +1881,7 @@ const Cloud = (() => {
    * Отправляет профиль в облако.
    */
   C.pushProfile = () => {
+    if (C.isSuperAdmin && C.tenantId !== C.homeTenant) return;
     if (C.status === 'online' && C.profile) writeDoc('profiles/' + C.uid, C.profile);
   };
   /**

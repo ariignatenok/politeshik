@@ -202,7 +202,7 @@ const QuickAtt = {
    * @returns {string} HTML или пустая строка.
    */
   banner() {
-    if (!Cloud.isAdmin || QuickAtt.isLoaded()) return '';
+    if (Groups.current !== 'group_1' || !Cloud.isAdmin || QuickAtt.isLoaded()) return '';
     return '<div class="card sched-banner"><div><b>Расписание начала октября и английский</b><p>Внести расписание 28.09–24.10: английский ставится по журналу (19.10 — 2 подгруппа, Кузнецова; 22.10 — 1 подгруппа, Гусарова). Остальные недели не меняются.</p></div><div class="head-actions"><button class="btn primary" data-action="qa-weeks">Внести расписание</button></div></div>';
   },
   /**
