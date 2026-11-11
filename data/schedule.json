@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "25290909/3091",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-10",
+  "checked_at": "2026-11-11",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -17,9 +17,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "325",
-          "campus": "Э",
-          "classroom": "каб. 325 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -36,9 +36,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "436",
-          "campus": "Э",
-          "classroom": "каб. 436 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -55,9 +55,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "113",
-          "campus": "Э",
-          "classroom": "каб. 113 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -74,9 +74,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "315",
-          "campus": "Э",
-          "classroom": "каб. 315 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -93,9 +93,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "315",
-          "campus": "Э",
-          "classroom": "каб. 315 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -433,14 +433,14 @@
         {
           "lesson_number": 1,
           "subject": "ИТ в ПД лр",
-          "teacher": "Данилова О.С.",
-          "subgroup": 2,
+          "teacher": "Краснопёрова А.Д.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "428",
-          "campus": "Э",
-          "classroom": "каб. 428 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -452,14 +452,14 @@
         {
           "lesson_number": 1,
           "subject": "ИТ в ПД лр",
-          "teacher": "Краснопёрова А.Д.",
-          "subgroup": 1,
+          "teacher": "Данилова О.С.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "325_К",
-          "campus": "Э",
-          "classroom": "каб. 325_К (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -477,7 +477,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -496,7 +496,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -522,7 +522,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -541,7 +541,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -559,9 +559,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "315",
-          "campus": "Э",
-          "classroom": "каб. 315 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -578,9 +578,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "209",
-          "campus": "Э",
-          "classroom": "каб. 209 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -604,9 +604,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "СК-7",
+          "auditorium": "ск7",
           "campus": "Э",
-          "classroom": "каб. СК-7 (Энгельса)",
+          "classroom": "каб. ск7 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -617,15 +617,34 @@
         },
         {
           "lesson_number": 3,
-          "subject": "БЖД",
-          "teacher": "Симоненко С.И.",
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
           "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": "БЖД",
+          "original_teacher": "Симоненко С.И.",
+          "original_classroom": "каб. 549 (Энгельса)"
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "222",
+          "auditorium": "445",
           "campus": "Э",
-          "classroom": "каб. 222 (Энгельса)",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -642,28 +661,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "428",
+          "auditorium": "ВЦ 322",
           "campus": "Э",
-          "classroom": "каб. 428 (Энгельса)",
-          "note": null,
-          "group_list": [
-            "25290909/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ОАП_лр",
-          "teacher": "Тлеумбетов Т.Д.",
-          "subgroup": 2,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. ВЦ 322 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -770,28 +770,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "441",
-          "campus": "Э",
-          "classroom": "каб. 441 (Энгельса)",
-          "note": null,
-          "group_list": [
-            "25290909/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ИТ в ПД лр",
-          "teacher": "Данилова О.С.",
-          "subgroup": 2,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "428",
-          "campus": "Э",
-          "classroom": "каб. 428 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -808,9 +789,28 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "325_К",
-          "campus": "Э",
-          "classroom": "каб. 325_К (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -828,7 +828,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -860,7 +860,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -878,9 +878,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "222",
-          "campus": "Э",
-          "classroom": "каб. 222 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -897,9 +897,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "СК-7",
-          "campus": "Э",
-          "classroom": "каб. СК-7 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -923,28 +923,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "209",
-          "campus": "Э",
-          "classroom": "каб. 209 (Энгельса)",
-          "note": null,
-          "group_list": [
-            "25290909/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ОАП_лр",
-          "teacher": "Данилова О.С.",
-          "subgroup": 1,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "428",
-          "campus": "Э",
-          "classroom": "каб. 428 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -962,7 +943,26 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОАП_лр",
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -981,7 +981,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1006,9 +1006,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "222",
-          "campus": "Э",
-          "classroom": "каб. 222 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1025,9 +1025,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "315",
-          "campus": "Э",
-          "classroom": "каб. 315 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1045,7 +1045,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1064,7 +1064,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1089,9 +1089,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "551",
-          "campus": "Э",
-          "classroom": "каб. 551 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1108,9 +1108,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "210",
-          "campus": "Э",
-          "classroom": "каб. 210 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1128,7 +1128,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1153,9 +1153,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "441",
-          "campus": "Э",
-          "classroom": "каб. 441 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1172,9 +1172,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "315",
-          "campus": "Э",
-          "classroom": "каб. 315 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1192,7 +1192,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1210,9 +1210,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "428",
-          "campus": "Э",
-          "classroom": "каб. 428 (Энгельса)",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1237,7 +1237,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1256,7 +1256,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": "Э",
+          "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
