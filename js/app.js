@@ -129,7 +129,7 @@ const App = {
         U.esc(ROSTER_BY_ID[ui.secret.rid].name) +
         '» — защищённая роль группы. Чтобы продолжить, введите дополнительный пароль.</p>' +
         '<div class="warn secret-warn" hidden>Секретный пароль ещё не задан. Задайте его в Supabase: запустите скрипт politeshik_full.sql (две первые подстановки в первой строке).</div>' +
-        '<div data-form="secret"><label class="field"><span>Секретный пароль</span><input class="input" name="secret" type="password" autocomplete="off" placeholder="••••••••"></label>' +
+        '<div data-form="secret"><label class="field"><span>Секретный пароль</span><input class="input" name="secret" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="••••••••"></label>' +
         '<button class="btn primary big" data-action="secret-do">Войти</button></div>' +
         '<button class="btn ghost" style="margin-top:10px;width:100%" data-action="secret-back">← Назад к выбору фамилии</button>' +
         '<button class="btn ghost" style="margin-top:6px;width:100%" data-action="logout-now">Выйти из аккаунта</button></div>';

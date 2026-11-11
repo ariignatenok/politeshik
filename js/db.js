@@ -829,6 +829,9 @@ const Cloud = (() => {
    * Отправляет состояние чата с Политешиком в облако.
    */
   C.pushChat = () => {
+    if (C.status !== 'online' || !C.uid || !C.hasCabinet() ||
+      C.member && C.member.status !== 'approved' && !C.realAdmin ||
+      C.isSuperAdmin && C.tenantId !== C.homeTenant) return {ok: true};
     const c = Store.s.chat;
     writeDoc('chat/' + C.uid, {
       msgs: c.msgs,

@@ -118,7 +118,7 @@ const Groups = {
    */
   async register(rid, subgroup, code, secret) {
     const {data, error} = await supa.rpc('register_student', {
-      p_group: Groups.selected, p_code: code, p_rid: rid, p_subgroup: subgroup, p_secret: secret
+      p_group: Groups.selected, p_code: code, p_rid: rid, p_subgroup: subgroup, p_secret: String(secret || '').trim()
     });
     if (error || !data || !data.ok) throw new Error(error ? error.message : data && data.error || 'Не удалось создать кабинет');
     location.reload();
