@@ -155,6 +155,26 @@ function viewChatListStudent() {
     '</div>'
   );
 }
+/** Показывает Арине получателей приветствия и отметки прочтения. */
+function welcomeRecipientsHtml() {
+  if (!Cloud.isSuperAdmin || Groups.current !== 'group_2') return '';
+  Dm.loadWelcomeRecipients();
+  const rows = Dm.welcomeRecipients,
+    sent = rows.filter(x => x.sent_at).length,
+    read = rows.filter(x => x.read_by_student).length;
+  return '<section class="card welcome-recipients"><h2>Приветствие Арины</h2>' +
+    '<p>Группа 26290911/3111 · Отправлено ' + sent + ' из ' + rows.length + ' · Прочитано ' + read +
+    '. Староста и разработчик исключены.</p>' +
+    (Dm.welcomeError ? '<p class="warn">Не удалось загрузить статусы: ' + U.esc(Dm.welcomeError) + '</p>' :
+      !Dm.welcomeLoaded ? '<p class="hint">Загружаем получателей…</p>' :
+      '<div class="table-scroll"><table class="grid-tbl"><thead><tr><th>Студент</th><th>Приветствие</th><th>Отправлено</th><th>Переписка</th></tr></thead><tbody>' +
+      (rows.map(x => '<tr><td>' + U.esc(x.name) + '</td><td><span class="tag">' +
+        ({not_sent: 'Не отправлено', sent: 'Отправлено', read: 'Прочитано'}[x.status] || 'Не отправлено') +
+        '</span></td><td>' + U.esc(x.sent_at ? new Date(x.sent_at).toLocaleString('ru-RU') : '—') +
+        '</td><td><button class="btn sm" data-action="open-chat" data-with="' + U.esc(x.uid) +
+        '|superadmin">Открыть чат</button></td></tr>').join('') || '<tr><td colspan="4">Зарегистрированных студентов пока нет.</td></tr>') +
+      '</tbody></table></div>') + '</section>';
+}
 /**
  * Отрисовывает список переписок админа.
  * @returns {string} HTML.
@@ -188,8 +208,8 @@ function viewChatListAdmin() {
     )
     .join('');
   return (
-    '<div class="page-head"><div><h1>Чаты</h1><p>Политешик закреплён сверху, затем переписка со студентами: закреплённые, остальные по времени последнего сообщения.</p></div>' +
-    '<div class="head-actions"><button class="btn primary" data-action="dm-new">Новый чат</button></div></div>' +
+    '<div class="page-head"><div><h1>Чаты · ' + U.esc(Groups.get(Groups.current).number) + '</h1><p>' + (Cloud.isSuperAdmin ? 'Сообщения лично тебе — в переписках с пометкой «Админ Арина». Здесь также доступны чаты поддержки выбранной группы.' : 'Переписка со студентами твоей группы.') + '</p></div>' +
+    '<div class="head-actions"><button class="btn primary" data-action="dm-new">Новый чат</button></div></div>' + welcomeRecipientsHtml() +
     '<div class="chat-list">' +
     botRow +
     (Cloud.isSuperAdmin ? '' : supportContactsHtml()) +

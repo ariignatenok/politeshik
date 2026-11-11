@@ -6,6 +6,20 @@ const Dm = {
   timer: null,
   sig: '',
   error: '',
+  welcomeRecipients: [],
+  welcomeLoaded: false,
+  welcomeError: '',
+  welcomeAt: 0,
+  /** Загружает статусы приветствия только для Арины в группе Лебедева. */
+  async loadWelcomeRecipients() {
+    if (!Cloud.isSuperAdmin || Cloud.tenantId !== 'group_2' || Date.now() - Dm.welcomeAt < 9000) return;
+    Dm.welcomeAt = Date.now();
+    const {data, error} = await supa.rpc('welcome_recipients');
+    const before = JSON.stringify([Dm.welcomeRecipients, Dm.welcomeError, Dm.welcomeLoaded]);
+    Dm.welcomeError = error ? error.message : '';
+    if (!error) { Dm.welcomeRecipients = data || []; Dm.welcomeLoaded = true; }
+    if (before !== JSON.stringify([Dm.welcomeRecipients, Dm.welcomeError, Dm.welcomeLoaded])) App.renderSoft();
+  },
   /**
    * Проверяет доступ к рабочим перепискам поддержки своей группы.
    * @returns {boolean} Признак сотрудника поддержки.
@@ -55,6 +69,7 @@ const Dm = {
     const fresh = Dm.loaded && incoming.length > prevIncoming.length ? incoming[incoming.length - 1] : null;
     Dm.msgs = list;
     Dm.error = '';
+    Dm.loadWelcomeRecipients();
     if (sig === Dm.sig) {
       Dm.loaded = true;
       return;

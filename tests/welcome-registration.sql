@@ -44,6 +44,12 @@ do $$ declare denied boolean:=false; begin
     values('group_2',auth.uid(),current_setting('test.arina_uid')::uuid,'Spoofed Arina','superadmin');
   exception when insufficient_privilege then denied:=true; end;
   assert denied,'Student can impersonate Arina';
+  denied:=false;
+  begin perform public.welcome_recipients(); exception when insufficient_privilege then denied:=true; end;
+  assert denied,'Student can see recipient report';
+  denied:=false;
+  begin perform politeshik_private.send_student_welcome(auth.uid()); exception when insufficient_privilege then denied:=true; end;
+  assert denied,'Client can trigger a broadcast';
   begin update politeshik_private.registration_welcomes set body='spoof';
     raise exception 'Private markers writable';
   exception when insufficient_privilege then null; end;
@@ -54,5 +60,18 @@ select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting(
 do $$ begin assert not exists(select 1 from public.chat where thread_uid=current_setting('test.welcome_uid')::uuid),'Another student can read private welcome'; end $$;
 select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.arina_uid'),'role','authenticated')::text,true),set_config('request.headers','{"x-politeshik-group":"group_2"}',true);
 do $$ begin assert (select count(*)=1 from public.chat where thread_uid=current_setting('test.welcome_uid')::uuid),'Arina cannot see the welcome in her chat'; end $$;
+do $$ begin
+  assert exists(select 1 from jsonb_array_elements(public.welcome_recipients()) r
+    where r->>'uid'=current_setting('test.welcome_uid') and r->>'status'='read'),'Arina report has wrong read receipt';
+end $$;
+reset role;
+select set_config('request.jwt.claims','{}',true);
+update public.members set role='developer' where uid=current_setting('test.other_uid')::uuid;
+insert into public.docs(tenant_id,path,data) values('group_2','profiles/'||current_setting('test.other_uid'),'{"rid":"g2_r12","name":"Test developer"}');
+do $$ begin
+  perform politeshik_private.send_student_welcome(current_setting('test.welcome_uid')::uuid);
+  assert (select count(*)=1 from public.chat where thread_uid=current_setting('test.welcome_uid')::uuid),'Backfill duplicated message';
+  assert not exists(select 1 from public.chat where thread_uid=current_setting('test.other_uid')::uuid),'Developer received welcome';
+end $$;
 select 'PASS: group2 registration, pending approval, once only, no home-group delivery, correct sender, private chat and read receipts' as result;
 rollback;

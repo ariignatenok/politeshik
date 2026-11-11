@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'stafflogin20261111';
+const BUILD = 'welcomereceipts20261111';
