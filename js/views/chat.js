@@ -164,7 +164,7 @@ function welcomeRecipientsHtml() {
     read = rows.filter(x => x.read_by_student).length;
   return '<section class="card welcome-recipients"><h2>Приветствие Арины</h2>' +
     '<p>Группа ' + U.esc(Groups.get(Groups.current).number) + ' · Отправлено ' + sent + ' из ' + rows.length + ' · Прочитано ' + read +
-    '. Староста и разработчик исключены.</p>' +
+    '. Приветствие получают только студенты.</p>' +
     (Dm.welcomeError ? '<p class="warn">Не удалось загрузить статусы: ' + U.esc(Dm.welcomeError) + '</p>' :
       !Dm.welcomeLoaded ? '<p class="hint">Загружаем получателей…</p>' :
       '<div class="table-scroll"><table class="grid-tbl"><thead><tr><th>Студент</th><th>Приветствие</th><th>Отправлено</th><th>Переписка</th></tr></thead><tbody>' +
