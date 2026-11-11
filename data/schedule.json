@@ -340,8 +340,8 @@
         {
           "lesson_number": 4,
           "subject": "ОАП_лр",
-          "teacher": "Тлеумбетов Т.Д.",
-          "subgroup": 2,
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -359,8 +359,8 @@
         {
           "lesson_number": 4,
           "subject": "ОАП_лр",
-          "teacher": "Данилова О.С.",
-          "subgroup": 1,
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -637,14 +637,15 @@
         {
           "lesson_number": 4,
           "subject": "ОАП_лр",
-          "teacher": "Тлеумбетов Т.Д.",
-          "subgroup": 2,
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "445",
+          "auditorium": "322",
           "campus": "Э",
-          "classroom": "каб. 445 (Энгельса)",
+          "classroom": "каб. 322 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -656,14 +657,14 @@
         {
           "lesson_number": 4,
           "subject": "ОАП_лр",
-          "teacher": "Данилова О.С.",
-          "subgroup": 1,
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "ВЦ 322",
+          "auditorium": "445",
           "campus": "Э",
-          "classroom": "каб. ВЦ 322 (Энгельса)",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -937,8 +938,8 @@
         {
           "lesson_number": 2,
           "subject": "ОАП_лр",
-          "teacher": "Тлеумбетов Т.Д.",
-          "subgroup": 2,
+          "teacher": "Данилова О.С.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -956,8 +957,8 @@
         {
           "lesson_number": 2,
           "subject": "ОАП_лр",
-          "teacher": "Данилова О.С.",
-          "subgroup": 1,
+          "teacher": "Тлеумбетов Т.Д.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
