@@ -12,7 +12,7 @@ const Dm = {
   welcomeAt: 0,
   /** Загружает статусы приветствия только для Арины в группе Лебедева. */
   async loadWelcomeRecipients() {
-    if (!Cloud.isSuperAdmin || Cloud.tenantId !== 'group_2' || Date.now() - Dm.welcomeAt < 9000) return;
+    if (!Cloud.isSuperAdmin || Cloud.tenantId === 'group_1' || Date.now() - Dm.welcomeAt < 9000) return;
     Dm.welcomeAt = Date.now();
     const {data, error} = await supa.rpc('welcome_recipients');
     const before = JSON.stringify([Dm.welcomeRecipients, Dm.welcomeError, Dm.welcomeLoaded]);
@@ -34,14 +34,14 @@ const Dm = {
    * Возвращает выбранного получателя сообщений.
    * @returns {string} Роль получателя.
    */
-  recipient() { return ui.dmRole || Dm.supportRole() || (Groups.current === 'group_2' ? 'admin' : 'superadmin'); },
+  recipient() { return ui.dmRole || Dm.supportRole() || (Groups.current !== 'group_1' ? 'admin' : 'superadmin'); },
   /**
    * Возвращает подпись сотрудника в чате.
    * @param {string} role Роль получателя.
    * @returns {string} Имя.
    */
   contactName(role) {
-    return {admin: 'Лебедев Петр Андреевич · староста', developer: 'Кузьменков Макар Сергеевич · разработчик', superadmin: 'Админ Арина'}[role] || 'Поддержка';
+    return {admin: (Groups.get(Groups.current).leader || 'Лебедев Петр Андреевич') + ' · староста', developer: 'Кузьменков Макар Сергеевич · разработчик', superadmin: 'Админ Арина'}[role] || 'Поддержка';
   },
   /**
    * Загружает сообщения личного чата с админом.

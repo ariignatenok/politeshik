@@ -84,3 +84,19 @@ test('support conversations stay separate for leader, developer and Arina',()=>{
   assert.equal(Dm.support(),true);
   assert.equal(Dm.supportRole(),'developer');
 });
+
+test('third group has its own 27-person roster and email-bound leader without a developer',()=>{
+  const {Groups,ROSTER,ROSTER_BY_ID,Store,groupName}=app();
+  Groups.selectRoster('group_3');
+  assert.equal(ROSTER.length,27);
+  assert.equal(ROSTER_BY_ID.g3_r16.name,'Плотникова Дарья Александровна');
+  assert.equal(ROSTER_BY_ID.g3_r16.activation,'email');
+  assert.equal(ROSTER.some(r=>r.accessRole==='developer'),false);
+  assert.equal(ROSTER_BY_ID.g2_r13,undefined);
+  Groups.activate({uid:'user',tenant_id:'group_3'});
+  assert.equal(Store.key,'user:group_3');
+  assert.equal(Store.s.settings.groupTenant,'group_3');
+  assert.equal(Store.s.subjects.length,0);
+  assert.equal(groupName(),'23290907/2092');
+  assert.equal(Groups.get('group_3').supportRoles.join(','),'admin,superadmin');
+});

@@ -5,7 +5,8 @@ const Groups = {
   selected: 'group_1',
   list: [
     {id: 'group_1', number: '25290909/3091', groupId: 'g_main', file: 'schedule.json'},
-    {id: 'group_2', number: '26290911/3111', groupId: 'g_26290911_3111', file: 'schedule-26290911-3111.json'}
+    {id: 'group_2', number: '26290911/3111', groupId: 'g_26290911_3111', file: 'schedule-26290911-3111.json', leader: 'Лебедев Петр Андреевич', initials: 'ЛП', supportRoles: ['admin','developer','superadmin']},
+    {id: 'group_3', number: '23290907/2092', groupId: 'g_23290907_2092', file: 'schedule-23290907-2092.json', leader: 'Плотникова Дарья Александровна', initials: 'ПД', supportRoles: ['admin','superadmin']}
   ],
   rosters: {
     group_1: ROSTER.map(r => Object.assign({}, r)),
@@ -15,7 +16,8 @@ const Groups = {
       'Чистяков', 'Чубыкин', 'Ширяева'].map((name, i) => ({
         id: 'g2_r' + (i + 1), n: i + 1, name, flag: '', sub: '',
         accessRole: i === 11 ? 'developer' : i === 12 ? 'admin' : ''
-      }))
+      })),
+    group_3: ["Абрамчук Леонид Константинович", "Афанасьев Сергей Павлович", "Гурьянова Анастасия Алексеевна", "Джусь Анастасия Сергеевна", "Долгополов Владислав Валерьевич", "Карасева Ольга Михайловна", "Ковалева Алёна Александровна", "Колотилин Андрей Валерьевич", "Кошель Милена Викторовна", "Кузнецов Александр Александрович", "Лапшина Виктория Алексеевна", "Некрасов Святослав Андреевич", "Николайчук Роман Алексеевич", "Павлов Владислав Денисович", "Пислегин Даниил Михайлович", "Плотникова Дарья Александровна", "Попова Алина Тулкиновна", "Поступинская Анна Денисовна", "Решетько Виктория Сергеевна", "Семенюк Кристина Сергеевна", "Стахаевич Вероника Геннадьевна", "Сытов Семен Ильич", "Тихонович Ярослав Степанович", "Ткачев Родион Дмитриевич", "Циглер Виктория Дмитриевна", "Шелепова Варвара Евгеньевна", "Шкарлет Иван Андреевич"].map((name, i) => ({id: 'g3_r' + (i + 1), n: i + 1, name, flag: '', sub: '', accessRole: i === 15 ? 'admin' : '', activation: i === 15 ? 'email' : ''}))
   },
   /**
    * Возвращает настройки группы по серверному идентификатору.
@@ -49,14 +51,14 @@ const Groups = {
    * Создаёт чистый контент новой группы без личных и учебных данных первой группы.
    * @returns {Object} Начальное состояние.
    */
-  seed() {
+  seed(tenant = Groups.current) {
     const seed = Seed.make();
     ['teachers', 'works', 'homework', 'cards', 'notes', 'schedule', 'changes'].forEach(k => { seed[k] = []; });
-    seed.subjects = [{id: 's_opbd', name: 'Основы проектирования баз данных', short: 'ОПБД', color: COLORS[0], links: [], formulas: []}];
+    seed.subjects = tenant === 'group_2' ? [{id: 's_opbd', name: 'Основы проектирования баз данных', short: 'ОПБД', color: COLORS[0], links: [], formulas: []}] : [];
     seed.attendance = {marks: {}};
     seed.chat = Chat.blank();
     seed.weeks = {}; seed.meta = {}; seed.ach = {}; seed.map = null;
-    seed.settings = Object.assign(Seed.defaultSettings(), {seedVersion: 5, groupTenant: 'group_2'});
+    seed.settings = Object.assign(Seed.defaultSettings(), {seedVersion: 5, groupTenant: tenant});
     return seed;
   },
   /**
@@ -70,10 +72,10 @@ const Groups = {
     ScheduleSync.group = Groups.get(Groups.current).number;
     GROUP_NAME = Groups.get(Groups.current).number;
     GoogleSync.KEY = 'politeshik:gsync' + (Groups.current === 'group_1' ? '' : ':' + Groups.current);
-    Groups.selectRoster(Groups.current);
+    Groups.selectRoster(Groups.current === 'group_1' && !context.member && !context.is_admin && !context.is_super_admin ? Groups.selected : Groups.current);
     const key = context.uid + (Groups.current === 'group_1' ? '' : ':' + Groups.current);
     Store.bind(key);
-    if (Groups.current === 'group_2' && Store.s.settings.groupTenant !== 'group_2') Store.replace(Groups.seed());
+    if (Groups.current !== 'group_1' && Store.s.settings.groupTenant !== Groups.current) Store.replace(Groups.seed());
     ScheduleSync.configure(Groups.get(Groups.current));
   },
   /**

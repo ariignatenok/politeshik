@@ -24,7 +24,7 @@ const statusBtns = (date, pair, cur, uid, locked) =>
         ST_INFO[k][1] +
         (cur === k ? ' on' : '') +
         '" ' +
-        (locked || Cloud.tenantId === 'group_2' && !Cloud.isAdmin ? 'disabled ' : '') +
+        (locked || Cloud.tenantId !== 'group_1' && !Cloud.isAdmin ? 'disabled ' : '') +
         'data-action="att-mark" data-date="' +
         date +
         '" data-pair="' +

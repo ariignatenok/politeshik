@@ -157,13 +157,13 @@ function viewChatListStudent() {
 }
 /** Показывает Арине получателей приветствия и отметки прочтения. */
 function welcomeRecipientsHtml() {
-  if (!Cloud.isSuperAdmin || Groups.current !== 'group_2') return '';
+  if (!Cloud.isSuperAdmin || Groups.current === 'group_1') return '';
   Dm.loadWelcomeRecipients();
   const rows = Dm.welcomeRecipients,
     sent = rows.filter(x => x.sent_at).length,
     read = rows.filter(x => x.read_by_student).length;
   return '<section class="card welcome-recipients"><h2>Приветствие Арины</h2>' +
-    '<p>Группа 26290911/3111 · Отправлено ' + sent + ' из ' + rows.length + ' · Прочитано ' + read +
+    '<p>Группа ' + U.esc(Groups.get(Groups.current).number) + ' · Отправлено ' + sent + ' из ' + rows.length + ' · Прочитано ' + read +
     '. Староста и разработчик исключены.</p>' +
     (Dm.welcomeError ? '<p class="warn">Не удалось загрузить статусы: ' + U.esc(Dm.welcomeError) + '</p>' :
       !Dm.welcomeLoaded ? '<p class="hint">Загружаем получателей…</p>' :
@@ -324,12 +324,12 @@ function viewChat() {
  * @returns {string} HTML списка контактов.
  */
 function supportContactsHtml() {
-  const roles = Groups.current === 'group_2' ? ['admin', 'developer', 'superadmin'] : ['superadmin'];
+  const roles = Groups.get(Groups.current).supportRoles || ['superadmin'];
   return roles.filter(role => role !== Dm.supportRole()).map(role => {
     const messages = Dm.threadMsgs(Cloud.uid, role), last = messages[messages.length - 1];
     return chatRow({id: 'contact:' + role, title: Dm.contactName(role),
       subtitle: 'Личная переписка', preview: last ? last.body : '', time: last ? chatTime(last.created_at) : '',
       unread: messages.filter(m => Dm.isIncoming(m) && !m.read_by_student).length,
-      avatar: '<span class="adm-av">' + ({admin: 'ЛП', developer: 'КМ', superadmin: 'АА'}[role]) + '</span>'});
+      avatar: '<span class="adm-av">' + ({admin: Groups.get(Groups.current).initials || 'ЛП', developer: 'КМ', superadmin: 'АА'}[role]) + '</span>'});
   }).join('');
 }

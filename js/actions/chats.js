@@ -63,7 +63,7 @@ Object.assign(A, {
     ui.chatWith = el.dataset.with;
     if (ui.chatWith.startsWith('contact:')) ui.dmRole = ui.chatWith.slice(8);
     else if (ui.chatWith.includes('|')) ui.dmRole = ui.chatWith.split('|')[1];
-    else ui.dmRole = Dm.supportRole() || (Groups.current === 'group_2' ? 'admin' : 'superadmin');
+    else ui.dmRole = Dm.supportRole() || (Groups.current !== 'group_1' ? 'admin' : 'superadmin');
     App.render(true);
     window.scrollTo(0, 0);
   },

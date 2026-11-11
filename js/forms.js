@@ -494,7 +494,7 @@ const Forms = {
     if (first) {
       const code = val(form, 'group_code').trim() || ui.registrationCode || Roles.storedCode();
       ui.registrationCode = code;
-      if ((ro.accessRole || ro.id === ADMIN_RID) && !(Cloud.isAdmin || Cloud.isDeveloper)) {
+      if ((ro.accessRole || ro.id === ADMIN_RID) && ro.activation !== 'email' && !(Cloud.isAdmin || Cloud.isDeveloper)) {
         ui.secret = {rid, sg, group: Groups.selected, code};
         $('#gate').dataset.mode = ''; App.render(); return;
       }

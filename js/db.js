@@ -811,7 +811,7 @@ const Cloud = (() => {
    * Отправляет свои отметки в облако с учётом правок админа.
    */
   C.pushAtt = async () => {
-    if (C.tenantId === 'group_2' && !C.isAdmin || C.isSuperAdmin && C.tenantId !== C.homeTenant) return {ok: true};
+    if (C.tenantId !== 'group_1' && !C.isAdmin || C.isSuperAdmin && C.tenantId !== C.homeTenant) return {ok: true};
     if (Store.s.meta.pendingAtt) {
       try {
         const sn = await DB.doc('attendance/' + C.uid).get(),

@@ -311,7 +311,7 @@ const Store = (() => {
       App.render();
     },
     restoreContent() {
-      if (Groups.current === 'group_2') {
+      if (Groups.current !== 'group_1') {
         ScheduleSync.populateCatalog(); save(); App.render(); return 0;
       }
       const n = Content.apply(s);
@@ -320,7 +320,7 @@ const Store = (() => {
       return n;
     },
     reset() {
-      s = Groups.current === 'group_2' ? Groups.seed() : Seed.make();
+      s = Groups.current !== 'group_1' ? Groups.seed() : Seed.make();
       save();
       App.render();
     },
