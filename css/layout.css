@@ -129,3 +129,7 @@
 .group-shortcuts .nav-btn b { display: block; font-size: 13px; overflow-wrap: anywhere; }
 #group-switch { padding: 12px 24px; }
 #group-switch > b { display: block; margin-bottom: 8px; }
+
+.group-directory { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:16px; }
+.group-directory .head-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.group-directory h2 { overflow-wrap:anywhere; }

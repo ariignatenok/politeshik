@@ -2,7 +2,7 @@
 
 Object.assign(A, {
   /** Открывает список выбранной группы после серверной проверки доступа. */
-  'group-open'(el) { return Groups.switchTo(el.dataset.group, true); },
+  'group-open'(el) { return Groups.switchTo(el.dataset.group, true, el.dataset.tab || 'group'); },
   /**
    * Переключает раздел приложения.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.

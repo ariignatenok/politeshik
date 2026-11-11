@@ -287,7 +287,9 @@ const App = {
         const target = window.sessionStorage.getItem('politeshik:open-group');
         if (target && target === Groups.current) {
           window.sessionStorage.removeItem('politeshik:open-group');
-          ui.tab = 'group'; ui.grpTab = 'students';
+          const landing = window.sessionStorage.getItem('politeshik:open-group-tab');
+          window.sessionStorage.removeItem('politeshik:open-group-tab');
+          ui.tab = ['group','journal','chat','news','users','schedule'].includes(landing) ? landing : 'group'; ui.grpTab = 'students';
         }
       } catch (error) {}
     }
@@ -303,6 +305,7 @@ const App = {
     if (
       !Views[ui.tab] ||
       (ui.tab === 'group' && !Cloud.isAdmin) ||
+      (ui.tab === 'groups' && !Cloud.isSuperAdmin) ||
       (ui.tab === 'requests' && !Cloud.isAdmin) ||
       (ui.tab === 'access' && !Roles.isOwner()) ||
       (ui.tab === 'users' && !Cloud.isAdmin && !Cloud.isDeveloper) ||

@@ -83,16 +83,17 @@ const Groups = {
    * @param {string} tenant Идентификатор группы.
    * @returns {Promise<void>} Перезагрузка изолированного контекста.
    */
-  async switchTo(tenant, openList) {
+  async switchTo(tenant, openList, tab = 'group') {
     if (!Cloud.isSuperAdmin || !Groups.list.some(g => g.id === tenant)) return;
+    if (!['group','journal','chat','news','users','schedule'].includes(tab)) tab = 'group';
     if (tenant === Groups.current) {
-      if (openList) { ui.tab = 'group'; ui.grpTab = 'students'; App.render(true); window.scrollTo(0, 0); }
+      if (openList) { ui.tab = tab; ui.grpTab = 'students'; App.render(true); window.scrollTo(0, 0); }
       return;
     }
     try {
       const {error} = await supa.rpc('select_group', {p_tenant: tenant});
       if (error) return toast(error.message);
-      if (openList) window.sessionStorage.setItem('politeshik:open-group', tenant);
+      if (openList) { window.sessionStorage.setItem('politeshik:open-group', tenant); window.sessionStorage.setItem('politeshik:open-group-tab', tab); }
       location.reload();
     } catch (error) { toast('Не удалось переключить группу: ' + error.message); }
   },
@@ -101,14 +102,7 @@ const Groups = {
    * @param {boolean} mobile Карточки мобильного меню.
    * @returns {string} HTML.
    */
-  navigation(mobile) {
-    if (!Cloud.isSuperAdmin) return '';
-    return '<div class="' + (mobile ? 'tiles' : 'group-shortcuts') + '">' + Groups.list.map(g =>
-      '<button class="' + (mobile ? 'tile' : 'nav-btn') +
-      (g.id === Groups.current ? ' on' : '') + '" data-action="group-open" data-group="' + g.id +
-      '"' + (g.id === Groups.current ? ' aria-current="true"' : '') + '><span class="ico">' + ICONS.busts +
-      '</span><span>Группа <b>' + g.number + '</b></span></button>').join('') + '</div>';
-  },
+  navigation(mobile) { return ''; },
 
   /**
    * Регистрирует кабинет атомарно: код, фамилия, группа и роль проверяются сервером.
@@ -144,4 +138,14 @@ function viewDiagnostics() {
     scheduleAvailable: !!ScheduleSync.snapshot, cloudStatus: Cloud.status, errors: Safe.errors.slice(-10)};
   return '<section class="card"><h1>Диагностика</h1><p>Просмотр состояния приложения. Изменение посещаемости и прав доступа недоступно.</p><pre style="white-space:pre-wrap">' +
     U.esc(JSON.stringify(info, null, 2)) + '</pre><button class="btn" data-action="sched-sync">Проверить расписание</button></section>';
+}
+
+/** Каталог групп доступен только Арине. */
+function viewGroups() {
+  if (!Cloud.isSuperAdmin) return '';
+  return '<div class="page-head"><div><h1>Группы</h1><p>Выбери группу, чтобы открыть её студентов, журнал, чаты или новости.</p></div></div><div class="group-directory">' +
+    Groups.list.map(g => '<section class="card"><h2>Группа ' + U.esc(g.number) + '</h2><p>' +
+      Groups.rosters[g.id].length + ' студентов' + (g.id === Groups.current ? ' · Текущая группа' : '') +
+      '</p><div class="head-actions">' + [['group','Студенты'],['journal','Журнал'],['chat','Чаты'],['news','Новости']].map(([tab,label]) =>
+        '<button class="btn' + (tab === 'group' ? ' primary' : '') + '" data-action="group-open" data-group="' + g.id + '" data-tab="' + tab + '">' + label + '</button>').join('') + '</div></section>').join('') + '</div>';
 }

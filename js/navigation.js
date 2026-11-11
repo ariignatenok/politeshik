@@ -38,6 +38,7 @@ const ui = {
   fQuery: ''
 };
 const NAV_ALL = [
+  {id: 'groups', ico: ICONS.busts, label: 'Группы', short: 'Группы', owner: true},
   {
     id: 'dashboard',
     ico: ICONS.house,

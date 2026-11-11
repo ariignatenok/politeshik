@@ -1,6 +1,7 @@
 'use strict';
 
 const Views = {
+  groups: viewGroups,
   diagnostics: viewDiagnostics,
   dashboard: viewDashboard,
   schedule: viewSchedule,
@@ -30,6 +31,7 @@ const Views = {
   settings: viewSettings
 };
 const MORE_TABS = [
+  'groups',
   'news',
   'teachers',
   'cabinet',

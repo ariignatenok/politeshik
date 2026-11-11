@@ -688,9 +688,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "302",
           "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. 302 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
