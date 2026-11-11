@@ -122,3 +122,10 @@
 .tabbar {
   display: none;
 }
+
+/* Fast group navigation for the super administrator. */
+.group-shortcuts { display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; margin-bottom: 8px; border-bottom: 1px solid var(--border); }
+.group-shortcuts .nav-btn { width: 100%; }
+.group-shortcuts .nav-btn b { display: block; font-size: 13px; overflow-wrap: anywhere; }
+#group-switch { padding: 12px 24px; }
+#group-switch > b { display: block; margin-bottom: 8px; }

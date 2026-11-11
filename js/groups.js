@@ -81,12 +81,33 @@ const Groups = {
    * @param {string} tenant Идентификатор группы.
    * @returns {Promise<void>} Перезагрузка изолированного контекста.
    */
-  async switchTo(tenant) {
-    if (!Cloud.isSuperAdmin || tenant === Groups.current) return;
-    const {error} = await supa.rpc('select_group', {p_tenant: tenant});
-    if (error) return toast(error.message);
-    location.reload();
+  async switchTo(tenant, openList) {
+    if (!Cloud.isSuperAdmin || !Groups.list.some(g => g.id === tenant)) return;
+    if (tenant === Groups.current) {
+      if (openList) { ui.tab = 'group'; ui.grpTab = 'students'; App.render(true); window.scrollTo(0, 0); }
+      return;
+    }
+    try {
+      const {error} = await supa.rpc('select_group', {p_tenant: tenant});
+      if (error) return toast(error.message);
+      if (openList) window.sessionStorage.setItem('politeshik:open-group', tenant);
+      location.reload();
+    } catch (error) { toast('Не удалось переключить группу: ' + error.message); }
   },
+  /**
+   * Строит быстрые переходы между группами только для Арины.
+   * @param {boolean} mobile Карточки мобильного меню.
+   * @returns {string} HTML.
+   */
+  navigation(mobile) {
+    if (!Cloud.isSuperAdmin) return '';
+    return '<div class="' + (mobile ? 'tiles' : 'group-shortcuts') + '">' + Groups.list.map(g =>
+      '<button class="' + (mobile ? 'tile' : 'nav-btn') +
+      (g.id === Groups.current ? ' on' : '') + '" data-action="group-open" data-group="' + g.id +
+      '"' + (g.id === Groups.current ? ' aria-current="true"' : '') + '><span class="ico">' + ICONS.busts +
+      '</span><span>Группа <b>' + g.number + '</b></span></button>').join('') + '</div>';
+  },
+
   /**
    * Регистрирует кабинет атомарно: код, фамилия, группа и роль проверяются сервером.
    * @param {string} rid Фамилия.

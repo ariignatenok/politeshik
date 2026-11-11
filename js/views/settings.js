@@ -174,5 +174,6 @@ function viewSettingsBase() {
  * @returns {string} HTML.
  */
 function viewSettings() {
-  return viewSettingsBase() + (Cloud.isAdmin ? groupCodeCard() + GoogleSync.card() : '');
+  return viewSettingsBase() + (Cloud.isAdmin ? groupCodeCard() + GoogleSync.card() : '') +
+    (Cloud.isSuperAdmin || Cloud.isDeveloper ? '<section class="card set-sec"><h2>Технические функции</h2><div class="set-row"><div><b>Диагностика</b><p>Состояние соединения, загрузки расписания и ошибки приложения.</p></div><button class="btn" data-action="nav" data-tab="diagnostics">Открыть диагностику</button></div></section>' : '');
 }

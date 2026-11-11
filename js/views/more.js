@@ -32,7 +32,7 @@ function viewMore() {
           )
           .concat([['settings', ICONS.gear, 'Настройки']]);
   return (
-    '<div class="page-head"><div><h1>Ещё</h1><p>Разделы Политешика</p></div></div><div class="tiles">' +
+    '<div class="page-head"><div><h1>Ещё</h1><p>Разделы Политешика</p></div></div>' + Groups.navigation(true) + '<div class="tiles">' +
     items
       .map(
         t =>

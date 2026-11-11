@@ -282,6 +282,15 @@ const App = {
       App.renderGate(gm);
       return;
     }
+    if (Cloud.isSuperAdmin) {
+      try {
+        const target = window.sessionStorage.getItem('politeshik:open-group');
+        if (target && target === Groups.current) {
+          window.sessionStorage.removeItem('politeshik:open-group');
+          ui.tab = 'group'; ui.grpTab = 'students';
+        }
+      } catch (error) {}
+    }
     document.body.classList.toggle('ro', !canEdit());
     if (document.body.classList.contains('gated')) {
       document.body.classList.remove('gated');
@@ -339,7 +348,7 @@ const App = {
     }
     const unread = chatUnread(),
       badge = n => (n ? '<span class="badge">' + n + '</span>' : '');
-    $('#nav-side').innerHTML = navItems()
+    $('#nav-side').innerHTML = Groups.navigation(false) + navItems()
       .map(
         t =>
           '<button class="nav-btn' +

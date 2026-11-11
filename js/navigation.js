@@ -38,7 +38,6 @@ const ui = {
   fQuery: ''
 };
 const NAV_ALL = [
-  {id: 'diagnostics', ico: ICONS.gear, label: 'Диагностика', short: 'Отладка', owner: true},
   {
     id: 'dashboard',
     ico: ICONS.house,
@@ -202,6 +201,7 @@ const NAV_ALL = [
     short: 'Настройки'
   }
 ];
+NAV_ALL.push({id: 'diagnostics', ico: ICONS.gear, label: 'Диагностика', short: 'Отладка', owner: true});
 const NAV_BOTTOM = ['dashboard', 'schedule', 'attendance', 'hw', 'subjects', 'chat', 'more'];
 /**
  * Строит заглушку пустого списка.
@@ -225,7 +225,7 @@ const emptyMascot = (text, mood) =>
 function navItems() {
   const tabs = Roles.tabs();
   if (tabs) return tabs.map(id => NAV_ALL.find(t => t.id === id)).filter(Boolean);
-  return NAV_ALL.filter(t => (!t.admin || Cloud.isAdmin) && !t.staff && (!t.owner || Roles.isOwner()));
+  return NAV_ALL.filter(t => (!t.admin || Cloud.isAdmin) && !t.staff && (!t.owner || Roles.isOwner()) && t.id !== 'diagnostics');
 }
 /**
  * Возвращает вкладки нижней панели для роли пользователя.

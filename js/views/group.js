@@ -594,13 +594,14 @@ function viewGroup() {
   const students = ROSTER.filter(r => !r.flag && !r.admin).length,
     n = rosterRows().filter(x => x.e && x.r.id && !x.r.flag && !x.r.admin).length;
   return (
-    '<div class="page-head"><div><h1>Группа</h1><p>Вошло в приложение: <b>' +
+    '<div class="page-head"><div><h1>Группа ' + U.esc(Groups.get(Groups.current).number) + '</h1><p>Вошло в приложение: <b>' +
     n +
     '</b> из ' +
     students +
     ' · данные обновляются сами</p></div><div class="head-actions"><button class="btn" data-action="nav" data-tab="journal">' +
     ICONS.folder +
-    ' Журнал</button></div></div>' +
+    ' Журнал</button><button class="btn" data-action="nav" data-tab="users">Аккаунты пользователей</button><button class="btn" data-action="nav" data-tab="news">Новости</button><button class="btn" data-action="nav" data-tab="chat">Чаты</button></div></div>' +
+    '<p class="hint">В списке ниже все студенты группы. У тех, кто ещё не зарегистрировался, нет аккаунта и данных посещаемости.</p>' +
     '<div class="tabs">' +
     tabs
       .map(
