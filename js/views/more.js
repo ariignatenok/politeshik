@@ -28,7 +28,7 @@ function viewMore() {
                   ['group', ICONS.shield, 'Группа (админ)']
                 ]
               : []
-            ).concat(Roles.isOwner() ? [['access', ICONS.key, 'Доступы']] : [])
+            ).concat(Roles.isOwner() ? [['groups', ICONS.busts, 'Группы'], ['access', ICONS.key, 'Доступы']] : [])
           )
           .concat([['settings', ICONS.gear, 'Настройки']]);
   return (
