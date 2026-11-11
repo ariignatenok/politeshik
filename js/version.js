@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'multigroup20261111';
+const BUILD = 'groupselector20261111';

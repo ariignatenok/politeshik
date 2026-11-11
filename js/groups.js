@@ -104,6 +104,12 @@ const Groups = {
   }
 };
 
+// Restore only the registration choice; server membership still controls data access.
+try {
+  const selected = window.localStorage.getItem('politeshik:registration-group');
+  if (selected) Groups.selectRoster(selected);
+} catch (error) {}
+
 /**
  * Показывает техническую диагностику без прав изменения учебных данных.
  * @returns {string} HTML.

@@ -207,7 +207,7 @@ const App = {
     }[role];
     const codeField =
       role === 'student' || role === 'parent'
-        ? '<label class="field"><span>Код группы (его выдаёт староста)</span><input class="input" name="group_code" autocomplete="off" placeholder="25290909-3091-XXXXX" value="' +
+        ? Groups.selector(false) + '<label class="field"><span>Код группы (его выдаёт староста)</span><input class="input" name="group_code" autocomplete="off" placeholder="' + Groups.get(Groups.selected).number.replace('/', '-') + '-XXXXX" value="' +
           U.esc(draft.group_code || '') +
           '"></label>'
         : '';

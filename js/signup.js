@@ -43,7 +43,7 @@ const Signup = {
     const field = (label, name, value, extra) =>
         '<label class="field"><span>' + label + '</span><input class="input" name="' + name + '" value="' + U.esc(value || '') + '" ' + (extra || '') + '></label>',
       roleBtn = (id, label) => '<button class="' + (role === id ? 'on' : '') + '" data-action="oauth-role" data-role="' + id + '">' + label + '</button>',
-      codeField = field('Код группы (его выдаёт староста)', 'group_code', draft.group_code || '', 'autocomplete="off" placeholder="25290909-3091-XXXXX"'),
+      codeField = Groups.selector(false) + field('Код группы (его выдаёт староста)', 'group_code', draft.group_code || '', 'autocomplete="off" placeholder="' + Groups.get(Groups.selected).number.replace('/', '-') + '-XXXXX"'),
       body =
         role === 'student'
           ? codeField

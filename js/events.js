@@ -94,9 +94,20 @@ document.addEventListener('change', event => {
   const k = event.target.dataset && event.target.dataset.change;
   if (!k) return;
   if (k === 'registration-group') {
-    const code = ($('#gate [name=group_code]') || {}).value || '';
+    const form = event.target.closest('[data-form]'),
+      codeField = form && form.querySelector('[name=group_code]');
     Groups.selectRoster(event.target.value);
-    ui.registrationCode = code;
+    try { window.localStorage.setItem('politeshik:registration-group', Groups.selected); } catch (error) {}
+    ui.registrationCode = '';
+    ui.groupCode = '';
+    if (ui.loginDraft) ui.loginDraft.group_code = '';
+    if (ui.oauthDraft) ui.oauthDraft.group_code = '';
+    if (codeField) {
+      codeField.value = '';
+      codeField.placeholder = Groups.get(Groups.selected).number.replace('/', '-') + '-XXXXX';
+    }
+    // Keep typed email, password and consent when choosing a group before login.
+    if (form && ['login', 'oauth'].includes(form.dataset.form)) return;
     Cloud.claims = {}; $('#gate').dataset.mode = ''; App.render();
     return;
   }
