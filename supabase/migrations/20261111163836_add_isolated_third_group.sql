@@ -1,3 +1,17 @@
+-- Rehearsed on isolated PostgreSQL 17 with synthetic users, existing installer,
+-- the applied two-group migrations, and the old role/welcome suites before AND after.
+-- tests/third-group-rls.sql passed email binding, approval, attendance denial,
+-- cross-tenant access, superadmin switching, private chats and third-group receipts.
+-- Fail closed if any shared source differs from the reviewed production baseline.
+do $$ begin
+  assert (select md5(prosrc) from pg_proc where oid='politeshik_private.register_student(text,text,text,text,text)'::regprocedure)='c9382567bbabcfa486b73cafe94ffcd9','Unexpected function baseline: politeshik_private.register_student(text,text,text,text,text)';
+  assert (select md5(prosrc) from pg_proc where oid='public.chat_guard()'::regprocedure)='6712841d73a20c877736c97876293006','Unexpected function baseline: public.chat_guard()';
+  assert (select md5(prosrc) from pg_proc where oid='politeshik_private.active_tenant()'::regprocedure)='eec8190099c219d0203e8fda98100795','Unexpected function baseline: politeshik_private.active_tenant()';
+  assert (select md5(prosrc) from pg_proc where oid='politeshik_private.select_group(text)'::regprocedure)='b8b774a0c6dd98a8344af7b75ffae20c','Unexpected function baseline: politeshik_private.select_group(text)';
+  assert (select md5(prosrc) from pg_proc where oid='public.welcome_recipients()'::regprocedure)='8c92e419bc55924812cdd0cf8226087c','Unexpected function baseline: public.welcome_recipients()';
+  assert (select md5(prosrc) from pg_proc where oid='public.create_group_code(text)'::regprocedure)='7e2bffaf61b5b0a2e3523ac6d222220f','Unexpected function baseline: public.create_group_code(text)';
+  assert not exists(select 1 from public.tenants where id='group_3'),'Third group already exists';
+end $$;
 -- Group 23290907/2092: staff activation is bound to a confirmed Auth email.
 insert into public.tenants(id,name) values('group_3','Группа 23290907/2092');
 insert into public.groups(id,tenant_id,name) values('g_23290907_2092','group_3','Группа 23290907/2092');

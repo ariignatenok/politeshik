@@ -112,7 +112,7 @@ select public.select_group('group_2');
 do $$ declare changed int; begin
   assert politeshik_private.is_super_admin() and public.is_admin(),'Arina lacks super administrator privileges';
   assert public.current_tenant()='group_2','Arina cannot select second group';
-  assert (select count(*)=4 from public.chat where thread_uid=current_setting('test.student_uid')::uuid),'Arina cannot see all support conversations';
+  assert (select count(*)=4 from public.chat where thread_uid=current_setting('test.student_uid')::uuid and body in('student to leader','student to developer','student to Arina','developer response')),'Arina cannot see all support conversations';
   update public.docs set data='{"marks":{"2026-11-10|1":"п"}}' where path='attendance/'||current_setting('test.student_uid');
   get diagnostics changed=row_count;
   assert changed=1,'Arina cannot edit second group attendance';
