@@ -306,7 +306,7 @@ const App = {
       (ui.tab === 'requests' && !Cloud.isAdmin) ||
       (ui.tab === 'access' && !Roles.isOwner()) ||
       (ui.tab === 'users' && !Cloud.isAdmin && !Cloud.isDeveloper) ||
-      (ui.tab === 'diagnostics' && !Cloud.isDeveloper && !Cloud.isSuperAdmin) ||
+      (ui.tab === 'diagnostics' && !Cloud.isSuperAdmin) ||
       (ui.tab === 'stats' && !Cloud.isAdmin) ||
       (Cloud.isStaff && ui.tab !== 'more' && !Roles.allows(ui.tab)) ||
       (!Cloud.isStaff && Roles.staffOnly.indexOf(ui.tab) >= 0)

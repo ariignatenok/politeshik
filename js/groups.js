@@ -136,7 +136,7 @@ try {
  * @returns {string} HTML.
  */
 function viewDiagnostics() {
-  if (!Cloud.isDeveloper && !Cloud.isSuperAdmin) return '';
+  if (!Cloud.isSuperAdmin) return '';
   const info = {group: Groups.get(Groups.current).number, build: BUILD, role: Cloud.role,
     scheduleDate: ScheduleSync.snapshot && ScheduleSync.snapshot.checked_at,
     scheduleAvailable: !!ScheduleSync.snapshot, cloudStatus: Cloud.status, errors: Safe.errors.slice(-10)};

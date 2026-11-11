@@ -11,7 +11,7 @@ const Roles = {
     department: 'Отделение'
   },
   tabsByRole: {
-    developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'users', 'diagnostics', 'settings'],
+    developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'users', 'settings'],
     teacher: ['tdash', 'schedule', 'journal', 'tstudents', 'tsubjects', 'consult', 'texport', 'chat', 'settings'],
     curator: ['tdash', 'schedule', 'journal', 'tstudents', 'news', 'chat', 'settings'],
     department: ['dept', 'news', 'settings'],
@@ -34,6 +34,7 @@ const Roles = {
    * @returns {boolean} true, если условие выполнено.
    */
   allows(tab) {
+    if (tab === 'diagnostics') return Roles.isOwner();
     const list = Roles.tabs();
     return !list || list.indexOf(tab) >= 0;
   },
