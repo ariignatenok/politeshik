@@ -75,7 +75,9 @@
       "teacher": "Баженова Т.С.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9df33402caee.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:43.023438+00:00",
+      "fetched_at": "2026-11-12T23:50:44.924834+00:00"
     },
     {
       "id": "faculty-8691ed508560",
@@ -83,7 +85,9 @@
       "teacher": "Балдина Л.С.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8691ed508560.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:44.924885+00:00",
+      "fetched_at": "2026-11-12T23:50:46.437870+00:00"
     },
     {
       "id": "faculty-00393e9e4364",
@@ -91,7 +95,9 @@
       "teacher": "Берковиц А.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-00393e9e4364.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:46.437902+00:00",
+      "fetched_at": "2026-11-12T23:50:48.150286+00:00"
     },
     {
       "id": "faculty-29f8b3697f67",
@@ -99,7 +105,9 @@
       "teacher": "Бирюкова Т.Н.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-29f8b3697f67.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:48.150325+00:00",
+      "fetched_at": "2026-11-12T23:50:49.557564+00:00"
     },
     {
       "id": "faculty-e3efadbcac1c",
@@ -107,7 +115,9 @@
       "teacher": "Большакова А.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-e3efadbcac1c.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:49.557606+00:00",
+      "fetched_at": "2026-11-12T23:50:51.191756+00:00"
     },
     {
       "id": "faculty-c20afdfad898",
@@ -115,7 +125,9 @@
       "teacher": "Бондарева А.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c20afdfad898.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:51.191785+00:00",
+      "fetched_at": "2026-11-12T23:50:53.065301+00:00"
     },
     {
       "id": "faculty-a143e7c90cb7",
@@ -123,7 +135,9 @@
       "teacher": "Бурлакова Е.Н.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a143e7c90cb7.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:53.065348+00:00",
+      "fetched_at": "2026-11-12T23:50:54.661556+00:00"
     },
     {
       "id": "faculty-021571213883",
@@ -135,7 +149,9 @@
         "25290907/1091": [
           "ЭВМ"
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T23:50:54.661590+00:00",
+      "fetched_at": "2026-11-12T23:50:56.359930+00:00"
     },
     {
       "id": "faculty-487dfcd45374",
@@ -147,7 +163,9 @@
         "23290907/2092": [
           "Ин. яз. в ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T23:50:56.359970+00:00",
+      "fetched_at": "2026-11-12T23:50:57.988368+00:00"
     },
     {
       "id": "faculty-30fa65e9fcbe",
@@ -155,7 +173,9 @@
       "teacher": "Буров В.А.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-30fa65e9fcbe.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:57.988410+00:00",
+      "fetched_at": "2026-11-12T23:50:59.487953+00:00"
     },
     {
       "id": "faculty-c6d5f036828d",
@@ -163,7 +183,9 @@
       "teacher": "Бурова Т.Е.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c6d5f036828d.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:50:59.487993+00:00",
+      "fetched_at": "2026-11-12T23:51:01.086035+00:00"
     },
     {
       "id": "faculty-8d391595fd15",
@@ -171,7 +193,9 @@
       "teacher": "Вакулин А.И.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8d391595fd15.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:01.086071+00:00",
+      "fetched_at": "2026-11-12T23:51:02.576454+00:00"
     },
     {
       "id": "faculty-97261ab09c98",
@@ -179,7 +203,9 @@
       "teacher": "Варфоломеева Н.М.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-97261ab09c98.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:02.576502+00:00",
+      "fetched_at": "2026-11-12T23:51:04.075209+00:00"
     },
     {
       "id": "faculty-d1d8538f5b95",
@@ -187,7 +213,9 @@
       "teacher": "Васильев А.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-d1d8538f5b95.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:04.075256+00:00",
+      "fetched_at": "2026-11-12T23:51:05.575392+00:00"
     },
     {
       "id": "faculty-2f2c346102e6",
@@ -203,7 +231,9 @@
         "26290911/3111": [
           "Основы информационной безопасности"
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T23:51:05.575431+00:00",
+      "fetched_at": "2026-11-12T23:51:07.328501+00:00"
     },
     {
       "id": "faculty-030af74c3be2",
@@ -211,7 +241,9 @@
       "teacher": "Вдовина В.Н.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-030af74c3be2.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:07.328541+00:00",
+      "fetched_at": "2026-11-12T23:51:09.091795+00:00"
     },
     {
       "id": "faculty-076784b32ea9",
@@ -219,7 +251,9 @@
       "teacher": "Веснин Е.Ю.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-076784b32ea9.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:09.091834+00:00",
+      "fetched_at": "2026-11-12T23:51:10.615355+00:00"
     },
     {
       "id": "faculty-5cb4ea658c43",
@@ -231,7 +265,9 @@
         "23290907/2092": [
           "Менеджм. в проф. деят."
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T23:51:10.615394+00:00",
+      "fetched_at": "2026-11-12T23:51:12.110858+00:00"
     },
     {
       "id": "faculty-8bdc6f2727f7",
@@ -239,7 +275,9 @@
       "teacher": "Волков Д.И.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8bdc6f2727f7.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:12.110907+00:00",
+      "fetched_at": "2026-11-12T23:51:13.611235+00:00"
     },
     {
       "id": "faculty-c61c148bdaa3",
@@ -247,7 +285,9 @@
       "teacher": "Волчков И.В.",
       "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:13.611280+00:00",
+      "fetched_at": "2026-11-12T23:51:14.994905+00:00"
     },
     {
       "id": "faculty-c26d9b9d2683",
@@ -255,7 +295,9 @@
       "teacher": "Воробьев К.В.",
       "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:14.994932+00:00",
+      "fetched_at": "2026-11-12T23:51:16.377113+00:00"
     },
     {
       "id": "faculty-44686e30cbe5",
@@ -267,7 +309,9 @@
         "26290911/3111": [
           "ОСиС"
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T23:51:16.377139+00:00",
+      "fetched_at": "2026-11-12T23:51:18.015779+00:00"
     },
     {
       "id": "faculty-e29744376a40",
@@ -275,7 +319,9 @@
       "teacher": "Галушкина И.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-e29744376a40.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:18.015811+00:00",
+      "fetched_at": "2026-11-12T23:51:19.399931+00:00"
     },
     {
       "id": "faculty-9fb71d94aee3",
@@ -283,7 +329,9 @@
       "teacher": "Гарифуллина И.А.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9fb71d94aee3.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T23:51:19.399957+00:00",
+      "fetched_at": "2026-11-12T23:51:20.981966+00:00"
     },
     {
       "id": "faculty-bcae0f6f4765",
