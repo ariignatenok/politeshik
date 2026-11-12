@@ -646,6 +646,9 @@ const Cloud = (() => {
         return;
       }
       C.uid = session.user.id;
+      const {data: curatorContext, error: curatorError} = await supa.rpc('activate_bound_curator');
+      if(curatorError)throw new Error(curatorError.message);
+      C.curatorContext=curatorContext?.matched && curatorContext.active?curatorContext:null;
       const {data: context, error: contextError} = await supa.rpc('group_context');
       if (contextError || !context) throw new Error('Не удалось проверить группу и права аккаунта');
       C.tenantId = context.tenant_id;
@@ -722,7 +725,7 @@ const Cloud = (() => {
         watchAdmin();
       }
       if (C.realTeacher) watchStaff('teacher');
-      else if (C.realRole === 'curator') watchStaff('curator');
+      else if (C.realRole === 'curator' && !C.curatorContext) watchStaff('curator');
       if (C.realRole === 'parent' || C.realAdmin) {
         C.loadChild();
         clearInterval(C.childTimer);

@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - scripts/sync_schedule.py
+      - scripts/sync_teacher_schedule.py
       - .github/workflows/sync-schedule.yml
 
 permissions:
@@ -25,6 +26,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Fetch and validate group schedule
         run: python3 scripts/sync_schedule.py
+      - name: Fetch exact teacher timetable
+        continue-on-error: true
+        run: python3 scripts/sync_teacher_schedule.py
       - name: Save updated schedule
         run: |
           if git diff --quiet -- data/; then exit 0; fi

@@ -260,6 +260,7 @@ const Roles = {
    * @returns {Promise<Object>} результат.
    */
   async registerExtra(kind, form) {
+    if(Cloud.curatorContext?.active)return {ok:true};
     const name = ((form.querySelector('[name=person_name]') || {}).value || '').trim(),
       child = ((form.querySelector('[name=child_name]') || {}).value || '').trim(),
       note = ((form.querySelector('[name=person_note]') || {}).value || '').trim();

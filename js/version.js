@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'sixgroups20261112';
+const BUILD = 'curator20261112';

@@ -344,7 +344,7 @@ const App = {
       groupSwitch = document.createElement('div'); groupSwitch.id = 'group-switch';
       document.querySelector('.content').insertBefore(groupSwitch, document.querySelector('.topbar').nextSibling);
     }
-    groupSwitch.innerHTML = Cloud.isSuperAdmin ? '<b>Админ Арина · Супер-админ</b>' + Groups.selector(true) : '<p class="hint" style="padding:0 20px">Группа ' + U.esc(Groups.get(Groups.current).number) + '</p>';
+    groupSwitch.innerHTML = typeof Curator!=='undefined' && Curator.enabled() ? '<b>'+U.esc(Cloud.curatorContext.name)+' · Куратор</b><p class="hint">Закреплено групп: '+Cloud.curatorContext.groups.length+'</p>' : Cloud.isSuperAdmin ? '<b>Админ Арина · Супер-админ</b>' + Groups.selector(true) : '<p class="hint" style="padding:0 20px">Группа ' + U.esc(Groups.get(Groups.current).number) + '</p>';
     App.shownKey = fingerprint;
     App.centerTab();
     if (animate) {
