@@ -262,15 +262,7 @@ function viewDmThread(uid) {
         (mine
           ? ''
           : '<div class="msg-av adm-av">' +
-            (fromAdmin
-              ? U.esc(U.initials(m.sender_label || Dm.contactName(m.recipient_role)))
-              : U.esc(
-                  Dm.nameOf(uid)
-                    .split(' ')
-                    .map(w => w[0])
-                    .join('')
-                    .slice(0, 2)
-                )) +
+            Avatars.html(m.sender, 30) +
             '</div>') +
         '<div class="bubble">' +
         (fromAdmin ? '<div class="msg-name">' + U.esc(m.sender_label || (m.sender === Cloud.uid ? (Cloud.isSuperAdmin ? 'Админ Арина' : (Cloud.profile || {}).name || 'Поддержка') : Dm.contactName(m.recipient_role))) + '</div>' : '') +
@@ -286,7 +278,7 @@ function viewDmThread(uid) {
   return (
     '<div class="chat-wrap"><div class="chat-head">' +
     (Cloud.isStaff ? '' : '<button class="icon-btn" data-action="chat-back" aria-label="К списку чатов">←</button>') +
-    (admin ? avatarOf((Cloud.adm.profiles[uid] || {}).avatar, 46) : '<span class="adm-av big">' + U.esc(U.initials(Dm.contactName(Dm.recipient()))) + '</span>') +
+    (admin ? Avatars.html(uid, 46, (Cloud.adm.profiles[uid] || {}).avatar) : Avatars.contact(Dm.recipient(), 46)) +
     '<div><b>' +
     U.esc(admin ? Dm.nameOf(uid) : Dm.contactName(Dm.recipient())) +
     '</b><small>' +
@@ -336,6 +328,6 @@ function supportContactsHtml() {
     return chatRow({id: 'contact:' + role, title: Dm.contactName(role),
       subtitle: 'Личная переписка', preview: last ? last.body : '', time: last ? chatTime(last.created_at) : '',
       unread: messages.filter(m => Dm.isIncoming(m) && !m.read_by_student).length,
-      avatar: '<span class="adm-av">' + ({admin: Groups.get(Groups.current).initials || 'ЛП', developer: 'КМ', superadmin: 'АА'}[role]) + '</span>'});
+      avatar: Avatars.contact(role, 42)});
   }).join('');
 }

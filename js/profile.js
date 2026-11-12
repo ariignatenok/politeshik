@@ -39,7 +39,7 @@ function avatarOf(v, size) {
       a[1] +
       '</span>'
     );
-  return Mascot.svg(Mascot.current(), size);
+  return Mascot.svg('happy', size, '', {look: {}, season: ''});
 }
 /**
  * Возвращает идентификатор своего аватара.

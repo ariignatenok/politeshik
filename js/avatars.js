@@ -2,6 +2,20 @@
 
 const Avatars = {
   map: {},
+  looks: {},
+  people: {},
+  look(uid) {
+    return Wardrobe.normalize(uid && uid === Cloud.uid ? Mascot.chosen() : Avatars.looks[uid]);
+  },
+  uidForRid(rid) {
+    return Object.keys(Avatars.people).find((uid) => Avatars.people[uid].rid === rid);
+  },
+  contact(role, size) {
+    return Avatars.html(
+      Object.keys(Avatars.people).find((uid) => Avatars.people[uid].role === role),
+      size,
+    );
+  },
   timer: null,
   /**
    * Возвращает аватарку пользователя из общей карты (картинка или фото).
@@ -19,7 +33,13 @@ const Avatars = {
    * @returns {string} HTML.
    */
   html(uid, size, fallback) {
-    return avatarOf(Avatars.value(uid) || fallback || '', size);
+    const look = Avatars.look(uid),
+      value = Avatars.value(uid) || fallback || '';
+    const mascot = Mascot.svg(look.mood || 'happy', value ? Math.max(28, Math.round(size * 0.8)) : size, '', {
+      look,
+      season: '',
+    });
+    return '<span class="av-personal">' + (value ? avatarOf(value, size) : '') + mascot + '</span>';
   },
   /**
    * Рисует маленькую круглую аватарку для списков: фото или инициалы.
@@ -29,10 +49,25 @@ const Avatars = {
    * @returns {string} HTML.
    */
   small(uid, name, size) {
-    const value = Avatars.value(uid),
-      style = 'width:' + size + 'px;height:' + size + 'px;font-size:' + Math.round(size * 0.42) + 'px';
-    if (value) return '<span class="av-s" style="' + style + '">' + avatarOf(value, size) + '</span>';
-    return '<span class="av-s av-ini" style="' + style + '">' + U.esc(U.initials(name || '')) + '</span>';
+    const look = Avatars.look(uid),
+      value = Avatars.value(uid);
+    const portrait = value
+      ? avatarOf(value, size)
+      : '<span class="av-s av-ini" style="width:' +
+        size +
+        'px;height:' +
+        size +
+        'px;font-size:' +
+        Math.round(size * 0.42) +
+        'px">' +
+        U.esc(U.initials(name || '')) +
+        '</span>';
+    return (
+      '<span class="av-personal">' +
+      portrait +
+      Mascot.svg(look.mood || 'happy', Math.max(size, 30), '', {look, season: ''}) +
+      '</span>'
+    );
   },
   /**
    * Выкладывает свою аватарку в облако, чтобы её видели остальные.
@@ -43,9 +78,8 @@ const Avatars = {
     const value = myAvatar(),
       had = Avatars.map[Cloud.uid] || '';
     if (value === had) return;
-    Avatars.map[Cloud.uid] = value;
-    if (value) await Cloud.saveAvatar(value);
-    else await Cloud.deleteAvatar();
+    const result = value ? await Cloud.saveAvatar(value) : await Cloud.deleteAvatar();
+    if (result && result.ok) Avatars.map[Cloud.uid] = value;
   },
   /**
    * Загружает аватарки всех пользователей из облака.
@@ -53,6 +87,7 @@ const Avatars = {
    */
   async load() {
     const ok = await Cloud.loadAvatars();
+    if (ok && Store.s.meta && Store.s.meta.mascotPending) Wardrobe.save();
     if (ok) App.renderSoft();
     return ok;
   },
@@ -63,7 +98,7 @@ const Avatars = {
     if (Avatars.timer) return;
     Avatars.timer = setInterval(() => {
       if (Cloud.status === 'online') Avatars.load();
-    }, 60000);
+    }, 30000);
   },
   /**
    * Строит карточку «Фото профиля» для настроек.
@@ -76,5 +111,5 @@ const Avatars = {
       avatarOf(myAvatar(), 64) +
       '</div><div><b>Ваше фото</b><p>Его увидят в журнале, чатах и списках. Фото сожмётся до маленького квадрата.</p></div><button class="btn" data-action="avatar-open">Изменить</button></div></div>'
     );
-  }
+  },
 };

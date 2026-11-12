@@ -70,7 +70,7 @@ function viewRating() {
           '"><span class="rk-p">' +
           (x.place <= 3 ? MEDAL[x.place - 1] : x.place) +
           '</span><span class="rk-av">' +
-          avatarOf(x.avatar, 34) +
+          Avatars.html(x.uid || Avatars.uidForRid(x.rid), 34, x.avatar) +
           '</span><span class="rk-n">' +
           U.esc(x.name) +
           (x.rid === rid ? ' <small>(ты)</small>' : '') +

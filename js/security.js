@@ -165,7 +165,7 @@ function viewUsers() {
       '<tr' +
       (u.status === 'banned' ? ' class="u-banned"' : '') +
       '><td data-label="ФИО">' +
-      who + (parent ? '<small>Ребёнок: ' + U.esc(u.child_name || 'не выбран') + '</small>' : '') +
+      '<span class="user-identity">' + (!parent && u.status === 'approved' && ['student','admin','developer'].includes(u.role) ? Avatars.small(u.uid, u.full_name, 24) : '') + who + '</span>' + (parent ? '<small>Ребёнок: ' + U.esc(u.child_name || 'не выбран') + '</small>' : '') +
       (isDup ? ' <span class="tag bad">Дубль ФИО</span>' : '') +
       (u.rid ? '<small class="muted"> · код ' + U.esc(u.rid) + '</small>' : '') +
       '</td><td data-label="Email" class="mono">' +

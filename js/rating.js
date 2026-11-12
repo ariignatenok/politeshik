@@ -77,6 +77,7 @@ const Rating = {
         key: per[k].key,
         label: per[k].label,
         rows: Rating.rows(per[k]).map(x => ({
+          uid: x.uid,
           rid: x.rid,
           name: x.name,
           avatar: x.avatar,

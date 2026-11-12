@@ -9,7 +9,7 @@ function aboutCard() {
     w = Profile.weekStats();
   return (
     '<section class="card about-card"><div class="about-top"><button class="cab-av avbtn" data-action="avatar-open" title="Сменить аватар" aria-label="Сменить аватар">' +
-    avatarOf(myAvatar(), 72) +
+    Avatars.html(Cloud.uid, 72, myAvatar()) +
     '<span class="av-edit">' +
     ICONS.pencil +
     '</span></button>' +
@@ -97,7 +97,7 @@ function viewCabinetMain() {
   };
   return (
     '<div class="page-head"><div class="cab-head"><div class="cab-av">' +
-    avatarOf(myAvatar(), 72) +
+    Avatars.html(Cloud.uid, 72, myAvatar()) +
     '</div><div><h1>' +
     U.esc(name) +
     '</h1><p>' +

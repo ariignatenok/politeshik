@@ -274,7 +274,7 @@ const Mascot = {
         's';
     const season = opts && opts.season !== undefined ? opts.season : Mascot.activeSeason(),
       acc = Mascot.accessories(season, mood, 'mc' + ++Mascot.seq),
-      me = Mascot.userLayers(mood, season);
+      me = Mascot.userLayers(mood, season, opts && opts.look);
     const eyes = (dx, dy, ry) =>
       '<g class="m-eyes" style="' +
       es +
@@ -380,7 +380,7 @@ const Mascot = {
       mood +
       (season ? ' m-season-' + season : '') +
       (acc.hat || me.hat ? ' m-has-hat' : '') +
-      (acc.hold ? ' m-has-hold' : '') +
+      (me.hold || acc.hold ? ' m-has-hold' : '') +
       (extraCls ? ' ' + extraCls : '');
     return (
       '<svg class="' +
@@ -392,7 +392,7 @@ const Mascot = {
       '" role="img" aria-label="Политешик">' +
       (acc.defs ? '<defs>' + acc.defs + '</defs>' : '') +
       '<ellipse cx="60" cy="114" rx="28" ry="4.5" fill="#000" opacity=".16"/>' +
-      acc.back +
+      acc.back + (me.back || '') +
       '<ellipse class="foot" cx="44" cy="109" rx="10" ry="5.5" fill="#5fc486" stroke="#2f8a58" stroke-width="2.5"/><ellipse class="foot" cx="76" cy="109" rx="10" ry="5.5" fill="#5fc486" stroke="#2f8a58" stroke-width="2.5"/>' +
       '<g class="m-body"><g class="m-arm l">' +
       armL +
@@ -400,7 +400,7 @@ const Mascot = {
       armR +
       '</g>' +
       body +
-      acc.camo +
+      acc.camo + (me.clothes || '') +
       '<circle cx="36" cy="84" r="6" fill="' +
       cheek +
       '" opacity=".7"/><circle cx="84" cy="84" r="6" fill="' +
@@ -408,13 +408,13 @@ const Mascot = {
       '" opacity=".7"/>' +
       eyeSvg +
       mouth +
-      me.neck +
+      (me.hair || '') + me.neck +
       me.face +
       '<g class="m-cap">' +
       cap +
       '</g>' +
       (me.hat || acc.hat) +
-      acc.hold +
+      (me.hold || acc.hold) +
       '</g>' +
       acc.front +
       extra +
@@ -489,8 +489,8 @@ const Mascot = {
    * Возвращает выбранные пользователем аксессуары.
    * @returns {Array<string>} Массив.
    */
-  userAcc() {
-    const own = Mascot.chosen();
+  userAcc(look) {
+    const own = look || Mascot.chosen();
     return Array.isArray(own.acc) ? own.acc.filter(id => Mascot.userItems.some(item => item.id === id)) : [];
   },
   /**
@@ -514,8 +514,8 @@ const Mascot = {
    * @param {string} season Наряд или пустая строка.
    * @returns {Object} hat, face, neck.
    */
-  userLayers(mood, season) {
-    const own = Mascot.userAcc(),
+  userLayers(mood, season, look) {
+    const own = Mascot.userAcc(look),
       has = id => own.indexOf(id) >= 0,
       out = {
         hat: '',

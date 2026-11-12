@@ -185,6 +185,9 @@ Object.assign(A, {
    * Включает или выключает аксессуар Политешика.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
+  'mascot-part'(el) { Wardrobe.set(el.dataset.part, el.dataset.id); App.render(); },
+  'mascot-preset'(el) { Wardrobe.preset(el.dataset.id); App.render(); },
+  'mascot-save'() { Wardrobe.save(); },
   'my-acc'(el) {
     Mascot.setAccessory(el.dataset.id);
     App.render();

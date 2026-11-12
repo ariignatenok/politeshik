@@ -1827,28 +1827,17 @@ const Cloud = (() => {
    * Сохраняет свою аватарку в облаке.
    * @param {string} value Картинка или фото.
    */
-  C.saveAvatar = value =>
-    writeDoc('avatars/' + C.uid, {
-      v: value,
-      updated: new Date().toISOString()
-    });
+  C.saveAvatar = async value => {
+    try {
+      const {error} = await supa.rpc('save_my_avatar', {p_value: value});
+      return {ok: !error, error: error && error.message};
+    } catch (error) { return {ok: false, error: error.message}; }
+  };
   /**
    * Удаляет свою аватарку из облака.
    * @returns {Promise<Object>} Объект.
    */
-  C.deleteAvatar = async () => {
-    try {
-      await DB.doc('avatars/' + C.uid).delete();
-      return {
-        ok: true
-      };
-    } catch (error) {
-      return {
-        ok: false,
-        error: String((error && error.message) || error)
-      };
-    }
-  };
+  C.deleteAvatar = () => C.saveAvatar('');
   /**
    * Загружает закреплённые подгруппы студентов из облака.
    * @returns {Promise<boolean>} true, если список получен.
@@ -1870,17 +1859,22 @@ const Cloud = (() => {
    */
   C.loadAvatars = async () => {
     try {
-      const {data, error} = await supa
-        .from('docs')
-        .select('path,data')
-        .like('path', 'avatars/%')
-        .not('path', 'like', 'avatars/%/%');
-      if (error) return false;
-      const map = {};
-      (data || []).forEach(row => {
-        if (row.data && row.data.v) map[row.path.slice(8)] = row.data.v;
+      const tenant = C.tenantId, uid = C.uid, revision = Wardrobe.revision;
+      const {data, error} = await supa.rpc('group_mascots');
+      if (error || !Array.isArray(data) || tenant !== C.tenantId || uid !== C.uid) return false;
+      const map = {}, looks = {}, people = {};
+      data.forEach(row => {
+        if (!row.uid) return;
+        map[row.uid] = row.avatar || '';
+        looks[row.uid] = Wardrobe.normalize(row.mascot);
+        people[row.uid] = {rid: row.rid, name: row.name, role: row.role};
       });
-      Avatars.map = map;
+      Avatars.map = map; Avatars.looks = looks; Avatars.people = people;
+      if (looks[C.uid] && revision === Wardrobe.revision && !(Store.s.meta && Store.s.meta.mascotPending)) {
+        Store.s.settings.mascot = looks[C.uid];
+        if (C.profile) C.profile.mascot = looks[C.uid];
+        Store.save();
+      }
       return true;
     } catch (error) {
       return false;
