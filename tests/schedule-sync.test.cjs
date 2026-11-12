@@ -123,7 +123,7 @@ test('manual excused absence is respected without a certificate and adds no unex
   const pairs=Att.pairs(date,'1');
   const marks=Object.fromEntries(pairs.map(p=>[date+'|'+p.pair,'п']));
   marks[date+'|'+pairs[0].pair]='у';
-  assert.equal(Att.eff(marks,[],date,pairs[0].pair),'у');
+  assert.equal(Att.eff(marks,[],date,pairs[0].pair),'уп');
   const stats=Att.stats(marks,[],'1',date,date);
   assert.equal(stats.x,1);
   assert.equal(stats.a,0);
@@ -142,4 +142,20 @@ test('individual schedule UP is excused and whole-day buttons preserve excuses a
   const changes=Att.dayChanges(date,'1',marks,certs,'н');
   for(const p of pairs.slice(0,3)) assert.equal(changes[key(p.pair)],undefined);
   for(const p of pairs.slice(3)) assert.equal(changes[key(p.pair)],'н');
+});
+
+test('self attendance stays open exactly 24 hours after the pair end in Moscow time',()=>{
+  const {Att,Store}=app();
+  const at=value=>Date.parse(value);
+  assert.equal(Att.canSelf('2026-11-11',3,at('2026-11-12T14:20:00+03:00')),true);
+  assert.equal(Att.canSelf('2026-11-11',3,at('2026-11-12T14:20:00.001+03:00')),false);
+  assert.equal(Att.canSelf('2026-11-11',3,at('2026-11-11T12:49:59+03:00')),false);
+  Store.s.settings.pairs=[{start:'08:00',end:'09:40'}];
+  assert.equal(Att.canSelf('2026-11-11',1,at('2026-11-12T09:40:00+03:00')),true);
+  assert.equal(Att.canSelf('2026-11-11',1,at('2026-11-12T09:40:01+03:00')),false);
+});
+test('only confirmed certificates turn an unexcused absence into UP',()=>{
+  const {Att}=app(),marks={'2026-11-11|1':'н'},cert={from:'2026-11-11',to:'2026-11-11',pairs:[1]};
+  assert.equal(Att.eff(marks,[{...cert,confirmed:false}],'2026-11-11',1),'н');
+  assert.equal(Att.eff(marks,[{...cert,confirmed:true}],'2026-11-11',1),'уп');
 });

@@ -630,3 +630,184 @@
 
 .club-scene.calm .club-figure>.mascot{animation:none!important}
 @media(prefers-reduced-motion:reduce){.club-figure>.mascot{animation:none!important}}
+
+.message-attachment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 10px 0;
+  max-width: 100%;
+}
+.chat-photo {
+  display: block;
+  max-width: 100%;
+  width: 240px;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 14px;
+  min-height: 50px;
+}
+.message-attachment small {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.media-review {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-wrap: anywhere;
+}
+.media-review img,
+.media-review video {
+  max-height: 55vh;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+}
+.media-review audio {
+  width: 100%;
+}
+.chat-in > .icon-btn {
+  flex-shrink: 0;
+}
+.leader-label {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 11px;
+}
+.person-card.pinned-leader {
+  border-color: var(--accent);
+  order: -1;
+}
+.profile-rank {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.profile-rank .rk-n small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+.av-personal[data-action],
+b[data-action="social-profile"],
+.rank-row[data-action] {
+  cursor: pointer;
+}
+.av-personal[data-action]:focus-visible,
+b[data-action]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.map-camera {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #151323;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 16px;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  overflow: auto;
+}
+.map-camera > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.guide-close {
+  position: relative;
+  align-self: flex-end;
+}
+.guide-status {
+  position: relative;
+  background: #151323dd;
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin: 12px 0;
+  font-size: 12px;
+  max-width: 500px;
+}
+.guide-bottom {
+  position: relative;
+  margin-top: auto;
+  background: #151323ed;
+  border: 1px solid #ffffff40;
+  border-radius: 24px;
+  padding: 18px;
+  max-width: 530px;
+  width: 100%;
+}
+.guide-mascot {
+  float: left;
+  margin-right: 12px;
+}
+.guide-step {
+  font-size: 18px;
+  line-height: 1.5;
+  min-height: 80px;
+}
+.guide-plan {
+  clear: both;
+  position: relative;
+  margin: 14px auto;
+  width: 210px;
+  max-height: 32vh;
+}
+.guide-plan img {
+  display: block;
+  width: 100%;
+  max-height: 32vh;
+  object-fit: fill;
+}
+.guide-plan .map-route-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.guide-bottom .hint {
+  color: #c4c0d4;
+  font-size: 11px;
+}
+.guide-bottom .head-actions {
+  justify-content: space-between;
+}
+.guide-bottom .btn {
+  color: var(--text);
+}
+@media (max-width: 650px) {
+  .chat-in {
+    flex-wrap: wrap;
+  }
+  .chat-in textarea {
+    min-width: 150px;
+    flex: 1;
+  }
+  .chat-in > .icon-btn {
+    width: 34px;
+  }
+  .guide-bottom {
+    padding: 12px;
+  }
+  .guide-step {
+    font-size: 16px;
+  }
+  .guide-mascot .mascot {
+    width: 66px;
+    height: 66px;
+  }
+}

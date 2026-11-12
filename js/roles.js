@@ -11,7 +11,7 @@ const Roles = {
     department: 'Отделение'
   },
   tabsByRole: {
-    developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'people', 'users', 'settings'],
+    developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'people', 'rating', 'users', 'settings'],
     teacher: ['tdash', 'schedule', 'journal', 'tstudents', 'tsubjects', 'consult', 'texport', 'chat', 'settings'],
     curator: ['tdash', 'schedule', 'journal', 'tstudents', 'news', 'chat', 'settings'],
     department: ['dept', 'news', 'settings'],

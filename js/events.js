@@ -235,3 +235,6 @@ document.addEventListener('change', event => {
       m.innerHTML = attDayHtml(event.target.value, r.marks, r.certs, r.p.subgroup, ui.stud.uid, false);
   }
 });
+
+// Keyboard access to profile links rendered in table names and avatar spans.
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role="button"][data-action="social-profile"]')){e.preventDefault();Social.profile(e.target.dataset.uid);}});

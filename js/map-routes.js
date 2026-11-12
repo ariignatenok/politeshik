@@ -8,7 +8,15 @@ const MapRoutes = {
   pending: null,
   layouts: {
     1: {
-      nodes: {L: [24, 27], LL: [33, 63], A: [36, 63], M: [50, 67], B: [63, 63], RR: [70, 64], R: [80, 27]},
+      nodes: {
+        L: [24, 27],
+        LL: [33, 63],
+        A: [36, 63],
+        M: [50, 67],
+        B: [63, 63],
+        RR: [70, 64],
+        R: [80, 27],
+      },
       edges: [
         ['L', 'LL'],
         ['LL', 'A'],
@@ -138,7 +146,8 @@ const MapRoutes = {
     });
     for (let floor = 1; floor < 5; floor++)
       for (const stair of ['A', 'B', 'C', 'D'])
-        if (nodes[floor + stair] && nodes[floor + 1 + stair]) edge(floor + stair, floor + 1 + stair, 40);
+        if (nodes[floor + stair] && nodes[floor + 1 + stair])
+          edge(floor + stair, floor + 1 + stair, 40);
     const attach = (point, id) => {
       if (
         !MapRoutes.layouts[point.floor] ||
@@ -165,7 +174,10 @@ const MapRoutes = {
             B = nodes[b],
             dx = B.x - A.x,
             dy = B.y - A.y,
-            t = Math.max(0, Math.min(1, ((point.x - A.x) * dx + (point.y - A.y) * dy) / (dx * dx + dy * dy))),
+            t = Math.max(
+              0,
+              Math.min(1, ((point.x - A.x) * dx + (point.y - A.y) * dy) / (dx * dx + dy * dy)),
+            ),
             x = A.x + dx * t,
             y = A.y + dy * t,
             d = Math.hypot(point.x - x, point.y - y);
@@ -192,7 +204,8 @@ const MapRoutes = {
       open = new Set(Object.keys(nodes));
     while (open.size) {
       let u;
-      for (const key of open) if (u === undefined || (dist[key] ?? Infinity) < (dist[u] ?? Infinity)) u = key;
+      for (const key of open)
+        if (u === undefined || (dist[key] ?? Infinity) < (dist[u] ?? Infinity)) u = key;
       if (!Number.isFinite(dist[u])) break;
       open.delete(u);
       if (u === 'finish') break;
@@ -231,7 +244,12 @@ const MapRoutes = {
       own = Store.s.map;
     if (!target || !own) return toast('Укажите обе точки заново');
     try {
-      MapRoutes.route = {uid, name: target.name, path: MapRoutes.build(own, target), at: target.at};
+      MapRoutes.route = {
+        uid,
+        name: target.name,
+        path: MapRoutes.build(own, target),
+        at: target.at,
+      };
       MapRoutes.pending = null;
       UI.close();
       ui.tab = 'map';
@@ -251,7 +269,12 @@ const MapRoutes = {
       return;
     }
     try {
-      MapRoutes.route = {...route, path: MapRoutes.build(own, target), at: target.at, name: target.name};
+      MapRoutes.route = {
+        ...route,
+        path: MapRoutes.build(own, target),
+        at: target.at,
+        name: target.name,
+      };
     } catch (error) {
       MapRoutes.route = null;
     }
@@ -314,18 +337,26 @@ const MapRoutes = {
     return (
       '<section class="card map-directions"><div class="section-head"><h2>Как дойти: ' +
       U.esc(route.name || 'студент') +
-      '</h2><button class="btn sm" data-action="map-route-clear">Убрать маршрут</button></div><p class="hint">Маршрут по схеме корпуса. Сначала выйдите из кабинета в коридор. Переходы между этажами обозначены буквами лестниц.</p><ol>' +
+      '</h2><button class="btn sm primary" data-action="map-guide-open">Политешик + камера</button><button class="btn sm" data-action="map-route-clear">Убрать маршрут</button></div><p class="hint">Маршрут по схеме корпуса. Сначала выйдите из кабинета в коридор. Переходы между этажами обозначены буквами лестниц.</p><ol>' +
       steps.map((s) => '<li>' + U.esc(s) + '</li>').join('') +
       '</ol><div class="head-actions">' +
       [...new Set(path.map((p) => p.floor))]
         .map(
           (f) =>
-            '<button class="btn sm" data-action="map-floor" data-floor="' + f + '">' + f + ' этаж</button>',
+            '<button class="btn sm" data-action="map-floor" data-floor="' +
+            f +
+            '">' +
+            f +
+            ' этаж</button>',
         )
         .join('') +
-      '</div><p class="hint">Человек отметил место ' +
-      CampusMap.minutesAgo(route.at) +
-      ' мин назад. Его фактическое положение могло измениться.</p></section>'
+      '</div><p class="hint">' +
+      (route.kind === 'room'
+        ? 'Кабинет выбран вами на плане. Сверяйтесь с указателями в корпусе.'
+        : 'Человек отметил место ' +
+          CampusMap.minutesAgo(route.at) +
+          ' мин назад. Его фактическое положение могло измениться.') +
+      '</p></section>'
     );
   },
 };

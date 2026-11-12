@@ -4,8 +4,7 @@ const ST_INFO = {
   п: ['Присутствую', 'ok'],
   о: ['Опоздал(а)', 'late'],
   н: ['Нет', 'no'],
-  у: ['Уважительная причина', 'exc'],
-  уп: ['Индивидуальный график — уважительный пропуск', 'exc']
+  уп: ['Уважительный пропуск', 'exc'],
 };
 /**
  * Строит кнопки статусов п, о, н для пары.
@@ -20,12 +19,12 @@ const statusBtns = (date, pair, cur, uid, locked) =>
   '<div class="att-btns">' +
   ['п', 'о', 'н']
     .map(
-      k =>
+      (k) =>
         '<button class="att-b ' +
         ST_INFO[k][1] +
         (cur === k ? ' on' : '') +
         '" ' +
-        (locked || Cloud.tenantId !== 'group_1' && !Cloud.isAdmin ? 'disabled ' : '') +
+        (locked || (!uid && !Att.canSelf(date, pair)) ? 'disabled ' : '') +
         'data-action="att-mark" data-date="' +
         date +
         '" data-pair="' +
@@ -38,7 +37,7 @@ const statusBtns = (date, pair, cur, uid, locked) =>
         ST_INFO[k][0] +
         '">' +
         k +
-        '</button>'
+        '</button>',
     )
     .join('') +
   '</div>';
@@ -55,11 +54,15 @@ const statusBtns = (date, pair, cur, uid, locked) =>
 function attDayHtml(date, marks, certs, sub, uid, locked) {
   const prs = Att.pairs(date, sub);
   if (!prs.length)
-    return '<div class="empty"><div class="mini-mascot">' + Mascot.svg('wink', 70) + '</div>В этот день пар нет</div>';
+    return (
+      '<div class="empty"><div class="mini-mascot">' +
+      Mascot.svg('wink', 70) +
+      '</div>В этот день пар нет</div>'
+    );
   return (
     '<div class="items">' +
     prs
-      .map(pr => {
+      .map((pr) => {
         const cur = Att.eff(marks, certs, date, pr.pair),
           raw = marks[date + '|' + pr.pair],
           tm = pairTime(pr.pair);
@@ -70,14 +73,18 @@ function attDayHtml(date, marks, certs, sub, uid, locked) {
           (tm || '') +
           '</small></div><div class="item-main">' +
           pr.lessons
-            .map(l => {
+            .map((l) => {
               const sb = subj(l.subjectId);
               return (
                 '<div class="item-title">' +
                 U.esc(sb ? sb.name : '—') +
                 '</div><div class="item-meta">' +
                 (sb
-                  ? '<span class="chip" style="--c:' + sb.color + '">' + U.esc(sb.short || sb.name) + '</span>'
+                  ? '<span class="chip" style="--c:' +
+                    sb.color +
+                    '">' +
+                    U.esc(sb.short || sb.name) +
+                    '</span>'
                   : '') +
                 (l.room ? '<span class="tag">ауд. ' + U.esc(l.room) + '</span>' : '') +
                 (l.subgroup ? '<span class="tag">' + U.esc(l.subgroup) + '</span>' : '') +
@@ -87,7 +94,7 @@ function attDayHtml(date, marks, certs, sub, uid, locked) {
             })
             .join('') +
           '</div>' +
-          (['у','уп'].includes(cur)
+          (['у', 'уп'].includes(cur)
             ? '<span class="tag exc">' + cur.toUpperCase() + ' — ' + ST_INFO[cur][0] + '</span>'
             : '<div class="att-cell">' +
               statusBtns(date, pr.pair, raw, uid, locked || lockedMark(raw, uid)) +
@@ -107,7 +114,7 @@ function attDayHtml(date, marks, certs, sub, uid, locked) {
  * @param {number} p Процент посещаемости.
  * @returns {string} класс.
  */
-const pctCls = p => (p == null ? '' : p >= 85 ? 'good' : p >= 70 ? 'mid' : 'bad');
+const pctCls = (p) => (p == null ? '' : p >= 85 ? 'good' : p >= 70 ? 'mid' : 'bad');
 /**
  * Строит карточки статистики посещаемости.
  * @param {Object} st Статистика посещаемости.
@@ -130,7 +137,7 @@ function statCards(st) {
     '</b><small>н · не был(а)</small></div>' +
     '<div class="stat exc"><b>' +
     st.x +
-    '</b><small>по справке</small></div>' +
+    '</b><small>УП · уважительные</small></div>' +
     '<div class="stat"><b>' +
     st.u +
     '</b><small>не отмечено</small></div></div>'
@@ -145,14 +152,20 @@ function subjTable(st) {
   const ids = Object.keys(st.bySubj);
   if (!ids.length) return '<div class="empty">Пока нет данных за этот период</div>';
   return (
-    '<div class="tbl-wrap"><table class="grid-tbl"><thead><tr><th>Предмет</th><th>п</th><th>о</th><th>н</th><th>справка</th><th>не отм.</th><th>%</th></tr></thead><tbody>' +
+    '<div class="tbl-wrap"><table class="grid-tbl"><thead><tr><th>Предмет</th><th>п</th><th>о</th><th>н</th><th>УП</th><th>не отм.</th><th>%</th></tr></thead><tbody>' +
     ids
-      .map(id => {
+      .map((id) => {
         const sb = subj(id),
           b = st.bySubj[id];
         return (
           '<tr><td>' +
-          (sb ? '<span class="chip" style="--c:' + sb.color + '">' + U.esc(sb.short || sb.name) + '</span>' : '—') +
+          (sb
+            ? '<span class="chip" style="--c:' +
+              sb.color +
+              '">' +
+              U.esc(sb.short || sb.name) +
+              '</span>'
+            : '—') +
           '</td><td>' +
           b.p +
           '</td><td>' +
@@ -191,7 +204,7 @@ function monthCal(ym, byDay, selected, pickAction) {
     offset = (first.getDay() + 6) % 7,
     days = new Date(p[0], p[1], 0).getDate(),
     today = U.iso(U.today());
-  let h = '<div class="cal">' + DAYS.map(d => '<div class="cal-h">' + d + '</div>').join('');
+  let h = '<div class="cal">' + DAYS.map((d) => '<div class="cal-h">' + d + '</div>').join('');
   for (let i = 0; i < offset; i++) h += '<div></div>';
   for (let d = 1; d <= days; d++) {
     const di = ym + '-' + U.pad(d),
@@ -202,9 +215,9 @@ function monthCal(ym, byDay, selected, pickAction) {
         ? 'no'
         : arr.includes('о')
           ? 'late'
-          : (arr.includes('у') || arr.includes('уп'))
+          : arr.includes('у') || arr.includes('уп')
             ? 'exc'
-            : arr.every(x => x === 'п')
+            : arr.every((x) => x === 'п')
               ? 'ok'
               : '';
     }
@@ -226,7 +239,7 @@ function monthCal(ym, byDay, selected, pickAction) {
   }
   return (
     h +
-    '</div><div class="cal-legend"><span class="dotl ok"></span>п <span class="dotl late"></span>о <span class="dotl no"></span>н <span class="dotl exc"></span>справка</div>'
+    '</div><div class="cal-legend"><span class="dotl ok"></span>п <span class="dotl late"></span>о <span class="dotl no"></span>н <span class="dotl exc"></span>УП</div>'
   );
 }
 /**
@@ -329,11 +342,15 @@ const lockedMark = (raw, uid) => !uid && Cloud.status === 'online' && !!raw;
  * @param {Object} e Строка студента.
  * @returns {string} HTML.
  */
-const absCell = e => {
+const absCell = (e) => {
   const h = Att.absHours(e.marks, e.certs, e.p.subgroup),
     z = Att.zone(h);
   return (
-    '<td><span class="pill ' + (z.cls === 'red' ? 'bad' : z.cls === 'warn' ? 'mid' : 'good') + '">' + h + '</span></td>'
+    '<td><span class="pill ' +
+    (z.cls === 'red' ? 'bad' : z.cls === 'warn' ? 'mid' : 'good') +
+    '">' +
+    h +
+    '</span></td>'
   );
 };
 /**
@@ -349,13 +366,16 @@ function viewAttendance() {
     marks = state.attendance.marks,
     certs = Cloud.my.certs,
     sub = state.settings.subgroup;
-  const locked = date < ATT_START || date > today || (Cloud.status === 'online' && date !== today),
+  const locked =
+      date < ATT_START ||
+      date > today ||
+      (Cloud.status === 'online' && date < U.iso(U.addDays(U.fromISO(today), -1))),
     rg = attRange(),
     st = Att.stats(marks, certs, sub, rg[0], rg[1]);
   const prev = U.iso(U.addDays(U.fromISO(date), -1)),
     next = U.iso(U.addDays(U.fromISO(date), 1));
   return (
-    '<div class="page-head"><div><h1>Посещаемость</h1><p>Отмечайся на каждой паре: <b>п</b> — присутствую, <b>о</b> — опоздал(а), <b>н</b> — нет. Учёт идёт с 1 октября 2026.</p></div></div>' +
+    '<div class="page-head"><div><h1>Посещаемость</h1><p>Отмечайся на каждой паре: <b>п</b> — присутствую, <b>о</b> — опоздал(а), <b>н</b> — нет. Самоотметка доступна на паре и 24 часа после её окончания. Уже поставленную отметку меняет староста.</p></div><button class="btn" data-action="att-certificates">Справки и больничные</button></div>' +
     (Cloud.status === 'online'
       ? ''
       : '<div class="warn">' +
@@ -381,14 +401,16 @@ function viewAttendance() {
     '>' +
     ICONS.playRight +
     '</button>' +
-    (date !== today ? '<button class="btn sm" data-action="att-day" data-date="' + today + '">Сегодня</button>' : '') +
+    (date !== today
+      ? '<button class="btn sm" data-action="att-day" data-date="' + today + '">Сегодня</button>'
+      : '') +
     '</div>' +
     (date < ATT_START
       ? '<p class="hint">Учёт посещаемости начинается с 1 октября 2026.</p>'
       : date > today
         ? '<p class="hint">Будущие дни отметить нельзя.</p>'
         : locked
-          ? '<p class="hint">Задним числом отметиться нельзя. Забыл — напиши Политешику в чате: он передаст просьбу админу.</p>'
+          ? '<p class="hint">Отметиться можно на паре и ещё 24 часа после её окончания. Позже — через старосту.</p>'
           : '') +
     attDayHtml(date, marks, certs, sub, null, locked) +
     '</section>' +
@@ -405,9 +427,55 @@ function viewAttendance() {
       ui.attMonth,
       Att.stats(marks, certs, sub, ui.attMonth + '-01', monthEnd(ui.attMonth)).byDay,
       date,
-      'att-day'
+      'att-day',
     ) +
     '</section></div>' +
-    '<p class="hint">Справка или больничный прикрепляются в «Личном кабинете» — дни по справке не считаются пропусками.</p>'
+    attendanceCertificatesHtml()
+  );
+}
+
+function attendanceCertificatesHtml() {
+  const certs = Cloud.my.certs.slice().sort((a, b) => b.from.localeCompare(a.from));
+  return (
+    '<section class="card" id="attendance-certificates"><h2>Справки и больничные <button class="btn sm primary" data-action="cert-add">＋ Добавить</button></h2>' +
+    (certs.length
+      ? '<div class="items">' +
+        certs
+          .map(
+            (c) =>
+              '<div class="item"><div class="item-main"><div class="item-title">' +
+              (c.kind === 'Больничный'
+                ? ICONS.hospital
+                : c.kind === 'Записка'
+                  ? ICONS.memo
+                  : ICONS.document) +
+              ' ' +
+              U.esc(c.kind) +
+              ' · ' +
+              U.esc(certPeriod(c)) +
+              '</div>' +
+              '<div class="item-meta">' +
+              (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +
+              '<span class="tag status ' +
+              (c.confirmed ? 'prep' : 'review') +
+              '">' +
+              (c.confirmed ? 'Подтверждена админом' : 'На проверке') +
+              '</span></div>' +
+              '</div><div class="item-actions"><button class="icon-btn" data-action="cert-view" data-uid="' +
+              Cloud.uid +
+              '" data-id="' +
+              c.id +
+              '" aria-label="Показать фото">' +
+              ICONS.picture +
+              '</button><button class="icon-btn" data-action="cert-del" data-id="' +
+              c.id +
+              '" aria-label="Удалить">' +
+              ICONS.wastebasket +
+              '</button></div></div>',
+          )
+          .join('') +
+        '</div>'
+      : empty(ICONS.stethoscope, 'Справок нет. Дни по справке не считаются пропусками.')) +
+    '</section>'
   );
 }

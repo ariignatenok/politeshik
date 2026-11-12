@@ -134,10 +134,11 @@ const CampusMap = {
   bind() {
     document.addEventListener('click', event => {
       const surface = event.target && event.target.closest ? event.target.closest('.map-surface') : null;
-      if (!surface || !ui.mapPlacing || event.target.closest('[data-action]')) return;
+      if (!surface || (!ui.mapPlacing && !ui.mapDestination) || event.target.closest('[data-action]')) return;
       const box = surface.getBoundingClientRect();
       if (!box.width || !box.height) return;
       const clamp = value => Math.min(100, Math.max(0, Math.round(value * 10) / 10));
+      if(ui.mapDestination){MapGuide.selectPoint(ui.mapFloor||1,clamp(((event.clientX-box.left)/box.width)*100),clamp(((event.clientY-box.top)/box.height)*100));return;}
       ui.mapPlacing = false;
       CampusMap.place(
         ui.mapFloor || 1,
@@ -214,14 +215,14 @@ function viewMap() {
       .join('');
   return (
     '<div class="page-head"><div><h1>Карта колледжа</h1><p>Отметьте своё место: одногруппники увидят вашего маскота с именем. Отметка видна 2 часа.</p></div>' +
-    '<div class="head-actions"><button class="btn primary' +
+    '<div class="head-actions"><button class="btn" data-action="map-room">В кабинет · маршрут</button><button class="btn primary' +
     (ui.mapPlacing ? ' on' : '') +
     '" data-action="map-here">' +
     (ui.mapPlacing ? 'Нажмите на карту…' : 'Я здесь') +
     '</button>' +
     (own ? '<button class="btn" data-action="map-clear">Убрать мою точку</button>' : '') +
     '</div></div>' +
-    tabs +
+    tabs + (ui.mapDestination?'<p class="map-hint">Нажмите нужный кабинет на плане: '+U.esc(ui.mapDestination)+' <button class="btn sm" data-action="map-destination-cancel">Отмена</button></p>':'') +
     (ui.mapPlacing ? '<p class="map-hint">Нажмите на карте место, где вы находитесь (' + floor + ' этаж).</p>' : '') +
     (Cloud.status !== 'online' ? '<p class="md-help">Без входа в аккаунт точка видна только вам.</p>' : '') +
     '<div class="map-surface' +

@@ -9,7 +9,7 @@ const REPORT_WORDS = {
   о: 'Опоздал',
   н: 'Не был',
   у: 'Уважительная причина',
-  уп: 'Индивидуальный график (уважительный пропуск)'
+  уп: 'Уважительный пропуск'
 };
 
 /**
@@ -266,7 +266,7 @@ const AttReport = {
           const it = AttReport.entry(person, day.date, col.pair),
             same = it && it.subjectId === col.subjectId && (col.who === '' || it.teacher === col.who);
           if (!same) return row.push({v: '', s: 'blank'});
-          const letter = it.st === 'уп' ? 'УП' : it.st === 'у' ? (it.manualExcused ? 'У' : it.kind === 'Записка' ? 'З' : 'Б') : it.st;
+          const letter = ['уп','у'].includes(it.st) ? 'УП' : it.st;
           row.push({v: letter || '', s: letter ? letterStyle[letter] : 'num'});
         })
       );
@@ -280,10 +280,7 @@ const AttReport = {
       ['п — присутствовал', 'note'],
       ['о — опоздал (считается как присутствие)', 'note'],
       ['н — без уважительной причины', 'note'],
-      ['УП — индивидуальный график (уважительный пропуск)', 'note'],
-      ['У — уважительная причина (отмечена старостой)', 'note'],
-      ['Б — больничный / справка (подтверждена старостой)', 'note'],
-      ['З — заявление (записка)', 'note'],
+      ['УП — уважительный пропуск', 'note'],
       ['Серая ячейка — пары у этого студента нет (другая подгруппа). Пустая — отметки нет.', 'note']
     ].forEach(x => rows.push([{v: x[0], s: x[1]}]));
     return {

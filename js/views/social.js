@@ -24,7 +24,14 @@ function socialProfileHtml(card) {
     U.esc(card.name) +
     '</h2><p>' +
     U.esc(card.group_name) +
-    '</p>' + Presence.html(card) + '</div></div><div class="social-profile-actions">' +
+    '</p>' +
+    (['admin', 'superadmin'].includes(card.role)
+      ? '<span class="leader-label">Староста' +
+        (card.role === 'superadmin' ? ' · Супер-админ' : '') +
+        '</span>'
+      : '') +
+    Presence.html(card) +
+    '</div></div><div class="social-profile-actions">' +
     like('mascot') +
     like('photo') +
     (self
@@ -35,7 +42,9 @@ function socialProfileHtml(card) {
     '</div><section class="social-about"><h3>О себе</h3><p>' +
     U.esc(card.about || 'Студент пока не рассказал о себе.').replace(/\n/g, '<br>') +
     '</p></section><div class="social-look"><h3>Мой Политешик</h3>' +
-    (Wardrobe.normalize(card.mascot).nickname ? '<b class="mascot-nickname">'+U.esc(Wardrobe.normalize(card.mascot).nickname)+'</b>' : '') +
+    (Wardrobe.normalize(card.mascot).nickname
+      ? '<b class="mascot-nickname">' + U.esc(Wardrobe.normalize(card.mascot).nickname) + '</b>'
+      : '') +
     Social.avatar({...card, avatar: ''}, 160, false) +
     '</div></div>'
   );
@@ -54,7 +63,7 @@ function socialInboxHtml() {
           id: 'peer:' + card.uid,
           title: card.name,
           subtitle: card.group_name,
-          status:Presence.html(card),
+          status: Presence.html(card),
           preview: card.last,
           unread: Number(card.unread),
           time: chatTime(card.at),
@@ -66,7 +75,8 @@ function socialInboxHtml() {
   );
 }
 function viewPeople() {
-  if (!Social.allowed()) return '<div class="card">Раздел доступен зарегистрированным студентам.</div>';
+  if (!Social.allowed())
+    return '<div class="card">Раздел доступен зарегистрированным студентам.</div>';
   if (!Social.loaded && !Social.loading && !Social.error) Social.loadPeople();
   return (
     '<div class="page-head"><div><h1>Люди</h1><p>Знакомьтесь со студентами своей и других групп.</p></div><button class="btn primary" data-action="club-open">✦ В клуб</button></div><div class="social-search" data-form="social-search"><input class="input" name="q" maxlength="100" value="' +
@@ -81,15 +91,24 @@ function viewPeople() {
     Social.people
       .map(
         (card) =>
-          '<button class="card person-card" data-action="social-profile" data-uid="' +
+          '<button class="card person-card' +
+          (['admin', 'superadmin'].includes(card.role) ? ' pinned-leader' : '') +
+          '" data-action="social-profile" data-uid="' +
           card.uid +
           '">' +
           Social.avatar(Social.cards[card.uid] || card, 64) +
+          (['admin', 'superadmin'].includes(card.role)
+            ? '<span class="leader-label">📌 Староста' +
+              (card.role === 'superadmin' ? ' · Админ Арина' : '') +
+              '</span>'
+            : '') +
           '<b>' +
           U.esc(card.name) +
           '</b><small>' +
           U.esc(card.group_name) +
-          '</small>' + Presence.html(Social.cards[card.uid]||card) + '<span>Открыть профиль →</span></button>',
+          '</small>' +
+          Presence.html(Social.cards[card.uid] || card) +
+          '<span>Открыть профиль →</span></button>',
       )
       .join('') +
     '</div>' +
@@ -113,7 +132,9 @@ function viewPeerThread(uid) {
     U.esc((card && card.name) || 'Собеседник') +
     '</b><small>' +
     U.esc((card && card.group_name) || 'Личная переписка') +
-    '</small>' + Presence.html(card) + '</span></button></div><div class="card peer-thread"><div class="peer-scroll">' +
+    '</small>' +
+    Presence.html(card) +
+    '</span></button></div><div class="card peer-thread"><div class="peer-scroll">' +
     (Social.historyMore && rows.length
       ? '<button class="btn sm ghost" data-action="peer-older" data-uid="' +
         uid +
@@ -126,8 +147,15 @@ function viewPeerThread(uid) {
           (m.sender === Cloud.uid ? ' mine' : '') +
           '"><p>' +
           U.esc(m.body).replace(/\n/g, '<br>') +
-          '</p><small>' +
-          U.esc(new Date(m.created_at).toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit'})) +
+          '</p>' +
+          ChatMedia.html(m) +
+          '<small>' +
+          U.esc(
+            new Date(m.created_at).toLocaleTimeString('ru-RU', {
+              hour: '2-digit',
+              minute: '2-digit',
+            }),
+          ) +
           (m.sender === Cloud.uid ? messageReceipt(!!m.read_at) : '') +
           '</small></div>',
       )
@@ -143,14 +171,22 @@ function viewPeerThread(uid) {
     '<div class="chat-in" data-form="peer" data-peer="' +
     uid +
     '">' +
+    ChatMedia.controls() +
     chatComposer('peerIn', 'peer:' + uid, 'Написать сообщение…') +
     '<button class="btn primary" data-action="save-form" aria-label="Отправить сообщение">➤</button></div></div>'
   );
 }
 function viewClub() {
-  if (!Social.allowed()) return '<div class="card">Клуб доступен зарегистрированным студентам.</div>';
+  if (!Social.allowed())
+    return '<div class="card">Клуб доступен зарегистрированным студентам.</div>';
   Club.ensurePolling();
-  const dj = {body: 'lilac', top: 'blacktee', hat: 'headphones', glasses: 'sun', chain: 'shortgold'};
+  const dj = {
+    body: 'lilac',
+    top: 'blacktee',
+    hat: 'headphones',
+    glasses: 'sun',
+    chain: 'shortgold',
+  };
   return (
     '<div class="page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
     (Club.calm ? ' calm' : '') +
@@ -160,27 +196,45 @@ function viewClub() {
     Club.visitors
       .map(
         (card, i) =>
-          '<button class="club-guest' + (card.uid===Cloud.uid?' me':'') +
-          ' move-' + (Club.moves.some(x=>x[0]===card.dance)?card.dance:'bounce') +
+          '<button class="club-guest' +
+          (card.uid === Cloud.uid ? ' me' : '') +
+          ' move-' +
+          (Club.moves.some((x) => x[0] === card.dance) ? card.dance : 'bounce') +
           '" data-action="club-guest" data-uid="' +
           card.uid +
           '" style="--beat-delay:-' +
           (i % 7) * 0.21 +
           's;--guest-turn:' +
           ((i % 3) - 1) * 5 +
-          'deg;left:'+Club.position(card).x+'%;top:'+Club.position(card).y+'%">' +
-          (card.thought ? '<span class="club-thought">'+U.esc(card.thought)+'</span>' : '') +
-          '<span class="club-figure">'+Club.mascot(card,88)+'</span>' +
-          (Wardrobe.normalize(card.uid===Cloud.uid?Mascot.chosen():card.mascot).nickname ? '<strong class="club-mascot-nickname">'+U.esc(Wardrobe.normalize(card.uid===Cloud.uid?Mascot.chosen():card.mascot).nickname)+'</strong>' : '') +
+          'deg;left:' +
+          Club.position(card).x +
+          '%;top:' +
+          Club.position(card).y +
+          '%">' +
+          (card.thought ? '<span class="club-thought">' + U.esc(card.thought) + '</span>' : '') +
+          '<span class="club-figure">' +
+          Club.mascot(card, 88) +
+          '</span>' +
+          (Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot).nickname
+            ? '<strong class="club-mascot-nickname">' +
+              U.esc(
+                Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot).nickname,
+              ) +
+              '</strong>'
+            : '') +
           '<b>' +
           U.esc(card.uid === Cloud.uid ? 'Вы' : card.name) +
           '</b><small>' +
           U.esc(card.group_name) +
-          '</small>' + Presence.html(card) + '</button>',
+          '</small>' +
+          Presence.html(card) +
+          '</button>',
       )
       .join('') +
     '</div><div class="club-caption">' +
-    (Club.visitors.length ? 'На танцполе: ' + Club.visitors.length : 'Танцпол свободен — заходите первым') +
+    (Club.visitors.length
+      ? 'На танцполе: ' + Club.visitors.length
+      : 'Танцпол свободен — заходите первым') +
     '</div></div><div class="club-controls">' +
     (Club.joined
       ? '<button class="btn" data-action="club-own">Мой маскот · Движения и мысли</button><button class="btn primary" data-action="club-dance">' +

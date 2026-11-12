@@ -21,7 +21,7 @@ do $$ declare i int; changed int; denied boolean; begin
   perform set_config('request.headers','{}',true);
   update public.docs set data='{"marks":{"2026-11-12|1":"у"}}' where tenant_id='group_'||i and path='attendance/'||current_setting('test.student'||i);
   get diagnostics changed=row_count; assert changed=1,'Leader cannot set У';
-  assert exists(select 1 from public.docs where tenant_id='group_'||i and path='attendance/'||current_setting('test.student'||i) and data->'marks'->>'2026-11-12|1'='у'),'У not saved';
+  assert exists(select 1 from public.docs where tenant_id='group_'||i and path='attendance/'||current_setting('test.student'||i) and data->'marks'->>'2026-11-12|1'='уп'),'Legacy У must normalize to УП';
   -- Removing and setting У are both permitted for the scoped leader.
   update public.docs set data='{"marks":{"2026-11-12|1":"п"}}' where tenant_id='group_'||i and path='attendance/'||current_setting('test.student'||i);
   update public.docs set data='{"marks":{"2026-11-12|1":"у"}}' where tenant_id='group_'||i and path='attendance/'||current_setting('test.student'||i);

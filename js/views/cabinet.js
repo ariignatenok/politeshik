@@ -16,7 +16,9 @@ function aboutCard() {
     '<div class="about-meta"><span class="tag">группа ' +
     GROUP_NAME +
     '</span> ' +
-    (state.settings.subgroup ? '<span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span> ' : '') +
+    (state.settings.subgroup
+      ? '<span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span> '
+      : '') +
     '<span class="tag">за неделю: ' +
     (w.pct == null ? '—' : w.pct + '%') +
     ' · п ' +
@@ -30,7 +32,9 @@ function aboutCard() {
     U.esc(state.settings.about || '') +
     '</textarea></label>' +
     '<div class="head-actions" style="margin-top:8px"><button class="btn primary sm" data-action="about-save">Сохранить</button>' +
-    (Cloud.status === 'online' ? '<button class="btn ghost sm" data-action="logout">Выйти из аккаунта</button>' : '') +
+    (Cloud.status === 'online'
+      ? '<button class="btn ghost sm" data-action="logout">Выйти из аккаунта</button>'
+      : '') +
     '</div></section>'
   );
 }
@@ -41,14 +45,14 @@ function aboutCard() {
 function winnerPlaque() {
   return Rating.mine()
     .map(
-      r =>
+      (r) =>
         '<div class="card plaque">' +
         ICONS.medalGold +
         ' Победитель ' +
         U.esc(r.label.replace(/^month:|^sem:/, '')) +
         ': <b>' +
         U.esc(r.prize) +
-        '</b> — обратись к админу</div>'
+        '</b> — обратись к админу</div>',
     )
     .join('');
 }
@@ -67,7 +71,7 @@ function viewCabinet() {
     '" data-action="cab-tab" data-t="ach">' +
     ICONS.trophy +
     ' Достижения <span class="tag">' +
-    ACH.filter(a => Store.s.ach[a.id]).length +
+    ACH.filter((a) => Store.s.ach[a.id]).length +
     '/' +
     ACH.length +
     '</span></button></div>';
@@ -83,15 +87,20 @@ function viewCabinetMain() {
     today = U.iso(U.today()),
     ym = today.slice(0, 7);
   const name = (Cloud.profile && Cloud.profile.name) || state.settings.displayName || 'Гость';
-  const st = Att.stats(state.attendance.marks, Cloud.my.certs, state.settings.subgroup, ym + '-01', monthEnd(ym));
-  const certs = Cloud.my.certs.slice().sort((a, b) => b.from.localeCompare(a.from));
-  const notes = state.notes.filter(n => !n.subjectId).sort(noteSort);
+  const st = Att.stats(
+    state.attendance.marks,
+    Cloud.my.certs,
+    state.settings.subgroup,
+    ym + '-01',
+    monthEnd(ym),
+  );
+  const notes = state.notes.filter((n) => !n.subjectId).sort(noteSort);
   /**
    * Возвращает название предмета по идентификатору.
    * @param {string} id Идентификатор записи.
    * @returns {string} Строка.
    */
-  const subjName = id => {
+  const subjName = (id) => {
     const x = subj(id);
     return x ? x.short || x.name : '';
   };
@@ -102,13 +111,19 @@ function viewCabinetMain() {
     U.esc(name) +
     '</h1><p>' +
     (Cloud.isAdmin ? '<span class="tag adm">админ-студент</span> ' : '') +
-    (online ? '<span class="tag">' + ICONS.cloud + ' в сети</span>' : '<span class="tag">без облака</span>') +
-    (state.settings.subgroup ? ' <span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span>' : '') +
+    (online
+      ? '<span class="tag">' + ICONS.cloud + ' в сети</span>'
+      : '<span class="tag">без облака</span>') +
+    (state.settings.subgroup
+      ? ' <span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span>'
+      : '') +
     ' <span class="tag">группа ' +
     GROUP_NAME +
     '</span></p></div></div>' +
     '<div class="head-actions">' +
-    (online ? '<button class="btn" data-action="profile-edit">' + ICONS.pencil + ' Профиль</button>' : '') +
+    (online
+      ? '<button class="btn" data-action="profile-edit">' + ICONS.pencil + ' Профиль</button>'
+      : '') +
     '</div></div>' +
     aboutCard() +
     Safe.html('my-mascot', () => Mascot.cardHtml()) +
@@ -133,42 +148,7 @@ function viewCabinetMain() {
         '</small></div>'
       : '<div class="empty">Отметок за этот месяц пока нет</div>') +
     '</section>' +
-    '<section class="card"><h2>Справки и больничные <button class="btn sm primary" data-action="cert-add">＋ Добавить</button></h2>' +
-    (certs.length
-      ? '<div class="items">' +
-        certs
-          .map(
-            c =>
-              '<div class="item"><div class="item-main"><div class="item-title">' +
-              (c.kind === 'Больничный' ? ICONS.hospital : c.kind === 'Записка' ? ICONS.memo : ICONS.document) +
-              ' ' +
-              U.esc(c.kind) +
-              ' · ' +
-              U.esc(certPeriod(c)) +
-              '</div>' +
-              '<div class="item-meta">' +
-              (c.note ? '<span class="tag">' + U.esc(c.note) + '</span>' : '') +
-              '<span class="tag status ' +
-              (c.confirmed ? 'prep' : 'review') +
-              '">' +
-              (c.confirmed ? 'Подтверждена админом' : 'На проверке') +
-              '</span></div>' +
-              '</div><div class="item-actions"><button class="icon-btn" data-action="cert-view" data-uid="' +
-              Cloud.uid +
-              '" data-id="' +
-              c.id +
-              '" aria-label="Показать фото">' +
-              ICONS.picture +
-              '</button><button class="icon-btn" data-action="cert-del" data-id="' +
-              c.id +
-              '" aria-label="Удалить">' +
-              ICONS.wastebasket +
-              '</button></div></div>'
-          )
-          .join('') +
-        '</div>'
-      : empty(ICONS.stethoscope, 'Справок нет. Дни по справке не считаются пропусками.')) +
-    '</section></div>' +
+    '</div>' +
     '<div class="dash-cols"><section class="card"><h2>Мои работы (файлы) <button class="btn sm primary" data-action="file-add">＋ Прикрепить</button></h2>' +
     (!online
       ? '<div class="empty">Файлы сохраняются в облаке — откройте приложение по приглашению.</div>'
@@ -178,11 +158,13 @@ function viewCabinetMain() {
             .slice()
             .reverse()
             .map(
-              f =>
+              (f) =>
                 '<div class="item"><div class="item-main"><div class="item-title">' +
                 U.esc(f.title) +
                 '</div><div class="item-meta">' +
-                (f.subjectId ? '<span class="tag">' + U.esc(subjName(f.subjectId)) + '</span>' : '') +
+                (f.subjectId
+                  ? '<span class="tag">' + U.esc(subjName(f.subjectId)) + '</span>'
+                  : '') +
                 '<span class="tag">' +
                 Math.max(1, Math.round(f.size / 1024)) +
                 ' КБ</span>' +
@@ -196,13 +178,13 @@ function viewCabinetMain() {
                 f.id +
                 '" aria-label="Удалить">' +
                 ICONS.wastebasket +
-                '</button></div></div>'
+                '</button></div></div>',
             )
             .join('') +
           '</div>'
         : empty(
             ICONS.paperclip,
-            'Здесь можно хранить свои работы: фото тетради, лабораторные (до ~170 КБ). Видите их только вы.'
+            'Здесь можно хранить свои работы: фото тетради, лабораторные (до ~170 КБ). Видите их только вы.',
           )) +
     '</section>' +
     '<section class="card"><h2>Мои заметки <button class="btn sm primary" data-action="cab-note-add">＋ Заметка</button></h2>' +
@@ -210,7 +192,7 @@ function viewCabinetMain() {
       ? '<div class="items">' +
         notes
           .map(
-            n =>
+            (n) =>
               '<button class="note-card" data-action="note-open" data-id="' +
               n.id +
               '"><b>' +
@@ -221,13 +203,16 @@ function viewCabinetMain() {
                   .replace(/[#*`>|_=~-]/g, ' ')
                   .replace(/\s+/g, ' ')
                   .trim()
-                  .slice(0, 110)
+                  .slice(0, 110),
               ) +
-              '</p></button>'
+              '</p></button>',
           )
           .join('') +
         '</div>'
-      : empty(ICONS.memo, 'Личные заметки вне предметов. Заметки по предметам — во вкладке «Предметы».')) +
+      : empty(
+          ICONS.memo,
+          'Личные заметки вне предметов. Заметки по предметам — во вкладке «Предметы».',
+        )) +
     '</section></div>'
   );
 }

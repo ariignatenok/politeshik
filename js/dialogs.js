@@ -1109,7 +1109,7 @@ function openAttendanceEditor(uid, date) {
       opt('п', 'Присутствовал(а)') +
       opt('о', 'Опоздал(а)') +
       opt('н', 'Нет') +
-      (Cloud.isAdmin ? opt('у', 'Уважительная причина') + opt('уп', 'Индивидуальный график — уважительный пропуск') : '') +
+      (Cloud.isAdmin ? opt('уп', 'Уважительный пропуск') : '') +
       opt('', 'Нет отметки')) +
       '</div></div>'
     );
@@ -1131,7 +1131,7 @@ function openAttendanceEditor(uid, date) {
           today +
           '">'
       ) +
-      (Cloud.isAdmin && prs.length ? '<div class="head-actions day-marks"><button class="btn" data-action="att-day-full" data-st="п">Был весь день</button><button class="btn" data-action="att-day-full" data-st="н">Не был весь день</button></div><p class="hint">У, УП и подтверждённые справки сохраняются.</p>' : '') +
+      (Cloud.isAdmin && prs.length ? '<div class="head-actions day-marks"><button class="btn" data-action="att-day-full" data-st="п">Был весь день</button><button class="btn" data-action="att-day-full" data-st="н">Не был весь день</button></div><p class="hint">УП и подтверждённые справки сохраняются.</p>' : '') +
       certDayNote(r.certs, day) +
       (prs.length ? prs.map(row).join('') : '<div class="empty">В этот день у студента пар нет</div>') +
       '<div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">Сохранить</button></div></div>'

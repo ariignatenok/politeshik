@@ -6,12 +6,14 @@ const MEDAL = [ICONS.medalGold, ICONS.medalSilver, ICONS.medalBronze];
  * @returns {string} HTML.
  */
 function viewRating() {
+  if (ui.ratingScope === 'global' && Social.allowed()) return GlobalRating.view();
   const R = Cloud.ratings,
     per = Rating.periods(),
     k = 'month',
     ym = per[k].from.slice(0, 7),
     mw = monthWord(ym);
   const head =
+    GlobalRating.tabs() +
     '<div class="page-head"><div><h1>' +
     ICONS.trophy +
     ' Рейтинг за ' +
@@ -19,7 +21,8 @@ function viewRating() {
     ' ' +
     ym.slice(0, 4) +
     '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется раз в час.</p></div></div>';
-  if (Cloud.status !== 'online') return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
+  if (Cloud.status !== 'online')
+    return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
   const cur = R && R.periods && R.periods[k],
     doc = cur && cur.key === per[k].key ? cur : null,
     prize = R && R.prizes && R.prizes[per[k].key];
@@ -31,21 +34,29 @@ function viewRating() {
     return (
       head +
       (Cloud.isAdmin ? ratingAdmin(k, per) : '') +
-      empty(ICONS.hourglass, 'Рейтинг за ' + mw + ' ещё не посчитан: он появится, когда староста откроет приложение.')
+      empty(
+        ICONS.hourglass,
+        'Рейтинг за ' + mw + ' ещё не посчитан: он появится, когда староста откроет приложение.',
+      )
     );
-  if (!doc.rows.some(x => x.score > 0))
+  if (!doc.rows.some((x) => x.score > 0))
     return (
       head +
       (Cloud.isAdmin ? ratingAdmin(k, per) : '') +
-      empty(ICONS.hourglass, 'За ' + mw + ' пока нет отметок посещаемости: рейтинг появится после первых пар месяца.')
+      empty(
+        ICONS.hourglass,
+        'За ' + mw + ' пока нет отметок посещаемости: рейтинг появится после первых пар месяца.',
+      )
     );
   const rid = Cloud.profile && Cloud.profile.rid,
-    mine = doc.rows.find(x => x.rid === rid),
+    mine = doc.rows.find((x) => x.rid === rid),
     next = mine && mine.place > 1 ? doc.rows[mine.place - 2] : null;
   return (
     head +
     '<div class="card prize-bar"><div><b>' +
-    (prize ? ICONS.gift + ' Приз за 1 место: ' + U.esc(prize.text) : ICONS.gift + ' Приз за 1 место пока не назначен') +
+    (prize
+      ? ICONS.gift + ' Приз за 1 место: ' + U.esc(prize.text)
+      : ICONS.gift + ' Приз за 1 место пока не назначен') +
     '</b><small>' +
     U.esc(doc.label) +
     '</small></div>' +
@@ -54,7 +65,9 @@ function viewRating() {
         mine.place +
         ' месте</b><small>' +
         (next
-          ? 'до следующего места: ' + Math.max(0, Math.round((next.score - mine.score) * 10) / 10) + ' балла'
+          ? 'до следующего места: ' +
+            Math.max(0, Math.round((next.score - mine.score) * 10) / 10) +
+            ' балла'
           : 'ты впереди всех ' + ICONS.partyPopper) +
         '</small></div>'
       : '') +
@@ -63,8 +76,10 @@ function viewRating() {
     '<div class="rank">' +
     doc.rows
       .map(
-        x =>
-          '<div class="rank-row' +
+        (x) =>
+          '<div role="button" tabindex="0" data-action="social-profile" data-uid="' +
+          (x.uid || Avatars.uidForRid(x.rid) || '') +
+          '" class="rank-row' +
           (x.rid === rid ? ' me' : '') +
           (x.place <= 3 ? ' top t' + x.place : '') +
           '"><span class="rk-p">' +
@@ -76,7 +91,7 @@ function viewRating() {
           (x.rid === rid ? ' <small>(ты)</small>' : '') +
           '</span>' +
           (Cloud.isAdmin ? '<span class="rk-s">' + x.score + '</span>' : '') +
-          '</div>'
+          '</div>',
       )
       .join('') +
     '</div>' +
@@ -93,7 +108,7 @@ function ratingAdmin(k, per) {
   const R = Cloud.ratings || {},
     rows = Cloud.admReady ? Rating.rows(per[k]) : [],
     prize = (R.prizes || {})[per[k].key];
-  const hist = Object.keys(R.results || {}).map(x => R.results[x]);
+  const hist = Object.keys(R.results || {}).map((x) => R.results[x]);
   return (
     '<div class="card" style="margin-bottom:14px"><h2>Для админа</h2>' +
     '<div class="prize-form" data-form="prize"><input class="input" name="prize" placeholder="Например: Кофе в подарок / +1 автомат / Сертификат в кино" value="' +
@@ -107,7 +122,7 @@ function ratingAdmin(k, per) {
       ? '<div class="tbl-wrap"><table class="grid-tbl"><thead><tr><th>#</th><th>Студент</th><th>Баллы</th><th>Посещ.</th><th>Карточки</th><th></th></tr></thead><tbody>' +
         rows
           .map(
-            x =>
+            (x) =>
               '<tr><td>' +
               x.place +
               '</td><td>' +
@@ -120,7 +135,7 @@ function ratingAdmin(k, per) {
               x.cards +
               '%</td><td title="100% посещаемости без единого опоздания — проверьте отметки">' +
               (x.suspicious ? ICONS.star : '') +
-              '</td></tr>'
+              '</td></tr>',
           )
           .join('') +
         '</tbody></table></div><p class="hint">' +
@@ -131,7 +146,7 @@ function ratingAdmin(k, per) {
       ? '<h3 style="margin:14px 0 6px">История призов</h3><div class="items">' +
         hist
           .map(
-            h =>
+            (h) =>
               '<div class="item"><div class="item-main"><div class="item-title">' +
               ICONS.medalGold +
               ' ' +
@@ -142,7 +157,7 @@ function ratingAdmin(k, per) {
               ICONS.gift +
               ' ' +
               U.esc(h.prize) +
-              '</span></div></div></div>'
+              '</span></div></div></div>',
           )
           .join('') +
         '</div>'

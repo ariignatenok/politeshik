@@ -223,6 +223,7 @@ Object.assign(A, {
    * Включает режим постановки точки «Я здесь».
    */
   'map-here'() {
+    ui.mapDestination=null;
     ui.mapPlacing = !ui.mapPlacing;
     App.render();
   },

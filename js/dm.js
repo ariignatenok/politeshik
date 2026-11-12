@@ -67,7 +67,7 @@ const Dm = {
     let q = supa
       .from('chat')
       .select(
-        'id,thread_uid,sender,body,created_at,read_by_admin,read_by_student,recipient_role,sender_label',
+        'id,thread_uid,sender,body,created_at,read_by_admin,read_by_student,recipient_role,sender_label,file_path,file_name,file_size,meta',
       )
       .eq('tenant_id', Cloud.tenantId || 'group_1')
       .order('created_at', {

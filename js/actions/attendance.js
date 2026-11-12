@@ -1,6 +1,7 @@
 'use strict';
 
 Object.assign(A, {
+  'att-certificates'(){document.getElementById('attendance-certificates')?.scrollIntoView({behavior:'smooth',block:'start'});},
   async 'att-day-full'(el) {
     if (!Cloud.isAdmin) return toast('Отметки за день ставит только староста');
     const form = el.closest('[data-form="att-edit"]');

@@ -18,7 +18,7 @@ const Att = {
    */
   mine(list) {
     if (Cloud.isAdmin || Cloud.isStaff) return list;
-    return list.filter(l => Att.subOk(l, Store.s.settings.subgroup));
+    return list.filter((l) => Att.subOk(l, Store.s.settings.subgroup));
   },
   /**
    * Строит пары дня с учётом отмен и замен.
@@ -28,35 +28,41 @@ const Att = {
    */
   dayView(date, sub) {
     const d = U.fromISO(date),
-      ls = Weeks.on(date).filter(l => Att.subOk(l, sub)),
+      ls = Weeks.on(date).filter((l) => Att.subOk(l, sub)),
       by = new Map();
-    ls.forEach(l => {
+    ls.forEach((l) => {
       if (!by.has(l.pair)) by.set(l.pair, []);
       by.get(l.pair).push(l);
     });
-    const out = [...by].map(e => ({
+    const out = [...by].map((e) => ({
       pair: e[0],
       lessons: e[1],
       state: 'ok',
       change: null,
-      orig: null
+      orig: null,
     }));
     if (ScheduleSync.day(date)) {
-      out.forEach(pr => {
-        const active = pr.lessons.filter(l => l.sourceStatus !== 'cancellation');
+      out.forEach((pr) => {
+        const active = pr.lessons.filter((l) => l.sourceStatus !== 'cancellation');
         if (!active.length) pr.state = 'cancel';
         else {
-          pr.orig = pr.lessons.filter(l => l.sourceStatus === 'cancellation');
+          pr.orig = pr.lessons.filter((l) => l.sourceStatus === 'cancellation');
           pr.lessons = active;
-          if (active.some(l => l.sourceStatus === 'replacement')) pr.state = 'replace';
+          if (active.some((l) => l.sourceStatus === 'replacement')) pr.state = 'replace';
         }
-        if (pr.state !== 'ok') pr.change = {reason: pr.lessons.map(l => l.sourceNote).filter(Boolean).join(' · ')};
+        if (pr.state !== 'ok')
+          pr.change = {
+            reason: pr.lessons
+              .map((l) => l.sourceNote)
+              .filter(Boolean)
+              .join(' · '),
+          };
       });
     }
     Changes.items()
-      .filter(c => c.date === date)
-      .forEach(c => {
-        const pr = out.find(x => x.pair === c.pair);
+      .filter((c) => c.date === date)
+      .forEach((c) => {
+        const pr = out.find((x) => x.pair === c.pair);
         if (c.type === 'cancel') {
           if (pr) {
             pr.state = 'cancel';
@@ -74,7 +80,7 @@ const Att = {
           subgroup: '',
           who: c.newTeacher || '',
           start: '',
-          end: ''
+          end: '',
         };
         if (pr) {
           pr.state = 'replace';
@@ -87,7 +93,7 @@ const Att = {
             lessons: [rl],
             state: 'replace',
             change: c,
-            orig: []
+            orig: [],
           });
       });
     return out.sort((a, b) => a.pair - b.pair);
@@ -99,7 +105,7 @@ const Att = {
    * @returns {Array<Object>} Массив.
    */
   pairs(date, sub) {
-    return Att.dayView(date, sub).filter(p => p.state !== 'cancel');
+    return Att.dayView(date, sub).filter((p) => p.state !== 'cancel');
   },
   /**
    * Проверяет, закрыт ли день справкой.
@@ -108,7 +114,9 @@ const Att = {
    * @returns {boolean} true, если условие выполнено.
    */
   covered: (certs, date) =>
-    (certs || []).some(c => c.confirmed === true && c.from <= date && date <= c.to && !(c.pairs && c.pairs.length)),
+    (certs || []).some(
+      (c) => c.confirmed === true && c.from <= date && date <= c.to && !(c.pairs && c.pairs.length),
+    ),
   /**
    * Проверяет, покрыта ли справкой или запиской конкретная пара.
    * @param {Array<Object>} certs Справки.
@@ -118,11 +126,11 @@ const Att = {
    */
   coveredPair: (certs, date, pair) =>
     (certs || []).some(
-      c =>
+      (c) =>
         c.confirmed === true &&
         c.from <= date &&
         date <= c.to &&
-        (!(c.pairs && c.pairs.length) || c.pairs.indexOf(pair) >= 0)
+        (!(c.pairs && c.pairs.length) || c.pairs.indexOf(pair) >= 0),
     ),
   /**
    * Вычисляет итоговый статус пары с учётом справки.
@@ -135,9 +143,8 @@ const Att = {
   eff(marks, certs, date, pair) {
     const m = marks[date + '|' + pair],
       cov = Att.coveredPair(certs, date, pair);
-    if (m === 'н' && cov) return 'у';
-    if (!m && cov) return 'у';
-    return m || '';
+    if ((m === 'н' || !m) && cov) return 'уп';
+    return m === 'у' ? 'уп' : m || '';
   },
   /**
    * Считает процент посещаемости.
@@ -164,7 +171,8 @@ const Att = {
    * Возвращает месяц, за который показывается лимит: выбранный на экранах «Посещаемость» и «Журнал» или текущий.
    * @returns {string} Месяц ГГГГ-ММ.
    */
-  limitMonth: () => (ui.attScope !== 'all' && ui.attMonth ? ui.attMonth : U.iso(U.today()).slice(0, 7)),
+  limitMonth: () =>
+    ui.attScope !== 'all' && ui.attMonth ? ui.attMonth : U.iso(U.today()).slice(0, 7),
   /**
    * Определяет зону лимита пропусков.
    * @param {number} h Часы пропусков.
@@ -175,7 +183,7 @@ const Att = {
     return {
       h,
       left,
-      cls: h >= ABS_LIMIT ? 'red' : left <= ABS_WARN_LEFT ? 'warn' : 'ok'
+      cls: h >= ABS_LIMIT ? 'red' : left <= ABS_WARN_LEFT ? 'warn' : 'ok',
     };
   },
   /**
@@ -197,7 +205,7 @@ const Att = {
         x: 0,
         u: 0,
         bySubj: {},
-        byDay: {}
+        byDay: {},
       };
     const start = from < ATT_START ? ATT_START : from,
       end = to > today ? today : to;
@@ -207,7 +215,7 @@ const Att = {
     }
     for (let d = U.fromISO(start), e = U.fromISO(end); d <= e; d = U.addDays(d, 1)) {
       const di = U.iso(d);
-      Att.pairs(di, sub).forEach(pr => {
+      Att.pairs(di, sub).forEach((pr) => {
         const st = Att.eff(marks, certs, di, pr.pair),
           sid = pr.lessons[0].subjectId;
         const b =
@@ -218,7 +226,7 @@ const Att = {
             a: 0,
             x: 0,
             u: 0,
-            total: 0
+            total: 0,
           });
         r.total++;
         b.total++;
@@ -231,7 +239,7 @@ const Att = {
         } else if (st === 'н') {
           r.a++;
           b.a++;
-        } else if ((st === 'у' || st === 'уп')) {
+        } else if (st === 'у' || st === 'уп') {
           r.x++;
           b.x++;
         } else if (di < today) {
@@ -242,7 +250,7 @@ const Att = {
       });
     }
     r.pct = Att.pct(r.p + r.l, r.p + r.l + r.a);
-    Object.keys(r.bySubj).forEach(k => {
+    Object.keys(r.bySubj).forEach((k) => {
       const b = r.bySubj[k];
       b.pct = Att.pct(b.p + b.l, b.p + b.l + b.a);
     });
@@ -256,43 +264,61 @@ const Att = {
    * @param {string} st Статус: п, о или н.
    */
   dayChanges(date, subgroup, marks, certs, status) {
-    if (!['п','н'].includes(status)) return {};
+    if (!['п', 'н'].includes(status)) return {};
     const changes = {};
-    Att.pairs(date, subgroup).forEach(p => {
+    Att.pairs(date, subgroup).forEach((p) => {
       const key = date + '|' + p.pair;
-      if (['у','уп'].includes(marks[key]) || Att.coveredPair(certs, date, p.pair)) return;
+      if (['у', 'уп'].includes(marks[key]) || Att.coveredPair(certs, date, p.pair)) return;
       changes[key] = status;
     });
     return changes;
   },
-  set(uid, date, pair, st) {
-    if ((st === 'у' || st === 'уп') && !Cloud.isAdmin) return toast('Уважительную причину отмечают только староста и Админ Арина');
-    if (Cloud.tenantId !== 'group_1' && !Cloud.isAdmin) return toast('Посещаемость меняют староста и Админ Арина');
+  canSelf(date, pair, now = Date.now()) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || pair < 1 || pair > 5) return false;
+    const slot = (Store.s.settings.pairs || [])[pair - 1] || {},
+      starts = ['09:00', '10:45', '12:50', '14:30', '16:10'],
+      ends = ['10:30', '12:40', '14:20', '16:00', '17:40'];
+    const start = Date.parse(date + 'T' + (slot.start || starts[pair - 1]) + ':00+03:00'),
+      end = Date.parse(date + 'T' + (slot.end || ends[pair - 1]) + ':00+03:00');
+    return now >= start && now <= end + 86400000;
+  },
+  async set(uid, date, pair, st) {
+    if (st === 'у') st = 'уп';
+    if (st === 'уп' && !Cloud.isAdmin)
+      return toast('УП отмечают только староста и Админ Арина либо подтверждённая справка');
     const key = date + '|' + pair;
-    if (!uid && Cloud.status === 'online' && date !== U.iso(U.today())) {
-      toast(
-        Cloud.isAdmin
-          ? 'Задним числом отметить себя нельзя. Исправить можно в «Группа» → «Список группы» → ваша строка'
-          : 'Задним числом отметить нельзя. Нажмите «Попросить админа» в чате с Политешиком'
-      );
-      return;
-    }
-    if (!uid && Cloud.status === 'online' && Store.s.attendance.marks[key]) {
-      toast(
-        Cloud.isAdmin
-          ? 'Как и у всех, свою отметку здесь менять нельзя. Исправить можно в «Группа» → «Список группы» → ваша строка'
-          : 'Отметка уже поставлена — исправить её может только админ группы'
-      );
+    if (!uid && Cloud.status === 'online') {
+      if (!Att.canSelf(date, pair))
+        return toast('Отметиться можно на паре и 24 часа после её окончания');
+      if (Store.s.attendance.marks[key])
+        return toast('Отметку уже поставили — исправить её может староста');
+      if (Att.saving) return;
+      Att.saving = true;
+      try {
+        const {data, error} = await supa.rpc('self_attendance', {
+          p_date: date,
+          p_pair: pair,
+          p_status: st,
+        });
+        if (error) throw error;
+        Store.s.attendance.marks = data.marks || {};
+        Store.s.meta.pendingAtt = false;
+        Store.save();
+        App.render();
+      } catch (error) {
+        toast(error.message);
+      } finally {
+        Att.saving = false;
+      }
       return;
     }
     if (!uid || uid === Cloud.uid || Cloud.status !== 'online') {
       const m = Store.s.attendance.marks;
       if (m[key] === st) delete m[key];
       else m[key] = st;
-      if (Cloud.status === 'online') Store.s.meta.pendingAtt = true;
       Store.save();
-      if (Cloud.status === 'online') Cloud.pushAtt();
+      if (Cloud.status === 'online') Cloud.setMarkFor(Cloud.uid, key, st);
     } else Cloud.setMarkFor(uid, key, st);
     App.render();
-  }
+  },
 };

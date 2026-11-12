@@ -35,11 +35,27 @@ const Avatars = {
   html(uid, size, fallback) {
     const look = Avatars.look(uid),
       value = Avatars.value(uid) || fallback || '';
-    const mascot = Mascot.svg(look.mood || 'happy', value ? Math.max(28, Math.round(size * 0.8)) : size, '', {
-      look,
-      season: '',
-    });
-    return '<span class="av-personal">' + (value ? avatarOf(value, size) : '') + mascot + '</span>';
+    const mascot = Mascot.svg(
+      look.mood || 'happy',
+      value ? Math.max(28, Math.round(size * 0.8)) : size,
+      '',
+      {
+        look,
+        season: '',
+      },
+    );
+    return (
+      '<span class="av-personal"' +
+      (uid
+        ? ' data-action="social-profile" data-uid="' +
+          uid +
+          '" role="button" tabindex="0" aria-label="Открыть профиль"'
+        : '') +
+      '>' +
+      (value ? avatarOf(value, size) : '') +
+      mascot +
+      '</span>'
+    );
   },
   /**
    * Рисует маленькую круглую аватарку для списков: фото или инициалы.
@@ -63,9 +79,18 @@ const Avatars = {
         U.esc(U.initials(name || '')) +
         '</span>';
     return (
-      '<span class="av-personal">' +
+      '<span class="av-personal"' +
+      (uid
+        ? ' data-action="social-profile" data-uid="' +
+          uid +
+          '" role="button" tabindex="0" aria-label="Открыть профиль"'
+        : '') +
+      '>' +
       portrait +
-      Mascot.svg(look.mood || 'happy', Math.max(size, 30), '', {look, season: ''}) +
+      Mascot.svg(look.mood || 'happy', Math.max(size, 30), '', {
+        look,
+        season: '',
+      }) +
       '</span>'
     );
   },
