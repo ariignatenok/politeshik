@@ -189,7 +189,7 @@ const Curator = {
         });
       return (
         html +
-        '<div class="grid-stats"><div class="stat"><b>' +
+        '<div class="grid-stats curator-stats"><div class="stat"><b>' +
         students.length +
         '</b><small>в списке группы</small></div><div class="stat"><b>' +
         registered.length +
