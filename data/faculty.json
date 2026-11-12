@@ -2,7 +2,7 @@
   "schema": 1,
   "checked_at": "2026-11-13",
   "source": "https://polytech-schedule.ru",
-  "refresh_batch_size": 3,
+  "refresh_batch_size": 24,
   "teachers": [
     {
       "id": "faculty-fef89b8bfbf9",
@@ -46,25 +46,28 @@
       "id": "faculty-68d9711e8c64",
       "name": "Антонов Андрей Александрович",
       "teacher": "Антонов А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-68d9711e8c64.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T21:46:54.767597+00:00"
     },
     {
       "id": "faculty-7cbb895cc502",
       "name": "Ахмадиева Светлана Ахатовна",
       "teacher": "Ахмадиева С.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-7cbb895cc502.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T21:46:56.278683+00:00"
     },
     {
       "id": "faculty-6b744383922e",
       "name": "Багнюк Виталий Евгеньевич",
       "teacher": "Багнюк В.Е.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-6b744383922e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T21:46:58.042775+00:00"
     },
     {
       "id": "faculty-9df33402caee",
