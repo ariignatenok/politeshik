@@ -1,6 +1,11 @@
 'use strict';
 
 Object.assign(A, {
+  'menu-visibility'(el) { MenuPrefs.visibility(el.dataset.id); MenuPrefs.refresh(el.dataset.id,'menu-visibility'); },
+  'menu-customize'() { MenuPrefs.open(); },
+  'menu-pin'(el) { MenuPrefs.toggle(el.dataset.id); MenuPrefs.refresh(el.dataset.id,'menu-pin'); },
+  'menu-move'(el) { MenuPrefs.move(el.dataset.id,Number(el.dataset.dir)); MenuPrefs.refresh(el.dataset.id,'menu-move',el.dataset.dir); },
+  'menu-reset'() { MenuPrefs.reset(); MenuPrefs.refresh(); },
   /** Открывает список выбранной группы после серверной проверки доступа. */
   'group-open'(el) { return Groups.switchTo(el.dataset.group, true, el.dataset.tab || 'group'); },
   /**

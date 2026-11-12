@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bmascotfashion20261112';
+const CACHE_VERSION = 'bpersonalmenu20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -30,6 +30,7 @@ const SHELL = [
   'css/health.css',
   'css/layout.css',
   'css/mascot.css',
+  'css/personal-menu.css',
   'css/modal.css',
   'css/motion.css',
   'css/news.css',
@@ -85,6 +86,7 @@ const SHELL = [
   'js/mascot-wardrobe.js',
   'js/mascot-fashion.js',
   'js/navigation.js',
+  'js/personal-menu.js',
   'js/news.js',
   'js/newschedule.js',
   'js/notifications.js',

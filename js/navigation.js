@@ -223,16 +223,21 @@ const emptyMascot = (text, mood) =>
  * Возвращает пункты бокового меню для роли пользователя.
  * @returns {Array<Object>} Массив.
  */
-function navItems() {
+function navAvailable() {
   const tabs = Roles.tabs();
   if (tabs) return tabs.map(id => NAV_ALL.find(t => t.id === id)).filter(Boolean);
   return NAV_ALL.filter(t => (!t.admin || Cloud.isAdmin) && !t.staff && (!t.owner || Roles.isOwner()) && t.id !== 'diagnostics');
 }
+function navItems() { return MenuPrefs.arrange(navAvailable()).filter(t => !MenuPrefs.hidden(t.id)); }
 /**
  * Возвращает вкладки нижней панели для роли пользователя.
  * @returns {Array<string>} Массив.
  */
 function bottomNav() {
+  if (MenuPrefs.read().customized) {
+    const ids = navItems().map(t => t.id);
+    return ids.length <= 6 ? ids : ids.slice(0,6).concat('more');
+  }
   const tabs = Roles.tabs();
   if (!tabs) return NAV_BOTTOM;
   return tabs.length <= 5 ? tabs.slice() : tabs.slice(0, 4).concat(['more']);

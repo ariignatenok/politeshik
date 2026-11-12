@@ -78,7 +78,7 @@ function notifSettings() {
 function viewSettingsBase() {
   const state = Store.s,
     cur = weekType(new Date());
-  if (Cloud.isStaff) return Teacher.settingsHtml();
+  if (Cloud.isStaff) return MenuPrefs.card() + Teacher.settingsHtml();
   return (
     Roles.settingsTabs() +
     '<div class="page-head"><div><h1>Настройки</h1><p>Тема, чётность недели и резервная копия данных</p></div></div>' +
@@ -108,7 +108,7 @@ function viewSettingsBase() {
     '<div class="set-row"><div><b>Наряд Политешика</b><p>Сезонные и праздничные аксессуары</p></div><button class="btn" data-action="mascot-acc">' +
     (Mascot.enabled() ? 'Включён' : 'Выключен') +
     '</button></div></div>' +
-    notifSettings() +
+    MenuPrefs.card() + notifSettings() +
     '<div class="card set-sec"><h2>Расписание</h2>' +
     '<div class="set-row"><div><b>Сейчас идёт: ' +
     WEEK_NAME[cur] +

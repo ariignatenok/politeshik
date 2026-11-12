@@ -367,6 +367,7 @@ const App = {
           t.ico +
           '</span>' +
           t.label +
+          (MenuPrefs.pinned(t.id) ? '<span class="nav-pin" aria-label="Закреплено">📌</span>' : '') +
           (t.id === 'chat'
             ? badge(unread)
             : t.id === 'news'
@@ -376,7 +377,7 @@ const App = {
                 : '') +
           '</button>'
       )
-      .join('');
+      .join('') + MenuPrefs.button();
     $('#nav-bottom').innerHTML = bottomNav()
       .map(id => {
         const t =
@@ -388,11 +389,7 @@ const App = {
                 }
               : NAV_ALL.find(x => x.id === id),
           on =
-            id === 'more'
-              ? Roles.tabs()
-                ? Roles.tabs().slice(4).includes(ui.tab)
-                : MORE_TABS.includes(ui.tab)
-              : ui.tab === id;
+            id === 'more' ? ui.tab === 'more' || !bottomNav().includes(ui.tab) : ui.tab === id;
         return (
           '<button class="nav-btn' +
           (on ? ' on' : '') +

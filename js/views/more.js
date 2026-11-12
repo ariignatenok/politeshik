@@ -5,44 +5,27 @@
  * @returns {string} HTML.
  */
 function viewMore() {
-  const staffTabs = Roles.tabs(),
-    items = staffTabs
-      ? staffTabs.slice(4).map(id => {
-          const t = NAV_ALL.find(x => x.id === id);
-          return [id, t.ico, t.label];
-        })
-      : [
-          ['news', ICONS.newspaper, 'Новости'],
-          ['teachers', ICONS.teacher, 'Преподаватели'],
-          ['cabinet', ICONS.user, 'Личный кабинет'],
-          ['rating', ICONS.trophy, 'Рейтинг группы'],
-          ['map', ICONS.worldMap, 'Карта']
-        ]
-          .concat([['journal', ICONS.folder, 'Журнал']])
-          .concat(
-            (Cloud.isAdmin
-              ? [
-                  ['requests', ICONS.incomingEnvelope, 'Заявки'],
-                  ['users', ICONS.busts, 'Пользователи'],
-                  ['stats', ICONS.barChart, 'Статистика'],
-                  ['group', ICONS.shield, 'Группа (админ)']
-                ]
-              : []
-            ).concat(Roles.isOwner() ? [['groups', ICONS.busts, 'Группы'], ['access', ICONS.key, 'Доступы']] : [])
-          )
-          .concat([['settings', ICONS.gear, 'Настройки']]);
+  const visible = bottomNav(),
+    items = navItems()
+      .filter((t) => !visible.includes(t.id))
+      .map((t) => [t.id, t.ico, t.label]);
   return (
-    '<div class="page-head"><div><h1>Ещё</h1><p>Разделы Политешика</p></div></div>' + Groups.navigation(true) + '<div class="tiles">' +
+    '<div class="page-head"><div><h1>Ещё</h1><p>Разделы Политешика</p></div>' +
+    MenuPrefs.button() +
+    '</div>' +
+    Groups.navigation(true) +
+    '<div class="tiles">' +
     items
       .map(
-        t =>
+        (t) =>
           '<button class="tile" data-action="nav" data-tab="' +
           t[0] +
           '"><span>' +
           t[1] +
           '</span>' +
           t[2] +
-          '</button>'
+          (MenuPrefs.pinned(t[0]) ? ' 📌' : '') +
+          '</button>',
       )
       .join('') +
     '</div>'
