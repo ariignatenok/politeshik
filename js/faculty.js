@@ -7,9 +7,13 @@ const Faculty = {
     if(parts.length>=3 && parts.slice(1).every(p=>p.length>2)) value=parts[0]+' '+parts.slice(1).map(p=>p[0]+'.').join('');
     return String(value||'').toLowerCase().replace(/ё/g,'е').replace(/[\s.]/g,'');
   },
+  nameIndex: null,
   fullName(value) {
-    const hits=FACULTY_NAMES.filter(n=>Faculty.key(n)===Faculty.key(value));
-    return hits.length===1?hits[0]:value;
+    if(!Faculty.nameIndex){
+      Faculty.nameIndex=new Map();
+      for(const name of FACULTY_NAMES){const key=Faculty.key(name);Faculty.nameIndex.set(key,Faculty.nameIndex.has(key)?null:name);}
+    }
+    return Faculty.nameIndex.get(Faculty.key(value))||value;
   },
   fields(value='') {
     return '<label class="field"><span>Полное ФИО преподавателя</span><input class="input" name="teacher_name" list="faculty-names" autocomplete="name" value="'+U.esc(value)+'" placeholder="Начните вводить фамилию"><datalist id="faculty-names">'+FACULTY_NAMES.map(n=>'<option value="'+U.esc(n)+'"></option>').join('')+'</datalist></label><p class="hint">Выберите своё ФИО из списка. Доступ подтверждает Админ Арина.</p>';

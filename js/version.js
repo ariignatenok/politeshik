@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'identity20261113';
+const BUILD = 'fast20261113';

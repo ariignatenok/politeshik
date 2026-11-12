@@ -105,22 +105,26 @@ const Cloud = (() => {
         };
       },
       onSnapshot(cb, errCb) {
+        let inFlight=false,active=true,lastSignature;
         const run = async () => {
+          if(!active||inFlight||typeof document!=='undefined'&&document.hidden&&lastSignature!==undefined)return;
+          inFlight=true;
           try {
             const {data, error} = await supa.from('docs').select('data').eq('tenant_id', tenant).eq('path', path).maybeSingle();
             if (error) throw error;
+            const signature=JSON.stringify(data);if(!active||signature===lastSignature)return;lastSignature=signature;
             cb({
               exists: !!data,
               data: () => (data ? data.data : null)
             });
           } catch (error) {
-            if (errCb) errCb(error);
-          }
+            if (active&&errCb) errCb(error);
+          } finally {inFlight=false;}
         };
         run();
         const id = setInterval(run, 20000);
         return {
-          unsubscribe: () => clearInterval(id)
+          unsubscribe: () => {active=false;clearInterval(id);}
         };
       }
     };
@@ -138,7 +142,10 @@ const Cloud = (() => {
         return docAPI(p + id);
       },
       onSnapshot(cb, errCb) {
+        let inFlight=false,active=true,lastSignature;
         const run = async () => {
+          if(!active||inFlight||typeof document!=='undefined'&&document.hidden&&lastSignature!==undefined)return;
+          inFlight=true;
           try {
             const {data, error} = await supa
               .from('docs')
@@ -147,6 +154,8 @@ const Cloud = (() => {
               .like('path', p + '%')
               .not('path', 'like', p + '%/%');
             if (error) throw error;
+            if(!active)return;
+            const signature=JSON.stringify(data);if(signature===lastSignature)return;lastSignature=signature;
             const direct = (data || []).filter(r => r.path.slice(p.length).indexOf('/') === -1);
             cb({
               docs: direct.map(r => ({
@@ -155,13 +164,13 @@ const Cloud = (() => {
               }))
             });
           } catch (error) {
-            if (errCb) errCb(error);
-          }
+            if (active&&errCb) errCb(error);
+          } finally {inFlight=false;}
         };
         run();
         const id = setInterval(run, 20000);
         return {
-          unsubscribe: () => clearInterval(id)
+          unsubscribe: () => {active=false;clearInterval(id);}
         };
       }
     };
@@ -649,11 +658,12 @@ const Cloud = (() => {
       const {data: curatorContext, error: curatorError} = await supa.rpc('activate_bound_curator');
       if(curatorError)throw new Error(curatorError.message);
       C.curatorContext=curatorContext?.matched && curatorContext.active?curatorContext:null;
-      const {data: facultyContext,error: facultyError}=await supa.rpc('faculty_context');
+      const [facultyResult,groupResult]=await Promise.all([supa.rpc('faculty_context'),supa.rpc('group_context')]);
+      const {data:facultyContext,error:facultyError}=facultyResult;
       if(facultyError)throw new Error(facultyError.message);
       C.facultyRequest=facultyContext?.matched?facultyContext:null;
       C.facultyContext=facultyContext?.active?facultyContext:null;
-      const {data: context, error: contextError} = await supa.rpc('group_context');
+      const {data:context,error:contextError}=groupResult;
       if (contextError || !context) throw new Error('Не удалось проверить группу и права аккаунта');
       C.tenantId = context.tenant_id;
       C.homeTenant = context.home_tenant;
@@ -668,32 +678,19 @@ const Cloud = (() => {
         isOwner: context.is_admin === true
       };
       C.meta = (session.user && session.user.user_metadata) || {};
-      try {
-        const {data: ad} = await supa.from('admins').select('uid').eq('uid', C.uid).maybeSingle();
-        if (ad) C.me.isOwner = true;
-      } catch (error) {}
-      C.isTeacher = false;
-      try {
-        const {data: tc} = await supa.from('teachers').select('uid').eq('uid', C.uid).maybeSingle();
-        if (tc) C.isTeacher = true;
-      } catch (error) {}
-      C.realTeacher = C.isTeacher;
-      C.member = null;
-      C.memberKnown = false;
-      try {
-        const {data: mb, error: mbErr} = await supa.from('members').select('*').eq('uid', C.uid).maybeSingle();
-        if (!mbErr) {
-          C.member = mb;
-          C.memberKnown = true;
-        }
-      } catch (error) {}
+      const [teacherResult,memberResult,ps]=await Promise.all([
+        Promise.resolve(supa.from('teachers').select('uid').eq('uid',C.uid).maybeSingle()).catch(()=>({data:null})),
+        Promise.resolve(supa.from('members').select('*').eq('uid',C.uid).maybeSingle()).catch(()=>({data:null,error:true})),
+        C.isSuperAdmin?Promise.resolve({exists:!!context.profile,data:()=>context.profile}):DB.doc('profiles/'+C.uid).get()
+      ]);
+      C.isTeacher=!!teacherResult.data;C.realTeacher=C.isTeacher;
+      C.memberKnown=!memberResult.error;C.member=C.memberKnown?memberResult.data:null;
       C.me.isOwner = context.is_admin === true;
       C.isAdmin = !!C.me.isOwner;
       C.realAdmin = C.isAdmin;
       C.status = 'online';
       C.adminUids = new Set(C.isAdmin ? [C.uid] : []);
       watchClaims();
-      const ps = await DB.doc('profiles/' + C.uid).get();
       C.profile = C.isSuperAdmin ? clone(context.profile || {}) : ps.exists ? clone(ps.data()) : null;
       if (C.realTeacher && !C.profile) {
         C.profile = {

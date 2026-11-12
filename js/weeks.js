@@ -2,6 +2,7 @@
 
 const Weeks = {
   keep: 40,
+  renderCache: null,
   months: [
     'января',
     'февраля',
@@ -62,8 +63,11 @@ const Weeks = {
    * @returns {Array<Object>} Массив.
    */
   lessons(weekStart) {
+    if(Weeks.renderCache?.has(weekStart))return Weeks.renderCache.get(weekStart);
     const local = Weeks.has(weekStart) ? Weeks.map()[weekStart] : Weeks.templateFor(weekStart);
-    return ScheduleSync.week(weekStart, local);
+    const result=ScheduleSync.week(weekStart, local);
+    if(Weeks.renderCache)Weeks.renderCache.set(weekStart,result);
+    return result;
   },
   /**
    * Возвращает пары конкретного дня по расписанию его недели.

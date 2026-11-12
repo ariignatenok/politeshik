@@ -167,3 +167,4 @@ test('an explicitly waiting source is distinguished from published free days and
  ScheduleSync.snapshot=waiting;Store.s.weeks['2026-11-09']=[{id:'manual',day:0,pair:1,subjectId:'s_opbd'}];
  assert.equal(ScheduleSync.day('2026-11-09'),null);assert.equal(Weeks.on('2026-11-09')[0].id,'manual');
 });
+test('weekly compilation is reused only within a render and refreshes after source changes',()=>{const {Weeks,ScheduleSync}=app();const original=ScheduleSync.week;let count=0;ScheduleSync.week=(...args)=>{count++;return original(...args)};Weeks.renderCache=new Map();const first=Weeks.lessons('2026-11-09');for(let i=0;i<100;i++)assert.equal(Weeks.lessons('2026-11-09'),first);assert.equal(count,1);Weeks.renderCache=null;ScheduleSync.snapshot.days['2026-11-10'].lessons=[];const updated=Weeks.lessons('2026-11-09');assert.equal(updated.filter(l=>l.day===1).length,0);assert.equal(count,2);});

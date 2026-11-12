@@ -55,8 +55,6 @@ const App = {
     $('#nav-side').innerHTML = '';
     $('#nav-bottom').innerHTML = '';
     g.hidden = false;
-    if (g.dataset.mode === mode) return '';
-    g.dataset.mode = mode;
     const busy =
       Cloud.status === 'pending' ||
       (logged &&
@@ -64,6 +62,8 @@ const App = {
         mode !== 'complete' &&
         mode !== 'oauth' &&
         ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0);
+    if(g.dataset.mode===mode&&g.dataset.busy===String(busy))return '';
+    g.dataset.mode=mode;g.dataset.busy=String(busy);
     if (busy) {
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
@@ -274,6 +274,7 @@ const App = {
    * @param {boolean} animate Нужна ли анимация (необязательно).
    */
   render(animate) {
+    if(App.softFrame){cancelAnimationFrame(App.softFrame);App.softFrame=null;}
     const gm = App.gateMode();
     if (gm) {
       const switcher = $('#group-switch'); if (switcher) switcher.innerHTML = '';
@@ -315,14 +316,14 @@ const App = {
       ui.tab = Cloud.isStaff ? Roles.home() : 'dashboard';
     const v = $('#view');
     const sameScreen = !animate && App.shown === ui.tab && !!v.firstChild;
-    const html = Safe.html(
+    const html = App.renderView(() => Safe.html(
       'view:' + ui.tab,
       () =>
         Cloud.status === 'online' && !Cloud.ready && Date.now() - (Cloud.initAt || 0) < 4000
           ? Skeleton.forTab(ui.tab)
           : Views[ui.tab](),
       Safe.card(ui.tab)
-    );
+    ));
     const fingerprint = App.fingerprint(html);
     if (!(sameScreen && fingerprint === App.shownKey)) {
       const snapshot = sameScreen ? App.scrollSnapshot(v) : null;
@@ -419,10 +420,13 @@ const App = {
     }
   },
   /**
-   * Убирает из HTML случайные подробности (задержки морганий, номера слоёв), чтобы понять, изменился ли экран на самом деле.
-   * @param {string} html HTML экрана.
-   * @returns {string} Строка.
+   * Переиспользует расчёты расписания только во время одной синхронной отрисовки.
    */
+  renderView(build) {
+    const previousWeeks=Weeks.renderCache,previousSource=ScheduleSync.renderCache;
+    Weeks.renderCache=new Map();ScheduleSync.renderCache={};
+    try{return build();}finally{Weeks.renderCache=previousWeeks;ScheduleSync.renderCache=previousSource;}
+  },
   fingerprint(html) {
     return html.replace(/animation-duration:[\d.]+s;animation-delay:[\d.]+s/g, '').replace(/mc\d+/g, 'mc');
   },
@@ -501,12 +505,17 @@ const App = {
    * Перерисовывает экран, если пользователь сейчас не вводит текст и не открыто окно.
    */
   renderSoft() {
-    if ($('#modal-root').firstChild || $('#confirm-root').firstChild) return;
-    if(typeof Club!=='undefined' && ui.tab==='club' && (Club.drag || Club.walking || Club.moving || Date.now()<(Club.ignorePollUntil||0)))return;
-    const a = document.activeElement;
-    if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return;
-    App.render();
+    if(App.softFrame)return;
+    App.softFrame=requestAnimationFrame(()=>{
+      App.softFrame=null;
+      if ($('#modal-root').firstChild || $('#confirm-root').firstChild) return;
+      if(typeof Club!=='undefined' && ui.tab==='club' && (Club.drag || Club.walking || Club.moving || Date.now()<(Club.ignorePollUntil||0)))return;
+      const a=document.activeElement;
+      if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))return;
+      App.render();
+    });
   },
+
   /**
    * Запускает приложение: загружает данные, подключает облако и таймеры.
    */

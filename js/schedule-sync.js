@@ -140,6 +140,7 @@ const ScheduleSync = {
    * @returns {Array<Object>} Изменения источника.
    */
   changes() {
+    if(ScheduleSync.renderCache?.changes)return ScheduleSync.renderCache.changes;
     if (!ScheduleSync.snapshot) return [];
     const result = [];
     Object.entries(ScheduleSync.snapshot.days).forEach(([date, day]) => {
@@ -158,6 +159,7 @@ const ScheduleSync = {
         });
       });
     });
+    if(ScheduleSync.renderCache)ScheduleSync.renderCache.changes=result;
     return result;
   },
   /**
