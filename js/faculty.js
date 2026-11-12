@@ -14,12 +14,20 @@ const Faculty = {
   fields(value='') {
     return '<label class="field"><span>Полное ФИО преподавателя</span><input class="input" name="teacher_name" list="faculty-names" autocomplete="name" value="'+U.esc(value)+'" placeholder="Начните вводить фамилию"><datalist id="faculty-names">'+FACULTY_NAMES.map(n=>'<option value="'+U.esc(n)+'"></option>').join('')+'</datalist></label><p class="hint">Выберите своё ФИО из списка. Доступ подтверждает Админ Арина.</p>';
   },
+  async fetchJson(file) {
+    if(file!=='faculty.json'&&!/^schedule-teacher-faculty-[a-f0-9]{12}\.json$/.test(file))throw Error('Неверный файл расписания');
+    let last;
+    for(const base of ['https://raw.githubusercontent.com/ariignatenok/politeshik/main/data/','data/']){
+      try{const response=await fetch(base+file+'?t='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('Не удалось загрузить расписание');return await response.json();}
+      catch(error){last=error;}
+    }
+    throw last;
+  },
   async load(force=false) {
     if(Faculty.loading||(!force&&Date.now()-Faculty.loadedAt<300000))return;
     Faculty.loading=true;
     try {
-      const r=await fetch('data/faculty.json?t='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(15000)});
-      if(!r.ok)throw Error('Справочник временно недоступен');const data=await r.json();
+      const data=await Faculty.fetchJson('faculty.json');
       if(data.schema!==1||!Array.isArray(data.teachers)||data.teachers.length!==FACULTY_NAMES.length||data.teachers.some(t=>!FACULTY_NAMES.includes(t.name)))throw Error('Неверный справочник');
       Faculty.data=data;Faculty.loadedAt=Date.now();ScheduleSync.populateCatalog();App.renderSoft();
     } catch(error) { Faculty.loadedAt=Date.now()-240000; }
@@ -71,7 +79,7 @@ const Faculty = {
     await Faculty.load();const row=Faculty.data?.teachers.find(t=>t.id===id);if(!row)return toast('Преподаватель не найден');
     if(!row.schedule_file)return UI.open(row.name,'<p>Сайт колледжа пока не предоставил расписание этого преподавателя. Проверяем автоматически.</p>');
     UI.open(row.name,'<p>Загружаем расписание…</p>');
-    try{const r=await fetch('data/'+row.schedule_file+'?t='+Date.now(),{cache:'no-store',signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('Не удалось загрузить расписание');const data=await r.json();
+    try{const data=await Faculty.fetchJson(row.schedule_file);
       if(data.kind!=='teacher'||Faculty.key(data.teacher)!==Faculty.key(row.teacher))throw Error('Расписание другого преподавателя');
       UI.open(row.name,'<p class="hint">Данные от '+U.esc(data.checked_at)+' · polytech-schedule.ru</p>'+Object.entries(data.days).filter(([date,d])=>date>=U.iso(U.mondayOf(U.today()))&&d.lessons.length).map(([date,d])=>'<section class="card"><h2>'+U.esc(U.fmtLong(U.fromISO(date)))+'</h2>'+d.lessons.map(l=>'<p><b>'+l.lesson_number+' пара · '+U.esc(l.subject)+'</b><br>'+l.group_list.map(U.esc).join(', ')+' · '+U.esc(l.classroom||l.auditorium||'Аудитория не указана')+'</p>').join('')+'</section>').join(''),{wide:true});
     }catch(error){toast(error.message)}
