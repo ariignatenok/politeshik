@@ -158,6 +158,7 @@ const SHELL = [
   'data/schedule.json',
   'data/schedule-26290911-3111.json',
   'data/schedule-23290907-2092.json',
+  'data/schedule-24290907-2092.json',
   'js/works.js'
 ];
 const EXTERNAL_SCRIPTS = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'];
