@@ -17,7 +17,7 @@ function viewBotChat() {
   Chat.markRead();
   let last = '';
   const body = c.msgs
-    .map(m => {
+    .map((m,index) => {
       const t = new Date(m.t),
         day = U.iso(t),
         me = m.from === 'me';
@@ -74,7 +74,7 @@ function viewBotChat() {
         '<small>' +
         U.pad(t.getHours()) +
         ':' +
-        U.pad(t.getMinutes()) +
+        U.pad(t.getMinutes()) + (me ? messageReceipt(c.msgs.slice(index+1).some(x=>x.from!=='me'),true) : '') +
         '</small></div></div>'
       );
     })
@@ -268,7 +268,7 @@ function viewDmThread(uid) {
         '<small>' +
         U.pad(t.getHours()) +
         ':' +
-        U.pad(t.getMinutes()) +
+        U.pad(t.getMinutes()) + (mine ? messageReceipt(!!m[m.sender===m.thread_uid?'read_by_admin':'read_by_student']) : '') +
         '</small></div></div>'
       );
     })

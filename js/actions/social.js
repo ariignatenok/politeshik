@@ -44,8 +44,7 @@ Object.assign(A, {
     return Club.refresh('leave');
   },
   'club-dance'() {
-    Club.dancing = !Club.dancing;
-    return Club.refresh('beat');
+    return Club.customize({p_dance:Club.dance==='still'?'bounce':'still'});
   },
   'club-calm'() {
     Club.calm = !Club.calm;
@@ -55,7 +54,6 @@ Object.assign(A, {
     return Club.refresh('state');
   },
   'club-map'() {
-    Club.refresh('leave');
     ui.tab = 'map';
     ui.mapFloor = 5;
     App.render(true);

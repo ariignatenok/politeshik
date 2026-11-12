@@ -17,31 +17,47 @@ const Dm = {
     const {data, error} = await supa.rpc('welcome_recipients');
     const before = JSON.stringify([Dm.welcomeRecipients, Dm.welcomeError, Dm.welcomeLoaded]);
     Dm.welcomeError = error ? error.message : '';
-    if (!error) { Dm.welcomeRecipients = data || []; Dm.welcomeLoaded = true; }
-    if (before !== JSON.stringify([Dm.welcomeRecipients, Dm.welcomeError, Dm.welcomeLoaded])) App.renderSoft();
+    if (!error) {
+      Dm.welcomeRecipients = data || [];
+      Dm.welcomeLoaded = true;
+    }
+    if (before !== JSON.stringify([Dm.welcomeRecipients, Dm.welcomeError, Dm.welcomeLoaded]))
+      App.renderSoft();
   },
   /**
    * Проверяет доступ к рабочим перепискам поддержки своей группы.
    * @returns {boolean} Признак сотрудника поддержки.
    */
-  support() { return Cloud.isAdmin || Cloud.isDeveloper; },
+  support() {
+    return Cloud.isAdmin || Cloud.isDeveloper;
+  },
   /**
    * Возвращает собственную роль поддержки.
    * @returns {string} Роль.
    */
-  supportRole() { return Cloud.isSuperAdmin ? 'superadmin' : Cloud.isAdmin ? 'admin' : Cloud.isDeveloper ? 'developer' : ''; },
+  supportRole() {
+    return Cloud.isSuperAdmin ? 'superadmin' : Cloud.isAdmin ? 'admin' : Cloud.isDeveloper ? 'developer' : '';
+  },
   /**
    * Возвращает выбранного получателя сообщений.
    * @returns {string} Роль получателя.
    */
-  recipient() { return ui.dmRole || Dm.supportRole() || (Groups.current !== 'group_1' ? 'admin' : 'superadmin'); },
+  recipient() {
+    return ui.dmRole || Dm.supportRole() || (Groups.current !== 'group_1' ? 'admin' : 'superadmin');
+  },
   /**
    * Возвращает подпись сотрудника в чате.
    * @param {string} role Роль получателя.
    * @returns {string} Имя.
    */
   contactName(role) {
-    return {admin: (Groups.get(Groups.current).leader || 'Лебедев Петр Андреевич') + ' · староста', developer: 'Кузьменков Макар Сергеевич · разработчик', superadmin: 'Админ Арина'}[role] || 'Поддержка';
+    return (
+      {
+        admin: (Groups.get(Groups.current).leader || 'Лебедев Петр Андреевич') + ' · староста',
+        developer: 'Кузьменков Макар Сергеевич · разработчик',
+        superadmin: 'Админ Арина',
+      }[role] || 'Поддержка'
+    );
   },
   /**
    * Загружает сообщения личного чата с админом.
@@ -50,10 +66,12 @@ const Dm = {
     if (!supa || Cloud.status !== 'online' || !Cloud.hasCabinet()) return;
     let q = supa
       .from('chat')
-      .select('id,thread_uid,sender,body,created_at,read_by_admin,read_by_student,recipient_role,sender_label')
+      .select(
+        'id,thread_uid,sender,body,created_at,read_by_admin,read_by_student,recipient_role,sender_label',
+      )
       .eq('tenant_id', Cloud.tenantId || 'group_1')
       .order('created_at', {
-        ascending: false
+        ascending: false,
       })
       .limit(1500);
     if (!Dm.support()) q = q.eq('thread_uid', Cloud.uid);
@@ -63,7 +81,7 @@ const Dm = {
       return;
     }
     const list = data.slice().reverse(),
-      sig = list.map(m => m.id + (m.thread_uid === Cloud.uid ? m.read_by_student : m.read_by_admin)).join(',');
+      sig = list.map((m) => [m.id, !!m.read_by_student, !!m.read_by_admin].join(':')).join(',');
     const incoming = list.filter(Dm.isIncoming),
       prevIncoming = Dm.msgs.filter(Dm.isIncoming);
     const fresh = Dm.loaded && incoming.length > prevIncoming.length ? incoming[incoming.length - 1] : null;
@@ -82,10 +100,10 @@ const Dm = {
         Dm.support() ? Dm.nameOf(fresh.thread_uid) : Dm.contactName(fresh.recipient_role),
         String(fresh.body).slice(0, 100),
         {
-          tag: 'dm'
-        }
+          tag: 'dm',
+        },
       );
-    App.renderSoft();
+    renderChatUpdates();
   },
   /**
    * Запускает периодическое обновление личных сообщений.
@@ -119,7 +137,9 @@ const Dm = {
    * @returns {Array<Object>} Массив.
    */
   threadMsgs(uid, role) {
-    return Dm.msgs.filter(m => m.thread_uid === uid && (m.recipient_role || 'superadmin') === (role || Dm.recipient()));
+    return Dm.msgs.filter(
+      (m) => m.thread_uid === uid && (m.recipient_role || 'superadmin') === (role || Dm.recipient()),
+    );
   },
   /**
    * Считает непрочитанные сообщения в переписке.
@@ -128,14 +148,16 @@ const Dm = {
    */
   unreadIn(uid) {
     const flag = uid === Cloud.uid ? 'read_by_student' : 'read_by_admin';
-    return Dm.threadMsgs(uid).filter(m => Dm.isIncoming(m) && !m[flag]).length;
+    return Dm.threadMsgs(uid).filter((m) => Dm.isIncoming(m) && !m[flag]).length;
   },
   /**
    * Считает все непрочитанные личные сообщения.
    * @returns {number} Число.
    */
   unreadTotal() {
-    return Dm.msgs.filter(m => Dm.isIncoming(m) && !m[m.thread_uid === Cloud.uid ? 'read_by_student' : 'read_by_admin']).length;
+    return Dm.msgs.filter(
+      (m) => Dm.isIncoming(m) && !m[m.thread_uid === Cloud.uid ? 'read_by_student' : 'read_by_admin'],
+    ).length;
   },
   /**
    * Возвращает имя студента по идентификатору.
@@ -151,7 +173,7 @@ const Dm = {
    */
   threads() {
     const by = {};
-    Dm.msgs.forEach(m => {
+    Dm.msgs.forEach((m) => {
       if (m.thread_uid === Cloud.uid) return;
       const key = m.thread_uid + '|' + (m.recipient_role || 'superadmin');
       const t =
@@ -161,7 +183,7 @@ const Dm = {
           role: m.recipient_role || 'superadmin',
           uid: m.thread_uid,
           last: m,
-          unread: 0
+          unread: 0,
         });
       t.last = m;
       if (Dm.isIncoming(m) && !m.read_by_admin) t.unread++;
@@ -170,7 +192,7 @@ const Dm = {
     return Object.values(by).sort(
       (a, b) =>
         pins.includes(b.uid) - pins.includes(a.uid) ||
-        String(b.last.created_at).localeCompare(String(a.last.created_at))
+        String(b.last.created_at).localeCompare(String(a.last.created_at)),
     );
   },
   /**
@@ -190,7 +212,7 @@ const Dm = {
       thread_uid: uid,
       sender: Cloud.uid,
       kind: 'text',
-      body
+      body,
     });
     if (error) {
       toast('Не удалось отправить: ' + error.message);
@@ -205,16 +227,17 @@ const Dm = {
    * @param {string} uid Идентификатор студента.
    */
   async markRead(uid) {
+    if (document.hidden || document.querySelector('#modal-root')?.firstChild) return;
     const flag = uid === Cloud.uid ? 'read_by_student' : 'read_by_admin',
-      unread = Dm.threadMsgs(uid).filter(m => Dm.isIncoming(m) && !m[flag]);
+      unread = Dm.threadMsgs(uid).filter((m) => Dm.isIncoming(m) && !m[flag]);
     if (!unread.length) return;
-    unread.forEach(m => {
+    unread.forEach((m) => {
       m[flag] = true;
     });
     let q = supa
       .from('chat')
       .update({
-        [flag]: true
+        [flag]: true,
       })
       .eq('thread_uid', uid)
       .eq('tenant_id', Cloud.tenantId || 'group_1')
@@ -234,12 +257,46 @@ const Dm = {
     else pins.unshift(uid);
     Cloud.profile.pins = pins;
     Cloud.pushProfile();
-  }
+  },
 };
 /**
  * Считает все непрочитанные сообщения для бейджа меню.
  * @returns {number} Число.
  */
 function chatUnread() {
-  return (Cloud.isStaff ? 0 : Chat.unread()) + Dm.unreadTotal() + (typeof Social !== 'undefined' ? Social.unread() : 0);
+  return (
+    (Cloud.isStaff ? 0 : Chat.unread()) +
+    Dm.unreadTotal() +
+    (typeof Social !== 'undefined' ? Social.unread() : 0)
+  );
+}
+
+/** A tick confirms server storage; two ticks reflect the recipient's persisted read flag. */
+function messageReceipt(read, bot = false) {
+  const label = read ? (bot ? 'Политешик ответил' : 'Прочитано') : 'Отправлено · пока не прочитано';
+  return (
+    '<span class="message-receipt' +
+    (read ? ' is-read' : '') +
+    '" role="img" aria-label="' +
+    label +
+    '" title="' +
+    label +
+    '"><span aria-hidden="true">' +
+    (read ? '✓✓' : '✓') +
+    '</span></span>'
+  );
+}
+
+function renderChatUpdates() {
+  const focused = document.activeElement;
+  if (
+    typeof ui !== 'undefined' &&
+    ui.tab === 'chat' &&
+    focused &&
+    focused.matches &&
+    focused.matches('textarea[data-chat-draft]') &&
+    !document.querySelector('#modal-root')?.firstChild
+  )
+    App.render();
+  else App.renderSoft();
 }

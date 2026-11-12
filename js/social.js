@@ -41,6 +41,11 @@ const Social = {
       MapRoutes.pending = null;
     }
     Club.visitors = [];
+    Club.dancing = true;
+    Club.dance = 'bounce';
+    Club.drink = 'none';
+    Club.thought = '';
+    Club.thoughtDraft = undefined;
     Club.joined = false;
     Club.loaded = false;
   },
@@ -213,7 +218,11 @@ const Social = {
       );
       Social.historyMore = (rows || []).length === 80;
       Social.threadError = '';
-      if (ui.chatWith === 'peer:' + uid && !document.hidden) {
+      if (
+        ui.chatWith === 'peer:' + uid &&
+        !document.hidden &&
+        !document.querySelector('#modal-root')?.firstChild
+      ) {
         await Social.call('peer_read', {p_peer: uid});
         const row = Social.inbox.find((x) => x.uid === uid);
         if (row) row.unread = 0;
@@ -222,7 +231,7 @@ const Social = {
       if (owner === Cloud.uid) Social.threadError = error.message;
     } finally {
       locks.delete(uid);
-      if (owner === Cloud.uid && ui.tab === 'chat' && ui.chatWith === 'peer:' + uid) App.renderSoft();
+      if (owner === Cloud.uid && ui.tab === 'chat' && ui.chatWith === 'peer:' + uid) renderChatUpdates();
     }
   },
   async send(form) {
@@ -273,8 +282,7 @@ const Social = {
       await Social.loadInbox();
       if (ui.tab === 'chat' && (ui.chatWith || '').startsWith('peer:'))
         await Social.loadThread(ui.chatWith.slice(5));
-      if (ui.tab === 'club') await Club.refresh(Club.joined ? 'beat' : 'state');
-      else if (Club.joined) await Club.refresh('leave');
+      if (ui.tab === 'club' || !Club.loaded) await Club.refresh('state');
       App.renderSoft();
     };
     Social.timer = setInterval(tick, 10000);
@@ -289,6 +297,20 @@ const Club = {
   loading: false,
   error: '',
   calm: false,
+  dance: 'bounce',
+  drink: 'none',
+  thought: '',
+  apply(data) {
+    Club.visitors = data.visitors || [];
+    Club.joined = !!data.joined;
+    const own = Club.visitors.find((v) => v.uid === Cloud.uid);
+    if (own) {
+      Club.dance = own.dance || (own.dancing ? 'bounce' : 'still');
+      Club.dancing = Club.dance !== 'still';
+      Club.drink = own.drink || 'none';
+      Club.thought = own.thought || '';
+    }
+  },
   async open() {
     if (!Social.allowed()) return toast('Клуб доступен после регистрации');
     Social.reset();
@@ -304,8 +326,7 @@ const Club = {
     try {
       const data = await Social.call('club_visit', {p_action: action, p_dancing: Club.dancing});
       if (owner !== Cloud.uid) return;
-      Club.visitors = data.visitors || [];
-      Club.joined = !!data.joined;
+      Club.apply(data);
       Club.loaded = true;
       Club.error = '';
     } catch (error) {

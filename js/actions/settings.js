@@ -76,6 +76,7 @@ Object.assign(A, {
   'modal-close'() {
     if (UI.locked) return;
     UI.close();
+    if(ui.tab==='chat')App.renderSoft();
   },
   /**
    * Передаёт форму её обработчику из Forms.

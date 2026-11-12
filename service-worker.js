@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bclubpeople20261112';
+const CACHE_VERSION = 'bclubmoves20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -89,6 +89,7 @@ const SHELL = [
   'js/navigation.js',
   'js/personal-menu.js',
   'js/social.js',
+  'js/club-actions.js',
   'js/map-routes.js',
   'js/views/social.js',
   'js/actions/social.js',
