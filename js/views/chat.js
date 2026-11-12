@@ -132,7 +132,7 @@ function chatRow(o) {
     (o.pinned ? ' <span class="pin-mark">закреплён</span>' : '') +
     '</b><small>' +
     U.esc(o.preview || o.subtitle || '') +
-    '</small></span>' +
+    '</small>' + (o.status || '') + '</span>' +
     '<span class="chat-row-side">' +
     (o.time ? '<small>' + U.esc(o.time) + '</small>' : '') +
     (o.unread ? '<span class="badge">' + o.unread + '</span>' : '') +
@@ -281,7 +281,7 @@ function viewDmThread(uid) {
     U.esc(admin ? Dm.nameOf(uid) : Dm.contactName(Dm.recipient())) +
     '</b><small>' +
     (admin ? 'личная переписка' : 'личная переписка с админом группы') +
-    '</small></div>' +
+    '</small>' + Presence.html({uid:admin?uid:Object.keys(Avatars.people).find(id=>Avatars.people[id].role===Dm.recipient())}) + '</div>' +
     (admin
       ? '<div class="chat-head-actions"><button class="btn sm" data-action="dm-pin" data-uid="' +
         uid +

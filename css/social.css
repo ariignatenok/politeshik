@@ -604,3 +604,8 @@
 @media(max-width:650px){.club-guest:has(.club-thought){width:130px}.club-thought{max-width:130px;font-size:10px}.club-drink-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.club-bar{flex-wrap:wrap}.club-bar>small{font-size:10px}.club-floor{gap:14px 15px}}
 .message-receipt{display:inline-flex;align-items:center;margin-left:7px;vertical-align:middle;color:var(--muted);font-size:12px;letter-spacing:-2px;line-height:1;font-weight:800}.message-receipt.is-read{color:var(--accent);letter-spacing:-3px;padding-right:3px}
 .club-own-preview{--guest-turn:0deg;--beat-delay:0s}
+.social-presence{display:inline-flex;align-items:center;justify-content:inherit;gap:5px;color:var(--muted);font-size:11px;line-height:1.4;font-weight:400;max-width:100%;overflow-wrap:anywhere}
+.social-presence>i{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:currentColor;opacity:.5}
+.social-presence.is-online{color:#58b78a}.social-presence.is-online>i{opacity:1;box-shadow:0 0 7px #58b78a66}
+.club-guest .social-presence{font-size:8px;margin-top:3px;justify-content:center;color:#b9a8cf}.club-guest .social-presence.is-online{color:#85e6bd}
+.peer-title .social-presence{display:flex;margin-top:5px}.person-card .social-presence{font-size:10px;justify-content:center}

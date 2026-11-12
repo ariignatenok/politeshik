@@ -24,7 +24,7 @@ function socialProfileHtml(card) {
     U.esc(card.name) +
     '</h2><p>' +
     U.esc(card.group_name) +
-    '</p></div></div><div class="social-profile-actions">' +
+    '</p>' + Presence.html(card) + '</div></div><div class="social-profile-actions">' +
     like('mascot') +
     like('photo') +
     (self
@@ -53,6 +53,7 @@ function socialInboxHtml() {
           id: 'peer:' + card.uid,
           title: card.name,
           subtitle: card.group_name,
+          status:Presence.html(card),
           preview: card.last,
           unread: Number(card.unread),
           time: chatTime(card.at),
@@ -87,7 +88,7 @@ function viewPeople() {
           U.esc(card.name) +
           '</b><small>' +
           U.esc(card.group_name) +
-          '</small><span>Открыть профиль →</span></button>',
+          '</small>' + Presence.html(Social.cards[card.uid]||card) + '<span>Открыть профиль →</span></button>',
       )
       .join('') +
     '</div>' +
@@ -111,7 +112,7 @@ function viewPeerThread(uid) {
     U.esc((card && card.name) || 'Собеседник') +
     '</b><small>' +
     U.esc((card && card.group_name) || 'Личная переписка') +
-    '</small></span></button></div><div class="card peer-thread"><div class="peer-scroll">' +
+    '</small>' + Presence.html(card) + '</span></button></div><div class="card peer-thread"><div class="peer-scroll">' +
     (Social.historyMore && rows.length
       ? '<button class="btn sm ghost" data-action="peer-older" data-uid="' +
         uid +
@@ -172,7 +173,7 @@ function viewClub() {
           U.esc(card.uid === Cloud.uid ? 'Вы' : card.name) +
           '</b><small>' +
           U.esc(card.group_name) +
-          '</small></button>',
+          '</small>' + Presence.html(card) + '</button>',
       )
       .join('') +
     '</div><div class="club-caption">' +

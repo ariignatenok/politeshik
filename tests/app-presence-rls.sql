@@ -1,0 +1,31 @@
+begin;
+do $$declare k text;u uuid;begin foreach k in array array['presenceA','presenceB','presenceParent'] loop
+ u:=gen_random_uuid();perform set_config('test.'||k,u::text,true);
+ insert into auth.users(id,email,email_confirmed_at,aud,role) values(u,'presence-'||u||'@example.invalid',now(),'authenticated','authenticated');
+ insert into public.members(tenant_id,uid,role,status,requested_role,full_name,group_id) values('group_2',u,case when k='presenceParent' then 'parent' else 'student' end,'approved',case when k='presenceParent' then 'parent' else 'student' end,k,'g_26290911_3111');end loop;
+ perform set_config('test.session1',gen_random_uuid()::text,true);perform set_config('test.session2',gen_random_uuid()::text,true);
+end $$;
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.presenceA'),'role','authenticated')::text,true);
+do $$declare response jsonb;begin response:=public.social_presence(current_setting('test.session1')::uuid,true);assert response->'person'->>'uid'=auth.uid()::text and not (response ? 'people'),'Heartbeat returns other accounts';end $$;
+do $$declare p jsonb;begin p:=public.social_profile(auth.uid());assert p->>'online'='true' and p->>'last_seen' is not null,'Active app does not appear online';end $$;
+select public.social_presence(current_setting('test.session2')::uuid,true);
+select public.social_presence(current_setting('test.session1')::uuid,false);
+do $$begin assert public.social_profile(auth.uid())->>'online'='true','Closing one session hides another active device';end $$;
+select public.social_presence(current_setting('test.session2')::uuid,false);
+do $$begin assert public.social_profile(auth.uid())->>'online'='false','Inactive app remains online';assert public.social_profile(auth.uid())->>'last_seen' is not null,'Offline visit time lost';end $$;
+select public.club_visit('join');
+reset role;
+update politeshik_private.presence_sessions set active=true,seen_at=now()-interval '2 minutes' where uid=current_setting('test.presenceA')::uuid;
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.presenceB'),'role','authenticated')::text,true);
+do $$declare p jsonb;denied boolean:=false;begin
+ p:=public.social_profile(current_setting('test.presenceA')::uuid);assert p->>'online'='false','Stale heartbeat still online';
+ assert exists(select 1 from jsonb_array_elements(public.club_visit('state')->'visitors') x where x->>'uid'=current_setting('test.presenceA') and x->>'online'='false'),'Offline app removed a persistent club mascot';
+ perform public.social_presence(current_setting('test.session1')::uuid,true);
+ assert public.social_profile(current_setting('test.presenceA')::uuid)->>'online'='false','Another account forged online status with same session ID';
+ begin perform count(*) from politeshik_private.presence_sessions;exception when insufficient_privilege then denied:=true;end;assert denied,'Presence table accessible directly';
+end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.presenceParent'),'role','authenticated')::text,true);
+do $$declare denied boolean:=false;begin begin perform public.social_presence(gen_random_uuid(),true);exception when insufficient_privilege then denied:=true;end;assert denied,'Parent can access student activity';end $$;
+rollback;

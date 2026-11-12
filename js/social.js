@@ -55,7 +55,10 @@ const Social = {
     return data;
   },
   keep(card) {
-    if (card && card.uid) Social.cards[card.uid] = card;
+    if (card && card.uid) {
+      Social.cards[card.uid] = card;
+      if (typeof Presence !== 'undefined') Presence.observe(card);
+    }
     return card;
   },
   avatar(card, size = 48, photo = true) {
@@ -302,6 +305,7 @@ const Club = {
   thought: '',
   apply(data) {
     Club.visitors = data.visitors || [];
+    if (typeof Presence !== 'undefined') Club.visitors.forEach((card) => Presence.observe(card));
     Club.joined = !!data.joined;
     const own = Club.visitors.find((v) => v.uid === Cloud.uid);
     if (own) {
