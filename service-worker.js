@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'battlayout20261112';
+const CACHE_VERSION = 'battscroll20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [

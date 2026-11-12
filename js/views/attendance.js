@@ -375,7 +375,7 @@ function viewAttendance() {
   const prev = U.iso(U.addDays(U.fromISO(date), -1)),
     next = U.iso(U.addDays(U.fromISO(date), 1));
   return (
-    '<div class="page-head"><div><h1>Посещаемость</h1><p>Отмечайся на каждой паре: <b>п</b> — присутствую, <b>о</b> — опоздал(а), <b>н</b> — нет. Самоотметка доступна на паре и 24 часа после её окончания. Уже поставленную отметку меняет староста.</p></div><button class="btn" data-action="att-certificates">Справки и больничные</button></div>' +
+    '<div class="page-head attendance-head"><div><h1>Посещаемость</h1><p>Отмечайся на каждой паре: <b>п</b> — присутствую, <b>о</b> — опоздал(а), <b>н</b> — нет. Самоотметка доступна на паре и 24 часа после её окончания. Уже поставленную отметку меняет староста.</p></div><button class="btn" data-action="att-certificates">Справки и больничные</button></div>' +
     (Cloud.status === 'online'
       ? ''
       : '<div class="warn">' +

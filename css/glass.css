@@ -29,7 +29,7 @@
   }
 
   @media (min-width: 901px) {
-    .view > .page-head:first-child {
+    .view > .page-head:first-child:not(.attendance-head) {
       position: sticky;
       top: 0;
       z-index: 30;
