@@ -628,6 +628,24 @@
   gap: 14px;
 }
 
+.attendance-details {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.attendance-details .card {
+  min-width: 0;
+}
+
+#attendance-certificates h2 {
+  flex-wrap: wrap;
+}
+
+#attendance-certificates h2 .btn {
+  flex-shrink: 0;
+}
+
 .cab-pct {
   display: flex;
   align-items: center;

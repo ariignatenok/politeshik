@@ -419,7 +419,7 @@ function viewAttendance() {
     periodControls() +
     '</div>' +
     statCards(st) +
-    '<div class="dash-cols"><section class="card"><h2>По предметам</h2>' +
+    '<div class="attendance-details"><div class="dash-cols"><section class="card"><h2>По предметам</h2>' +
     subjTable(st) +
     '</section>' +
     '<section class="card"><h2>Календарь</h2>' +
@@ -430,7 +430,8 @@ function viewAttendance() {
       'att-day',
     ) +
     '</section></div>' +
-    attendanceCertificatesHtml()
+    attendanceCertificatesHtml() +
+    '</div>'
   );
 }
 
