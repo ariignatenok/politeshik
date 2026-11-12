@@ -274,6 +274,7 @@ const Att = {
     return changes;
   },
   canSelf(date, pair, now = Date.now()) {
+    if(Cloud.isSuperAdmin && Cloud.tenantId!==Cloud.homeTenant)return false;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || pair < 1 || pair > 5) return false;
     const slot = (Store.s.settings.pairs || [])[pair - 1] || {},
       starts = ['09:00', '10:45', '12:50', '14:30', '16:10'],
