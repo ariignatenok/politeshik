@@ -118,3 +118,21 @@ test('parent requests never count as students even when an old profile has a ros
   Cloud.memberMap.parent={role:'parent',requested_role:'parent',status:'approved'};
   assert.equal(Roles.countsAsStudent('parent'),false);
 });
+
+test('fourth group isolates 29 students, email-bound leader, schedule and storage',()=>{
+  const {Groups,ROSTER,Store,ScheduleSync,groupName,limit}=app();
+  Groups.selectRoster('group_4');assert.equal(ROSTER.length,29);
+  assert.equal(ROSTER[0].name,'Анисимов Александр Валентинович');
+  assert.equal(ROSTER[28].name,'Тиликова Ангелина Вячеславовна');
+  assert.equal(ROSTER[28].accessRole,'admin');assert.equal(ROSTER[28].activation,'email');
+  assert.equal(ROSTER.filter(r=>r.accessRole==='developer').length,0);
+  Groups.activate({uid:'user',tenant_id:'group_4'});
+  assert.equal(Store.key,'user:group_4');assert.equal(Store.s.settings.groupTenant,'group_4');
+  assert.equal(groupName(),'24290907/2092');assert.equal(limit(),12);
+  assert.equal(Groups.get('group_4').supportRoles.join(','),'admin,superadmin');
+  ScheduleSync.snapshot=JSON.parse(fs.readFileSync(path.join(root,'data/schedule-24290907-2092.json'),'utf8'));
+  assert.equal(ScheduleSync.valid(ScheduleSync.snapshot),true);
+  assert.ok(ScheduleSync.url.endsWith('schedule-24290907-2092.json'));
+  assert.ok(ScheduleSync.key.endsWith(':group_4'));
+  assert.equal(Store.s.notes.length,0);assert.equal(Store.s.cards.length,0);
+});

@@ -87,12 +87,14 @@ def main(group=GROUP, output=OUTPUT):
     print(f"Saved {len(snapshot['days'])} days for {group}")
 
 
+GROUP_FEEDS = [(GROUP, "schedule.json"), ("26290911/3111", "schedule-26290911-3111.json"), ("23290907/2092", "schedule-23290907-2092.json"), ("24290907/2092", "schedule-24290907-2092.json")]
+
 if __name__ == "__main__":
     failed = 0
-    for group, filename in [(GROUP, "schedule.json"), ("26290911/3111", "schedule-26290911-3111.json"), ("23290907/2092", "schedule-23290907-2092.json")]:
+    for group, filename in GROUP_FEEDS:
         try:
             main(group, OUTPUT.parent / filename)
         except Exception as error:
             failed += 1
             print(f"Schedule sync failed for {group}: {error}", file=sys.stderr)
-    sys.exit(1 if failed == 3 else 0)
+    sys.exit(1 if failed == len(GROUP_FEEDS) else 0)
