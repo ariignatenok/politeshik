@@ -15,6 +15,7 @@ Object.assign(A, {
   nav(el) {
     Mascot.walk();
     const t = el.dataset.tab;
+    if (t !== 'map' && typeof MapRoutes !== 'undefined') { MapRoutes.pending=null; ui.mapPlacing=false; }
     if (t === 'chat') ui.chatWith = null;
     if (t === 'subjects' && ui.tab === 'subjects') ui.subjectId = null;
     ui.tab = t;

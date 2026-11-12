@@ -1,0 +1,199 @@
+'use strict';
+function socialProfileHtml(card) {
+  const self = card.uid === Cloud.uid;
+  const like = (kind) =>
+    '<button class="btn social-like' +
+    (card['liked_' + kind] ? ' on' : '') +
+    '" data-action="social-like" data-uid="' +
+    card.uid +
+    '" data-kind="' +
+    kind +
+    '" aria-pressed="' +
+    !!card['liked_' + kind] +
+    '"' +
+    (self || (kind === 'photo' && !card.avatar) ? ' disabled' : '') +
+    '>♡ ' +
+    (kind === 'photo' ? 'Фото' : 'Маскот') +
+    ' · ' +
+    Number(card[kind + '_likes'] || 0) +
+    '</button>';
+  return (
+    '<div class="social-profile"><div class="social-cover"><span>ПОЛИТЕШИК / ЛЮДИ</span></div><div class="social-profile-head">' +
+    Social.avatar(card, 94) +
+    '<div><h2>' +
+    U.esc(card.name) +
+    '</h2><p>' +
+    U.esc(card.group_name) +
+    '</p></div></div><div class="social-profile-actions">' +
+    like('mascot') +
+    like('photo') +
+    (self
+      ? '<button class="btn" data-action="social-my-profile">Мой кабинет</button>'
+      : '<button class="btn primary" data-action="peer-open" data-uid="' +
+        card.uid +
+        '">Написать лично</button>') +
+    '</div><section class="social-about"><h3>О себе</h3><p>' +
+    U.esc(card.about || 'Студент пока не рассказал о себе.').replace(/\n/g, '<br>') +
+    '</p></section><div class="social-look"><h3>Мой Политешик</h3>' +
+    Social.avatar({...card, avatar: ''}, 160, false) +
+    '</div></div>'
+  );
+}
+function socialInboxHtml() {
+  if (!Social.allowed()) return '';
+  return (
+    '<section class="peer-inbox"><div class="section-head"><h2>Личные переписки</h2><button class="btn sm" data-action="social-people">Найти собеседника</button></div>' +
+    (Social.inboxError
+      ? '<p class="warn">Не удалось обновить переписки. <button class="btn sm" data-action="social-retry">Повторить</button></p>'
+      : '') +
+    '<div class="chat-list">' +
+    (Social.inbox
+      .map((card) =>
+        chatRow({
+          id: 'peer:' + card.uid,
+          title: card.name,
+          subtitle: card.group_name,
+          preview: card.last,
+          unread: Number(card.unread),
+          time: chatTime(card.at),
+          avatar: Social.avatar(card, 42),
+        }),
+      )
+      .join('') || '<p class="hint">Откройте профиль в разделе «Люди», чтобы начать общение.</p>') +
+    '</div></section>'
+  );
+}
+function viewPeople() {
+  if (!Social.allowed()) return '<div class="card">Раздел доступен зарегистрированным студентам.</div>';
+  if (!Social.loaded && !Social.loading && !Social.error) Social.loadPeople();
+  return (
+    '<div class="page-head"><div><h1>Люди</h1><p>Знакомьтесь со студентами своей и других групп.</p></div><button class="btn primary" data-action="club-open">✦ В клуб</button></div><div class="social-search" data-form="social-search"><input class="input" name="q" maxlength="100" value="' +
+    U.esc(Social.query) +
+    '" placeholder="Имя или группа" aria-label="Имя или группа"><button class="btn" data-action="save-form">Найти</button></div>' +
+    (Social.error
+      ? '<p class="warn">' +
+        U.esc(Social.error) +
+        ' <button class="btn sm" data-action="social-retry">Повторить</button></p>'
+      : '') +
+    '<div class="people-grid">' +
+    Social.people
+      .map(
+        (card) =>
+          '<button class="card person-card" data-action="social-profile" data-uid="' +
+          card.uid +
+          '">' +
+          Social.avatar(Social.cards[card.uid] || card, 64) +
+          '<b>' +
+          U.esc(card.name) +
+          '</b><small>' +
+          U.esc(card.group_name) +
+          '</small><span>Открыть профиль →</span></button>',
+      )
+      .join('') +
+    '</div>' +
+    (Social.loading
+      ? '<p class="hint" role="status">Загружаем профили…</p>'
+      : !Social.people.length && !Social.error
+        ? '<p class="hint">По этому запросу никого не нашли.</p>'
+        : '') +
+    (Social.more ? '<button class="btn" data-action="social-more">Показать ещё</button>' : '')
+  );
+}
+function viewPeerThread(uid) {
+  const card = Social.cards[uid],
+    rows = Social.threads[uid] || [];
+  return (
+    '<div class="page-head"><button class="btn sm" data-action="chat-back">← Чаты</button><button class="peer-title" data-action="social-profile" data-uid="' +
+    uid +
+    '">' +
+    Social.avatar(card, 40) +
+    '<span><b>' +
+    U.esc((card && card.name) || 'Собеседник') +
+    '</b><small>' +
+    U.esc((card && card.group_name) || 'Личная переписка') +
+    '</small></span></button></div><div class="card peer-thread"><div class="peer-scroll">' +
+    (Social.historyMore && rows.length
+      ? '<button class="btn sm ghost" data-action="peer-older" data-uid="' +
+        uid +
+        '">Более ранние сообщения</button>'
+      : '') +
+    (rows
+      .map(
+        (m) =>
+          '<div class="peer-message' +
+          (m.sender === Cloud.uid ? ' mine' : '') +
+          '"><p>' +
+          U.esc(m.body).replace(/\n/g, '<br>') +
+          '</p><small>' +
+          U.esc(new Date(m.created_at).toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit'})) +
+          (m.sender === Cloud.uid ? (m.read_at ? ' · Прочитано' : ' · Отправлено') : '') +
+          '</small></div>',
+      )
+      .join('') || '<div class="empty">Начните знакомство с приветствия 👋</div>') +
+    '</div>' +
+    (Social.threadError
+      ? '<p class="warn">' +
+        U.esc(Social.threadError) +
+        ' <button class="btn sm" data-action="peer-retry" data-uid="' +
+        uid +
+        '">Повторить</button></p>'
+      : '') +
+    '<div class="chat-in" data-form="peer" data-peer="' +
+    uid +
+    '">' +
+    chatComposer('peerIn', 'peer:' + uid, 'Написать сообщение…') +
+    '<button class="btn primary" data-action="save-form" aria-label="Отправить сообщение">➤</button></div></div>'
+  );
+}
+function viewClub() {
+  if (!Social.allowed()) return '<div class="card">Клуб доступен зарегистрированным студентам.</div>';
+  const dj = {body: 'lilac', top: 'blacktee', hat: 'headphones', glasses: 'sun', chain: 'shortgold'};
+  return (
+    '<div class="page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
+    (Club.calm ? ' calm' : '') +
+    '"><div class="club-neon">POLITESHIK <span>CLUB</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-stage"><div class="club-speaker">◉<br>◉</div><div class="club-dj">' +
+    Mascot.svg('happy', 110, '', {look: dj, season: ''}) +
+    '<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК</span><i>◉</i></div></div><div class="club-speaker">◉<br>◉</div></div><div class="club-bar"><span>BAR</span><b>☕ 🧋 🍹</b><small>Кофе · чай · лимонад</small></div><div class="club-floor">' +
+    Club.visitors
+      .map(
+        (card, i) =>
+          '<button class="club-guest' +
+          (card.dancing ? ' dancing' : '') +
+          '" data-action="social-profile" data-uid="' +
+          card.uid +
+          '" style="--beat-delay:-' +
+          (i % 7) * 0.21 +
+          's;--guest-turn:' +
+          ((i % 3) - 1) * 5 +
+          'deg">' +
+          Mascot.svg('cheer', 88, '', {
+            look: Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot),
+            season: '',
+          }) +
+          '<b>' +
+          U.esc(card.uid === Cloud.uid ? 'Вы' : card.name) +
+          '</b><small>' +
+          U.esc(card.group_name) +
+          '</small></button>',
+      )
+      .join('') +
+    '</div><div class="club-caption">' +
+    (Club.visitors.length ? 'На танцполе: ' + Club.visitors.length : 'Танцпол свободен — заходите первым') +
+    '</div></div><div class="club-controls">' +
+    (Club.joined
+      ? '<button class="btn primary" data-action="club-dance">' +
+        (Club.dancing ? 'Остановиться' : 'Танцевать') +
+        '</button><button class="btn" data-action="club-leave">Выйти из клуба</button>'
+      : '<button class="btn primary" data-action="club-join">Зайти на танцпол</button>') +
+    '<button class="btn" data-action="club-calm" aria-pressed="' +
+    Club.calm +
+    '">' +
+    (Club.calm ? 'Включить неон' : 'Спокойный свет') +
+    '</button></div><p class="hint">Нажмите на маскота, чтобы открыть профиль и познакомиться. Пока вы на танцполе, вас видят другие участники.</p>' +
+    (Club.error
+      ? '<p class="warn">' +
+        U.esc(Club.error) +
+        ' <button class="btn sm" data-action="club-retry">Повторить</button></p>'
+      : '')
+  );
+}

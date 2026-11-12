@@ -80,6 +80,7 @@ const CampusMap = {
     };
     Store.s.map = point;
     Store.save();
+    if (MapRoutes.pending) MapRoutes.finish(); else MapRoutes.sync();
     App.render();
     if (Cloud.status !== 'online')
       return toast('Точка сохранена только у вас: чтобы её видели другие, нужен вход в аккаунт');
@@ -98,6 +99,7 @@ const CampusMap = {
    * Убирает свою точку с карты.
    */
   async clear() {
+    MapRoutes.route=null;MapRoutes.pending=null;
     Store.s.map = null;
     Store.save();
     delete Cloud.mapPoints[Cloud.uid];
@@ -114,7 +116,7 @@ const CampusMap = {
         CampusMap.stop();
         return;
       }
-      if (await Cloud.refreshMap()) App.renderSoft();
+      if (await Cloud.refreshMap()) { MapRoutes.sync(); App.renderSoft(); }
     };
     CampusMap.timer = setInterval(refresh, CampusMap.pollMs);
     refresh();
@@ -132,7 +134,7 @@ const CampusMap = {
   bind() {
     document.addEventListener('click', event => {
       const surface = event.target && event.target.closest ? event.target.closest('.map-surface') : null;
-      if (!surface || !ui.mapPlacing) return;
+      if (!surface || !ui.mapPlacing || event.target.closest('[data-action]')) return;
       const box = surface.getBoundingClientRect();
       if (!box.width || !box.height) return;
       const clamp = value => Math.min(100, Math.max(0, Math.round(value * 10) / 10));
@@ -180,7 +182,7 @@ function viewMap() {
       const mine = p.uid === Cloud.uid,
         stale = CampusMap.minutesAgo(p.at) > CampusMap.staleMinutes;
       return (
-        '<span class="map-dot' +
+        '<button type="button" data-action="map-person" data-uid="' + p.uid + '" class="map-dot mascot-map-marker' +
         (mine ? ' me' : '') +
         (stale ? ' stale' : '') +
         '" style="left:' +
@@ -189,9 +191,9 @@ function viewMap() {
         p.y +
         '%" title="' +
         U.esc(p.name || '') +
-        '"><i></i><b>' +
+        '">' + Mascot.svg('happy',38,'',{look:Avatars.look(p.uid),season:''}) + '<b>' +
         (mine ? 'Вы' : U.esc(p.name || 'Студент')) +
-        '</b></span>'
+        '</b></button>'
       );
     })
     .join('');
@@ -211,7 +213,7 @@ function viewMap() {
       )
       .join('');
   return (
-    '<div class="page-head"><div><h1>Карта колледжа</h1><p>Отметьте, где вы сейчас: одногруппники увидят вашу точку с именем. Точки пропадают через 2 часа.</p></div>' +
+    '<div class="page-head"><div><h1>Карта колледжа</h1><p>Отметьте своё место: одногруппники увидят вашего маскота с именем. Отметка видна 2 часа.</p></div>' +
     '<div class="head-actions"><button class="btn primary' +
     (ui.mapPlacing ? ' on' : '') +
     '" data-action="map-here">' +
@@ -229,8 +231,9 @@ function viewMap() {
     '" alt="План ' +
     floor +
     ' этажа колледжа" draggable="false">' +
-    dots +
-    '</div>' +
+    (floor===5 ? '<button class="map-club-entry" data-action="club-open" aria-label="Войти в Клуб Политешика"><span>Клуб Политешика ✦</span></button>' : '') +
+    MapRoutes.overlay(floor) + dots +
+    '</div>' + MapRoutes.directions() +
     '<section class="card map-list"><h2>Кто где</h2>' +
     (list || '<div class="empty">Пока никто не отметился. Нажмите «Я здесь»</div>') +
     '</section>'

@@ -159,8 +159,7 @@ function viewChatListStudent() {
       unread: Chat.unread(),
       avatar: Mascot.svg(Mascot.current(), 44)
     }) +
-    supportContactsHtml() +
-    '</div>'
+    supportContactsHtml() + '</div>' + socialInboxHtml()
   );
 }
 /** Показывает Арине получателей приветствия и отметки прочтения. */
@@ -221,8 +220,7 @@ function viewChatListAdmin() {
     '<div class="chat-list">' +
     botRow +
     (Cloud.isSuperAdmin ? '' : supportContactsHtml()) +
-    rows +
-    '</div>' +
+    rows + '</div>' + socialInboxHtml() +
     (list.length
       ? ''
       : Dm.loaded
@@ -308,6 +306,7 @@ function viewDmThread(uid) {
  */
 function viewChat() {
   if (Cloud.status !== 'online') return viewBotChat();
+  if ((ui.chatWith || '').startsWith('peer:')) return viewPeerThread(ui.chatWith.slice(5));
   if (ui.chatWith && ui.chatWith.startsWith('contact:')) return viewDmThread(Cloud.uid);
   if (Cloud.isStaff) return viewDmThread(Cloud.uid);
   if (Dm.support())

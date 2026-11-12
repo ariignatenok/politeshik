@@ -26,7 +26,7 @@ function aboutCard() {
     ' · н ' +
     w.a +
     '</span></div></div>' +
-    '<label class="field" style="margin:12px 0 0"><span>О себе (до 500 символов)</span><textarea class="input" id="about-text" rows="3" maxlength="500" placeholder="Расскажи о себе в паре предложений…">' +
+    '<label class="field" style="margin:12px 0 0"><span>О себе (до 500 символов) · видно другим студентам в профиле</span><textarea class="input" id="about-text" rows="3" maxlength="500" placeholder="Расскажи о себе в паре предложений…">' +
     U.esc(state.settings.about || '') +
     '</textarea></label>' +
     '<div class="head-actions" style="margin-top:8px"><button class="btn primary sm" data-action="about-save">Сохранить</button>' +

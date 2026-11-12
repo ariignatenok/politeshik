@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'personalmenu20261112';
+const BUILD = 'clubpeople20261112';

@@ -216,7 +216,7 @@ Object.assign(A, {
    */
   'map-floor'(el) {
     ui.mapFloor = +el.dataset.floor;
-    ui.mapPlacing = false;
+    if (!MapRoutes.pending) ui.mapPlacing = false;
     App.render();
   },
   /**

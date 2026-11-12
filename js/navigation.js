@@ -87,6 +87,7 @@ const NAV_ALL = [
     label: 'Рейтинг группы',
     short: 'Рейтинг'
   },
+  {id:'people',ico:ICONS.busts,label:'Люди',short:'Люди'},
   {
     id: 'map',
     ico: ICONS.worldMap,

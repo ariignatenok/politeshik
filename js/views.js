@@ -1,6 +1,8 @@
 'use strict';
 
 const Views = {
+  people: viewPeople,
+  club: viewClub,
   groups: viewGroups,
   diagnostics: viewDiagnostics,
   dashboard: viewDashboard,

@@ -532,6 +532,7 @@ const App = {
         Safe.run('profile', () => Profile.push());
         Safe.run('achievements', () => Ach.check());
         Safe.run('messages', () => Dm.start());
+        Safe.run('social', () => Social.start());
         Safe.run('news', () => News.start());
         App.render(true);
         Safe.selfCheck();
