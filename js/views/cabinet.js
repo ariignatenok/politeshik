@@ -122,7 +122,7 @@ function viewCabinetMain() {
     '</span></p></div></div>' +
     '<div class="head-actions">' +
     (online
-      ? '<button class="btn" data-action="profile-edit">' + ICONS.pencil + ' Профиль</button>'
+      ? '<button class="btn primary" data-action="wall-open">Моя страница · стена</button><button class="btn" data-action="profile-edit">' + ICONS.pencil + ' Профиль</button>'
       : '') +
     '</div></div>' +
     aboutCard() +

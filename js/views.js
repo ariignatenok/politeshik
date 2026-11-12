@@ -1,6 +1,7 @@
 'use strict';
 
 const Views = {
+  profile: viewProfileWall,
   people: viewPeople,
   club: viewClub,
   groups: viewGroups,

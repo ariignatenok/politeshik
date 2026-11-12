@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bsocialmedia20261112b';
+const CACHE_VERSION = 'bprofilewall20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -32,6 +32,7 @@ const SHELL = [
   'css/mascot.css',
   'css/personal-menu.css',
   'css/social.css',
+  'css/profile-wall.css',
   'css/modal.css',
   'css/motion.css',
   'css/news.css',
@@ -96,6 +97,8 @@ const SHELL = [
   'js/chat-media.js',
   'js/map-guide.js',
   'js/global-rating.js',
+  'js/profile-wall.js',
+  'js/views/profile-wall.js',
   'js/views/social.js',
   'js/actions/social.js',
   'js/news.js',

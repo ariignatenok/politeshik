@@ -19,7 +19,7 @@ select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting(
 do $$declare card jsonb;msg jsonb;denied boolean:=false;n uuid:=gen_random_uuid();begin
  card:=public.social_profile(current_setting('test.social3')::uuid);
  assert card->>'about'='Public bio 3' and card->>'avatar'='m4' and card->'mascot'->>'body'='pink','Public profile did not cross groups';
- assert not(card ? 'phone' or card ? 'email' or card ? 'stats' or card ? 'marks' or card ? 'tenant_id'),'Private education/profile data leaked';
+ assert coalesce(card->>'phone','')='' and coalesce(card->>'contact_email','')='' and not(card ? 'email' or card ? 'stats' or card ? 'marks' or card ? 'tenant_id'),'Legacy private contacts or education data leaked';
  assert not exists(select 1 from public.docs where tenant_id='group_3'),'Social profiles broadened education RLS';
  assert public.social_profile(current_setting('test.socialParent')::uuid) is null,'Parent published as student';
  assert public.social_profile(current_setting('test.socialPending')::uuid) is null,'Unapproved student published';

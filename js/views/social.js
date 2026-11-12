@@ -1,6 +1,7 @@
 'use strict';
-function socialProfileHtml(card) {
-  const self = card.uid === Cloud.uid;
+function socialProfileHtml(card, full = false) {
+  const self = card.uid === Cloud.uid,
+    theme = Wall.themes[card.page_theme] ? card.page_theme : 'lilac';
   const like = (kind) =>
     '<button class="btn social-like' +
     (card['liked_' + kind] ? ' on' : '') +
@@ -17,10 +18,20 @@ function socialProfileHtml(card) {
     ' · ' +
     Number(card[kind + '_likes'] || 0) +
     '</button>';
+  const phone = String(card.phone || ''),
+    email = String(card.contact_email || '');
   return (
-    '<div class="social-profile"><div class="social-cover"><span>ПОЛИТЕШИК / ЛЮДИ</span></div><div class="social-profile-head">' +
-    Social.avatar(card, 94) +
-    '<div><h2>' +
+    '<div class="social-profile ' +
+    (full ? 'is-full' : 'is-compact') +
+    ' wall-theme-' +
+    theme +
+    '"><div class="social-cover wall-cover">' +
+    (card.cover ? '<img data-wall-image="' + card.cover.path + '" alt="Обложка профиля">' : '') +
+    '<span>ПОЛИТЕШИК / МОЯ СТРАНИЦА</span></div><div class="social-profile-head">' +
+    Social.avatar(card, full ? 110 : 84) +
+    '<div>' +
+    Presence.html(card) +
+    '<h2>' +
     U.esc(card.name) +
     '</h2><p>' +
     U.esc(card.group_name) +
@@ -30,23 +41,33 @@ function socialProfileHtml(card) {
         (card.role === 'superadmin' ? ' · Супер-админ' : '') +
         '</span>'
       : '') +
-    Presence.html(card) +
-    '</div></div><div class="social-profile-actions">' +
+    '</div></div>' +
+    (card.tagline ? '<p class="wall-tagline">' + U.esc(card.tagline) + '</p>' : '') +
+    '<div class="social-profile-actions">' +
     like('mascot') +
     like('photo') +
-    (self
-      ? '<button class="btn" data-action="social-my-profile">Мой кабинет</button>'
-      : '<button class="btn primary" data-action="peer-open" data-uid="' +
+    (!self
+      ? '<button class="btn primary" data-action="peer-open" data-uid="' +
         card.uid +
-        '">Написать лично</button>') +
-    '</div><section class="social-about"><h3>О себе</h3><p>' +
-    U.esc(card.about || 'Студент пока не рассказал о себе.').replace(/\n/g, '<br>') +
-    '</p></section><div class="social-look"><h3>Мой Политешик</h3>' +
-    (Wardrobe.normalize(card.mascot).nickname
-      ? '<b class="mascot-nickname">' + U.esc(Wardrobe.normalize(card.mascot).nickname) + '</b>'
+        '">Написать лично</button>'
       : '') +
-    Social.avatar({...card, avatar: ''}, 160, false) +
-    '</div></div>'
+    '</div>' +
+    '<div class="wall-contacts">' +
+    (phone
+      ? '<a href="tel:' + U.esc(phone.replace(/[^+0-9]/g, '')) + '">☎ ' + U.esc(phone) + '</a>'
+      : '') +
+    (email
+      ? '<a href="mailto:' + encodeURIComponent(email) + '">✉ ' + U.esc(email) + '</a>'
+      : '') +
+    (!phone && !email ? '<span class="hint">Контакты пока не опубликованы</span>' : '') +
+    '</div>' +
+    (card.about ? '<p class="wall-bio">' + U.esc(card.about) + '</p>' : '') +
+    (!full
+      ? '<button class="btn primary wall-open-full" data-action="wall-open" data-uid="' +
+        card.uid +
+        '">Открыть профиль полностью →</button>'
+      : '') +
+    '</div>'
   );
 }
 function socialInboxHtml() {

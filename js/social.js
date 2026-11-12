@@ -179,7 +179,8 @@ const Social = {
       });
       if (owner !== Cloud.uid) return;
       Social.keep(updated);
-      if (Social.profileId === uid && document.querySelector('.social-profile'))
+      if(typeof Wall!=='undefined' && Wall.data?.card?.uid===uid)Wall.data.card=updated;
+      if (Social.profileId === uid && document.querySelector('#modal-root .social-profile'))
         UI.open(updated.name, socialProfileHtml(updated), {wide: true, noFocus: true});
       App.renderSoft();
     } catch (error) {
