@@ -38,6 +38,29 @@
   margin-bottom: 16px;
 }
 
+.cabinet-sections {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.cabinet-sections .card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cabinet-sections .card h2 {
+  flex-wrap: wrap;
+}
+
+.cabinet-sections .card h2 .btn {
+  flex-shrink: 0;
+}
+
+.cabinet-sections .cab-pct {
+  flex-wrap: wrap;
+}
+
 .about-top {
   display: flex;
   align-items: center;

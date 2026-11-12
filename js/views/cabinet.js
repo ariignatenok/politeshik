@@ -129,7 +129,7 @@ function viewCabinetMain() {
     Safe.html('my-mascot', () => Mascot.cardHtml()) +
     winnerPlaque() +
     absCardOf(state.attendance.marks, Cloud.my.certs, state.settings.subgroup) +
-    '<div class="dash-cols"><section class="card"><h2>Моя посещаемость · ' +
+    '<div class="cabinet-sections"><section class="card"><h2>Моя посещаемость · ' +
     monthName(ym) +
     ' <button class="btn sm" data-action="nav" data-tab="attendance">Открыть</button></h2>' +
     (st.total
@@ -148,7 +148,6 @@ function viewCabinetMain() {
         '</small></div>'
       : '<div class="empty">Отметок за этот месяц пока нет</div>') +
     '</section>' +
-    '</div>' +
     '<div class="dash-cols"><section class="card"><h2>Мои работы (файлы) <button class="btn sm primary" data-action="file-add">＋ Прикрепить</button></h2>' +
     (!online
       ? '<div class="empty">Файлы сохраняются в облаке — откройте приложение по приглашению.</div>'
@@ -213,6 +212,6 @@ function viewCabinetMain() {
           ICONS.memo,
           'Личные заметки вне предметов. Заметки по предметам — во вкладке «Предметы».',
         )) +
-    '</section></div>'
+    '</section></div></div>'
   );
 }
