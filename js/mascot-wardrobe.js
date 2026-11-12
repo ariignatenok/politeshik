@@ -168,6 +168,12 @@ const Wardrobe = {
     out.acc = Array.isArray(source.acc)
       ? [...new Set(source.acc.filter((id) => Mascot.userItems.some((x) => x.id === id)))]
       : [];
+    out.nickname =
+      typeof source.nickname === 'string'
+        ? Array.from(source.nickname.replace(/[\u0000-\u001f\u007f]/g, '').trim())
+            .slice(0, 24)
+            .join('')
+        : '';
     out.mood = Mascot.userMoods.some((x) => x.id === source.mood) ? source.mood : '';
     return out;
   },
@@ -185,7 +191,11 @@ const Wardrobe = {
   },
   preset(id) {
     if (!Wardrobe.presets[id]) return;
-    Store.s.settings.mascot = Wardrobe.normalize({...Wardrobe.presets[id].look, mood: Mascot.userMood()});
+    Store.s.settings.mascot = Wardrobe.normalize({
+      ...Wardrobe.presets[id].look,
+      mood: Mascot.userMood(),
+      nickname: Mascot.chosen().nickname,
+    });
     Mascot.persist();
   },
   layers(look) {
@@ -398,7 +408,7 @@ Mascot.chooseMood = (id) => {
   Mascot.persist();
 };
 Mascot.resetLook = () => {
-  Store.s.settings.mascot = Wardrobe.normalize({});
+  Store.s.settings.mascot = Wardrobe.normalize({nickname: Mascot.chosen().nickname});
   Mascot.persist();
 };
 Mascot.syncFromProfile = () => {
@@ -460,7 +470,9 @@ Mascot.cardHtml = () => {
     return (
       '<section class="card mascot-summary"><h2>Мой Политешик</h2><div class="mascot-summary-row">' +
       Mascot.svg(look.mood || 'happy', 100, '', {look, season: ''}) +
-      '<div><b>Ваш персональный маскот</b><p>Его видят рядом с вашим фото и именем.</p><button class="btn" data-action="mascot-edit">Изменить</button></div></div></section>'
+      '<div><b>' +
+      U.esc(look.nickname || 'Ваш персональный маскот') +
+      '</b><p>Его видят рядом с вашим фото и именем.</p><button class="btn" data-action="mascot-edit">Изменить</button></div></div></section>'
     );
   const chip = (action, value, label, on, key = 'id') =>
     '<button class="my-chip' +
@@ -493,7 +505,11 @@ Mascot.cardHtml = () => {
   return (
     '<section class="card my-mascot wardrobe"><div class="wardrobe-title"><h2>Мой Политешик</h2><button class="btn sm" data-action="mascot-done">Готово</button></div><p>Ваш маленький спутник рядом с фото и именем. Его видят другие участники группы.</p><div class="my-mascot-body"><div class="my-preview">' +
     Mascot.svg(look.mood || 'happy', 180, '', {season: '', look}) +
-    '<span>Это ваш образ</span></div><div class="my-controls"><h3>Готовые образы</h3><div class="my-chips">' +
+    '<span>' +
+    U.esc(look.nickname || 'Это ваш образ') +
+    '</span></div><div class="my-controls"><div data-form="mascot-name"><label class="field"><span>Ник вашего маскота · до 24 символов</span><input class="input" name="nickname" maxlength="24" value="' +
+    U.esc(look.nickname) +
+    '" placeholder="Как его зовут?"></label><button class="btn sm" data-action="save-form">Сохранить ник</button><p class="hint">Название «Политешик» остаётся прежним. Это личный ник вашего маскота.</p></div><h3>Готовые образы</h3><div class="my-chips">' +
     Object.entries(Wardrobe.presets)
       .map(([id, p]) => chip('mascot-preset', id, p.name, false))
       .join('') +

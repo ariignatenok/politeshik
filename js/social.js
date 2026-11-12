@@ -40,6 +40,14 @@ const Social = {
       MapRoutes.route = null;
       MapRoutes.pending = null;
     }
+    Club.walkAnimation?.cancel();
+    Club.drag = null;
+    Club.walking = false;
+    Club.moving = false;
+    Club.ignorePollUntil = 0;
+    Club.ignoreTapUntil = 0;
+    Club.jumpsSeen = {};
+    Club.roomVersion = (Club.roomVersion || 0) + 1;
     Club.visitors = [];
     Club.dancing = true;
     Club.dance = 'bounce';
@@ -285,7 +293,7 @@ const Social = {
       await Social.loadInbox();
       if (ui.tab === 'chat' && (ui.chatWith || '').startsWith('peer:'))
         await Social.loadThread(ui.chatWith.slice(5));
-      if (ui.tab === 'club' || !Club.loaded) await Club.refresh('state');
+      if (!Club.loaded) await Club.refresh('state');
       App.renderSoft();
     };
     Social.timer = setInterval(tick, 10000);
@@ -324,12 +332,14 @@ const Club = {
     window.scrollTo(0, 0);
   },
   async refresh(action = 'state') {
-    if (Club.loading || !Social.allowed()) return;
+    if (!Social.allowed() || (Club.loading && action==='state')) return;
+    if(action==='join'||action==='leave')Club.roomVersion=(Club.roomVersion||0)+1;
+    const version=Club.roomVersion||0;
     Club.loading = true;
     const owner = Cloud.uid;
     try {
       const data = await Social.call('club_visit', {p_action: action, p_dancing: Club.dancing});
-      if (owner !== Cloud.uid) return;
+      if (owner !== Cloud.uid || version!==(Club.roomVersion||0)) return;
       Club.apply(data);
       Club.loaded = true;
       Club.error = '';

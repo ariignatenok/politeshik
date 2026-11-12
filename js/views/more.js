@@ -20,9 +20,7 @@ function viewMore() {
         (t) =>
           '<button class="tile" data-action="nav" data-tab="' +
           t[0] +
-          '"><span>' +
-          t[1] +
-          '</span>' +
+          '">' + (MenuPrefs.iconsVisible()?'<span>'+t[1]+'</span>':'') +
           t[2] +
           (MenuPrefs.pinned(t[0]) ? ' 📌' : '') +
           '</button>',

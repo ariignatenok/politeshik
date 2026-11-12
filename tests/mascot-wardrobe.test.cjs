@@ -135,3 +135,17 @@ test('wardrobe opens only on Edit and vampire traits combine with glasses', () =
   for (const {look} of Object.values(Wardrobe.presets))
     assert.ok(!Mascot.svg('happy', 120, '', {look, season: ''}).includes('undefined'));
 });
+
+test('mascot nickname survives presets and appearance reset; body is circular', () => {
+  const {Mascot, Wardrobe, Store} = app();
+  Store.s.settings.mascot = Wardrobe.normalize({nickname: 'Fluffy Плюш', body: 'pink'});
+  assert.equal(Mascot.chosen().nickname, 'Fluffy Плюш');
+  Wardrobe.preset('vampiregirl');
+  assert.equal(Mascot.chosen().nickname, 'Fluffy Плюш');
+  Mascot.resetLook();
+  assert.equal(Mascot.chosen().nickname, 'Fluffy Плюш');
+  assert.equal(Wardrobe.normalize({nickname: 'Кекс\nКот'}).nickname, 'КексКот');
+  const svg = Mascot.svg('happy', 120, '', {season: '', look: {}});
+  assert.ok(svg.includes('data-mascot-body="round"'));
+  assert.ok(svg.includes('cx="60" cy="72" r="38"'));
+});

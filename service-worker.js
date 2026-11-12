@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bpresence20261112';
+const CACHE_VERSION = 'bmascotmotion20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -91,6 +91,7 @@ const SHELL = [
   'js/social.js',
   'js/presence.js',
   'js/club-actions.js',
+  'js/club-floor.js',
   'js/map-routes.js',
   'js/views/social.js',
   'js/actions/social.js',

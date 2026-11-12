@@ -968,3 +968,5 @@ Object.assign(A, {
     App.renderSoft();
   }
 });
+
+Forms['mascot-name'] = form => { Store.s.settings.mascot=Wardrobe.normalize({...Mascot.chosen(),nickname:val(form,'nickname')}); Mascot.persist(); App.render(); };

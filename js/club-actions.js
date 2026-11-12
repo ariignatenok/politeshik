@@ -135,6 +135,7 @@ Object.assign(Club, {
     if (Club.saving) return;
     Club.captureThought();
     Club.saving = true;
+    Club.roomVersion=(Club.roomVersion||0)+1;
     const uid = Cloud.uid,
       draft = Club.thoughtDraft;
     const controls = Array.from(

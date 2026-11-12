@@ -363,9 +363,7 @@ const App = {
           (ui.tab === t.id ? ' on' : '') +
           '" data-action="nav" data-tab="' +
           t.id +
-          '"><span class="ico">' +
-          t.ico +
-          '</span>' +
+          '">' + (MenuPrefs.iconsVisible()?'<span class="ico">'+t.ico+'</span>':'') +
           t.label +
           (MenuPrefs.pinned(t.id) ? '<span class="nav-pin" aria-label="Закреплено">📌</span>' : '') +
           (t.id === 'chat'
@@ -395,9 +393,7 @@ const App = {
           (on ? ' on' : '') +
           '" data-action="nav" data-tab="' +
           t.id +
-          '"><span class="ico">' +
-          t.ico +
-          '</span>' +
+          '">' + (MenuPrefs.iconsVisible()?'<span class="ico">'+t.ico+'</span>':'') +
           t.short +
           (id === 'chat' ? badge(unread) : '') +
           '</button>'
@@ -506,6 +502,7 @@ const App = {
    */
   renderSoft() {
     if ($('#modal-root').firstChild || $('#confirm-root').firstChild) return;
+    if(typeof Club!=='undefined' && ui.tab==='club' && (Club.drag || Club.walking || Club.moving || Date.now()<(Club.ignorePollUntil||0)))return;
     const a = document.activeElement;
     if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return;
     App.render();

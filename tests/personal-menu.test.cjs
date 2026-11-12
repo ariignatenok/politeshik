@@ -140,3 +140,20 @@ test('optional tabs can be hidden and restored while mandatory sections and Sett
   a.MenuPrefs.reset();
   assert.ok(ids(a).includes('map'));
 });
+
+test('one icon switch is account-scoped and does not reorder or hide tabs', () => {
+  const a = app(),
+    order = ids(a),
+    bottom = Array.from(a.bottomNav());
+  assert.equal(a.MenuPrefs.iconsVisible(), true);
+  a.MenuPrefs.toggleIcons();
+  assert.equal(a.MenuPrefs.iconsVisible(), false);
+  assert.deepEqual(ids(a), order);
+  assert.deepEqual(Array.from(a.bottomNav()), bottom);
+  a.MenuPrefs.cache.clear();
+  assert.equal(a.MenuPrefs.iconsVisible(), false);
+  a.Cloud.uid = 'second';
+  assert.equal(a.MenuPrefs.iconsVisible(), true);
+  a.Cloud.uid = 'student-a';
+  assert.equal(a.MenuPrefs.iconsVisible(), false);
+});

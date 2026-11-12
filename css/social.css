@@ -609,3 +609,24 @@
 .social-presence.is-online{color:#58b78a}.social-presence.is-online>i{opacity:1;box-shadow:0 0 7px #58b78a66}
 .club-guest .social-presence{font-size:8px;margin-top:3px;justify-content:center;color:#b9a8cf}.club-guest .social-presence.is-online{color:#85e6bd}
 .peer-title .social-presence{display:flex;margin-top:5px}.person-card .social-presence{font-size:10px;justify-content:center}
+.mascot-nickname{display:block;font-size:19px;margin:10px 0;overflow-wrap:anywhere}
+/* The floor is now a shared play area rather than a flowing list of guests. */
+.club-scene .club-floor{display:block;position:relative;height:520px;min-height:520px;margin:25px 0 0;padding:0;border-radius:24px}
+.club-floor>.club-bar{position:absolute;top:4%;right:5%;width:25%;min-width:100px;max-width:145px;margin:0;display:block;z-index:9;padding:12px}
+.club-floor>.club-guest{position:absolute;z-index:4;transform:translate(-50%,-100%);margin:0;padding:0;user-select:none}
+.club-floor>.club-guest[data-uid]{cursor:pointer}.club-floor>.club-guest.is-dragging{cursor:grabbing;z-index:12}
+.club-floor>.club-guest:hover,.club-floor>.club-guest:focus-visible{z-index:11}
+.club-figure{display:inline-flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.club-mascot-nickname{font-size:12px;line-height:1.3;max-width:140px;overflow-wrap:anywhere;margin:3px 0}
+.club-figure.is-jumping{animation:club-tap-jump .58s ease-out!important}
+@keyframes club-tap-jump{0%,100%{transform:translateY(0) scale(1)}38%{transform:translateY(-35px) scale(1.05)}70%{transform:translateY(1px) scale(1.02,.94)}}
+.club-guest.move-bounce>.club-figure>.mascot{animation:club-dance .9s ease-in-out infinite}.club-guest.move-sway>.club-figure>.mascot{animation:club-sway 1.8s ease-in-out infinite}.club-guest.move-spin>.club-figure>.mascot{animation:club-spin 2.6s ease-in-out infinite}.club-guest.move-shuffle>.club-figure>.mascot{animation:club-shuffle .8s ease-in-out infinite}.club-guest.move-wave>.club-figure>.mascot{animation:club-sway 2.6s ease-in-out infinite}
+.club-floor>.club-guest.is-walking .mascot{animation:club-walk-step .35s ease-in-out infinite}
+@keyframes club-walk-step{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(4deg)}}
+.club-floor>.club-guest.me{touch-action:none;cursor:grab}
+@media(max-width:650px){.club-scene .club-floor{height:460px;min-height:460px}.club-floor>.club-bar{padding:9px}.club-floor>.club-bar b{margin:6px 0}.club-floor>.club-bar>small{font-size:9px}.club-mascot-nickname{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.club-figure.is-jumping,.club-floor>.club-guest.is-walking .mascot{animation:none!important}}
+.club-floor>.club-bar{z-index:20}.club-floor>.club-guest.is-dragging{z-index:30}
+
+.club-scene.calm .club-figure>.mascot{animation:none!important}
+@media(prefers-reduced-motion:reduce){.club-figure>.mascot{animation:none!important}}

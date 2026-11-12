@@ -35,6 +35,7 @@ function socialProfileHtml(card) {
     '</div><section class="social-about"><h3>О себе</h3><p>' +
     U.esc(card.about || 'Студент пока не рассказал о себе.').replace(/\n/g, '<br>') +
     '</p></section><div class="social-look"><h3>Мой Политешик</h3>' +
+    (Wardrobe.normalize(card.mascot).nickname ? '<b class="mascot-nickname">'+U.esc(Wardrobe.normalize(card.mascot).nickname)+'</b>' : '') +
     Social.avatar({...card, avatar: ''}, 160, false) +
     '</div></div>'
   );
@@ -148,17 +149,18 @@ function viewPeerThread(uid) {
 }
 function viewClub() {
   if (!Social.allowed()) return '<div class="card">Клуб доступен зарегистрированным студентам.</div>';
+  Club.ensurePolling();
   const dj = {body: 'lilac', top: 'blacktee', hat: 'headphones', glasses: 'sun', chain: 'shortgold'};
   return (
     '<div class="page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
     (Club.calm ? ' calm' : '') +
     '"><div class="club-neon">POLITESHIK <span>CLUB</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-stage"><div class="club-speaker">◉<br>◉</div><div class="club-dj">' +
     Mascot.svg('happy', 110, '', {look: dj, season: ''}) +
-    '<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК</span><i>◉</i></div></div><div class="club-speaker">◉<br>◉</div></div><button class="club-bar" data-action="club-bar"><span>BAR</span><b>☕ 🧃 🍹</b><small>Кофе · чай · соки · лимонад</small><small>Выбрать напиток →</small></button><div class="club-floor">' +
+    '<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК</span><i>◉</i></div></div><div class="club-speaker">◉<br>◉</div></div><div class="club-floor"><button class="club-bar" data-action="club-bar"><span>BAR</span><b>☕ 🧃 🍹</b><small>Кофе · чай · соки · лимонад</small><small>Выбрать напиток →</small></button>' +
     Club.visitors
       .map(
         (card, i) =>
-          '<button class="club-guest' +
+          '<button class="club-guest' + (card.uid===Cloud.uid?' me':'') +
           ' move-' + (Club.moves.some(x=>x[0]===card.dance)?card.dance:'bounce') +
           '" data-action="club-guest" data-uid="' +
           card.uid +
@@ -166,9 +168,10 @@ function viewClub() {
           (i % 7) * 0.21 +
           's;--guest-turn:' +
           ((i % 3) - 1) * 5 +
-          'deg">' +
+          'deg;left:'+Club.position(card).x+'%;top:'+Club.position(card).y+'%">' +
           (card.thought ? '<span class="club-thought">'+U.esc(card.thought)+'</span>' : '') +
-          Club.mascot(card,88) +
+          '<span class="club-figure">'+Club.mascot(card,88)+'</span>' +
+          (Wardrobe.normalize(card.uid===Cloud.uid?Mascot.chosen():card.mascot).nickname ? '<strong class="club-mascot-nickname">'+U.esc(Wardrobe.normalize(card.uid===Cloud.uid?Mascot.chosen():card.mascot).nickname)+'</strong>' : '') +
           '<b>' +
           U.esc(card.uid === Cloud.uid ? 'Вы' : card.name) +
           '</b><small>' +
@@ -188,7 +191,7 @@ function viewClub() {
     Club.calm +
     '">' +
     (Club.calm ? 'Включить неон' : 'Спокойный свет') +
-    '</button></div><p class="hint">Нажмите на своего маскота, чтобы выбрать движения или написать мысль; на чужого — чтобы познакомиться. Ваш маскот остаётся здесь даже после закрытия страницы. Чтобы убрать его, нажмите «Выйти из клуба».</p>' +
+    '</button></div><p class="hint">Нажмите на своего маскота — он подпрыгнет. Перетаскивайте его по танцполу. Движения и мысли — в кнопке «Мой маскот»; чужой маскот открывает профиль. Ваш маскот остаётся здесь даже после закрытия страницы. Чтобы убрать его, нажмите «Выйти из клуба».</p>' +
     (Club.error
       ? '<p class="warn">' +
         U.esc(Club.error) +

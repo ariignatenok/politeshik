@@ -3,6 +3,12 @@
 // Personal presentation preferences never participate in authorization.
 const MenuPrefs = {
   cache: new Map(),
+  iconsVisible() {
+    return MenuPrefs.read().showIcons !== false;
+  },
+  toggleIcons() {
+    MenuPrefs.save({...MenuPrefs.read(), showIcons: !MenuPrefs.iconsVisible()});
+  },
   required: ['schedule', 'attendance', 'journal', 'chat', 'cabinet', 'settings'],
   hidden(id) {
     return MenuPrefs.read().hidden.includes(id);
@@ -33,6 +39,7 @@ const MenuPrefs = {
       pinned: ids(source.pinned).filter((id) => !hidden.includes(id)),
       hidden,
       customized: source.customized === true,
+      showIcons: source.showIcons !== false,
     };
   },
   read() {
@@ -108,7 +115,7 @@ const MenuPrefs = {
     return true;
   },
   reset() {
-    MenuPrefs.save({order: [], pinned: [], customized: false});
+    MenuPrefs.save({order: [], pinned: [], customized: false, showIcons: MenuPrefs.iconsVisible()});
   },
   button() {
     return '<button class="btn ghost menu-customize" data-action="menu-customize">↕ Настроить меню</button>';
@@ -157,9 +164,9 @@ const MenuPrefs = {
         t.id +
         '"><span class="menu-drag" draggable="true" data-menu-drag="' +
         t.id +
-        '" aria-hidden="true" title="Перетащите вверх или вниз">⠿</span><span class="menu-item-icon">' +
-        t.ico +
-        '</span><span class="menu-item-name"><b>' +
+        '" aria-hidden="true" title="Перетащите вверх или вниз">⠿</span>' +
+        (MenuPrefs.iconsVisible() ? '<span class="menu-item-icon">' + t.ico + '</span>' : '') +
+        '<span class="menu-item-name"><b>' +
         U.esc(t.label) +
         (required ? '<small>Обязательная</small>' : hidden ? '<small>Скрыта</small>' : '') +
         '</b></span><span class="menu-controls">' +
@@ -184,6 +191,9 @@ const MenuPrefs = {
     };
     return (
       '<div class="personal-menu"><p class="md-help">Перетаскивайте за ⠿ или нажимайте ↑ и ↓. Кнопка 📌 закрепляет вкладку наверху. Закреплённые вкладки можно упорядочить между собой.</p><p class="md-help">Расписание, посещаемость, журнал, чаты и личный кабинет скрыть нельзя. Настройки всегда доступны, чтобы вернуть вкладки. Нажмите 👁, чтобы скрыть необязательный раздел, или ○, чтобы показать его снова.</p><p class="md-help">На телефоне первые 6 вкладок будут в нижней панели, остальные — в «Ещё». Ваш выбор сохраняется только для вашего аккаунта в этом браузере.</p>' +
+      '<div class="menu-icons-setting"><div><b>Смайлики вкладок</b><p>Один переключатель для всего меню.</p></div><button class="menu-icons-toggle" data-action="menu-icons" role="switch" aria-label="Показывать смайлики вкладок" aria-checked="' +
+      MenuPrefs.iconsVisible() +
+      '"><span aria-hidden="true"></span></button></div>' +
       (pinned.length
         ? '<h4>Закреплённые</h4><ol class="menu-order">' +
           items.map((t, i) => (MenuPrefs.pinned(t.id) ? row(t, i) : '')).join('') +

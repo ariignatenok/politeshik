@@ -157,7 +157,7 @@ const Mascot = {
         defs:
           '<clipPath id="' +
           id +
-          'b"><path d="M60 16C72 32 98 54 98 82C98 99 82 110 60 110C38 110 22 99 22 82C22 54 48 32 60 16Z"/></clipPath><clipPath id="' +
+          'b"><circle data-mascot-body="round" cx="60" cy="72" r="38"/></clipPath><clipPath id="' +
           id +
           'h"><path d="' +
           dome +
@@ -372,7 +372,7 @@ const Mascot = {
         line('M68 76 q6 -7 12 0');
     }
     const body =
-      '<path d="M60 16C72 32 98 54 98 82C98 99 82 110 60 110C38 110 22 99 22 82C22 54 48 32 60 16Z" fill="#8be0a4" stroke="#2f8a58" stroke-width="3" stroke-linejoin="round"/><ellipse cx="60" cy="96" rx="22" ry="12" fill="#c8f4d4"/>';
+      '<circle data-mascot-body="round" cx="60" cy="72" r="38" fill="#8be0a4" stroke="#2f8a58" stroke-width="3" stroke-linejoin="round"/><ellipse cx="60" cy="96" rx="22" ry="12" fill="#c8f4d4"/>';
     const cap =
       '<path d="M44 49 V60 Q60 68 76 60 V49" fill="#3f4fae" stroke="#222c6b" stroke-width="2.5" stroke-linejoin="round"/><path d="M30 44 L60 30 L90 44 L60 58 Z" fill="#33408f" stroke="#222c6b" stroke-width="2.5" stroke-linejoin="round"/><path d="M90 44 V60" stroke="#ffc83d" stroke-width="2.5"/><circle cx="90" cy="63" r="3.2" fill="#ffc83d"/><path d="M66 41 l-9 -6 v12z M66 41 l9 -6 v12z" fill="#ff6fa5" stroke="#d93a7d" stroke-width="1.2" stroke-linejoin="round"/><circle cx="66" cy="41" r="3" fill="#ff4f93"/>';
     const cls =
@@ -697,7 +697,7 @@ const Mascot = {
   bindReactions() {
     document.addEventListener('click', event => {
       const m = event.target && event.target.closest ? event.target.closest('svg.mascot') : null;
-      if (m) Mascot.react(m);
+      if (m && !m.closest('.club-guest')) Mascot.react(m);
     });
   },
   /**
