@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bfourthgroup20261112';
+const CACHE_VERSION = 'bsixgroups20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -159,6 +159,8 @@ const SHELL = [
   'data/schedule-26290911-3111.json',
   'data/schedule-23290907-2092.json',
   'data/schedule-24290907-2092.json',
+  'data/schedule-25290907-3111.json',
+  'data/schedule-25290907-1091.json',
   'js/works.js'
 ];
 const EXTERNAL_SCRIPTS = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'];

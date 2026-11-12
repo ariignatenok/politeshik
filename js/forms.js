@@ -512,6 +512,7 @@ const Forms = {
     if (first) {
       const code = val(form, 'group_code').trim() || ui.registrationCode || Roles.storedCode();
       ui.registrationCode = code;
+      if(ro.awaitingEmail)return toast('Место старосты зарезервировано. Сначала Админ Арина привяжет почту.');
       if ((ro.accessRole || ro.id === ADMIN_RID) && ro.activation !== 'email' && !(Cloud.isAdmin || Cloud.isDeveloper)) {
         ui.secret = {rid, sg, group: Groups.selected, code};
         $('#gate').dataset.mode = ''; App.render(); return;

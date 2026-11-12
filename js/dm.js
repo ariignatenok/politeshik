@@ -43,7 +43,7 @@ const Dm = {
    * @returns {string} Роль получателя.
    */
   recipient() {
-    return ui.dmRole || Dm.supportRole() || (Groups.current !== 'group_1' ? 'admin' : 'superadmin');
+    return ui.dmRole || Dm.supportRole() || (Groups.get(Groups.current).supportRoles || ['superadmin'])[0];
   },
   /**
    * Возвращает подпись сотрудника в чате.

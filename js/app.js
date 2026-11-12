@@ -84,7 +84,7 @@ const App = {
             ]
           : [
               'Ваша заявка на рассмотрении',
-              'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.',
+              Groups.get(Groups.current).leaderPending ? 'Доступ одобрит Админ Арина. Активация старосты ожидается после привязки почты.' : 'Староста группы должна одобрить доступ. Страница обновится сама, когда это произойдёт.',
               'thinking'
             ],
         rejected: ['Заявка отклонена', 'Староста не одобрила доступ. Если это ошибка, напишите ей лично.', 'sad'],
@@ -153,7 +153,7 @@ const App = {
     if (needClaim) {
       const avail = ROSTER.filter(r => !r.flag),
         taken = r => Cloud.claims[r.id] && Cloud.claims[r.id] !== Cloud.uid,
-        locked = r => false;
+        locked = r => !!r.awaitingEmail;
       g.innerHTML =
         '<div class="gate-card"><div class="gate-mascot">' +
         Mascot.svg('cheer', 120) +
@@ -173,7 +173,7 @@ const App = {
                   (taken(r) || locked(r) ? ' disabled' : '') +
                   '>' +
                   U.esc(r.name) +
-                  (taken(r) ? ' — занято' : r.id === ADMIN_RID && !Cloud.isAdmin ? ' — нужен секретный пароль' : '') +
+                  (taken(r) ? ' — занято' : r.awaitingEmail ? ' — староста, ожидается привязка почты' : r.id === ADMIN_RID && !Cloud.isAdmin ? ' — нужен секретный пароль' : '') +
                   '</option>'
               )
               .join('') +

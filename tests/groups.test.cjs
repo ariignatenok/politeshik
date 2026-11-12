@@ -136,3 +136,16 @@ test('fourth group isolates 29 students, email-bound leader, schedule and storag
   assert.ok(ScheduleSync.key.endsWith(':group_4'));
   assert.equal(Store.s.notes.length,0);assert.equal(Store.s.cards.length,0);
 });
+
+test('two groups reserve their leaders until emails are supplied and isolate ordinary students',()=>{
+ const {Groups,ROSTER,Store,ScheduleSync,Dm,Cloud,ui,limit}=app();
+ for(const [tenant,count,rid,number,file]of [['group_5',20,'g5_r12','25290907/3111','schedule-25290907-3111.json'],['group_6',26,'g6_r10','25290907/1091','schedule-25290907-1091.json']]){
+  Groups.selectRoster(tenant);assert.equal(ROSTER.length,count);assert.equal(ROSTER.filter(r=>r.awaitingEmail).length,1);
+  const leader=ROSTER.find(r=>r.id===rid);assert.equal(leader.awaitingEmail,true);assert.equal(leader.activation,'email');
+  assert.equal(ROSTER.filter(r=>r.accessRole==='developer').length,0);
+  Groups.activate({uid:'user',tenant_id:tenant});assert.equal(Store.key,'user:'+tenant);assert.equal(Store.s.settings.groupTenant,tenant);assert.equal(limit(),12);
+  assert.equal(ScheduleSync.group,number);ScheduleSync.snapshot=JSON.parse(fs.readFileSync(path.join(root,'data',file),'utf8'));assert.equal(ScheduleSync.valid(ScheduleSync.snapshot),true);
+  Cloud.isAdmin=false;Cloud.isSuperAdmin=false;Cloud.isDeveloper=false;ui.dmRole=null;assert.equal(Dm.recipient(),'superadmin');
+ }
+ assert.equal(Groups.rosters.group_6[18].name,'Сагитова Алина');
+});

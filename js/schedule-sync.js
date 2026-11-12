@@ -50,9 +50,10 @@ const ScheduleSync = {
    */
   valid(data) {
     if (!data || data.schema !== 1 || data.group !== ScheduleSync.group || !data.days ||
-        !/^\d{4}-\d{2}-\d{2}$/.test(data.checked_at || '') ||
-        !/^\d{4}-\d{2}-\d{2}$/.test(data.from || '') ||
-        !/^\d{4}-\d{2}-\d{2}$/.test(data.to || '')) return false;
+        !/^\d{4}-\d{2}-\d{2}$/.test(data.checked_at || '')) return false;
+    if(data.status==='awaiting_source')return data.source==='https://polytech-schedule.ru' &&
+      typeof data.days==='object' && !Array.isArray(data.days) && Object.keys(data.days).length===0;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(data.from || '') || !/^\d{4}-\d{2}-\d{2}$/.test(data.to || '')) return false;
     const dates = Object.keys(data.days).sort();
     if (!dates.length || dates.length > 400 || dates[0] !== data.from || dates[dates.length - 1] !== data.to) return false;
     return dates.every(date => /^\d{4}-\d{2}-\d{2}$/.test(date) &&
@@ -172,6 +173,7 @@ const ScheduleSync = {
       if (epoch !== ScheduleSync.epoch) return false;
       if (!ScheduleSync.valid(data)) throw new Error('Некорректный ответ расписания');
       if (ScheduleSync.snapshot && data.checked_at < ScheduleSync.snapshot.checked_at) return false;
+      if(data.status==='awaiting_source' && ScheduleSync.snapshot && ScheduleSync.snapshot.status!=='awaiting_source')return false;
       ScheduleSync.snapshot = data;
       ScheduleSync.populateCatalog();
       try { localStorage.setItem(ScheduleSync.key, JSON.stringify(data)); } catch (error) {}
@@ -219,11 +221,11 @@ const ScheduleSync = {
   banner() {
     const data = ScheduleSync.snapshot, date = data && data.checked_at,
       stale = date && Date.now() - new Date(date + 'T00:00:00+03:00').getTime() > 36 * 3600000;
-    const status = !data ? 'Расписание ещё не получено. Пока показана сохранённая версия.' :
+    const status = data?.status==='awaiting_source' ? 'Источник пока не предоставил расписание этой группы. Автоматическая проверка включена. Админ может добавить расписание вручную.' : !data ? 'Расписание ещё не получено. Пока показана сохранённая версия.' :
       ScheduleSync.failed || stale ? 'Показана последняя копия от ' + date + '. Свежесть данных пока не подтверждена.' :
         'Расписание, замены и отмены обновляются автоматически. Данные от ' + date + '.';
     const selected = ui.schedWs || Weeks.start(U.today()),
-      outside = data && !ScheduleSync.day(selected) ? '<p>На выбранную неделю источник ещё не опубликовал данные. Показано сохранённое расписание.</p>' : '';
+      outside = data && data.status!=='awaiting_source' && !ScheduleSync.day(selected) ? '<p>На выбранную неделю источник ещё не опубликовал данные. Показано сохранённое расписание.</p>' : '';
     return '<section class="card"><b>Расписание группы ' + ScheduleSync.group + '</b><p>' + status +
       '</p>' + outside + '<p>Проверка источника — примерно каждые 15 минут; на открытой странице — каждые 5 минут.' +
       '</p><a href="https://polytech-schedule.ru" target="_blank" rel="noopener">Источник: Расписание ИСПО</a>' +

@@ -159,3 +159,11 @@ test('only confirmed certificates turn an unexcused absence into UP',()=>{
   assert.equal(Att.eff(marks,[{...cert,confirmed:false}],'2026-11-11',1),'н');
   assert.equal(Att.eff(marks,[{...cert,confirmed:true}],'2026-11-11',1),'уп');
 });
+
+test('an explicitly waiting source is distinguished from published free days and preserves manual lessons',()=>{
+ const {ScheduleSync,Weeks,Store}=app();
+ const waiting={schema:1,group:ScheduleSync.group,source:'https://polytech-schedule.ru',checked_at:'2026-11-12',status:'awaiting_source',days:{}};
+ assert.equal(ScheduleSync.valid(waiting),true);assert.equal(ScheduleSync.valid({...waiting,group:'foreign'}),false);
+ ScheduleSync.snapshot=waiting;Store.s.weeks['2026-11-09']=[{id:'manual',day:0,pair:1,subjectId:'s_opbd'}];
+ assert.equal(ScheduleSync.day('2026-11-09'),null);assert.equal(Weeks.on('2026-11-09')[0].id,'manual');
+});

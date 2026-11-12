@@ -78,7 +78,7 @@ def main(group=GROUP, output=OUTPUT):
     snapshot = build_snapshot(payload, previous, today, group)
     content = json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n"
     if output.exists() and output.read_text() == content:
-        print("Schedule unchanged")
+        print(f"Schedule unchanged for {group}")
         return
     output.parent.mkdir(parents=True, exist_ok=True)
     temp = output.with_suffix(".tmp")
@@ -87,7 +87,7 @@ def main(group=GROUP, output=OUTPUT):
     print(f"Saved {len(snapshot['days'])} days for {group}")
 
 
-GROUP_FEEDS = [(GROUP, "schedule.json"), ("26290911/3111", "schedule-26290911-3111.json"), ("23290907/2092", "schedule-23290907-2092.json"), ("24290907/2092", "schedule-24290907-2092.json")]
+GROUP_FEEDS = [(GROUP, "schedule.json"), ("26290911/3111", "schedule-26290911-3111.json"), ("23290907/2092", "schedule-23290907-2092.json"), ("24290907/2092", "schedule-24290907-2092.json"), ("25290907/3111", "schedule-25290907-3111.json"), ("25290907/1091", "schedule-25290907-1091.json")]
 
 if __name__ == "__main__":
     failed = 0
