@@ -121,7 +121,7 @@ function viewJournalSelf() {
         '</b></td>' +
         days.map(cell).join('') +
         '</tr></tbody></table></div>' +
-        '<div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>справка · «?» — не отмечено</div>'
+        '<div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>уваж. · «?» — не отмечено</div>'
       : '<div class="empty">В этом месяце ещё нет учебных дней с 01.10.2026</div>')
   );
 }
@@ -194,7 +194,7 @@ function viewJournal(asTeacher) {
         );
       })
       .join('') +
-    '<th>п</th><th>о</th><th>н</th><th>спр.</th><th>%</th><th title="Пропуски без уважительной причины за выбранный месяц, лимит 24 ч в месяц">без ув., ч</th></tr>';
+    '<th>п</th><th>о</th><th>н</th><th title="Уважительные пропуски">у</th><th>%</th><th title="Пропуски без уважительной причины за выбранный месяц, лимит 24 ч в месяц">без ув., ч</th></tr>';
   const body = rows
     .map(x => {
       const e = x.e,
@@ -301,7 +301,7 @@ function viewJournal(asTeacher) {
         head +
         '</thead><tbody>' +
         body +
-        '</tbody></table></div><div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>справка · «?» — не отмечено</div>'
+        '</tbody></table></div><div class="cal-legend"><span class="dotl ok"></span>все п <span class="dotl late"></span>есть о <span class="dotl no"></span>есть н <span class="dotl exc"></span>уваж. · «?» — не отмечено</div>'
       : '<div class="empty">В этом месяце ещё нет учебных дней с 01.10.2026</div>')
   );
 }

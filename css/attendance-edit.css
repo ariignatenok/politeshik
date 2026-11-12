@@ -68,3 +68,5 @@
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+.ed-opt.exc input:checked + span { background: #0284c7; }

@@ -103,7 +103,7 @@ function grpStudents() {
   const rows = rosterRows();
   return (
     periodControls() +
-    '<div class="tbl-wrap"><table class="grid-tbl stud"><thead><tr><th>№</th><th>Студент</th><th>Роль</th><th>Вход</th><th>Заходил(а)</th><th>п</th><th>о</th><th>н</th><th>справка</th><th>не отм.</th><th>%</th><th title="Пропуски без уважительной причины за текущий месяц, лимит 24 ч в месяц">без ув., ч</th><th>' +
+    '<div class="tbl-wrap"><table class="grid-tbl stud"><thead><tr><th>№</th><th>Студент</th><th>Роль</th><th>Вход</th><th>Заходил(а)</th><th>п</th><th>о</th><th>н</th><th title="Уважительные пропуски">у</th><th>не отм.</th><th>%</th><th title="Пропуски без уважительной причины за текущий месяц, лимит 24 ч в месяц">без ув., ч</th><th>' +
     ICONS.document +
     '</th><th></th></tr></thead><tbody>' +
     rows

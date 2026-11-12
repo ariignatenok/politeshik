@@ -8,7 +8,7 @@ const REPORT_WORDS = {
   п: 'Присутствовал',
   о: 'Опоздал',
   н: 'Не был',
-  у: 'Справка'
+  у: 'Уважительная причина'
 };
 
 /**
@@ -119,6 +119,7 @@ const AttReport = {
       subject: sb ? sb.short || sb.name : '',
       subjectFull: sb ? sb.name : '',
       teacher: pr.lessons[0].who || '',
+      manualExcused: person.marks[date + '|' + pair] === 'у',
       kind: st === 'у' ? certKindFor(person.certs, date, pair) : ''
     };
   },
@@ -233,7 +234,7 @@ const AttReport = {
     const first = 2,
       nDay = days.reduce((s, x) => s + x.cols.length, 0),
       sumStart = first + nDay,
-      sumHeads = ['П', 'О', 'Н', 'Спр.', '%', 'Пропуски без ув., ч'],
+      sumHeads = ['П', 'О', 'Н', 'Уваж.', '%', 'Пропуски без ув., ч'],
       r1 = [{v: (group || GROUP_NAME) + ' · ' + AttReport.monthTitle(ym), s: 'head'}],
       r2 = [{v: '№ ФИО', s: 'head'}],
       merges = [],
@@ -254,7 +255,7 @@ const AttReport = {
       widths.push(i === 5 ? 14 : 7);
     });
     merges.push(Xlsx.col(sumStart) + '1:' + Xlsx.col(sumStart + sumHeads.length - 1) + '1');
-    const letterStyle = {п: 'p', о: 'o', н: 'n', Б: 'b', З: 'z'},
+    const letterStyle = {п: 'p', о: 'o', н: 'n', Б: 'b', У: 'b', З: 'z'},
       rows = [r1, r2];
     people.forEach(person => {
       const r = person.r,
@@ -264,7 +265,7 @@ const AttReport = {
           const it = AttReport.entry(person, day.date, col.pair),
             same = it && it.subjectId === col.subjectId && (col.who === '' || it.teacher === col.who);
           if (!same) return row.push({v: '', s: 'blank'});
-          const letter = it.st === 'у' ? (it.kind === 'Записка' ? 'З' : 'Б') : it.st;
+          const letter = it.st === 'у' ? (it.manualExcused ? 'У' : it.kind === 'Записка' ? 'З' : 'Б') : it.st;
           row.push({v: letter || '', s: letter ? letterStyle[letter] : 'num'});
         })
       );
@@ -278,6 +279,7 @@ const AttReport = {
       ['п — присутствовал', 'note'],
       ['о — опоздал (считается как присутствие)', 'note'],
       ['н — без уважительной причины', 'note'],
+      ['У — уважительная причина (отмечена старостой)', 'note'],
       ['Б — больничный / справка (подтверждена старостой)', 'note'],
       ['З — заявление (записка)', 'note'],
       ['Серая ячейка — пары у этого студента нет (другая подгруппа). Пустая — отметки нет.', 'note']
@@ -401,7 +403,7 @@ const AttReport = {
             (s.p + s.l) +
             ' / ' +
             s.a +
-            (s.x ? ' · спр. ' + s.x : '') +
+            (s.x ? ' · уваж. ' + s.x : '') +
             '</span></div>'
           );
         })
@@ -435,10 +437,10 @@ const AttReport = {
       t.a +
       '</b><small>пропусков (Н)</small></div><div class="stat"><b>' +
       t.x +
-      '</b><small>по справкам</small></div></div>' +
+      '</b><small>уважительные пропуски</small></div></div>' +
       '<div class="stats-cols"><section class="card"><h2>Общая посещаемость</h2>' +
       AttReport.pie(t) +
-      '</section><section class="card"><h2>По студентам</h2><p class="md-help">Зелёное — был, жёлтое — опоздал, голубое — справка, красное — не был. Справа: был / не был.</p>' +
+      '</section><section class="card"><h2>По студентам</h2><p class="md-help">Зелёное — был, жёлтое — опоздал, голубое — уважительная причина, красное — не был. Справа: был / не был.</p>' +
       AttReport.bars(sm.rows) +
       '</section></div>'
     );

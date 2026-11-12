@@ -1054,7 +1054,7 @@ function openNewsForm() {
   );
 }
 /**
- * Открывает окно, где админ выбирает П, О или Н по каждой паре дня и сохраняет их.
+ * Открывает окно, где староста выбирает П, О, Н или У по каждой паре дня и сохраняет их.
  * @param {string} uid Идентификатор студента.
  * @param {string} date Дата, ГГГГ-ММ-ДД (необязательно).
  */
@@ -1071,6 +1071,7 @@ function openAttendanceEditor(uid, date) {
    */
   const row = pr => {
     const cur = r.marks[day + '|' + pr.pair] || '',
+      readonlyExcused = cur === 'у' && !Cloud.isAdmin,
       l = pr.lessons[0],
       sb = subj(l.subjectId);
     /**
@@ -1096,7 +1097,7 @@ function openAttendanceEditor(uid, date) {
     return (
       '<div class="ed-row" data-pair="' +
       pr.pair +
-      '"><div class="ed-name"><b>' +
+      '"' + (readonlyExcused ? ' data-readonly="true"' : '') + '><div class="ed-name"><b>' +
       pr.pair +
       '. ' +
       U.esc(sb ? sb.short || sb.name : '') +
@@ -1104,10 +1105,12 @@ function openAttendanceEditor(uid, date) {
       (l.room ? 'ауд. ' + U.esc(l.room) : '') +
       '</small></div>' +
       '<div class="ed-opts">' +
+      (readonlyExcused ? '<span class="tag">У · меняет только староста</span>' :
       opt('п', 'Присутствовал(а)') +
       opt('о', 'Опоздал(а)') +
       opt('н', 'Нет') +
-      opt('', 'Нет отметки') +
+      (Cloud.isAdmin ? opt('у', 'Уважительная причина') : '') +
+      opt('', 'Нет отметки')) +
       '</div></div>'
     );
   };

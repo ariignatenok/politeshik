@@ -1266,6 +1266,8 @@ const Cloud = (() => {
     const own = uid === C.uid,
       before = own ? null : C.adm.att[uid];
     const cur = Object.assign({}, own ? Store.s.attendance.marks : (C.adm.att[uid] || {}).marks || {});
+    if (!C.isAdmin && Object.keys(changes).some(k => (cur[k] === 'у' || changes[k] === 'у') && cur[k] !== changes[k]))
+      return {ok: false, error: 'Уважительную причину отмечают только староста и Админ Арина'};
     Object.keys(changes).forEach(k => {
       if (changes[k]) cur[k] = changes[k];
       else delete cur[k];

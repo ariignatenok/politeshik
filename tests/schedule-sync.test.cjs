@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, '..');
 function app() {
   const ctx = vm.createContext({console, setTimeout, clearTimeout, AbortController,
     localStorage: {setItem() {}}, Date, fetch: async () => { throw new Error('offline'); }});
-  for (const file of ['js/utils.js', 'js/schedule-sync.js', 'js/weeks.js', 'js/attendance.js'])
+  for (const file of ['js/utils.js', 'js/roster.js', 'js/schedule-sync.js', 'js/weeks.js', 'js/attendance.js'])
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), ctx);
   vm.runInContext(`
     const Store = {s: {subjects: [{id:'s_it',name:'ИТ в профессиональной деятельности'}, {id:'s_opbd',name:'Основы проектирования баз данных'}],
@@ -115,4 +115,17 @@ test('repeating an edited source lesson updates both current week and template',
   Weeks.saveLesson('2026-11-09', {day:1,pair:3,subjectId:'s_it',room:'777'}, source.id, true);
   assert.equal(Weeks.on('2026-11-10').find(l => l.pair === 3).room, '777');
   assert.equal(Weeks.templateFor('2026-12-14')[0].room, '777');
+});
+
+test('manual excused absence is respected without a certificate and adds no unexcused hours',()=>{
+  const {ScheduleSync,Att}=app();
+  const date=Object.keys(ScheduleSync.snapshot.days).find(d=>Att.pairs(d,'1').length);
+  const pairs=Att.pairs(date,'1');
+  const marks=Object.fromEntries(pairs.map(p=>[date+'|'+p.pair,'п']));
+  marks[date+'|'+pairs[0].pair]='у';
+  assert.equal(Att.eff(marks,[],date,pairs[0].pair),'у');
+  const stats=Att.stats(marks,[],'1',date,date);
+  assert.equal(stats.x,1);
+  assert.equal(stats.a,0);
+  assert.equal(Att.absHours(marks,[],'1',date.slice(0,7)),0);
 });

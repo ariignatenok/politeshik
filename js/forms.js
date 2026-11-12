@@ -432,12 +432,13 @@ const Forms = {
   async 'att-edit'(form) {
     const changes = {};
     form.querySelectorAll('.ed-row').forEach(row => {
+      if (row.dataset.readonly === 'true') return;
       const checked = row.querySelector('input:checked');
       changes[form.dataset.date + '|' + row.dataset.pair] = checked ? checked.value : '';
     });
     if (!Object.keys(changes).length) {
       UI.close();
-      return toast('В этот день у студента нет пар, отмечать нечего');
+      return toast(form.querySelector('.ed-row') ? 'Нет доступных изменений' : 'В этот день у студента нет пар, отмечать нечего');
     }
     const button = form.querySelector('[data-action="save-form"]');
     if (button) {

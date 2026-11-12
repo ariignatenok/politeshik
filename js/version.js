@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'thirdgroup20261111';
+const BUILD = 'excused20261112';
