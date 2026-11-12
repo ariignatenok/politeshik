@@ -376,7 +376,7 @@ const Curator = {
       end +
       '</b><button class="btn" data-action="curator-week" data-d="1">Неделя →</button></div><p class="hint">Данные от ' +
       data.checked_at +
-      ' · Источник: polytech-schedule.ru. Проверка — каждые 15 минут.</p>';
+      ' · Источник: polytech-schedule.ru. '+(Cloud.facultyContext?.active?'Автоматическое обновление.':'Проверка — каждые 15 минут.')+'</p>';
     if (!days.length)
       return (
         html +

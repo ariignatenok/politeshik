@@ -29,3 +29,8 @@ class FacultySyncTests(unittest.TestCase):
   lesson={'lesson_number':0,'subject':'Лабораторная','teacher':'Назаров Д.А.','status':'ok','group_list':['з25290909/3111']}
   result=build_snapshot({'days':{'2026-11-12':{'lessons':[lesson]}}},{},dt.date(2026,11,12))
   self.assertEqual(result['days']['2026-11-12']['lessons'][0],lesson)
+ def test_refresh_queue_rotates_attempts_so_failing_names_do_not_starve_others(self):
+  old={'id':'first','attempted_at':'2026-11-12T01:00:00+00:00'}
+  failed={'id':'failed','attempted_at':'2026-11-12T02:00:00+00:00','status':'stale'}
+  never={'id':'never'}
+  self.assertEqual([r['id'] for r in sync_faculty.choose_batch([failed,old,never],2)],['never','first'])

@@ -133,7 +133,7 @@ const Signup = {
     return (
       '<div class="gate-card"><div class="gate-mascot">' +
       Mascot.svg('wink', 110) +
-      '</div><h1>Политешик</h1><p class="gate-sub">Завершите регистрацию</p><p class="gate-text">Почта подтверждена. Заполните данные, и заявка уйдёт старосте на одобрение.</p>' +
+      '</div><h1>Политешик</h1><p class="gate-sub">Завершите регистрацию</p><p class="gate-text">'+(role==='teacher'?'Выберите своё ФИО. Доступ к кабинету подтвердит Админ Арина.':'Заполните данные, и заявка уйдёт старосте на одобрение.')+'</p>' +
       '<div data-form="complete" data-role="' +
       U.esc(role) +
       '">' +

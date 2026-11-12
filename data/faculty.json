@@ -2,20 +2,22 @@
   "schema": 1,
   "checked_at": "2026-11-13",
   "source": "https://polytech-schedule.ru",
+  "refresh_batch_size": 3,
   "teachers": [
     {
       "id": "faculty-fef89b8bfbf9",
       "name": "Аболецкая Лидия Владимировна",
       "teacher": "Аболецкая Л.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-fef89b8bfbf9.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-12T21:40:41.706617+00:00"
     },
     {
       "id": "faculty-3ce882e215c8",
       "name": "Андреев Владимир Александрович",
       "teacher": "Андреев В.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3ce882e215c8.json",
       "groups": {
         "25290909/3091": [
@@ -24,19 +26,21 @@
         "26290911/3111": [
           "ОПБД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T21:40:44.245332+00:00"
     },
     {
       "id": "faculty-ae1169086001",
       "name": "Андреев Дмитрий Викторович",
       "teacher": "Андреев Д.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ae1169086001.json",
       "groups": {
         "25290907/1091": [
           "ОСиС"
         ]
-      }
+      },
+      "attempted_at": "2026-11-12T21:40:45.843218+00:00"
     },
     {
       "id": "faculty-68d9711e8c64",
