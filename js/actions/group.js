@@ -1,6 +1,17 @@
 'use strict';
 
 Object.assign(A, {
+  'subgroup-edit'(el){
+    if(!Cloud.isAdmin)return;
+    const r=ROSTER_BY_ID[el.dataset.rid];if(!r||r.flag)return;
+    UI.open('Подгруппа студента','<p>'+U.esc(r.name)+'</p><label class="field"><span>Подгруппа</span><select class="input" id="student-subgroup"><option value="1"'+(r.sub==='1'?' selected':'')+'>1 подгруппа</option><option value="2"'+(r.sub==='2'?' selected':'')+'>2 подгруппа</option></select></label><div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="subgroup-save" data-rid="'+r.id+'">Сохранить</button></div>');
+  },
+  async 'subgroup-save'(el){
+    if(!Cloud.isAdmin)return;const subgroup=document.getElementById('student-subgroup')?.value,tenant=Cloud.tenantId,uid=Cloud.uid;
+    el.disabled=true;try{const {error}=await supa.rpc('set_subgroup',{p_rid:el.dataset.rid,p_subgroup:subgroup});if(error)throw error;
+      if(tenant!==Cloud.tenantId||uid!==Cloud.uid)return;await Cloud.loadSubgroups();UI.close();App.render();toast('Подгруппа сохранена');
+    }catch(error){toast(error.message)}finally{el.disabled=false;}
+  },
   /**
    * Переключает фильтр на вкладке «Больничные».
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.

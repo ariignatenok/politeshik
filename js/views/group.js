@@ -117,7 +117,7 @@ function grpStudents() {
             '"><td>' +
             (x.r.n || '') +
             '</td><td>' +
-            nameCell(x) +
+            nameCell(x) + (x.r.id&&!x.r.flag?'<button class="btn sm subgroup-edit" data-action="subgroup-edit" data-rid="'+x.r.id+'">Подгруппа: '+(x.r.sub||'не выбрана')+'</button>':'') +
             '</td><td class="dim">—</td><td colspan="11" class="dim">' +
             (x.r.flag ? 'вход закрыт' : 'ещё не заходил(а)') +
             '</td></tr>'
@@ -130,7 +130,7 @@ function grpStudents() {
           '"><td>' +
           (x.r.n || '') +
           '</td><td>' +
-          nameCell(x) +
+          nameCell(x) + (x.r.id&&!x.r.flag?'<button class="btn sm subgroup-edit" data-action="subgroup-edit" data-rid="'+x.r.id+'">Подгруппа: '+(x.r.sub||'не выбрана')+'</button>':'') +
           '</td><td>' +
           (Cloud.adminUids.has(e.id) ? '<span class="tag adm">админ-студент</span>' : 'студент') +
           '</td><td><span class="pill good">вошёл(ла)</span></td><td>' +

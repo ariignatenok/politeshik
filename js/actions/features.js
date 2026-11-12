@@ -67,6 +67,7 @@ Object.assign(A, {
   /**
    * Включает или выключает сезонный наряд Политешика.
    */
+  'mascot-walker'(){const enabled=!Mascot.walkerEnabled();MenuPrefs.save({...MenuPrefs.read(),showWalker:enabled});if(!enabled)document.getElementById('walker')?.remove();App.render();toast(enabled?'Бегающий Политешик включён':'Бегающий Политешик выключен');},
   'mascot-acc'() {
     Store.s.settings.mascotAccessories = !Mascot.enabled();
     Store.save();

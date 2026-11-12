@@ -329,3 +329,10 @@
 .md tr:nth-child(even) td {
   background: var(--surface2);
 }
+
+.tcard { min-width: 0; }
+.t-top > div:last-child { min-width: 0; }
+.tcard .chip { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.t-actions { flex-wrap: wrap; }
+.t-actions .btn { min-width: 0; padding: 7px 10px; white-space: normal; overflow-wrap: anywhere; }
+.subgroup-edit { display: block; margin-top: 6px; }

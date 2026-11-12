@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'faculty20261113c';
+const BUILD = 'interface20261113';

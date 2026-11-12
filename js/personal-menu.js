@@ -40,6 +40,7 @@ const MenuPrefs = {
       hidden,
       customized: source.customized === true,
       showIcons: source.showIcons !== false,
+      showWalker: source.showWalker !== false,
     };
   },
   read() {

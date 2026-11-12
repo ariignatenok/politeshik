@@ -751,7 +751,14 @@ const Mascot = {
   /**
    * Пробегает жителем по нижнему краю экрана при переходе между разделами.
    */
+  walkerEnabled() {
+    return typeof MenuPrefs==='undefined'||MenuPrefs.read().showWalker!==false;
+  },
+  walkerSetting() {
+    return '<div class="set-row"><div><b>Бегающий Политешик</b><p>Маскот внизу экрана при переходах между разделами</p></div><button class="btn" data-action="mascot-walker" aria-pressed="'+Mascot.walkerEnabled()+'">'+(Mascot.walkerEnabled()?'Включён':'Выключен')+'</button></div>';
+  },
   walk() {
+    if(!Mascot.walkerEnabled()){document.getElementById('walker')?.remove();return;}
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (Date.now() - Mascot.lastWalk < 5000) return;
     Mascot.lastWalk = Date.now();

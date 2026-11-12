@@ -157,3 +157,11 @@ test('one icon switch is account-scoped and does not reorder or hide tabs', () =
   a.Cloud.uid = 'student-a';
   assert.equal(a.MenuPrefs.iconsVisible(), false);
 });
+
+test('walking mascot preference persists per account and follows the account across groups',()=>{
+ const a=app();assert.equal(a.MenuPrefs.read().showWalker,true);
+ a.MenuPrefs.save({...a.MenuPrefs.read(),showWalker:false});a.MenuPrefs.cache.clear();assert.equal(a.MenuPrefs.read().showWalker,false);
+ a.Cloud.uid='another-student';assert.equal(a.MenuPrefs.read().showWalker,true);
+ a.Cloud.uid='student-a';assert.equal(a.MenuPrefs.read().showWalker,false);
+ a.MenuPrefs.toggleIcons();assert.equal(a.MenuPrefs.read().showWalker,false);
+});

@@ -73,3 +73,19 @@
 
 .ed-opts { flex-wrap:wrap; max-width:100%; }
 .day-marks { flex-wrap:wrap; margin-bottom:8px; }
+
+/* Keep every pair's controls in the same right-hand column. */
+[data-form="att-edit"] .ed-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+[data-form="att-edit"] .ed-name { min-width: 0; overflow-wrap: anywhere; }
+[data-form="att-edit"] .ed-opts { flex-wrap: nowrap; justify-self: end; justify-content: flex-end; gap: 4px; }
+[data-form="att-edit"] .ed-opt { flex: 0 0 auto; }
+[data-form="att-edit"] .ed-opt span { width: 38px; min-width: 0; height: 38px; font-size: 13px; }
+@media (max-width: 460px) {
+  [data-form="att-edit"] .ed-row { column-gap: 6px; }
+  [data-form="att-edit"] .ed-opts { gap: 3px; }
+  [data-form="att-edit"] .ed-opt span { width: 29px; height: 36px; font-size: 12px; }
+}

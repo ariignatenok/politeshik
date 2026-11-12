@@ -105,7 +105,7 @@ function viewSettingsBase() {
       )
       .join('') +
     '</div></div>' +
-    '<div class="set-row"><div><b>Наряд Политешика</b><p>Сезонные и праздничные аксессуары</p></div><button class="btn" data-action="mascot-acc">' +
+    Mascot.walkerSetting() + '<div class="set-row"><div><b>Наряд Политешика</b><p>Сезонные и праздничные аксессуары</p></div><button class="btn" data-action="mascot-acc">' +
     (Mascot.enabled() ? 'Включён' : 'Выключен') +
     '</button></div></div>' +
     MenuPrefs.card() + notifSettings() +

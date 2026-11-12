@@ -57,7 +57,7 @@ const Teacher = {
       '<div class="card set-sec"><h2>Внешний вид</h2><div class="set-row" style="align-items:flex-start"><div><b>Тема оформления</b><p>Выбор сохраняется в вашем профиле</p></div><div class="theme-grid">' +
       themes +
       '</div></div>' +
-      '<div class="set-row"><div><b>Наряд Политешика</b><p>Сезонные и праздничные аксессуары</p></div><button class="btn" data-action="mascot-acc">' +
+      Mascot.walkerSetting() + '<div class="set-row"><div><b>Наряд Политешика</b><p>Сезонные и праздничные аксессуары</p></div><button class="btn" data-action="mascot-acc">' +
       (Mascot.enabled() ? 'Включён' : 'Выключен') +
       '</button></div></div>' +
       '<div class="card set-sec"><h2>Аккаунт</h2><div class="set-row"><div><b>' +

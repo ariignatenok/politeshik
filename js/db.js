@@ -709,6 +709,7 @@ const Cloud = (() => {
         await C.requestAccess('student', C.profile.name || '', '', '', Roles.storedCode());
       }
       C.applyRole();
+      if(C.profile)await C.loadSubgroups(false);
       if (C.hasCabinet() && C.profile) {
         if (C.profile.theme && THEME_IDS.indexOf(C.profile.theme) >= 0 && Store.s.settings.theme !== C.profile.theme) {
           Store.s.settings.theme = C.profile.theme;
@@ -1849,17 +1850,21 @@ const Cloud = (() => {
    * Загружает закреплённые подгруппы студентов из облака.
    * @returns {Promise<boolean>} true, если список получен.
    */
-  C.loadSubgroups = async () => {
+  C.loadSubgroups = async (render = true) => {
+    const tenant=C.tenantId,uid=C.uid;
     try {
       const {data, error} = await supa.rpc('subgroup_list');
-      if (error || !data) return false;
+      if (error || !data || tenant!==C.tenantId || uid!==C.uid) return false;
+      const changed=data.some(x=>ROSTER_BY_ID[x.rid]&&ROSTER_BY_ID[x.rid].sub!==x.subgroup);
       applySubgroups(data);
-      App.renderSoft();
+      const mine=ROSTER_BY_ID[C.profile?.rid];if(mine){C.profile.subgroup=mine.sub;Store.s.settings.subgroup=mine.sub;}
+      if(render&&changed)App.renderSoft();
       return true;
     } catch (error) {
       return false;
     }
   };
+  C.subgroupTimer=setInterval(()=>{if(C.status==='online'&&!document.hidden&&(C.member?.status==='approved'||C.isSuperAdmin))C.loadSubgroups();},30000);
   /**
    * Загружает аватарки всех участников.
    * @returns {Promise<boolean>} true, если условие выполнено.
