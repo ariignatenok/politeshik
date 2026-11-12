@@ -251,11 +251,13 @@ const ChatMedia = {
     return /^[0-9a-f-]{36}\/[0-9a-f-]{36}$/.test(path || '');
   },
   async url(path) {
+    const owner=Cloud.uid;
     if(ChatMedia.urlOwner!==Cloud.uid){ChatMedia.urlOwner=Cloud.uid;ChatMedia.urls=new Map();}
     const cached=ChatMedia.urls?.get(path);if(cached&&cached.until>Date.now())return cached.url;
     if (!ChatMedia.validPath(path)) throw Error('Неверное вложение');
     const {data, error} = await supa.storage.from('private-messages').createSignedUrl(path, 300);
     if (error) throw error;
+    if(owner!==Cloud.uid)throw Error('Аккаунт изменился');
     if(ChatMedia.urls.size>=100)ChatMedia.urls.delete(ChatMedia.urls.keys().next().value);
     ChatMedia.urls.set(path,{url:data.signedUrl,until:Date.now()+240000});
     return data.signedUrl;
