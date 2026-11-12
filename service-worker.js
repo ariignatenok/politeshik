@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bmascotwardrobe20261112';
+const CACHE_VERSION = 'bmascotfashion20261112';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -83,6 +83,7 @@ const SHELL = [
   'js/markdown.js',
   'js/mascot.js',
   'js/mascot-wardrobe.js',
+  'js/mascot-fashion.js',
   'js/navigation.js',
   'js/news.js',
   'js/newschedule.js',

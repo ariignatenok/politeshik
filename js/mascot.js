@@ -416,7 +416,7 @@ const Mascot = {
       (me.hat || acc.hat) +
       (me.hold || acc.hold) +
       '</g>' +
-      acc.front +
+      (me.front || '') + acc.front +
       extra +
       '</svg>'
     );

@@ -173,7 +173,14 @@ const Wardrobe = {
   },
   set(key, value) {
     if (!Wardrobe.catalogue[key]) return;
-    Store.s.settings.mascot = Wardrobe.normalize({...Mascot.chosen(), [key]: value});
+    const selection = {...Mascot.chosen(), [key]: value};
+    const coats = ['none', 'leopard', 'fur', 'pinkfur', 'leather', 'vampirecape'];
+    if (key === 'hat' && value !== 'none')
+      selection.acc = (selection.acc || []).filter((id) => !['hat', 'beret'].includes(id));
+    if (key === 'top' && value !== 'none' && !coats.includes(selection.outfit || 'none'))
+      selection.outfit = 'none';
+    if (key === 'outfit' && !coats.includes(value)) selection.top = 'none';
+    Store.s.settings.mascot = Wardrobe.normalize(selection);
     Mascot.persist();
   },
   preset(id) {
@@ -352,7 +359,13 @@ Mascot.userLayers = (mood, season, look) => {
       acc: l.glasses === 'none' ? l.acc : l.acc.filter((x) => x !== 'glasses'),
     }),
     extra = Wardrobe.layers(l);
-  return {...old, ...extra, hat: old.hat || extra.hat, face: old.face + extra.face, neck: old.neck};
+  return {
+    ...old,
+    ...extra,
+    hat: l.hat && l.hat !== 'none' ? extra.hat : old.hat || extra.hat,
+    face: old.face + extra.face,
+    neck: old.neck,
+  };
 };
 Mascot.svg = (mood, size, cls, opts) => {
   const look = Wardrobe.normalize((opts && opts.look) || Mascot.chosen());
@@ -361,7 +374,8 @@ Mascot.svg = (mood, size, cls, opts) => {
     look.hair !== 'none' ||
     look.hand !== 'none' ||
     look.glasses !== 'none' ||
-    look.acc.length;
+    look.acc.length ||
+    ['top', 'chain', 'hat', 'shoes', 'bag'].some((key) => look[key] && look[key] !== 'none');
   const options = {...opts, look};
   if (dressed && options.season === undefined) options.season = '';
   let svg = originalMascotSvg(mood, size, cls, options);
@@ -375,6 +389,7 @@ Mascot.setAccessory = (id) => {
   if (!Mascot.userItems.some((x) => x.id === id)) return;
   const look = Wardrobe.normalize(Mascot.chosen());
   look.acc = look.acc.includes(id) ? look.acc.filter((x) => x !== id) : [...look.acc, id];
+  if (['hat', 'beret'].includes(id) && look.acc.includes(id)) look.hat = 'none';
   Store.s.settings.mascot = look;
   Mascot.persist();
 };
@@ -441,6 +456,12 @@ Mascot.persist = () => {
 Mascot.cardHtml = () => {
   if (Cloud.isStaff) return '';
   const look = Wardrobe.normalize(Mascot.chosen());
+  if (!Wardrobe.editing)
+    return (
+      '<section class="card mascot-summary"><h2>Мой Политешик</h2><div class="mascot-summary-row">' +
+      Mascot.svg(look.mood || 'happy', 100, '', {look, season: ''}) +
+      '<div><b>Ваш персональный маскот</b><p>Его видят рядом с вашим фото и именем.</p><button class="btn" data-action="mascot-edit">Изменить</button></div></div></section>'
+    );
   const chip = (action, value, label, on, key = 'id') =>
     '<button class="my-chip' +
     (on ? ' on' : '') +
@@ -462,9 +483,15 @@ Mascot.cardHtml = () => {
     hairColor: 'Цвет волос',
     glasses: 'Очки',
     hand: 'В лапках',
+    top: 'Свитер, поло и футболка',
+    face: 'Черты персонажа',
+    chain: 'Цепи',
+    hat: 'Шляпа',
+    shoes: 'Обувь',
+    bag: 'Сумочка',
   };
   return (
-    '<section class="card my-mascot wardrobe"><h2>Мой Политешик</h2><p>Ваш маленький спутник рядом с фото и именем. Его видят другие участники группы.</p><div class="my-mascot-body"><div class="my-preview">' +
+    '<section class="card my-mascot wardrobe"><div class="wardrobe-title"><h2>Мой Политешик</h2><button class="btn sm" data-action="mascot-done">Готово</button></div><p>Ваш маленький спутник рядом с фото и именем. Его видят другие участники группы.</p><div class="my-mascot-body"><div class="my-preview">' +
     Mascot.svg(look.mood || 'happy', 180, '', {season: '', look}) +
     '<span>Это ваш образ</span></div><div class="my-controls"><h3>Готовые образы</h3><div class="my-chips">' +
     Object.entries(Wardrobe.presets)

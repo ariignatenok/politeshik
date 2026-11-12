@@ -14,7 +14,7 @@ function app() {
  `,
     ctx,
   );
-  for (const file of ['js/mascot.js', 'js/mascot-wardrobe.js', 'js/avatars.js'])
+  for (const file of ['js/mascot.js', 'js/mascot-wardrobe.js', 'js/mascot-fashion.js', 'js/avatars.js'])
     vm.runInContext(fs.readFileSync(file, 'utf8'), ctx);
   vm.runInContext('globalThis.api={Wardrobe,Mascot,Avatars,Store,Cloud,supa};', ctx);
   return ctx.api;
@@ -78,4 +78,60 @@ test('rapid changes are serialized, retry preserves local appearance, and profil
   supa.rpc = async () => ({});
   await Wardrobe.save();
   assert.equal(Store.s.meta.mascotPending, false);
+});
+
+test('reference pieces stay independent and legacy looks get empty new slots', () => {
+  const {Wardrobe, Mascot, Store} = app();
+  Store.s.settings.mascot = Wardrobe.normalize({
+    body: 'pink',
+    outfit: 'leopard',
+    top: 'whitesweater',
+    chain: 'doublegold',
+    hat: 'purplewitch',
+    shoes: 'chunkysneakers',
+    bag: 'monogram',
+    glasses: 'pinkheart',
+    hand: 'coffee',
+  });
+  Wardrobe.set('chain', 'shortgold');
+  assert.equal(Mascot.chosen().top, 'whitesweater');
+  assert.equal(Mascot.chosen().outfit, 'leopard');
+  Wardrobe.set('top', 'blacktee');
+  assert.equal(Mascot.chosen().chain, 'shortgold');
+  assert.equal(Mascot.chosen().bag, 'monogram');
+  Wardrobe.set('chain', 'none');
+  assert.equal(Mascot.chosen().top, 'blacktee');
+  const layers = Wardrobe.layers(Mascot.chosen());
+  assert.ok(layers.clothes.includes('data-item="blacktee"'));
+  assert.ok(layers.clothes.includes('data-item="leopard"'));
+  assert.ok(!layers.clothes.includes('data-item="shortgold"'));
+  assert.ok(layers.front.includes('data-item="chunkysneakers"'));
+  assert.ok(layers.front.includes('data-item="monogram"'));
+  assert.ok(layers.hat.includes('data-item="purplewitch"'));
+  assert.ok(layers.face.includes('data-item="pinkheart"'));
+  const old = Wardrobe.normalize({body: 'blue', acc: ['bow']});
+  assert.equal(old.top, 'none');
+  assert.equal(old.chain, 'none');
+  assert.equal(old.body, 'blue');
+  Wardrobe.set('outfit', 'hoodie');
+  assert.equal(Mascot.chosen().top, 'none');
+  Wardrobe.set('top', 'whitesweater');
+  assert.equal(Mascot.chosen().outfit, 'none');
+});
+
+test('wardrobe opens only on Edit and vampire traits combine with glasses', () => {
+  const {Mascot, Wardrobe} = app();
+  assert.ok(Mascot.cardHtml().includes('data-action="mascot-edit"'));
+  assert.ok(!Mascot.cardHtml().includes('data-action="mascot-part"'));
+  Wardrobe.editing = true;
+  assert.ok(Mascot.cardHtml().includes('data-action="mascot-done"'));
+  assert.ok(Mascot.cardHtml().includes('data-action="mascot-part"'));
+  const boy = Wardrobe.presets.vampireboy.look,
+    girl = Wardrobe.presets.vampiregirl.look;
+  assert.notEqual(boy.hair, girl.hair);
+  const layers = Wardrobe.layers({...girl, glasses: 'pinkheart'});
+  assert.ok(layers.face.includes('data-item="vampire"'));
+  assert.ok(layers.face.includes('data-item="pinkheart"'));
+  for (const {look} of Object.values(Wardrobe.presets))
+    assert.ok(!Mascot.svg('happy', 120, '', {look, season: ''}).includes('undefined'));
 });

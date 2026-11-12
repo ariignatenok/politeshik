@@ -19,8 +19,9 @@ update public.members set requested_role=null where uid=current_setting('test.su
 set local role authenticated;
 select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.mascot2'),'role','authenticated')::text,true),set_config('request.headers','{"x-politeshik-group":"group_3"}',true);
 do $$declare result jsonb;denied boolean:=false;begin
- result:=public.save_my_mascot('{"body":"pink","outfit":"leopard","hand":"coffee"}');
+ result:=public.save_my_mascot('{"body":"pink","outfit":"leopard","hand":"coffee","top":"whitesweater","chain":"doublegold","hat":"purplewitch","shoes":"chunkysneakers","bag":"monogram","glasses":"pinkheart"}');
  assert result->>'body'='pink','Look not saved';
+ assert result->>'top'='whitesweater' and result->>'chain'='doublegold' and result->>'shoes'='chunkysneakers' and result->>'bag'='monogram' and result->>'hat'='purplewitch' and result->>'glasses'='pinkheart','Reference accessories not saved';
  assert (select data->>'v'='m4' and data->'mascot'->>'body'='pink' from public.docs where path='avatars/'||auth.uid()::text),'Photo lost';
  perform public.save_my_avatar('');
  assert (select data->'mascot'->>'body'='pink' and data->>'v'='' from public.docs where path='avatars/'||auth.uid()::text),'Deleting photo erased mascot';
@@ -55,5 +56,9 @@ do $$declare result jsonb;begin
  result:=public.group_mascots();assert exists(select 1 from jsonb_array_elements(result) x where x->>'uid'=auth.uid()::text and x->'mascot'->>'body'='pink' and x->>'name'='Админ Арина'),'Super own home look not shared across groups';
  assert exists(select 1 from jsonb_array_elements(result) x where x->>'uid'=current_setting('test.mascot3')),'Super cannot see selected group';
  assert not exists(select 1 from jsonb_array_elements(result) x where x->>'uid'=current_setting('test.mascot2')),'Super selected group mixed with another group';
+end $$;
+do $$declare result jsonb;begin
+ result:=public.save_my_mascot('{"body":"white","face":"vampire","outfit":"vampirecape","top":"beigeknit","hat":"headphones"}');
+ assert result->>'face'='vampire' and result->>'outfit'='vampirecape' and result->>'top'='beigeknit' and result->>'hat'='headphones','Vampire or menswear not saved';
 end $$;
 rollback;

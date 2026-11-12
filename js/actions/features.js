@@ -188,6 +188,8 @@ Object.assign(A, {
   'mascot-part'(el) { Wardrobe.set(el.dataset.part, el.dataset.id); App.render(); },
   'mascot-preset'(el) { Wardrobe.preset(el.dataset.id); App.render(); },
   'mascot-save'() { Wardrobe.save(); },
+  'mascot-edit'() { Wardrobe.editing = true; App.render(); },
+  'mascot-done'() { Wardrobe.editing = false; App.render(); },
   'my-acc'(el) {
     Mascot.setAccessory(el.dataset.id);
     App.render();
