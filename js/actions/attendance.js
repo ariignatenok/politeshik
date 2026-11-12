@@ -1,6 +1,21 @@
 'use strict';
 
 Object.assign(A, {
+  async 'att-day-full'(el) {
+    if (!Cloud.isAdmin) return toast('Отметки за день ставит только староста');
+    const form = el.closest('[data-form="att-edit"]');
+    const person = form && studentRows().find(x => x.id === form.dataset.uid);
+    if (!person) return;
+    const changes = Att.dayChanges(form.dataset.date, person.p.subgroup, person.marks, person.certs, el.dataset.st);
+    if (!Object.keys(changes).length) return toast('Нет пар для изменения: уважительные отметки сохранены');
+    form.querySelectorAll('button').forEach(b => { b.disabled = true; });
+    const result = await Cloud.saveMarksFor(person.id, changes);
+    if (!result.ok) {
+      form.querySelectorAll('button').forEach(b => { b.disabled = false; });
+      return toast('Не удалось сохранить: ' + result.error);
+    }
+    UI.close(); App.render(); toast('Отметки за день сохранены');
+  },
   /**
    * Выбирает день на странице посещаемости.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.

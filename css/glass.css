@@ -53,3 +53,10 @@
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
+
+/* Keep the dashboard heading readable without a solid rectangle over the artwork. */
+.view > .page-head.dashboard-head:first-child {
+  margin: 0 0 24px; padding: 18px 22px; border-radius: 22px;
+  background: color-mix(in srgb, var(--bg) 28%, transparent);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}

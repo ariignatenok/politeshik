@@ -1,5 +1,13 @@
 'use strict';
 
+/** A draft is isolated by account, group and conversation. */
+function chatDraftKey(target) { return [Cloud.uid || 'local', Groups.current, target, ui.dmRole || Dm.recipient()].join(':'); }
+function chatComposer(id, target, placeholder) {
+  const key = chatDraftKey(target), value = (ui.chatDrafts || {})[key] || '';
+  return '<textarea class="input chat-compose" id="' + id + '" name="t" data-chat-draft="' + U.esc(key) + '" rows="1" maxlength="4000" placeholder="' + U.esc(placeholder) + '">' + U.esc(value) + '</textarea>';
+}
+
+
 /**
  * Отрисовывает чат с Политешиком.
  * @returns {string} HTML.
@@ -92,7 +100,7 @@ function viewBotChat() {
       .map(q => '<button class="fchip" data-action="chat-quick" data-q="' + q + '">' + q + '</button>')
       .join('') +
     '<button class="fchip hug-chip" data-action="hug">Мне нужна поддержка</button><button class="fchip hug-chip" data-action="relax-open">Психологическая помощь</button></div>' +
-    '<div class="chat-in" data-form="chat"><input class="input" id="chatIn" name="t" placeholder="Напиши Политешику…" autocomplete="off"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
+    '<div class="chat-in" data-form="chat">' + chatComposer('chatIn', 'bot', 'Напиши Политешику…') + '<button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
   );
 }
 /**
@@ -299,9 +307,7 @@ function viewDmThread(uid) {
     '</div>' +
     '<div class="chat-in" data-form="dm" data-with="' +
     uid +
-    '"><input class="input" id="dmIn" name="t" placeholder="' +
-    (admin ? 'Сообщение студенту' : 'Сообщение админу') +
-    '" autocomplete="off" maxlength="4000"><button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
+    '">' + chatComposer('dmIn', uid, admin ? 'Сообщение студенту' : 'Сообщение админу') + '<button class="btn primary" data-action="save-form" aria-label="Отправить">➤</button></div></div>'
   );
 }
 /**

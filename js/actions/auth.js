@@ -1,6 +1,7 @@
 'use strict';
 
 Object.assign(A, {
+  'parent-child-edit'(el) { openParentChildEditor(el.dataset.uid); },
   /**
    * Вход по email и паролю.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.

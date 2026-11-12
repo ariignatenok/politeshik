@@ -61,12 +61,15 @@ const Users = {
    * @returns {Array<Object>} Массив.
    */
   visible() {
-    const filter = ui.userFilter || 'all',
+    const filter = ui.userFilter || 'students',
       query = String(ui.userQuery || '')
         .toLowerCase()
         .trim(),
       dup = Users.duplicates();
     return (Cloud.users || []).filter(u => {
+      const parent = u.role === 'parent' || u.requested_role === 'parent';
+      if (filter === 'parents' && !parent) return false;
+      if (filter === 'students' && (parent || !['student','admin','developer'].includes(u.role))) return false;
       if (filter === 'pending' && ['pending', 'none'].indexOf(u.status) < 0) return false;
       if (filter === 'banned' && u.status !== 'banned') return false;
       if (filter === 'dup' && !(u.rid && dup[Users.nameKey(u)] > 1)) return false;
@@ -104,7 +107,7 @@ function viewUsers() {
   const all = Cloud.users || [],
     list = Users.visible(),
     dup = Users.duplicates(),
-    filter = ui.userFilter || 'all';
+    filter = ui.userFilter || 'students';
   /**
    * Строит кнопку-фильтр.
    * @param {string} id Значение фильтра.
@@ -127,7 +130,8 @@ function viewUsers() {
    * @returns {string} HTML.
    */
   const row = u => {
-    const mine = u.uid === Cloud.uid,
+    const parent = u.role === 'parent' || u.requested_role === 'parent',
+      mine = u.uid === Cloud.uid,
       isAdminRow = u.role === 'admin',
       isDup = u.rid && dup[Users.nameKey(u)] > 1;
     const who = u.full_name
@@ -144,7 +148,8 @@ function viewUsers() {
             )
           : 'не указано') +
         '</span>';
-    const actions =
+    const parentAction = parent && Cloud.isAdmin ? '<button class="btn sm" data-action="parent-child-edit" data-uid="' + u.uid + '">Выбрать ребёнка</button>' : '';
+    const actions = parentAction + (
       isAdminRow || mine || !Cloud.isAdmin
         ? '<span class="muted">—</span>'
         : (u.status === 'banned'
@@ -155,12 +160,12 @@ function viewUsers() {
             : '<button class="btn sm" data-action="user-reset" data-uid="' + u.uid + '" title="Освободить фамилию и сбросить кабинет: человек сможет выбрать фамилию заново">Разрешить перерегистрацию</button>') +
           '<button class="btn sm danger" data-action="user-delete" data-uid="' +
           u.uid +
-          '">Удалить</button>';
+          '">Удалить</button>');
     return (
       '<tr' +
       (u.status === 'banned' ? ' class="u-banned"' : '') +
       '><td data-label="ФИО">' +
-      who +
+      who + (parent ? '<small>Ребёнок: ' + U.esc(u.child_name || 'не выбран') + '</small>' : '') +
       (isDup ? ' <span class="tag bad">Дубль ФИО</span>' : '') +
       (u.rid ? '<small class="muted"> · код ' + U.esc(u.rid) + '</small>' : '') +
       '</td><td data-label="Email" class="mono">' +
@@ -172,7 +177,7 @@ function viewUsers() {
       U.esc(Users.dt(u.last_sign_in_at) || 'не входил') +
       '</td>' +
       '<td data-label="Роль">' +
-      U.esc(Roles.names[u.role] || u.role) +
+      U.esc(parent ? 'Родитель' : Roles.names[u.role] || u.role) +
       '</td><td data-label="Статус"><span class="tag status ' +
       Users.statusClass[u.status] +
       '">' +
@@ -185,7 +190,9 @@ function viewUsers() {
   return (
     '<div class="page-head"><div><h1>Пользователи</h1><p>Все аккаунты: кто и с какой почты зарегистрировался. Забанить закрывает доступ сразу, удалить убирает аккаунт и личные данные, а фамилия освобождается. Посещаемость и справки сохраняются за ФИО и возвращаются при новой регистрации. «Разрешить перерегистрацию» освобождает фамилию, но оставляет аккаунт.</p></div><div class="head-actions">' + (Cloud.isSuperAdmin ? '<button class="btn" data-action="users-free" title="Освободить фамилии аккаунтов, удалённых вне приложения">Освободить фамилии удалённых</button>' : '') + '<button class="btn" data-action="users-refresh">Обновить</button></div></div>' +
     '<div class="fchips">' +
-    chip('all', 'Все', all.length) +
+    chip('students', 'Студенты', all.filter(u => u.role !== 'parent' && u.requested_role !== 'parent' && ['student','admin','developer'].includes(u.role)).length) +
+    chip('parents', 'Родители', all.filter(u => u.role === 'parent' || u.requested_role === 'parent').length) +
+    chip('all', 'Все аккаунты', all.length) +
     chip('pending', 'На проверке', all.filter(u => ['pending', 'none'].indexOf(u.status) >= 0).length) +
     chip('banned', 'Забанены', all.filter(u => u.status === 'banned').length) +
     chip('dup', 'Дубли ФИО', all.filter(u => u.rid && dup[Users.nameKey(u)] > 1).length) +
@@ -226,4 +233,18 @@ function groupCodeCard() {
     (Cloud.codeRequired === false ? 'Выключено' : 'Включено') +
     '</button></div></section>'
   );
+}
+
+/** Староста меняет привязку родителя только внутри своей группы. */
+function openParentChildEditor(uid) {
+  if (!Cloud.isAdmin) return;
+  const parent = (Cloud.users || []).find(u => u.uid === uid && (u.role === 'parent' || u.requested_role === 'parent'));
+  if (!parent) return toast('Родитель не найден в этой группе');
+  const request = (Cloud.requests || []).find(r => r.uid === uid), students = studentRows();
+  UI.open('Ребёнок родителя: ' + (parent.full_name || parent.email),
+    '<div data-form="parent-child" data-uid="' + U.esc(uid) + '">' +
+    field('Ребёнок', '<select class="input" name="child"><option value="">— выберите студента —</option>' + students.map(s =>
+      '<option value="' + U.esc(s.id) + '"' + (request && request.child_uid === s.id ? ' selected' : '') + '>' + U.esc(s.p.name) + '</option>').join('') + '</select>') +
+    '<p class="hint">Здесь студенты этой группы, которые уже создали кабинет. Если ребёнка нет в списке, ему нужно завершить регистрацию и получить одобрение старосты.</p>' +
+    '<div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">Сохранить</button></div></div>');
 }

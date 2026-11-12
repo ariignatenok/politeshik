@@ -389,7 +389,7 @@ const Chat = {
       (avg == null ? '—' : avg + '%') +
       '\n' +
       ICONS.circleRed +
-      ' Красная зона (24 ч и больше): ' +
+      ' Красная зона (' + ABS_LIMIT + ' ч и больше): ' +
       names(rows.filter(x => x.z.cls === 'red')) +
       '\n' +
       ICONS.circleOrange +

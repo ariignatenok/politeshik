@@ -4,7 +4,7 @@ const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', '�
 const WEEKDAYS = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
 const TEMPLATE_FIRST = 'Октябрь';
 const NAME_COLUMN = 1;
-const STATUS_TO_CELL = {'П': 'п', 'О': 'п', 'Н': 'н', 'У': 'Б'};
+const STATUS_TO_CELL = {'П': 'п', 'О': 'п', 'Н': 'н', 'У': 'Б', 'УП': 'УП'};
 const NOTE_CELL = 'З';
 const MAX_ITEMS_IN_REPLY = 30;
 

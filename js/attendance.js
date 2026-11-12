@@ -148,7 +148,7 @@ const Att = {
   pct: (a, b) => (b > 0 ? Math.round((a * 100) / b) : null),
   /**
    * Считает часы пропусков без уважительной причины за один календарный месяц.
-   * Лимит (24 ч) действует в пределах месяца: 1-го числа счёт начинается заново.
+   * Лимит выбранной группы действует в пределах месяца: 1-го числа счёт начинается заново.
    * @param {Object<string,string>} marks Отметки вида {"дата|пара": статус}.
    * @param {Array<Object>} certs Справки студента.
    * @param {string} sub Подгруппа.
@@ -231,7 +231,7 @@ const Att = {
         } else if (st === 'н') {
           r.a++;
           b.a++;
-        } else if (st === 'у') {
+        } else if ((st === 'у' || st === 'уп')) {
           r.x++;
           b.x++;
         } else if (di < today) {
@@ -255,8 +255,18 @@ const Att = {
    * @param {number} pair Номер пары.
    * @param {string} st Статус: п, о или н.
    */
+  dayChanges(date, subgroup, marks, certs, status) {
+    if (!['п','н'].includes(status)) return {};
+    const changes = {};
+    Att.pairs(date, subgroup).forEach(p => {
+      const key = date + '|' + p.pair;
+      if (['у','уп'].includes(marks[key]) || Att.coveredPair(certs, date, p.pair)) return;
+      changes[key] = status;
+    });
+    return changes;
+  },
   set(uid, date, pair, st) {
-    if (st === 'у' && !Cloud.isAdmin) return toast('Уважительную причину отмечают только староста и Админ Арина');
+    if ((st === 'у' || st === 'уп') && !Cloud.isAdmin) return toast('Уважительную причину отмечают только староста и Админ Арина');
     if (Cloud.tenantId !== 'group_1' && !Cloud.isAdmin) return toast('Посещаемость меняют староста и Админ Арина');
     const key = date + '|' + pair;
     if (!uid && Cloud.status === 'online' && date !== U.iso(U.today())) {

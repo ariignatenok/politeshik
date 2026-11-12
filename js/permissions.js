@@ -5,7 +5,7 @@
  * @returns {boolean} true, если условие выполнено.
  */
 const canEdit = () => Cloud.status !== 'online' || Cloud.isAdmin;
-const RO_ACTIONS = new Set(['gs-open', 'gs-save', 'gs-test', 'gs-send', 'gs-dry', 'gs-xls', 'gs-quick', 
+const RO_ACTIONS = new Set(['att-day-full','parent-child-edit','gs-open', 'gs-save', 'gs-test', 'gs-send', 'gs-dry', 'gs-xls', 'gs-quick',
   'qa-open',
   'qa-weeks',
   'qa-fill',
@@ -64,7 +64,7 @@ const RO_ACTIONS = new Set(['gs-open', 'gs-save', 'gs-test', 'gs-send', 'gs-dry'
   'chg-replace',
   'chg-del'
 ]);
-const RO_FORMS = new Set([
+const RO_FORMS = new Set(['parent-child',
   'news',
   'att-edit',
   'hwg',

@@ -66,9 +66,8 @@ const FLAG_LABEL = {
   expelled: 'отчислен(а)',
   ghost: 'мёртвая душа'
 };
-const ABS_LIMIT = 24,
-  ABS_WARN_LEFT = 4,
-  PAIR_HOURS = 2;
+let ABS_LIMIT = 24;
+const ABS_WARN_LEFT = 4, PAIR_HOURS = 2;
 const ATT_START = '2026-10-01';
 /**
  * Создаёт глубокую копию данных.

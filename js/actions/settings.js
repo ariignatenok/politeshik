@@ -90,16 +90,12 @@ Object.assign(A, {
    * Запрашивает у браузера разрешение на уведомления.
    */
   async 'notif-ask'() {
-    const r = await Notifier.ask();
-    toast(
-      r === 'granted'
-        ? 'Уведомления включены'
-        : r === 'unsupported'
-          ? 'Браузер не поддерживает уведомления — покажу всплывашки'
-          : 'Уведомления не разрешены'
-    );
+    const result = await Notifier.ask();
+    if (result === 'granted') toast('Уведомления включены');
+    else UI.open('Как включить уведомления', Notifier.helpHtml(result));
     App.render();
   },
+
   /**
    * Откладывает вопрос об уведомлениях.
    */

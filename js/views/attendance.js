@@ -4,7 +4,8 @@ const ST_INFO = {
   п: ['Присутствую', 'ok'],
   о: ['Опоздал(а)', 'late'],
   н: ['Нет', 'no'],
-  у: ['Уважительная причина', 'exc']
+  у: ['Уважительная причина', 'exc'],
+  уп: ['Индивидуальный график — уважительный пропуск', 'exc']
 };
 /**
  * Строит кнопки статусов п, о, н для пары.
@@ -86,8 +87,8 @@ function attDayHtml(date, marks, certs, sub, uid, locked) {
             })
             .join('') +
           '</div>' +
-          (cur === 'у' && !raw
-            ? '<span class="tag exc">по справке</span>'
+          (['у','уп'].includes(cur)
+            ? '<span class="tag exc">' + cur.toUpperCase() + ' — ' + ST_INFO[cur][0] + '</span>'
             : '<div class="att-cell">' +
               statusBtns(date, pr.pair, raw, uid, locked || lockedMark(raw, uid)) +
               (lockedMark(raw, uid)
@@ -201,7 +202,7 @@ function monthCal(ym, byDay, selected, pickAction) {
         ? 'no'
         : arr.includes('о')
           ? 'late'
-          : arr.includes('у')
+          : (arr.includes('у') || arr.includes('уп'))
             ? 'exc'
             : arr.every(x => x === 'п')
               ? 'ok'

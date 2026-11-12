@@ -70,3 +70,6 @@
 }
 
 .ed-opt.exc input:checked + span { background: #0284c7; }
+
+.ed-opts { flex-wrap:wrap; max-width:100%; }
+.day-marks { flex-wrap:wrap; margin-bottom:8px; }

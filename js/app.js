@@ -215,9 +215,7 @@ const App = {
       role === 'parent'
         ? '<label class="field"><span>Ваше ФИО</span><input class="input" name="person_name" placeholder="Иванова Мария Петровна" value="' +
           U.esc(draft.person_name || '') +
-          '"></label><label class="field"><span>ФИО ребёнка (как в списке группы)</span><input class="input" name="child_name" placeholder="Иванов Пётр" value="' +
-          U.esc(draft.child_name || '') +
-          '"></label>'
+          '"></label>' + Groups.childSelector(draft.child_name || '')
         : role === 'staff'
           ? '<label class="field"><span>Ваше ФИО</span><input class="input" name="person_name" placeholder="Петрова Анна Сергеевна" value="' +
             U.esc(draft.person_name || '') +
@@ -328,8 +326,15 @@ const App = {
     const fingerprint = App.fingerprint(html);
     if (!(sameScreen && fingerprint === App.shownKey)) {
       const snapshot = sameScreen ? App.scrollSnapshot(v) : null;
+      const focused = sameScreen && document.activeElement && document.activeElement.matches('textarea[data-chat-draft]')
+        ? {key: document.activeElement.dataset.chatDraft, start: document.activeElement.selectionStart, end: document.activeElement.selectionEnd} : null;
       if (sameScreen) v.style.minHeight = v.offsetHeight + 'px';
       v.innerHTML = html;
+      v.querySelectorAll('textarea[data-chat-draft]').forEach(UI.resizeComposer);
+      if (focused) {
+        const input = Array.from(v.querySelectorAll('textarea[data-chat-draft]')).find(x => x.dataset.chatDraft === focused.key);
+        if (input) { input.focus({preventScroll:true}); input.setSelectionRange(focused.start, focused.end); }
+      }
       if (snapshot) App.scrollRestore(v, snapshot);
       v.style.minHeight = '';
     }

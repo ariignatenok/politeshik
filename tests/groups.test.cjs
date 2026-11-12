@@ -18,7 +18,7 @@ function app() {
     const states={user:home};
     const Store={s:home,bind(key){this.key=key;this.s=states[key]||JSON.parse(JSON.stringify(home));},replace(s){this.s=s;states[this.key]=s;ScheduleSync.week('2026-11-09',[]);}};
     ScheduleSync.refresh=()=>Promise.resolve();
-    globalThis.api={Groups,ScheduleSync,ROSTER,ROSTER_BY_ID,Store,Cloud,Roles,Dm,ui,groupName:()=>GROUP_NAME};
+    globalThis.api={Groups,ScheduleSync,ROSTER,ROSTER_BY_ID,Store,Cloud,Roles,Dm,ui,groupName:()=>GROUP_NAME,limit:()=>ABS_LIMIT};
   `,ctx);
   return ctx.api;
 }
@@ -99,4 +99,22 @@ test('third group has its own 27-person roster and email-bound leader without a 
   assert.equal(Store.s.subjects.length,0);
   assert.equal(groupName(),'23290907/2092');
   assert.equal(Groups.get('group_3').supportRoles.join(','),'admin,superadmin');
+});
+
+
+test('monthly absence limit follows the selected group and keeps Arina home at 24 hours',()=>{
+  const {Groups,limit}=app();
+  Groups.activate({uid:'user',tenant_id:'group_2'}); assert.equal(limit(),12);
+  Groups.activate({uid:'user',tenant_id:'group_3'}); assert.equal(limit(),12);
+  Groups.activate({uid:'user',tenant_id:'group_1'}); assert.equal(limit(),24);
+});
+
+
+test('parent requests never count as students even when an old profile has a roster id',()=>{
+  const {Cloud,Roles}=app();
+  Cloud.adm={profiles:{parent:{rid:'r2',role:'student'}}};
+  Cloud.memberMap={parent:{role:'student',requested_role:'parent',status:'approved'}};
+  assert.equal(Roles.countsAsStudent('parent'),false);
+  Cloud.memberMap.parent={role:'parent',requested_role:'parent',status:'approved'};
+  assert.equal(Roles.countsAsStudent('parent'),false);
 });

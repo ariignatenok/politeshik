@@ -211,3 +211,6 @@
   font-size: 13px;
   margin-top: 12px;
 }
+
+.lesson { min-width:0; max-width:100%; box-sizing:border-box; overflow:hidden; }
+.lesson b, .lesson small { min-width:0; max-width:100%; white-space:normal; overflow-wrap:anywhere; }

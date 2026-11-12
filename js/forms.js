@@ -1,6 +1,17 @@
 'use strict';
 
 const Forms = {
+  async 'parent-child'(form) {
+    if (!Cloud.isAdmin) return toast('Изменять ребёнка может только староста');
+    const child = val(form, 'child');
+    if (!child) return toast('Выберите ребёнка из списка');
+    const button = form.querySelector('[data-action="save-form"]'); button.disabled = true;
+    const {error} = await supa.rpc('admin_set_parent_child', {p_parent: form.dataset.uid, p_child: child});
+    if (error) { button.disabled = false; return toast(error.message); }
+    UI.close();
+    await Promise.all([Cloud.loadUsers(true), Cloud.loadRequests(true)]);
+    App.render(); toast('Ребёнок родителя изменён');
+  },
   /**
    * Сохраняет форму работы.
    * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
@@ -416,15 +427,21 @@ const Forms = {
    * Отправляет личное сообщение.
    * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
    */
-  dm(form) {
-    Dm.send(form.dataset.with, val(form, 't')).then(ok => {
-      if (ok) {
-        App.render();
-        const i = $('#dmIn');
-        if (i) i.focus();
-      }
-    });
+  async dm(form) {
+    const input = form.querySelector('[name=t]'), body = input.value;
+    if (!body.trim()) return;
+    const button = form.querySelector('[data-action="save-form"]');
+    if (button.disabled) return;
+    button.disabled = true;
+    const ok = await Dm.send(form.dataset.with, body);
+    if (ok) {
+      if (((ui.chatDrafts || {})[input.dataset.chatDraft] || '') === body) delete ui.chatDrafts[input.dataset.chatDraft];
+      App.render();
+      const current = $('#dmIn'); if (current) current.focus();
+    }
+    if (button.isConnected) button.disabled = false;
   },
+
   /**
    * Сохраняет отметки студента за день.
    * @param {HTMLElement} form Контейнер формы с атрибутом data-form.
@@ -781,6 +798,8 @@ const Forms = {
   chat(form) {
     const t = val(form, 't').trim();
     if (!t) return;
+    const input = form.querySelector('[name=t]');
+    if (ui.chatDrafts && input) delete ui.chatDrafts[input.dataset.chatDraft];
     Chat.reply(t);
     setTimeout(() => {
       const i = $('#chatIn');

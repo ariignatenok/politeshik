@@ -290,7 +290,7 @@ function viewDashboard() {
   const hwOpen = state.homework.filter(hwUpcoming).length;
   const dv = Att.dayView(U.iso(now), state.settings.subgroup);
   return (
-    '<div class="page-head"><div><h1>Главная</h1><p>' +
+    '<div class="page-head dashboard-head"><div><h1>Главная</h1><p>' +
     U.esc(U.fmtLong(now)) +
     ' · идёт ' +
     WEEK_NAME[cur] +

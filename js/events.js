@@ -48,6 +48,12 @@ document.addEventListener('keydown', event => {
       A['study-no']();
     }
   }
+  if (event.key === 'Enter' && (event.ctrlKey || event.metaKey) && event.target.matches('textarea[data-chat-draft]') && !event.isComposing) {
+    event.preventDefault();
+    const button = event.target.closest('[data-form]').querySelector('[data-action="save-form"]');
+    if (button && !button.disabled) button.click();
+    return;
+  }
   if (
     event.key === 'Enter' &&
     !event.shiftKey &&
@@ -63,6 +69,12 @@ document.addEventListener('keydown', event => {
   }
 });
 document.addEventListener('input', event => {
+  if (event.target.matches && event.target.matches('textarea[data-chat-draft]')) {
+    ui.chatDrafts = ui.chatDrafts || {};
+    ui.chatDrafts[event.target.dataset.chatDraft] = event.target.value;
+    UI.resizeComposer(event.target);
+    return;
+  }
   const k = event.target.dataset && event.target.dataset.input;
   if (!k) return;
   if (k === 'subj-search') {
@@ -97,6 +109,8 @@ document.addEventListener('change', event => {
     const form = event.target.closest('[data-form]'),
       codeField = form && form.querySelector('[name=group_code]');
     Groups.selectRoster(event.target.value);
+    const child = form && form.querySelector('select[name=child_name]');
+    if (child) child.innerHTML = Groups.childOptions();
     try { window.localStorage.setItem('politeshik:registration-group', Groups.selected); } catch (error) {}
     ui.registrationCode = '';
     ui.groupCode = '';
@@ -107,7 +121,7 @@ document.addEventListener('change', event => {
       codeField.placeholder = Groups.get(Groups.selected).number.replace('/', '-') + '-XXXXX';
     }
     // Keep typed email, password and consent when choosing a group before login.
-    if (form && ['login', 'oauth'].includes(form.dataset.form)) return;
+    if (form && ['login', 'oauth', 'complete'].includes(form.dataset.form)) return;
     Cloud.claims = {}; $('#gate').dataset.mode = ''; App.render();
     return;
   }

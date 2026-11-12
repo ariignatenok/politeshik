@@ -49,7 +49,7 @@ const Signup = {
           ? codeField
           : role === 'parent'
             ? field('Ваше ФИО', 'person_name', draft.person_name || '', 'placeholder="Иванова Мария Петровна"') +
-              field('ФИО ребёнка (как в списке группы)', 'child_name', draft.child_name || '', 'placeholder="Иванов Пётр"') +
+              Groups.childSelector(draft.child_name || '') +
               codeField
             : role === 'staff'
               ? field('Ваше ФИО', 'person_name', draft.person_name || '', 'placeholder="Петрова Анна Сергеевна"') +
@@ -119,16 +119,16 @@ const Signup = {
         '></label>';
     const body =
       role === 'parent'
-        ? field('Ваше ФИО', 'person_name', meta.person_name) +
-          field('ФИО ребёнка (как в списке группы)', 'child_name', meta.child_name) +
+        ? Groups.selector(false) + field('Ваше ФИО', 'person_name', meta.person_name) +
+          Groups.childSelector(meta.child_name || '') +
           field(
             'Код группы (его выдаёт староста)',
             'group_code',
             '',
-            'autocomplete="off" placeholder="25290909-3091-XXXXX"'
+            'autocomplete="off" placeholder="' + Groups.get(Groups.selected).number.replace('/', '-') + '-XXXXX"'
           )
         : role === 'staff'
-          ? field('Ваше ФИО', 'person_name', meta.person_name) +
+          ? Groups.selector(false) + field('Ваше ФИО', 'person_name', meta.person_name) +
             field('Должность и группа', 'person_note', meta.person_note)
           : field('Как к вам обращаться', 'teacher_name', meta.teacher_name) +
             '<label class="field"><span>Пароль преподавателя</span><input class="input" name="teacher_secret" type="password" autocomplete="off"></label>';

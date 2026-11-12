@@ -8,7 +8,8 @@ const REPORT_WORDS = {
   п: 'Присутствовал',
   о: 'Опоздал',
   н: 'Не был',
-  у: 'Уважительная причина'
+  у: 'Уважительная причина',
+  уп: 'Индивидуальный график (уважительный пропуск)'
 };
 
 /**
@@ -255,7 +256,7 @@ const AttReport = {
       widths.push(i === 5 ? 14 : 7);
     });
     merges.push(Xlsx.col(sumStart) + '1:' + Xlsx.col(sumStart + sumHeads.length - 1) + '1');
-    const letterStyle = {п: 'p', о: 'o', н: 'n', Б: 'b', У: 'b', З: 'z'},
+    const letterStyle = {п: 'p', о: 'o', н: 'n', Б: 'b', У: 'b', УП: 'b', З: 'z'},
       rows = [r1, r2];
     people.forEach(person => {
       const r = person.r,
@@ -265,7 +266,7 @@ const AttReport = {
           const it = AttReport.entry(person, day.date, col.pair),
             same = it && it.subjectId === col.subjectId && (col.who === '' || it.teacher === col.who);
           if (!same) return row.push({v: '', s: 'blank'});
-          const letter = it.st === 'у' ? (it.manualExcused ? 'У' : it.kind === 'Записка' ? 'З' : 'Б') : it.st;
+          const letter = it.st === 'уп' ? 'УП' : it.st === 'у' ? (it.manualExcused ? 'У' : it.kind === 'Записка' ? 'З' : 'Б') : it.st;
           row.push({v: letter || '', s: letter ? letterStyle[letter] : 'num'});
         })
       );
@@ -279,6 +280,7 @@ const AttReport = {
       ['п — присутствовал', 'note'],
       ['о — опоздал (считается как присутствие)', 'note'],
       ['н — без уважительной причины', 'note'],
+      ['УП — индивидуальный график (уважительный пропуск)', 'note'],
       ['У — уважительная причина (отмечена старостой)', 'note'],
       ['Б — больничный / справка (подтверждена старостой)', 'note'],
       ['З — заявление (записка)', 'note'],
@@ -319,7 +321,7 @@ const AttReport = {
         {k: 'p', label: 'Присутствовал (П)', v: t.p, c: 'var(--ok, #22c55e)'},
         {k: 'l', label: 'Опоздал (О)', v: t.l, c: 'var(--warn, #f59e0b)'},
         {k: 'a', label: 'Не был (Н)', v: t.a, c: 'var(--bad, #ef4444)'},
-        {k: 'x', label: 'Справки', v: t.x, c: 'var(--info, #38bdf8)'}
+        {k: 'x', label: 'Уважительные пропуски', v: t.x, c: 'var(--info, #38bdf8)'}
       ],
       sum = parts.reduce((s, x) => s + x.v, 0),
       R = 70,
@@ -397,7 +399,7 @@ const AttReport = {
             '</span><div class="sbar">' +
             seg(s.p, 'ok', 'Присутствовал') +
             seg(s.l, 'late', 'Опоздал') +
-            seg(s.x, 'exc', 'Справка') +
+            seg(s.x, 'exc', 'Уважительная причина') +
             seg(s.a, 'no', 'Не был') +
             '</div><span class="sv">' +
             (s.p + s.l) +

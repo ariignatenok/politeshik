@@ -32,7 +32,7 @@ function jCell(e, di) {
     ? 'no'
     : effs.includes('о')
       ? 'late'
-      : effs.includes('у')
+      : (effs.includes('у') || effs.includes('уп'))
         ? 'exc'
         : effs.every(x => x === 'п')
           ? 'ok'
@@ -47,7 +47,7 @@ function jCell(e, di) {
     '" title="' +
     prs.map((p, i) => p.pair + '-я: ' + (effs[i] ? ST_INFO[effs[i]][0] : 'не отмечено')).join('; ') +
     '">' +
-    effs.map(x => x || '?').join('') +
+    effs.map(x => x === 'уп' ? 'УП' : x || '?').join(' ') +
     '</td>'
   );
 }
@@ -77,7 +77,7 @@ function viewJournalSelf() {
         ? 'no'
         : effs.includes('о')
           ? 'late'
-          : effs.includes('у')
+          : (effs.includes('у') || effs.includes('уп'))
             ? 'exc'
             : effs.every(x => x === 'п')
               ? 'ok'
@@ -88,7 +88,7 @@ function viewJournalSelf() {
       '" title="' +
       prs.map((p, i) => p.pair + '-я: ' + (effs[i] ? ST_INFO[effs[i]][0] : 'не отмечено')).join('; ') +
       '">' +
-      effs.map(x => x || '?').join('') +
+      effs.map(x => x === 'уп' ? 'УП' : x || '?').join(' ') +
       '</td>'
     );
   };
@@ -194,7 +194,7 @@ function viewJournal(asTeacher) {
         );
       })
       .join('') +
-    '<th>п</th><th>о</th><th>н</th><th title="Уважительные пропуски">у</th><th>%</th><th title="Пропуски без уважительной причины за выбранный месяц, лимит 24 ч в месяц">без ув., ч</th></tr>';
+    '<th>п</th><th>о</th><th>н</th><th title="Уважительные пропуски">у</th><th>%</th><th title="Пропуски без уважительной причины за выбранный месяц, лимит ' + ABS_LIMIT + ' ч в месяц">без ув., ч</th></tr>';
   const body = rows
     .map(x => {
       const e = x.e,
@@ -282,14 +282,14 @@ function viewJournal(asTeacher) {
     '</b><small>не заходили</small></div>' +
     '<div class="stat red"><b>' +
     redL.length +
-    '</b><small>в красной зоне (24 ч)</small></div></div>' +
+    '</b><small>в красной зоне (' + ABS_LIMIT + ' ч)</small></div></div>' +
     '<div class="card" style="margin-bottom:14px"><p class="md-help" style="margin:0 0 6px"><b>Не заходили:</b> ' +
     list(notIn) +
     '</p><p class="md-help" style="margin:0 0 6px"><b>Не отметились сегодня:</b> ' +
     list(noMark) +
     '</p><p class="md-help" style="margin:0 0 6px"><b>' +
     ICONS.circleRed +
-    ' Красная зона (24 ч и больше пропусков без уважительной причины):</b> ' +
+    ' Красная зона (' + ABS_LIMIT + ' ч и больше пропусков без уважительной причины):</b> ' +
     zlist(redL) +
     '</p><p class="md-help" style="margin:0"><b>' +
     ICONS.circleOrange +

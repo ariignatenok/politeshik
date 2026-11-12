@@ -6,13 +6,15 @@
  */
 function notifSettings() {
   const c = Notifier.cfg(),
-    p = Notifier.perm(),
+    p = Notifier.state(),
     state = Store.s;
   const permTxt =
     p === 'granted'
       ? ICONS.check + ' Разрешены в браузере'
       : p === 'denied'
         ? ICONS.noEntry + ' Запрещены в браузере (разрешите в настройках сайта)'
+        : p === 'install' ? 'На iPhone нужно открыть приложение с экрана «Домой»'
+        : p === 'insecure' ? 'Нужно защищённое соединение HTTPS'
         : p === 'unsupported'
           ? 'Этот браузер не поддерживает системные уведомления — буду показывать всплывашки'
           : 'Пока не включены';
@@ -20,8 +22,8 @@ function notifSettings() {
     '<div class="card set-sec"><h2>Уведомления</h2><div class="set-row"><div><b>' +
     permTxt +
     '</b><p>Системные уведомления работают, пока приложение открыто или установлено; в закрытом браузере они придут после подключения серверной части.</p></div>' +
-    (p === 'default'
-      ? '<button class="btn primary" data-action="notif-ask">' + ICONS.bell + ' Включить</button>'
+    (p !== 'granted'
+      ? '<button class="btn primary" data-action="notif-ask">' + ICONS.bell + (p === 'default' ? ' Включить' : ' Как включить') + '</button>'
       : '') +
     '</div>' +
     NOTIF_TYPES.map(

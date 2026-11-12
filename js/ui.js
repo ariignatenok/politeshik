@@ -1,6 +1,12 @@
 'use strict';
 
 const UI = {
+  resizeComposer(input) {
+    input.style.height = 'auto';
+    const max = Math.max(100, Math.min(260, window.innerHeight * 0.3));
+    input.style.height = Math.min(input.scrollHeight, max) + 'px';
+    input.style.overflowY = input.scrollHeight > max ? 'auto' : 'hidden';
+  },
   /**
    * Открывает модальное окно.
    * @param {string} title Заголовок окна.

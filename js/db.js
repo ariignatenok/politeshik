@@ -698,7 +698,7 @@ const Cloud = (() => {
           .set(C.profile)
           .catch(() => {});
       }
-      if (C.memberKnown && !C.member && C.profile && C.profile.rid && !C.realAdmin && !C.realTeacher) {
+      if (C.memberKnown && !C.member && C.profile && C.profile.rid && C.profile.role !== 'parent' && C.meta.signup_role !== 'parent' && !C.realAdmin && !C.realTeacher) {
         await C.requestAccess('student', C.profile.name || '', '', '', Roles.storedCode());
       }
       C.applyRole();
@@ -716,7 +716,11 @@ const Cloud = (() => {
       }
       if (!(C.isSuperAdmin && C.tenantId !== C.homeTenant)) watchOwn();
       watchGroup();
-      if (C.realAdmin || C.isDeveloper) watchAdmin();
+      if (C.realAdmin || C.isDeveloper) {
+        const members = await supa.from('members').select('uid,role,status,requested_role').eq('tenant_id',C.tenantId);
+        if (!members.error) (members.data || []).forEach(m => { C.memberMap[m.uid] = m; });
+        watchAdmin();
+      }
       if (C.realTeacher) watchStaff('teacher');
       else if (C.realRole === 'curator') watchStaff('curator');
       if (C.realRole === 'parent' || C.realAdmin) {
@@ -1266,7 +1270,7 @@ const Cloud = (() => {
     const own = uid === C.uid,
       before = own ? null : C.adm.att[uid];
     const cur = Object.assign({}, own ? Store.s.attendance.marks : (C.adm.att[uid] || {}).marks || {});
-    if (!C.isAdmin && Object.keys(changes).some(k => (cur[k] === 'у' || changes[k] === 'у') && cur[k] !== changes[k]))
+    if (!C.isAdmin && Object.keys(changes).some(k => (['у','уп'].includes(cur[k]) || ['у','уп'].includes(changes[k])) && cur[k] !== changes[k]))
       return {ok: false, error: 'Уважительную причину отмечают только староста и Админ Арина'};
     Object.keys(changes).forEach(k => {
       if (changes[k]) cur[k] = changes[k];
@@ -1538,7 +1542,7 @@ const Cloud = (() => {
       C.requests.forEach(r => {
         C.memberMap[r.uid] = {
           status: r.status,
-          role: r.role
+          role: r.role, requested_role: r.requested_role
         };
       });
       C.needApproval = need.data !== false;
@@ -1737,7 +1741,7 @@ const Cloud = (() => {
       C.users.forEach(u => {
         C.memberMap[u.uid] = {
           status: u.status,
-          role: u.role
+          role: u.role, requested_role: u.requested_role
         };
       });
       if (before !== JSON.stringify(C.users)) App.renderSoft();

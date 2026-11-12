@@ -41,16 +41,47 @@ const Notifier = {
    * Запрашивает разрешение на уведомления.
    * @returns {Promise<string>} результат.
    */
+  environment() {
+    const ua = navigator.userAgent || '';
+    return {ios: /iPad|iPhone|iPod/.test(ua) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1,
+      standalone: !!navigator.standalone || !!(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches),
+      secure: window.isSecureContext !== false};
+  },
+  state() {
+    const env = Notifier.environment();
+    if (!env.secure) return 'insecure';
+    if (env.ios && !env.standalone) return 'install';
+    return Notifier.perm();
+  },
+  helpHtml(state) {
+    const env = Notifier.environment();
+    const text = state === 'install'
+      ? 'На iPhone и iPad откройте сайт в Safari, нажмите «Поделиться» → «На экран Домой». Запустите «Политешик» с появившейся иконки и снова нажмите «Включить».'
+      : state === 'denied'
+        ? env.ios ? 'Откройте настройки iPhone → «Уведомления» → «Политешик» и разрешите уведомления. Затем вернитесь в приложение.'
+          : 'Браузер уже запретил уведомления для сайта. Нажмите значок настроек сайта или замка возле адреса → «Разрешения» → «Уведомления» → «Разрешить». В Safari на компьютере: Safari → «Настройки» → «Веб-сайты» → «Уведомления». После изменения обновите страницу.'
+        : state === 'default' ? 'Запрос закрыт без разрешения. Нажмите «Включить» ещё раз и выберите «Разрешить» в окне браузера.'
+        : state === 'insecure' ? 'Для уведомлений откройте приложение по защищённому адресу https://ariignatenok.github.io/politeshik/.'
+        : state === 'error' ? 'Браузер не смог открыть запрос разрешения. Проверьте разрешения сайта и ограничения браузера, затем повторите попытку.'
+        : 'Этот браузер не поддерживает системные уведомления в текущем режиме. Обновите браузер; на iPhone используйте приложение с экрана «Домой». Внутри приложения уведомления продолжат появляться.';
+    return '<p>' + U.esc(text) + '</p><p class="hint">Пока приложение открыто, сообщения и напоминания также показываются внутри него.</p>';
+  },
   async ask() {
+    let result = Notifier.state();
+    if (result === 'default') {
+      try {
+        // Request synchronously inside the click; saving/rendering must not consume user activation.
+        result = await new Promise((resolve, reject) => {
+          const pending = Notification.requestPermission(resolve);
+          if (pending && typeof pending.then === 'function') pending.then(resolve, reject);
+        });
+      } catch (error) { result = 'error'; }
+    }
     Store.s.settings.notifAsked = true;
     Store.save();
-    if (!Notifier.supported()) return 'unsupported';
-    try {
-      return await Notification.requestPermission();
-    } catch (error) {
-      return 'denied';
-    }
+    return result;
   },
+
   /**
    * Проверяет, идут ли тихие часы (23:00-7:00).
    * @param {Date} d Момент времени (необязательно).
@@ -84,7 +115,7 @@ const Notifier = {
               icon: 'assets/icon-192.png',
               badge: 'assets/icon-192.png'
             })
-          );
+          ).catch(() => UI.toast(ICONS.bell + ' ' + title + (body ? ': ' + body : '')));
         else
           new Notification(title, {
             body,

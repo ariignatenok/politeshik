@@ -95,10 +95,11 @@ const Roles = {
   countsAsStudent(uid) {
     const profile = (Cloud.adm.profiles || {})[uid];
     if (!profile || !profile.rid) return false;
-    if (['teacher', 'parent', 'curator', 'department', 'staff'].indexOf(profile.role) >= 0) return false;
     const member = (Cloud.memberMap || {})[uid];
-    return !member || (member.status === 'approved' && ['student', 'admin', 'developer'].includes(member.role));
+    if (member) return member.requested_role !== 'parent' && member.status === 'approved' && ['student','admin','developer'].includes(member.role);
+    return !['teacher','parent','curator','department','staff'].includes(profile.role);
   },
+
   /**
    * Собирает студентов, вошедших в приложение: один человек (одно ФИО) = одна запись, даже если у него два аккаунта.
    * Основным берётся аккаунт, который держит ФИО; отметки и справки лишних аккаунтов добавляются, основного приоритетнее.
@@ -283,6 +284,7 @@ const Roles = {
       name,
       joined: new Date().toISOString()
     });
+    if (kind === 'parent') { delete Cloud.profile.rid; delete Cloud.profile.subgroup; }
     await Cloud.saveProfileNow().catch(() => {});
     Cloud.syncConsent();
     ui.justSubmitted = true;

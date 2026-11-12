@@ -87,3 +87,9 @@
 .welcome-recipients h2 { margin-bottom: 8px; }
 .welcome-recipients > p { color: var(--muted); margin-bottom: 12px; }
 .welcome-recipients .table-scroll { overflow-x: auto; }
+
+.chat-in { align-items:flex-end; min-width:0; }
+.chat-in .chat-compose { flex:1; min-width:0; width:0; resize:none; overflow-x:hidden; white-space:pre-wrap; overflow-wrap:anywhere; min-height:46px; line-height:1.45; }
+.chat-in > .btn { flex-shrink:0; }
+.msg { min-width:0; max-width:100%; }
+.bubble { min-width:0; overflow-wrap:anywhere; word-break:break-word; }

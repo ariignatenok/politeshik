@@ -4,7 +4,7 @@
  * Буквы статусов, которые уходят в Google Таблицу.
  * @type {Object<string,string>}
  */
-const GS_LETTER = {п: 'П', о: 'О', н: 'Н', у: 'У'};
+const GS_LETTER = {п: 'П', о: 'О', н: 'Н', у: 'У', уп: 'УП'};
 
 const GoogleSync = {
   KEY: 'politeshik:gsync',

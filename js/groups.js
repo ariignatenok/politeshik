@@ -40,6 +40,13 @@ const Groups = {
    * @param {boolean} switcher Выбор рабочей группы вместо регистрации.
    * @returns {string} HTML.
    */
+  childOptions(value = '') {
+    return '<option value="">— выберите ребёнка —</option>' + ROSTER.filter(r => !r.flag).map(r =>
+      '<option value="' + U.esc(r.name) + '"' + (U.norm(value) === U.norm(r.name) ? ' selected' : '') + '>' + U.esc(r.name) + '</option>').join('');
+  },
+  childSelector(value = '') {
+    return '<label class="field"><span>Ребёнок (из списка группы)</span><select class="input" name="child_name">' + Groups.childOptions(value) + '</select></label>';
+  },
   selector(switcher) {
     return '<label class="field"><span>' + (switcher ? 'Рабочая группа' : 'Выберите группу') +
       '</span><select class="input" data-change="' + (switcher ? 'active-group' : 'registration-group') +
@@ -67,6 +74,7 @@ const Groups = {
    */
   activate(context) {
     Groups.current = Groups.get(context.tenant_id).id;
+    ABS_LIMIT = Groups.current === 'group_1' ? 24 : 12;
     ScheduleSync.epoch++;
     ScheduleSync.snapshot = null;
     ScheduleSync.group = Groups.get(Groups.current).number;

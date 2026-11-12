@@ -129,3 +129,17 @@ test('manual excused absence is respected without a certificate and adds no unex
   assert.equal(stats.a,0);
   assert.equal(Att.absHours(marks,[],'1',date.slice(0,7)),0);
 });
+
+
+test('individual schedule UP is excused and whole-day buttons preserve excuses and certificates',()=>{
+  const {ScheduleSync,Att}=app();
+  const date=Object.keys(ScheduleSync.snapshot.days).find(d=>Att.pairs(d,'1').length>=3);
+  const pairs=Att.pairs(date,'1'), key=p=>date+'|'+p;
+  const marks={[key(pairs[0].pair)]:'уп',[key(pairs[1].pair)]:'у'};
+  const certs=[{confirmed:true,from:date,to:date,pairs:[pairs[2].pair]}];
+  assert.equal(Att.eff(marks,certs,date,pairs[0].pair),'уп');
+  assert.equal(Att.stats(marks,certs,'1',date,date).a,0);
+  const changes=Att.dayChanges(date,'1',marks,certs,'н');
+  for(const p of pairs.slice(0,3)) assert.equal(changes[key(p.pair)],undefined);
+  for(const p of pairs.slice(3)) assert.equal(changes[key(p.pair)],'н');
+});
