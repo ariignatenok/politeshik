@@ -428,7 +428,7 @@
       "id": "faculty-cc1d7a6b9738",
       "name": "Дебич Максим Владимирович",
       "teacher": "Дебич М.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-cc1d7a6b9738.json",
       "groups": {}
     },
@@ -436,7 +436,7 @@
       "id": "faculty-a3887dca85e9",
       "name": "Девятко Наталья Сергеевна",
       "teacher": "Девятко Н.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-a3887dca85e9.json",
       "groups": {
         "26290911/3111": [
@@ -448,7 +448,7 @@
       "id": "faculty-ac37100601c1",
       "name": "Дегтерева Светлана Викторовна",
       "teacher": "Дегтерева С.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ac37100601c1.json",
       "groups": {}
     },
@@ -456,7 +456,7 @@
       "id": "faculty-e95ae729133f",
       "name": "Дементьев Виталий Сергеевич",
       "teacher": "Дементьев В.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-e95ae729133f.json",
       "groups": {}
     },
@@ -464,7 +464,7 @@
       "id": "faculty-697d78220946",
       "name": "Денисов Георгий Евгеньевич",
       "teacher": "Денисов Г.Е.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -472,7 +472,7 @@
       "id": "faculty-04a1aadf5375",
       "name": "Дубейко Полина Сергеевна",
       "teacher": "Дубейко П.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-04a1aadf5375.json",
       "groups": {}
     },
@@ -480,7 +480,7 @@
       "id": "faculty-892409579740",
       "name": "Евстигнеев Андрей Борисович",
       "teacher": "Евстигнеев А.Б.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-892409579740.json",
       "groups": {}
     },
@@ -488,7 +488,7 @@
       "id": "faculty-0059b4806d40",
       "name": "Егорова Ксения Александровна",
       "teacher": "Егорова К.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-0059b4806d40.json",
       "groups": {}
     },
@@ -496,7 +496,7 @@
       "id": "faculty-9d82521c1ce8",
       "name": "Ежов Евгений Игоревич",
       "teacher": "Ежов Е.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-9d82521c1ce8.json",
       "groups": {
         "24290907/2092": [
@@ -508,7 +508,7 @@
       "id": "faculty-3694ec38c045",
       "name": "Ефимова-Сойни Елена Абрамовна",
       "teacher": "Ефимова-Сойни Е.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3694ec38c045.json",
       "groups": {}
     },
@@ -516,7 +516,7 @@
       "id": "faculty-505e6c6a1bcf",
       "name": "Жеребчевская Екатерина Евгеньевна",
       "teacher": "Жеребчевская Е.Е.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-505e6c6a1bcf.json",
       "groups": {}
     },
@@ -524,7 +524,7 @@
       "id": "faculty-5c51f385d1e0",
       "name": "Жукова Александра Михайловна",
       "teacher": "Жукова А.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5c51f385d1e0.json",
       "groups": {}
     },
@@ -532,7 +532,7 @@
       "id": "faculty-da4b3753143f",
       "name": "Журавлева Ольга Алексеевна",
       "teacher": "Журавлева О.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-da4b3753143f.json",
       "groups": {
         "23290907/2092": [
@@ -547,7 +547,7 @@
       "id": "faculty-8a73e464686d",
       "name": "Зацепина Наталья Денисовна",
       "teacher": "Зацепина Н.Д.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -555,7 +555,7 @@
       "id": "faculty-db07bc37eb0d",
       "name": "Зернова Елена Николаевна",
       "teacher": "Зернова Е.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-db07bc37eb0d.json",
       "groups": {
         "23290907/2092": [
@@ -567,7 +567,7 @@
       "id": "faculty-8bff3af2c46c",
       "name": "Зубарев Алексей Алексеевич",
       "teacher": "Зубарев А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8bff3af2c46c.json",
       "groups": {
         "25290909/3091": [
@@ -579,7 +579,7 @@
       "id": "faculty-c0415f4c6d7f",
       "name": "Зыблев Василий Александрович",
       "teacher": "Зыблев В.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c0415f4c6d7f.json",
       "groups": {}
     },
@@ -587,7 +587,7 @@
       "id": "faculty-cc24a3d5ec0e",
       "name": "Иванова Дарья Васильевна",
       "teacher": "Иванова Д.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-cc24a3d5ec0e.json",
       "groups": {}
     },
@@ -595,7 +595,7 @@
       "id": "faculty-95fe46e97169",
       "name": "Ивашкова Надежда Александровна",
       "teacher": "Ивашкова Н.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-95fe46e97169.json",
       "groups": {}
     },
@@ -603,7 +603,7 @@
       "id": "faculty-564e44d489d2",
       "name": "Игнатьев Евгений Александрович",
       "teacher": "Игнатьев Е.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-564e44d489d2.json",
       "groups": {
         "25290907/1091": [
@@ -618,7 +618,7 @@
       "id": "faculty-d5393280cf21",
       "name": "Ильин Юрий Петрович",
       "teacher": "Ильин Ю.П.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d5393280cf21.json",
       "groups": {}
     },
@@ -626,7 +626,7 @@
       "id": "faculty-1d2021b0b92c",
       "name": "Казаков Дмитрий Николаевич",
       "teacher": "Казаков Д.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1d2021b0b92c.json",
       "groups": {}
     },
@@ -634,7 +634,7 @@
       "id": "faculty-d50e575fd99c",
       "name": "Киреенко Ксения Николаевна",
       "teacher": "Киреенко К.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d50e575fd99c.json",
       "groups": {}
     },
@@ -642,7 +642,7 @@
       "id": "faculty-0e14e15cf3d5",
       "name": "Киселева Дарья Александровна",
       "teacher": "Киселева Д.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-0e14e15cf3d5.json",
       "groups": {
         "26290911/3111": [
@@ -654,7 +654,7 @@
       "id": "faculty-376b688a1992",
       "name": "Кобахидзе Натела Паатаевна",
       "teacher": "Кобахидзе Н.П.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -662,7 +662,7 @@
       "id": "faculty-9ca49d11c704",
       "name": "Коверина Нина Михайловна",
       "teacher": "Коверина Н.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-9ca49d11c704.json",
       "groups": {}
     },
@@ -670,7 +670,7 @@
       "id": "faculty-3157d1358a43",
       "name": "Коннова Арина Евгеньевна",
       "teacher": "Коннова А.Е.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3157d1358a43.json",
       "groups": {}
     },
@@ -678,7 +678,7 @@
       "id": "faculty-3380bd4d5460",
       "name": "Корнеева Татьяна Алексеевна",
       "teacher": "Корнеева Т.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3380bd4d5460.json",
       "groups": {}
     },
@@ -686,7 +686,7 @@
       "id": "faculty-70eb4398be9b",
       "name": "Коровкина Наталья Михайловна",
       "teacher": "Коровкина Н.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-70eb4398be9b.json",
       "groups": {}
     },
@@ -694,7 +694,7 @@
       "id": "faculty-18154fecd383",
       "name": "Коротышева Людмила Брониславовна",
       "teacher": "Коротышева Л.Б.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-18154fecd383.json",
       "groups": {}
     },
@@ -702,7 +702,7 @@
       "id": "faculty-a3a54eb58c98",
       "name": "Костин Юрий Николаевич",
       "teacher": "Костин Ю.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-a3a54eb58c98.json",
       "groups": {
         "24290907/2092": [
@@ -714,7 +714,7 @@
       "id": "faculty-cb2277eba71a",
       "name": "Краснобрыжева Юлия Сергеевна",
       "teacher": "Краснобрыжева Ю.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-cb2277eba71a.json",
       "groups": {}
     },
@@ -722,7 +722,7 @@
       "id": "faculty-90d926210371",
       "name": "Краснопёрова Алина Денисовна",
       "teacher": "Краснопёрова А.Д.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-90d926210371.json",
       "groups": {
         "25290907/1091": [
@@ -740,7 +740,7 @@
       "id": "faculty-d74850bf5f88",
       "name": "Кротова Лариса Алексеевна",
       "teacher": "Кротова Л.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d74850bf5f88.json",
       "groups": {}
     },
@@ -748,7 +748,7 @@
       "id": "faculty-9902ce72edbd",
       "name": "Круглов Алексей Александрович",
       "teacher": "Круглов А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-9902ce72edbd.json",
       "groups": {}
     },
@@ -756,7 +756,7 @@
       "id": "faculty-5da8672d9e47",
       "name": "Кудайбергенова Марина Ивановна",
       "teacher": "Кудайбергенова М.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5da8672d9e47.json",
       "groups": {}
     },
@@ -764,7 +764,7 @@
       "id": "faculty-61a2d84bbbee",
       "name": "Кудрявцева Елена Владимировна",
       "teacher": "Кудрявцева Е.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-61a2d84bbbee.json",
       "groups": {
         "25290909/3091": [
@@ -776,7 +776,7 @@
       "id": "faculty-7be8ccfae298",
       "name": "Кузнецова Лиана Ивановна",
       "teacher": "Кузнецова Л.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-7be8ccfae298.json",
       "groups": {
         "25290909/3091": [
@@ -788,7 +788,7 @@
       "id": "faculty-b213b638dba2",
       "name": "Кузьмичев Виталий Валерьевич",
       "teacher": "Кузьмичев В.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-b213b638dba2.json",
       "groups": {}
     },
@@ -796,7 +796,7 @@
       "id": "faculty-378d62525c55",
       "name": "Кулакова Диана Маратовна",
       "teacher": "Кулакова Д.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-378d62525c55.json",
       "groups": {
         "25290907/1091": [
@@ -808,7 +808,7 @@
       "id": "faculty-9da93e44ddb6",
       "name": "Куликов Иван Андреевич",
       "teacher": "Куликов И.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-9da93e44ddb6.json",
       "groups": {}
     },
@@ -816,7 +816,7 @@
       "id": "faculty-5193b5223adc",
       "name": "Курылева Анастасия Александровна",
       "teacher": "Курылева А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5193b5223adc.json",
       "groups": {
         "23290907/2092": [
@@ -831,7 +831,7 @@
       "id": "faculty-bf310b6cf943",
       "name": "Кухаренкова Надежда Алексеевна",
       "teacher": "Кухаренкова Н.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-bf310b6cf943.json",
       "groups": {}
     },
@@ -839,7 +839,7 @@
       "id": "faculty-3be55939e31f",
       "name": "Кучеренко Наталья Леонидовна",
       "teacher": "Кучеренко Н.Л.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3be55939e31f.json",
       "groups": {}
     },
@@ -847,7 +847,7 @@
       "id": "faculty-233395355ab5",
       "name": "Кялина Екатерина Михайловна",
       "teacher": "Кялина Е.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-233395355ab5.json",
       "groups": {}
     },
@@ -855,7 +855,7 @@
       "id": "faculty-349017df5203",
       "name": "Лаврентьева Ольга Геворговна",
       "teacher": "Лаврентьева О.Г.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-349017df5203.json",
       "groups": {}
     },
@@ -863,7 +863,7 @@
       "id": "faculty-bc821b0a3ad8",
       "name": "Латровкин Алексей Александрович",
       "teacher": "Латровкин А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-bc821b0a3ad8.json",
       "groups": {
         "25290907/1091": [
@@ -875,7 +875,7 @@
       "id": "faculty-d925af77e6b5",
       "name": "Леленкова Елена Николаевна",
       "teacher": "Леленкова Е.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d925af77e6b5.json",
       "groups": {}
     },
@@ -883,7 +883,7 @@
       "id": "faculty-6e109835c5b3",
       "name": "Линева Евгения Викторовна",
       "teacher": "Линева Е.В.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -891,7 +891,7 @@
       "id": "faculty-f6378254c6d1",
       "name": "Лужковский Андрей Викторович",
       "teacher": "Лужковский А.В.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -899,7 +899,7 @@
       "id": "faculty-e9b8a69943a2",
       "name": "Лысикова Александра Владимировна",
       "teacher": "Лысикова А.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-e9b8a69943a2.json",
       "groups": {}
     },
@@ -907,7 +907,7 @@
       "id": "faculty-a74a84123f7c",
       "name": "Любицкая Екатерина Кирилловна",
       "teacher": "Любицкая Е.К.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-a74a84123f7c.json",
       "groups": {
         "26290911/3111": [
@@ -919,7 +919,7 @@
       "id": "faculty-1bf3af964d65",
       "name": "Лявданская Елена Викторовна",
       "teacher": "Лявданская Е.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1bf3af964d65.json",
       "groups": {}
     },
@@ -927,7 +927,7 @@
       "id": "faculty-87486acd5b71",
       "name": "Мадаев Рашид Арсланбегович",
       "teacher": "Мадаев Р.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-87486acd5b71.json",
       "groups": {
         "25290909/3091": [
@@ -939,7 +939,7 @@
       "id": "faculty-f650b2f43d0c",
       "name": "Малькова Елена Тимофеевна",
       "teacher": "Малькова Е.Т.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f650b2f43d0c.json",
       "groups": {}
     },
@@ -947,7 +947,7 @@
       "id": "faculty-2a15890c06c3",
       "name": "Маньшина Александра Вадимовна",
       "teacher": "Маньшина А.В.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -955,7 +955,7 @@
       "id": "faculty-f27546a1721b",
       "name": "Маркова Ольга Николаевна",
       "teacher": "Маркова О.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f27546a1721b.json",
       "groups": {}
     },
@@ -963,7 +963,7 @@
       "id": "faculty-d913a63af0ce",
       "name": "Масимова Евгения Гаврииловна",
       "teacher": "Масимова Е.Г.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -971,7 +971,7 @@
       "id": "faculty-1f461d71227f",
       "name": "Маслакова Светлана Владимировна",
       "teacher": "Маслакова С.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1f461d71227f.json",
       "groups": {}
     },
@@ -979,7 +979,7 @@
       "id": "faculty-e6a9156d6f1b",
       "name": "Матвеева Ольга Ивановна",
       "teacher": "Матвеева О.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-e6a9156d6f1b.json",
       "groups": {
         "23290907/2092": [
@@ -991,7 +991,7 @@
       "id": "faculty-27a562309702",
       "name": "Матвеева Светлана Павловна",
       "teacher": "Матвеева С.П.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-27a562309702.json",
       "groups": {}
     },
@@ -999,7 +999,7 @@
       "id": "faculty-29469a3b9ba9",
       "name": "Матвеева Юлия Аникториевна",
       "teacher": "Матвеева Ю.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-29469a3b9ba9.json",
       "groups": {}
     },
@@ -1007,7 +1007,7 @@
       "id": "faculty-f85890a8a60c",
       "name": "Медведева Евгения Евгеньевна",
       "teacher": "Медведева Е.Е.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f85890a8a60c.json",
       "groups": {
         "25290907/1091": [
@@ -1019,7 +1019,7 @@
       "id": "faculty-77a21bd98518",
       "name": "Медведева Ольга Владимировна",
       "teacher": "Медведева О.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-77a21bd98518.json",
       "groups": {}
     },
@@ -1027,7 +1027,7 @@
       "id": "faculty-8882c5308fbe",
       "name": "Меньшиков Игорь Георгиевич",
       "teacher": "Меньшиков И.Г.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8882c5308fbe.json",
       "groups": {}
     },
@@ -1035,7 +1035,7 @@
       "id": "faculty-2b0f4c4004a8",
       "name": "Михайловская Виктория Валерьевна",
       "teacher": "Михайловская В.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-2b0f4c4004a8.json",
       "groups": {}
     },
@@ -1043,7 +1043,7 @@
       "id": "faculty-3ba58257825a",
       "name": "Молькова Лолита Юрьевна",
       "teacher": "Молькова Л.Ю.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3ba58257825a.json",
       "groups": {
         "25290907/1091": [
@@ -1055,7 +1055,7 @@
       "id": "faculty-e873dedba45e",
       "name": "Моторина Елена Львовна",
       "teacher": "Моторина Е.Л.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-e873dedba45e.json",
       "groups": {
         "23290907/2092": [
@@ -1070,7 +1070,7 @@
       "id": "faculty-049acfaa4f21",
       "name": "Мукбиль Мансур Хассан Мухаммад",
       "teacher": "Мукбиль Мансур Хассан Мухаммад",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-049acfaa4f21.json",
       "groups": {}
     },
@@ -1078,7 +1078,7 @@
       "id": "faculty-3c7319fda0f2",
       "name": "Муравьева Юлия Александровна",
       "teacher": "Муравьева Ю.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3c7319fda0f2.json",
       "groups": {
         "25290907/1091": [
@@ -1096,7 +1096,7 @@
       "id": "faculty-f72122972383",
       "name": "Назаров Денис Александрович",
       "teacher": "Назаров Д.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f72122972383.json",
       "groups": {
         "24290907/2092": [
@@ -1108,7 +1108,7 @@
       "id": "faculty-f01395cdd5e0",
       "name": "Назаров Сергей Юрьевич",
       "teacher": "Назаров С.Ю.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f01395cdd5e0.json",
       "groups": {
         "25290907/1091": [
@@ -1120,7 +1120,7 @@
       "id": "faculty-4c9a96cf95ce",
       "name": "Нестеренок Вадим Владимирович",
       "teacher": "Нестеренок В.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-4c9a96cf95ce.json",
       "groups": {}
     },
@@ -1128,7 +1128,7 @@
       "id": "faculty-93810ba1770f",
       "name": "Никитина Екатерина Сергеевна",
       "teacher": "Никитина Е.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-93810ba1770f.json",
       "groups": {}
     },
@@ -1136,7 +1136,7 @@
       "id": "faculty-10e21641a19c",
       "name": "Никольский Валентин Валентинович",
       "teacher": "Никольский В.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-10e21641a19c.json",
       "groups": {}
     },
@@ -1144,7 +1144,7 @@
       "id": "faculty-bde84e497bec",
       "name": "Нургалиева Елена Александровна",
       "teacher": "Нургалиева Е.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-bde84e497bec.json",
       "groups": {}
     },
@@ -1152,7 +1152,7 @@
       "id": "faculty-c4090c1b5041",
       "name": "Окунева Жанна Анатольевна",
       "teacher": "Окунева Ж.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c4090c1b5041.json",
       "groups": {}
     },
@@ -1160,7 +1160,7 @@
       "id": "faculty-d4bc1b1889da",
       "name": "Ольнев Александр Александрович",
       "teacher": "Ольнев А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d4bc1b1889da.json",
       "groups": {
         "25290907/1091": [
@@ -1175,7 +1175,7 @@
       "id": "faculty-5fcdf5c0dc2e",
       "name": "Осипова Алена Сергеевна",
       "teacher": "Осипова А.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5fcdf5c0dc2e.json",
       "groups": {}
     },
@@ -1183,7 +1183,7 @@
       "id": "faculty-0a744e3c555e",
       "name": "Павлова Елена Геннадьевна",
       "teacher": "Павлова Е.Г.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-0a744e3c555e.json",
       "groups": {}
     },
@@ -1191,7 +1191,7 @@
       "id": "faculty-ae2fa48b91f9",
       "name": "Панченко Михаил Станиславович",
       "teacher": "Панченко М.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ae2fa48b91f9.json",
       "groups": {
         "24290907/2092": [
@@ -1203,7 +1203,7 @@
       "id": "faculty-7fcb23eb3eee",
       "name": "Панченко Яна Александровна",
       "teacher": "Панченко Я.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-7fcb23eb3eee.json",
       "groups": {
         "25290907/1091": [
@@ -1215,7 +1215,7 @@
       "id": "faculty-7aa81fc8312f",
       "name": "Петрова Светлана Николаевна",
       "teacher": "Петрова С.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-7aa81fc8312f.json",
       "groups": {
         "24290907/2092": [
@@ -1227,7 +1227,7 @@
       "id": "faculty-46c9c9858378",
       "name": "Печковский Александр Владимирович",
       "teacher": "Печковский А.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-46c9c9858378.json",
       "groups": {}
     },
@@ -1235,7 +1235,7 @@
       "id": "faculty-3889dbe5a6dd",
       "name": "Пиштокова Татьяна Романовна",
       "teacher": "Пиштокова Т.Р.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3889dbe5a6dd.json",
       "groups": {}
     },
@@ -1243,7 +1243,7 @@
       "id": "faculty-1be7d40e580c",
       "name": "Поединок Олеся Викторовна",
       "teacher": "Поединок О.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1be7d40e580c.json",
       "groups": {}
     },
@@ -1251,7 +1251,7 @@
       "id": "faculty-8f64619aab36",
       "name": "Прокофьев Антон Андреевич",
       "teacher": "Прокофьев А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8f64619aab36.json",
       "groups": {
         "24290907/2092": [
@@ -1263,7 +1263,7 @@
       "id": "faculty-206a646b3548",
       "name": "Пшеницына Мария Александровна",
       "teacher": "Пшеницына М.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-206a646b3548.json",
       "groups": {}
     },
@@ -1271,7 +1271,7 @@
       "id": "faculty-c58749eac54b",
       "name": "Рамазанов Магомед Фазилович",
       "teacher": "Рамазанов М.Ф.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c58749eac54b.json",
       "groups": {
         "26290911/3111": [
@@ -1283,7 +1283,7 @@
       "id": "faculty-1a390c43b0a7",
       "name": "Ревина Оксана Сергеевна",
       "teacher": "Ревина О.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1a390c43b0a7.json",
       "groups": {}
     },
@@ -1291,7 +1291,7 @@
       "id": "faculty-f9a5db0ce0b5",
       "name": "Родинов Иван Иванович",
       "teacher": "Родинов И.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f9a5db0ce0b5.json",
       "groups": {}
     },
@@ -1299,7 +1299,7 @@
       "id": "faculty-8d7ca2243af7",
       "name": "Родионова Ирина Вячеславовна",
       "teacher": "Родионова И.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8d7ca2243af7.json",
       "groups": {}
     },
@@ -1307,7 +1307,7 @@
       "id": "faculty-b0ae9510ad70",
       "name": "Рыжков Евгений Александрович",
       "teacher": "Рыжков Е.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-b0ae9510ad70.json",
       "groups": {}
     },
@@ -1315,7 +1315,7 @@
       "id": "faculty-c79e3765fe15",
       "name": "Рындина Карина Олеговна",
       "teacher": "Рындина К.О.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c79e3765fe15.json",
       "groups": {}
     },
@@ -1323,7 +1323,7 @@
       "id": "faculty-c439f84349b4",
       "name": "Рябова Валерия Викторовна",
       "teacher": "Рябова В.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c439f84349b4.json",
       "groups": {
         "25290909/3091": [
@@ -1335,7 +1335,7 @@
       "id": "faculty-c900e3daf4ad",
       "name": "Рябова Марина Николаевна",
       "teacher": "Рябова М.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c900e3daf4ad.json",
       "groups": {}
     },
@@ -1343,7 +1343,7 @@
       "id": "faculty-662da4921f07",
       "name": "Савостина Татьяна Викторовна",
       "teacher": "Савостина Т.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-662da4921f07.json",
       "groups": {}
     },
@@ -1351,7 +1351,7 @@
       "id": "faculty-68f0ca0ffbfd",
       "name": "Саитова Виктория Сергеевна",
       "teacher": "Саитова В.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-68f0ca0ffbfd.json",
       "groups": {
         "23290907/2092": [
@@ -1366,7 +1366,7 @@
       "id": "faculty-a9beb40dc7fd",
       "name": "Сараева Светлана Вячеславовна",
       "teacher": "Сараева С.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-a9beb40dc7fd.json",
       "groups": {}
     },
@@ -1374,7 +1374,7 @@
       "id": "faculty-353f5e54045e",
       "name": "Селифонтова Анна Сергеевна",
       "teacher": "Селифонтова А.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-353f5e54045e.json",
       "groups": {}
     },
@@ -1382,7 +1382,7 @@
       "id": "faculty-5378de79d42c",
       "name": "Симоненко Святослав Иванович",
       "teacher": "Симоненко С.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5378de79d42c.json",
       "groups": {
         "25290909/3091": [
@@ -1394,7 +1394,7 @@
       "id": "faculty-2b3058ed4821",
       "name": "Слепов Владимир Михайлович",
       "teacher": "Слепов В.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-2b3058ed4821.json",
       "groups": {}
     },
@@ -1402,7 +1402,7 @@
       "id": "faculty-a495f649adf4",
       "name": "Смекалова Юлия Викторовна",
       "teacher": "Смекалова Ю.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-a495f649adf4.json",
       "groups": {
         "24290907/2092": [
@@ -1414,7 +1414,7 @@
       "id": "faculty-f6ea627f1c4a",
       "name": "Смирнов Александр Валентинович",
       "teacher": "Смирнов А.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f6ea627f1c4a.json",
       "groups": {}
     },
@@ -1422,7 +1422,7 @@
       "id": "faculty-be432be381f9",
       "name": "Смирнов Александр Николаевич",
       "teacher": "Смирнов А.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-be432be381f9.json",
       "groups": {
         "26290911/3111": [
@@ -1434,7 +1434,7 @@
       "id": "faculty-cebe0fe805df",
       "name": "Смирнов Сергей Геннадьевич",
       "teacher": "Смирнов С.Г.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-cebe0fe805df.json",
       "groups": {}
     },
@@ -1442,7 +1442,7 @@
       "id": "faculty-61b6d224a0a2",
       "name": "Смирнова Виктория Владимировна",
       "teacher": "Смирнова В.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-61b6d224a0a2.json",
       "groups": {}
     },
@@ -1450,7 +1450,7 @@
       "id": "faculty-2e145418011e",
       "name": "Смирнова Наталья Ивановна",
       "teacher": "Смирнова Н.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-2e145418011e.json",
       "groups": {}
     },
@@ -1458,7 +1458,7 @@
       "id": "faculty-10469696c214",
       "name": "Смолина Ирина Михайловна",
       "teacher": "Смолина И.М.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-10469696c214.json",
       "groups": {}
     },
@@ -1466,7 +1466,7 @@
       "id": "faculty-3e3e72a1b0a2",
       "name": "Субботин Андрей Александрович",
       "teacher": "Субботин А.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3e3e72a1b0a2.json",
       "groups": {
         "26290911/3111": [
@@ -1478,7 +1478,7 @@
       "id": "faculty-c03ea348a29e",
       "name": "Сысоева Анастасия Дмитриевна",
       "teacher": "Сысоева А.Д.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c03ea348a29e.json",
       "groups": {}
     },
@@ -1486,7 +1486,7 @@
       "id": "faculty-ec314451fd1e",
       "name": "Талалаева Дарья Александровна",
       "teacher": "Талалаева Д.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ec314451fd1e.json",
       "groups": {
         "24290907/2092": [
@@ -1501,7 +1501,7 @@
       "id": "faculty-b64fa733add1",
       "name": "Темченко Константин Александрович",
       "teacher": "Темченко К.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-b64fa733add1.json",
       "groups": {}
     },
@@ -1509,7 +1509,7 @@
       "id": "faculty-3235afbd6230",
       "name": "Тимофеева Марина Александровна",
       "teacher": "Тимофеева М.А.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -1517,7 +1517,7 @@
       "id": "faculty-982829b192b3",
       "name": "Тлеумбетов Тимур Денисович",
       "teacher": "Тлеумбетов Т.Д.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-982829b192b3.json",
       "groups": {
         "25290909/3091": [
@@ -1532,7 +1532,7 @@
       "id": "faculty-01999c98f27b",
       "name": "Трацевская Мария Владимировна",
       "teacher": "Трацевская М.В.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -1540,7 +1540,7 @@
       "id": "faculty-fa360b11545a",
       "name": "Трегубова Людмила Анатольевна",
       "teacher": "Трегубова Л.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-fa360b11545a.json",
       "groups": {}
     },
@@ -1548,7 +1548,7 @@
       "id": "faculty-189b53945859",
       "name": "Троцюк Светлана Николаевна",
       "teacher": "Троцюк С.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-189b53945859.json",
       "groups": {}
     },
@@ -1556,7 +1556,7 @@
       "id": "faculty-433728c880fc",
       "name": "Тузова Диана Анатольевна",
       "teacher": "Тузова Д.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-433728c880fc.json",
       "groups": {
         "23290907/2092": [
@@ -1568,7 +1568,7 @@
       "id": "faculty-7f0089cd8cbb",
       "name": "Федотова Галина Николаевна",
       "teacher": "Федотова Г.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-7f0089cd8cbb.json",
       "groups": {}
     },
@@ -1576,7 +1576,7 @@
       "id": "faculty-c63a2b32787e",
       "name": "Фурсова Анастасия Викторовна",
       "teacher": "Фурсова А.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c63a2b32787e.json",
       "groups": {}
     },
@@ -1584,7 +1584,7 @@
       "id": "faculty-7a1e08221a25",
       "name": "Цветкова Татьяна Юрьевна",
       "teacher": "Цветкова Т.Ю.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-7a1e08221a25.json",
       "groups": {}
     },
@@ -1592,7 +1592,7 @@
       "id": "faculty-c5bb74ed5fbc",
       "name": "Чебачева Евгения Владимировна",
       "teacher": "Чебачева Е.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c5bb74ed5fbc.json",
       "groups": {
         "25290907/1091": [
@@ -1604,7 +1604,7 @@
       "id": "faculty-00610de08487",
       "name": "Чекан Сергей Иванович",
       "teacher": "Чекан С.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-00610de08487.json",
       "groups": {}
     },
@@ -1612,7 +1612,7 @@
       "id": "faculty-8b0d83aa0c37",
       "name": "Челищева Лилия Наталиевна",
       "teacher": "Челищева Л.Н.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8b0d83aa0c37.json",
       "groups": {
         "24290907/2092": [
@@ -1624,7 +1624,7 @@
       "id": "faculty-9e033e676817",
       "name": "Черемонцева Ирина Васильевна",
       "teacher": "Черемонцева И.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-9e033e676817.json",
       "groups": {}
     },
@@ -1632,7 +1632,7 @@
       "id": "faculty-56f8c3a61d19",
       "name": "Чигирь Полина Павловна",
       "teacher": "Чигирь П.П.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-56f8c3a61d19.json",
       "groups": {}
     },
@@ -1640,7 +1640,7 @@
       "id": "faculty-ac23e036bc3e",
       "name": "Чужакова Полина Олеговна",
       "teacher": "Чужакова П.О.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ac23e036bc3e.json",
       "groups": {}
     },
@@ -1648,7 +1648,7 @@
       "id": "faculty-f2d756ef6280",
       "name": "Шаблаев Михаил Викторович",
       "teacher": "Шаблаев М.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f2d756ef6280.json",
       "groups": {}
     },
@@ -1656,7 +1656,7 @@
       "id": "faculty-0c1388d2ff9a",
       "name": "Шавров Александр Сергеевич",
       "teacher": "Шавров А.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-0c1388d2ff9a.json",
       "groups": {}
     },
@@ -1664,7 +1664,7 @@
       "id": "faculty-ee0b3ca367e5",
       "name": "Шаврова Любовь Сергеевна",
       "teacher": "Шаврова Л.С.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ee0b3ca367e5.json",
       "groups": {
         "25290907/1091": [
@@ -1679,7 +1679,7 @@
       "id": "faculty-ccbf05d535b4",
       "name": "Шацкая Татьяна Евгеньевна",
       "teacher": "Шацкая Т.Е.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-ccbf05d535b4.json",
       "groups": {}
     },
@@ -1687,7 +1687,7 @@
       "id": "faculty-f62b38246923",
       "name": "Шетлер Игорь Юрьевич",
       "teacher": "Шетлер И.Ю.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f62b38246923.json",
       "groups": {}
     },
@@ -1695,7 +1695,7 @@
       "id": "faculty-7f6cd957201e",
       "name": "Шилова Алла Андреевна",
       "teacher": "Шилова А.А.",
-      "status": "awaiting_source",
+      "status": "source_error",
       "schedule_file": null,
       "groups": {}
     },
@@ -1703,7 +1703,7 @@
       "id": "faculty-80dd129dc6bc",
       "name": "Шиляев Иван Константинович",
       "teacher": "Шиляев И.К.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-80dd129dc6bc.json",
       "groups": {}
     },
@@ -1711,7 +1711,7 @@
       "id": "faculty-33b6d5431b91",
       "name": "Шиманская Каролина Владимировна",
       "teacher": "Шиманская К.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-33b6d5431b91.json",
       "groups": {}
     },
@@ -1719,7 +1719,7 @@
       "id": "faculty-56a8256fdb9d",
       "name": "Щербак Алена Валериевна",
       "teacher": "Щербак А.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-56a8256fdb9d.json",
       "groups": {}
     },
@@ -1727,7 +1727,7 @@
       "id": "faculty-14764eb0d37b",
       "name": "Юзова Юлия Александровна",
       "teacher": "Юзова Ю.А.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-14764eb0d37b.json",
       "groups": {}
     },
@@ -1735,7 +1735,7 @@
       "id": "faculty-0db1cfc2eb2a",
       "name": "Юркевич Наталья Викторовна",
       "teacher": "Юркевич Н.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-0db1cfc2eb2a.json",
       "groups": {}
     },
@@ -1743,7 +1743,7 @@
       "id": "faculty-65a1d3c4ffc7",
       "name": "Яценко Анна Ивановна",
       "teacher": "Яценко А.И.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-65a1d3c4ffc7.json",
       "groups": {
         "23290907/2092": [
@@ -1755,7 +1755,7 @@
       "id": "faculty-047d043706bd",
       "name": "Яшкова Надежда Владимировна",
       "teacher": "Яшкова Н.В.",
-      "status": "ready",
+      "status": "stale",
       "schedule_file": "schedule-teacher-faculty-047d043706bd.json",
       "groups": {}
     }
