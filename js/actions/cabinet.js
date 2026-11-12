@@ -37,7 +37,9 @@ Object.assign(A, {
   /**
    * Открывает выбор аватара.
    */
+  'owner-home'(el){Groups.switchTo(Cloud.homeTenant,true,el.dataset.tab||'cabinet');},
   'avatar-open'() {
+    if(Profile.visiting())return Groups.switchTo(Cloud.homeTenant,true,'cabinet');
     const cur = myAvatar();
     UI.open(
       'Аватар',
@@ -67,6 +69,8 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   'avatar-pick'(el) {
+    if(Profile.visiting())return Groups.switchTo(Cloud.homeTenant,true,'cabinet');
+    Profile.avatarEdited();
     Store.s.settings.avatar = el.dataset.id
       ? {
           k: 'm',

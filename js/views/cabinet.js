@@ -60,7 +60,12 @@ function winnerPlaque() {
  * Отрисовывает экран «Личный кабинет» с вкладками.
  * @returns {string} HTML.
  */
+function visitingOwnerCabinet() {
+  const p=Cloud.profile||{},home=Groups.get(Cloud.homeTenant).number,look=Mascot.chosen();
+  return '<div class="page-head"><div><h1>'+U.esc(p.name||'Админ Арина')+'</h1><p><span class="tag adm">Супер-админ</span> · основная группа '+U.esc(home)+'</p></div></div><section class="card about-card"><div class="about-top">'+Avatars.html(Cloud.uid,72,myAvatar())+'<div><b>Единый профиль Админа Арины</b><p>Это же фото и маскот видны в чатах и приветственных сообщениях всех групп.</p></div></div><p class="curator-text">'+U.esc(p.about||Store.s.settings.about||'')+'</p></section><section class="card about-card"><h2>Мой Политешик</h2>'+Mascot.svg(look.mood||'happy',100,'',{look,season:''})+'<p>'+U.esc(look.nickname||'Персональный маскот')+'</p></section><section class="card"><p>В группе '+U.esc(GROUP_NAME)+' вы Супер-админ. Личная посещаемость и подгруппа относятся только к вашей основной группе '+U.esc(home)+'.</p><div class="head-actions"><button class="btn primary" data-action="owner-home" data-tab="cabinet">Мой профиль в '+U.esc(home)+'</button><button class="btn" data-action="wall-open">Моя страница</button></div></section>';
+}
 function viewCabinet() {
+  if(Profile.visiting())return visitingOwnerCabinet();
   const tabs =
     '<div class="tabs"><button class="tab' +
     (ui.cabTab !== 'ach' ? ' on' : '') +
@@ -110,7 +115,7 @@ function viewCabinetMain() {
     '</div><div><h1>' +
     U.esc(name) +
     '</h1><p>' +
-    (Cloud.isAdmin ? '<span class="tag adm">админ-студент</span> ' : '') +
+    (Cloud.isSuperAdmin?'<span class="tag adm">Супер-админ</span> ':Cloud.isAdmin ? '<span class="tag adm">админ-студент</span> ' : '') +
     (online
       ? '<span class="tag">' + ICONS.cloud + ' в сети</span>'
       : '<span class="tag">без облака</span>') +

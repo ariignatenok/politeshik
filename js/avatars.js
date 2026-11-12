@@ -98,13 +98,13 @@ const Avatars = {
    * Выкладывает свою аватарку в облако, чтобы её видели остальные.
    */
   async publish() {
-    if (Cloud.isSuperAdmin && Cloud.tenantId !== Cloud.homeTenant) return;
+    if (Cloud.isSuperAdmin && (Cloud.tenantId !== Cloud.homeTenant || !Store.s.meta.avatarPending)) return;
     if (Cloud.status !== 'online' || !Cloud.uid || Cloud.isParent || !Cloud.hasCabinet()) return;
-    const value = myAvatar(),
+    const uid=Cloud.uid,value = myAvatar(),
       had = Avatars.map[Cloud.uid] || '';
-    if (value === had) return;
+    if (value === had){if(Store.s.meta.avatarPending){Store.s.meta.avatarPending=false;Store.save();}return;}
     const result = value ? await Cloud.saveAvatar(value) : await Cloud.deleteAvatar();
-    if (result && result.ok) Avatars.map[Cloud.uid] = value;
+    if (result && result.ok && Cloud.uid===uid){Avatars.map[uid] = value;if(myAvatar()===value){Store.s.meta.avatarPending=false;Store.save();if(typeof App!=='undefined')App.renderSoft();}}
   },
   /**
    * Загружает аватарки всех пользователей из облака.

@@ -50,10 +50,23 @@ const myAvatar = () => {
   return a ? (a.k === 'p' ? a.d : a.id) : '';
 };
 const Profile = {
+  visiting() {return Cloud.isSuperAdmin===true&&Cloud.tenantId!==Cloud.homeTenant;},
+  avatarSettings(value) {return value?value.startsWith('data:image')?{k:'p',d:value}:{k:'m',id:value}:null;},
+  hydrateOwner(context) {
+    if(!context.is_super_admin)return;
+    const p=context.profile||{};
+    if(context.tenant_id===context.home_tenant){if(!Store.s.meta.avatarPending)Store.s.settings.avatar=Profile.avatarSettings(p.avatar||'');if(!Store.s.meta.mascotPending)Store.s.settings.mascot=Wardrobe.normalize(p.mascot||{});return;}
+    Store.s.settings.avatar=Profile.avatarSettings(p.avatar||'');
+    Store.s.settings.mascot=Wardrobe.normalize(p.mascot||{});
+    Store.s.settings.about=p.about||'';Store.s.settings.displayName=p.name||'Админ Арина';Store.s.settings.subgroup='';
+    Store.s.meta.avatarPending=false;Store.s.meta.mascotPending=false;
+  },
+  avatarEdited() {Store.s.meta.avatarPending=true;},
   /**
    * Копирует аватар, «О себе» и достижения в профиль в облаке.
    */
   push() {
+    if(Profile.visiting())return;
     Avatars.publish();
     if (Cloud.status !== 'online' || !Cloud.profile || Cloud.isStaff) return;
     const state = Store.s;

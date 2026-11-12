@@ -422,6 +422,7 @@ Mascot.syncFromProfile = () => {
 Wardrobe.revision = 0;
 Wardrobe.saveState = '';
 Wardrobe.save = async () => {
+  if(Cloud.isSuperAdmin&&Cloud.tenantId!==Cloud.homeTenant)return;
   if (Wardrobe.saving || Cloud.status !== 'online' || !Cloud.uid) return;
   Wardrobe.saving = true;
   const uid = Cloud.uid,

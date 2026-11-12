@@ -90,6 +90,7 @@ const Groups = {
     const key = context.uid + (Groups.current === 'group_1' ? '' : ':' + Groups.current);
     Store.bind(key);
     if (Groups.current !== 'group_1' && Store.s.settings.groupTenant !== Groups.current) Store.replace(Groups.seed());
+    if(typeof Profile!=='undefined')Profile.hydrateOwner(context);
     ScheduleSync.configure(Groups.get(Groups.current));
   },
   /**
@@ -99,7 +100,7 @@ const Groups = {
    */
   async switchTo(tenant, openList, tab = 'group') {
     if (!Cloud.isSuperAdmin || !Groups.list.some(g => g.id === tenant)) return;
-    if (!['group','journal','chat','news','users','schedule'].includes(tab)) tab = 'group';
+    if (!['group','journal','chat','news','users','schedule','cabinet','attendance'].includes(tab)) tab = 'group';
     if (tenant === Groups.current) {
       if (openList) { ui.tab = tab; ui.grpTab = 'students'; App.render(true); window.scrollTo(0, 0); }
       return;

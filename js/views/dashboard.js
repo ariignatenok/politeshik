@@ -270,6 +270,7 @@ function notifBanner() {
  * @returns {string} HTML.
  */
 function viewDashboard() {
+  if(Profile.visiting())return '<div class="page-head dashboard-head"><div><h1>Группа '+U.esc(GROUP_NAME)+'</h1><p>Панель Супер-админа</p></div></div><section class="card about-card"><div class="about-top">'+Avatars.html(Cloud.uid,72,myAvatar())+'<div><h2>Админ Арина</h2><p>Единый профиль во всех группах. Вы студент только группы '+U.esc(Groups.get(Cloud.homeTenant).number)+'.</p></div></div></section><div class="grid-stats curator-stats"><div class="stat"><b>'+ROSTER.filter(r=>!r.flag).length+'</b><small>студентов в списке</small></div><div class="stat"><b>'+Roles.people().length+'</b><small>зарегистрированы</small></div></div><section class="card"><h2>Управление группой</h2><div class="head-actions">'+[['journal','Журнал и посещаемость'],['group','Список группы'],['schedule','Расписание'],['chat','Чаты'],['news','Новости'],['cabinet','Мой профиль']].map(([id,label])=>'<button class="btn" data-action="nav" data-tab="'+id+'">'+label+'</button>').join('')+'</div></section>';
   const state = Store.s,
     now = new Date(),
     cur = weekType(now);

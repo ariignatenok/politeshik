@@ -167,6 +167,7 @@ document.addEventListener('change', event => {
         d => {
           const m = Store.s.meta;
           m.photos = (m.photos || 0) + 1;
+          Profile.avatarEdited();
           Store.s.settings.avatar = {
             k: 'p',
             d

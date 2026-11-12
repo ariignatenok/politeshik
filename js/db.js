@@ -714,8 +714,8 @@ const Cloud = (() => {
         if (C.profile.theme && THEME_IDS.indexOf(C.profile.theme) >= 0 && Store.s.settings.theme !== C.profile.theme) {
           Store.s.settings.theme = C.profile.theme;
         }
-        Store.s.settings.subgroup = (ROSTER_BY_ID[C.profile.rid] || {}).sub || C.profile.subgroup || '';
-          C.profile.subgroup = Store.s.settings.subgroup;
+        if(Profile.visiting())Store.s.settings.subgroup='';
+        else {Store.s.settings.subgroup = (ROSTER_BY_ID[C.profile.rid] || {}).sub || C.profile.subgroup || '';C.profile.subgroup = Store.s.settings.subgroup;}
         Store.s.settings.displayName = C.profile.name || '';
         C.profile.seen = new Date().toISOString();
         if (!(C.isSuperAdmin && C.tenantId !== C.homeTenant)) await DB.doc('profiles/' + C.uid)
@@ -1857,7 +1857,7 @@ const Cloud = (() => {
       if (error || !data || tenant!==C.tenantId || uid!==C.uid) return false;
       const changed=data.some(x=>ROSTER_BY_ID[x.rid]&&ROSTER_BY_ID[x.rid].sub!==x.subgroup);
       applySubgroups(data);
-      const mine=ROSTER_BY_ID[C.profile?.rid];if(mine){C.profile.subgroup=mine.sub;Store.s.settings.subgroup=mine.sub;}
+      const mine=!Profile.visiting()&&ROSTER_BY_ID[C.profile?.rid];if(mine){C.profile.subgroup=mine.sub;Store.s.settings.subgroup=mine.sub;}
       if(render&&changed)App.renderSoft();
       return true;
     } catch (error) {
@@ -1882,6 +1882,7 @@ const Cloud = (() => {
         people[row.uid] = {rid: row.rid, name: row.name, role: row.role};
       });
       Avatars.map = map; Avatars.looks = looks; Avatars.people = people;
+      if(C.isSuperAdmin&&Object.hasOwn(map,C.uid)&&!Store.s.meta.avatarPending){Store.s.settings.avatar=Profile.avatarSettings(map[C.uid]);if(C.profile)C.profile.avatar=map[C.uid];Store.save();}
       if (looks[C.uid] && revision === Wardrobe.revision && !(Store.s.meta && Store.s.meta.mascotPending)) {
         Store.s.settings.mascot = looks[C.uid];
         if (C.profile) C.profile.mascot = looks[C.uid];

@@ -358,6 +358,7 @@ const absCell = (e) => {
  * @returns {string} HTML.
  */
 function viewAttendance() {
+  if(Profile.visiting())return '<div class="page-head"><h1>Посещаемость</h1></div><section class="card"><h2>Вы управляете этой группой как Супер-админ</h2><p>Вы студент только группы '+U.esc(Groups.get(Cloud.homeTenant).number)+'. В текущей группе личных отметок нет.</p><div class="head-actions"><button class="btn primary" data-action="nav" data-tab="journal">Журнал этой группы</button><button class="btn" data-action="owner-home" data-tab="attendance">Моя посещаемость</button></div></section>';
   const today = U.iso(U.today()),
     state = Store.s;
   if (!ui.attDate) ui.attDate = today;
