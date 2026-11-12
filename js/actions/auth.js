@@ -26,7 +26,7 @@ Object.assign(A, {
       consent: !!(f.querySelector('[name=consent]') || {}).checked
     };
     if (!email || !password) return toast('Введите почту и пароль');
-    if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
+    if (asTeacher && !FACULTY_NAMES.includes(teacherName) && !Cloud.realTeacher) return toast('Выберите полное ФИО из списка преподавателей');
     if (extra) {
       const problem = Roles.checkExtra(role, f);
       if (problem) return toast(problem);
@@ -118,7 +118,7 @@ Object.assign(A, {
         window.localStorage.setItem('politeshik:gc', code);
       } catch (error) {}
     }
-    if (asTeacher && !secret.trim()) return toast('Введите пароль преподавателя');
+    if (asTeacher && !FACULTY_NAMES.includes(teacherName) && !Cloud.realTeacher) return toast('Выберите полное ФИО из списка преподавателей');
     if (extra) {
       const problem = Roles.checkExtra(role, f);
       if (problem) return toast(problem);
@@ -332,7 +332,7 @@ Object.assign(A, {
           window.localStorage.setItem('politeshik:gc', code);
         } catch (error) {}
       }
-      if (role === 'teacher' && !read('teacher_secret')) return toast('Введите пароль преподавателя');
+      if (role === 'teacher' && !FACULTY_NAMES.includes(read('teacher_name'))) return toast('Выберите полное ФИО из списка преподавателей');
       if (role === 'parent' || role === 'staff') {
         const problem = Roles.checkExtra(role, form);
         if (problem) return toast(problem);

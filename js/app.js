@@ -7,6 +7,7 @@ const App = {
    */
   gateMode() {
     if (Cloud.status === 'pending' || ui.activating) return 'loading';
+    if(Cloud.status==='online'&&Cloud.facultyRequest&&Cloud.facultyRequest.status!=='approved')return 'faculty-wait';
     if (Cloud.status !== 'online' && ui.confirmEmail) return 'confirm';
     if (
       Cloud.status === 'online' &&
@@ -48,7 +49,7 @@ const App = {
     const logged = Cloud.status === 'online';
     const hasCab = logged && Cloud.hasCabinet();
     const needClaim = logged && !hasCab && Cloud.claimsLoaded;
-    if (logged && hasCab && ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0) return '';
+    if (logged && hasCab && mode!=='faculty-wait' && ['pending', 'rejected', 'banned', 'unknown', 'nocode'].indexOf(mode) < 0) return '';
     document.body.classList.add('gated');
     $('#view').innerHTML = '';
     $('#nav-side').innerHTML = '';
@@ -70,6 +71,7 @@ const App = {
         '</div><h1>Политешик</h1><p class="gate-text">Подключаемся<span class="gate-dots"><span>.</span><span>.</span><span>.</span></span></p><div class="sk-gate"><span class="sk sk-line sk-w80"></span><span class="sk sk-line sk-w60"></span><span class="sk sk-line sk-w40"></span></div></div>';
       return '';
     }
+    if(mode==='faculty-wait'){g.innerHTML='<div class="gate-card"><h1>Политешик</h1><h2>'+U.esc(Cloud.facultyRequest.name)+'</h2><p class="gate-text">'+(Cloud.facultyRequest.status==='pending'?'Заявка преподавателя отправлена. Доступ к кабинету подтвердит Админ Арина.':'Доступ к преподавательскому кабинету не подтверждён. Обратитесь к Админу Арине.')+'</p><button class="btn primary" data-action="faculty-check">Проверить доступ</button><button class="btn" data-action="logout-now">Выйти</button></div>';return '';}
     if (mode === 'confirm' || mode === 'complete' || mode === 'oauth') {
       g.innerHTML = Signup.gateHtml(mode);
       return '';
@@ -203,7 +205,7 @@ const App = {
       student: 'Войдите или создайте аккаунт. Доступ откроется после одобрения старостой.',
       parent: 'Родитель видит успеваемость и пропуски своего ребёнка. Доступ откроется после одобрения старостой.',
       staff: 'Куратор или отделение: укажите ФИО и должность, староста назначит роль.',
-      teacher: 'Вход для преподавателя: нужен пароль, который выдали в колледже.'
+      teacher: 'Выберите своё ФИО и зарегистрируйтесь. Доступ к кабинету подтверждает Админ Арина.'
     }[role];
     const codeField =
       role === 'student' || role === 'parent'
@@ -223,9 +225,7 @@ const App = {
             U.esc(draft.person_note || '') +
             '"></label>'
           : teacherMode
-            ? '<label class="field"><span>Как к вам обращаться</span><input class="input" name="teacher_name" placeholder="Иван Петрович" value="' +
-              U.esc(draft.teacher_name || '') +
-              '"></label><label class="field"><span>Пароль преподавателя</span><input class="input" name="teacher_secret" type="password" autocomplete="off" placeholder="••••••••"></label>'
+            ? Faculty.fields(draft.teacher_name || '')
             : '';
     const consentBox =
       '<label class="consent"><span class="consent-ico">' +
@@ -344,7 +344,7 @@ const App = {
       groupSwitch = document.createElement('div'); groupSwitch.id = 'group-switch';
       document.querySelector('.content').insertBefore(groupSwitch, document.querySelector('.topbar').nextSibling);
     }
-    groupSwitch.innerHTML = typeof Curator!=='undefined' && Curator.enabled() ? '<b>'+U.esc(Cloud.curatorContext.name)+' · Куратор</b><p class="hint">Закреплено групп: '+Cloud.curatorContext.groups.length+'</p>' : Cloud.isSuperAdmin ? '<b>Админ Арина · Супер-админ</b>' + Groups.selector(true) : '<p class="hint" style="padding:0 20px">Группа ' + U.esc(Groups.get(Groups.current).number) + '</p>';
+    groupSwitch.innerHTML = typeof Curator!=='undefined' && Curator.enabled() ? '<b>'+U.esc(Curator.context().name)+' · '+(Cloud.facultyContext?.active?'Преподаватель':'Куратор')+'</b><p class="hint">Закреплено групп: '+Curator.context().groups.length+'</p>' : Cloud.isSuperAdmin ? '<b>Админ Арина · Супер-админ</b>' + Groups.selector(true) : '<p class="hint" style="padding:0 20px">Группа ' + U.esc(Groups.get(Groups.current).number) + '</p>';
     App.shownKey = fingerprint;
     App.centerTab();
     if (animate) {

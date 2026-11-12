@@ -1,0 +1,777 @@
+{
+  "schema": 1,
+  "kind": "teacher",
+  "teacher": "Гусарова М.Н.",
+  "full_name": "Гусарова Марина Николаевна",
+  "source": "https://polytech-schedule.ru",
+  "checked_at": "2026-11-13",
+  "from": "2026-11-02",
+  "to": "2026-11-20",
+  "days": {
+    "2026-11-02": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-03": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "24290907/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-04": {
+      "lessons": []
+    },
+    "2026-11-05": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "25290909/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "26290911/3111",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "23291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "25290909/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-06": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25293801/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25293801/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25293801/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-07": {
+      "lessons": []
+    },
+    "2026-11-08": {
+      "lessons": []
+    },
+    "2026-11-09": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-10": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "24290907/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "23291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-11": {
+      "lessons": []
+    },
+    "2026-11-12": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "25290909/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "26290911/3111",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОТМЕНА",
+          "teacher": "Гусарова М.Н.",
+          "group": "25290909/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "cancellation",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3111"
+          ],
+          "original_subject": "Ин. яз. в ПД",
+          "original_teacher": "Гусарова М.Н.",
+          "original_classroom": "каб. 551 (Энгельса)"
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-13": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25294316/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294316/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25293801/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25293801/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25293801/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-14": {
+      "lessons": []
+    },
+    "2026-11-15": {
+      "lessons": []
+    },
+    "2026-11-16": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25294316/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294316/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-17": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "24290907/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "23291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "з25290909/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "з25290909/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-18": {
+      "lessons": []
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "25290909/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Гусарова М.Н.",
+          "group": "26290911/3111",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "з25290909/3112",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "з25290909/3112"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "25293801/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Гусарова М.Н.",
+          "group": "24293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    }
+  }
+}

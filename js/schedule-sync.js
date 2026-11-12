@@ -37,11 +37,13 @@ const ScheduleSync = {
     Object.values(ScheduleSync.snapshot.days).forEach(day => day.lessons.forEach(lesson => {
       const subjectId = ScheduleSync.subject(lesson.subject);
       if (!lesson.teacher) return;
-      const teacher = Store.s.teachers.find(t => t.name === lesson.teacher);
+      const name = typeof Faculty!=='undefined'?Faculty.fullName(lesson.teacher):lesson.teacher;
+      const teacher = Store.s.teachers.find(t => t.name === name || typeof Faculty!=='undefined' && Faculty.key(t.name)===Faculty.key(name));
       if (teacher) {
         if (!teacher.subjectIds.includes(subjectId)) teacher.subjectIds.push(subjectId);
-      } else Store.s.teachers.push({id: 'polytech_teacher_' + Array.from(lesson.teacher).map(c => c.codePointAt(0).toString(36)).join(''), name: lesson.teacher, subjectIds: [subjectId], email: '', phone: '', room: lesson.classroom || '', notes: ''});
+      } else Store.s.teachers.push({id: 'polytech_teacher_' + Array.from(lesson.teacher).map(c => c.codePointAt(0).toString(36)).join(''), name, subjectIds: [subjectId], email: '', phone: '', room: lesson.classroom || '', notes: ''});
     }));
+    if(typeof Faculty!=='undefined')Faculty.populate();
   },
   /**
    * Проверяет весь снимок до замены последней рабочей копии.
@@ -107,7 +109,7 @@ const ScheduleSync = {
       id: 'polytech_' + date + '_' + lesson.lesson_number + '_' + lesson.subgroup + '_' + index,
       day: U.dayIdx(U.fromISO(date)), pair: lesson.lesson_number, week: 'both',
       subjectId: ScheduleSync.subject(lesson.subject),
-      room: lesson.classroom || lesson.auditorium || '', who: lesson.teacher || '',
+      room: lesson.classroom || lesson.auditorium || '', who: typeof Faculty!=='undefined'?Faculty.fullName(lesson.teacher || ''):lesson.teacher || '',
       subgroup: lesson.subgroup ? 'подгр.' + lesson.subgroup : '', start: '', end: '',
       sourceStatus: lesson.status, sourceSubject: lesson.subject, sourceNote: lesson.note || '',
       originalSubject: lesson.original_subject || '', originalTeacher: lesson.original_teacher || '',

@@ -5,6 +5,7 @@
  * @returns {string} HTML.
  */
 function teacherCards() {
+  Faculty.populate();
   const state = Store.s,
     q = U.norm(ui.teacherQuery),
     sf = ui.teacherSubject;
@@ -55,7 +56,8 @@ function teacherCards() {
           (t.room ? '<span>' + ICONS.door + ' ауд. ' + U.esc(t.room) + '</span>' : '') +
           '</div>' +
           (t.notes ? '<div class="t-notes">' + U.esc(t.notes) + '</div>' : '') +
-          '<div class="t-actions"><button class="btn sm" data-action="t-edit" data-id="' +
+          '<div class="t-actions">' +
+          (Faculty.data?.teachers.find(r=>r.name===t.name) ? '<button class="btn sm" data-action="faculty-schedule" data-id="'+Faculty.data.teachers.find(r=>r.name===t.name).id+'">Расписание</button>' : '') + '<button class="btn sm" data-action="t-edit" data-id="' +
           t.id +
           '">' +
           ICONS.pencil +
@@ -75,9 +77,11 @@ function teacherCards() {
  * @returns {string} HTML.
  */
 function viewTeachers() {
+  Faculty.load();
   const state = Store.s;
   return (
     '<div class="page-head"><div><h1>Преподаватели</h1><p>Контакты, требования и заметки</p></div><div class="head-actions"><button class="btn primary" data-action="t-add">＋ Преподаватель</button></div></div>' +
+    Faculty.adminHtml() + '<button class="btn" data-action="faculty-directory">Все преподаватели колледжа</button>' +
     '<div class="searchbar"><input class="input" id="tQ" placeholder="' +
     ICONS.magnifier +
     ' Поиск по имени, заметкам, контактам…" value="' +

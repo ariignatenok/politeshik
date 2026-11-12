@@ -54,13 +54,12 @@ const Signup = {
             : role === 'staff'
               ? field('Ваше ФИО', 'person_name', draft.person_name || '', 'placeholder="Петрова Анна Сергеевна"') +
                 field('Должность и группа', 'person_note', draft.person_note || '', 'placeholder="Куратор группы 3091"')
-              : field('Как к вам обращаться', 'teacher_name', draft.teacher_name || '', 'placeholder="Иван Петрович"') +
-                '<label class="field"><span>Пароль преподавателя</span><input class="input" name="teacher_secret" type="password" autocomplete="off" placeholder="••••••••"></label>',
+              : Faculty.fields(draft.teacher_name || ''),
       intro = {
         student: 'Следующий шаг: выберете свою фамилию из списка группы. Доступ откроется после одобрения старостой.',
         parent: 'Родитель видит успеваемость и пропуски своего ребёнка. Доступ откроется после одобрения старостой.',
         staff: 'Куратор или отделение: укажите ФИО и должность, староста назначит роль.',
-        teacher: 'Нужен пароль, который выдали в колледже.'
+        teacher: 'Доступ к кабинету подтверждает Админ Арина.'
       }[role];
     return (
       '<div class="gate-card"><div class="gate-mascot">' +
@@ -130,8 +129,7 @@ const Signup = {
         : role === 'staff'
           ? Groups.selector(false) + field('Ваше ФИО', 'person_name', meta.person_name) +
             field('Должность и группа', 'person_note', meta.person_note)
-          : field('Как к вам обращаться', 'teacher_name', meta.teacher_name) +
-            '<label class="field"><span>Пароль преподавателя</span><input class="input" name="teacher_secret" type="password" autocomplete="off"></label>';
+          : Faculty.fields(meta.teacher_name || '');
     return (
       '<div class="gate-card"><div class="gate-mascot">' +
       Mascot.svg('wink', 110) +

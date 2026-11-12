@@ -23,7 +23,7 @@ const Views = {
   stats: viewStats,
   tdash: ()=>Curator.enabled()?Curator.view('tdash'):viewTDash(),
   tstudents: ()=>Curator.enabled()?Curator.view('tstudents'):viewTStudents(),
-  tsubjects: viewTSubjects,
+  tsubjects: ()=>Cloud.facultyContext?.active?Faculty.subjectsHtml():viewTSubjects(),
   consult: viewConsult,
   texport: viewTExport,
   dept: viewDept,

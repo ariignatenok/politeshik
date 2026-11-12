@@ -21,7 +21,7 @@ function linkLabel(sb) {
   const t = subj(linkTarget(sb));
   if (!t) return 'Открыть конспект';
   const tt = teachersOf(t.id)[0];
-  return 'Открыть конспект: ' + (t.short || t.name) + (tt ? ' · ' + surname(tt.name) : '');
+  return 'Открыть конспект: ' + (t.short || t.name) + (tt ? ' · ' + tt.name : '');
 }
 /**
  * Строит список предметов.
@@ -40,7 +40,7 @@ function subjectCards() {
           nn = state.notes.filter(n => n.subjectId === x.id).length,
           cc = state.cards.filter(c => c.subjectId === x.id).length;
         const tt = teachersOf(x.id)
-          .map(t => surname(t.name))
+          .map(t => t.name)
           .join(', ');
         return (
           '<button class="scard" style="--c:' +
@@ -464,6 +464,7 @@ function formulasBody(sb) {
  * @returns {string} HTML.
  */
 function viewSubjects() {
+  Faculty.populate();Faculty.load();
   const state = Store.s;
   if (!ui.subjectId || !subj(ui.subjectId)) {
     ui.subjectId = null;

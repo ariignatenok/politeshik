@@ -1,0 +1,642 @@
+{
+  "schema": 1,
+  "kind": "teacher",
+  "teacher": "Герчикова И.Г.",
+  "full_name": "Герчикова Ирина Григорьевна",
+  "source": "https://polytech-schedule.ru",
+  "checked_at": "2026-11-13",
+  "from": "2026-11-02",
+  "to": "2026-11-19",
+  "days": {
+    "2026-11-02": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25292706/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26291312/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "24290901/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-03": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/2091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 10,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-04": {
+      "lessons": []
+    },
+    "2026-11-05": {
+      "lessons": []
+    },
+    "2026-11-06": {
+      "lessons": []
+    },
+    "2026-11-07": {
+      "lessons": []
+    },
+    "2026-11-08": {
+      "lessons": []
+    },
+    "2026-11-09": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25292706/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-10": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26291312/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/2091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-11": {
+      "lessons": []
+    },
+    "2026-11-12": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25291312/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25291312/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "24290901/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "24290901/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25291312/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25291312/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-13": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. (второй)",
+          "teacher": "Герчикова И.Г.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. (второй)",
+          "teacher": "Герчикова И.Г.",
+          "group": "24294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-14": {
+      "lessons": []
+    },
+    "2026-11-15": {
+      "lessons": []
+    },
+    "2026-11-16": {
+      "lessons": []
+    },
+    "2026-11-17": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "24290901/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25292706/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26291312/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25291312/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291312/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Герчикова И.Г.",
+          "group": "25291312/1092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291312/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз.",
+          "teacher": "Герчикова И.Г.",
+          "group": "26290901/2091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    }
+  }
+}

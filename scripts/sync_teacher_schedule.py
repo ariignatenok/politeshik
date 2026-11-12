@@ -17,7 +17,7 @@ def teacher_key(value):
     return re.sub(r"[\s.]", "", str(value)).casefold().replace("ё", "е")
 
 
-def build_snapshot(response, previous, today):
+def build_snapshot(response, previous, today, teacher=TEACHER, full_name=FULL_NAME):
     monday = today - dt.timedelta(days=today.weekday())
     start, requested_end = monday - dt.timedelta(days=7), monday + dt.timedelta(days=34)
     days = response.get("days")
@@ -27,25 +27,25 @@ def build_snapshot(response, previous, today):
         if not start <= dt.date.fromisoformat(date) <= requested_end or not isinstance(day, dict) or not isinstance(day.get("lessons"), list):
             raise ValueError("Invalid teacher schedule day")
         for lesson in day["lessons"]:
-            belongs = teacher_key(lesson.get("teacher")) == teacher_key(TEACHER)
-            changed = lesson.get("status") in ("replacement", "cancellation") and teacher_key(lesson.get("original_teacher")) == teacher_key(TEACHER)
+            belongs = teacher_key(lesson.get("teacher")) == teacher_key(teacher)
+            changed = lesson.get("status") in ("replacement", "cancellation") and teacher_key(lesson.get("original_teacher")) == teacher_key(teacher)
             if not (belongs or changed):
                 raise ValueError("Namesake or unrelated teacher in timetable")
-            if type(lesson.get("lesson_number")) is not int or not 1 <= lesson["lesson_number"] <= 10 or not lesson.get("subject") or lesson.get("status") not in ("ok", "replacement", "cancellation"):
+            if type(lesson.get("lesson_number")) is not int or not 0 <= lesson["lesson_number"] <= 10 or not lesson.get("subject") or lesson.get("status") not in ("ok", "replacement", "cancellation"):
                 raise ValueError("Invalid teacher lesson")
             groups = lesson.get("group_list")
-            if not isinstance(groups, list) or not groups or not all(re.fullmatch(r"\d{8}/\d{4}", str(group)) for group in groups):
+            if not isinstance(groups, list) or not groups or not all(re.fullmatch(r"[зЗ]?\d{8}/\d{4}", str(group)) for group in groups):
                 raise ValueError("Missing group for teacher lesson")
     if not any(day["lessons"] for day in days.values()):
         raise ValueError("No teacher lessons; preserving the last valid copy")
-    history = previous.get("days", {}) if previous.get("teacher") == TEACHER else {}
+    history = previous.get("days", {}) if previous.get("teacher") == teacher else {}
     merged = {date: day for date, day in history.items() if (today - dt.timedelta(weeks=40)).isoformat() <= date < start.isoformat()}
     end = dt.date.fromisoformat(max(days))
     published_start = dt.date.fromisoformat(min(days))
     for offset in range((end - published_start).days + 1):
         date = (published_start + dt.timedelta(days=offset)).isoformat()
         merged[date] = days.get(date, {"lessons": []})
-    return {"schema": 1, "kind": "teacher", "teacher": TEACHER, "full_name": FULL_NAME, "source": SOURCE, "checked_at": today.isoformat(), "from": min(merged), "to": end.isoformat(), "days": dict(sorted(merged.items()))}
+    return {"schema": 1, "kind": "teacher", "teacher": teacher, "full_name": full_name, "source": SOURCE, "checked_at": today.isoformat(), "from": min(merged), "to": end.isoformat(), "days": dict(sorted(merged.items()))}
 
 
 def main():

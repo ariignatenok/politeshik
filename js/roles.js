@@ -24,7 +24,7 @@ const Roles = {
    * @returns {Array<string>|null} Массив.
    */
   tabs() {
-    const list = Roles.tabsByRole[Cloud.role];
+    const list = Cloud.facultyContext?.active && Cloud.role==='teacher'?['tdash','schedule','journal','tstudents','tsubjects','chat','settings']:Roles.tabsByRole[Cloud.role];
     if (!list) return null;
     return Roles.isOwner() ? list.concat(['access']) : list;
   },

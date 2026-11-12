@@ -15,17 +15,18 @@ const Curator = {
   feedError: '',
   feedAt: 0,
   week: null,
+  context() {return Cloud.facultyContext?.active?Cloud.facultyContext:Cloud.curatorContext;},
   enabled() {
     return (
-      Cloud.isCurator === true &&
+      (Cloud.isCurator === true || Cloud.isTeacher === true) &&
       Cloud.member?.status === 'approved' &&
-      Cloud.curatorContext?.active === true
+      Curator.context()?.active === true
     );
   },
   reset() {
     if (Curator.owner === Cloud.uid) return;
     Curator.owner = Cloud.uid;
-    Curator.tenant = Cloud.curatorContext?.groups?.[0]?.tenant_id || null;
+    Curator.tenant = Curator.context()?.groups?.[0]?.tenant_id || null;
     Curator.month = U.iso(U.today()).slice(0, 7);
     Curator.date = U.iso(U.today());
     Curator.bundle = null;
@@ -66,7 +67,7 @@ const Curator = {
       month = Curator.month,
       token = ++Curator.token;
     try {
-      const {data, error} = await supa.rpc('curator_group_view', {
+      const {data, error} = await supa.rpc(Cloud.facultyContext?.active?'faculty_group_view':'curator_group_view', {
         p_tenant: tenant,
         p_month: month,
       });
@@ -87,7 +88,7 @@ const Curator = {
     }
   },
   select(tenant) {
-    if (!Cloud.curatorContext?.groups.some((g) => g.tenant_id === tenant)) return;
+    if (!Curator.context()?.groups.some((g) => g.tenant_id === tenant)) return;
     Curator.token++;
     Curator.loading = false;
     Curator.tenant = tenant;
@@ -120,7 +121,7 @@ const Curator = {
   controls() {
     return (
       '<div class="curator-controls"><label>Моя группа<select class="input" data-curator="group">' +
-      Cloud.curatorContext.groups
+      Curator.context().groups
         .map(
           (g) =>
             '<option value="' +
@@ -143,7 +144,7 @@ const Curator = {
     Curator.ensure();
     if (tab === 'schedule') return Curator.scheduleView();
     const titles = {
-      tdash: 'Кабинет куратора',
+      tdash: Cloud.facultyContext?.active?'Кабинет преподавателя':'Кабинет куратора',
       journal: 'Журнал группы',
       tstudents: 'Студенты моих групп',
       news: 'Новости группы',
@@ -152,12 +153,12 @@ const Curator = {
       '<div class="page-head"><div><h1>' +
       titles[tab] +
       '</h1><p>' +
-      U.esc(Cloud.curatorContext.name) +
+      U.esc(Curator.context().name) +
       '</p></div></div>';
     if (tab === 'tdash')
       html +=
         '<div class="curator-group-cards">' +
-        Cloud.curatorContext.groups
+        Curator.context().groups
           .map(
             (g) =>
               '<button class="card' +
@@ -172,6 +173,7 @@ const Curator = {
           )
           .join('') +
         '</div>';
+    if(!Curator.context().groups.length)return html+'<section class="card">В расписании добавленных групп ваших занятий пока нет. Личное расписание доступно в разделе «Расписание».</section>';
     html += Curator.controls();
     if (Curator.error) return html + '<p class="warn">' + U.esc(Curator.error) + '</p>';
     if (!Curator.bundle)
@@ -280,7 +282,7 @@ const Curator = {
       .replace(/ё/g, 'е');
   },
   validFeed(data) {
-    const target = Curator.normalizeTeacher(Cloud.curatorContext?.teacher);
+    const target = Curator.normalizeTeacher(Curator.context()?.teacher);
     return !!(
       data &&
       data.schema === 1 &&
@@ -307,8 +309,9 @@ const Curator = {
   async loadFeed() {
     if (Curator.feedLoading || !Curator.enabled()) return;
     Curator.feedLoading = true;
+    if(Cloud.facultyContext?.active){await Faculty.load();const row=Faculty.data?.teachers.find(t=>t.name===Curator.context().name);if(row&&!row.schedule_file){Curator.feedError='Сайт колледжа пока не предоставил расписание этого преподавателя. Проверяем автоматически.';Curator.feedLoading=false;App.renderSoft();return;}}
     const owner = Cloud.uid,
-      file = Cloud.curatorContext.schedule_file;
+      file = Curator.context().schedule_file;
     if (!/^schedule-teacher-[a-z0-9-]+\.json$/.test(file || '')) {
       Curator.feedLoading = false;
       return;
@@ -351,17 +354,17 @@ const Curator = {
     const data = Curator.feed;
     let html =
       '<div class="page-head"><div><h1>Моё расписание</h1><p>' +
-      U.esc(Cloud.curatorContext.name) +
+      U.esc(Curator.context().name) +
       ' · ' +
-      U.esc(Cloud.curatorContext.teacher) +
-      '</p></div><button class="btn" data-action="curator-feed-refresh">Обновить</button></div><p class="hint">Преподавательские занятия во всех группах, где вы ведёте пары. Кураторские группы доступны в журнале и разделе «Студенты».</p>';
+      U.esc(Curator.context().teacher) +
+      '</p></div><button class="btn" data-action="curator-feed-refresh">Обновить</button></div><p class="hint">Преподавательские занятия во всех группах, где вы ведёте пары. Закреплённые группы доступны в журнале и разделе «Студенты».</p>';
     if (Curator.feedError)
       html +=
         '<p class="warn">' +
         U.esc(Curator.feedError) +
         (data ? ' · показана последняя загруженная копия' : '') +
         '</p>';
-    if (!data) return html + '<section class="card">Загружаем расписание преподавателя…</section>';
+    if (!data) return html + '<section class="card">'+(Curator.feedError?'Расписание пока недоступно. Попробуйте обновить позже.':'Загружаем расписание преподавателя…')+'</section>';
     const ws = Curator.week,
       from = U.fromISO(ws),
       end = U.iso(U.addDays(from, 6)),

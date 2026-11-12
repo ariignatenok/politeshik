@@ -16,50 +16,7 @@ const Teacher = {
    * @returns {Promise<Object>} ok и сообщение об ошибке.
    */
   async activate(secret, name) {
-    const code = String(secret || '').trim();
-    if (!code)
-      return {
-        ok: false,
-        msg: 'Введите пароль преподавателя'
-      };
-    try {
-      const {data, error} = await supa.rpc('become_teacher', {
-        p_secret: code,
-        p_name: String(name || '').trim()
-      });
-      if (error)
-        return {
-          ok: false,
-          msg: /ещё не задан/.test(error.message || '')
-            ? 'Пароль преподавателя ещё не задан администратором'
-            : error.message
-        };
-      if (data !== true)
-        return {
-          ok: false,
-          msg: 'Неверный пароль преподавателя'
-        };
-    } catch (error) {
-      return {
-        ok: false,
-        msg: 'Не удалось проверить пароль: нет связи'
-      };
-    }
-    await Cloud.init();
-    if (!Cloud.realTeacher && !(Cloud.member && Cloud.member.requested_role === 'teacher'))
-      return {
-        ok: false,
-        msg: 'Не удалось отправить заявку преподавателя'
-      };
-    ui.justSubmitted = true;
-    try {
-      await Cloud.saveTeacherName(name);
-    } catch (error) {
-      Cloud.err = String((error && error.message) || error);
-    }
-    return {
-      ok: true
-    };
+    return Faculty.activate(String(name || '').trim());
   },
   /**
    * Убирает из журнала админа кнопки правки, оставляя только просмотр.

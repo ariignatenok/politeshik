@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'battscroll20261112';
+const CACHE_VERSION = 'bfaculty20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -156,6 +156,9 @@ const SHELL = [
   'js/schedule-sync.js',
   'js/groups.js',
   'js/curator.js',
+  'js/faculty.js',
+  'js/data/faculty-names.js',
+  'data/faculty.json',
   'data/schedule.json',
   'data/schedule-26290911-3111.json',
   'data/schedule-23290907-2092.json',
