@@ -1,4 +1,5 @@
 begin;
+select set_config('app.import','on',true);
 select set_config('test.super',(select uid::text from politeshik_private.super_admins limit 1),true);
 do $$ declare i int; a uuid; s uuid; begin
  for i in 1..3 loop
@@ -14,6 +15,7 @@ do $$ declare i int; a uuid; s uuid; begin
   insert into public.docs(tenant_id,path,data) values('group_'||i,'attendance/'||s,'{"marks":{"2026-11-12|1":"н"}}');
  end loop;
 end $$;
+select set_config('app.import','',true);
 set local role authenticated;
 do $$ declare i int; changed int; denied boolean; begin
  for i in 1..3 loop
