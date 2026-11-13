@@ -22,7 +22,7 @@ function viewRating() {
     U.esc(mw) +
     ' ' +
     ym.slice(0, 4) +
-    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется автоматически каждые 30 секунд.</p></div><button class="btn sm" data-action="group-rating-refresh">Обновить</button></div>';
+    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Одинаковые баллы — одинаковое место (1, 1, 3). Обновляется автоматически каждые 30 секунд.</p></div><button class="btn sm" data-action="group-rating-refresh">Обновить</button></div>';
   if (Cloud.status !== 'online')
     return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
   const doc = GroupRating.data && {...GroupRating.data, label: monthName(GroupRating.data.month)},
@@ -40,7 +40,8 @@ function viewRating() {
     );
   const rid = Cloud.profile && Cloud.profile.rid,
     mine = doc.rows.find((x) => x.rid === rid),
-    next = mine && mine.place > 1 ? doc.rows[mine.place - 2] : null;
+    next = mine ? doc.rows.filter(x => Number(x.score) > Number(mine.score)).at(-1) : null,
+    shared = mine && doc.rows.some(x => x.uid !== mine.uid && x.place === mine.place);
   return (
     head +
     '<div class="card prize-bar"><div><b>' +
@@ -51,14 +52,14 @@ function viewRating() {
     U.esc(doc.label) +
     '</small></div>' +
     (mine
-      ? '<div class="myplace"><b>Ты на ' +
+      ? '<div class="myplace"><b>' + (shared ? 'Делишь ' : 'Ты на ') +
         mine.place +
-        ' месте</b><small>' +
+        (shared ? ' место' : ' месте') + '</b><small>' +
         (next
           ? 'до следующего места: ' +
             Math.max(0, Math.round((next.score - mine.score) * 10) / 10) +
             ' балла'
-          : 'ты впереди всех ' + ICONS.partyPopper) +
+          : (shared ? 'общее первое место ' : 'ты впереди всех ') + ICONS.partyPopper) +
         '</small></div>'
       : '') +
     '</div>' +

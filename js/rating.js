@@ -51,7 +51,7 @@ const Rating = {
       });
     });
     out.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, 'ru'));
-    out.forEach((x, i) => (x.place = i + 1));
+    out.forEach((x, i) => (x.place = i && x.score === out[i - 1].score ? out[i - 1].place : i + 1));
     return out;
   },
   /**
@@ -111,11 +111,12 @@ const Rating = {
                 };
       }
       if (p && p.to < today) {
-        const w = Rating.rows(p)[0];
-        if (w)
+        const winners = Rating.rows(p).filter(x => x.place === 1);
+        if (winners.length)
           doc.results[key] = {
-            rid: w.rid,
-            name: w.name,
+            rid: winners.length === 1 ? winners[0].rid : null,
+            winners: winners.map(x => ({uid:x.uid,rid:x.rid,name:x.name})),
+            name: winners.map(x => x.name).join(', '),
             prize: doc.prizes[key].text,
             at: now.toISOString(),
             label: key
