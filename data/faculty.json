@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-14",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -714,7 +714,8 @@
       "teacher": "Ивашкова Н.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-95fe46e97169.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T23:57:07.396260+00:00"
     },
     {
       "id": "faculty-564e44d489d2",
@@ -729,7 +730,8 @@
         "26290911/3111": [
           "Архитектура аппаратных средств"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T23:57:08.772480+00:00"
     },
     {
       "id": "faculty-d5393280cf21",
@@ -737,7 +739,8 @@
       "teacher": "Ильин Ю.П.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d5393280cf21.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T23:57:10.350078+00:00"
     },
     {
       "id": "faculty-1d2021b0b92c",
