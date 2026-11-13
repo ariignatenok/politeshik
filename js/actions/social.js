@@ -41,6 +41,7 @@ Object.assign(A, {
     return Club.refresh('join');
   },
   'club-leave'() {
+    ClubMusic.stop();
     return Club.refresh('leave');
   },
   'club-dance'() {

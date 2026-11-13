@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'coverhw20261113';
+const BUILD = 'clubgroups20261113';

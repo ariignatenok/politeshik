@@ -50,8 +50,8 @@ const ScheduleSync = {
    * @param {Object} data Снимок расписания.
    * @returns {boolean} Корректность снимка.
    */
-  valid(data) {
-    if (!data || data.schema !== 1 || data.group !== ScheduleSync.group || !data.days ||
+  valid(data, group = ScheduleSync.group) {
+    if (!data || data.schema !== 1 || data.group !== group || !data.days ||
         !/^\d{4}-\d{2}-\d{2}$/.test(data.checked_at || '')) return false;
     if(data.status==='awaiting_source')return data.source==='https://polytech-schedule.ru' &&
       typeof data.days==='object' && !Array.isArray(data.days) && Object.keys(data.days).length===0;
@@ -63,7 +63,7 @@ const ScheduleSync = {
       data.days[date].lessons.every(l => l && Number.isInteger(l.lesson_number) &&
         l.lesson_number >= 1 && l.lesson_number <= 10 && typeof l.subject === 'string' && !!l.subject.trim() &&
         ['ok', 'replacement', 'cancellation'].includes(l.status) && [0, 1, 2].includes(l.subgroup) &&
-        Array.isArray(l.group_list) && l.group_list.includes(ScheduleSync.group)));
+        Array.isArray(l.group_list) && l.group_list.includes(group)));
   },
   /**
    * Возвращает опубликованный день, включая день без занятий.

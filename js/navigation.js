@@ -38,6 +38,7 @@ const ui = {
   fQuery: ''
 };
 const NAV_ALL = [
+  {id:'groupSchedule',ico:ICONS.calendar,label:'Расписание групп',short:'Пары групп',staff:true},
   {id: 'groups', ico: ICONS.busts, label: 'Группы', short: 'Группы', owner: true},
   {
     id: 'dashboard',

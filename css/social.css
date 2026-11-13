@@ -816,3 +816,8 @@ b[data-action]:focus-visible {
 .faculty-requests{margin:18px 0;min-width:0}.faculty-requests h2,.faculty-requests .item{flex-wrap:wrap}.faculty-requests .item-main{min-width:0;overflow-wrap:anywhere}.faculty-requests h2 .btn{flex-shrink:0}
 
 .curator-stats{grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))}.curator-stats .stat{min-width:0;overflow-wrap:anywhere}
+
+.club-volume { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:12px; }
+.club-volume input { width:110px; min-height:44px; margin:0; accent-color:var(--accent); }
+.curator-schedule-day { margin-top:16px; min-width:0; }
+.curator-schedule-day .item-main { overflow-wrap:anywhere; }

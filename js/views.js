@@ -1,6 +1,7 @@
 'use strict';
 
 const Views = {
+  groupSchedule:()=>CuratorSchedules.view(),
   profile: viewProfileWall,
   people: viewPeople,
   club: viewClub,

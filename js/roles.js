@@ -13,11 +13,11 @@ const Roles = {
   tabsByRole: {
     developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'people', 'rating', 'users', 'settings'],
     teacher: ['tdash', 'schedule', 'journal', 'tstudents', 'tsubjects', 'consult', 'texport', 'chat', 'settings'],
-    curator: ['tdash', 'schedule', 'journal', 'tstudents', 'news', 'chat', 'settings'],
+    curator: ['tdash', 'schedule', 'groupSchedule', 'journal', 'tstudents', 'news', 'chat', 'settings'],
     department: ['dept', 'news', 'settings'],
     parent: ['child', 'settings']
   },
-  staffOnly: ['tdash', 'tstudents', 'tsubjects', 'consult', 'texport', 'dept', 'child'],
+  staffOnly: ['groupSchedule', 'tdash', 'tstudents', 'tsubjects', 'consult', 'texport', 'dept', 'child'],
   weakPercent: 70,
   /**
    * Возвращает список вкладок для текущей роли или null, если ограничений нет.
@@ -26,7 +26,8 @@ const Roles = {
   tabs() {
     const list = Cloud.facultyContext?.active && Cloud.role==='teacher'?['tdash','schedule','journal','tstudents','tsubjects','chat','settings']:Roles.tabsByRole[Cloud.role];
     if (!list) return null;
-    return Roles.isOwner() ? list.concat(['access']) : list;
+    const visible=list.filter(id=>id!=='groupSchedule'||Cloud.curatorContext?.active===true);
+    return Roles.isOwner() ? visible.concat(['access']) : visible;
   },
   /**
    * Проверяет, доступна ли вкладка текущей роли.

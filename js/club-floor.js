@@ -159,6 +159,7 @@ Object.assign(A, {
     return Club.walkToBar();
   },
   async 'club-leave'() {
+    ClubMusic.stop();
     if (Club.leaving) return;
     Club.leaving = true;
     Club.drag = null;

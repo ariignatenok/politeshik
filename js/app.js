@@ -274,6 +274,7 @@ const App = {
    * @param {boolean} animate Нужна ли анимация (необязательно).
    */
   render(animate) {
+    if(typeof ClubMusic!=='undefined')ClubMusic.check();
     if(App.softFrame){cancelAnimationFrame(App.softFrame);App.softFrame=null;}
     const gm = App.gateMode();
     if (gm) {

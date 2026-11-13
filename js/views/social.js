@@ -236,19 +236,7 @@ function viewClub() {
           '<span class="club-figure">' +
           Club.mascot(card, 88) +
           '</span>' +
-          (Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot).nickname
-            ? '<strong class="club-mascot-nickname">' +
-              U.esc(
-                Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot).nickname,
-              ) +
-              '</strong>'
-            : '') +
-          '<b>' +
-          U.esc(card.uid === Cloud.uid ? 'Вы' : card.name) +
-          '</b><small>' +
-          U.esc(card.group_name) +
-          '</small>' +
-          Presence.html(card) +
+          '<b class="club-mascot-nickname">' + U.esc(Wardrobe.normalize(card.uid===Cloud.uid?Mascot.chosen():card.mascot).nickname||'Политешик') + '</b>' +
           '</button>',
       )
       .join('') +
@@ -262,7 +250,7 @@ function viewClub() {
         (Club.dancing ? 'Остановиться' : 'Танцевать') +
         '</button><button class="btn" data-action="club-leave">Выйти из клуба</button>'
       : '<button class="btn primary" data-action="club-join">Зайти на танцпол</button>') +
-    '<button class="btn" data-action="club-calm" aria-pressed="' +
+    ClubMusic.html() + '<button class="btn" data-action="club-calm" aria-pressed="' +
     Club.calm +
     '">' +
     (Club.calm ? 'Включить неон' : 'Спокойный свет') +

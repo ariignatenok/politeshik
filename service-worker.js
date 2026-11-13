@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bcoverhw20261113';
+const CACHE_VERSION = 'bclubgroups20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -93,6 +93,7 @@ const SHELL = [
   'js/presence.js',
   'js/club-actions.js',
   'js/club-floor.js',
+  'js/club-music.js',
   'js/map-routes.js',
   'js/chat-media.js',
   'js/map-guide.js',
@@ -158,6 +159,7 @@ const SHELL = [
   'js/schedule-sync.js',
   'js/groups.js',
   'js/curator.js',
+  'js/curator-schedules.js',
   'js/curator-chats.js',
   'js/faculty.js',
   'js/data/faculty-names.js',
@@ -263,7 +265,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const request = event.request;
-  if (request.method !== 'GET') return;
+  if (request.method !== 'GET' || request.headers.has('range')) return;
   const url = new URL(request.url);
   if (url.origin === self.location.origin) event.respondWith(networkFirst(request));
   else if (RUNTIME_HOSTS.indexOf(url.hostname) >= 0) event.respondWith(staleWhileRevalidate(request));
