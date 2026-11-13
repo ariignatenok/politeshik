@@ -17,7 +17,7 @@ function socialProfileHtml(card, full = false) {
     (kind === 'photo' ? 'Фото' : 'Маскот') +
     ' · ' +
     Number(card[kind + '_likes'] || 0) +
-    '</button>';
+    '</button><button class="btn sm ghost" data-action="like-people" data-uid="'+card.uid+'" data-kind="'+kind+'">Кто лайкнул '+(kind==='photo'?'фото':'маскота')+'</button>';
   const phone = String(card.phone || ''),
     email = String(card.contact_email || '');
   return (
@@ -46,6 +46,7 @@ function socialProfileHtml(card, full = false) {
     '<div class="social-profile-actions">' +
     like('mascot') +
     like('photo') +
+    (card.avatar?'<button class="btn sm" data-action="photo-comments" data-uid="'+card.uid+'">💬 Комментарии к фото</button>':'') +
     (!self
       ? '<button class="btn primary" data-action="peer-open" data-uid="' +
         card.uid +

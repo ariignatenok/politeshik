@@ -73,7 +73,7 @@ const Social = {
     card = card || {};
     const look = Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot);
     return (
-      '<span class="av-personal">' +
+      '<span class="av-personal" data-photo-owner="'+U.esc(card.uid||'')+'">' +
       (photo && card.avatar ? avatarOf(card.avatar, size) : '') +
       Mascot.svg(look.mood || 'happy', photo && card.avatar ? Math.max(28, size * 0.75) : size, '', {
         look,

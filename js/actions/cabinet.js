@@ -1,7 +1,7 @@
 'use strict';
 
 Object.assign(A, {
-  'profile-photo'(el){const value=el.currentSrc||el.src||'';if(/^data:image\/(jpeg|png|webp);base64,/.test(value))showImage('Фото профиля',Promise.resolve(value));},
+  'profile-photo'(el){const uid=el.closest('[data-photo-owner]')?.dataset.photoOwner;if(uid&&Social.allowed()&&!['teacher','curator'].includes(Avatars.people[uid]?.role))return PhotoComments.open('profile',uid);const value=el.currentSrc||el.src||'';if(/^data:image\/(jpeg|png|webp);base64,/.test(value))showImage('Фото профиля',Promise.resolve(value));},
   /**
    * Переключает период рейтинга.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.

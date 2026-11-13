@@ -382,6 +382,8 @@ const Wall = {
     return data.signedUrl;
   },
   async imageOpen(el) {
+    const photo=Wall.posts.flatMap(p=>p.photos||[]).find(p=>p.path===el.dataset.path);
+    if(photo)return PhotoComments.open('wall',photo);
     try {
       const url = await Wall.imageUrl(el.dataset.path);
       UI.open(

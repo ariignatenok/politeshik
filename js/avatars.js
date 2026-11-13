@@ -45,7 +45,7 @@ const Avatars = {
       },
     );
     return (
-      '<span class="av-personal"' +
+      '<span class="av-personal" data-photo-owner="'+U.esc(uid||'')+'"' +
       (uid
         ? ' data-action="social-profile" data-uid="' +
           uid +
@@ -79,7 +79,7 @@ const Avatars = {
         U.esc(U.initials(name || '')) +
         '</span>';
     return (
-      '<span class="av-personal"' +
+      '<span class="av-personal" data-photo-owner="'+U.esc(uid||'')+'"' +
       (uid
         ? ' data-action="social-profile" data-uid="' +
           uid +

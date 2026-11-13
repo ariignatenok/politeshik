@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bstaffrooms20261113';
+const CACHE_VERSION = 'bphotoreactions20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -162,6 +162,7 @@ const SHELL = [
   'js/curator-schedules.js',
   'js/curator-chats.js',
   'js/staff-profile.js',
+  'js/photo-reactions.js',
   'js/group-rooms.js',
   'js/group-rating.js',
   'js/faculty.js',
