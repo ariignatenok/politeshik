@@ -1,0 +1,33 @@
+begin;
+select set_config('test.pp_student',gen_random_uuid()::text,true),set_config('test.pp_teacher',gen_random_uuid()::text,true),set_config('test.pp_parent',gen_random_uuid()::text,true);
+insert into auth.users(id,email,email_confirmed_at,aud,role)select current_setting('test.pp_'||k)::uuid,'portrait-'||current_setting('test.pp_'||k)||'@example.invalid',now(),'authenticated','authenticated'from unnest(array['student','teacher','parent'])k;
+insert into public.members(tenant_id,uid,role,status,requested_role,group_id,full_name)select'group_2',current_setting('test.pp_'||k)::uuid,k,'approved',case when k='teacher'then'teacher'else k end,'g_26290911_3111','Portrait '||k from unnest(array['student','teacher','parent'])k;
+insert into public.docs(tenant_id,path,data)select'group_2','profiles/'||current_setting('test.pp_'||k),jsonb_build_object('name','Photo test','role',k,'about','PRIVATE','email','private@example.invalid')from unnest(array['student','teacher'])k;
+insert into politeshik_private.faculty_claims(uid,faculty_id,status)values(current_setting('test.pp_teacher')::uuid,'faculty-2f2c346102e6','approved');
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_teacher'),'role','authenticated')::text,true);
+do $$declare media jsonb;bad boolean:=false;begin
+ media:=public.profile_photo_prepare(4);perform set_config('test.pp_id',media->>'id',true);perform set_config('test.pp_path',media->>'path',true);
+ insert into storage.objects(bucket_id,name,metadata)values('profile-portraits',media->>'path','{"size":4,"mimetype":"image/jpeg"}');
+ assert exists(select 1 from storage.objects where name=media->>'path'),'Owner cannot access own upload';
+ begin perform public.profile_photo_publish((media->>'id')::uuid,'m4');exception when others then bad:=true;end;assert bad,'Published invalid thumbnail';
+end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_student'),'role','authenticated')::text,true);
+do $$declare bad boolean:=false;profiles jsonb;begin
+ assert not exists(select 1 from storage.objects where name=current_setting('test.pp_path')),'Unpublished portrait leaked';
+ begin perform public.profile_photo_publish(current_setting('test.pp_id')::uuid,'data:image/jpeg;base64,dGVzdA==');exception when others then bad:=true;end;assert bad,'Student published teacher photo';
+ profiles:=public.faculty_public_profiles();assert exists(select 1 from jsonb_array_elements(profiles)p where p->>'uid'=current_setting('test.pp_teacher')),'Registered faculty profile missing';
+ assert not exists(select 1 from jsonb_array_elements(profiles)p where p?'email'or p?'about'or p?'marks'),'Faculty private data leaked';
+end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_teacher'),'role','authenticated')::text,true);
+select public.profile_photo_publish(current_setting('test.pp_id')::uuid,'data:image/jpeg;base64,dGVzdA==');
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_student'),'role','authenticated')::text,true);
+do $$begin assert public.profile_photo(current_setting('test.pp_teacher')::uuid)->>'id'=current_setting('test.pp_id'),'Full portrait unavailable';assert exists(select 1 from storage.objects where name=current_setting('test.pp_path')),'Published portrait unavailable';end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_teacher'),'role','authenticated')::text,true);
+select public.save_my_avatar('m4');
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_student'),'role','authenticated')::text,true);
+do $$begin assert public.profile_photo(current_setting('test.pp_teacher')::uuid)is null,'Old original shown after changing avatar';assert not exists(select 1 from storage.objects where name=current_setting('test.pp_path')),'Replaced original remains public';end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.pp_parent'),'role','authenticated')::text,true);
+do $$declare bad boolean:=false;begin begin perform public.profile_photo_prepare(4);exception when insufficient_privilege then bad:=true;end;assert bad,'Parent uploaded social portrait';end $$;
+reset role;
+rollback;

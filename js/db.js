@@ -1869,7 +1869,7 @@ const Cloud = (() => {
    */
   C.loadAvatars = async () => {
     try {
-      const tenant = C.tenantId, uid = C.uid, revision = Wardrobe.revision;
+      const tenant = C.tenantId, uid = C.uid, revision = Wardrobe.revision,avatarRevision=Profile.avatarRevision||0;
       const {data, error} = await supa.rpc('group_mascots');
       if (error || !Array.isArray(data) || tenant !== C.tenantId || uid !== C.uid) return false;
       const map = {}, looks = {}, people = {};
@@ -1879,8 +1879,10 @@ const Cloud = (() => {
         looks[row.uid] = Wardrobe.normalize(row.mascot);
         people[row.uid] = {rid: row.rid, name: row.name, role: row.role};
       });
+      const portraitSettled=avatarRevision===(Profile.avatarRevision||0)&&!(typeof ProfilePhotos!=='undefined'&&ProfilePhotos.busy);
+      if(!portraitSettled&&Object.hasOwn(Avatars.map,uid))map[uid]=Avatars.map[uid];
       Avatars.map = map; Avatars.looks = looks; Avatars.people = people;
-      if((C.isSuperAdmin||C.isStaff)&&Object.hasOwn(map,C.uid)&&!Store.s.meta.avatarPending){Store.s.settings.avatar=Profile.avatarSettings(map[C.uid]);if(C.profile)C.profile.avatar=map[C.uid];Store.save();}
+      if(portraitSettled&&(C.isSuperAdmin||C.isStaff)&&Object.hasOwn(map,C.uid)&&!Store.s.meta.avatarPending){Store.s.settings.avatar=Profile.avatarSettings(map[C.uid]);if(C.profile)C.profile.avatar=map[C.uid];Store.save();}
       if (looks[C.uid] && revision === Wardrobe.revision && !(Store.s.meta && Store.s.meta.mascotPending)) {
         Store.s.settings.mascot = looks[C.uid];
         if (C.profile) C.profile.mascot = looks[C.uid];

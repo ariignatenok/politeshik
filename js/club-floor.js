@@ -9,7 +9,7 @@ Object.assign(Club, {
     };
   },
   clamp(point) {
-    return {x: Math.max(12, Math.min(88, point.x)), y: Math.max(40, Math.min(94, point.y))};
+    return {x: Math.max(12, Math.min(88, point.x)), y: Math.max(12, Math.min(94, point.y))};
   },
   actor(uid = Cloud.uid) {
     return document.querySelector('.club-floor .club-guest[data-uid="' + uid + '"]');
@@ -72,17 +72,18 @@ Object.assign(Club, {
       if (ui.tab === 'club') App.renderSoft();
     }
   },
-  async walkToBar() {
+  walkToBar() { return Club.walkTo({x:78,y:94},()=>Club.openBar()); },
+  async walkTo(destination,after) {
     Club.captureThought();
-    if (!Club.joined) return Club.openBar();
+    if (!Club.joined) return toast('Сначала зайдите в клуб');
     if (Club.drag || Club.walking || Club.moving || Club.saving || Club.leaving) return;
     UI.close();
     const actor = Club.actor(),
       floor = document.querySelector('.club-floor');
-    if (!actor || !floor) return Club.openBar();
+    if (!actor || !floor) return;
     const owner = Cloud.uid,
       from = Club.position(Club.own()),
-      target = {x: 78, y: 94};
+      target = Club.clamp(destination);
     Club.roomVersion = (Club.roomVersion || 0) + 1;
     Club.walking = true;
     actor.classList.add('is-walking');
@@ -113,9 +114,9 @@ Object.assign(Club, {
       actor.style.top = target.y + '%';
       animation.cancel();
       const saved = await Club.storePosition(target);
-      if (saved && owner === Cloud.uid && ui.tab === 'club' && !Club.leaving) Club.openBar();
+      if (saved && owner === Cloud.uid && ui.tab === 'club' && !Club.leaving && after) after();
     } catch (error) {
-      if (error.name !== 'AbortError') toast('Нажмите на бар ещё раз');
+      if (error.name !== 'AbortError') toast('Попробуйте подойти ещё раз');
     } finally {
       if (animation) animation.cancel();
       actor.classList.remove('is-walking');

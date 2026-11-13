@@ -202,6 +202,7 @@ function viewClub() {
   if (!Social.allowed())
     return '<div class="card">Клуб доступен зарегистрированным студентам.</div>';
   Club.ensurePolling();
+  if(Club.room==='games')ClubGames.loadLobby();
   const dj = {
     body: 'lilac',
     top: 'blacktee',
@@ -210,11 +211,11 @@ function viewClub() {
     chain: 'shortgold',
   };
   return (
-    '<div class="page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
-    (Club.calm ? ' calm' : '') + (Club.barExpanded?' bar-open':'') +
-    '"><div class="club-neon">POLITESHIK <span>CLUB</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-stage"><div class="club-speaker">◉<br>◉</div><div class="club-dj">' +
-    Mascot.svg('happy', 110, '', {look: dj, season: ''}) +
-    '<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК</span><i>◉</i></div></div><div class="club-speaker">◉<br>◉</div></div><div class="club-floor"><button class="club-bar" data-action="club-bar"><span>BAR</span><b>☕ 🧃 🍹</b><small>Кофе · чай · соки · лимонад</small><small>Выбрать напиток →</small></button>' +
+    '<div class="page-head club-page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
+    (Club.calm ? ' calm' : '') + (Club.barExpanded?' bar-open':'')+' club-room-'+Club.room +
+    '"><div class="club-neon">POLITESHIK <span>'+U.esc(Club.roomNames[Club.room]||'CLUB')+'</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-floor">'+
+    (Club.room==='main'?'<div class="club-stage"><div class="club-speaker">◉<br>◉</div><button class="club-dj" data-action="club-dj-join" aria-label="Подойти и встать рядом с диджеем">'+Mascot.svg('happy',110,'',{look:dj,season:''})+'<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК<br>Встать рядом →</span><i>◉</i></div></button><div class="club-speaker">◉<br>◉</div></div>'+Club.tablesHtml():Club.room==='cinema'?Club.movieHtml():ClubGames.roomHtml())+
+    '<button class="club-bar" data-action="club-bar"><span>BAR</span><b>☕ 🧃</b><small>Кофе · чай · соки</small><small>Выбрать напиток →</small></button>' +
     Club.visitors
       .map(
         (card, i) =>
@@ -243,11 +244,11 @@ function viewClub() {
       .join('') +
     '</div><div class="club-caption">' +
     (Club.visitors.length
-      ? 'На танцполе: ' + Club.visitors.length
+      ? 'В комнате: ' + Club.visitors.length
       : 'Танцпол свободен — заходите первым') +
-    '</div></div><div class="club-controls">' +
+    '</div></div>'+Club.doorsHtml()+'<div class="club-controls">' +
     (Club.joined
-      ? '<button class="btn" data-action="club-own">Мой маскот · Движения и мысли</button><button class="btn primary" data-action="club-dance">' +
+      ? '<button class="btn" data-action="club-destinations">Куда подойти</button><button class="btn" data-action="club-own">Мой маскот · Движения и мысли</button><button class="btn primary" data-action="club-dance">' +
         (Club.dancing ? 'Остановиться' : 'Танцевать') +
         '</button><button class="btn" data-action="club-leave">Выйти из клуба</button>'
       : '<button class="btn primary" data-action="club-join">Зайти на танцпол</button>') +
@@ -255,7 +256,7 @@ function viewClub() {
     Club.calm +
     '">' +
     (Club.calm ? 'Включить неон' : 'Спокойный свет') +
-    '</button></div><p class="hint">Нажмите на своего маскота — он подпрыгнет. Перетаскивайте его по танцполу. Движения и мысли — в кнопке «Мой маскот»; чужой маскот открывает профиль. Ваш маскот остаётся здесь даже после закрытия страницы. Чтобы убрать его, нажмите «Выйти из клуба».</p>' +
+    '</button></div><p class="hint">Нажмите на своего маскота — он подпрыгнет. Перетаскивайте его по танцполу. Движения и мысли — в кнопке «Мой маскот»; нажмите на гостя, чтобы открыть профиль или передать напиток. Ваш маскот остаётся здесь даже после закрытия страницы. Чтобы убрать его, нажмите «Выйти из клуба».</p>' +
     (Club.error
       ? '<p class="warn">' +
         U.esc(Club.error) +

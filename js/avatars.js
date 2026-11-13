@@ -52,7 +52,7 @@ const Avatars = {
           '" role="button" tabindex="0" aria-label="Открыть профиль"'
         : '') +
       '>' +
-      (value ? avatarOf(value, size) : '') +
+      (value ? avatarOf(value, size, uid, Avatars.people[uid]?.role) : '') +
       mascot +
       '</span>'
     );
@@ -68,7 +68,7 @@ const Avatars = {
     const look = Avatars.look(uid),
       value = Avatars.value(uid);
     const portrait = value
-      ? avatarOf(value, size)
+      ? avatarOf(value, size, uid, Avatars.people[uid]?.role)
       : '<span class="av-s av-ini" style="width:' +
         size +
         'px;height:' +
@@ -98,6 +98,7 @@ const Avatars = {
    * Выкладывает свою аватарку в облако, чтобы её видели остальные.
    */
   async publish() {
+    if(typeof ProfilePhotos!=='undefined'&&ProfilePhotos.busy)return;
     if (Cloud.isSuperAdmin && (Cloud.tenantId !== Cloud.homeTenant || !Store.s.meta.avatarPending)) return;
     if (Cloud.status !== 'online' || !Cloud.uid || Cloud.isParent || !Cloud.hasCabinet()) return;
     const uid=Cloud.uid,value = myAvatar(),

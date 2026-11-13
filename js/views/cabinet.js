@@ -9,7 +9,7 @@ function aboutCard() {
     w = Profile.weekStats();
   return (
     '<section class="card about-card"><div class="about-top"><button class="cab-av avbtn" data-action="avatar-open" title="Сменить аватар" aria-label="Сменить аватар">' +
-    Avatars.html(Cloud.uid, 72, myAvatar()) +
+    Avatars.html(Cloud.uid, 72, myAvatar()).replace(/ data-action="(?:social-profile|profile-photo)"| role="button"| tabindex="0"/g, '') +
     '<span class="av-edit">' +
     ICONS.pencil +
     '</span></button>' +

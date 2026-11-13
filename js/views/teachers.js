@@ -6,6 +6,7 @@
  */
 function teacherCards() {
   Faculty.populate();
+  FacultyProfiles.load();
   const state = Store.s,
     q = U.norm(ui.teacherQuery),
     sf = ui.teacherSubject;
@@ -25,14 +26,15 @@ function teacherCards() {
     list
       .map(t => {
         const first = subj(t.subjectIds[0]),
-          c = first ? first.color : '#6366f1';
+          c = first ? first.color : '#6366f1',
+          registered=FacultyProfiles.find(t.name);
         return (
           '<article class="tcard"><div class="t-top"><div class="avatar" style="--c:' +
           c +
           '">' +
-          U.esc(U.initials(t.name)) +
+          (registered?avatarOf(registered.avatar,52,registered.uid,registered.role):U.esc(U.initials(t.name))) +
           '</div><div><h3>' +
-          U.esc(t.name) +
+          (registered?'<button class="faculty-name-link" data-action="faculty-profile" data-uid="'+registered.uid+'">'+U.esc(t.name)+'</button><small class="hint">Зарегистрирован</small>':U.esc(t.name)) +
           '</h3></div></div>' +
           '<div class="meta" style="display:flex;gap:6px;flex-wrap:wrap">' +
           t.subjectIds
@@ -57,6 +59,7 @@ function teacherCards() {
           '</div>' +
           (t.notes ? '<div class="t-notes">' + U.esc(t.notes) + '</div>' : '') +
           '<div class="t-actions">' +
+          (registered?'<button class="btn sm" data-action="faculty-profile" data-uid="'+registered.uid+'">Фото и маскот</button>':'') +
           (Faculty.data?.teachers.find(r=>r.name===t.name) ? '<button class="btn sm" data-action="faculty-schedule" data-id="'+Faculty.data.teachers.find(r=>r.name===t.name).id+'">Расписание</button>' : '') + '<button class="btn sm" data-action="t-edit" data-id="' +
           t.id +
           '">' +

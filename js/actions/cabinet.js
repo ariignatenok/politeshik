@@ -1,7 +1,7 @@
 'use strict';
 
 Object.assign(A, {
-  'profile-photo'(el){const uid=el.closest('[data-photo-owner]')?.dataset.photoOwner;if(uid&&Social.allowed()&&!['teacher','curator'].includes(Avatars.people[uid]?.role))return PhotoComments.open('profile',uid);const value=el.currentSrc||el.src||'';if(/^data:image\/(jpeg|png|webp);base64,/.test(value))showImage('Фото профиля',Promise.resolve(value));},
+  'profile-photo'(el){const uid=el.closest('[data-photo-owner]')?.dataset.photoOwner;if(uid&&(['teacher','curator'].includes(el.closest('[data-photo-role]')?.dataset.photoRole)||FacultyProfiles.rows.some(r=>r.uid===uid)))return ProfilePhotos.view(uid,el.currentSrc||el.src||'');if(uid&&Social.allowed()&&!['teacher','curator'].includes(Avatars.people[uid]?.role))return PhotoComments.open('profile',uid);const value=el.currentSrc||el.src||'';if(uid)return ProfilePhotos.view(uid,value);if(/^data:image\/(jpeg|png|webp);base64,/.test(value))return ProfilePhotos.view(Cloud.uid,value);},
   /**
    * Переключает период рейтинга.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
@@ -44,7 +44,7 @@ Object.assign(A, {
     const cur = myAvatar();
     UI.open(
       'Аватар',
-      '<p class="md-help" style="margin:0 0 10px">Выбери смешную картинку или загрузи своё фото — оно сожмётся до маленького квадрата.</p>' +
+      '<p class="md-help" style="margin:0 0 10px">Выбери смешную картинку или загрузи своё фото — качественная версия сохранится для просмотра, а для списков создастся небольшое превью.</p>' +
         '<div class="av-grid">' +
         AVATARS.map(
           a =>

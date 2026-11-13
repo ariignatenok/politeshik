@@ -74,7 +74,7 @@ const Social = {
     const look = Wardrobe.normalize(card.uid === Cloud.uid ? Mascot.chosen() : card.mascot);
     return (
       '<span class="av-personal" data-photo-owner="'+U.esc(card.uid||'')+'">' +
-      (photo && card.avatar ? avatarOf(card.avatar, size) : '') +
+      (photo && card.avatar ? avatarOf(card.avatar, size, card.uid, card.role) : '') +
       Mascot.svg(look.mood || 'happy', photo && card.avatar ? Math.max(28, size * 0.75) : size, '', {
         look,
         season: '',
@@ -335,7 +335,7 @@ const Club = {
   async refresh(action = 'state') {
     if (!Social.allowed() || (Club.loading && action==='state')) return;
     if(action==='join'||action==='leave')Club.roomVersion=(Club.roomVersion||0)+1;
-    const version=Club.roomVersion||0;
+    const version=Club.roomVersion||0,previousError=Club.error;
     Club.loading = true;
     const owner = Cloud.uid;
     try {
@@ -348,7 +348,7 @@ const Club = {
       Club.error = error.message;
     } finally {
       Club.loading = false;
-      if (ui.tab === 'club') App.renderSoft();
+      if (ui.tab === 'club' && (Club.renderChanged !== false || previousError !== Club.error)) App.renderSoft();
     }
   },
 };

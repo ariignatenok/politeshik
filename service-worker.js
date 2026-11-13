@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bdenseranks20261113';
+const CACHE_VERSION = 'bclubrooms20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -32,6 +32,7 @@ const SHELL = [
   'css/mascot.css',
   'css/personal-menu.css',
   'css/social.css',
+  'css/club-rooms.css',
   'css/profile-wall.css',
   'css/modal.css',
   'css/motion.css',
@@ -94,6 +95,10 @@ const SHELL = [
   'js/club-actions.js',
   'js/club-floor.js',
   'js/club-music.js',
+  'js/club-games.js',
+  'js/club-rooms.js',
+  'assets/club-jazz.mp3',
+  'assets/club-cinema.mp3',
   'js/map-routes.js',
   'js/chat-media.js',
   'js/map-guide.js',
@@ -163,6 +168,7 @@ const SHELL = [
   'js/curator-chats.js',
   'js/staff-profile.js',
   'js/photo-reactions.js',
+  'js/profile-photos.js',
   'js/group-rooms.js',
   'js/group-rating.js',
   'js/faculty.js',

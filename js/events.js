@@ -161,26 +161,8 @@ document.addEventListener('change', event => {
     Store.save();
   }
   if (k === 'avatar-file') {
-    const f = event.target.files && event.target.files[0];
-    if (f)
-      compressAvatar(f).then(
-        d => {
-          const m = Store.s.meta;
-          m.photos = (m.photos || 0) + 1;
-          Profile.avatarEdited();
-          Store.s.settings.avatar = {
-            k: 'p',
-            d
-          };
-          Store.save();
-          Profile.push();
-          Ach.check();
-          UI.close();
-          App.render();
-          toast('Фото обновлено');
-        },
-        () => toast('Не удалось обработать фото')
-      );
+    const file=event.target.files?.[0];
+    if(file){const input=event.target;input.disabled=true;toast('Загружаем качественную версию фото…');ProfilePhotos.upload(file).catch(error=>toast(error.message||'Не удалось загрузить фото')).finally(()=>{input.disabled=false;});}
   }
   if (k === 'cert-file') handleDraftFile(event.target, true);
   if (k === 'work-file') handleDraftFile(event.target, false);

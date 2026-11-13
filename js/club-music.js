@@ -5,7 +5,7 @@ const ClubMusic={
  async toggle(){
   if(ClubMusic.playing||ClubMusic.starting){ClubMusic.stop();return;}
   if(ui.tab!=='club'||!Social.allowed())return;
-  const owner=Cloud.uid,version=++ClubMusic.version,audio=new Audio('assets/club-bounce.mp3');
+  const owner=Cloud.uid,version=++ClubMusic.version,audio=new Audio(Club.room==='games'?'assets/club-jazz.mp3':Club.room==='cinema'?'assets/club-cinema.mp3':'assets/club-bounce.mp3');
   ClubMusic.owner=owner;ClubMusic.audio=audio;ClubMusic.starting=true;audio.loop=true;audio.volume=ClubMusic.volume();
   try{await audio.play();if(version!==ClubMusic.version||owner!==Cloud.uid||ui.tab!=='club'){audio.pause();return;}ClubMusic.playing=true;}
   catch(error){if(version===ClubMusic.version){toast('Не удалось включить музыку. Нажмите ещё раз.');ClubMusic.stop();}}

@@ -34,7 +34,8 @@ const PhotoComments={
    if(kind==='profile'){
     const card=await Social.call('social_profile',{p_uid:id});if(!PhotoComments.active(token))return;
     if(!card?.avatar)throw Error('Фото профиля пока нет');Social.keep(card);
-    html=avatarOf(card.avatar,320).replace(/ data-action="profile-photo"| role="button"| tabindex="0"/g,'');
+    const url=await ProfilePhotos.url(id,card.avatar);if(!PhotoComments.active(token))return;
+    html=/^(data:image\/|https:\/\/)/.test(url)?'<img class="portrait-full" src="'+U.esc(url)+'" alt="Фото профиля">':avatarOf(card.avatar,320);
    }else{
     const url=await Wall.imageUrl(id.path);if(!PhotoComments.active(token))return;
     html='<img class="wall-photo-full" alt="Фотография со страницы" src="'+U.esc(url)+'">';PhotoComments.target=id.id;
