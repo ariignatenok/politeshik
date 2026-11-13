@@ -10,7 +10,6 @@ Object.assign(Club,{
   }catch(e){UI.open('Фейсконтроль',Club.bouncerHtml()+'<p class="warn">'+U.esc(e.message)+'</p><p>Отмечайтесь на занятиях. Статус обновляется автоматически после сохранения отметок.</p>');}
  },
  bouncerHtml(){return '<div class="club-bouncer">'+Mascot.svg('angry',110,'',{look:{body:'dark',top:'blacktee',outfit:'leather',glasses:'sun',hat:'blackcap'},season:''})+'<div><b>Фейс Политешика</b><p>Обе комнаты — с посещаемостью от 75% за текущий месяц.</p><small>Ваша посещаемость: '+(Club.gate?.percent==null?'пока нет отметок':U.esc(Club.gate.percent)+'%')+'</small></div></div>';},
- doorsHtml(){return '<section class="club-rooms-card">'+Club.bouncerHtml()+'<div class="club-room-doors">'+Object.entries(Club.roomNames).map(([id,name])=>'<button class="club-room-door room-'+id+(Club.room===id?' on':'')+'" data-action="club-room" data-room="'+id+'" aria-pressed="'+(Club.room===id)+'"><span>'+({main:'🪩',cinema:'🎬',games:'🎱'}[id])+'</span><b>'+name+'</b><small>'+(id==='main'?'Открыт для всех':Club.gate?.allowed?'Вход открыт · от 75%':'Фейсконтроль · от 75%')+'</small></button>').join('')+'</div></section>';},
  tablesHtml(){return [
   [18,49,'Столик 1'],[82,53,'Столик 2'],[22,80,'Столик 3']
  ].map(([x,y,name],i)=>'<button class="club-table table-'+i+'" style="left:'+x+'%;top:'+y+'%" data-action="club-seat" data-x="'+x+'" data-y="'+(y+10)+'" aria-label="Подойти: '+name+'"><i>🕯</i><small>'+name+'</small></button>').join('');},
@@ -53,7 +52,7 @@ const originalClubTap=Club.tap;
 Club.tap=uid=>{if(uid!==Cloud.uid&&Date.now()>=(Club.ignoreTapUntil||0))return Club.guestMenu(uid);return originalClubTap(uid);};
 Object.assign(A,{
  'club-room':el=>Club.enterRoom(el.dataset.room),
- 'club-destinations':()=>{const places=Club.room==='main'?[[35,23,'К диджею'],[18,59,'Столик 1'],[82,63,'Столик 2'],[22,90,'Столик 3']]:Club.room==='cinema'?[[25,70,'Левый диван'],[75,70,'Правый диван']]:[[30,43,'К столу покера'],[70,43,'К бильярду']];UI.open('Куда подойти','<div class="my-chips">'+places.map(([x,y,label])=>'<button class="btn" data-action="club-seat" data-x="'+x+'" data-y="'+y+'">'+label+'</button>').join('')+'</div>');},
+ 'club-destinations':()=>{const places=Club.room==='main'?[[35,23,'К диджею'],[18,59,'Столик 1'],[82,63,'Столик 2'],[22,90,'Столик 3']]:Club.room==='cinema'?[[25,70,'Левый диван'],[75,70,'Правый диван']]:[[30,43,'К столу покера'],[70,43,'К бильярду']];UI.open('Куда подойти','<div class="my-chips">'+places.map(([x,y,label])=>'<button class="btn" data-action="'+(label==='К диджею'?'club-dj-join':'club-seat')+'" data-x="'+x+'" data-y="'+y+'">'+label+'</button>').join('')+'</div>');},
  'club-seat':el=>Club.walkTo({x:Number(el.dataset.x),y:Number(el.dataset.y)}),
  'club-give':el=>Club.give(el.dataset.uid),
  'club-dj-join':()=>Club.walkTo({x:35,y:23})

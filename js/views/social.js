@@ -214,8 +214,8 @@ function viewClub() {
     '<div class="page-head club-page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
     (Club.calm ? ' calm' : '') + (Club.barExpanded?' bar-open':'')+' club-room-'+Club.room +
     '"><div class="club-neon">POLITESHIK <span>'+U.esc(Club.roomNames[Club.room]||'CLUB')+'</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-floor">'+
-    (Club.room==='main'?'<div class="club-stage"><div class="club-speaker">◉<br>◉</div><button class="club-dj" data-action="club-dj-join" aria-label="Подойти и встать рядом с диджеем">'+Mascot.svg('happy',110,'',{look:dj,season:''})+'<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК<br>Встать рядом →</span><i>◉</i></div></button><div class="club-speaker">◉<br>◉</div></div>'+Club.tablesHtml():Club.room==='cinema'?Club.movieHtml():ClubGames.roomHtml())+
-    ClubInterior.gallery()+(Club.room==='main'?ClubInterior.doors():'')+ClubInterior.barHtml()+ClubInterior.waiterHtml() +
+    (Club.room==='main'?'<div class="club-stage"><div class="club-speaker">◉<br>◉</div><button class="club-dj" data-action="club-dj-join" aria-label="Подойти к диджею и заказать трек">'+Mascot.svg('happy',110,'',{look:dj,season:''})+'<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК<br>Заказать трек →</span><i>◉</i></div></button><div class="club-speaker">◉<br>◉</div>'+ClubDJ.marquee()+'</div>'+Club.tablesHtml():Club.room==='cinema'?Club.movieHtml():ClubGames.roomHtml())+
+    ClubInterior.doors()+ClubInterior.barHtml()+ClubInterior.waiterHtml() +
     Club.visitors
       .map(
         (card, i) =>
@@ -246,7 +246,7 @@ function viewClub() {
     (Club.visitors.length
       ? 'В комнате: ' + Club.visitors.length
       : 'Танцпол свободен — заходите первым') +
-    '</div></div>'+Club.doorsHtml()+'<div class="club-controls">' +
+    '</div></div><div class="club-controls">' +
     (Club.joined
       ? '<button class="btn" data-action="club-destinations">Куда подойти</button><button class="btn" data-action="club-own">Мой маскот · Движения и мысли</button><button class="btn primary" data-action="club-dance">' +
         (Club.dancing ? 'Остановиться' : 'Танцевать') +
