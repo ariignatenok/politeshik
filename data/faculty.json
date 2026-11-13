@@ -339,7 +339,9 @@
       "teacher": "Герасимова М.П.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-bcae0f6f4765.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:09.672716+00:00",
+      "fetched_at": "2026-11-13T03:40:11.797398+00:00"
     },
     {
       "id": "faculty-7d49b1437da0",
@@ -347,7 +349,9 @@
       "teacher": "Герчикова И.Г.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7d49b1437da0.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:11.797452+00:00",
+      "fetched_at": "2026-11-13T03:40:13.344967+00:00"
     },
     {
       "id": "faculty-f3cb5a3f2e21",
@@ -355,7 +359,9 @@
       "teacher": "Глушко Е.И.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f3cb5a3f2e21.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:13.345013+00:00",
+      "fetched_at": "2026-11-13T03:40:15.267813+00:00"
     },
     {
       "id": "faculty-837978ce530d",
@@ -363,7 +369,9 @@
       "teacher": "Голованков Д.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-837978ce530d.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:15.267848+00:00",
+      "fetched_at": "2026-11-13T03:40:17.382049+00:00"
     },
     {
       "id": "faculty-9e3e94fdb0bb",
@@ -371,7 +379,9 @@
       "teacher": "Голощапова О.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9e3e94fdb0bb.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:17.382102+00:00",
+      "fetched_at": "2026-11-13T03:40:19.480760+00:00"
     },
     {
       "id": "faculty-7c6b89253572",
@@ -379,7 +389,9 @@
       "teacher": "Голубев Д.М.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7c6b89253572.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:19.480811+00:00",
+      "fetched_at": "2026-11-13T03:40:21.321690+00:00"
     },
     {
       "id": "faculty-f71f18623a9a",
@@ -387,7 +399,9 @@
       "teacher": "Голубенко Е.Б.",
       "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:21.321731+00:00",
+      "fetched_at": "2026-11-13T03:40:23.138696+00:00"
     },
     {
       "id": "faculty-976c389d62b3",
@@ -395,7 +409,9 @@
       "teacher": "Голубенко Н.О.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-976c389d62b3.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:23.138721+00:00",
+      "fetched_at": "2026-11-13T03:40:24.942701+00:00"
     },
     {
       "id": "faculty-6e270f05fe31",
@@ -403,7 +419,9 @@
       "teacher": "Горбанёва Ю.С.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-6e270f05fe31.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:24.942741+00:00",
+      "fetched_at": "2026-11-13T03:40:26.767530+00:00"
     },
     {
       "id": "faculty-4fd77fbde780",
@@ -411,7 +429,9 @@
       "teacher": "Грауэр Л.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-4fd77fbde780.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:26.767559+00:00",
+      "fetched_at": "2026-11-13T03:40:28.860507+00:00"
     },
     {
       "id": "faculty-5fe93d0edf6b",
@@ -419,7 +439,9 @@
       "teacher": "Григорьева Н.Г.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5fe93d0edf6b.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:28.860551+00:00",
+      "fetched_at": "2026-11-13T03:40:30.590857+00:00"
     },
     {
       "id": "faculty-5b67a14e45c6",
@@ -427,7 +449,9 @@
       "teacher": "Гроза М.М.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5b67a14e45c6.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:30.590907+00:00",
+      "fetched_at": "2026-11-13T03:40:32.328087+00:00"
     },
     {
       "id": "faculty-1ff9e36f4d31",
@@ -435,7 +459,9 @@
       "teacher": "Груничев В.В.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1ff9e36f4d31.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:32.328141+00:00",
+      "fetched_at": "2026-11-13T03:40:34.082953+00:00"
     },
     {
       "id": "faculty-31792c9f05c0",
@@ -453,7 +479,9 @@
         "26290911/3111": [
           "Ин. яз. в ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T03:40:34.083068+00:00",
+      "fetched_at": "2026-11-13T03:40:36.069693+00:00"
     },
     {
       "id": "faculty-dd8abb4184e4",
@@ -461,7 +489,9 @@
       "teacher": "Давыдов С.Н.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-dd8abb4184e4.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:36.069743+00:00",
+      "fetched_at": "2026-11-13T03:40:37.994644+00:00"
     },
     {
       "id": "faculty-0a3d15424267",
@@ -477,75 +507,93 @@
         "26290911/3111": [
           "ИТ в ПД лр"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T03:40:37.994675+00:00",
+      "fetched_at": "2026-11-13T03:40:40.105314+00:00"
     },
     {
       "id": "faculty-cc1d7a6b9738",
       "name": "Дебич Максим Владимирович",
       "teacher": "Дебич М.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-cc1d7a6b9738.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:40.105408+00:00",
+      "fetched_at": "2026-11-13T03:40:41.824425+00:00"
     },
     {
       "id": "faculty-a3887dca85e9",
       "name": "Девятко Наталья Сергеевна",
       "teacher": "Девятко Н.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a3887dca85e9.json",
       "groups": {
         "26290911/3111": [
           "ОАП"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T03:40:41.824512+00:00",
+      "fetched_at": "2026-11-13T03:40:43.371427+00:00"
     },
     {
       "id": "faculty-ac37100601c1",
       "name": "Дегтерева Светлана Викторовна",
       "teacher": "Дегтерева С.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ac37100601c1.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:43.371460+00:00",
+      "fetched_at": "2026-11-13T03:40:45.293619+00:00"
     },
     {
       "id": "faculty-e95ae729133f",
       "name": "Дементьев Виталий Сергеевич",
       "teacher": "Дементьев В.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-e95ae729133f.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:45.293653+00:00",
+      "fetched_at": "2026-11-13T03:40:47.027113+00:00"
     },
     {
       "id": "faculty-697d78220946",
       "name": "Денисов Георгий Евгеньевич",
       "teacher": "Денисов Г.Е.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:47.027202+00:00",
+      "fetched_at": "2026-11-13T03:40:48.595028+00:00"
     },
     {
       "id": "faculty-04a1aadf5375",
       "name": "Дубейко Полина Сергеевна",
       "teacher": "Дубейко П.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-04a1aadf5375.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:48.595055+00:00",
+      "fetched_at": "2026-11-13T03:40:50.704130+00:00"
     },
     {
       "id": "faculty-892409579740",
       "name": "Евстигнеев Андрей Борисович",
       "teacher": "Евстигнеев А.Б.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-892409579740.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:50.704173+00:00",
+      "fetched_at": "2026-11-13T03:40:52.427570+00:00"
     },
     {
       "id": "faculty-0059b4806d40",
       "name": "Егорова Ксения Александровна",
       "teacher": "Егорова К.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0059b4806d40.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T03:40:52.427684+00:00",
+      "fetched_at": "2026-11-13T03:40:54.523624+00:00"
     },
     {
       "id": "faculty-9d82521c1ce8",
