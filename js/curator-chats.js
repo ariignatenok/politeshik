@@ -52,10 +52,10 @@ const CuratorChats={
    (!CuratorChats.loaded&&curator?'<p role="status">Загружаем контакты старост…</p>':'')+
    (CuratorChats.contacts.length?'<section class="curator-chat-contacts"><h2>'+(curator?'Старосты ваших групп':'Куратор')+'</h2><div class="chat-list">'+CuratorChats.contacts.map(r=>{
     const name=r.name||Groups.get(r.tenant_id).leader||'Староста';
-    return r.peer_uid?chatRow({id:'curator:'+CuratorChats.key(r),title:name,subtitle:r.group_name+' · '+(r.role==='curator'?'куратор':'староста'),preview:r.last||'Личная рабочая переписка',time:r.at?chatTime(r.at):'',unread:r.unread,avatar:'<span class="ico">'+(r.role==='curator'?'👨‍🏫':'🎓')+'</span>'}):'<div class="card"><b>'+U.esc(name)+'</b><p class="hint">'+U.esc(r.group_name)+' · Староста ещё не зарегистрирован. Чат появится после регистрации.</p></div>';
+    return r.peer_uid?chatRow({id:'curator:'+CuratorChats.key(r),title:name,subtitle:r.group_name+' · '+(r.role==='curator'?'куратор':'староста'),preview:r.last||'Личная рабочая переписка',time:r.at?chatTime(r.at):'',unread:r.unread,avatar:Avatars.html(r.peer_uid,42)}):'<div class="card"><b>'+U.esc(name)+'</b><p class="hint">'+U.esc(r.group_name)+' · Староста ещё не зарегистрирован. Чат появится после регистрации.</p></div>';
    }).join('')+'</div></section>':'');
  },
- listHtml(){return '<div class="page-head"><div><h1>Чаты</h1><p>Личные переписки со старостами закреплённых групп.</p></div></div>'+CuratorChats.contactsHtml()+'<div class="chat-list">'+chatRow({id:'contact:superadmin',title:'Админ Арина',subtitle:'Поддержка приложения',preview:'',avatar:Avatars.contact('superadmin',42)})+'</div>';},
+ listHtml(){return '<div class="page-head"><div><h1>Чаты</h1><p>Личные переписки со старостами закреплённых групп.</p></div></div>'+GroupRooms.contactsHtml()+CuratorChats.contactsHtml()+'<div class="chat-list">'+chatRow({id:'contact:superadmin',title:'Админ Арина',subtitle:'Поддержка приложения',preview:'',avatar:Avatars.contact('superadmin',42)})+'</div>';},
  threadHtml(key){
   const row=CuratorChats.contact(key);if(!CuratorChats.allowed()||!row)return '<button class="btn" data-action="chat-back">← Чаты</button><p class="warn">Чат недоступен. Обновите список контактов.</p>';
   const rows=CuratorChats.threads[key],older=CuratorChats.historyMore[key];

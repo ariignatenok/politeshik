@@ -210,7 +210,7 @@ function viewClub() {
   };
   return (
     '<div class="page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
-    (Club.calm ? ' calm' : '') +
+    (Club.calm ? ' calm' : '') + (Club.barExpanded?' bar-open':'') +
     '"><div class="club-neon">POLITESHIK <span>CLUB</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-stage"><div class="club-speaker">◉<br>◉</div><div class="club-dj">' +
     Mascot.svg('happy', 110, '', {look: dj, season: ''}) +
     '<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК</span><i>◉</i></div></div><div class="club-speaker">◉<br>◉</div></div><div class="club-floor"><button class="club-bar" data-action="club-bar"><span>BAR</span><b>☕ 🧃 🍹</b><small>Кофе · чай · соки · лимонад</small><small>Выбрать напиток →</small></button>' +
@@ -250,7 +250,7 @@ function viewClub() {
         (Club.dancing ? 'Остановиться' : 'Танцевать') +
         '</button><button class="btn" data-action="club-leave">Выйти из клуба</button>'
       : '<button class="btn primary" data-action="club-join">Зайти на танцпол</button>') +
-    ClubMusic.html() + '<button class="btn" data-action="club-calm" aria-pressed="' +
+    '<button class="btn" data-action="club-bar-toggle" aria-expanded="'+!!Club.barExpanded+'">'+(Club.barExpanded?'Свернуть бар':'☕ Открыть бар')+'</button>' + ClubMusic.html() + '<button class="btn" data-action="club-calm" aria-pressed="' +
     Club.calm +
     '">' +
     (Club.calm ? 'Включить неон' : 'Спокойный свет') +

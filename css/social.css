@@ -821,3 +821,12 @@ b[data-action]:focus-visible {
 .club-volume input { width:110px; min-height:44px; margin:0; accent-color:var(--accent); }
 .curator-schedule-day { margin-top:16px; min-width:0; }
 .curator-schedule-day .item-main { overflow-wrap:anywhere; }
+
+/* The current visitor remains reachable even when dancers overlap. */
+.club-floor>.club-guest.me { z-index:40; }
+.club-floor>.club-guest.me:is(:hover,:focus-visible,.is-dragging) { z-index:50; }
+.club-floor>.club-bar { opacity:0; transform:translateX(160%); pointer-events:none; transition:transform .25s,opacity .25s; }
+.club-scene.bar-open .club-floor>.club-bar { opacity:1; transform:none; pointer-events:auto; }
+.av-img[data-action="profile-photo"] { cursor:zoom-in; }
+.room-author{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.85rem;overflow-wrap:anywhere;}
+.room-author img,.room-author svg{flex-shrink:0;}

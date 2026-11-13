@@ -1,6 +1,7 @@
 'use strict';
 
 Object.assign(A, {
+  'profile-photo'(el){const value=el.currentSrc||el.src||'';if(/^data:image\/(jpeg|png|webp);base64,/.test(value))showImage('Фото профиля',Promise.resolve(value));},
   /**
    * Переключает период рейтинга.
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.

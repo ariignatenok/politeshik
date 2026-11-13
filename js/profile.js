@@ -23,7 +23,7 @@ const AVATARS = [
  */
 function avatarOf(v, size) {
   if (v && String(v).indexOf('data:image') === 0)
-    return '<img class="av-img" src="' + U.esc(v) + '" width="' + size + '" height="' + size + '" alt="">';
+    return '<img class="av-img" data-action="profile-photo" role="button" tabindex="0" aria-label="Открыть фото профиля" src="' + U.esc(v) + '" width="' + size + '" height="' + size + '" alt="Фото профиля">';
   const a = v && AVATARS.find(x => x[0] === v);
   if (a)
     return (

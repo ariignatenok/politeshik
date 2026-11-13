@@ -12,8 +12,8 @@ const Roles = {
   },
   tabsByRole: {
     developer: ['dashboard', 'schedule', 'journal', 'subjects', 'teachers', 'news', 'chat', 'people', 'rating', 'users', 'settings'],
-    teacher: ['tdash', 'schedule', 'journal', 'tstudents', 'tsubjects', 'consult', 'texport', 'chat', 'settings'],
-    curator: ['tdash', 'schedule', 'groupSchedule', 'journal', 'tstudents', 'news', 'chat', 'settings'],
+    teacher: ['tdash', 'schedule', 'journal', 'tstudents', 'tsubjects', 'consult', 'texport', 'chat', 'cabinet', 'settings'],
+    curator: ['tdash', 'schedule', 'groupSchedule', 'journal', 'tstudents', 'news', 'chat', 'cabinet', 'settings'],
     department: ['dept', 'news', 'settings'],
     parent: ['child', 'settings']
   },
@@ -24,7 +24,7 @@ const Roles = {
    * @returns {Array<string>|null} Массив.
    */
   tabs() {
-    const list = Cloud.facultyContext?.active && Cloud.role==='teacher'?['tdash','schedule','journal','tstudents','tsubjects','chat','settings']:Roles.tabsByRole[Cloud.role];
+    const list = Cloud.facultyContext?.active && Cloud.role==='teacher'?['tdash','schedule','journal','tstudents','tsubjects','chat','cabinet','settings']:Roles.tabsByRole[Cloud.role];
     if (!list) return null;
     const visible=list.filter(id=>id!=='groupSchedule'||Cloud.curatorContext?.active===true);
     return Roles.isOwner() ? visible.concat(['access']) : visible;

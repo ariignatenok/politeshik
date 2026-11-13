@@ -7,6 +7,8 @@ const MEDAL = [ICONS.medalGold, ICONS.medalSilver, ICONS.medalBronze];
  */
 function viewRating() {
   if (ui.ratingScope === 'global' && Social.allowed()) return GlobalRating.view();
+  GroupRating.reset();
+  if (Cloud.status === 'online') GroupRating.load();
   const R = Cloud.ratings,
     per = Rating.periods(),
     k = 'month',
@@ -20,32 +22,19 @@ function viewRating() {
     U.esc(mw) +
     ' ' +
     ym.slice(0, 4) +
-    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется раз в час.</p></div></div>';
+    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется автоматически каждые 30 секунд.</p></div></div>';
   if (Cloud.status !== 'online')
     return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
-  const cur = R && R.periods && R.periods[k],
-    doc = cur && cur.key === per[k].key ? cur : null,
+  const doc = GroupRating.data && {...GroupRating.data, label: monthName(GroupRating.data.month)},
     prize = R && R.prizes && R.prizes[per[k].key];
-  if (Cloud.isAdmin && !doc && Cloud.admReady)
-    setTimeout(() => {
-      if (Rating.compute(true)) App.renderSoft();
-    }, 0);
+  if (GroupRating.error) return head+'<p class="warn">'+U.esc(GroupRating.error)+'</p>';
   if (!doc || !doc.rows.length)
     return (
       head +
       (Cloud.isAdmin ? ratingAdmin(k, per) : '') +
       empty(
         ICONS.hourglass,
-        'Рейтинг за ' + mw + ' ещё не посчитан: он появится, когда староста откроет приложение.',
-      )
-    );
-  if (!doc.rows.some((x) => x.score > 0))
-    return (
-      head +
-      (Cloud.isAdmin ? ratingAdmin(k, per) : '') +
-      empty(
-        ICONS.hourglass,
-        'За ' + mw + ' пока нет отметок посещаемости: рейтинг появится после первых пар месяца.',
+        'Рейтинг за ' + mw + ' пока пуст. Зарегистрированные студенты появятся здесь автоматически.',
       )
     );
   const rid = Cloud.profile && Cloud.profile.rid,
@@ -90,12 +79,12 @@ function viewRating() {
           U.esc(x.name) +
           (x.rid === rid ? ' <small>(ты)</small>' : '') +
           '</span>' +
-          (Cloud.isAdmin ? '<span class="rk-s">' + x.score + '</span>' : '') +
+          '<span class="rk-s">' + x.score + ' бал.</span>' +
           '</div>',
       )
       .join('') +
     '</div>' +
-    '<p class="hint">Видны только имена и места — чужие пропуски никому, кроме админа, не показываются.</p>'
+    '<p class="hint">Баллы видны участникам группы. Чужие отметки посещаемости и справки здесь не показываются.</p>'
   );
 }
 /**

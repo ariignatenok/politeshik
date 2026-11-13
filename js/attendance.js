@@ -303,6 +303,7 @@ const Att = {
         });
         if (error) throw error;
         Store.s.attendance.marks = data.marks || {};
+        if (typeof GroupRating !== 'undefined') GroupRating.at = 0;
         Store.s.meta.pendingAtt = false;
         Store.save();
         App.render();

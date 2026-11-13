@@ -155,6 +155,7 @@ Object.assign(A, {
   'club-guest'(el) {
     Club.tap(el.dataset.uid);
   },
+  'club-bar-toggle'(){Club.barExpanded=!Club.barExpanded;App.render();},
   'club-bar'() {
     return Club.walkToBar();
   },

@@ -1880,7 +1880,7 @@ const Cloud = (() => {
         people[row.uid] = {rid: row.rid, name: row.name, role: row.role};
       });
       Avatars.map = map; Avatars.looks = looks; Avatars.people = people;
-      if(C.isSuperAdmin&&Object.hasOwn(map,C.uid)&&!Store.s.meta.avatarPending){Store.s.settings.avatar=Profile.avatarSettings(map[C.uid]);if(C.profile)C.profile.avatar=map[C.uid];Store.save();}
+      if((C.isSuperAdmin||C.isStaff)&&Object.hasOwn(map,C.uid)&&!Store.s.meta.avatarPending){Store.s.settings.avatar=Profile.avatarSettings(map[C.uid]);if(C.profile)C.profile.avatar=map[C.uid];Store.save();}
       if (looks[C.uid] && revision === Wardrobe.revision && !(Store.s.meta && Store.s.meta.mascotPending)) {
         Store.s.settings.mascot = looks[C.uid];
         if (C.profile) C.profile.mascot = looks[C.uid];

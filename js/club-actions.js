@@ -1,5 +1,6 @@
 'use strict';
 Object.assign(Club, {
+  barExpanded:false,
   moves: [
     ['still', 'Стоять'],
     ['bounce', 'Прыгать'],

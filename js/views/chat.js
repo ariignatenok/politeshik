@@ -198,7 +198,7 @@ function viewChatListStudent() {
     }) +
     supportContactsHtml() +
     '</div>' +
-    socialInboxHtml()
+    GroupRooms.contactsHtml() + socialInboxHtml()
   );
 }
 /** Показывает Арине получателей приветствия и отметки прочтения. */
@@ -293,7 +293,7 @@ function viewChatListAdmin() {
     (Cloud.isSuperAdmin ? '' : supportContactsHtml()) +
     rows +
     '</div>' +
-    socialInboxHtml() +
+    GroupRooms.contactsHtml() + socialInboxHtml() +
     (list.length
       ? ''
       : Dm.loaded
@@ -411,6 +411,7 @@ function viewDmThread(uid) {
  * @returns {string} HTML.
  */
 function viewChat() {
+  if ((ui.chatWith || '').startsWith('room:')) return GroupRooms.threadHtml(ui.chatWith.slice(5));
   if (Cloud.status !== 'online') return viewBotChat();
   if ((ui.chatWith || '').startsWith('curator:')) return CuratorChats.threadHtml(ui.chatWith.slice(8));
   if ((ui.chatWith || '').startsWith('peer:')) return viewPeerThread(ui.chatWith.slice(5));

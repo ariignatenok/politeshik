@@ -465,7 +465,7 @@ Mascot.persist = () => {
   Wardrobe.saveTimer = setTimeout(Wardrobe.save, 350);
 };
 Mascot.cardHtml = () => {
-  if (Cloud.isStaff) return '';
+  if (Cloud.isStaff && !StaffProfile.allowed()) return '';
   const look = Wardrobe.normalize(Mascot.chosen());
   if (!Wardrobe.editing)
     return (

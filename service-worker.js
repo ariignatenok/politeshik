@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bclubgroups20261113';
+const CACHE_VERSION = 'bstaffrooms20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -161,6 +161,9 @@ const SHELL = [
   'js/curator.js',
   'js/curator-schedules.js',
   'js/curator-chats.js',
+  'js/staff-profile.js',
+  'js/group-rooms.js',
+  'js/group-rating.js',
   'js/faculty.js',
   'js/data/faculty-names.js',
   'data/faculty.json',

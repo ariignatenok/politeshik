@@ -243,3 +243,6 @@ document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.tar
 // The picker is anchored to viewport coordinates; close it after rotation or keyboard resize.
 window.addEventListener('resize', () => { const pop=$('#theme-pop');if(pop)pop.hidden=true; });
 window.visualViewport?.addEventListener('resize', () => { const pop=$('#theme-pop');if(pop)pop.hidden=true; });
+
+// Photos open independently of the surrounding profile link.
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-action="profile-photo"]')){e.preventDefault();A['profile-photo'](e.target);}});
