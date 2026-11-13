@@ -687,7 +687,8 @@
         "25290909/3091": [
           "История России"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T18:49:09.651078+00:00"
     },
     {
       "id": "faculty-c0415f4c6d7f",
@@ -695,7 +696,8 @@
       "teacher": "Зыблев В.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c0415f4c6d7f.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T18:49:12.325400+00:00"
     },
     {
       "id": "faculty-cc24a3d5ec0e",
@@ -703,7 +705,8 @@
       "teacher": "Иванова Д.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-cc24a3d5ec0e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T18:49:14.028460+00:00"
     },
     {
       "id": "faculty-95fe46e97169",
