@@ -884,6 +884,7 @@ const Cloud = (() => {
    * @param {Object} x Общий контент.
    * @returns {string} Строка.
    */
+  C.reloadExtra=async()=>{const snap=await DB.doc('group/extra').get();if(!snap.exists)return;const x=snap.data(),sig=C.extraSigOf(x);C.extraSig=sig;if(C.isAdmin)syncAdminExtra(x,sig);else applyExtra(x);};
   C.extraSigOf = x => JSON.stringify([x.teachers, x.subjects, x.homework, x.notes, x.cards]);
   /**
    * Собирает общий контент админа из локальных данных.

@@ -332,3 +332,10 @@
     min-width: 0;
   }
 }
+
+.homework-proposals { margin:18px 0; min-width:0; }
+.requests-stack>.homework-proposals { margin:0; }
+.homework-proposal { padding:16px 0; border-top:1px solid var(--border); min-width:0; }
+.homework-proposal:last-child { padding-bottom:0; }
+.homework-proposal :is(b,p) { overflow-wrap:anywhere; }
+.homework-proposal-text { white-space:pre-wrap; }

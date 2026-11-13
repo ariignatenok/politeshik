@@ -495,9 +495,9 @@ function viewSubjects() {
   let body = '';
   if (ui.subjTab === 'hw') {
     body =
-      '<div class="inline-add" data-form="hw-new" data-subject="' +
+      HomeworkProposals.html(sb.id)+(canEdit()?'<div class="inline-add" data-form="hw-new" data-subject="' +
       sb.id +
-      '"><input class="input" name="text" placeholder="Новое задание…"><input class="input" type="date" name="deadline" aria-label="Дедлайн"><button class="btn primary" data-action="save-form">Добавить</button></div><div id="hw-list">' +
+      '"><input class="input" name="text" placeholder="Новое задание…"><input class="input" type="date" name="deadline" aria-label="Дедлайн"><button class="btn primary" data-action="save-form">Добавить</button></div>':HomeworkProposals.button(sb.id))+'<div id="hw-list">' +
       hwList(sb) +
       '</div>';
   } else if (ui.subjTab === 'notes') {

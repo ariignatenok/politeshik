@@ -22,6 +22,7 @@ const Wall = {
   },
   reset() {
     if (Wall.owner === Cloud.uid) return;
+    if(typeof CoverCrop!=='undefined')CoverCrop.cancel();
     Wall.owner = Cloud.uid;
     Wall.uid = null;
     Wall.data = null;
@@ -168,18 +169,20 @@ const Wall = {
     photo.uploaded = true;
     return photo.media;
   },
-  pickCover() {
+  pickCover(file) {
     if (Wall.busy || Wall.uid !== Cloud.uid) return;
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
     const owner = Cloud.uid;
-    input.onchange = async () => {
-      if (!input.files?.[0]) return;
+    const process = async file => {
+      if (!file) return;
       Wall.busy = true;
       let photo;
       try {
-        photo = await Wall.photo(input.files[0], 'cover');
+        const cropped=await CoverCrop.edit(file);
+        if(!cropped||owner!==Cloud.uid||Wall.uid!==owner)return;
+        photo = await Wall.photo(cropped, 'cover');
         if (owner !== Cloud.uid) return;
         const image = await Wall.upload(photo);
         if (owner !== Cloud.uid) return;
@@ -195,7 +198,15 @@ const Wall = {
         Wall.busy = false;
       }
     };
-    input.click();
+    input.onchange=()=>process(input.files?.[0]);
+    if(file)return process(file);else input.click();
+  },
+  async editCover(){
+    if(Wall.busy||Wall.uid!==Cloud.uid||!Wall.data?.card.cover)return;
+    const owner=Cloud.uid;Wall.busy=true;
+    try{const url=await Wall.imageUrl(Wall.data.card.cover.path),response=await fetch(url,{signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('Не удалось загрузить обложку');const blob=await response.blob();if(owner!==Cloud.uid||Wall.uid!==owner)return;Wall.busy=false;await Wall.pickCover(new File([blob],'cover.jpg',{type:blob.type}));}
+    catch(error){toast(error.message);}
+    finally{Wall.busy=false;}
   },
   async removeCover() {
     if (Wall.busy || Wall.uid !== Cloud.uid) return;
@@ -419,6 +430,7 @@ Object.assign(A, {
   'wall-more': () => Wall.load(true),
   'wall-edit-profile': () => Wall.editProfile(),
   'wall-cover': () => Wall.pickCover(),
+  'wall-cover-crop':()=>Wall.editCover(),
   'wall-cover-remove': () => Wall.removeCover(),
   'wall-new-post': () => Wall.editPost(),
   'wall-edit-post': (el) => Wall.editPost(el.dataset.id),

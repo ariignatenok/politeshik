@@ -29,6 +29,7 @@ const QuickAdd = {
       ];
     }
     return [
+      ...(typeof HomeworkProposals!=='undefined'&&HomeworkProposals.canSubmit()?[{id:'proposal',label:'Предложить ДЗ',ico:ICONS.memo}]:[]),
       {
         id: 'note',
         label: 'Заметка',
@@ -93,6 +94,7 @@ const QuickAdd = {
   pick(id) {
     QuickAdd.isOpen = false;
     QuickAdd.sync();
+    if(id==='proposal'){HomeworkProposals.open(ui.subjectId||'');return;}
     if (id === 'hw') A['hw-add']();
     else if (id === 'work') A['add-work']();
     else openNoteEditor(null, '');

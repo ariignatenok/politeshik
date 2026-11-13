@@ -1,0 +1,4 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+function crop(){const c=vm.createContext({A:{}});vm.runInContext(fs.readFileSync('js/cover-crop.js','utf8')+';globalThis.api=CoverCrop;',c);return c.api;}
+test('cover crop fits portrait, landscape and wide banners without sampling outside the source',()=>{const api=crop();for(const [w,h]of [[800,600],[400,1200],[3000,400]])for(const ratio of [1.5,3,6])for(const zoom of [1,2,4])for(const [x,y]of [[-999,-999],[w/2,h/2],[99999,99999]]){const r=api.rect(w,h,ratio,zoom,x,y);assert(r.x>=-1e-7&&r.y>=-1e-7&&r.x+r.w<=w+1e-7&&r.y+r.h<=h+1e-7);assert(Math.abs(r.w/r.h-ratio)<1e-7);}});
+test('zoom crops a smaller area while keeping the chosen focal point when possible',()=>{const api=crop(),a=api.rect(1200,800,4,1),b=api.rect(1200,800,4,2,400,300);assert.equal(b.w,a.w/2);assert.equal(b.cx,400);assert.equal(b.cy,300);});

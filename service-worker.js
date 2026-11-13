@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bcuratorchat20261113';
+const CACHE_VERSION = 'bcoverhw20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -98,6 +98,8 @@ const SHELL = [
   'js/map-guide.js',
   'js/global-rating.js',
   'js/profile-wall.js',
+  'js/cover-crop.js',
+  'js/homework-proposals.js',
   'js/views/profile-wall.js',
   'js/views/social.js',
   'js/actions/social.js',

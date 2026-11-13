@@ -458,7 +458,7 @@ function viewRequests() {
   };
   return (
     '<div class="page-head"><div><h1>Заявки</h1><p>Новые пользователи ждут вашего решения.</p></div><div class="head-actions"><button class="btn" data-action="req-refresh">Обновить</button></div></div>' +
-    '<div class="requests-stack">' + Faculty.adminHtml() + '<section class="card"><div class="set-row"><div><b>Требовать одобрение</b><p>Если выключить, новые студенты получают доступ сразу.</p></div><button class="btn" data-action="req-toggle">' +
+    '<div class="requests-stack">' + HomeworkProposals.html() + Faculty.adminHtml() + '<section class="card"><div class="set-row"><div><b>Требовать одобрение</b><p>Если выключить, новые студенты получают доступ сразу.</p></div><button class="btn" data-action="req-toggle">' +
     (Cloud.needApproval === false ? 'Выключено' : 'Включено') +
     '</button></div></section>' +
     (pending.length ? pending.map(card).join('') : '<div class="card empty">Новых заявок нет</div>') +

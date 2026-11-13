@@ -22,7 +22,7 @@ function viewProfileWall() {
     (data.editable
       ? '<div class="head-actions wall-owner-tools"><button class="btn primary" data-action="wall-edit-profile">Оформить страницу · контакты</button><button class="btn" data-action="wall-cover">Изменить обложку</button>' +
         (card.cover
-          ? '<button class="btn" data-action="wall-cover-remove">Убрать обложку</button>'
+          ? '<button class="btn" data-action="wall-cover-crop">Обрезать обложку</button><button class="btn" data-action="wall-cover-remove">Убрать обложку</button>'
           : '') +
         '</div>'
       : '') +

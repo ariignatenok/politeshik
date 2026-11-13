@@ -96,9 +96,9 @@ function viewHw() {
     '<div class="head-actions"><button class="btn" data-action="ics-all">' +
     ICONS.calendarDay +
     ' Все дедлайны в календарь</button>' +
-    (canEdit() ? '<button class="btn primary" data-action="hw-add">＋ Добавить ДЗ</button>' : '') +
+    (canEdit() ? '<button class="btn primary" data-action="hw-add">＋ Добавить ДЗ</button>' : HomeworkProposals.button()) +
     '</div></div>' +
-    '<div class="grid-stats"><div class="stat"><b>' +
+    HomeworkProposals.html() + '<div class="grid-stats"><div class="stat"><b>' +
     soon.length +
     '</b><small>со сроком впереди</small></div><div class="stat"><b>' +
     nodate.length +

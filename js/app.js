@@ -372,7 +372,7 @@ const App = {
             : t.id === 'news'
               ? badge(News.unread())
               : t.id === 'requests'
-                ? badge(Cloud.pendingCount || 0)
+                ? badge((Cloud.pendingCount||0)+(typeof HomeworkProposals!=='undefined'?HomeworkProposals.pending():0))
                 : '') +
           '</button>'
       )
@@ -530,6 +530,7 @@ const App = {
         Safe.run('mascot', () => Mascot.syncFromProfile());
         Safe.run('requests', () => Cloud.loadRequests(true));
         Safe.run('curator-chats', () => CuratorChats.refresh());
+        Safe.run('homework-proposals',()=>HomeworkProposals.load());
         Safe.run('staff-docs', () => Cloud.loadStaffDocs());
         Safe.run('focus', () => Focus.restore());
         Safe.run('solutions', () => Cloud.refreshSolutions());
