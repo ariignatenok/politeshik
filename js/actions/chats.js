@@ -58,6 +58,7 @@ Object.assign(A, {
    * @param {HTMLElement} el Элемент, по которому кликнули; параметры передаются через его data-атрибуты.
    */
   'open-chat'(el) {
+    if (el.dataset.with.startsWith('curator:')) return CuratorChats.open(el.dataset.with.slice(8));
     if (el.dataset.with.startsWith('peer:')) return Social.openPeer(el.dataset.with.slice(5));
     UI.close();
     ui.tab = 'chat';

@@ -267,6 +267,7 @@ function chatUnread() {
   return (
     (Cloud.isStaff ? 0 : Chat.unread()) +
     Dm.unreadTotal() +
+    (typeof CuratorChats !== 'undefined' ? CuratorChats.unread() : 0) +
     (typeof Social !== 'undefined' ? Social.unread() : 0)
   );
 }

@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'mobile20261113';
+const BUILD = 'curatorchat20261113';

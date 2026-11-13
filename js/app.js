@@ -529,6 +529,7 @@ const App = {
       .then(() => {
         Safe.run('mascot', () => Mascot.syncFromProfile());
         Safe.run('requests', () => Cloud.loadRequests(true));
+        Safe.run('curator-chats', () => CuratorChats.refresh());
         Safe.run('staff-docs', () => Cloud.loadStaffDocs());
         Safe.run('focus', () => Focus.restore());
         Safe.run('solutions', () => Cloud.refreshSolutions());

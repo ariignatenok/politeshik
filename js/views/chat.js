@@ -287,7 +287,7 @@ function viewChatListAdmin() {
       : 'Переписка со студентами твоей группы.') +
     '</p></div>' +
     '<div class="head-actions"><button class="btn primary" data-action="dm-new">Новый чат</button></div></div>' +
-    welcomeRecipientsHtml() +
+    welcomeRecipientsHtml() + CuratorChats.contactsHtml() +
     '<div class="chat-list">' +
     botRow +
     (Cloud.isSuperAdmin ? '' : supportContactsHtml()) +
@@ -412,8 +412,10 @@ function viewDmThread(uid) {
  */
 function viewChat() {
   if (Cloud.status !== 'online') return viewBotChat();
+  if ((ui.chatWith || '').startsWith('curator:')) return CuratorChats.threadHtml(ui.chatWith.slice(8));
   if ((ui.chatWith || '').startsWith('peer:')) return viewPeerThread(ui.chatWith.slice(5));
   if (ui.chatWith && ui.chatWith.startsWith('contact:')) return viewDmThread(Cloud.uid);
+  if (Cloud.isCurator && Cloud.curatorContext?.active) return CuratorChats.listHtml();
   if (Cloud.isStaff) return viewDmThread(Cloud.uid);
   if (Dm.support())
     return ui.chatWith === 'bot'

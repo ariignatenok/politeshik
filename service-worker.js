@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bmobile20261113';
+const CACHE_VERSION = 'bcuratorchat20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -156,6 +156,7 @@ const SHELL = [
   'js/schedule-sync.js',
   'js/groups.js',
   'js/curator.js',
+  'js/curator-chats.js',
   'js/faculty.js',
   'js/data/faculty-names.js',
   'data/faculty.json',
