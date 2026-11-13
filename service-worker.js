@@ -97,8 +97,6 @@ const SHELL = [
   'js/club-music.js',
   'js/club-games.js',
   'js/club-rooms.js',
-  'assets/club-jazz.mp3',
-  'assets/club-cinema.mp3',
   'js/map-routes.js',
   'js/chat-media.js',
   'js/map-guide.js',
