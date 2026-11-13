@@ -22,12 +22,13 @@ function viewRating() {
     U.esc(mw) +
     ' ' +
     ym.slice(0, 4) +
-    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется автоматически каждые 30 секунд.</p></div></div>';
+    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Обновляется автоматически каждые 30 секунд.</p></div><button class="btn sm" data-action="group-rating-refresh">Обновить</button></div>';
   if (Cloud.status !== 'online')
     return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
   const doc = GroupRating.data && {...GroupRating.data, label: monthName(GroupRating.data.month)},
     prize = R && R.prizes && R.prizes[per[k].key];
   if (GroupRating.error) return head+'<p class="warn">'+U.esc(GroupRating.error)+'</p>';
+  if (!doc && GroupRating.loading) return head + '<p role="status">Загружаем рейтинг…</p>';
   if (!doc || !doc.rows.length)
     return (
       head +
