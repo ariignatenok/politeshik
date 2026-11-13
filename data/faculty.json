@@ -599,37 +599,45 @@
       "id": "faculty-9d82521c1ce8",
       "name": "Ежов Евгений Игоревич",
       "teacher": "Ежов Е.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9d82521c1ce8.json",
       "groups": {
         "24290907/2092": [
           "ТВиМС"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T11:38:23.179508+00:00",
+      "fetched_at": "2026-11-13T11:38:25.604197+00:00"
     },
     {
       "id": "faculty-3694ec38c045",
       "name": "Ефимова-Сойни Елена Абрамовна",
       "teacher": "Ефимова-Сойни Е.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3694ec38c045.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T11:38:25.604225+00:00",
+      "fetched_at": "2026-11-13T11:38:27.368128+00:00"
     },
     {
       "id": "faculty-505e6c6a1bcf",
       "name": "Жеребчевская Екатерина Евгеньевна",
       "teacher": "Жеребчевская Е.Е.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-505e6c6a1bcf.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T11:38:27.368145+00:00",
+      "fetched_at": "2026-11-13T11:38:28.971415+00:00"
     },
     {
       "id": "faculty-5c51f385d1e0",
       "name": "Жукова Александра Михайловна",
       "teacher": "Жукова А.М.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5c51f385d1e0.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T11:38:28.971433+00:00",
+      "fetched_at": "2026-11-13T11:38:30.684738+00:00"
     },
     {
       "id": "faculty-da4b3753143f",
@@ -644,7 +652,8 @@
         "25290907/1091": [
           "ОАП"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T11:38:30.684753+00:00"
     },
     {
       "id": "faculty-8a73e464686d",
@@ -652,7 +661,8 @@
       "teacher": "Зацепина Н.Д.",
       "status": "source_error",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-13T11:38:32.385388+00:00"
     },
     {
       "id": "faculty-db07bc37eb0d",
@@ -664,7 +674,8 @@
         "23290907/2092": [
           "МДК.02.03 Мат. моделирование"
         ]
-      }
+      },
+      "attempted_at": "2026-11-13T11:38:34.148620+00:00"
     },
     {
       "id": "faculty-8bff3af2c46c",

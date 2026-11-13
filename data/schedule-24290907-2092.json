@@ -768,9 +768,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2092"
@@ -787,9 +788,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2092"
