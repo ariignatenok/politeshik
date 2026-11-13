@@ -46,7 +46,7 @@ const GlobalRating = {
       GlobalRating.load();
     const data = GlobalRating.owner === Cloud.uid ? GlobalRating.data : null;
     return (
-      '<div class="page-head"><div><h1>Рейтинг всех профилей</h1><p>Общий рейтинг студентов всех групп за месяц. При равных баллах место общее (1, 1, 3).</p></div><button class="btn" data-action="global-rating-refresh">Обновить</button></div>' +
+      '<div class="page-head"><div><h1>Рейтинг всех профилей</h1><p>Общий рейтинг студентов всех групп за месяц. При равных баллах место общее (1, 1, 2, 3).</p></div><button class="btn" data-action="global-rating-refresh">Обновить</button></div>' +
       GlobalRating.tabs() +
       '<section class="card"><h2>Как считаются баллы</h2><p>До 60 за посещаемость, до 20 за изученные карточки и до 20 за активность: сообщения, клуб и время в приложении.</p><p class="hint">Активность ограничена за день: до 10 сообщений, 5 действий в клубе и 12 отметок активности (не чаще раза в 5 минут). Каждые 5 таких действий дают 1 балл. Для карточек учитывается сохранённый прогресс. Активность копится с этого обновления. Первого числа — новый рейтинг. Чужие отметки, справки и содержимое переписок здесь не показываются.</p></section>' +
       (GlobalRating.error ? '<p class="warn">' + U.esc(GlobalRating.error) + '</p>' : '') +

@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'sharedranks20261113';
+const BUILD = 'denseranks20261113';

@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bsharedranks20261113';
+const CACHE_VERSION = 'bdenseranks20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [

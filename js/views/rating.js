@@ -22,7 +22,7 @@ function viewRating() {
     U.esc(mw) +
     ' ' +
     ym.slice(0, 4) +
-    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Одинаковые баллы — одинаковое место (1, 1, 3). Обновляется автоматически каждые 30 секунд.</p></div><button class="btn sm" data-action="group-rating-refresh">Обновить</button></div>';
+    '</h1><p>Считается только за этот месяц: посещаемость 80% + карточки 20%. С 1-го числа таблица начинается с нуля. Одинаковые баллы — одинаковое место (1, 1, 2, 3). Обновляется автоматически каждые 30 секунд.</p></div><button class="btn sm" data-action="group-rating-refresh">Обновить</button></div>';
   if (Cloud.status !== 'online')
     return head + empty(ICONS.cloud, 'Рейтинг доступен после входа через облако.');
   const doc = GroupRating.data && {...GroupRating.data, label: monthName(GroupRating.data.month)},

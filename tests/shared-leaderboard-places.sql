@@ -15,11 +15,11 @@ do $$declare rows jsonb;begin
  rows:=public.group_leaderboard()->'rows';
  assert exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_a')and x->>'place'='1'and(x->>'score')::numeric=100),'Alphabetically later name lost a shared first place';
  assert exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_b')and x->>'place'='1'),'Equal group score has a different place';
- assert exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_c')and x->>'place'='3'),'Next group place must skip the shared place';
+ assert exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_c')and x->>'place'='2'),'Next group place must immediately follow the shared place';
  assert not exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_d')),'Group leaderboard includes foreign group';
  rows:=public.profile_leaderboard()->'rows';
  assert(select count(*)from jsonb_array_elements(rows)x where x->>'uid'in(current_setting('test.rank_a'),current_setting('test.rank_b'),current_setting('test.rank_d'))and x->>'place'='1')=3,'Equal global scores across groups must share first place';
- assert exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_c')and x->>'place'='4'),'Global ranking fails after a three-way tie';
+ assert exists(select 1 from jsonb_array_elements(rows)x where x->>'uid'=current_setting('test.rank_c')and x->>'place'='2'),'Global ranking must not skip places after a three-way tie';
 end $$;
 reset role;
 select set_config('request.jwt.claims','{}',true);

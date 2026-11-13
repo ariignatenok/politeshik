@@ -51,7 +51,10 @@ const Rating = {
       });
     });
     out.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, 'ru'));
-    out.forEach((x, i) => (x.place = i && x.score === out[i - 1].score ? out[i - 1].place : i + 1));
+    out.forEach((x, i) => {
+      const previous = out[i - 1];
+      x.place = previous ? previous.place + (x.score === previous.score ? 0 : 1) : 1;
+    });
     return out;
   },
   /**
