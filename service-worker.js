@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bclubdj20261113';
+const CACHE_VERSION = 'baccountpassword20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -96,6 +96,7 @@ const SHELL = [
   'js/club-floor.js',
   'js/club-music.js',
   'js/club-dj.js',
+  'js/account-password.js',
   'js/data/club-tracks.js',
   'js/club-games.js',
   'js/club-rooms.js',
