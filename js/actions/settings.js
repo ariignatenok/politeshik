@@ -47,12 +47,22 @@ Object.assign(A, {
           '</button>'
       )
       .join('');
-    const r = el.getBoundingClientRect();
-    pop.hidden = false;
-    const w = pop.offsetWidth || 220,
-      h = pop.offsetHeight || 320;
-    pop.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, r.left)) + 'px';
-    pop.style.top = (r.top - h - 8 > 8 ? r.top - h - 8 : Math.min(window.innerHeight - h - 8, r.bottom + 8)) + 'px';
+    const r=el.getBoundingClientRect(),vp=window.visualViewport;
+    const left=(vp?.offsetLeft||0)+12,top=(vp?.offsetTop||0)+12;
+    const right=left+(vp?.width||window.innerWidth)-24;
+    let bottom=top+(vp?.height||window.innerHeight)-24;
+    const tabbar=$('#nav-bottom');
+    if(tabbar?.getClientRects().length){const nav=tabbar.getBoundingClientRect();if(nav.top>r.bottom)bottom=Math.min(bottom,nav.top-8);}
+    pop.style.minWidth=Math.min(210,Math.max(0,right-left))+'px';
+    pop.style.maxWidth=Math.max(0,right-left)+'px';
+    pop.style.maxHeight=Math.max(0,bottom-top)+'px';
+    pop.hidden=false;
+    const w=pop.offsetWidth,h=pop.offsetHeight;
+    const below=Math.max(0,bottom-r.bottom-8),above=Math.max(0,r.top-8-top);
+    const opensBelow=below>=h||below>=above,space=opensBelow?below:above;
+    pop.style.maxHeight=space+'px';
+    pop.style.left=Math.max(left,Math.min(right-w,r.left))+'px';
+    pop.style.top=Math.max(top,opensBelow?r.bottom+8:r.top-pop.offsetHeight-8)+'px';
   },
   /**
    * Применяет выбранную тему оформления и сохраняет её в профиле.

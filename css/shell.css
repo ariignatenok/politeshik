@@ -282,3 +282,21 @@ body.gated .content {
   color: var(--muted);
   text-align: center;
 }
+
+/* Keep header actions inside the viewport, including large mobile text. */
+@media (max-width: 900px) {
+  .topbar { width: 100%; min-width: 0; gap: 12px; padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)); }
+  .topbar .tb-brand { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; }
+  #top-mascot { display: block; width: 30px; flex: 0 0 30px; }
+  .topbar .tb-actions { flex: none; gap: 4px; }
+  .topbar .icon-btn { width: 44px; height: 44px; flex: 0 0 44px; padding: 0; }
+  #group-switch { padding-inline: 14px; min-width: 0; }
+  #group-switch > p { padding: 0 !important; overflow-wrap: anywhere; }
+}
+
+.requests-stack { display: grid; gap: 16px; min-width: 0; }
+.requests-stack > *, .req-card header > div { min-width: 0; }
+.requests-stack :is(h2, h3, p, small, .item-title) { overflow-wrap: anywhere; }
+.req-card header { flex-wrap: wrap; }
+.requests-stack .set-row > div { flex: 1 1 200px; min-width: 0; }
+.requests-stack .set-row > button { flex: none; }

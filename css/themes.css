@@ -400,3 +400,13 @@ body {
   color: var(--text);
   opacity: 0.82;
 }
+
+/* Long theme lists scroll within the visible viewport instead of covering navigation. */
+.theme-pop {
+  min-width: min(210px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}

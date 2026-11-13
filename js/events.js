@@ -239,3 +239,7 @@ document.addEventListener('change', event => {
 
 // Keyboard access to profile links rendered in table names and avatar spans.
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role="button"][data-action="social-profile"]')){e.preventDefault();Social.profile(e.target.dataset.uid);}});
+
+// The picker is anchored to viewport coordinates; close it after rotation or keyboard resize.
+window.addEventListener('resize', () => { const pop=$('#theme-pop');if(pop)pop.hidden=true; });
+window.visualViewport?.addEventListener('resize', () => { const pop=$('#theme-pop');if(pop)pop.hidden=true; });
