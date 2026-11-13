@@ -18,6 +18,8 @@ do $$declare id uuid;denied boolean:=false;begin
  assert jsonb_array_length(public.homework_proposal_list())=1,'Duplicate proposal on retry';
  assert public.homework_proposal_list()->0->>'status'='pending','Student proposal published without approval';
  begin perform public.homework_proposal_decide(id,true);exception when insufficient_privilege then denied:=true;end;assert denied,'Student approved own homework';
+ denied:=false;
+ begin perform public.homework_proposal_submit(gen_random_uuid(),'bad" onclick="x','Test','Unsafe identifier',null);exception when check_violation then denied:=true;end;assert denied,'Unsafe subject identifier accepted';
  perform public.homework_proposal_submit(current_setting('test.hp_reject')::uuid,'hp_subject','Test subject','Reject this',null);
 end $$;
 reset role;
