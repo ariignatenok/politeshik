@@ -1,6 +1,6 @@
 'use strict';
 const ClubGames={
- owner:null,lobby:null,at:0,loading:false,id:null,data:null,busy:false,error:'',pending:null,selected:new Set(),angle:0,power:75,
+ filter:null,owner:null,lobby:null,at:0,loading:false,id:null,data:null,busy:false,error:'',pending:null,selected:new Set(),angle:0,power:75,
  reset(){Object.assign(ClubGames,{owner:Cloud.uid,lobby:null,at:0,loading:false,id:null,data:null,busy:false,error:'',pending:null,selected:new Set(),angle:0,power:75});},
  close(){ClubGames.id=null;ClubGames.data=null;ClubGames.pending=null;ClubGames.selected.clear();},
  allowed(){return Social.allowed()&&Club.joined&&Club.room==='games';},
@@ -13,12 +13,12 @@ const ClubGames={
   finally{if(owner===Cloud.uid)ClubGames.loading=false;}
  },
  roomHtml(){return '<div class="club-games-decor"><div class="games-neon">RED ROOM</div><button class="games-decor-table poker" data-action="club-games-open">♠ ♥<br><small>Пятикарточный покер</small></button><button class="games-decor-table pool" data-action="club-games-open">🎱<br><small>Бильярд на точность</small></button><button class="btn games-lobby-button" data-action="club-games-open">Играть · турнирные таблицы</button></div>';},
- openLobby(){if(!ClubGames.allowed())return toast('Сначала зайдите в игровую комнату');UI.open('Игры и турнирные таблицы','<div id="club-game-lobby">'+ClubGames.lobbyHtml()+'</div>',{wide:true,noFocus:true});ClubGames.loadLobby(true).then(()=>{const box=document.getElementById('club-game-lobby');if(box)box.innerHTML=ClubGames.lobbyHtml();});},
+ openLobby(game=null){ClubGames.filter=['poker','pool'].includes(game)?game:null;if(!ClubGames.allowed())return toast('Сначала зайдите в игровую комнату');UI.open('Игры и турнирные таблицы','<div id="club-game-lobby">'+ClubGames.lobbyHtml()+'</div>',{wide:true,noFocus:true});ClubGames.loadLobby(true).then(()=>{const box=document.getElementById('club-game-lobby');if(box)box.innerHTML=ClubGames.lobbyHtml();});},
  lobbyHtml(){
-  const lobby=ClubGames.lobby;
-  return '<p>Играйте с гостями всех групп. Победа — 3 очка, ничья — 1. Турнирные таблицы начинаются с нуля первого числа каждого месяца.</p><div class="head-actions"><button class="btn primary" data-action="club-game-create" data-game="poker">Создать стол покера</button><button class="btn primary" data-action="club-game-create" data-game="pool">Создать стол бильярда</button><button class="btn" data-action="club-games-refresh">Обновить</button></div>'+
+  const lobby=ClubGames.lobby,filter=ClubGames.filter;
+  return '<p>Играйте с гостями всех групп. Победа — 3 очка, ничья — 1. Турнирные таблицы начинаются с нуля первого числа каждого месяца.</p><div class="head-actions">'+['poker','pool'].filter(kind=>!filter||kind===filter).map(kind=>'<button class="btn primary" data-action="club-game-create" data-game="'+kind+'">Создать стол '+(kind==='poker'?'покера':'бильярда')+'</button>').join('')+' <button class="btn" data-action="club-games-refresh">Обновить</button></div>'+
   (ClubGames.error?'<p class="warn">'+U.esc(ClubGames.error)+'</p>':'')+'<h3>Столы</h3>'+
-  (lobby?(lobby.matches||[]).map(g=>'<div class="game-lobby-match"><div><b>'+U.esc(g.game==='poker'?'Покер':'Бильярд')+'</b><small>'+U.esc(g.host?.name||'Гость')+(g.guest?' и '+U.esc(g.guest.name):' · ждёт соперника')+'</small></div><button class="btn sm" data-action="club-game-open" data-id="'+g.id+'">'+(g.mine?'Моя партия':g.status==='waiting'?'Занять место':'Посмотреть')+'</button></div>').join('')||'<p class="hint">Пока нет столов. Создайте свой и позовите друга.</p>':'<p role="status">Загружаем столы…</p>')+
+  (lobby?(lobby.matches||[]).filter(g=>!filter||g.game===filter).map(g=>'<div class="game-lobby-match"><div><b>'+U.esc(g.game==='poker'?'Покер':'Бильярд')+'</b><small>'+U.esc(g.host?.name||'Гость')+(g.guest?' и '+U.esc(g.guest.name):' · ждёт соперника')+'</small></div><button class="btn sm" data-action="club-game-open" data-id="'+g.id+'">'+(g.mine?'Моя партия':g.status==='waiting'?'Занять место':'Посмотреть')+'</button></div>').join('')||'<p class="hint">Пока нет столов. Создайте свой и позовите друга.</p>':'<p role="status">Загружаем столы…</p>')+
   '<div class="game-boards">'+['poker','pool'].map(kind=>'<section><h3>'+(kind==='poker'?'♠ Покер':'🎱 Бильярд')+'</h3><p class="hint">'+U.esc(lobby?.month||'Текущий месяц')+'</p>'+((lobby?.[kind]||[]).map(row=>'<button class="game-board-row" data-action="social-profile" data-uid="'+row.uid+'"><b>'+row.place+'</b>'+Social.avatar(row,28)+'<span>'+U.esc(row.name)+'<small>'+row.wins+' побед · '+row.games+' партий</small></span><b>'+row.points+' оч.</b></button>').join('')||'<p class="hint">Первые результаты появятся после завершённых партий.</p>')+'</section>').join('')+'</div>';
  },
  async create(game){
@@ -33,7 +33,7 @@ const ClubGames={
  openData(data){
   if(ClubGames.id!==data.id){ClubGames.selected.clear();ClubGames.angle=0;ClubGames.power=75;}
   ClubGames.id=data.id;ClubGames.data=data;ClubGames.error='';
-  UI.open(data.game==='poker'?'Пятикарточный покер':'Бильярд на точность','<div class="club-game-panel">'+ClubGames.html()+'</div>',{wide:true,noFocus:true});
+  UI.open(data.game==='poker'?'Пятикарточный покер':'Бильярд на точность','<div class="club-game-panel" data-game="'+data.game+'">'+ClubGames.html()+'</div>',{wide:true,noFocus:true});
  },
  async refresh(){
   if(!ClubGames.id||!ClubGames.allowed()||ClubGames.busy||!document.querySelector('.club-game-panel'))return;
@@ -46,7 +46,8 @@ const ClubGames={
  cardHtml(n,index,other=false){const rank=['2','3','4','5','6','7','8','9','10','В','Д','К','Т'][Math.floor(n/4)],suit=['♣','♦','♥','♠'][n%4];return '<button class="poker-card'+([1,2].includes(n%4)?' red':'')+(ClubGames.selected.has(index)&&!other?' selected':'')+'"'+(!other?' data-action="poker-select" data-index="'+index+'"':' disabled')+' aria-label="'+rank+' '+suit+'" aria-pressed="'+(!other&&ClubGames.selected.has(index))+'"><b>'+rank+'</b><span>'+suit+'</span></button>';},
  html(){
   const g=ClubGames.data;if(!g)return '<p>Загружаем игру…</p>';const own=g.mine,done=g.status==='finished',ready=own&&g[own+'_ready'];
-  const title='<div class="game-players"><b>'+U.esc(g.host?.name||'Игрок')+'</b><span>VS</span><b>'+U.esc(g.guest?.name||'Ожидаем второго игрока')+'</b></div>';
+  const character=person=>person?'<div class="game-character">'+Club.mascot({...person,pose:g.game,dance:'still',drink:'none'},78)+'<b>'+U.esc(person.name)+'</b></div>':'<div class="game-character empty-seat"><span>?</span><b>Ждём игрока</b></div>';
+  const title='<div class="game-players with-mascots">'+character(g.host)+'<span>VS</span>'+character(g.guest)+'</div>';
   const end=done?'<div class="game-result"><b>'+(g.winner?(g.winner===Cloud.uid?'Вы победили! 🏆':'Победитель: '+U.esc(g.winner===g.host?.uid?g.host.name:g.guest?.name||'Соперник')):'Ничья 🤝')+'</b><p>Результат внесён в общую таблицу месяца.</p></div>':'';
   if(g.status==='waiting')return title+'<p>Стол создан. Второй игрок может занять место через «Игры и турнирные таблицы».</p><button class="btn primary" data-action="club-game-action" data-operation="'+(own?'cancel':'join')+'">'+(own?'Отменить стол':'Занять место')+'</button><button class="btn" data-action="club-games-open">← Все столы</button>';
   if(g.status==='cancelled')return title+'<p>Стол закрыт.</p><button class="btn" data-action="club-games-open">Все столы</button>';
@@ -81,7 +82,7 @@ const ClubGames={
  }
 };
 Object.assign(A,{
- 'club-games-open':()=>ClubGames.openLobby(),
+ 'club-games-open':el=>ClubGames.openLobby(el?.dataset.game||null),
  'club-games-refresh':()=>ClubGames.loadLobby(true).then(()=>{const box=document.getElementById('club-game-lobby');if(box)box.innerHTML=ClubGames.lobbyHtml();}),
  'club-game-create':el=>ClubGames.create(el.dataset.game),
  'club-game-open':el=>ClubGames.open(el.dataset.id),

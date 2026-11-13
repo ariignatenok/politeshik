@@ -76,6 +76,7 @@ Object.assign(Club, {
   async walkTo(destination,after) {
     Club.captureThought();
     if (!Club.joined) return toast('Сначала зайдите в клуб');
+    if(['poker','pool'].includes(Club.own().pose))return toast('Сначала завершите партию, чтобы отойти от стола');
     if (Club.drag || Club.walking || Club.moving || Club.saving || Club.leaving) return;
     UI.close();
     const actor = Club.actor(),
@@ -114,7 +115,7 @@ Object.assign(Club, {
       actor.style.top = target.y + '%';
       animation.cancel();
       const saved = await Club.storePosition(target);
-      if (saved && owner === Cloud.uid && ui.tab === 'club' && !Club.leaving && after) after();
+      if (saved && owner === Cloud.uid && ui.tab === 'club' && !Club.leaving && after) { Club.walking = false; await after(); }
     } catch (error) {
       if (error.name !== 'AbortError') toast('Попробуйте подойти ещё раз');
     } finally {
@@ -179,6 +180,7 @@ document.addEventListener('pointerdown', (event) => {
     !actor ||
     actor.dataset.uid !== Cloud.uid ||
     !Club.joined ||
+    ['poker','pool'].includes(Club.own().pose) ||
     Club.walking ||
     Club.moving ||
     Club.saving ||

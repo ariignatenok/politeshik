@@ -215,12 +215,12 @@ function viewClub() {
     (Club.calm ? ' calm' : '') + (Club.barExpanded?' bar-open':'')+' club-room-'+Club.room +
     '"><div class="club-neon">POLITESHIK <span>'+U.esc(Club.roomNames[Club.room]||'CLUB')+'</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-floor">'+
     (Club.room==='main'?'<div class="club-stage"><div class="club-speaker">◉<br>◉</div><button class="club-dj" data-action="club-dj-join" aria-label="Подойти и встать рядом с диджеем">'+Mascot.svg('happy',110,'',{look:dj,season:''})+'<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК<br>Встать рядом →</span><i>◉</i></div></button><div class="club-speaker">◉<br>◉</div></div>'+Club.tablesHtml():Club.room==='cinema'?Club.movieHtml():ClubGames.roomHtml())+
-    '<button class="club-bar" data-action="club-bar"><span>BAR</span><b>☕ 🧃</b><small>Кофе · чай · соки</small><small>Выбрать напиток →</small></button>' +
+    ClubInterior.gallery()+(Club.room==='main'?ClubInterior.doors():'')+ClubInterior.barHtml()+ClubInterior.waiterHtml() +
     Club.visitors
       .map(
         (card, i) =>
           '<button class="club-guest' +
-          (card.uid === Cloud.uid ? ' me' : '') +
+          (card.uid === Cloud.uid ? ' me' : '') + ' pose-'+(card.pose||'standing') +
           ' move-' +
           (Club.moves.some((x) => x[0] === card.dance) ? card.dance : 'bounce') +
           '" data-action="club-guest" data-uid="' +
@@ -252,7 +252,7 @@ function viewClub() {
         (Club.dancing ? 'Остановиться' : 'Танцевать') +
         '</button><button class="btn" data-action="club-leave">Выйти из клуба</button>'
       : '<button class="btn primary" data-action="club-join">Зайти на танцпол</button>') +
-    '<button class="btn" data-action="club-bar-toggle" aria-expanded="'+!!Club.barExpanded+'">'+(Club.barExpanded?'Свернуть бар':'☕ Открыть бар')+'</button>' + ClubMusic.html() + '<button class="btn" data-action="club-calm" aria-pressed="' +
+    (Club.room==='cinema'?'<button class="btn" data-action="club-waiter">🍿 Позвать официанта</button>':'')+(Club.own().seat?'<button class="btn" data-action="club-stand">Встать с дивана</button>':'')+'<button class="btn" data-action="club-bar-toggle">🍹 Меню бара</button>' + ClubMusic.html() + '<button class="btn" data-action="club-calm" aria-pressed="' +
     Club.calm +
     '">' +
     (Club.calm ? 'Включить неон' : 'Спокойный свет') +

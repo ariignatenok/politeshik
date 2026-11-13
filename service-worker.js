@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bclubrooms20261113';
+const CACHE_VERSION = 'bclubinterior20261113';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -97,6 +97,8 @@ const SHELL = [
   'js/club-music.js',
   'js/club-games.js',
   'js/club-rooms.js',
+  'js/club-interior.js',
+  'css/club-interior.css',
   'js/map-routes.js',
   'js/chat-media.js',
   'js/map-guide.js',

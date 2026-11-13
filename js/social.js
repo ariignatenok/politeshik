@@ -348,7 +348,9 @@ const Club = {
       Club.error = error.message;
     } finally {
       Club.loading = false;
-      if (ui.tab === 'club' && (Club.renderChanged !== false || previousError !== Club.error)) App.renderSoft();
+      if (ui.tab === 'club' && (Club.renderChanged !== false || previousError !== Club.error)) {
+        if(document.querySelector('.club-game-panel'))App.render();else App.renderSoft();
+      }
     }
   },
 };

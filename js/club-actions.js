@@ -35,7 +35,7 @@ Object.assign(Club, {
       apple: '#bdd477',
       cherry: '#c95879',
       mango: '#f5c453',
-      water: '#a3d6eb',
+      water: '#a3d6eb',berry:'#d7679c',citrus:'#efb94c',tropical:'#76cbb1',
     }[drink];
     const cup =
       '<g data-club-drink="' +
