@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-14",
+  "checked_at": "2026-11-15",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -933,35 +933,41 @@
       "id": "faculty-b213b638dba2",
       "name": "Кузьмичев Виталий Валерьевич",
       "teacher": "Кузьмичев В.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-b213b638dba2.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T22:56:03.379082+00:00",
+      "fetched_at": "2026-11-14T22:56:04.976950+00:00"
     },
     {
       "id": "faculty-378d62525c55",
       "name": "Кулакова Диана Маратовна",
       "teacher": "Кулакова Д.М.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-378d62525c55.json",
       "groups": {
         "25290907/1091": [
           "УП.04.01 Учебная практика"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T22:56:04.976998+00:00",
+      "fetched_at": "2026-11-14T22:56:07.776465+00:00"
     },
     {
       "id": "faculty-9da93e44ddb6",
       "name": "Куликов Иван Андреевич",
       "teacher": "Куликов И.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9da93e44ddb6.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T22:56:07.776524+00:00",
+      "fetched_at": "2026-11-14T22:56:09.521527+00:00"
     },
     {
       "id": "faculty-5193b5223adc",
       "name": "Курылева Анастасия Александровна",
       "teacher": "Курылева А.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5193b5223adc.json",
       "groups": {
         "23290907/2092": [
@@ -970,7 +976,9 @@
         "25290907/1091": [
           "ИТ лр"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T22:56:09.521577+00:00",
+      "fetched_at": "2026-11-14T22:56:11.269174+00:00"
     },
     {
       "id": "faculty-bf310b6cf943",
@@ -978,7 +986,8 @@
       "teacher": "Кухаренкова Н.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-bf310b6cf943.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T22:56:11.269565+00:00"
     },
     {
       "id": "faculty-3be55939e31f",
@@ -986,7 +995,8 @@
       "teacher": "Кучеренко Н.Л.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3be55939e31f.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T22:56:12.830165+00:00"
     },
     {
       "id": "faculty-233395355ab5",
@@ -994,7 +1004,8 @@
       "teacher": "Кялина Е.М.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-233395355ab5.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T22:56:14.395747+00:00"
     },
     {
       "id": "faculty-349017df5203",
