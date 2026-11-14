@@ -748,7 +748,8 @@
       "teacher": "Казаков Д.Н.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1d2021b0b92c.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T06:07:24.276198+00:00"
     },
     {
       "id": "faculty-d50e575fd99c",
@@ -756,7 +757,8 @@
       "teacher": "Киреенко К.Н.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d50e575fd99c.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T06:07:26.047774+00:00"
     },
     {
       "id": "faculty-0e14e15cf3d5",
@@ -768,7 +770,8 @@
         "26290911/3111": [
           "История России"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T06:07:27.806410+00:00"
     },
     {
       "id": "faculty-376b688a1992",
