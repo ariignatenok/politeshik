@@ -4,7 +4,7 @@
   "teacher": "Краснопёрова А.Д.",
   "full_name": "Краснопёрова Алина Денисовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-14",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -738,9 +738,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -758,9 +758,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1092"

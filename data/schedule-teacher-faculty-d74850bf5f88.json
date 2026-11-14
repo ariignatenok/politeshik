@@ -4,7 +4,7 @@
   "teacher": "Кротова Л.А.",
   "full_name": "Кротова Лариса Алексеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-14",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -658,9 +658,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "505",
+          "campus": "Э",
+          "classroom": "каб. 505 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/2091"
@@ -678,9 +678,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "505",
+          "campus": "Э",
+          "classroom": "каб. 505 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/2091"
@@ -698,9 +698,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "505",
+          "campus": "Э",
+          "classroom": "каб. 505 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/2091"

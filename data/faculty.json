@@ -848,15 +848,17 @@
       "id": "faculty-cb2277eba71a",
       "name": "Краснобрыжева Юлия Сергеевна",
       "teacher": "Краснобрыжева Ю.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-cb2277eba71a.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T18:52:43.059190+00:00",
+      "fetched_at": "2026-11-14T18:52:44.958863+00:00"
     },
     {
       "id": "faculty-90d926210371",
       "name": "Краснопёрова Алина Денисовна",
       "teacher": "Краснопёрова А.Д.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-90d926210371.json",
       "groups": {
         "25290907/1091": [
@@ -868,23 +870,29 @@
         "26290911/3111": [
           "Управление ИТ-проектами"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T18:52:44.958906+00:00",
+      "fetched_at": "2026-11-14T18:52:47.979152+00:00"
     },
     {
       "id": "faculty-d74850bf5f88",
       "name": "Кротова Лариса Алексеевна",
       "teacher": "Кротова Л.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-d74850bf5f88.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T18:52:47.979201+00:00",
+      "fetched_at": "2026-11-14T18:52:51.340578+00:00"
     },
     {
       "id": "faculty-9902ce72edbd",
       "name": "Круглов Алексей Александрович",
       "teacher": "Круглов А.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9902ce72edbd.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T18:52:51.340642+00:00",
+      "fetched_at": "2026-11-14T18:52:53.216798+00:00"
     },
     {
       "id": "faculty-5da8672d9e47",
@@ -892,7 +900,8 @@
       "teacher": "Кудайбергенова М.И.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5da8672d9e47.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T18:52:53.216841+00:00"
     },
     {
       "id": "faculty-61a2d84bbbee",
@@ -904,7 +913,8 @@
         "25290909/3091": [
           "ЭВМ"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T18:53:05.818854+00:00"
     },
     {
       "id": "faculty-7be8ccfae298",
@@ -916,7 +926,8 @@
         "25290909/3091": [
           "Ин. яз. в ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T18:53:08.298974+00:00"
     },
     {
       "id": "faculty-b213b638dba2",
