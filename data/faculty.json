@@ -777,33 +777,41 @@
       "id": "faculty-376b688a1992",
       "name": "Кобахидзе Натела Паатаевна",
       "teacher": "Кобахидзе Н.П.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T13:40:03.972472+00:00",
+      "fetched_at": "2026-11-14T13:40:05.601870+00:00"
     },
     {
       "id": "faculty-9ca49d11c704",
       "name": "Коверина Нина Михайловна",
       "teacher": "Коверина Н.М.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9ca49d11c704.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T13:40:05.601895+00:00",
+      "fetched_at": "2026-11-14T13:40:07.223913+00:00"
     },
     {
       "id": "faculty-3157d1358a43",
       "name": "Коннова Арина Евгеньевна",
       "teacher": "Коннова А.Е.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3157d1358a43.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T13:40:07.223945+00:00",
+      "fetched_at": "2026-11-14T13:40:08.852361+00:00"
     },
     {
       "id": "faculty-3380bd4d5460",
       "name": "Корнеева Татьяна Алексеевна",
       "teacher": "Корнеева Т.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3380bd4d5460.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T13:40:08.852402+00:00",
+      "fetched_at": "2026-11-14T13:40:12.004696+00:00"
     },
     {
       "id": "faculty-70eb4398be9b",
@@ -811,7 +819,8 @@
       "teacher": "Коровкина Н.М.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-70eb4398be9b.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T13:40:12.004726+00:00"
     },
     {
       "id": "faculty-18154fecd383",
@@ -819,7 +828,8 @@
       "teacher": "Коротышева Л.Б.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-18154fecd383.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-14T13:40:13.376879+00:00"
     },
     {
       "id": "faculty-a3a54eb58c98",
@@ -831,7 +841,8 @@
         "24290907/2092": [
           "Компьютерные сети"
         ]
-      }
+      },
+      "attempted_at": "2026-11-14T13:40:14.996623+00:00"
     },
     {
       "id": "faculty-cb2277eba71a",
