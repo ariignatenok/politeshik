@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-15",
+  "checked_at": "2026-11-16",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -1126,7 +1126,8 @@
       "teacher": "Маркова О.Н.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f27546a1721b.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T21:22:22.016911+00:00"
     },
     {
       "id": "faculty-d913a63af0ce",
@@ -1134,7 +1135,8 @@
       "teacher": "Масимова Е.Г.",
       "status": "source_error",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T21:22:23.927649+00:00"
     },
     {
       "id": "faculty-1f461d71227f",
@@ -1142,7 +1144,8 @@
       "teacher": "Маслакова С.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1f461d71227f.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T21:22:25.762427+00:00"
     },
     {
       "id": "faculty-e6a9156d6f1b",
