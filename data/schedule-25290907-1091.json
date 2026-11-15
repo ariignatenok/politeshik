@@ -4,23 +4,22 @@
   "source": "https://polytech-schedule.ru",
   "checked_at": "2026-11-15",
   "from": "2026-11-02",
-  "to": "2026-12-12",
+  "to": "2026-11-21",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "КМА полной параши специального профиля",
-          "teacher": "Дрочилин А.П.",
+          "subject": "БЖД",
+          "teacher": "Назаров С.Ю.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -31,17 +30,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ОХК.02 дичи строгого режима",
-          "teacher": "Сракашвили К.М.",
+          "subject": "Архитектура аппаратных средств",
+          "teacher": "Игнатьев Е.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -51,19 +49,19 @@
         },
         {
           "lesson_number": 3,
-          "subject": "АСУ залупы без права на пересдачу",
-          "teacher": "Залупко В.В.",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
           "subgroup": 0,
-          "is_stream": false,
+          "is_stream": true,
           "status": "ok",
           "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": "Лекция читается шёпотом",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
-            "25290907/1091"
+            "25290907/1091",
+            "25290907/1093"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -71,17 +69,16 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ПМИ.04 полной параши с защитой у чертей",
-          "teacher": "Шлакоблоков Г.В.",
+          "subject": "ОСиС",
+          "teacher": "Андреев Д.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -90,45 +87,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 45,
-      "week_type": "Числитель"
+      "week_number": 10,
+      "week_type": "Знаменатель"
     },
     "2026-11-03": {
       "day_name": "Вторник",
       "lessons": [
         {
-          "lesson_number": 1,
-          "subject": "ИТС хуйни в первом приближении",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
           "lesson_number": 2,
-          "subject": "ЭВМ собачьей чуши третьей степени",
-          "teacher": "Говноедов А.А.",
+          "subject": "ЭВМ",
+          "teacher": "Бурмистрова М.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -138,37 +114,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ФЗФ говна в режиме реального ада",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ТКТ дикого кринжа повышенной сложности",
-          "teacher": "Перделов И.В.",
+          "subject": "МДК.12.01 Техн. созд., админ. и анал. информ. ресур.",
+          "teacher": "Шаврова Л.С.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -177,91 +132,26 @@
           "original_classroom": null
         }
       ],
-      "week_number": 45,
-      "week_type": "Числитель"
+      "week_number": 10,
+      "week_type": "Знаменатель"
     },
     "2026-11-04": {
-      "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ИИББ дичи на стыке маразма и безумия",
-          "teacher": "Сракашвили К.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ОС.03.2 отборного кала на кафедре маразма",
-          "teacher": "Мудозвонов К.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ДОВ.03.2 лютого шлака в особо крупных размерах",
-          "teacher": "Мочалов П.К.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 45,
-      "week_type": "Числитель"
+      "lessons": []
     },
     "2026-11-05": {
       "day_name": "Четверг",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "АИС.03 пустого порожняка до полного изнеможения",
-          "teacher": "Хуеплётов С.С.",
+          "subject": "Архитектура аппаратных средств",
+          "teacher": "Игнатьев Е.А.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -272,17 +162,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "КИС.03 несусветной хуеты с привкусом безысходности",
-          "teacher": "Говноедов А.А.",
+          "subject": "ОПБД",
+          "teacher": "Медведева Е.Е.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -292,17 +181,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "КПО.02 несусветной хуеты в условиях невесомости",
-          "teacher": "Сракашвили К.М.",
+          "subject": "ОАП",
+          "teacher": "Молькова Л.Ю.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -312,17 +200,16 @@
         },
         {
           "lesson_number": 4,
-          "subject": "СЕТИ.04.2 отборного маразма в первом приближении",
-          "teacher": "Хуеплётов С.С.",
+          "subject": "ОАП",
+          "teacher": "Молькова Л.Ю.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -331,25 +218,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 45,
-      "week_type": "Числитель"
+      "week_number": 10,
+      "week_type": "Знаменатель"
     },
     "2026-11-06": {
       "day_name": "Пятница",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "ЕК хуйни с защитой у чертей",
-          "teacher": "Глухонемой С.С.",
+          "subject": "Физ. культура",
+          "teacher": "Моторина Е.Л.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -359,17 +245,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ООП.02 тотального пиздеца с привкусом безысходности",
-          "teacher": "Говноедов А.А.",
+          "subject": "История ОГСЭ",
+          "teacher": "Чебачева Е.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -379,17 +264,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "СУБД.03 непотребного бреда на стыке маразма и безумия",
-          "teacher": "Хуеплётов С.С.",
+          "subject": "ДМ с ЭМЛ",
+          "teacher": "Муравьева Ю.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -399,17 +283,16 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ТЭЦ.02.2 унылого дерьма под соусом депрессии",
-          "teacher": "Мочалов П.К.",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -418,25 +301,43 @@
           "original_classroom": null
         }
       ],
-      "week_number": 45,
-      "week_type": "Числитель"
+      "week_number": 10,
+      "week_type": "Знаменатель"
     },
     "2026-11-07": {
       "day_name": "Суббота",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "ЦК несусветной хуеты с привкусом безысходности",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -446,17 +347,35 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ЭВМ несусветной хуеты для особо одарённых",
-          "teacher": "Мочалов П.К.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -466,17 +385,73 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ЗОБЗ которую можно проебать в первом приближении",
-          "teacher": "Мудозвонов К.А.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -485,8 +460,8 @@
           "original_classroom": null
         }
       ],
-      "week_number": 45,
-      "week_type": "Числитель"
+      "week_number": 10,
+      "week_type": "Знаменатель"
     },
     "2026-11-08": {
       "lessons": []
@@ -496,17 +471,16 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "МНЛ.01 мочи строгого режима",
-          "teacher": "Дрочилин А.П.",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -516,17 +490,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "СЕТИ.04.2 мутной воды с защитой у чертей",
-          "teacher": "Шизофреников М.М.",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -536,37 +509,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "МДК унылого дерьма в режиме реального ада",
-          "teacher": "Кринжеватов Д.И.",
+          "subject": "ЭВМ",
+          "teacher": "Бурмистрова М.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "РПО лютого шлака с практическими пытками",
-          "teacher": "Залупко В.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -575,65 +527,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 46,
-      "week_type": "Знаменатель"
+      "week_number": 11,
+      "week_type": "Числитель"
     },
     "2026-11-10": {
       "day_name": "Вторник",
       "lessons": [
         {
-          "lesson_number": 1,
-          "subject": "ЗМЦА отборного кала в режиме реального ада",
-          "teacher": "Сракашвили К.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ТЭЦ.02 мутной воды с привкусом безысходности",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
           "lesson_number": 3,
-          "subject": "ППО говна по методичке 1974 года",
-          "teacher": "Очкодралов В.П.",
+          "subject": "История ОГСЭ",
+          "teacher": "Чебачева Е.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -643,17 +554,54 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ОПД бесполезной ебатории в особо крупных размерах",
-          "teacher": "Очкодралов В.П.",
+          "subject": "Физ. культура",
+          "teacher": "Моторина Е.Л.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ лр",
+          "teacher": "Краснопёрова А.Д.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ лр",
+          "teacher": "Курылева А.А.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -662,25 +610,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 46,
-      "week_type": "Знаменатель"
+      "week_number": 11,
+      "week_type": "Числитель"
     },
     "2026-11-11": {
       "day_name": "Среда",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "УПОК отборного кала в первом приближении",
-          "teacher": "Сракашвили К.М.",
-          "subgroup": 0,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Саитова В.С.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "228",
+          "auditorium": "409",
           "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
+          "classroom": "каб. 409 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -688,132 +635,17 @@
           "original_teacher": null,
           "original_classroom": null
         },
-        {
-          "lesson_number": 2,
-          "subject": "ДШЕ.01 дичайшей ебалы прикладного назначения",
-          "teacher": "Хуеплётов С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "БЖД.04.1 отборного кала прикладного назначения",
-          "teacher": "Шизофреников М.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 46,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-12": {
-      "day_name": "Четверг",
-      "lessons": [
         {
           "lesson_number": 1,
-          "subject": "ИТС.02 лютого шлака повышенной сложности",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Талалаева Д.А.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ФИЗ кринжа продвинутого уровня",
-          "teacher": "Сракашвили К.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
+          "auditorium": "302",
           "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ИДК.02 пустого порожняка строгого режима",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 46,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-13": {
-      "day_name": "Пятница",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ЖРЦ.01 несусветной хуеты прикладного назначения",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
+          "classroom": "каб. 302 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -824,17 +656,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ИТС лютого шлака в условиях невесомости",
-          "teacher": "Дрочилин А.П.",
+          "subject": "МДК.07.01 Оператор беспилотных авиационных систем",
+          "teacher": "Латровкин А.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
+          "auditorium": "305",
           "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
-          "note": "Вход строго в бахилах на голову",
+          "classroom": "каб. 305 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -844,17 +675,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ПБ.01 отборного кала продвинутого уровня",
-          "teacher": "Мочалов П.К.",
+          "subject": "МДК.12.01 Техн. созд., админ. и анал. информ. ресур.",
+          "teacher": "Шаврова Л.С.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
+          "auditorium": "432",
+          "campus": "Э",
+          "classroom": "каб. 432 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -863,45 +693,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 46,
-      "week_type": "Знаменатель"
+      "week_number": 11,
+      "week_type": "Числитель"
     },
-    "2026-11-14": {
-      "day_name": "Суббота",
+    "2026-11-12": {
+      "day_name": "Четверг",
       "lessons": [
         {
-          "lesson_number": 1,
-          "subject": "ППО.03.2 несусветной хуеты строгого режима",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
           "lesson_number": 2,
-          "subject": "ТАЛ собачьей чуши в режиме реального ада",
-          "teacher": "Мочалов П.К.",
-          "subgroup": 0,
+          "subject": "ИТ лр",
+          "teacher": "Краснопёрова А.Д.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -911,17 +720,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ГЮЮ лютой хуйни для сдачи в утиль",
-          "teacher": "Глухонемой С.С.",
+          "subject": "ОПБД",
+          "teacher": "Медведева Е.Е.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
+          "auditorium": "301",
           "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
+          "classroom": "каб. 301 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -931,17 +739,35 @@
         },
         {
           "lesson_number": 4,
-          "subject": "КМА лютой хуйни в условиях невесомости",
-          "teacher": "Говноедов А.А.",
+          "subject": "ОСиС",
+          "teacher": "Андреев Д.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
+          "auditorium": "415",
+          "campus": "Э",
+          "classroom": "каб. 415 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ лр",
+          "teacher": "Курылева А.А.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "301",
+          "campus": "Э",
+          "classroom": "каб. 301 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -950,8 +776,179 @@
           "original_classroom": null
         }
       ],
-      "week_number": 46,
-      "week_type": "Знаменатель"
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-13": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Архитектура аппаратных средств",
+          "teacher": "Игнатьев Е.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ДМ с ЭМЛ",
+          "teacher": "Муравьева Ю.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "БЖД",
+          "teacher": "Назаров С.Ю.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
+    },
+    "2026-11-14": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "322",
+          "campus": "Э",
+          "classroom": "каб. 322 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "322",
+          "campus": "Э",
+          "classroom": "каб. 322 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 11,
+      "week_type": "Числитель"
     },
     "2026-11-15": {
       "lessons": []
@@ -961,17 +958,17 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "КМА лютого шлака в первом приближении",
-          "teacher": "Говноедов А.А.",
+          "subject": "МДК.12.01 Техн. созд., админ. и анал. информ. ресур.",
+          "teacher": "Шаврова Л.С.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "228",
+          "auditorium": "318",
           "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
+          "classroom": "каб. 318 (Энгельса)",
           "computers": true,
-          "note": "Лекция читается шёпотом",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -981,15 +978,15 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ЭЛН.03 говна на стыке маразма и безумия",
-          "teacher": "Хуеплётов С.С.",
+          "subject": "Архитектура аппаратных средств",
+          "teacher": "Игнатьев Е.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "228",
+          "auditorium": "349",
           "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
+          "classroom": "каб. 349 (Энгельса)",
           "computers": true,
           "note": null,
           "group_list": [
@@ -1001,37 +998,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "МАТ.04 унылого дерьма в условиях невесомости",
-          "teacher": "Хуеплётов С.С.",
+          "subject": "БЖД",
+          "teacher": "Назаров С.Ю.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ФИЗ лютой хуйни на стыке маразма и безумия",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
+          "auditorium": "257",
           "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
+          "classroom": "каб. 257 (Энгельса)",
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1040,64 +1016,23 @@
           "original_classroom": null
         }
       ],
-      "week_number": 47,
-      "week_type": "Числитель"
+      "week_number": 12,
+      "week_type": "Знаменатель"
     },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "НЧЧ.04 лютого шлака под соусом депрессии",
-          "teacher": "Шлакоблоков Г.В.",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "РЭФ отборного кала в условиях невесомости",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": true,
-          "note": "Лекция читается шёпотом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ЕЗ.03.1 мутной воды для очистки совести",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1107,18 +1042,36 @@
           "original_classroom": null
         },
         {
-          "lesson_number": 4,
-          "subject": "ЦЧС.02 полной параши специального профиля",
-          "teacher": "Дрочилин А.П.",
+          "lesson_number": 2,
+          "subject": "ОСиС",
+          "teacher": "Андреев Д.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ЭВМ",
+          "teacher": "Бурмистрова М.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1127,25 +1080,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 47,
-      "week_type": "Числитель"
+      "week_number": 12,
+      "week_type": "Знаменатель"
     },
     "2026-11-18": {
       "day_name": "Среда",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "АПУ мутной воды в условиях невесомости",
-          "teacher": "Говноедов А.А.",
+          "subject": "МДК.07.01 Оператор беспилотных авиационных систем",
+          "teacher": "Латровкин А.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1155,17 +1107,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ФИЗ.01 лютой хуйни с привкусом безысходности",
-          "teacher": "Мудозвонов К.А.",
+          "subject": "ОПБД",
+          "teacher": "Медведева Е.Е.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1175,17 +1126,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "МАТ.01 лютой хуйни третьей степени",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
+          "subject": "ОАП",
+          "teacher": "Журавлева О.А.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1194,25 +1144,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 47,
-      "week_type": "Числитель"
+      "week_number": 12,
+      "week_type": "Знаменатель"
     },
     "2026-11-19": {
       "day_name": "Четверг",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "СКС дичайшей ебалы с привкусом безысходности",
-          "teacher": "Говноедов А.А.",
+          "subject": "Физ. культура",
+          "teacher": "Моторина Е.Л.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1222,17 +1171,16 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ТЭЦ тотального пиздеца в особо крупных размерах",
-          "teacher": "Парашин К.С.",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Лекция читается шёпотом",
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1242,16 +1190,15 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ЛЦЕ.02.2 кринжа до полного изнеможения",
-          "teacher": "Глухонемой С.С.",
+          "subject": "История ОГСЭ",
+          "teacher": "Чебачева Е.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1261,45 +1208,24 @@
           "original_classroom": null
         }
       ],
-      "week_number": 47,
-      "week_type": "Числитель"
+      "week_number": 12,
+      "week_type": "Знаменатель"
     },
     "2026-11-20": {
       "day_name": "Пятница",
       "lessons": [
         {
-          "lesson_number": 1,
-          "subject": "СУБД кринжа повышенной сложности",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
           "lesson_number": 2,
-          "subject": "АПУ дичи продвинутого уровня",
-          "teacher": "Перделов И.В.",
-          "subgroup": 0,
+          "subject": "ОАП",
+          "teacher": "Молькова Л.Ю.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
-          "note": "Приходить со своим ведром",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1309,17 +1235,16 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ВТ.02.2 несусветной хуеты прикладного назначения",
-          "teacher": "Глухонемой С.С.",
+          "subject": "История ОГСЭ",
+          "teacher": "Чебачева Е.В.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1329,17 +1254,16 @@
         },
         {
           "lesson_number": 4,
-          "subject": "СУБД.02 несусветной хуеты с элементами цирка",
-          "teacher": "Мочалов П.К.",
+          "subject": "ДМ с ЭМЛ",
+          "teacher": "Муравьева Ю.А.",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1348,174 +1272,23 @@
           "original_classroom": null
         }
       ],
-      "week_number": 47,
-      "week_type": "Числитель"
+      "week_number": 12,
+      "week_type": "Знаменатель"
     },
     "2026-11-21": {
       "day_name": "Суббота",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "ИНФ.03.1 дикого кринжа под соусом депрессии",
-          "teacher": "Парашин К.С.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": false,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ЯЖДМ.03 тотального пиздеца для сдачи в утиль",
-          "teacher": "Очкодралов В.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ТЭЦ непотребного бреда с практическими пытками",
-          "teacher": "Мудозвонов К.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "СУБД.03.2 говна прикладного назначения",
-          "teacher": "Шизофреников М.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 47,
-      "week_type": "Числитель"
-    },
-    "2026-11-22": {
-      "lessons": []
-    },
-    "2026-11-23": {
-      "day_name": "Понедельник",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ЭТ мочи для сдачи в утиль",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Приходить со своим ведром",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ВТ собачьей чуши специального профиля",
-          "teacher": "Мочалов П.К.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "КИС которую можно проебать третьей степени",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ЦЯЮД.02 дичайшей ебалы с элементами цирка",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1523,27 +1296,19 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
-        }
-      ],
-      "week_number": 48,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-24": {
-      "day_name": "Вторник",
-      "lessons": [
+        },
         {
           "lesson_number": 1,
-          "subject": "АИС говна в режиме реального ада",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1553,17 +1318,35 @@
         },
         {
           "lesson_number": 2,
-          "subject": "ИНЧ.04.1 несусветной хуеты с защитой у чертей",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
           "group_list": [
             "25290907/1091"
           ],
@@ -1573,16 +1356,34 @@
         },
         {
           "lesson_number": 3,
-          "subject": "ЭТ.01 отборного маразма с защитой у чертей",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1593,84 +1394,16 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ПМИ.01.1 собачьей чуши с глубоким погружением",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Панченко Я.А.",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 48,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-25": {
-      "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ВФУ.01.1 отборного маразма в режиме реального ада",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ТРПО дичайшей ебалы с глубоким погружением",
-          "teacher": "Сракашвили К.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ОПД тотального пиздеца повышенной сложности",
-          "teacher": "Сракашвили К.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Вход строго в бахилах на голову",
           "group_list": [
             "25290907/1091"
           ],
@@ -1680,16 +1413,15 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ППО.01 собачьей чуши с глубоким погружением",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Кулакова Д.М.",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1699,1178 +1431,7 @@
           "original_classroom": null
         }
       ],
-      "week_number": 48,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-26": {
-      "day_name": "Четверг",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ПТ залупы продвинутого уровня",
-          "teacher": "Очкодралов В.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ПИБ.01 говна для особо одарённых",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ММ.01 хуйни с элементами цирка",
-          "teacher": "Залупко В.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
-          "note": "Приходить со своим ведром",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ООП мутной воды в режиме реального ада",
-          "teacher": "Очкодралов В.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 48,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-27": {
-      "day_name": "Пятница",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "РЗЗЗ.03.2 тотального пиздеца под соусом депрессии",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "КИС несусветной хуеты на кафедре маразма",
-          "teacher": "Очкодралов В.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ДРПТ пустого порожняка в первом приближении",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "МДК.01 мочи по методичке 1974 года",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 48,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-28": {
-      "day_name": "Суббота",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ОПД лютой хуйни третьей степени",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Лекция читается шёпотом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ТЭЦ.03 отборного кала с элементами цирка",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ЦИ.02 которую можно проебать для сдачи в утиль",
-          "teacher": "Парашин К.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 48,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-29": {
-      "lessons": []
-    },
-    "2026-11-30": {
-      "day_name": "Понедельник",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ЦНЮ хуйни специального профиля",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ПМИ.03.1 полной параши с привкусом безысходности",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ТЗИ.01 унылого дерьма прикладного назначения",
-          "teacher": "Мочалов П.К.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ЭВМ.02 пустого порожняка с практическими пытками",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 49,
-      "week_type": "Числитель"
-    },
-    "2026-12-01": {
-      "day_name": "Вторник",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ИНФ несусветной хуеты с привкусом безысходности",
-          "teacher": "Шизофреников М.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ПБ.04 кринжа повышенной сложности",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "РПО лютого шлака для очистки совести",
-          "teacher": "Мочалов П.К.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Приходить со своим ведром",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ПИБ пустого порожняка без права на пересдачу",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 49,
-      "week_type": "Числитель"
-    },
-    "2026-12-02": {
-      "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "СЕТИ унылого дерьма в первом приближении",
-          "teacher": "Перделов И.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "РПУ собачьей чуши третьей степени",
-          "teacher": "Залупко В.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": true,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "КИС дикого кринжа для особо одарённых",
-          "teacher": "Хуеплётов С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Преподаватель спит, не будить",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 49,
-      "week_type": "Числитель"
-    },
-    "2026-12-03": {
-      "day_name": "Четверг",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ШКТ полной параши с элементами цирка",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ЭВМ дичайшей ебалы в особо крупных размерах",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
-          "note": "Контрольная работа по выживанию",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ТЧО мочи третьей степени",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "МДК.03.2 полной параши в первом приближении",
-          "teacher": "Залупко В.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 49,
-      "week_type": "Числитель"
-    },
-    "2026-12-04": {
-      "day_name": "Пятница",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ЭТ.01.2 кринжа с практическими пытками",
-          "teacher": "Хуеплётов С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "АПУ дичайшей ебалы для сдачи в утиль",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ВТ.01 лютой хуйни до полного изнеможения",
-          "teacher": "Очкодралов В.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 49,
-      "week_type": "Числитель"
-    },
-    "2026-12-05": {
-      "day_name": "Суббота",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "КМА хуйни в условиях невесомости",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ТОЭ.02.1 пустого порожняка в режиме реального ада",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "БСЛ отборного маразма с практическими пытками",
-          "teacher": "Мудозвонов К.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": false,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ПИ тотального пиздеца для особо одарённых",
-          "teacher": "Мудозвонов К.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 49,
-      "week_type": "Числитель"
-    },
-    "2026-12-06": {
-      "lessons": []
-    },
-    "2026-12-07": {
-      "day_name": "Понедельник",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "СЯТЕ бесполезной ебатории для сдачи в утиль",
-          "teacher": "Шизофреников М.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "УЯЛЛ.02 отборного кала в первом приближении",
-          "teacher": "Шизофреников М.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ФДЛ.03.2 лютого шлака в режиме реального ада",
-          "teacher": "Перделов И.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 50,
-      "week_type": "Знаменатель"
-    },
-    "2026-12-08": {
-      "day_name": "Вторник",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "КАС дичи на стыке маразма и безумия",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "13",
-          "campus": "Э",
-          "classroom": "каб. 13 (актовый зал)",
-          "computers": true,
-          "note": "Лекция читается шёпотом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ШУО которую можно проебать с практическими пытками",
-          "teacher": "Парашин К.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ДШ.02.1 бесполезной ебатории для сдачи в утиль",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ЧРМ.02.1 лютого шлака в особо крупных размерах",
-          "teacher": "Шизофреников М.М.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "42",
-          "campus": "П",
-          "classroom": "каб. 42 (склад метёлок)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 50,
-      "week_type": "Знаменатель"
-    },
-    "2026-12-09": {
-      "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ООП.03 мутной воды с элементами цирка",
-          "teacher": "Шлакоблоков Г.В.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ПБ дикого кринжа под соусом депрессии",
-          "teacher": "Очкодралов В.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ВА собачьей чуши в условиях невесомости",
-          "teacher": "Глухонемой С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Пара отменена в связи с поносом",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 50,
-      "week_type": "Знаменатель"
-    },
-    "2026-12-10": {
-      "day_name": "Четверг",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "РПУ.03 говна без права на пересдачу",
-          "teacher": "Мудозвонов К.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": "Приходить со своим ведром",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ИНФ.04.1 мочи с защитой у чертей",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ДН.02.2 отборного кала на кафедре маразма",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": true,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 50,
-      "week_type": "Знаменатель"
-    },
-    "2026-12-11": {
-      "day_name": "Пятница",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ПБ.03 собачьей чуши в режиме реального ада",
-          "teacher": "Парашин К.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": "Обязательно наличие справки от нарколога",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "СЕТИ дичи с практическими пытками",
-          "teacher": "Хуеплётов С.С.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "777",
-          "campus": "П",
-          "classroom": "каб. 777 (деканат)",
-          "computers": false,
-          "note": "Сдача долгов за 1999 год",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ТОЭ.02 кринжа до полного изнеможения",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "replacement",
-          "zam": "1",
-          "auditorium": "404",
-          "campus": "П",
-          "classroom": "каб. 404 (в туалете)",
-          "computers": true,
-          "note": "Вход строго в бахилах на голову",
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "ТЭЦ мутной воды с элементами цирка",
-          "teacher": "Кринжеватов Д.И.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "228",
-          "campus": "Э",
-          "classroom": "каб. 228 (курилка)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 50,
-      "week_type": "Знаменатель"
-    },
-    "2026-12-12": {
-      "day_name": "Суббота",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ХДЦ.03 тотального пиздеца в условиях невесомости",
-          "teacher": "Говноедов А.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "666",
-          "campus": "П",
-          "classroom": "каб. 666 (подвал)",
-          "computers": true,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "СУБД.02 полной параши с глубоким погружением",
-          "teacher": "Дрочилин А.П.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "69",
-          "campus": "Э",
-          "classroom": "каб. 69 (коридор)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ГУ унылого дерьма специального профиля",
-          "teacher": "Бредоносов М.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "0",
-          "campus": "П",
-          "classroom": "каб. 0 (на улице)",
-          "computers": false,
-          "note": null,
-          "group_list": [
-            "25290907/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 50,
+      "week_number": 12,
       "week_type": "Знаменатель"
     }
   }

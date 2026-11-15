@@ -1069,21 +1069,25 @@
       "id": "faculty-a74a84123f7c",
       "name": "Любицкая Екатерина Кирилловна",
       "teacher": "Любицкая Е.К.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a74a84123f7c.json",
       "groups": {
         "26290911/3111": [
           "Ин. яз. в ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-15T16:42:03.205805+00:00",
+      "fetched_at": "2026-11-15T16:42:04.835091+00:00"
     },
     {
       "id": "faculty-1bf3af964d65",
       "name": "Лявданская Елена Викторовна",
       "teacher": "Лявданская Е.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1bf3af964d65.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T16:42:04.835129+00:00",
+      "fetched_at": "2026-11-15T16:42:06.733825+00:00"
     },
     {
       "id": "faculty-87486acd5b71",
@@ -1095,7 +1099,8 @@
         "25290909/3091": [
           "Физ. культура"
         ]
-      }
+      },
+      "attempted_at": "2026-11-15T16:42:06.733875+00:00"
     },
     {
       "id": "faculty-f650b2f43d0c",
@@ -1103,7 +1108,8 @@
       "teacher": "Малькова Е.Т.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f650b2f43d0c.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T16:42:09.530126+00:00"
     },
     {
       "id": "faculty-2a15890c06c3",
@@ -1111,7 +1117,8 @@
       "teacher": "Маньшина А.В.",
       "status": "source_error",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T16:42:11.331068+00:00"
     },
     {
       "id": "faculty-f27546a1721b",
