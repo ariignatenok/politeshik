@@ -1044,7 +1044,8 @@
       "teacher": "Линева Е.В.",
       "status": "source_error",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T09:52:08.297746+00:00"
     },
     {
       "id": "faculty-f6378254c6d1",
@@ -1052,7 +1053,8 @@
       "teacher": "Лужковский А.В.",
       "status": "source_error",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T09:52:11.218431+00:00"
     },
     {
       "id": "faculty-e9b8a69943a2",
@@ -1060,7 +1062,8 @@
       "teacher": "Лысикова А.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-e9b8a69943a2.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-15T09:52:15.916441+00:00"
     },
     {
       "id": "faculty-a74a84123f7c",
