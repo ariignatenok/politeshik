@@ -1330,7 +1330,8 @@
       "teacher": "Никольский В.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-10e21641a19c.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T18:40:30.098636+00:00"
     },
     {
       "id": "faculty-bde84e497bec",
@@ -1338,7 +1339,8 @@
       "teacher": "Нургалиева Е.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-bde84e497bec.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T18:40:34.803926+00:00"
     },
     {
       "id": "faculty-c4090c1b5041",
@@ -1346,7 +1348,8 @@
       "teacher": "Окунева Ж.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c4090c1b5041.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T18:40:37.661254+00:00"
     },
     {
       "id": "faculty-d4bc1b1889da",
