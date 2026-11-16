@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - scripts/sync_schedule.py
+      - scripts/schedule_integrity.py
       - scripts/sync_teacher_schedule.py
       - scripts/sync_faculty.py
       - data/faculty-names.json

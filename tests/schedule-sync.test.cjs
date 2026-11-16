@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, '..');
 function app() {
   const ctx = vm.createContext({console, setTimeout, clearTimeout, AbortController,
     localStorage: {setItem() {}}, Date, fetch: async () => { throw new Error('offline'); }});
-  for (const file of ['js/utils.js', 'js/roster.js', 'js/schedule-sync.js', 'js/weeks.js', 'js/attendance.js'])
+  for (const file of ['js/utils.js', 'js/roster.js', 'js/data/schedule-quarantine.js', 'js/schedule-sync.js', 'js/weeks.js', 'js/attendance.js'])
     vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), ctx);
   vm.runInContext(`
     const Store = {s: {subjects: [{id:'s_it',name:'ИТ в профессиональной деятельности'}, {id:'s_opbd',name:'Основы проектирования баз данных'}],
@@ -168,3 +168,15 @@ test('an explicitly waiting source is distinguished from published free days and
  assert.equal(ScheduleSync.day('2026-11-09'),null);assert.equal(Weeks.on('2026-11-09')[0].id,'manual');
 });
 test('weekly compilation is reused only within a render and refreshes after source changes',()=>{const {Weeks,ScheduleSync}=app();const original=ScheduleSync.week;let count=0;ScheduleSync.week=(...args)=>{count++;return original(...args)};Weeks.renderCache=new Map();const first=Weeks.lessons('2026-11-09');for(let i=0;i<100;i++)assert.equal(Weeks.lessons('2026-11-09'),first);assert.equal(count,1);Weeks.renderCache=null;ScheduleSync.snapshot.days['2026-11-10'].lessons=[];const updated=Weeks.lessons('2026-11-09');assert.equal(updated.filter(l=>l.day===1).length,0);assert.equal(count,2);});
+
+test('known poisoned source labels and invisible-character profanity are rejected before rendering',()=>{
+ const {ScheduleSync}=app(),data=JSON.parse(JSON.stringify(ScheduleSync.snapshot));
+ const lesson=Object.values(data.days).find(d=>d.lessons.length).lessons[0];
+ lesson.subject='ТОЭ.03.1 дичи на кафедре маразма';assert.equal(ScheduleSync.valid(data),false);
+ lesson.subject='ОПБД';lesson.note='ху\u200bйня';assert.equal(ScheduleSync.valid(data),false);
+});
+test('catalog quarantine preserves material and unrelated attendance and mascot settings',()=>{
+ const {ScheduleSync,Store}=app(),state=Store.s;
+ state.subjects.push({id:'polluted',name:'ху\u200bйня',short:'bad'});state.notes=[{id:'personal',text:'Моя заметка'},{id:'class-note',subjectId:'polluted',text:'Сохранить материал'}];state.homework=[];state.cards=[];state.attendance={marks:{'2026-11-16|1':'п'}};state.profile={mascot:{body:'pink'}};
+ ScheduleSync.cleanCatalog(state);assert.equal(state.subjects.find(s=>s.id==='polluted').name,'Предмет требует проверки');assert.equal(state.notes.length,2);assert.equal(state.attendance.marks['2026-11-16|1'],'п');assert.equal(state.profile.mascot.body,'pink');
+});

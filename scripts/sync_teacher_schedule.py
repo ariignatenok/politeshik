@@ -6,6 +6,9 @@ import re
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
+import sys as _sys
+_sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from schedule_integrity import validate_content, trusted_history
 
 TEACHER = "Назаров Д.А."
 FULL_NAME = "Назаров Денис Александрович"
@@ -38,7 +41,8 @@ def build_snapshot(response, previous, today, teacher=TEACHER, full_name=FULL_NA
                 raise ValueError("Missing group for teacher lesson")
     if not any(day["lessons"] for day in days.values()):
         raise ValueError("No teacher lessons; preserving the last valid copy")
-    history = previous.get("days", {}) if previous.get("teacher") == teacher else {}
+    validate_content(days, previous)
+    history = trusted_history(previous.get("days", {})) if previous.get("teacher") == teacher else {}
     merged = {date: day for date, day in history.items() if (today - dt.timedelta(weeks=40)).isoformat() <= date < start.isoformat()}
     end = dt.date.fromisoformat(max(days))
     published_start = dt.date.fromisoformat(min(days))

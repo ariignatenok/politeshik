@@ -6,6 +6,9 @@ import pathlib
 import sys
 import urllib.parse
 import urllib.request
+import sys as _sys
+_sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from schedule_integrity import validate_content, trusted_history
 from zoneinfo import ZoneInfo
 
 GROUP = "25290909/3091"
@@ -43,8 +46,9 @@ def build_snapshot(response, previous, today, group=GROUP):
     start, end = monday - dt.timedelta(days=7), monday + dt.timedelta(days=34)
     days = response.get("days")
     validate_days(days, start, end, group)
+    validate_content(days, previous)
     end = dt.date.fromisoformat(max(days))
-    history = previous.get("days", {}) if previous.get("group") == group else {}
+    history = trusted_history(previous.get("days", {})) if previous.get("group") == group else {}
     keep_after = today - dt.timedelta(weeks=40)
     merged = {date: day for date, day in history.items() if keep_after.isoformat() <= date < start.isoformat()}
     for offset in range((end - start).days + 1):

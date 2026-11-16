@@ -10,6 +10,7 @@ import time
 import sys
 from zoneinfo import ZoneInfo
 from sync_teacher_schedule import build_snapshot, teacher_key, SOURCE
+from schedule_integrity import safe_lesson, safe_text
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 GROUP_FILES = {'25290909/3091':'schedule.json','26290911/3111':'schedule-26290911-3111.json','23290907/2092':'schedule-23290907-2092.json','24290907/2092':'schedule-24290907-2092.json','25290907/3111':'schedule-25290907-3111.json','25290907/1091':'schedule-25290907-1091.json'}
@@ -57,6 +58,7 @@ def assignments(records):
         record['groups']={}
     unresolved=set()
     def add(teacher,group,subject):
+        if not safe_text(teacher) or not safe_text(subject):return
         matches=by_key.get(teacher_key(teacher),[])
         if len(matches)!=1:
             if teacher:unresolved.add(teacher)
@@ -68,13 +70,13 @@ def assignments(records):
         data=json.loads((ROOT/'data'/file).read_text())
         for day in data['days'].values():
             for lesson in day['lessons']:
-                if lesson.get('status')!='cancellation':add(lesson.get('teacher'),group,lesson['subject'])
+                if lesson.get('status')!='cancellation' and safe_lesson(lesson):add(lesson.get('teacher'),group,lesson['subject'])
     for record in records:
         file=record.get('schedule_file')
         if not file:continue
         for day in json.loads((ROOT/'data'/file).read_text())['days'].values():
             for lesson in day['lessons']:
-                if lesson.get('status')!='cancellation' and teacher_key(lesson.get('teacher'))==teacher_key(record['teacher']):
+                if lesson.get('status')!='cancellation' and safe_lesson(lesson) and teacher_key(lesson.get('teacher'))==teacher_key(record['teacher']):
                     for group in lesson.get('group_list',[]):add(record['teacher'],group,lesson['subject'])
     for record in records:
         record['groups']={g:sorted(v) for g,v in sorted(record['groups'].items())}

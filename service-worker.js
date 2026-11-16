@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'baccountpassword20261113';
+const CACHE_VERSION = 'bscheduleintegrity20261116';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -165,6 +165,7 @@ const SHELL = [
   'js/views/teachers.js',
   'js/weeks.js',
   'js/schedule-sync.js',
+  'js/data/schedule-quarantine.js',
   'js/groups.js',
   'js/curator.js',
   'js/curator-schedules.js',
@@ -186,7 +187,7 @@ const SHELL = [
   'data/schedule-teacher-nazarov-da.json',
   'js/works.js'
 ];
-const EXTERNAL_SCRIPTS = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'];
+const EXTERNAL_SCRIPTS = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0'];
 const RUNTIME_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net'];
 
 /**

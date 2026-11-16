@@ -265,6 +265,7 @@ const Cloud = (() => {
    */
   function applyConfig(cfg) {
     const state = Store.s;
+    ScheduleSync.cleanCatalog(state);
     if (C.isAdmin) {
       const cloudSig = JSON.stringify([cfg.schedule, cfg.pairs, cfg.anchor, cfg.subjects, cfg.weeks || {}]),
         act = adminDecide('cfgBase', cloudSig, localCfgSig(), cfg.updated);
@@ -858,6 +859,7 @@ const Cloud = (() => {
    */
   C.pushConfig = force => {
     if (!C.isAdmin || (!force && !C.syncedCfg)) return;
+    ScheduleSync.cleanCatalog(Store.s);
     const state = Store.s,
       cfg = {
         schedule: state.schedule,
@@ -891,6 +893,7 @@ const Cloud = (() => {
    * @returns {Object} преподаватели, предметы, ДЗ, конспекты, карточки.
    */
   C.buildExtra = () => {
+    ScheduleSync.cleanCatalog(Store.s);
     const state = Store.s,
       isSeed = id => String(id).indexOf('sd_') === 0;
     return {

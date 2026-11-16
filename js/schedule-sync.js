@@ -2,7 +2,7 @@
 
 const ScheduleSync = {
   group: '25290909/3091',
-  key: 'politeshik:polytech-schedule:v1',
+  key: 'politeshik:polytech-schedule:v2',
   url: 'https://raw.githubusercontent.com/ariignatenok/politeshik/main/data/schedule.json',
   snapshot: null,
   failed: false,
@@ -19,7 +19,7 @@ const ScheduleSync = {
     ScheduleSync.group = group.number;
     ScheduleSync.file = group.file;
     ScheduleSync.url = 'https://raw.githubusercontent.com/ariignatenok/politeshik/main/data/' + group.file;
-    ScheduleSync.key = 'politeshik:polytech-schedule:v1:' + group.id;
+    ScheduleSync.key = 'politeshik:polytech-schedule:v2:' + group.id;
     ScheduleSync.snapshot = null;
     ScheduleSync.busy = false;
     try {
@@ -33,7 +33,9 @@ const ScheduleSync = {
    * Добавляет предметы и преподавателей только из расписания выбранной группы.
    */
   populateCatalog() {
-    if (!ScheduleSync.snapshot || !Store.s) return;
+    if (!Store.s) return;
+    ScheduleSync.cleanCatalog(Store.s);
+    if (!ScheduleSync.snapshot) return;
     Object.values(ScheduleSync.snapshot.days).forEach(day => day.lessons.forEach(lesson => {
       const subjectId = ScheduleSync.subject(lesson.subject);
       if (!lesson.teacher) return;
@@ -60,10 +62,28 @@ const ScheduleSync = {
     if (!dates.length || dates.length > 400 || dates[0] !== data.from || dates[dates.length - 1] !== data.to) return false;
     return dates.every(date => /^\d{4}-\d{2}-\d{2}$/.test(date) &&
       data.days[date] && Array.isArray(data.days[date].lessons) &&
-      data.days[date].lessons.every(l => l && Number.isInteger(l.lesson_number) &&
+      data.days[date].lessons.every(l => l && ScheduleSync.safeLesson(l) && Number.isInteger(l.lesson_number) &&
         l.lesson_number >= 1 && l.lesson_number <= 10 && typeof l.subject === 'string' && !!l.subject.trim() &&
         ['ok', 'replacement', 'cancellation'].includes(l.status) && [0, 1, 2].includes(l.subgroup) &&
         Array.isArray(l.group_list) && l.group_list.includes(group)));
+  },
+  safeText(value) {
+    const text=String(value||'').normalize('NFKC').toLowerCase().replace(/ё/g,'е').replace(/[\u200b-\u200f\ufeff]/g,'');
+    let hash=2166136261;for(const char of text.replace(/[_\s]+/g,' ').trim())hash=Math.imul(hash^char.charCodeAt(0),16777619);
+    if(typeof SCHEDULE_QUARANTINE!=='undefined'&&SCHEDULE_QUARANTINE.has('polytech_'+(hash>>>0).toString(16)))return false;
+    return !/(?:^|[^а-яa-z])(?:ху[йея]|хует|пизд|бляд|говн|дерьм|залуп|дроч|шизофреник)|со своим ведром|практическими пытками|мочи строгого/iu.test(text);
+  },
+  safeLesson(lesson) {return !!lesson&&['subject','teacher','classroom','auditorium','note','original_subject','original_teacher','original_classroom','who','room','sourceSubject','sourceNote'].every(k=>ScheduleSync.safeText(lesson[k]));},
+  cleanCatalog(state) {
+    const referenced=new Set(['homework','cards','notes'].flatMap(k=>(state[k]||[]).map(x=>x.subjectId)));
+    state.subjects=(state.subjects||[]).flatMap(s=>{
+      if(ScheduleSync.safeText(s.name)&&ScheduleSync.safeText(s.short)&&(typeof SCHEDULE_QUARANTINE==='undefined'||!SCHEDULE_QUARANTINE.has(s.id)))return[s];
+      return referenced.has(s.id)?[Object.assign({},s,{name:'Предмет требует проверки',short:'Требует проверки',needsReview:true})]:[];
+    });
+    const ids=new Set(state.subjects.map(s=>s.id));
+    state.teachers=(state.teachers||[]).filter(t=>ScheduleSync.safeText(t.name)&&(typeof SCHEDULE_QUARANTINE==='undefined'||!SCHEDULE_QUARANTINE.has(t.id))).map(t=>Object.assign({},t,{subjectIds:(t.subjectIds||[]).filter(id=>ids.has(id))}));
+    state.schedule=(state.schedule||[]).filter(ScheduleSync.safeLesson);
+    for(const [week,lessons]of Object.entries(state.weeks||{}))if(Array.isArray(lessons))state.weeks[week]=lessons.filter(ScheduleSync.safeLesson);
   },
   /**
    * Возвращает опубликованный день, включая день без занятий.
