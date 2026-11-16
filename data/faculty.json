@@ -1157,7 +1157,8 @@
         "23290907/2092": [
           "Основы философии"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T01:21:35.990178+00:00"
     },
     {
       "id": "faculty-27a562309702",
@@ -1165,7 +1166,8 @@
       "teacher": "Матвеева С.П.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-27a562309702.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T01:21:37.618383+00:00"
     },
     {
       "id": "faculty-29469a3b9ba9",
@@ -1173,7 +1175,8 @@
       "teacher": "Матвеева Ю.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-29469a3b9ba9.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T01:21:39.191310+00:00"
     },
     {
       "id": "faculty-f85890a8a60c",
