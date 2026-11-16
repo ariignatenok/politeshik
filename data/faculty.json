@@ -1237,7 +1237,7 @@
       "id": "faculty-e873dedba45e",
       "name": "Моторина Елена Львовна",
       "teacher": "Моторина Е.Л.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-e873dedba45e.json",
       "groups": {
         "23290907/2092": [
@@ -1246,15 +1246,19 @@
         "25290907/1091": [
           "Физ. культура"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T11:58:37.313813+00:00",
+      "fetched_at": "2026-11-16T11:58:38.988298+00:00"
     },
     {
       "id": "faculty-049acfaa4f21",
       "name": "Мукбиль Мансур Хассан Мухаммад",
       "teacher": "Мукбиль Мансур Хассан Мухаммад",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-049acfaa4f21.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T11:58:38.988371+00:00",
+      "fetched_at": "2026-11-16T11:58:40.495329+00:00"
     },
     {
       "id": "faculty-3c7319fda0f2",
@@ -1272,19 +1276,22 @@
         "26290911/3111": [
           "ДМ с ЭМЛ"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T11:58:40.495372+00:00"
     },
     {
       "id": "faculty-f72122972383",
       "name": "Назаров Денис Александрович",
       "teacher": "Назаров Д.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f72122972383.json",
       "groups": {
         "24290907/2092": [
           "Психология общения"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T11:58:42.014041+00:00",
+      "fetched_at": "2026-11-16T11:58:43.517494+00:00"
     },
     {
       "id": "faculty-f01395cdd5e0",
@@ -1296,7 +1303,8 @@
         "25290907/1091": [
           "БЖД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T11:58:43.517525+00:00"
     },
     {
       "id": "faculty-4c9a96cf95ce",
@@ -1304,7 +1312,8 @@
       "teacher": "Нестеренок В.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-4c9a96cf95ce.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T11:58:45.022076+00:00"
     },
     {
       "id": "faculty-93810ba1770f",
@@ -1312,7 +1321,8 @@
       "teacher": "Никитина Е.С.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-93810ba1770f.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T11:58:46.524826+00:00"
     },
     {
       "id": "faculty-10e21641a19c",

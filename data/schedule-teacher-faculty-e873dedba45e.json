@@ -4,7 +4,7 @@
   "teacher": "Моторина Е.Л.",
   "full_name": "Моторина Елена Львовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-16",
   "from": "2026-11-03",
   "to": "2026-11-20",
   "days": {
@@ -276,9 +276,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -630,9 +627,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -650,9 +647,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -670,9 +667,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -690,9 +687,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1091"
