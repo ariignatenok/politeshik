@@ -1182,21 +1182,25 @@
       "id": "faculty-f85890a8a60c",
       "name": "Медведева Евгения Евгеньевна",
       "teacher": "Медведева Е.Е.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f85890a8a60c.json",
       "groups": {
         "25290907/1091": [
           "ОПБД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T08:07:24.298715+00:00",
+      "fetched_at": "2026-11-16T08:07:25.846450+00:00"
     },
     {
       "id": "faculty-77a21bd98518",
       "name": "Медведева Ольга Владимировна",
       "teacher": "Медведева О.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-77a21bd98518.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T08:07:25.846486+00:00",
+      "fetched_at": "2026-11-16T08:07:27.407978+00:00"
     },
     {
       "id": "faculty-8882c5308fbe",
@@ -1204,7 +1208,8 @@
       "teacher": "Меньшиков И.Г.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8882c5308fbe.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T08:07:27.408019+00:00"
     },
     {
       "id": "faculty-2b0f4c4004a8",
@@ -1212,7 +1217,8 @@
       "teacher": "Михайловская В.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-2b0f4c4004a8.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-16T08:07:28.946157+00:00"
     },
     {
       "id": "faculty-3ba58257825a",
@@ -1224,7 +1230,8 @@
         "25290907/1091": [
           "ОАП"
         ]
-      }
+      },
+      "attempted_at": "2026-11-16T08:07:30.497652+00:00"
     },
     {
       "id": "faculty-e873dedba45e",
