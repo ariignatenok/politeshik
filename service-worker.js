@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bscheduleintegrity20261116';
+const CACHE_VERSION = 'brecoverytables20261117';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -97,6 +97,7 @@ const SHELL = [
   'js/club-music.js',
   'js/club-dj.js',
   'js/account-password.js',
+  'js/auth-recovery.js',
   'js/data/club-tracks.js',
   'js/club-games.js',
   'js/club-rooms.js',

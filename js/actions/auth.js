@@ -103,7 +103,7 @@ Object.assign(A, {
       consent: !!(f.querySelector('[name=consent]') || {}).checked
     };
     if (!email || !password) return toast('Введите почту и пароль');
-    if (password.length < 6) return toast('Пароль должен быть не короче 6 символов');
+    if (password.length < 8) return toast('Пароль должен быть не короче 8 символов');
     if (!(f.querySelector('[name=consent]') || {}).checked)
       return toast('Нужно согласие на обработку персональных данных');
     if (role === 'student' || role === 'parent') {

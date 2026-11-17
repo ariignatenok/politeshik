@@ -6,6 +6,7 @@ const App = {
    * @returns {string} режим экрана входа или пустая строка.
    */
   gateMode() {
+    if(typeof AuthRecovery!=='undefined'&&AuthRecovery.active)return 'recovery';
     if (Cloud.status === 'pending' || ui.activating) return 'loading';
     if(Cloud.status==='online'&&Cloud.facultyRequest&&Cloud.facultyRequest.status!=='approved')return 'faculty-wait';
     if (Cloud.status !== 'online' && ui.confirmEmail) return 'confirm';
@@ -46,6 +47,7 @@ const App = {
    */
   renderGate(mode) {
     const g = $('#gate');
+    if(mode==='recovery')return AuthRecovery.render(g);
     const logged = Cloud.status === 'online';
     const hasCab = logged && Cloud.hasCabinet();
     const needClaim = logged && !hasCab && Cloud.claimsLoaded;
@@ -250,13 +252,13 @@ const App = {
       '<div data-form="login"><label class="field"><span>Эл. почта</span><input class="input" name="email" type="email" autocomplete="email" placeholder="you@mail.ru" value="' +
       U.esc(draft.email || '') +
       '"></label>' +
-      '<label class="field"><span>Пароль</span><input class="input" name="password" type="password" autocomplete="current-password" placeholder="не короче 6 символов"></label>' +
+      '<label class="field"><span>Пароль</span><input class="input" name="password" type="password" autocomplete="current-password" placeholder="Введите пароль"></label>' +
       extra +
       codeField +
       consentBox +
       '<button class="btn primary big" data-action="login-do">Войти</button><button class="btn big" style="margin-top:8px" data-action="signup-do"' +
       (draft.consent ? '' : ' disabled') +
-      '>Зарегистрироваться</button></div>' +
+      '>Зарегистрироваться</button><button class="btn big" style="margin-top:8px" data-action="password-forgot">Забыли пароль?</button></div>' +
       '<div class="gate-or"><span>или</span></div><button class="btn big gh" data-action="oauth-github">' +
       GITHUB_MARK +
       ' Войти через GitHub</button><small class="gate-foot">Через GitHub: после входа выберите роль и введите код группы. Пароль хранится в Supabase в зашифрованном виде.</small></div>';
@@ -521,6 +523,7 @@ const App = {
    * Запускает приложение: загружает данные, подключает облако и таймеры.
    */
   init() {
+    if(typeof AuthRecovery!=='undefined')AuthRecovery.boot();
     Store.load();
     ScheduleSync.init();
     UI.applyTheme();

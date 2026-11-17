@@ -46,15 +46,15 @@ do $$declare result jsonb;begin
  result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'drink'='citrus'),'Cocktail not delivered';
  perform public.club_give_drink(current_setting('test.ci_b')::uuid,gen_random_uuid());
  perform public.club_enter_room('games');perform public.club_game('create','poker',null,'{}','d1000000-0000-0000-0000-000000000004');
- result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'pose'='poker'and v->>'x'='18'and not(v?'hand')),'Poker host not arranged safely at table';
+ result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'pose'='poker'and (v->>'table_slot')::integer>=1 and not(v?'hand')),'Poker host not arranged safely at table';
 end $$;
 select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.ci_b'),'role','authenticated')::text,true);
 do $$declare result jsonb;begin
  perform public.club_enter_room('games');perform public.club_game('join',null,'d1000000-0000-0000-0000-000000000004');
- result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'pose'='poker'and v->>'x'='82'),'Poker guest not arranged at table';
+ result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'pose'='poker'and (v->>'table_slot')::integer>=1),'Poker guest not arranged at table';
  perform public.club_game('fold',null,'d1000000-0000-0000-0000-000000000004','{}',gen_random_uuid());
  perform public.club_game('create','pool',null,'{}','d1000000-0000-0000-0000-000000000005');
- result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'pose'='pool'and v->>'y'='75'),'Pool host not arranged at table';
+ result:=public.club_visit('state');assert exists(select 1 from jsonb_array_elements(result->'visitors')v where v->>'uid'=auth.uid()::text and v->>'pose'='pool'and (v->>'table_slot')::integer>=1),'Pool host not arranged at table';
 end $$;
 select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.ci_low'),'role','authenticated')::text,true);
 do $$declare bad boolean:=false;begin

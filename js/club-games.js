@@ -21,10 +21,10 @@ const ClubGames={
   (lobby?(lobby.matches||[]).filter(g=>!filter||g.game===filter).map(g=>'<div class="game-lobby-match"><div><b>'+U.esc(g.game==='poker'?'Покер':'Бильярд')+'</b><small>'+U.esc(g.host?.name||'Гость')+(g.guest?' и '+U.esc(g.guest.name):' · ждёт соперника')+'</small></div><button class="btn sm" data-action="club-game-open" data-id="'+g.id+'">'+(g.mine?'Моя партия':g.status==='waiting'?'Занять место':'Посмотреть')+'</button></div>').join('')||'<p class="hint">Пока нет столов. Создайте свой и позовите друга.</p>':'<p role="status">Загружаем столы…</p>')+
   '<div class="game-boards">'+['poker','pool'].map(kind=>'<section><h3>'+(kind==='poker'?'♠ Покер':'🎱 Бильярд')+'</h3><p class="hint">'+U.esc(lobby?.month||'Текущий месяц')+'</p>'+((lobby?.[kind]||[]).map(row=>'<button class="game-board-row" data-action="social-profile" data-uid="'+row.uid+'"><b>'+row.place+'</b>'+Social.avatar(row,28)+'<span>'+U.esc(row.name)+'<small>'+row.wins+' побед · '+row.games+' партий</small></span><b>'+row.points+' оч.</b></button>').join('')||'<p class="hint">Первые результаты появятся после завершённых партий.</p>')+'</section>').join('')+'</div>';
  },
- async create(game){
+ async create(game,slot=null){
   if(ClubGames.busy)return;ClubGames.busy=true;const owner=Cloud.uid;
-  if(ClubGames.pending?.action!=='create'||ClubGames.pending?.game!==game)ClubGames.pending={action:'create',game,nonce:crypto.randomUUID()};
-  try{const data=await ClubGames.call('create',{game,id:null,nonce:ClubGames.pending.nonce});if(owner!==Cloud.uid)return;ClubGames.pending=null;ClubGames.openData(data);ClubGames.at=0;}
+  if(ClubGames.pending?.action!=='create'||ClubGames.pending?.game!==game||ClubGames.pending?.slot!==slot)ClubGames.pending={action:'create',game,slot,nonce:crypto.randomUUID()};
+  try{const data=await ClubGames.call('create',{game,id:null,payload:slot?{slot}:{},nonce:ClubGames.pending.nonce});if(owner!==Cloud.uid)return;ClubGames.pending=null;ClubGames.openData(data);ClubGames.at=0;Club.refresh('state');ClubGames.loadLobby(true);}
   catch(e){if(owner===Cloud.uid)toast(e.message);}finally{if(owner===Cloud.uid)ClubGames.busy=false;}
  },
  async open(id){
@@ -84,7 +84,7 @@ const ClubGames={
 Object.assign(A,{
  'club-games-open':el=>ClubGames.openLobby(el?.dataset.game||null),
  'club-games-refresh':()=>ClubGames.loadLobby(true).then(()=>{const box=document.getElementById('club-game-lobby');if(box)box.innerHTML=ClubGames.lobbyHtml();}),
- 'club-game-create':el=>ClubGames.create(el.dataset.game),
+ 'club-game-create':el=>ClubGames.create(el.dataset.game,Number(el.dataset.slot)||null),
  'club-game-open':el=>ClubGames.open(el.dataset.id),
  'club-game-action':el=>ClubGames.action(el.dataset.operation),
  'poker-select':el=>ClubGames.select(Number(el.dataset.index)),

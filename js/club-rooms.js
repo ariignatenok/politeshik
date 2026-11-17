@@ -41,7 +41,8 @@ const ClubMovie={
 const originalClubApply=Club.apply;
 Club.apply=data=>{
  if(data.server_time)ClubMovie.offset=Date.parse(data.server_time)-Date.now();
- const stamp=JSON.stringify([data.visitors,data.joined,data.room,data.gate]);Club.renderChanged=stamp!==Club.viewState;Club.viewState=stamp;
+ const stamp=JSON.stringify([data.visitors,data.joined,data.room,data.gate,data.table_layout]);Club.renderChanged=stamp!==Club.viewState;Club.viewState=stamp;
+ Club.tableLayout=data.table_layout||null;
  const oldRoom=Club.room;originalClubApply(data);Club.room=data.room||'main';Club.gate=data.gate||null;
  if(oldRoom!==Club.room){ClubMusic.stop();ClubGames.close();if(document.querySelector('.club-game-panel,#club-game-lobby'))UI.close();}
  for(const gift of data.gifts||[]){if(!Club.giftsSeen.has(gift.id)){Club.giftsSeen.add(gift.id);toast((gift.sender||'Гость')+' передал вам '+(Club.drinks.find(d=>d[0]===gift.drink)?.[1]||'напиток')+' 💛');}}

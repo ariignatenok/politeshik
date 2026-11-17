@@ -213,7 +213,7 @@ function viewClub() {
   return (
     '<div class="page-head club-page-head"><div><h1>Клуб Политешика</h1><p>Общий танцпол, новые знакомства и ваши маскоты.</p></div><div class="head-actions"><button class="btn" data-action="social-people">Люди</button><button class="btn" data-action="club-map">← На карту</button></div></div><div class="club-scene' +
     (Club.calm ? ' calm' : '') + (Club.barExpanded?' bar-open':'')+' club-room-'+Club.room +
-    '"><div class="club-neon">POLITESHIK <span>'+U.esc(Club.roomNames[Club.room]||'CLUB')+'</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-floor">'+
+    '"><div class="club-neon">POLITESHIK <span>'+U.esc(Club.roomNames[Club.room]||'CLUB')+'</span></div><div class="club-beam beam-a"></div><div class="club-beam beam-b"></div><div class="club-floor"'+(Club.room==='games'?' style="height:'+ClubInterior.gamesLayout().height+'px;min-height:'+ClubInterior.gamesLayout().height+'px"':'')+'>'+
     (Club.room==='main'?'<div class="club-stage"><div class="club-speaker">◉<br>◉</div><button class="club-dj" data-action="club-dj-join" aria-label="Подойти к диджею и заказать трек">'+Mascot.svg('happy',110,'',{look:dj,season:''})+'<div class="club-decks"><i>◉</i><span>DJ / ПОЛИТЕШИК<br>Заказать трек →</span><i>◉</i></div></button><div class="club-speaker">◉<br>◉</div>'+ClubDJ.marquee()+'</div>'+Club.tablesHtml():Club.room==='cinema'?Club.movieHtml():ClubGames.roomHtml())+
     ClubInterior.doors()+ClubInterior.barHtml()+ClubInterior.waiterHtml() +
     Club.visitors
