@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-16",
+  "checked_at": "2026-11-17",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -1364,7 +1364,8 @@
         "25290909/3091": [
           "Компьютерные сети"
         ]
-      }
+      },
+      "attempted_at": "2026-11-17T02:08:28.891990+00:00"
     },
     {
       "id": "faculty-5fcdf5c0dc2e",
@@ -1372,7 +1373,8 @@
       "teacher": "Осипова А.С.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-5fcdf5c0dc2e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T02:08:30.398659+00:00"
     },
     {
       "id": "faculty-0a744e3c555e",
@@ -1380,7 +1382,8 @@
       "teacher": "Павлова Е.Г.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-0a744e3c555e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T02:08:31.898757+00:00"
     },
     {
       "id": "faculty-ae2fa48b91f9",
