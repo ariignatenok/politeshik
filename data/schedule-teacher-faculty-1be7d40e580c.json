@@ -4,7 +4,7 @@
   "teacher": "Поединок О.В.",
   "full_name": "Поединок Олеся Викторовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-17",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -625,9 +625,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "100",
+          "campus": "П",
+          "classroom": "каб. 100 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -645,9 +645,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "100",
+          "campus": "П",
+          "classroom": "каб. 100 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"
@@ -665,9 +665,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "100",
+          "campus": "П",
+          "classroom": "каб. 100 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -692,9 +692,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "100",
+          "campus": "П",
+          "classroom": "каб. 100 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"
@@ -712,9 +712,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "100",
+          "campus": "П",
+          "classroom": "каб. 100 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -732,9 +732,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "100",
+          "campus": "П",
+          "classroom": "каб. 100 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"

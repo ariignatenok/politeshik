@@ -1448,29 +1448,35 @@
       "id": "faculty-1be7d40e580c",
       "name": "Поединок Олеся Викторовна",
       "teacher": "Поединок О.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1be7d40e580c.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T19:27:08.634839+00:00",
+      "fetched_at": "2026-11-17T19:27:10.549936+00:00"
     },
     {
       "id": "faculty-8f64619aab36",
       "name": "Прокофьев Антон Андреевич",
       "teacher": "Прокофьев А.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8f64619aab36.json",
       "groups": {
         "24290907/2092": [
           "МДК.01.01 Разработка программных модулей"
         ]
-      }
+      },
+      "attempted_at": "2026-11-17T19:27:10.549968+00:00",
+      "fetched_at": "2026-11-17T19:27:12.385448+00:00"
     },
     {
       "id": "faculty-206a646b3548",
       "name": "Пшеницына Мария Александровна",
       "teacher": "Пшеницына М.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-206a646b3548.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T19:27:12.385482+00:00",
+      "fetched_at": "2026-11-17T19:27:14.447276+00:00"
     },
     {
       "id": "faculty-c58749eac54b",
@@ -1482,7 +1488,8 @@
         "26290911/3111": [
           "МДК.07.01 Оператор беспилотных авиационных систем"
         ]
-      }
+      },
+      "attempted_at": "2026-11-17T19:27:14.447306+00:00"
     },
     {
       "id": "faculty-1a390c43b0a7",
@@ -1490,7 +1497,8 @@
       "teacher": "Ревина О.С.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-1a390c43b0a7.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T19:27:16.288444+00:00"
     },
     {
       "id": "faculty-f9a5db0ce0b5",
@@ -1498,7 +1506,8 @@
       "teacher": "Родинов И.И.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-f9a5db0ce0b5.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T19:27:18.029703+00:00"
     },
     {
       "id": "faculty-8d7ca2243af7",
