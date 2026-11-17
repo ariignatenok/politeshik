@@ -1,6 +1,8 @@
 'use strict';
 
 Object.assign(A, {
+  'deputy-manage'() { Deputies.open(); },
+  async 'deputy-set'(el) { await Deputies.assign(el); },
   'subgroup-edit'(el){
     if(!Cloud.isAdmin)return;
     const r=ROSTER_BY_ID[el.dataset.rid];if(!r||r.flag)return;

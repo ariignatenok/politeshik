@@ -1071,7 +1071,7 @@ function openAttendanceEditor(uid, date) {
    */
   const row = pr => {
     const cur = r.marks[day + '|' + pr.pair] || '',
-      readonlyExcused = ['у','уп'].includes(cur) && !Cloud.isAdmin,
+      readonlyExcused = (!Cloud.isAdmin && ['у','уп'].includes(cur)) || (Deputies.canMark() && !!certKindFor(r.certs, day, pr.pair)),
       l = pr.lessons[0],
       sb = subj(l.subjectId);
     /**
@@ -1105,12 +1105,12 @@ function openAttendanceEditor(uid, date) {
       (l.room ? 'ауд. ' + U.esc(l.room) : '') +
       '</small></div>' +
       '<div class="ed-opts">' +
-      (readonlyExcused ? '<span class="tag">' + cur.toUpperCase() + ' · меняет только староста</span>' :
+      (readonlyExcused ? '<span class="tag">' + (cur ? cur.toUpperCase() : 'УП') + ' · меняет только староста</span>' :
       opt('п', 'Присутствовал(а)') +
-      opt('о', 'Опоздал(а)') +
+      (Deputies.canMark() ? (cur === 'о' ? '<span class="tag">О</span>' : '') : opt('о', 'Опоздал(а)')) +
       opt('н', 'Нет') +
       (Cloud.isAdmin ? opt('уп', 'Уважительный пропуск') : '') +
-      opt('', 'Нет отметки')) +
+      (Deputies.canMark() ? (cur ? '' : '<span class="tag">Нет отметки</span>') : opt('', 'Нет отметки'))) +
       '</div></div>'
     );
   };
@@ -1131,7 +1131,7 @@ function openAttendanceEditor(uid, date) {
           today +
           '">'
       ) +
-      (Cloud.isAdmin && prs.length ? '<div class="head-actions day-marks"><button class="btn" data-action="att-day-full" data-st="п">Был весь день</button><button class="btn" data-action="att-day-full" data-st="н">Не был весь день</button></div><p class="hint">УП и подтверждённые справки сохраняются.</p>' : '') +
+      ((Cloud.isAdmin || Deputies.canMark()) && prs.length ? '<div class="head-actions day-marks"><button class="btn" data-action="att-day-full" data-st="п">Был весь день</button><button class="btn" data-action="att-day-full" data-st="н">Не был весь день</button></div><p class="hint">УП и подтверждённые справки сохраняются.</p>' : '') +
       certDayNote(r.certs, day) +
       (prs.length ? prs.map(row).join('') : '<div class="empty">В этот день у студента пар нет</div>') +
       '<div class="modal-foot"><button class="btn" data-action="modal-close">Отмена</button><button class="btn primary" data-action="save-form">Сохранить</button></div></div>'

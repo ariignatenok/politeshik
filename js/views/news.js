@@ -104,8 +104,8 @@ function newsCard(n) {
  */
 function viewNews() {
   const head =
-    '<div class="page-head"><div><h1>Новости</h1><p>Объявления от админа группы. Под каждой новостью можно оставить комментарий.</p></div>' +
-    (Cloud.isAdmin
+    '<div class="page-head"><div><h1>Новости</h1><p>Объявления от старосты и замов группы. Под каждой новостью можно оставить комментарий.</p></div>' +
+    ((Cloud.isAdmin || Deputies.canMark())
       ? '<div class="head-actions"><button class="btn primary" data-action="news-add">＋ Добавить новость</button></div>'
       : '') +
     '</div>';

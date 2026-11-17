@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'brecoverytables20261117';
+const CACHE_VERSION = 'bdeputies20261118';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -117,6 +117,7 @@ const SHELL = [
   'js/newschedule.js',
   'js/notifications.js',
   'js/permissions.js',
+  'js/deputies.js',
   'js/profile.js',
   'js/pwa.js',
   'js/quickadd.js',

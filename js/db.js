@@ -707,6 +707,7 @@ const Cloud = (() => {
         await C.requestAccess('student', C.profile.name || '', '', '', Roles.storedCode());
       }
       C.applyRole();
+      await Deputies.refresh();
       if(C.profile)await C.loadSubgroups(false);
       if (C.hasCabinet() && C.profile) {
         if (C.profile.theme && THEME_IDS.indexOf(C.profile.theme) >= 0 && Store.s.settings.theme !== C.profile.theme) {
@@ -1276,6 +1277,7 @@ const Cloud = (() => {
    * @param {Object<string,string>} changes Отметки вида {"дата|пара": статус или пустая строка}.
    */
   C.saveMarksFor = async (uid, changes) => {
+    if (Deputies.canMark()) return Deputies.saveMarks(uid, changes);
     const own = uid === C.uid,
       before = own ? null : C.adm.att[uid];
     const cur = Object.assign({}, own ? Store.s.attendance.marks : (C.adm.att[uid] || {}).marks || {});

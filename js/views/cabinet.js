@@ -16,6 +16,7 @@ function aboutCard() {
     '<div class="about-meta"><span class="tag">группа ' +
     GROUP_NAME +
     '</span> ' +
+    (Deputies.canMark() ? '<span class="tag">Зам старосты</span> ' : '') +
     (state.settings.subgroup
       ? '<span class="tag">подгруппа ' + U.esc(state.settings.subgroup) + '</span> '
       : '') +

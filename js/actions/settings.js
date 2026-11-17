@@ -99,6 +99,7 @@ Object.assign(A, {
       f &&
       !canEdit() &&
       !(Cloud.isCurator && f.dataset.form === 'att-edit') &&
+      !(Deputies.canMark() && ['att-edit', 'news'].includes(f.dataset.form)) &&
       (RO_FORMS.has(f.dataset.form) || (f.dataset.form === 'note' && f.dataset.sid))
     )
       return toast('Это может делать только админ группы');

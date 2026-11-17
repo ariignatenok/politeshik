@@ -296,6 +296,7 @@ const App = {
       } catch (error) {}
     }
     document.body.classList.toggle('ro', !canEdit());
+    document.body.classList.toggle('deputy', Deputies.canMark());
     if (document.body.classList.contains('gated')) {
       document.body.classList.remove('gated');
       const g = $('#gate');
@@ -598,7 +599,7 @@ const App = {
     roStyle.textContent =
       [...RO_ACTIONS]
         .filter(a => ['times', 'cell-add', 'cell-edit', 'pair-add', 'pair-del'].indexOf(a) < 0)
-        .map(a => 'body.ro [data-action="' + a + '"]')
+        .map(a => 'body.ro' + (['att-edit','att-day-full','news-add'].includes(a) ? ':not(.deputy)' : '') + ' [data-action="' + a + '"]')
         .join(',') + '{display:none!important}';
     document.head.appendChild(roStyle);
   }

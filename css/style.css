@@ -1,35 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
-@import url("base.css?v=recoverytables20261117");
-@import url("layout.css?v=recoverytables20261117");
-@import url("components.css?v=recoverytables20261117");
-@import url("schedule.css?v=recoverytables20261117");
-@import url("subjects.css?v=recoverytables20261117");
-@import url("modal.css?v=recoverytables20261117");
-@import url("study.css?v=recoverytables20261117");
-@import url("screens.css?v=recoverytables20261117");
-@import url("gate.css?v=recoverytables20261117");
-@import url("admin.css?v=recoverytables20261117");
-@import url("themes.css?v=recoverytables20261117");
-@import url("mascot.css?v=recoverytables20261117");
-@import url("profile.css?v=recoverytables20261117");
-@import url("widgets.css?v=recoverytables20261117");
-@import url("chats.css?v=recoverytables20261117");
-@import url("news.css?v=recoverytables20261117");
-@import url("attendance-edit.css?v=recoverytables20261117");
-@import url("health.css?v=recoverytables20261117");
-@import url("fintech.css?v=recoverytables20261117");
-@import url("seasonal.css?v=recoverytables20261117");
-@import url("responsive.css?v=recoverytables20261117");
-@import url("glass.css?v=recoverytables20261117");
-@import url("motion.css?v=recoverytables20261117");
-@import url("features.css?v=recoverytables20261117");
-@import url("celebrate.css?v=recoverytables20261117");
-@import url("shell.css?v=recoverytables20261117");
+@import url("base.css?v=deputies20261118");
+@import url("layout.css?v=deputies20261118");
+@import url("components.css?v=deputies20261118");
+@import url("schedule.css?v=deputies20261118");
+@import url("subjects.css?v=deputies20261118");
+@import url("modal.css?v=deputies20261118");
+@import url("study.css?v=deputies20261118");
+@import url("screens.css?v=deputies20261118");
+@import url("gate.css?v=deputies20261118");
+@import url("admin.css?v=deputies20261118");
+@import url("themes.css?v=deputies20261118");
+@import url("mascot.css?v=deputies20261118");
+@import url("profile.css?v=deputies20261118");
+@import url("widgets.css?v=deputies20261118");
+@import url("chats.css?v=deputies20261118");
+@import url("news.css?v=deputies20261118");
+@import url("attendance-edit.css?v=deputies20261118");
+@import url("health.css?v=deputies20261118");
+@import url("fintech.css?v=deputies20261118");
+@import url("seasonal.css?v=deputies20261118");
+@import url("responsive.css?v=deputies20261118");
+@import url("glass.css?v=deputies20261118");
+@import url("motion.css?v=deputies20261118");
+@import url("features.css?v=deputies20261118");
+@import url("celebrate.css?v=deputies20261118");
+@import url("shell.css?v=deputies20261118");
 
-@import url("personal-menu.css?v=recoverytables20261117");
+@import url("personal-menu.css?v=deputies20261118");
 
-@import url("social.css?v=recoverytables20261117");
-@import url("club-rooms.css?v=recoverytables20261117");
-@import url("profile-wall.css?v=recoverytables20261117");
+@import url("social.css?v=deputies20261118");
+@import url("club-rooms.css?v=deputies20261118");
+@import url("profile-wall.css?v=deputies20261118");
 
-@import url("club-interior.css?v=recoverytables20261117");
+@import url("club-interior.css?v=deputies20261118");
+
+/* Leader-controlled deputies: names wrap, actions stay inside narrow dialogs. */
+.deputy-list {display:grid;gap:10px;max-height:55vh;overflow:auto;}
+.deputy-row {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+.deputy-row>div {min-width:0;overflow-wrap:anywhere;}
+.deputy-row small {display:block;opacity:.75;margin-top:4px;}
+.deputy-row .btn {flex-shrink:0;white-space:normal;max-width:45%;}
+@media(max-width:420px){.deputy-row{align-items:flex-start;flex-direction:column}.deputy-row .btn{max-width:100%}}

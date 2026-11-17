@@ -451,6 +451,7 @@ const Forms = {
     form.querySelectorAll('.ed-row').forEach(row => {
       if (row.dataset.readonly === 'true') return;
       const checked = row.querySelector('input:checked');
+      if (Deputies.canMark() && !checked) return;
       changes[form.dataset.date + '|' + row.dataset.pair] = checked ? checked.value : '';
     });
     if (!Object.keys(changes).length) {

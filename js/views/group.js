@@ -85,6 +85,7 @@ const nameCell = x =>
   '</b>' +
   (x.r.flag ? ' <span class="tag">' + FLAG_LABEL[x.r.flag] + '</span>' : '') +
   (x.e && Cloud.adminUids.has(x.e.id) ? ' <span class="tag adm">админ-студент</span>' : '') +
+  (x.e && Deputies.has(x.e.id) ? ' <span class="tag">Зам старосты</span>' : '') +
   (x.r.extra ? ' <span class="tag">нет в списке</span>' : '') +
   (x.e && x.e.p.subgroup ? '<small> · подгр.' + U.esc(x.e.p.subgroup) + '</small>' : '') +
   (x.dup ? ' <span class="tag bad">дубль</span>' : '');
@@ -601,6 +602,7 @@ function viewGroup() {
     ' · данные обновляются сами</p></div><div class="head-actions"><button class="btn" data-action="nav" data-tab="journal">' +
     ICONS.folder +
     ' Журнал</button><button class="btn" data-action="nav" data-tab="users">Аккаунты пользователей</button><button class="btn" data-action="nav" data-tab="news">Новости</button><button class="btn" data-action="nav" data-tab="chat">Чаты</button></div></div>' +
+    Deputies.manageButton() +
     '<p class="hint">В списке ниже все студенты группы. У тех, кто ещё не зарегистрировался, нет аккаунта и данных посещаемости.</p>' +
     '<div class="tabs">' +
     tabs

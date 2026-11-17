@@ -3,7 +3,7 @@
 Object.assign(A, {
   'att-certificates'(){document.getElementById('attendance-certificates')?.scrollIntoView({behavior:'smooth',block:'start'});},
   async 'att-day-full'(el) {
-    if (!Cloud.isAdmin) return toast('Отметки за день ставит только староста');
+    if (!Cloud.isAdmin && !Deputies.canMark()) return toast('Отметки за день ставят староста и зам');
     const form = el.closest('[data-form="att-edit"]');
     const person = form && studentRows().find(x => x.id === form.dataset.uid);
     if (!person) return;

@@ -89,6 +89,7 @@ function roBlocked(el) {
   if (canEdit()) return false;
   const a = el.dataset.action;
   if (Cloud.isCurator && a === 'att-edit') return false;
+  if (Deputies.canMark() && ['att-edit', 'att-day-full', 'news-add'].includes(a)) return false;
   if (a === 'note-edit' || a === 'note-del') {
     const n = Store.s.notes.find(x => x.id === el.dataset.id);
     return !!(n && n.subjectId);

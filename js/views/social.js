@@ -40,7 +40,7 @@ function socialProfileHtml(card, full = false) {
       ? '<span class="leader-label">Староста' +
         (card.role === 'superadmin' ? ' · Супер-админ' : '') +
         '</span>'
-      : '') +
+      : (card.is_deputy ? '<span class="leader-label">Зам старосты</span>' : '')) +
     '</div></div>' +
     (card.tagline ? '<p class="wall-tagline">' + U.esc(card.tagline) + '</p>' : '') +
     '<div class="social-profile-actions">' +
@@ -123,7 +123,7 @@ function viewPeople() {
             ? '<span class="leader-label">📌 Староста' +
               (card.role === 'superadmin' ? ' · Админ Арина' : '') +
               '</span>'
-            : '') +
+            : (card.is_deputy ? '<span class="leader-label">Зам старосты</span>' : '')) +
           '<b>' +
           U.esc(card.name) +
           '</b><small>' +

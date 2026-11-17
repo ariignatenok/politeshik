@@ -132,12 +132,14 @@ const News = {
    * @returns {Promise<boolean>} true, если условие выполнено.
    */
   async add(title, body, date) {
-    const {error} = await supa.from('news').insert({
+    const {error} = await (Deputies.canMark()
+      ? supa.rpc('deputy_publish_news', {p_title: title, p_body: body, p_date: date})
+      : supa.from('news').insert({
       tenant_id: Cloud.tenantId || 'group_1',
       title,
       body,
       news_date: date
-    });
+    }));
     if (error) {
       toast('Не удалось опубликовать: ' + error.message);
       return false;
