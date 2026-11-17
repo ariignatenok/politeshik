@@ -1389,25 +1389,29 @@
       "id": "faculty-ae2fa48b91f9",
       "name": "Панченко Михаил Станиславович",
       "teacher": "Панченко М.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ae2fa48b91f9.json",
       "groups": {
         "24290907/2092": [
           "Програм. в 1С:Предпр. 8"
         ]
-      }
+      },
+      "attempted_at": "2026-11-17T10:50:43.193379+00:00",
+      "fetched_at": "2026-11-17T10:50:44.884998+00:00"
     },
     {
       "id": "faculty-7fcb23eb3eee",
       "name": "Панченко Яна Александровна",
       "teacher": "Панченко Я.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7fcb23eb3eee.json",
       "groups": {
         "25290907/1091": [
           "УП.04.01 Учебная практика"
         ]
-      }
+      },
+      "attempted_at": "2026-11-17T10:50:44.885046+00:00",
+      "fetched_at": "2026-11-17T10:50:46.554945+00:00"
     },
     {
       "id": "faculty-7aa81fc8312f",
@@ -1419,7 +1423,8 @@
         "24290907/2092": [
           "Физ. культура"
         ]
-      }
+      },
+      "attempted_at": "2026-11-17T10:50:46.555010+00:00"
     },
     {
       "id": "faculty-46c9c9858378",
@@ -1427,7 +1432,8 @@
       "teacher": "Печковский А.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-46c9c9858378.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T10:50:48.061609+00:00"
     },
     {
       "id": "faculty-3889dbe5a6dd",
@@ -1435,7 +1441,8 @@
       "teacher": "Пиштокова Т.Р.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-3889dbe5a6dd.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-17T10:50:49.568265+00:00"
     },
     {
       "id": "faculty-1be7d40e580c",
