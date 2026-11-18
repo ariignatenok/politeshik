@@ -4,7 +4,7 @@
   "teacher": "Темченко К.А.",
   "full_name": "Темченко Константин Александрович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-16",
   "days": {
@@ -230,9 +230,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -250,9 +250,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -270,9 +270,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -290,9 +290,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3092"

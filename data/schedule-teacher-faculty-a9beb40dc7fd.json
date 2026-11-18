@@ -4,7 +4,7 @@
   "teacher": "Сараева С.В.",
   "full_name": "Сараева Светлана Вячеславовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -362,9 +362,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -382,9 +382,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -402,9 +402,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -430,7 +430,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -450,7 +450,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -470,7 +470,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -490,7 +490,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [

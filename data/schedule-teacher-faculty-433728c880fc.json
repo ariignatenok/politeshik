@@ -4,7 +4,7 @@
   "teacher": "Тузова Д.А.",
   "full_name": "Тузова Диана Анатольевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -789,9 +789,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -809,9 +809,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -829,9 +829,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/1093"
@@ -849,9 +849,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/1093"
@@ -876,9 +876,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -896,9 +896,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -916,9 +916,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -936,9 +936,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -963,9 +963,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/3111"
@@ -983,9 +983,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/3111"
@@ -1003,9 +1003,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/3093"
@@ -1023,9 +1023,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/3093"

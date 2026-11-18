@@ -4,7 +4,7 @@
   "teacher": "Смирнова В.В.",
   "full_name": "Смирнова Виктория Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -714,9 +714,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -734,9 +734,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -754,9 +754,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -774,9 +774,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3091"
@@ -801,9 +801,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -821,9 +821,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -841,9 +841,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -861,9 +861,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1092"
@@ -881,13 +881,13 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "Физ. культура",
+          "subject": "ОТМЕНА",
           "teacher": "Смирнова В.В.",
           "group": "25291312/1091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -895,29 +895,30 @@
           "group_list": [
             "25291312/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "Физ. культура",
+          "original_teacher": "Смирнова В.В.",
           "original_classroom": null
         },
         {
           "lesson_number": 2,
           "subject": "Физ. культура",
           "teacher": "Смирнова В.В.",
-          "group": "25290907/3091",
+          "group": "25290907/3091, 25291312/1091",
           "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "is_stream": true,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
-            "25290907/3091"
+            "25290907/3091",
+            "25291312/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "Охрана труда",
+          "original_teacher": "Печковский А.В.",
+          "original_classroom": "каб. ск2 (Энгельса)"
         },
         {
           "lesson_number": 3,
@@ -928,9 +929,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -948,9 +949,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск2",
+          "campus": "Э",
+          "classroom": "каб. ск2 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"

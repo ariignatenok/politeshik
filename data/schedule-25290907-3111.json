@@ -2,7 +2,62 @@
   "schema": 1,
   "group": "25290907/3111",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-12",
-  "status": "awaiting_source",
-  "days": {}
+  "checked_at": "2026-11-18",
+  "from": "2026-11-09",
+  "to": "2026-11-18",
+  "days": {
+    "2026-11-09": {
+      "lessons": []
+    },
+    "2026-11-10": {
+      "lessons": []
+    },
+    "2026-11-11": {
+      "lessons": []
+    },
+    "2026-11-12": {
+      "lessons": []
+    },
+    "2026-11-13": {
+      "lessons": []
+    },
+    "2026-11-14": {
+      "lessons": []
+    },
+    "2026-11-15": {
+      "lessons": []
+    },
+    "2026-11-16": {
+      "lessons": []
+    },
+    "2026-11-17": {
+      "lessons": []
+    },
+    "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.02 Основы Этики Этикета и Эстетики",
+          "teacher": "Плотникова Д.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "312",
+          "campus": "Энгельса",
+          "classroom": "каб. 312 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    }
+  }
 }

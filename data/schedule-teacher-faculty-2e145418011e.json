@@ -4,7 +4,7 @@
   "teacher": "Смирнова Н.И.",
   "full_name": "Смирнова Наталья Ивановна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -323,9 +323,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -721,9 +718,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1091"
@@ -741,9 +738,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1091"
@@ -761,9 +758,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -781,9 +778,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -808,9 +805,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1091"
@@ -828,9 +825,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -848,9 +845,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -875,9 +872,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3091"
@@ -895,9 +892,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -915,9 +912,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск4",
+          "campus": "П",
+          "classroom": "каб. ск4 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"

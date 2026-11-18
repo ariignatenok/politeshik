@@ -739,7 +739,11 @@
       "teacher": "Ильин Ю.П.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-d5393280cf21.json",
-      "groups": {},
+      "groups": {
+        "24290907/2092": [
+          "МДК.01.01 Разработка программных модулей"
+        ]
+      },
       "attempted_at": "2026-11-13T23:57:10.350078+00:00"
     },
     {
@@ -838,6 +842,9 @@
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-a3a54eb58c98.json",
       "groups": {
+        "23290907/2092": [
+          "МДК.01.03 Разработка мобильных приложений"
+        ],
         "24290907/2092": [
           "Компьютерные сети"
         ]
@@ -1571,7 +1578,7 @@
       "id": "faculty-68f0ca0ffbfd",
       "name": "Саитова Виктория Сергеевна",
       "teacher": "Саитова В.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-68f0ca0ffbfd.json",
       "groups": {
         "23290907/2092": [
@@ -1580,133 +1587,161 @@
         "25290907/1091": [
           "Ин. яз. в ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:12:44.956501+00:00",
+      "fetched_at": "2026-11-18T18:12:47.587171+00:00"
     },
     {
       "id": "faculty-a9beb40dc7fd",
       "name": "Сараева Светлана Вячеславовна",
       "teacher": "Сараева С.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a9beb40dc7fd.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:12:47.587201+00:00",
+      "fetched_at": "2026-11-18T18:12:49.419158+00:00"
     },
     {
       "id": "faculty-353f5e54045e",
       "name": "Селифонтова Анна Сергеевна",
       "teacher": "Селифонтова А.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-353f5e54045e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:12:49.419186+00:00",
+      "fetched_at": "2026-11-18T18:12:51.386742+00:00"
     },
     {
       "id": "faculty-5378de79d42c",
       "name": "Симоненко Святослав Иванович",
       "teacher": "Симоненко С.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5378de79d42c.json",
       "groups": {
         "25290909/3091": [
           "БЖД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:12:51.386837+00:00",
+      "fetched_at": "2026-11-18T18:12:53.677430+00:00"
     },
     {
       "id": "faculty-2b3058ed4821",
       "name": "Слепов Владимир Михайлович",
       "teacher": "Слепов В.М.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-2b3058ed4821.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:12:53.677503+00:00",
+      "fetched_at": "2026-11-18T18:12:56.162168+00:00"
     },
     {
       "id": "faculty-a495f649adf4",
       "name": "Смекалова Юлия Викторовна",
       "teacher": "Смекалова Ю.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a495f649adf4.json",
       "groups": {
         "24290907/2092": [
           "Правовое обеспечение ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:12:56.162198+00:00",
+      "fetched_at": "2026-11-18T18:12:57.896652+00:00"
     },
     {
       "id": "faculty-f6ea627f1c4a",
       "name": "Смирнов Александр Валентинович",
       "teacher": "Смирнов А.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f6ea627f1c4a.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:12:57.896721+00:00",
+      "fetched_at": "2026-11-18T18:12:59.673856+00:00"
     },
     {
       "id": "faculty-be432be381f9",
       "name": "Смирнов Александр Николаевич",
       "teacher": "Смирнов А.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-be432be381f9.json",
       "groups": {
         "26290911/3111": [
           "Физ. культура"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:12:59.673939+00:00",
+      "fetched_at": "2026-11-18T18:13:02.741118+00:00"
     },
     {
       "id": "faculty-cebe0fe805df",
       "name": "Смирнов Сергей Геннадьевич",
       "teacher": "Смирнов С.Г.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-cebe0fe805df.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:02.741207+00:00",
+      "fetched_at": "2026-11-18T18:13:04.291761+00:00"
     },
     {
       "id": "faculty-61b6d224a0a2",
       "name": "Смирнова Виктория Владимировна",
       "teacher": "Смирнова В.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-61b6d224a0a2.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:04.291789+00:00",
+      "fetched_at": "2026-11-18T18:13:06.371769+00:00"
     },
     {
       "id": "faculty-2e145418011e",
       "name": "Смирнова Наталья Ивановна",
       "teacher": "Смирнова Н.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-2e145418011e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:06.371855+00:00",
+      "fetched_at": "2026-11-18T18:13:09.452031+00:00"
     },
     {
       "id": "faculty-10469696c214",
       "name": "Смолина Ирина Михайловна",
       "teacher": "Смолина И.М.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-10469696c214.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:09.452121+00:00",
+      "fetched_at": "2026-11-18T18:13:12.622964+00:00"
     },
     {
       "id": "faculty-3e3e72a1b0a2",
       "name": "Субботин Андрей Александрович",
       "teacher": "Субботин А.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3e3e72a1b0a2.json",
       "groups": {
         "26290911/3111": [
           "Матем. аппарат в отр. ИТ"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:13:12.623038+00:00",
+      "fetched_at": "2026-11-18T18:13:14.997631+00:00"
     },
     {
       "id": "faculty-c03ea348a29e",
       "name": "Сысоева Анастасия Дмитриевна",
       "teacher": "Сысоева А.Д.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c03ea348a29e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:14.997668+00:00",
+      "fetched_at": "2026-11-18T18:13:17.370903+00:00"
     },
     {
       "id": "faculty-ec314451fd1e",
       "name": "Талалаева Дарья Александровна",
       "teacher": "Талалаева Д.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ec314451fd1e.json",
       "groups": {
         "24290907/2092": [
@@ -1715,29 +1750,35 @@
         "25290907/1091": [
           "Ин. яз. в ПД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:13:17.370943+00:00",
+      "fetched_at": "2026-11-18T18:13:20.278758+00:00"
     },
     {
       "id": "faculty-b64fa733add1",
       "name": "Темченко Константин Александрович",
       "teacher": "Темченко К.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-b64fa733add1.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:20.278829+00:00",
+      "fetched_at": "2026-11-18T18:13:24.523775+00:00"
     },
     {
       "id": "faculty-3235afbd6230",
       "name": "Тимофеева Марина Александровна",
       "teacher": "Тимофеева М.А.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:24.523814+00:00",
+      "fetched_at": "2026-11-18T18:13:26.814608+00:00"
     },
     {
       "id": "faculty-982829b192b3",
       "name": "Тлеумбетов Тимур Денисович",
       "teacher": "Тлеумбетов Т.Д.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-982829b192b3.json",
       "groups": {
         "25290909/3091": [
@@ -1746,59 +1787,73 @@
         "26290911/3111": [
           "ИТ в ПД лр"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:13:26.814634+00:00",
+      "fetched_at": "2026-11-18T18:13:28.555581+00:00"
     },
     {
       "id": "faculty-01999c98f27b",
       "name": "Трацевская Мария Владимировна",
       "teacher": "Трацевская М.В.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:28.555657+00:00",
+      "fetched_at": "2026-11-18T18:13:30.391859+00:00"
     },
     {
       "id": "faculty-fa360b11545a",
       "name": "Трегубова Людмила Анатольевна",
       "teacher": "Трегубова Л.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-fa360b11545a.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:30.391884+00:00",
+      "fetched_at": "2026-11-18T18:13:34.993590+00:00"
     },
     {
       "id": "faculty-189b53945859",
       "name": "Троцюк Светлана Николаевна",
       "teacher": "Троцюк С.Н.",
-      "status": "stale",
+      "status": "awaiting_source",
       "schedule_file": "schedule-teacher-faculty-189b53945859.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:34.993665+00:00",
+      "fetched_at": "2026-11-18T18:13:36.868045+00:00"
     },
     {
       "id": "faculty-433728c880fc",
       "name": "Тузова Диана Анатольевна",
       "teacher": "Тузова Д.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-433728c880fc.json",
       "groups": {
         "23290907/2092": [
           "МДК.02.02 ИСРПО"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T18:13:36.868072+00:00",
+      "fetched_at": "2026-11-18T18:13:38.628645+00:00"
     },
     {
       "id": "faculty-7f0089cd8cbb",
       "name": "Федотова Галина Николаевна",
       "teacher": "Федотова Г.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7f0089cd8cbb.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:38.628684+00:00",
+      "fetched_at": "2026-11-18T18:13:40.475340+00:00"
     },
     {
       "id": "faculty-c63a2b32787e",
       "name": "Фурсова Анастасия Викторовна",
       "teacher": "Фурсова А.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c63a2b32787e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T18:13:40.475370+00:00",
+      "fetched_at": "2026-11-18T18:13:42.041174+00:00"
     },
     {
       "id": "faculty-7a1e08221a25",
@@ -1980,5 +2035,8 @@
       "groups": {}
     }
   ],
-  "unresolved": []
+  "unresolved": [
+    "Плотникова Д.А.",
+    "Тихий Д."
+  ]
 }

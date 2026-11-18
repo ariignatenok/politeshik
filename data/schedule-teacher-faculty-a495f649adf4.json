@@ -4,7 +4,7 @@
   "teacher": "Смекалова Ю.В.",
   "full_name": "Смекалова Юлия Викторовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -698,9 +698,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2093"
@@ -718,9 +718,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/3091"
@@ -738,9 +738,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2092"
@@ -758,9 +758,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -785,9 +785,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1095"
@@ -805,9 +805,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/3091"
@@ -825,9 +825,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"
@@ -852,9 +852,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/3091"
@@ -872,9 +872,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -899,9 +899,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/3092"
@@ -919,9 +919,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "249",
+          "campus": "Э",
+          "classroom": "каб. 249 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"

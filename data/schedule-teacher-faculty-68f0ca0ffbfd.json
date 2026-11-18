@@ -4,7 +4,7 @@
   "teacher": "Саитова В.С.",
   "full_name": "Саитова Виктория Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-19",
   "days": {
@@ -577,9 +577,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -597,9 +597,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1092"
@@ -617,9 +617,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1092"
@@ -637,9 +637,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -667,9 +667,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -687,9 +687,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1092"
@@ -707,9 +707,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "230",
+          "campus": "П",
+          "classroom": "каб. 230 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2092"

@@ -4,7 +4,7 @@
   "teacher": "Сысоева А.Д.",
   "full_name": "Сысоева Анастасия Дмитриевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-06",
   "to": "2026-11-20",
   "days": {
@@ -59,9 +59,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -142,7 +139,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -162,7 +159,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [

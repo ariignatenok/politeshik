@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "23290907/2092",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-17",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -826,6 +826,44 @@
       "day_name": "Среда",
       "lessons": [
         {
+          "lesson_number": 1,
+          "subject": "МДК.01.03 Разработка мобильных приложений",
+          "teacher": "Костин Ю.Н.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "401",
+          "campus": "Приморский",
+          "classroom": "каб. 401 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.03 Разработка мобильных приложений",
+          "teacher": "Костин Ю.Н.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "401",
+          "campus": "Приморский",
+          "classroom": "каб. 401 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
           "lesson_number": 3,
           "subject": "МДК.02.02 ИСРПО",
           "teacher": "Тузова Д.А.",
@@ -879,8 +917,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -898,8 +936,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -917,8 +955,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -936,8 +974,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"

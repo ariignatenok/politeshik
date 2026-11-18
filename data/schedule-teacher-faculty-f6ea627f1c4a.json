@@ -4,7 +4,7 @@
   "teacher": "Смирнов А.В.",
   "full_name": "Смирнов Александр Валентинович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -928,9 +928,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -948,9 +948,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -968,9 +968,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -988,9 +988,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"
@@ -1015,9 +1015,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1035,9 +1035,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1055,9 +1055,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1075,12 +1075,32 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.03.02 Учёт и реализация электрической энергии",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "24291303/1091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1102,9 +1122,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1122,9 +1142,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1142,9 +1162,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1162,9 +1182,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/1091"
@@ -1175,13 +1195,13 @@
         },
         {
           "lesson_number": 5,
-          "subject": "МДК.03.02 Учёт и реализация электрической энергии",
+          "subject": "ОТМЕНА",
           "teacher": "Смирнов А.В.",
           "group": "24291303/1091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1189,8 +1209,8 @@
           "group_list": [
             "24291303/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "МДК.03.02 Учёт и реализация электрической энергии",
+          "original_teacher": "Смирнов А.В.",
           "original_classroom": null
         }
       ],
@@ -1209,9 +1229,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1229,9 +1249,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1249,9 +1269,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1269,9 +1289,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"

@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "26290911/3111",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-17",
+  "checked_at": "2026-11-18",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -1046,6 +1046,25 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.02 Основы Этики Этикета и Эстетики",
+          "teacher": "Плотникова Д.А.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "312",
+          "campus": "Энгельса",
+          "classroom": "каб. 312 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
         }
       ],
       "week_number": 12,
@@ -1062,9 +1081,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск5",
+          "campus": "Э",
+          "classroom": "каб. ск5 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1081,9 +1100,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1100,9 +1119,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "411",
+          "campus": "Э",
+          "classroom": "каб. 411 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1119,9 +1138,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
