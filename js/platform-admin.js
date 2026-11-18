@@ -73,7 +73,7 @@ const PlatformAdmin = {
     const nav=[['home','Панель разработчика'],['profile','Личный кабинет'],['users','Аккаунты и заявки'],['news','Новости'],['materials','Учебные материалы'],['schedule','Расписание · просмотр'],['journal','Журнал · просмотр'],['chat','Разработка']];
     const buttons=nav.map(([key,title])=>'<button class="nav-btn'+(PlatformAdmin.tab===key?' on':'')+'" data-action="platform-tab" data-tab="'+key+'">'+title+(key==='chat'&&DevelopmentChat.unread()?' · '+DevelopmentChat.unread():'')+'</button>').join('');
     $('#nav-side').innerHTML=buttons+'<button class="nav-btn" data-action="logout">Выйти</button>';
-    $('#nav-bottom').innerHTML=nav.map(([key,title])=>'<button data-action="platform-tab" data-tab="'+key+'">'+title+'</button>').join('');
+    $('#nav-bottom').innerHTML=nav.map(([key,title])=>'<button class="'+(PlatformAdmin.tab===key?'on':'')+'" data-action="platform-tab" data-tab="'+key+'">'+title+'</button>').join('');
     const group=PlatformAdmin.groups().find(g=>g.tenant_id===PlatformAdmin.tenant);
     const selector=['home','profile','chat'].includes(PlatformAdmin.tab)?'':'<label class="field"><span>Просматриваемая группа · не является вашей группой</span><select class="input" data-platform-group>'+PlatformAdmin.groups().map(g=>'<option value="'+g.tenant_id+'"'+(g.tenant_id===PlatformAdmin.tenant?' selected':'')+'>'+U.esc(g.name)+'</option>').join('')+'</select></label>';
     const head='<div class="page-head"><div><h1>'+U.esc(nav.find(x=>x[0]===PlatformAdmin.tab)?.[1]||'Разработчик')+'</h1><p>'+U.esc(Cloud.platformContext.name)+' · Разработчик · без учебной группы</p></div></div>';

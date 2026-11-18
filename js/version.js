@@ -1,3 +1,3 @@
 'use strict';
 
-const BUILD = 'platformdev20261118';
+const BUILD = 'platformdev20261118b';

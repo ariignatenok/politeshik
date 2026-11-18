@@ -844,3 +844,5 @@ b[data-action]:focus-visible {
 .platform-workspace .tabbar>button{flex:0 0 110px;white-space:normal;font-size:11px;padding:6px;}
 .platform-workspace .deputy-row .head-actions{flex-shrink:0;}
 @media(max-width:500px){.platform-workspace .deputy-row{flex-direction:column;align-items:flex-start;}.platform-workspace .deputy-row .head-actions{width:100%;}}
+.platform-workspace .tabbar>button{border:0;background:transparent;color:var(--muted);font-family:inherit;line-height:1.3;cursor:pointer;}
+.platform-workspace .tabbar>button.on{color:var(--accent);font-weight:800;}
