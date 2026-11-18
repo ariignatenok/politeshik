@@ -1546,7 +1546,8 @@
         "25290909/3091": [
           "МДК.04.01 Техн. созд., администр. и анал. информ. ресурсов"
         ]
-      }
+      },
+      "attempted_at": "2026-11-18T09:17:31.250511+00:00"
     },
     {
       "id": "faculty-c900e3daf4ad",
@@ -1554,7 +1555,8 @@
       "teacher": "Рябова М.Н.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c900e3daf4ad.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T09:17:32.980350+00:00"
     },
     {
       "id": "faculty-662da4921f07",
@@ -1562,7 +1564,8 @@
       "teacher": "Савостина Т.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-662da4921f07.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T09:17:34.766486+00:00"
     },
     {
       "id": "faculty-68f0ca0ffbfd",
