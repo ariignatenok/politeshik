@@ -101,7 +101,7 @@ function viewPeople() {
     return '<div class="card">Раздел доступен зарегистрированным студентам.</div>';
   if (!Social.loaded && !Social.loading && !Social.error) Social.loadPeople();
   return (
-    '<div class="page-head"><div><h1>Люди</h1><p>Знакомьтесь со студентами своей и других групп.</p></div><button class="btn primary" data-action="club-open">✦ В клуб</button></div><div class="social-search" data-form="social-search"><input class="input" name="q" maxlength="100" value="' +
+    '<div class="page-head"><div><h1>Люди</h1><p>Сначала старосты, затем замы и остальные студенты всех групп.</p></div><button class="btn primary" data-action="club-open">✦ В клуб</button></div><div class="social-search" data-form="social-search"><input class="input" name="q" maxlength="100" value="' +
     U.esc(Social.query) +
     '" placeholder="Имя или группа" aria-label="Имя или группа"><button class="btn" data-action="save-form">Найти</button></div>' +
     (Social.error
@@ -114,7 +114,7 @@ function viewPeople() {
       .map(
         (card) =>
           '<button class="card person-card' +
-          (['admin', 'superadmin'].includes(card.role) ? ' pinned-leader' : '') +
+          (['admin', 'superadmin'].includes(card.role) ? ' pinned-leader' : card.is_deputy ? ' pinned-deputy' : '') +
           '" data-action="social-profile" data-uid="' +
           card.uid +
           '">' +

@@ -94,7 +94,7 @@ const Social = {
       const rows = await Social.call('social_people', {p_query: query, p_offset: offset});
       if (uid !== Cloud.uid || query !== Social.query) return;
       (rows || []).forEach(Social.keep);
-      Social.people = append ? Social.people.concat(rows || []) : rows || [];
+      Social.people = [...new Map((append ? Social.people.concat(rows || []) : rows || []).map(card => [card.uid,card])).values()];
       Social.offset = offset;
       Social.more = (rows || []).length === 24;
       Social.loaded = true;

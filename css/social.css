@@ -830,3 +830,8 @@ b[data-action]:focus-visible {
 .av-img[data-action="profile-photo"] { cursor:zoom-in; }
 .room-author{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.85rem;overflow-wrap:anywhere;}
 .room-author img,.room-author svg{flex-shrink:0;}
+
+.person-card.pinned-deputy {border-color:var(--accent);}
+.leader-thread .room-author>div {min-width:0;overflow-wrap:anywhere;}
+.leader-thread .room-author small {display:block;opacity:.75;font-size:.75rem;}
+.leader-council {margin:16px 0;}

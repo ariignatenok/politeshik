@@ -186,7 +186,8 @@ function viewChatListStudent() {
     dm = Dm.threadMsgs(Cloud.uid),
     lastDm = dm[dm.length - 1];
   return (
-    '<div class="page-head"><div><h1>Чаты</h1><p>Политешик отвечает сразу, админ — когда зайдёт в приложение.</p></div></div><div class="chat-list">' +
+    '<div class="page-head"><div><h1>Чаты</h1><p>Политешик отвечает сразу, админ — когда зайдёт в приложение.</p></div></div>' +
+    LeaderChat.contactsHtml() + '<div class="chat-list">' +
     chatRow({
       id: 'bot',
       title: 'Политешик (Житель)',
@@ -287,7 +288,7 @@ function viewChatListAdmin() {
       : 'Переписка со студентами твоей группы.') +
     '</p></div>' +
     '<div class="head-actions"><button class="btn primary" data-action="dm-new">Новый чат</button></div></div>' +
-    welcomeRecipientsHtml() + CuratorChats.contactsHtml() +
+    LeaderChat.contactsHtml() + welcomeRecipientsHtml() + CuratorChats.contactsHtml() +
     '<div class="chat-list">' +
     botRow +
     (Cloud.isSuperAdmin ? '' : supportContactsHtml()) +
@@ -411,6 +412,7 @@ function viewDmThread(uid) {
  * @returns {string} HTML.
  */
 function viewChat() {
+  if (ui.chatWith === 'leaders') return LeaderChat.threadHtml();
   if ((ui.chatWith || '').startsWith('room:')) return GroupRooms.threadHtml(ui.chatWith.slice(5));
   if (Cloud.status !== 'online') return viewBotChat();
   if ((ui.chatWith || '').startsWith('curator:')) return CuratorChats.threadHtml(ui.chatWith.slice(8));
