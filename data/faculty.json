@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-17",
+  "checked_at": "2026-11-18",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -1515,7 +1515,8 @@
       "teacher": "Родионова И.В.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-8d7ca2243af7.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T01:50:33.921489+00:00"
     },
     {
       "id": "faculty-b0ae9510ad70",
@@ -1523,7 +1524,8 @@
       "teacher": "Рыжков Е.А.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-b0ae9510ad70.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T01:50:35.543581+00:00"
     },
     {
       "id": "faculty-c79e3765fe15",
@@ -1531,7 +1533,8 @@
       "teacher": "Рындина К.О.",
       "status": "stale",
       "schedule_file": "schedule-teacher-faculty-c79e3765fe15.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-18T01:50:37.283043+00:00"
     },
     {
       "id": "faculty-c439f84349b4",
