@@ -835,3 +835,12 @@ b[data-action]:focus-visible {
 .leader-thread .room-author>div {min-width:0;overflow-wrap:anywhere;}
 .leader-thread .room-author small {display:block;opacity:.75;font-size:.75rem;}
 .leader-council {margin:16px 0;}
+
+.platform-workspace .platform-users{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;}
+.platform-workspace .card{min-width:0;margin-bottom:16px;overflow-wrap:anywhere;}
+.platform-workspace .card h3,.platform-workspace .card p{overflow-wrap:anywhere;}
+.platform-workspace .head-actions{flex-wrap:wrap;}
+.platform-workspace .tabbar{overflow-x:auto;justify-content:flex-start;}
+.platform-workspace .tabbar>button{flex:0 0 110px;white-space:normal;font-size:11px;padding:6px;}
+.platform-workspace .deputy-row .head-actions{flex-shrink:0;}
+@media(max-width:500px){.platform-workspace .deputy-row{flex-direction:column;align-items:flex-start;}.platform-workspace .deputy-row .head-actions{width:100%;}}

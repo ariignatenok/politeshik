@@ -1,0 +1,85 @@
+-- Disposable identities and data; never create a password or attach the independent developer to a group.
+begin;
+select set_config('app.import','on',true);
+do $$declare dev uuid:=gen_random_uuid();student uuid:=gen_random_uuid();second uuid:=gen_random_uuid();makar uuid:=gen_random_uuid();owner uuid;begin
+ perform set_config('test.platform_dev',dev::text,true);perform set_config('test.platform_student',student::text,true);perform set_config('test.platform_second',second::text,true);perform set_config('test.platform_makar',makar::text,true);
+ insert into auth.users(id,email,aud,role)values(dev,'dimakrfeedsonos@gmail.com','authenticated','authenticated');
+ insert into auth.users(id,email,email_confirmed_at,aud,role)values(student,student||'@example.invalid',now(),'authenticated','authenticated'),(second,second||'@example.invalid',now(),'authenticated','authenticated'),(makar,'colpaxe@gmail.com',now(),'authenticated','authenticated');
+ insert into public.members(tenant_id,uid,role,status,requested_role,full_name,group_id)values('group_4',student,'student','approved','student','Platform student','g_24290907_2092'),('group_6',second,'student','pending','student','Platform pending student','g_25290907_1091'),('group_2',makar,'developer','approved','student','Кузьменков Макар Сергеевич','g_26290911_3111');
+ insert into public.docs(tenant_id,path,data)values('group_4','profiles/'||student,'{"rid":"g4_r1","name":"Platform student"}'),('group_6','profiles/'||second,'{"rid":"g6_r1","name":"Platform pending student"}'),('group_2','profiles/'||makar,'{"rid":"g2_r12","name":"Кузьменков Макар Сергеевич"}');
+ insert into public.docs(tenant_id,path,data)values('group_4','attendance/'||student,'{"marks":{"2026-11-13|1":"уп","2026-11-13|2":"н"}}');
+ insert into public.docs(tenant_id,path,data)values('group_4','group/extra','{"subjects":[{"id":"platform-subject","name":"ОПБД"}],"teachers":[],"notes":[],"cards":[],"homework":[]}')on conflict(tenant_id,path)do update set data=excluded.data;
+ select uid into owner from politeshik_private.super_admins limit 1;perform set_config('test.platform_owner',owner::text,true);
+ insert into auth.users(id,email,email_confirmed_at,aud,role)values(owner,'arienaburlova@yandex.ru',now(),'authenticated','authenticated')on conflict(id)do nothing;
+end $$;
+select set_config('app.import','',true);
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.platform_student'),'role','authenticated')::text,true);
+do $$declare denied boolean:=false;begin
+ assert public.platform_context()->>'matched'='false','Student claimed developer identity';
+ begin perform public.platform_manage('group_4','users');exception when insufficient_privilege then denied:=true;end;assert denied,'Student received global management';
+ assert public.development_chat_state()='{"allowed":false}'::jsonb,'Student sees development chat';
+end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.platform_dev'),'role','authenticated')::text,true);
+do $$declare denied boolean:=false;begin
+ assert public.platform_context()->>'active'='false','Unverified email activated developer';
+ begin perform public.platform_manage('group_4','users');exception when insufficient_privilege then denied:=true;end;assert denied,'Unverified developer has powers';
+end $$;
+reset role;
+update auth.users set email_confirmed_at=now()where id=current_setting('test.platform_dev')::uuid;
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.platform_dev'),'role','authenticated')::text,true);
+do $$declare data jsonb;denied boolean;n integer;nonce uuid:=gen_random_uuid();before_news integer;begin
+ data:=public.platform_context();assert data->>'active'='true'and data->>'name'='Крылов Дмитрий Денисович','Email binding failed';assert data->>'group_id'is null and data->>'tenant_id'is null,'Developer attached to a group';
+ assert not public.is_admin()and not public.is_developer(),'Independent role widened existing group helpers';
+ for n in 1..6 loop data:=public.platform_manage('group_'||n,'users');assert jsonb_typeof(data)='array','Cannot manage all groups';end loop;
+ data:=public.platform_manage('group_4','group');assert exists(select 1 from jsonb_array_elements(data->'roster')r where r->>'uid'=current_setting('test.platform_student')and r->'marks'->>'2026-11-13|1'='уп'),'Read-only journal unavailable';
+ perform public.platform_manage('group_6','status',jsonb_build_object('uid',current_setting('test.platform_second'),'status','approved'));
+ perform public.platform_manage('group_6','role',jsonb_build_object('uid',current_setting('test.platform_second'),'role','admin'));
+ perform public.platform_manage('group_6','role',jsonb_build_object('uid',current_setting('test.platform_second'),'role','teacher'));
+ perform public.platform_manage('group_6','role',jsonb_build_object('uid',current_setting('test.platform_second'),'role','student'));
+ perform public.platform_manage('group_6','deputy',jsonb_build_object('uid',current_setting('test.platform_second'),'enabled',true));
+ perform public.platform_manage('group_4','news_save','{"title":"Platform news fixture","body":"Announcement","date":"2026-11-18"}');
+ data:=public.platform_manage('group_4','news');assert exists(select 1 from jsonb_array_elements(data)article where article->>'title'='Platform news fixture'),'Cannot publish announcement';
+ perform public.platform_manage('group_4','material_save','{"collection":"notes","id":"platform-note","item":{"subjectId":"platform-subject","title":"Конспект","text":"Материалы"}}');
+ perform public.platform_manage('group_4','material_save','{"collection":"cards","id":"platform-card","item":{"subjectId":"platform-subject","q":"Вопрос","a":"Ответ"}}');
+ perform public.platform_manage('group_4','material_save','{"collection":"homework","id":"platform-homework","item":{"subjectId":"platform-subject","text":"Задание","deadline":"2026-11-30"}}');
+ denied:=false;begin perform public.platform_manage('group_4','schedule_save','{"subjects":[]}');exception when insufficient_privilege then denied:=true;end;assert denied,'Developer can save schedule';
+ denied:=false;begin perform public.platform_manage('group_4','attendance_save','{"marks":{}}');exception when insufficient_privilege then denied:=true;end;assert denied,'Developer can save journal';
+ denied:=false;begin perform public.platform_manage('group_4','material_save','{"collection":"subjects","item":{}}');exception when insufficient_privilege then denied:=true;end;assert denied,'Material endpoint rewrites subjects';
+ denied:=false;begin perform public.platform_manage('group_4','status',jsonb_build_object('uid',current_setting('test.platform_second'),'status','banned'));exception when insufficient_privilege then denied:=true;end;assert denied,'Cross-group target accepted';
+ denied:=false;begin perform public.deputy_marks(current_setting('test.platform_student')::uuid,'{"2026-11-13|2":"п"}');exception when insufficient_privilege then denied:=true;end;assert denied,'Developer inherited deputy academic writes';
+ denied:=false;begin perform public.self_attendance('2026-11-18',1,'п');exception when others then denied:=true;end;assert denied,'Developer became a student';
+ denied:=false;begin perform public.set_secret('admin_pass','not-a-real-password');exception when insufficient_privilege then denied:=true;end;assert denied,'Developer can change owner credentials';
+ denied:=false;begin insert into public.docs(tenant_id,path,data)values('group_4','group/config','{"subjects":[]}')on conflict(tenant_id,path)do update set data=excluded.data;exception when insufficient_privilege then denied:=true;end;assert denied,'Direct schedule write allowed';
+ denied:=false;begin insert into public.docs(tenant_id,path,data)values('group_4','attendance/'||current_setting('test.platform_student'),'{"marks":{}}')on conflict(tenant_id,path)do update set data=excluded.data;exception when others then denied:=true;end;assert denied,'Direct journal write allowed';
+ denied:=false;begin insert into public.members(tenant_id,uid,role,status,requested_role,full_name,group_id)values('group_1',current_setting('test.platform_dev')::uuid,'student','approved','student','Not a student','g_main');exception when insufficient_privilege then denied:=true;end;assert denied,'Developer can enroll to gain self-marking rights';
+ denied:=false;begin perform public.import_attendance('[]'::jsonb);exception when others then denied:=true;end;assert denied,'Developer can import academic marks';
+ assert public.development_chat_state()->>'allowed'='true','Developer missing from team chat';
+ data:=public.development_chat_send('Development fixture',nonce);assert public.development_chat_send('Development fixture',nonce)=data,'Duplicate team message';
+ assert jsonb_array_length(public.development_chat_messages())>=1,'Team history unavailable';
+end $$;
+reset role;
+do $$begin
+ assert not exists(select 1 from public.members where uid=current_setting('test.platform_dev')::uuid),'Independent account has group membership';
+ assert (select data->'marks'='{"2026-11-13|1":"уп","2026-11-13|2":"н"}'::jsonb from public.docs where tenant_id='group_4'and path='attendance/'||current_setting('test.platform_student')),'Journal changed';
+ assert politeshik_private.is_deputy(current_setting('test.platform_second')::uuid),'Platform-appointed deputy not active';
+ assert exists(select 1 from public.docs d cross join lateral jsonb_array_elements(d.data->'notes')n where d.tenant_id='group_4'and d.path='group/extra'and n->>'id'='platform-note'),'Note missing';
+ assert not has_table_privilege('authenticated','politeshik_private.platform_developers','update'),'Direct privilege table writable';
+ assert not has_function_privilege('anon','public.platform_manage(text,text,jsonb)','execute'),'Anonymous management exposed';
+end $$;
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.platform_makar'),'role','authenticated')::text,true);
+do $$begin assert public.development_chat_state()->>'allowed'='true','Makar missing from team chat';assert exists(select 1 from jsonb_array_elements(public.development_chat_messages())m where m->>'body'='Development fixture'),'Makar cannot read team history';end $$;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.platform_owner'),'role','authenticated')::text,true);
+do $$begin assert public.development_chat_state()->>'allowed'='true','Arina missing from team chat';end $$;
+reset role;
+update politeshik_private.platform_developers set active=false where uid=current_setting('test.platform_dev')::uuid;
+set local role authenticated;
+select set_config('request.jwt.claims',jsonb_build_object('sub',current_setting('test.platform_dev'),'role','authenticated')::text,true);
+do $$declare denied boolean:=false;begin
+ assert public.development_chat_state()='{"allowed":false}'::jsonb,'Revoked developer retains chat';
+ begin perform public.platform_manage('group_4','users');exception when insufficient_privilege then denied:=true;end;assert denied,'Revoked developer retains powers';
+end $$;
+reset role;
+rollback;

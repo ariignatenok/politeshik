@@ -1095,3 +1095,5 @@
   justify-content: center;
   gap: 8px;
 }
+
+.role-seg4 button[data-role="developer"]{grid-column:1/-1;}

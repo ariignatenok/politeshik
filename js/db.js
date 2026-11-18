@@ -656,6 +656,18 @@ const Cloud = (() => {
         return;
       }
       C.uid = session.user.id;
+      const platformResult = await supa.rpc('platform_context');
+      if (platformResult.error) throw new Error(platformResult.error.message);
+      C.platformContext = platformResult.data?.active === true ? platformResult.data : null;
+      if (C.platformContext) {
+        C.status='online'; C.profile=C.platformContext.profile; C.tenantId=null; C.homeTenant=null;
+        C.member=null; C.memberKnown=true; C.role='platform_developer'; C.realRole=C.role;
+        C.isAdmin=false; C.realAdmin=false; C.isSuperAdmin=false; C.isTeacher=false; C.realTeacher=false;
+        C.isCurator=false; C.isDeputy=false; C.isStaff=false; C.isParent=false; C.isDepartment=false; C.isDeveloper=true;
+        C.provider=C.providerOf(session); C.oauthEmail=session.user.email||''; C.meta=session.user.user_metadata||{};
+        C.ready=true; C.loaded=true; C.admReady=false; C.adm={profiles:{},att:{},certs:{},chat:{}};
+        PlatformAdmin.activate(); PlatformAdmin.start(); return;
+      }
       const {data: curatorContext, error: curatorError} = await supa.rpc('activate_bound_curator');
       if(curatorError)throw new Error(curatorError.message);
       C.curatorContext=curatorContext?.matched && curatorContext.active?curatorContext:null;
@@ -783,6 +795,7 @@ const Cloud = (() => {
    * @returns {Promise} Результат выполнения.
    */
   const writeDoc = async (path, obj) => {
+    if (C.platformContext?.active) return {ok:false,error:'Изменения доступны через панель разработчика'};
     try {
       await DB.doc(path).set(obj);
       return {
@@ -976,6 +989,7 @@ const Cloud = (() => {
    * @returns {boolean} true, если условие выполнено.
    */
   C.hasCabinet = () => {
+    if (C.platformContext?.active) return false;
     if (C.isSuperAdmin) return true;
     if (C.isStaff) return true;
     if (C.member && C.member.requested_role && C.member.requested_role !== 'student' && C.member.status !== 'approved')

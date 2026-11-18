@@ -7,6 +7,8 @@ const App = {
    */
   gateMode() {
     if(typeof AuthRecovery!=='undefined'&&AuthRecovery.active)return 'recovery';
+    if (Cloud.platformContext?.active) return '';
+    if (Cloud.status==='online' && !Cloud.member && Cloud.meta?.signup_role==='developer') return 'developer-denied';
     if (Cloud.status === 'pending' || ui.activating) return 'loading';
     if(Cloud.status==='online'&&Cloud.facultyRequest&&Cloud.facultyRequest.status!=='approved')return 'faculty-wait';
     if (Cloud.status !== 'online' && ui.confirmEmail) return 'confirm';
@@ -48,6 +50,7 @@ const App = {
   renderGate(mode) {
     const g = $('#gate');
     if(mode==='recovery')return AuthRecovery.render(g);
+    if(mode==='developer-denied'){document.body.classList.add('gated');g.hidden=false;g.innerHTML='<div class="gate-card"><h1>Доступ разработчика</h1><p>Эта почта не закреплена за самостоятельным разработчиком. Обратитесь к Админу Арине.</p><button class="btn" data-action="logout-now">Выйти</button></div>';return;}
     const logged = Cloud.status === 'online';
     const hasCab = logged && Cloud.hasCabinet();
     const needClaim = logged && !hasCab && Cloud.claimsLoaded;
@@ -207,7 +210,8 @@ const App = {
       student: 'Войдите или создайте аккаунт. Доступ откроется после одобрения старостой.',
       parent: 'Родитель видит успеваемость и пропуски своего ребёнка. Доступ откроется после одобрения старостой.',
       staff: 'Куратор или отделение: укажите ФИО и должность, староста назначит роль.',
-      teacher: 'Выберите своё ФИО и зарегистрируйтесь. Доступ к кабинету подтверждает Админ Арина.'
+      teacher: 'Выберите своё ФИО и зарегистрируйтесь. Доступ к кабинету подтверждает Админ Арина.',
+      developer: 'Отдельный аккаунт команды приложения. Группа и код не нужны. Доступ выдаётся только на заранее закреплённую почту.'
     }[role];
     const codeField =
       role === 'student' || role === 'parent'
@@ -245,6 +249,7 @@ const App = {
       roleBtn('parent', 'Родитель') +
       roleBtn('staff', 'Куратор / отделение') +
       roleBtn('teacher', 'Преподаватель') +
+      roleBtn('developer', 'Разработчик') +
       '</div>' +
       '<p class="gate-text">' +
       intro +
@@ -284,6 +289,7 @@ const App = {
       App.renderGate(gm);
       return;
     }
+    if (Cloud.platformContext?.active) return PlatformAdmin.render();
     if (Cloud.isSuperAdmin) {
       try {
         const target = window.sessionStorage.getItem('politeshik:open-group');
@@ -532,6 +538,7 @@ const App = {
     Cloud.init()
       .catch(error => Safe.report('init', error))
       .then(() => {
+        if (Cloud.platformContext?.active) { PlatformAdmin.start(); App.render(true); return; }
         Safe.run('mascot', () => Mascot.syncFromProfile());
         Safe.run('requests', () => Cloud.loadRequests(true));
         Safe.run('curator-chats', () => CuratorChats.refresh());

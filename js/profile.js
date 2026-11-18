@@ -66,7 +66,7 @@ const Profile = {
    * Копирует аватар, «О себе» и достижения в профиль в облаке.
    */
   push() {
-    if(Profile.visiting())return;
+    if(Cloud.platformContext?.active||Profile.visiting())return;
     Avatars.publish();
     if (Cloud.status !== 'online' || !Cloud.profile || Cloud.isStaff) return;
     const state = Store.s;

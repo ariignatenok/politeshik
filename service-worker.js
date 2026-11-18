@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bleaderschat20261118';
+const CACHE_VERSION = 'bplatformdev20261118';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -177,6 +177,8 @@ const SHELL = [
   'js/profile-photos.js',
   'js/group-rooms.js',
   'js/leader-chat.js',
+  'js/development-chat.js',
+  'js/platform-admin.js',
   'js/group-rating.js',
   'js/faculty.js',
   'js/data/faculty-names.js',
