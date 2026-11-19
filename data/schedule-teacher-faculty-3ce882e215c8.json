@@ -4,7 +4,7 @@
   "teacher": "Андреев В.А.",
   "full_name": "Андреев Владимир Александрович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -675,9 +675,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -695,9 +695,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -722,9 +722,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -742,9 +743,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"

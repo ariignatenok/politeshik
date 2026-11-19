@@ -4,7 +4,7 @@
   "teacher": "Шаблаев М.В.",
   "full_name": "Шаблаев Михаил Викторович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -641,9 +641,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "103",
+          "campus": "П",
+          "classroom": "каб. 103 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"
@@ -661,9 +661,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "103",
+          "campus": "П",
+          "classroom": "каб. 103 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"

@@ -4,7 +4,7 @@
   "teacher": "Чигирь П.П.",
   "full_name": "Чигирь Полина Павловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-19",
   "days": {
@@ -198,9 +198,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -225,9 +225,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -255,9 +255,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"

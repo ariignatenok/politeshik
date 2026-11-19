@@ -4,7 +4,7 @@
   "teacher": "Цветкова Т.Ю.",
   "full_name": "Цветкова Татьяна Юрьевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -263,12 +263,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
-      "lessons": []
-    },
-    "2026-11-10": {
       "lessons": []
     },
     "2026-11-11": {
@@ -560,9 +554,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "321",
+          "campus": "П",
+          "classroom": "каб. 321 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2091"
@@ -580,9 +574,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "321",
+          "campus": "П",
+          "classroom": "каб. 321 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2092"
@@ -600,9 +594,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "321",
+          "campus": "П",
+          "classroom": "каб. 321 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1092"

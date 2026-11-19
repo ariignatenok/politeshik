@@ -4,7 +4,7 @@
   "teacher": "Чужакова П.О.",
   "full_name": "Чужакова Полина Олеговна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-03",
   "to": "2026-11-21",
   "days": {
@@ -156,9 +156,6 @@
       "week_type": "Знаменатель"
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -346,9 +343,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "Э",
+          "classroom": "каб. 402 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -366,9 +363,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "Э",
+          "classroom": "каб. 402 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -386,9 +383,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "Э",
+          "classroom": "каб. 402 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"
@@ -416,9 +413,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "243",
+          "campus": "Э",
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -436,9 +433,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "243",
+          "campus": "Э",
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"

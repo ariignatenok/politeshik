@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-18",
+  "checked_at": "2026-11-19",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -8,16 +8,17 @@
       "id": "faculty-fef89b8bfbf9",
       "name": "Аболецкая Лидия Владимировна",
       "teacher": "Аболецкая Л.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-fef89b8bfbf9.json",
       "groups": {},
-      "attempted_at": "2026-11-12T21:40:41.706617+00:00"
+      "attempted_at": "2026-11-19T00:31:56.094450+00:00",
+      "fetched_at": "2026-11-19T00:31:57.471276+00:00"
     },
     {
       "id": "faculty-3ce882e215c8",
       "name": "Андреев Владимир Александрович",
       "teacher": "Андреев В.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3ce882e215c8.json",
       "groups": {
         "25290909/3091": [
@@ -27,29 +28,32 @@
           "ОПБД"
         ]
       },
-      "attempted_at": "2026-11-12T21:40:44.245332+00:00"
+      "attempted_at": "2026-11-19T00:31:57.471311+00:00",
+      "fetched_at": "2026-11-19T00:31:58.866185+00:00"
     },
     {
       "id": "faculty-ae1169086001",
       "name": "Андреев Дмитрий Викторович",
       "teacher": "Андреев Д.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ae1169086001.json",
       "groups": {
         "25290907/1091": [
           "ОСиС"
         ]
       },
-      "attempted_at": "2026-11-12T21:40:45.843218+00:00"
+      "attempted_at": "2026-11-19T00:31:58.866258+00:00",
+      "fetched_at": "2026-11-19T00:32:00.466687+00:00"
     },
     {
       "id": "faculty-68d9711e8c64",
       "name": "Антонов Андрей Александрович",
       "teacher": "Антонов А.А.",
-      "status": "stale",
+      "status": "awaiting_source",
       "schedule_file": "schedule-teacher-faculty-68d9711e8c64.json",
       "groups": {},
-      "attempted_at": "2026-11-12T21:46:54.767597+00:00"
+      "attempted_at": "2026-11-19T00:32:00.466720+00:00",
+      "fetched_at": "2026-11-19T00:32:01.853138+00:00"
     },
     {
       "id": "faculty-7cbb895cc502",
@@ -1859,87 +1863,105 @@
       "id": "faculty-7a1e08221a25",
       "name": "Цветкова Татьяна Юрьевна",
       "teacher": "Цветкова Т.Ю.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7a1e08221a25.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:24.353757+00:00",
+      "fetched_at": "2026-11-19T00:31:26.018508+00:00"
     },
     {
       "id": "faculty-c5bb74ed5fbc",
       "name": "Чебачева Евгения Владимировна",
       "teacher": "Чебачева Е.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c5bb74ed5fbc.json",
       "groups": {
         "25290907/1091": [
           "История ОГСЭ"
         ]
-      }
+      },
+      "attempted_at": "2026-11-19T00:31:26.018561+00:00",
+      "fetched_at": "2026-11-19T00:31:27.862372+00:00"
     },
     {
       "id": "faculty-00610de08487",
       "name": "Чекан Сергей Иванович",
       "teacher": "Чекан С.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-00610de08487.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:27.862404+00:00",
+      "fetched_at": "2026-11-19T00:31:29.484423+00:00"
     },
     {
       "id": "faculty-8b0d83aa0c37",
       "name": "Челищева Лилия Наталиевна",
       "teacher": "Челищева Л.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8b0d83aa0c37.json",
       "groups": {
         "24290907/2092": [
           "МДК.11.01 ТРиЗБД"
         ]
-      }
+      },
+      "attempted_at": "2026-11-19T00:31:29.484454+00:00",
+      "fetched_at": "2026-11-19T00:31:31.068914+00:00"
     },
     {
       "id": "faculty-9e033e676817",
       "name": "Черемонцева Ирина Васильевна",
       "teacher": "Черемонцева И.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9e033e676817.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:31.068948+00:00",
+      "fetched_at": "2026-11-19T00:31:32.712961+00:00"
     },
     {
       "id": "faculty-56f8c3a61d19",
       "name": "Чигирь Полина Павловна",
       "teacher": "Чигирь П.П.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-56f8c3a61d19.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:32.712992+00:00",
+      "fetched_at": "2026-11-19T00:31:34.355429+00:00"
     },
     {
       "id": "faculty-ac23e036bc3e",
       "name": "Чужакова Полина Олеговна",
       "teacher": "Чужакова П.О.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ac23e036bc3e.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:34.355455+00:00",
+      "fetched_at": "2026-11-19T00:31:36.099727+00:00"
     },
     {
       "id": "faculty-f2d756ef6280",
       "name": "Шаблаев Михаил Викторович",
       "teacher": "Шаблаев М.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f2d756ef6280.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:36.099755+00:00",
+      "fetched_at": "2026-11-19T00:31:37.748029+00:00"
     },
     {
       "id": "faculty-0c1388d2ff9a",
       "name": "Шавров Александр Сергеевич",
       "teacher": "Шавров А.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0c1388d2ff9a.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:37.748060+00:00",
+      "fetched_at": "2026-11-19T00:31:39.490345+00:00"
     },
     {
       "id": "faculty-ee0b3ca367e5",
       "name": "Шаврова Любовь Сергеевна",
       "teacher": "Шаврова Л.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ee0b3ca367e5.json",
       "groups": {
         "25290907/1091": [
@@ -1948,91 +1970,113 @@
         "26290911/3111": [
           "Основы работы с информацией"
         ]
-      }
+      },
+      "attempted_at": "2026-11-19T00:31:39.490380+00:00",
+      "fetched_at": "2026-11-19T00:31:41.252997+00:00"
     },
     {
       "id": "faculty-ccbf05d535b4",
       "name": "Шацкая Татьяна Евгеньевна",
       "teacher": "Шацкая Т.Е.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ccbf05d535b4.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:41.253043+00:00",
+      "fetched_at": "2026-11-19T00:31:42.682748+00:00"
     },
     {
       "id": "faculty-f62b38246923",
       "name": "Шетлер Игорь Юрьевич",
       "teacher": "Шетлер И.Ю.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f62b38246923.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:42.682830+00:00",
+      "fetched_at": "2026-11-19T00:31:44.076947+00:00"
     },
     {
       "id": "faculty-7f6cd957201e",
       "name": "Шилова Алла Андреевна",
       "teacher": "Шилова А.А.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:44.076972+00:00",
+      "fetched_at": "2026-11-19T00:31:45.452367+00:00"
     },
     {
       "id": "faculty-80dd129dc6bc",
       "name": "Шиляев Иван Константинович",
       "teacher": "Шиляев И.К.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-80dd129dc6bc.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:45.452391+00:00",
+      "fetched_at": "2026-11-19T00:31:46.828984+00:00"
     },
     {
       "id": "faculty-33b6d5431b91",
       "name": "Шиманская Каролина Владимировна",
       "teacher": "Шиманская К.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-33b6d5431b91.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:46.829030+00:00",
+      "fetched_at": "2026-11-19T00:31:48.335145+00:00"
     },
     {
       "id": "faculty-56a8256fdb9d",
       "name": "Щербак Алена Валериевна",
       "teacher": "Щербак А.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-56a8256fdb9d.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:48.335181+00:00",
+      "fetched_at": "2026-11-19T00:31:49.834640+00:00"
     },
     {
       "id": "faculty-14764eb0d37b",
       "name": "Юзова Юлия Александровна",
       "teacher": "Юзова Ю.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-14764eb0d37b.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:49.834724+00:00",
+      "fetched_at": "2026-11-19T00:31:51.616213+00:00"
     },
     {
       "id": "faculty-0db1cfc2eb2a",
       "name": "Юркевич Наталья Викторовна",
       "teacher": "Юркевич Н.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0db1cfc2eb2a.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:51.616285+00:00",
+      "fetched_at": "2026-11-19T00:31:52.994204+00:00"
     },
     {
       "id": "faculty-65a1d3c4ffc7",
       "name": "Яценко Анна Ивановна",
       "teacher": "Яценко А.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-65a1d3c4ffc7.json",
       "groups": {
         "23290907/2092": [
           "МДК.01.03 Разработка мобильных приложений"
         ]
-      }
+      },
+      "attempted_at": "2026-11-19T00:31:52.994239+00:00",
+      "fetched_at": "2026-11-19T00:31:54.494892+00:00"
     },
     {
       "id": "faculty-047d043706bd",
       "name": "Яшкова Надежда Владимировна",
       "teacher": "Яшкова Н.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-047d043706bd.json",
-      "groups": {}
+      "groups": {},
+      "attempted_at": "2026-11-19T00:31:54.494970+00:00",
+      "fetched_at": "2026-11-19T00:31:56.094418+00:00"
     }
   ],
   "unresolved": [
