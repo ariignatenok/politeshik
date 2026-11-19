@@ -4,9 +4,9 @@
   "teacher": "Зубарев А.А.",
   "full_name": "Зубарев Алексей Алексеевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-19",
+  "to": "2026-12-04",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -614,9 +614,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -634,9 +634,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -654,9 +654,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -681,9 +681,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -696,21 +696,22 @@
           "lesson_number": 2,
           "subject": "История ОГСЭ",
           "teacher": "Зубарев А.А.",
-          "group": "25290907/2091",
+          "group": "25290907/2091, 25290907/2092",
           "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "is_stream": true,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
-            "25290907/2091"
+            "25290907/2091",
+            "25290907/2092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "МДК.04.01 Внедрение и поддержка КС",
+          "original_teacher": "Иванова Д.В.",
+          "original_classroom": "каб. 110 (Энгельса)"
         },
         {
           "lesson_number": 3,
@@ -721,9 +722,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "253",
+          "campus": "Э",
+          "classroom": "каб. 253 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -741,9 +742,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "253",
+          "campus": "Э",
+          "classroom": "каб. 253 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -768,9 +769,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"
@@ -788,9 +789,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -801,6 +802,493 @@
         },
         {
           "lesson_number": 3,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/2092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26294316/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26294316/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26294316/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26294316/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "lessons": []
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290911/2092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290911/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "lessons": []
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290911/2092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26294316/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26294316/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "group": "25292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290912/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290912/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "lessons": []
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290912/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290912/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290911/2092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
           "subject": "История ОГСЭ",
           "teacher": "Зубарев А.А.",
           "group": "25290907/2091",
@@ -820,7 +1308,7 @@
           "original_classroom": null
         },
         {
-          "lesson_number": 4,
+          "lesson_number": 2,
           "subject": "История ОГСЭ",
           "teacher": "Зубарев А.А.",
           "group": "25290907/2092",
@@ -838,12 +1326,99 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290911/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-19": {
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290912/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290912/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "group": "25292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
       "day_name": "Четверг",
       "lessons": [
         {
@@ -885,12 +1460,19 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
-        },
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-04": {
+      "day_name": "Пятница",
+      "lessons": [
         {
-          "lesson_number": 3,
-          "subject": "История",
+          "lesson_number": 1,
+          "subject": "История ОГСЭ",
           "teacher": "Зубарев А.А.",
-          "group": "26294316/1092",
+          "group": "25290907/3093",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -900,7 +1482,47 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "26294316/1092"
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История России",
+          "teacher": "Зубарев А.А.",
+          "group": "25292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История ОГСЭ",
+          "teacher": "Зубарев А.А.",
+          "group": "25290907/2092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2092"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -910,7 +1532,7 @@
           "lesson_number": 4,
           "subject": "История",
           "teacher": "Зубарев А.А.",
-          "group": "26294316/1091",
+          "group": "26290911/2091",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -920,14 +1542,14 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "26294316/1091"
+            "26290911/2091"
           ],
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

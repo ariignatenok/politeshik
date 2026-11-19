@@ -4,9 +4,9 @@
   "teacher": "Киселева Д.А.",
   "full_name": "Киселева Дарья Александровна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-20",
+  "to": "2026-12-04",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -219,9 +219,6 @@
       "week_type": "Знаменатель"
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -466,9 +463,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -486,9 +483,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -506,9 +503,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/3091"
@@ -516,6 +513,26 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291312/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/3091"
+          ],
+          "original_subject": "Основы проектной деятельности",
+          "original_teacher": "Груничев В.В.",
+          "original_classroom": "каб. 105 (Энгельса)"
         }
       ],
       "week_number": 12,
@@ -533,9 +550,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -553,9 +570,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "549",
+          "campus": "Э",
+          "classroom": "каб. 549 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3091"
@@ -583,12 +600,416 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История России",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291510/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291510/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291510/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291510/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291312/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291312/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "lessons": []
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История России",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "История ОГСЭ",
+          "teacher": "Киселева Д.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
             "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "lessons": []
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291312/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "История ОГСЭ",
+          "teacher": "Киселева Д.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26291510/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291510/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -615,34 +1036,14 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-20": {
-      "day_name": "Пятница",
+    "2026-12-02": {
+      "day_name": "Среда",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "История России",
-          "teacher": "Киселева Д.А.",
-          "group": "26290911/3111",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26290911/3111"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
           "subject": "История",
           "teacher": "Киселева Д.А.",
           "group": "26290909/3091",
@@ -662,7 +1063,7 @@
           "original_classroom": null
         },
         {
-          "lesson_number": 3,
+          "lesson_number": 2,
           "subject": "История",
           "teacher": "Киселева Д.А.",
           "group": "26290911/3092",
@@ -682,7 +1083,57 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
+      "lessons": []
+    },
+    "2026-12-04": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "История",
+          "teacher": "Киселева Д.А.",
+          "group": "26290911/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

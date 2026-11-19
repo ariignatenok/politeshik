@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-19",
+  "checked_at": "2026-11-20",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -21,6 +21,9 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3ce882e215c8.json",
       "groups": {
+        "25290907/3111": [
+          "МДК.11.01 ТРиЗБД"
+        ],
         "25290909/3091": [
           "ОПБД"
         ],
@@ -167,6 +170,9 @@
       "schedule_file": "schedule-teacher-faculty-487dfcd45374.json",
       "groups": {
         "23290907/2092": [
+          "Ин. яз. в ПД"
+        ],
+        "25290907/3111": [
           "Ин. яз. в ПД"
         ]
       },
@@ -534,6 +540,9 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a3887dca85e9.json",
       "groups": {
+        "25290907/3111": [
+          "МДК.01.01 Разработка программных модулей"
+        ],
         "26290911/3111": [
           "ОАП"
         ]
@@ -588,8 +597,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-892409579740.json",
       "groups": {},
-      "attempted_at": "2026-11-13T03:40:50.704173+00:00",
-      "fetched_at": "2026-11-13T03:40:52.427570+00:00"
+      "attempted_at": "2026-11-19T23:30:12.986330+00:00",
+      "fetched_at": "2026-11-19T23:30:14.740098+00:00"
     },
     {
       "id": "faculty-0059b4806d40",
@@ -598,8 +607,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0059b4806d40.json",
       "groups": {},
-      "attempted_at": "2026-11-13T03:40:52.427684+00:00",
-      "fetched_at": "2026-11-13T03:40:54.523624+00:00"
+      "attempted_at": "2026-11-19T23:30:14.740176+00:00",
+      "fetched_at": "2026-11-19T23:30:16.850747+00:00"
     },
     {
       "id": "faculty-9d82521c1ce8",
@@ -610,10 +619,13 @@
       "groups": {
         "24290907/2092": [
           "ТВиМС"
+        ],
+        "25290907/3111": [
+          "ТВиМС"
         ]
       },
-      "attempted_at": "2026-11-13T11:38:23.179508+00:00",
-      "fetched_at": "2026-11-13T11:38:25.604197+00:00"
+      "attempted_at": "2026-11-19T23:30:16.850830+00:00",
+      "fetched_at": "2026-11-19T23:30:18.611620+00:00"
     },
     {
       "id": "faculty-3694ec38c045",
@@ -622,8 +634,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3694ec38c045.json",
       "groups": {},
-      "attempted_at": "2026-11-13T11:38:25.604225+00:00",
-      "fetched_at": "2026-11-13T11:38:27.368128+00:00"
+      "attempted_at": "2026-11-19T23:30:18.611686+00:00",
+      "fetched_at": "2026-11-19T23:30:20.625653+00:00"
     },
     {
       "id": "faculty-505e6c6a1bcf",
@@ -632,8 +644,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-505e6c6a1bcf.json",
       "groups": {},
-      "attempted_at": "2026-11-13T11:38:27.368145+00:00",
-      "fetched_at": "2026-11-13T11:38:28.971415+00:00"
+      "attempted_at": "2026-11-19T23:30:20.625733+00:00",
+      "fetched_at": "2026-11-19T23:30:22.367838+00:00"
     },
     {
       "id": "faculty-5c51f385d1e0",
@@ -642,14 +654,14 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5c51f385d1e0.json",
       "groups": {},
-      "attempted_at": "2026-11-13T11:38:28.971433+00:00",
-      "fetched_at": "2026-11-13T11:38:30.684738+00:00"
+      "attempted_at": "2026-11-19T23:30:22.367916+00:00",
+      "fetched_at": "2026-11-19T23:30:23.947449+00:00"
     },
     {
       "id": "faculty-da4b3753143f",
       "name": "Журавлева Ольга Алексеевна",
       "teacher": "Журавлева О.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-da4b3753143f.json",
       "groups": {
         "23290907/2092": [
@@ -659,75 +671,82 @@
           "ОАП"
         ]
       },
-      "attempted_at": "2026-11-13T11:38:30.684753+00:00"
+      "attempted_at": "2026-11-19T23:30:23.947482+00:00",
+      "fetched_at": "2026-11-19T23:30:25.716446+00:00"
     },
     {
       "id": "faculty-8a73e464686d",
       "name": "Зацепина Наталья Денисовна",
       "teacher": "Зацепина Н.Д.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-13T11:38:32.385388+00:00"
+      "attempted_at": "2026-11-19T23:30:25.716519+00:00",
+      "fetched_at": "2026-11-19T23:30:27.290690+00:00"
     },
     {
       "id": "faculty-db07bc37eb0d",
       "name": "Зернова Елена Николаевна",
       "teacher": "Зернова Е.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-db07bc37eb0d.json",
       "groups": {
         "23290907/2092": [
           "МДК.02.03 Мат. моделирование"
         ]
       },
-      "attempted_at": "2026-11-13T11:38:34.148620+00:00"
+      "attempted_at": "2026-11-19T23:30:27.290713+00:00",
+      "fetched_at": "2026-11-19T23:30:29.034750+00:00"
     },
     {
       "id": "faculty-8bff3af2c46c",
       "name": "Зубарев Алексей Алексеевич",
       "teacher": "Зубарев А.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8bff3af2c46c.json",
       "groups": {
         "25290909/3091": [
           "История России"
         ]
       },
-      "attempted_at": "2026-11-13T18:49:09.651078+00:00"
+      "attempted_at": "2026-11-19T23:30:29.034804+00:00",
+      "fetched_at": "2026-11-19T23:30:31.181275+00:00"
     },
     {
       "id": "faculty-c0415f4c6d7f",
       "name": "Зыблев Василий Александрович",
       "teacher": "Зыблев В.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c0415f4c6d7f.json",
       "groups": {},
-      "attempted_at": "2026-11-13T18:49:12.325400+00:00"
+      "attempted_at": "2026-11-19T23:30:31.181386+00:00",
+      "fetched_at": "2026-11-19T23:30:33.297879+00:00"
     },
     {
       "id": "faculty-cc24a3d5ec0e",
       "name": "Иванова Дарья Васильевна",
       "teacher": "Иванова Д.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-cc24a3d5ec0e.json",
       "groups": {},
-      "attempted_at": "2026-11-13T18:49:14.028460+00:00"
+      "attempted_at": "2026-11-19T23:30:33.297947+00:00",
+      "fetched_at": "2026-11-19T23:30:35.379519+00:00"
     },
     {
       "id": "faculty-95fe46e97169",
       "name": "Ивашкова Надежда Александровна",
       "teacher": "Ивашкова Н.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-95fe46e97169.json",
       "groups": {},
-      "attempted_at": "2026-11-13T23:57:07.396260+00:00"
+      "attempted_at": "2026-11-19T23:30:35.379616+00:00",
+      "fetched_at": "2026-11-19T23:30:37.444371+00:00"
     },
     {
       "id": "faculty-564e44d489d2",
       "name": "Игнатьев Евгений Александрович",
       "teacher": "Игнатьев Е.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-564e44d489d2.json",
       "groups": {
         "25290907/1091": [
@@ -737,51 +756,56 @@
           "Архитектура аппаратных средств"
         ]
       },
-      "attempted_at": "2026-11-13T23:57:08.772480+00:00"
+      "attempted_at": "2026-11-19T23:30:37.444466+00:00",
+      "fetched_at": "2026-11-19T23:30:39.222104+00:00"
     },
     {
       "id": "faculty-d5393280cf21",
       "name": "Ильин Юрий Петрович",
       "teacher": "Ильин Ю.П.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-d5393280cf21.json",
       "groups": {
         "24290907/2092": [
           "МДК.01.01 Разработка программных модулей"
         ]
       },
-      "attempted_at": "2026-11-13T23:57:10.350078+00:00"
+      "attempted_at": "2026-11-19T23:30:39.222155+00:00",
+      "fetched_at": "2026-11-19T23:30:40.962100+00:00"
     },
     {
       "id": "faculty-1d2021b0b92c",
       "name": "Казаков Дмитрий Николаевич",
       "teacher": "Казаков Д.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1d2021b0b92c.json",
       "groups": {},
-      "attempted_at": "2026-11-14T06:07:24.276198+00:00"
+      "attempted_at": "2026-11-19T23:30:40.962141+00:00",
+      "fetched_at": "2026-11-19T23:30:42.704944+00:00"
     },
     {
       "id": "faculty-d50e575fd99c",
       "name": "Киреенко Ксения Николаевна",
       "teacher": "Киреенко К.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-d50e575fd99c.json",
       "groups": {},
-      "attempted_at": "2026-11-14T06:07:26.047774+00:00"
+      "attempted_at": "2026-11-19T23:30:42.705026+00:00",
+      "fetched_at": "2026-11-19T23:30:44.844344+00:00"
     },
     {
       "id": "faculty-0e14e15cf3d5",
       "name": "Киселева Дарья Александровна",
       "teacher": "Киселева Д.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0e14e15cf3d5.json",
       "groups": {
         "26290911/3111": [
           "История России"
         ]
       },
-      "attempted_at": "2026-11-14T06:07:27.806410+00:00"
+      "attempted_at": "2026-11-19T23:30:44.844438+00:00",
+      "fetched_at": "2026-11-19T23:30:46.589031+00:00"
     },
     {
       "id": "faculty-376b688a1992",
@@ -790,8 +814,8 @@
       "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-14T13:40:03.972472+00:00",
-      "fetched_at": "2026-11-14T13:40:05.601870+00:00"
+      "attempted_at": "2026-11-19T23:30:46.589106+00:00",
+      "fetched_at": "2026-11-19T23:30:48.162134+00:00"
     },
     {
       "id": "faculty-9ca49d11c704",
@@ -800,8 +824,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9ca49d11c704.json",
       "groups": {},
-      "attempted_at": "2026-11-14T13:40:05.601895+00:00",
-      "fetched_at": "2026-11-14T13:40:07.223913+00:00"
+      "attempted_at": "2026-11-19T23:30:48.162157+00:00",
+      "fetched_at": "2026-11-19T23:30:49.900145+00:00"
     },
     {
       "id": "faculty-3157d1358a43",
@@ -810,8 +834,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3157d1358a43.json",
       "groups": {},
-      "attempted_at": "2026-11-14T13:40:07.223945+00:00",
-      "fetched_at": "2026-11-14T13:40:08.852361+00:00"
+      "attempted_at": "2026-11-19T23:30:49.900185+00:00",
+      "fetched_at": "2026-11-19T23:30:51.941488+00:00"
     },
     {
       "id": "faculty-3380bd4d5460",
@@ -820,26 +844,28 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3380bd4d5460.json",
       "groups": {},
-      "attempted_at": "2026-11-14T13:40:08.852402+00:00",
-      "fetched_at": "2026-11-14T13:40:12.004696+00:00"
+      "attempted_at": "2026-11-19T23:30:51.941527+00:00",
+      "fetched_at": "2026-11-19T23:30:53.529706+00:00"
     },
     {
       "id": "faculty-70eb4398be9b",
       "name": "Коровкина Наталья Михайловна",
       "teacher": "Коровкина Н.М.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-70eb4398be9b.json",
       "groups": {},
-      "attempted_at": "2026-11-14T13:40:12.004726+00:00"
+      "attempted_at": "2026-11-19T23:30:53.529751+00:00",
+      "fetched_at": "2026-11-19T23:30:55.277099+00:00"
     },
     {
       "id": "faculty-18154fecd383",
       "name": "Коротышева Людмила Брониславовна",
       "teacher": "Коротышева Л.Б.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-18154fecd383.json",
       "groups": {},
-      "attempted_at": "2026-11-14T13:40:13.376879+00:00"
+      "attempted_at": "2026-11-19T23:30:55.277147+00:00",
+      "fetched_at": "2026-11-19T23:30:57.017746+00:00"
     },
     {
       "id": "faculty-a3a54eb58c98",
@@ -1301,6 +1327,9 @@
       "groups": {
         "24290907/2092": [
           "Психология общения"
+        ],
+        "25290907/3111": [
+          "Психология общения"
         ]
       },
       "attempted_at": "2026-11-16T11:58:42.014041+00:00",
@@ -1407,6 +1436,9 @@
       "groups": {
         "24290907/2092": [
           "Програм. в 1С:Предпр. 8"
+        ],
+        "25290907/3111": [
+          "Програм. в 1С:Предпр. 8"
         ]
       },
       "attempted_at": "2026-11-17T10:50:43.193379+00:00",
@@ -1434,6 +1466,9 @@
       "schedule_file": "schedule-teacher-faculty-7aa81fc8312f.json",
       "groups": {
         "24290907/2092": [
+          "Физ. культура"
+        ],
+        "25290907/3111": [
           "Физ. культура"
         ]
       },
@@ -1649,6 +1684,9 @@
       "schedule_file": "schedule-teacher-faculty-a495f649adf4.json",
       "groups": {
         "24290907/2092": [
+          "Правовое обеспечение ПД"
+        ],
+        "25290907/3111": [
           "Правовое обеспечение ПД"
         ]
       },
@@ -1891,7 +1929,11 @@
       "teacher": "Чекан С.И.",
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-00610de08487.json",
-      "groups": {},
+      "groups": {
+        "25290907/3111": [
+          "Компьютерные сети"
+        ]
+      },
       "attempted_at": "2026-11-19T00:31:27.862404+00:00",
       "fetched_at": "2026-11-19T00:31:29.484423+00:00"
     },
