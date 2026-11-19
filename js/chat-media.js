@@ -7,6 +7,8 @@ const ChatMedia = {
   busy: false,
   token: 0,
   context(form) {
+    const work=typeof WorkChatTools!=='undefined'?WorkChatTools.context(form):null;
+    if(work)return {work,tenant:Cloud.tenantId,owner:Cloud.uid,peer:null,thread:null,role:null};
     return form.dataset.form === 'peer'
       ? {
           peer: form.dataset.peer,
@@ -82,15 +84,10 @@ const ChatMedia = {
     try {
       const {file, context, kind} = draft;
       if (!draft.upload) {
-        draft.upload = await Social.call('prepare_message_upload', {
-          p_peer: context.peer,
-          p_thread: context.thread,
-          p_role: context.role,
-          p_name: file.name.slice(0, 200),
-          p_mime: (file.type || 'application/octet-stream').split(';')[0],
-          p_size: file.size,
-          p_kind: kind,
-        });
+        const fields={p_name:file.name.slice(0,200),p_mime:(file.type||'application/octet-stream').split(';')[0],p_size:file.size};
+        draft.upload = context.work
+          ? await Social.call('prepare_work_chat_upload',{...WorkChatTools.args(context.work),...fields,p_media_kind:kind})
+          : await Social.call('prepare_message_upload',{...fields,p_peer:context.peer,p_thread:context.thread,p_role:context.role,p_kind:kind});
       }
       if (!draft.uploaded) {
         const {error} = await supa.storage
@@ -103,7 +100,7 @@ const ChatMedia = {
         draft.uploaded = true;
       }
       status.textContent = 'Отправляю…';
-      await Social.call('send_message_upload', {
+      await Social.call(context.work?'send_work_chat_upload':'send_message_upload', {
         p_id: draft.upload.id,
         p_body: body,
       });
@@ -112,7 +109,8 @@ const ChatMedia = {
       ChatMedia.cancel();
       UI.close();
       if (context.owner === Cloud.uid && context.tenant === Cloud.tenantId) {
-        if (context.peer) {
+        if(context.work)await WorkChatTools.refresh(context.work);
+        else if (context.peer) {
           await Social.loadThread(context.peer);
           await Social.loadInbox();
         } else await Dm.refresh();

@@ -59,10 +59,10 @@ const CuratorChats={
  threadHtml(key){
   const row=CuratorChats.contact(key);if(!CuratorChats.allowed()||!row)return '<button class="btn" data-action="chat-back">← Чаты</button><p class="warn">Чат недоступен. Обновите список контактов.</p>';
   const rows=CuratorChats.threads[key],older=CuratorChats.historyMore[key];
-  return '<div class="page-head"><button class="btn sm" data-action="chat-back">← Чаты</button><div><h2>'+U.esc(row.name||Groups.get(row.tenant_id).leader)+'</h2><p>'+U.esc(row.group_name)+'</p></div></div><div class="card peer-thread"><div class="peer-scroll">'+
+  return '<div class="page-head work-chat-head"><button class="btn sm" data-action="chat-back">← Чаты</button><div><h2>'+U.esc(row.name||Groups.get(row.tenant_id).leader)+'</h2><p>'+U.esc(row.group_name)+'</p></div>'+WorkChatTools.infoButton({kind:'curator',tenant:row.tenant_id,peer:row.peer_uid})+'</div><div class="card peer-thread"><div class="peer-scroll">'+
    (older?'<button class="btn sm" data-action="curator-chat-older" data-key="'+U.esc(key)+'">Более ранние сообщения</button>':'')+
-   (rows?rows.map(m=>'<div class="peer-message'+(m.sender===Cloud.uid?' mine':'')+'"><p>'+U.esc(m.body).replace(/\n/g,'<br>')+'</p><small>'+U.esc(chatTime(m.created_at))+(m.sender===Cloud.uid?messageReceipt(!!m.read_at):'')+'</small></div>').join('')||'<div class="empty">Начните переписку 👋</div>':'<p role="status">Загружаем сообщения…</p>')+
-   '</div>'+(CuratorChats.error?'<p class="warn">'+U.esc(CuratorChats.error)+'</p>':'')+'<div class="chat-in" data-form="curator-chat" data-thread="'+U.esc(key)+'">'+chatComposer('curatorChatIn','curator:'+key,'Написать сообщение…')+'<button class="btn primary" data-action="save-form" aria-label="Отправить сообщение">➤</button></div></div>';
+   (rows?rows.map(m=>'<div class="peer-message'+(m.sender===Cloud.uid?' mine':'')+'">'+WorkChatTools.media(m)+'<p>'+WorkChatTools.text(m.body)+'</p><small>'+U.esc(chatTime(m.created_at))+(m.sender===Cloud.uid?messageReceipt(!!m.read_at):'')+'</small></div>').join('')||'<div class="empty">Начните переписку 👋</div>':'<p role="status">Загружаем сообщения…</p>')+
+   '</div>'+(CuratorChats.error?'<p class="warn">'+U.esc(CuratorChats.error)+'</p>':'')+'<div class="chat-in" data-form="curator-chat" data-thread="'+U.esc(key)+'">'+ChatMedia.controls()+chatComposer('curatorChatIn','curator:'+key,'Написать сообщение…')+'<button class="btn primary" data-action="save-form" aria-label="Отправить сообщение">➤</button></div></div>';
  }
 };
 Object.assign(A,{'curator-chats-refresh':()=>CuratorChats.refresh(true),'curator-chat-older':el=>CuratorChats.load(el.dataset.key,true)});

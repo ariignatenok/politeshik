@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bplatformdev20261118b';
+const CACHE_VERSION = 'bworkmedia20261119';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [
@@ -105,6 +105,7 @@ const SHELL = [
   'css/club-interior.css',
   'js/map-routes.js',
   'js/chat-media.js',
+  'js/work-chat-tools.js',
   'js/map-guide.js',
   'js/global-rating.js',
   'js/profile-wall.js',
