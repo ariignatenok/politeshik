@@ -4,7 +4,7 @@
   "teacher": "Давыдов С.Н.",
   "full_name": "Давыдов Сергей Николаевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-17",
   "days": {
@@ -95,9 +95,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -197,9 +194,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1091"
@@ -217,9 +214,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2093"
@@ -237,9 +234,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2094"

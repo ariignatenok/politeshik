@@ -4,7 +4,7 @@
   "teacher": "Гусарова М.Н.",
   "full_name": "Гусарова Марина Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -601,9 +601,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2092"
@@ -621,9 +621,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -641,9 +641,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -671,9 +671,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -691,9 +691,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -711,9 +711,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -738,9 +738,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -758,9 +758,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "24293801/3091"

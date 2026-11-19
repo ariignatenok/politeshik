@@ -4,7 +4,7 @@
   "teacher": "Герчикова И.Г.",
   "full_name": "Герчикова Ирина Григорьевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-19",
   "days": {
@@ -449,9 +449,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/3091"
@@ -469,9 +469,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"
@@ -489,9 +489,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/1091"
@@ -509,9 +509,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1092"
@@ -536,9 +536,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -556,9 +556,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -583,9 +583,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -603,9 +603,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -623,9 +623,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"

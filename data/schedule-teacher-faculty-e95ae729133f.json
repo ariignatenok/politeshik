@@ -4,7 +4,7 @@
   "teacher": "Дементьев В.С.",
   "full_name": "Дементьев Виталий Сергеевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -909,9 +909,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -929,9 +929,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"
@@ -956,9 +956,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -976,9 +976,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/2091"
@@ -996,9 +996,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -1024,7 +1024,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1044,7 +1044,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1064,7 +1064,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1084,7 +1084,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1110,9 +1110,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"
@@ -1130,9 +1130,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1092"
@@ -1150,9 +1150,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -1170,9 +1170,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"

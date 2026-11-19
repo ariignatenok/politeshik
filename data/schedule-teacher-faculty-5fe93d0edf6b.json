@@ -4,7 +4,7 @@
   "teacher": "Григорьева Н.Г.",
   "full_name": "Григорьева Надежда Геннадьевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-03",
   "to": "2026-11-20",
   "days": {
@@ -236,9 +236,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -610,9 +607,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -630,9 +627,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"
@@ -650,9 +647,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -670,9 +667,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"
@@ -697,9 +694,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -717,9 +714,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -737,9 +734,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -757,9 +754,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -784,9 +782,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"
@@ -804,9 +802,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"
@@ -824,9 +822,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -844,9 +842,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -871,9 +869,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -891,9 +889,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"

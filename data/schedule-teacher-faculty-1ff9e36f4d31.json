@@ -4,7 +4,7 @@
   "teacher": "Груничев В.В.",
   "full_name": "Груничев Вячеслав Владимирович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -782,9 +782,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -795,6 +795,26 @@
         },
         {
           "lesson_number": 2,
+          "subject": "Энергообор. электр. станций, сетей и систем",
+          "teacher": "Груничев В.В.",
+          "group": "25291312/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291312/1091"
+          ],
+          "original_subject": "Охрана труда",
+          "original_teacher": "Печковский А.В.",
+          "original_classroom": "каб. 509 (Энгельса)"
+        },
+        {
+          "lesson_number": 2,
           "subject": "УП.03.01 Учебная практика",
           "teacher": "Груничев В.В.",
           "group": "24291303/2091",
@@ -802,9 +822,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -822,32 +842,12 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "Основы проектной деятельности",
-          "teacher": "Груничев В.В.",
-          "group": "26291312/3091",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26291312/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -869,9 +869,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -889,9 +889,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -909,9 +909,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -922,13 +922,13 @@
         },
         {
           "lesson_number": 4,
-          "subject": "Энергообор. электр. станций, сетей и систем_лр",
+          "subject": "ОТМЕНА",
           "teacher": "Груничев В.В.",
           "group": "25291312/1092",
           "subgroup": 1,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -936,19 +936,19 @@
           "group_list": [
             "25291312/1092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "Энергообор. электр. станций, сетей и систем_лр",
+          "original_teacher": "Груничев В.В.",
           "original_classroom": null
         },
         {
           "lesson_number": 5,
-          "subject": "Общая энергетика",
+          "subject": "ОТМЕНА",
           "teacher": "Груничев В.В.",
           "group": "25291312/1092",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -956,8 +956,8 @@
           "group_list": [
             "25291312/1092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "Общая энергетика",
+          "original_teacher": "Груничев В.В.",
           "original_classroom": null
         }
       ],
@@ -976,9 +976,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -996,9 +996,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1016,9 +1016,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1029,13 +1029,13 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ОПД",
+          "subject": "ОТМЕНА",
           "teacher": "Груничев В.В.",
           "group": "26291312/1091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1043,8 +1043,8 @@
           "group_list": [
             "26291312/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "ОПД",
+          "original_teacher": "Груничев В.В.",
           "original_classroom": null
         }
       ],
@@ -1063,9 +1063,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1083,9 +1083,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1103,9 +1103,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1123,9 +1123,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -1133,6 +1133,26 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Энергообор. электр. станций, сетей и систем_лр",
+          "teacher": "Груничев В.В.",
+          "group": "25291312/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25291312/1091"
+          ],
+          "original_subject": "Энергообор. электр. станций, сетей и систем_лр",
+          "original_teacher": "Печковский А.В.",
+          "original_classroom": "каб. 105 (Энгельса)"
         },
         {
           "lesson_number": 5,
@@ -1143,9 +1163,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -1170,9 +1190,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1190,9 +1210,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1210,9 +1230,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1230,9 +1250,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -1250,9 +1270,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -1277,9 +1297,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1297,9 +1317,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1317,9 +1337,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"

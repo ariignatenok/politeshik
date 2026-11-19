@@ -4,7 +4,7 @@
   "teacher": "Гроза М.М.",
   "full_name": "Гроза Мария Михайловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-21",
   "days": {
@@ -327,9 +327,6 @@
       "week_type": "Знаменатель"
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -792,9 +789,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1091"
@@ -812,9 +809,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1091"
@@ -839,9 +836,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -859,9 +856,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -886,9 +883,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -906,9 +903,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -926,9 +923,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -946,9 +943,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1091"
@@ -973,9 +970,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1091"
@@ -993,9 +990,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "П",
+          "classroom": "каб. 201 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1091"
