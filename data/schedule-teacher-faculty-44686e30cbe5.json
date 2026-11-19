@@ -4,7 +4,7 @@
   "teacher": "Втюрин Р.Л.",
   "full_name": "Втюрин Роман Леонидович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-20",
   "days": {
@@ -346,9 +346,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -366,9 +366,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -386,9 +386,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -411,6 +411,26 @@
       "day_name": "Четверг",
       "lessons": [
         {
+          "lesson_number": 1,
+          "subject": "ОСиС",
+          "teacher": "Втюрин Р.Л.",
+          "group": "25290907/2093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
           "lesson_number": 2,
           "subject": "ОСиС",
           "teacher": "Втюрин Р.Л.",
@@ -419,9 +439,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -439,9 +459,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -452,13 +472,13 @@
         },
         {
           "lesson_number": 4,
-          "subject": "ОСиС",
+          "subject": "ОТМЕНА",
           "teacher": "Втюрин Р.Л.",
           "group": "25290907/2093",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -466,8 +486,8 @@
           "group_list": [
             "25290907/2093"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "ОСиС",
+          "original_teacher": "Втюрин Р.Л.",
           "original_classroom": null
         }
       ],
@@ -487,7 +507,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -507,7 +527,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [

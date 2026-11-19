@@ -4,7 +4,7 @@
   "teacher": "Волков Д.И.",
   "full_name": "Волков Дмитрий Иванович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-02",
   "to": "2026-11-19",
   "days": {
@@ -885,6 +885,26 @@
       "day_name": "Вторник",
       "lessons": [
         {
+          "lesson_number": 1,
+          "subject": "БЖД",
+          "teacher": "Волков Д.И.",
+          "group": "25290907/1094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
           "lesson_number": 2,
           "subject": "БЖД",
           "teacher": "Волков Д.И.",
@@ -893,9 +913,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -913,9 +933,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -926,13 +946,13 @@
         },
         {
           "lesson_number": 4,
-          "subject": "БЖД",
+          "subject": "ОТМЕНА",
           "teacher": "Волков Д.И.",
           "group": "25290907/1094",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -940,8 +960,8 @@
           "group_list": [
             "25290907/1094"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "БЖД",
+          "original_teacher": "Волков Д.И.",
           "original_classroom": null
         }
       ],
@@ -961,7 +981,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -981,7 +1001,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1001,7 +1021,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1021,7 +1041,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1047,9 +1067,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1092"
@@ -1067,9 +1087,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1091"
@@ -1087,9 +1107,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -1107,9 +1127,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1095"

@@ -1047,9 +1047,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/2092"
@@ -1066,9 +1066,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/2092"
@@ -1085,9 +1085,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "П",
+          "classroom": "каб. 401 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/2092"
@@ -1104,9 +1104,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "П",
+          "classroom": "каб. 401 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/2092"

@@ -4,7 +4,7 @@
   "teacher": "Бурмистрова Р.Д.",
   "full_name": "Бурмистрова Руслана Дмитриевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-19",
   "from": "2026-11-03",
   "to": "2026-11-20",
   "days": {
@@ -216,9 +216,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -527,9 +524,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/3091"
@@ -547,9 +544,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -575,7 +572,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -595,7 +592,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -615,7 +612,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -635,7 +632,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -661,9 +658,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -681,9 +678,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"
@@ -709,7 +706,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -729,7 +726,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -755,9 +752,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -775,9 +772,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -795,9 +792,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "408",
+          "campus": "Э",
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"
