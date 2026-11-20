@@ -4,9 +4,9 @@
   "teacher": "Ревина О.С.",
   "full_name": "Ревина Оксана Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-21",
   "from": "2026-11-02",
-  "to": "2026-11-21",
+  "to": "2026-12-05",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -806,9 +806,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -826,9 +826,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -846,9 +846,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -866,9 +866,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -886,9 +886,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1092"
@@ -913,9 +913,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -933,9 +933,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -953,9 +953,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -973,9 +973,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -1000,9 +1000,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1020,9 +1020,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1040,9 +1040,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1060,9 +1060,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1080,9 +1080,9 @@
           "is_stream": true,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/1091",
@@ -1108,9 +1108,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1128,9 +1128,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1148,9 +1148,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1168,9 +1168,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -1188,9 +1188,9 @@
           "is_stream": true,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/1091",
@@ -1216,9 +1216,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1236,9 +1236,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1256,9 +1256,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -1276,12 +1276,32 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "504",
+          "campus": "Э",
+          "classroom": "каб. 504 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ОПД",
+          "teacher": "Ревина О.С.",
+          "group": "26292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26292706/1091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1303,6 +1323,188 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.02 Технол. метролог. обесп. измер.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "original_teacher": "Ревина О.С.",
+          "original_classroom": "каб. 501 (Энгельса)"
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.02.02 Технол. метролог. обесп. измер.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "345",
+          "campus": "Э",
+          "classroom": "каб. 345 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "345",
+          "campus": "Э",
+          "classroom": "каб. 345 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "345",
+          "campus": "Э",
+          "classroom": "каб. 345 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "345",
+          "campus": "Э",
+          "classroom": "каб. 345 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Метрология и стандартизация",
+          "teacher": "Ревина О.С.",
+          "group": "25292706/1091, 25292706/2091",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25292706/1091",
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1316,6 +1518,741 @@
         },
         {
           "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Метрология и стандартизация",
+          "teacher": "Ревина О.С.",
+          "group": "25292706/1091, 25292706/2091",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/1091",
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.02.02 Технол. метролог. обесп. измер.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091, 23292706/1092",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091",
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.02.02 Технол. метролог. обесп. измер.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091, 23292706/1092",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091",
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "УП.01.01 Учебная практика",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
           "subject": "МДК.01.01 Технология ремонта и техобсл.",
           "teacher": "Ревина О.С.",
           "group": "23292706/1091",
@@ -1335,7 +2272,291 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.02.02 Технол. метролог. обесп. измер.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091, 23292706/1092",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091",
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.02 Технол. метролог. обесп. измер.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1091, 23292706/1092",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1091",
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-04": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОПД",
+          "teacher": "Ревина О.С.",
+          "group": "26292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Метрология и стандартизация",
+          "teacher": "Ревина О.С.",
+          "group": "25292706/1091, 25292706/2091",
+          "subgroup": 0,
+          "is_stream": true,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/1091",
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "23292706/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23292706/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-05": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Технология ремонта и техобсл.",
+          "teacher": "Ревина О.С.",
+          "group": "24292706/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

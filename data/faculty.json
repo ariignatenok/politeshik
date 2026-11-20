@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checked_at": "2026-11-20",
+  "checked_at": "2026-11-21",
   "source": "https://polytech-schedule.ru",
   "refresh_batch_size": 24,
   "teachers": [
@@ -1447,19 +1447,21 @@
       "id": "faculty-5fcdf5c0dc2e",
       "name": "Осипова Алена Сергеевна",
       "teacher": "Осипова А.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-5fcdf5c0dc2e.json",
       "groups": {},
-      "attempted_at": "2026-11-17T02:08:30.398659+00:00"
+      "attempted_at": "2026-11-20T21:17:38.925825+00:00",
+      "fetched_at": "2026-11-20T21:17:40.673392+00:00"
     },
     {
       "id": "faculty-0a744e3c555e",
       "name": "Павлова Елена Геннадьевна",
       "teacher": "Павлова Е.Г.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0a744e3c555e.json",
       "groups": {},
-      "attempted_at": "2026-11-17T02:08:31.898757+00:00"
+      "attempted_at": "2026-11-20T21:17:40.673424+00:00",
+      "fetched_at": "2026-11-20T21:17:42.628775+00:00"
     },
     {
       "id": "faculty-ae2fa48b91f9",
@@ -1475,8 +1477,8 @@
           "Програм. в 1С:Предпр. 8"
         ]
       },
-      "attempted_at": "2026-11-17T10:50:43.193379+00:00",
-      "fetched_at": "2026-11-17T10:50:44.884998+00:00"
+      "attempted_at": "2026-11-20T21:17:42.628799+00:00",
+      "fetched_at": "2026-11-20T21:17:44.391037+00:00"
     },
     {
       "id": "faculty-7fcb23eb3eee",
@@ -1489,14 +1491,14 @@
           "УП.04.01 Учебная практика"
         ]
       },
-      "attempted_at": "2026-11-17T10:50:44.885046+00:00",
-      "fetched_at": "2026-11-17T10:50:46.554945+00:00"
+      "attempted_at": "2026-11-20T21:17:44.391111+00:00",
+      "fetched_at": "2026-11-20T21:17:46.144597+00:00"
     },
     {
       "id": "faculty-7aa81fc8312f",
       "name": "Петрова Светлана Николаевна",
       "teacher": "Петрова С.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7aa81fc8312f.json",
       "groups": {
         "24290907/2092": [
@@ -1506,25 +1508,28 @@
           "Физ. культура"
         ]
       },
-      "attempted_at": "2026-11-17T10:50:46.555010+00:00"
+      "attempted_at": "2026-11-20T21:17:46.144642+00:00",
+      "fetched_at": "2026-11-20T21:17:48.228515+00:00"
     },
     {
       "id": "faculty-46c9c9858378",
       "name": "Печковский Александр Владимирович",
       "teacher": "Печковский А.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-46c9c9858378.json",
       "groups": {},
-      "attempted_at": "2026-11-17T10:50:48.061609+00:00"
+      "attempted_at": "2026-11-20T21:17:48.228592+00:00",
+      "fetched_at": "2026-11-20T21:17:50.344779+00:00"
     },
     {
       "id": "faculty-3889dbe5a6dd",
       "name": "Пиштокова Татьяна Романовна",
       "teacher": "Пиштокова Т.Р.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3889dbe5a6dd.json",
       "groups": {},
-      "attempted_at": "2026-11-17T10:50:49.568265+00:00"
+      "attempted_at": "2026-11-20T21:17:50.344868+00:00",
+      "fetched_at": "2026-11-20T21:17:52.111203+00:00"
     },
     {
       "id": "faculty-1be7d40e580c",
@@ -1533,8 +1538,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1be7d40e580c.json",
       "groups": {},
-      "attempted_at": "2026-11-17T19:27:08.634839+00:00",
-      "fetched_at": "2026-11-17T19:27:10.549936+00:00"
+      "attempted_at": "2026-11-20T21:17:52.111233+00:00",
+      "fetched_at": "2026-11-20T21:17:54.197383+00:00"
     },
     {
       "id": "faculty-8f64619aab36",
@@ -1547,8 +1552,8 @@
           "МДК.01.01 Разработка программных модулей"
         ]
       },
-      "attempted_at": "2026-11-17T19:27:10.549968+00:00",
-      "fetched_at": "2026-11-17T19:27:12.385448+00:00"
+      "attempted_at": "2026-11-20T21:17:54.197421+00:00",
+      "fetched_at": "2026-11-20T21:17:56.292335+00:00"
     },
     {
       "id": "faculty-206a646b3548",
@@ -1557,97 +1562,106 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-206a646b3548.json",
       "groups": {},
-      "attempted_at": "2026-11-17T19:27:12.385482+00:00",
-      "fetched_at": "2026-11-17T19:27:14.447276+00:00"
+      "attempted_at": "2026-11-20T21:17:56.292384+00:00",
+      "fetched_at": "2026-11-20T21:17:58.407138+00:00"
     },
     {
       "id": "faculty-c58749eac54b",
       "name": "Рамазанов Магомед Фазилович",
       "teacher": "Рамазанов М.Ф.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c58749eac54b.json",
       "groups": {
         "26290911/3111": [
           "МДК.07.01 Оператор беспилотных авиационных систем"
         ]
       },
-      "attempted_at": "2026-11-17T19:27:14.447306+00:00"
+      "attempted_at": "2026-11-20T21:17:58.407212+00:00",
+      "fetched_at": "2026-11-20T21:18:00.164586+00:00"
     },
     {
       "id": "faculty-1a390c43b0a7",
       "name": "Ревина Оксана Сергеевна",
       "teacher": "Ревина О.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1a390c43b0a7.json",
       "groups": {},
-      "attempted_at": "2026-11-17T19:27:16.288444+00:00"
+      "attempted_at": "2026-11-20T21:18:00.164615+00:00",
+      "fetched_at": "2026-11-20T21:18:02.094740+00:00"
     },
     {
       "id": "faculty-f9a5db0ce0b5",
       "name": "Родинов Иван Иванович",
       "teacher": "Родинов И.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f9a5db0ce0b5.json",
       "groups": {},
-      "attempted_at": "2026-11-17T19:27:18.029703+00:00"
+      "attempted_at": "2026-11-20T21:18:02.094830+00:00",
+      "fetched_at": "2026-11-20T21:18:04.005105+00:00"
     },
     {
       "id": "faculty-8d7ca2243af7",
       "name": "Родионова Ирина Вячеславовна",
       "teacher": "Родионова И.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8d7ca2243af7.json",
       "groups": {},
-      "attempted_at": "2026-11-18T01:50:33.921489+00:00"
+      "attempted_at": "2026-11-20T21:18:04.005135+00:00",
+      "fetched_at": "2026-11-20T21:18:05.593627+00:00"
     },
     {
       "id": "faculty-b0ae9510ad70",
       "name": "Рыжков Евгений Александрович",
       "teacher": "Рыжков Е.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-b0ae9510ad70.json",
       "groups": {},
-      "attempted_at": "2026-11-18T01:50:35.543581+00:00"
+      "attempted_at": "2026-11-20T21:18:05.593670+00:00",
+      "fetched_at": "2026-11-20T21:18:07.167074+00:00"
     },
     {
       "id": "faculty-c79e3765fe15",
       "name": "Рындина Карина Олеговна",
       "teacher": "Рындина К.О.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c79e3765fe15.json",
       "groups": {},
-      "attempted_at": "2026-11-18T01:50:37.283043+00:00"
+      "attempted_at": "2026-11-20T21:18:07.167105+00:00",
+      "fetched_at": "2026-11-20T21:18:08.755896+00:00"
     },
     {
       "id": "faculty-c439f84349b4",
       "name": "Рябова Валерия Викторовна",
       "teacher": "Рябова В.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c439f84349b4.json",
       "groups": {
         "25290909/3091": [
           "МДК.04.01 Техн. созд., администр. и анал. информ. ресурсов"
         ]
       },
-      "attempted_at": "2026-11-18T09:17:31.250511+00:00"
+      "attempted_at": "2026-11-20T21:18:08.755921+00:00",
+      "fetched_at": "2026-11-20T21:18:10.503335+00:00"
     },
     {
       "id": "faculty-c900e3daf4ad",
       "name": "Рябова Марина Николаевна",
       "teacher": "Рябова М.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c900e3daf4ad.json",
       "groups": {},
-      "attempted_at": "2026-11-18T09:17:32.980350+00:00"
+      "attempted_at": "2026-11-20T21:18:10.503421+00:00",
+      "fetched_at": "2026-11-20T21:18:12.259848+00:00"
     },
     {
       "id": "faculty-662da4921f07",
       "name": "Савостина Татьяна Викторовна",
       "teacher": "Савостина Т.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-662da4921f07.json",
       "groups": {},
-      "attempted_at": "2026-11-18T09:17:34.766486+00:00"
+      "attempted_at": "2026-11-20T21:18:12.259931+00:00",
+      "fetched_at": "2026-11-20T21:18:14.023935+00:00"
     },
     {
       "id": "faculty-68f0ca0ffbfd",
@@ -1663,8 +1677,8 @@
           "Ин. яз. в ПД"
         ]
       },
-      "attempted_at": "2026-11-18T18:12:44.956501+00:00",
-      "fetched_at": "2026-11-18T18:12:47.587171+00:00"
+      "attempted_at": "2026-11-20T21:18:14.023993+00:00",
+      "fetched_at": "2026-11-20T21:18:15.800069+00:00"
     },
     {
       "id": "faculty-a9beb40dc7fd",
@@ -1673,8 +1687,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a9beb40dc7fd.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:12:47.587201+00:00",
-      "fetched_at": "2026-11-18T18:12:49.419158+00:00"
+      "attempted_at": "2026-11-20T21:18:15.800107+00:00",
+      "fetched_at": "2026-11-20T21:18:17.544042+00:00"
     },
     {
       "id": "faculty-353f5e54045e",
@@ -1683,8 +1697,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-353f5e54045e.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:12:49.419186+00:00",
-      "fetched_at": "2026-11-18T18:12:51.386742+00:00"
+      "attempted_at": "2026-11-20T21:18:17.544076+00:00",
+      "fetched_at": "2026-11-20T21:18:19.492926+00:00"
     },
     {
       "id": "faculty-5378de79d42c",
@@ -1697,8 +1711,8 @@
           "БЖД"
         ]
       },
-      "attempted_at": "2026-11-18T18:12:51.386837+00:00",
-      "fetched_at": "2026-11-18T18:12:53.677430+00:00"
+      "attempted_at": "2026-11-20T21:18:19.493022+00:00",
+      "fetched_at": "2026-11-20T21:18:21.243489+00:00"
     },
     {
       "id": "faculty-2b3058ed4821",
@@ -1707,8 +1721,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-2b3058ed4821.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:12:53.677503+00:00",
-      "fetched_at": "2026-11-18T18:12:56.162168+00:00"
+      "attempted_at": "2026-11-20T21:18:21.243561+00:00",
+      "fetched_at": "2026-11-20T21:18:22.998190+00:00"
     },
     {
       "id": "faculty-a495f649adf4",
