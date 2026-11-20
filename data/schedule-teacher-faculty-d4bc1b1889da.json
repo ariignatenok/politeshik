@@ -4,9 +4,9 @@
   "teacher": "Ольнев А.А.",
   "full_name": "Ольнев Александр Александрович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-21",
+  "to": "2026-12-05",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -1028,9 +1028,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3093"
@@ -1048,9 +1049,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3093"
@@ -1068,9 +1070,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -1088,9 +1091,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1115,9 +1119,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1135,9 +1139,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1155,12 +1159,585 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Курсы.Код_будущего",
+          "teacher": "Ольнев А.А.",
+          "group": "26290911/1094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/1094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "group": "24290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "24290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1095",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Курсы.Код_будущего",
+          "teacher": "Ольнев А.А.",
+          "group": "26290911/1094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/1094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1095",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/2094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "group": "24290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "24290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
-            "25290907/2091"
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1207,17 +1784,17 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
-      "week_type": "Знаменатель"
+      "week_number": 13,
+      "week_type": "Числитель"
     },
-    "2026-11-18": {
+    "2026-11-25": {
       "day_name": "Среда",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "Компьютерные сети",
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
-          "group": "24290907/3093",
+          "group": "25290907/1095",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -1227,7 +1804,432 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "24290907/3093"
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/2094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Курсы.Код_будущего",
+          "teacher": "Ольнев А.А.",
+          "group": "26290911/1094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/1094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1095",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1095",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Компьютерные сети",
+          "teacher": "Ольнев А.А.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Курсы.Код_будущего",
+          "teacher": "Ольнев А.А.",
+          "group": "26290911/1094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/1094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1095",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1095"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1277,7 +2279,7 @@
           "lesson_number": 4,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
-          "group": "25290907/3092",
+          "group": "25290907/3091",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -1287,24 +2289,24 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "25290907/3092"
+            "25290907/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-19": {
+    "2026-12-03": {
       "day_name": "Четверг",
       "lessons": [
         {
           "lesson_number": 1,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
-          "group": "25290907/1095",
+          "group": "25290907/2091",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -1314,7 +2316,7 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "25290907/1095"
+            "25290907/2091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1324,7 +2326,7 @@
           "lesson_number": 2,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
-          "group": "25290907/1091",
+          "group": "25290907/3093",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -1334,7 +2336,7 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "25290907/1091"
+            "25290907/3093"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1342,26 +2344,6 @@
         },
         {
           "lesson_number": 3,
-          "subject": "Компьютерные сети",
-          "teacher": "Ольнев А.А.",
-          "group": "25290909/3091",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "25290909/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
           "group": "25290907/3092",
@@ -1375,6 +2357,26 @@
           "note": null,
           "group_list": [
             "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/2094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2094"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1401,14 +2403,34 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-20": {
+    "2026-12-04": {
       "day_name": "Пятница",
       "lessons": [
         {
           "lesson_number": 1,
+          "subject": "МДК.04.01 Внедрение и поддержка КС",
+          "teacher": "Ольнев А.А.",
+          "group": "25290907/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
           "group": "25290907/1095",
@@ -1428,7 +2450,7 @@
           "original_classroom": null
         },
         {
-          "lesson_number": 2,
+          "lesson_number": 3,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
           "group": "25290907/2091",
@@ -1448,7 +2470,7 @@
           "original_classroom": null
         },
         {
-          "lesson_number": 3,
+          "lesson_number": 4,
           "subject": "МДК.04.01 Внедрение и поддержка КС",
           "teacher": "Ольнев А.А.",
           "group": "25290907/2094",
@@ -1466,52 +2488,12 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "МДК.04.01 Внедрение и поддержка КС",
-          "teacher": "Ольнев А.А.",
-          "group": "25290907/3093",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "25290907/3093"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 5,
-          "subject": "МДК.04.01 Внедрение и поддержка КС",
-          "teacher": "Ольнев А.А.",
-          "group": "25290907/3093",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "25290907/3093"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-21": {
+    "2026-12-05": {
       "day_name": "Суббота",
       "lessons": [
         {
@@ -1553,29 +2535,9 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "Компьютерные сети",
-          "teacher": "Ольнев А.А.",
-          "group": "24290907/3093",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "24290907/3093"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

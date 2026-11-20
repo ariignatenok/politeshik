@@ -4,9 +4,9 @@
   "teacher": "Окунева Ж.А.",
   "full_name": "Окунева Жанна Анатольевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-21",
+  "to": "2026-12-05",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -1046,12 +1046,1170 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информационные технологии",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ лр",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/3093",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26291312/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "26291312/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-17": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294316/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26291506/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294316/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информационные технологии в ПД",
+          "teacher": "Окунева Ж.А.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "400",
+          "campus": "П",
+          "classroom": "каб. 400 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26291312/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "26291312/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информационные технологии",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ лр",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/3093",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информационные технологии",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/1093",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Информационные технологии",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/1093",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
-            "25290907/1093"
+            "26294315/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26291506/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информационные технологии в ПД",
+          "teacher": "Окунева Ж.А.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294316/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294316/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26291312/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291312/1091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1099,10 +2257,10 @@
         },
         {
           "lesson_number": 4,
-          "subject": "Информатика",
+          "subject": "Информационные технологии",
           "teacher": "Окунева Ж.А.",
-          "group": "26291312/1091",
-          "subgroup": 2,
+          "group": "25290907/1093",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -1111,17 +2269,37 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "26291312/1091"
+            "25290907/1093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Информационные технологии",
+          "teacher": "Окунева Ж.А.",
+          "group": "25290907/1093",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1093"
           ],
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-17": {
+    "2026-12-01": {
       "day_name": "Вторник",
       "lessons": [
         {
@@ -1203,93 +2381,6 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
-        }
-      ],
-      "week_number": 12,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-18": {
-      "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "Информатика",
-          "teacher": "Окунева Ж.А.",
-          "group": "26294316/3091",
-          "subgroup": 1,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26294316/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ИТ в проф. деят.",
-          "teacher": "Окунева Ж.А.",
-          "group": "24294315/3091",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "24294315/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "Информатика",
-          "teacher": "Окунева Ж.А.",
-          "group": "26291506/1091",
-          "subgroup": 1,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26291506/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "Информатика",
-          "teacher": "Окунева Ж.А.",
-          "group": "26294315/1091",
-          "subgroup": 1,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26294315/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
         },
         {
           "lesson_number": 5,
@@ -1312,10 +2403,117 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-19": {
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26291506/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294316/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
       "day_name": "Четверг",
       "lessons": [
         {
@@ -1397,12 +2595,32 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-20": {
+    "2026-12-04": {
       "day_name": "Пятница",
       "lessons": [
         {
@@ -1467,6 +2685,113 @@
         },
         {
           "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Информатика",
+          "teacher": "Окунева Ж.А.",
+          "group": "26294315/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-05": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ в проф. деят.",
+          "teacher": "Окунева Ж.А.",
+          "group": "24294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
           "subject": "ИТ в проф. деят.",
           "teacher": "Окунева Ж.А.",
           "group": "24294315/1092",
@@ -1486,74 +2811,7 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
-      "week_type": "Знаменатель"
-    },
-    "2026-11-21": {
-      "day_name": "Суббота",
-      "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "ИТ в проф. деят.",
-          "teacher": "Окунева Ж.А.",
-          "group": "24294315/3091",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "24294315/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "ИТ в проф. деят.",
-          "teacher": "Окунева Ж.А.",
-          "group": "24294315/3091",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "24294315/3091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 3,
-          "subject": "ИТ в проф. деят.",
-          "teacher": "Окунева Ж.А.",
-          "group": "24294315/1091",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "24294315/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

@@ -4,9 +4,9 @@
   "teacher": "Михайловская В.В.",
   "full_name": "Михайловская Виктория Валерьевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-20",
+  "to": "2026-12-04",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -239,9 +239,6 @@
       "week_type": "Знаменатель"
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -617,9 +614,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -637,9 +634,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -653,6 +650,239 @@
       "week_type": "Знаменатель"
     },
     "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 0,
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "teacher": "Михайловская В.В.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "teacher": "Михайловская В.В.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.07.01пр",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.07.01пр",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "teacher": "Михайловская В.В.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "teacher": "Михайловская В.В.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.07.01пр",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "316",
+          "campus": "П",
+          "classroom": "каб. 316 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "lessons": []
+    },
+    "2026-11-24": {
+      "lessons": []
+    },
+    "2026-11-25": {
       "day_name": "Среда",
       "lessons": [
         {
@@ -716,18 +946,21 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
-      "week_type": "Знаменатель"
+      "week_number": 13,
+      "week_type": "Числитель"
     },
-    "2026-11-19": {
-      "day_name": "Четверг",
+    "2026-11-26": {
+      "lessons": []
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "subject": "МДК.07.01 л.р",
           "teacher": "Михайловская В.В.",
-          "group": "23294315/1092",
-          "subgroup": 0,
+          "group": "25294315/3091",
+          "subgroup": 1,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -736,7 +969,7 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "23294315/1092"
+            "25294315/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -744,6 +977,79 @@
         },
         {
           "lesson_number": 2,
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "lessons": []
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
           "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
           "teacher": "Михайловская В.В.",
           "group": "23294315/1092",
@@ -763,8 +1069,35 @@
           "original_classroom": null
         },
         {
+          "lesson_number": 4,
+          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "teacher": "Михайловская В.В.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
           "lesson_number": 3,
-          "subject": "МДК.07.01пр",
+          "subject": "МДК.07.01 л.р",
           "teacher": "Михайловская В.В.",
           "group": "25294315/3091",
           "subgroup": 1,
@@ -784,7 +1117,27 @@
         },
         {
           "lesson_number": 4,
-          "subject": "МДК.07.01пр",
+          "subject": "МДК.07.01 л.р",
+          "teacher": "Михайловская В.В.",
+          "group": "25294315/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294315/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.07.01 л.р",
           "teacher": "Михайловская В.В.",
           "group": "25294315/3091",
           "subgroup": 1,
@@ -803,37 +1156,23 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-20": {
+    "2026-12-02": {
+      "lessons": []
+    },
+    "2026-12-03": {
+      "lessons": []
+    },
+    "2026-12-04": {
       "day_name": "Пятница",
       "lessons": [
         {
-          "lesson_number": 1,
-          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
-          "teacher": "Михайловская В.В.",
-          "group": "23294315/1092",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "23294315/1092"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
           "lesson_number": 2,
-          "subject": "МДК.02.01 Организация и технология приготовления горячих блюд….",
+          "subject": "МДК.01.01 Орг. и техн. пригот. полуфабр. для блюд, кулин. изделий сложн. ассорт.",
           "teacher": "Михайловская В.В.",
-          "group": "23294315/1092",
+          "group": "24294315/3091",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -843,7 +1182,7 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "23294315/1092"
+            "24294315/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -851,10 +1190,10 @@
         },
         {
           "lesson_number": 3,
-          "subject": "МДК.07.01пр",
+          "subject": "МДК.01.01 Орг. и техн. пригот. полуфабр. для блюд, кулин. изделий сложн. ассорт.",
           "teacher": "Михайловская В.В.",
-          "group": "25294315/3091",
-          "subgroup": 1,
+          "group": "24294315/3091",
+          "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -863,14 +1202,14 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "25294315/3091"
+            "24294315/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

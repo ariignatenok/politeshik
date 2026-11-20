@@ -1159,52 +1159,57 @@
       "id": "faculty-f650b2f43d0c",
       "name": "Малькова Елена Тимофеевна",
       "teacher": "Малькова Е.Т.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f650b2f43d0c.json",
       "groups": {},
-      "attempted_at": "2026-11-15T16:42:09.530126+00:00"
+      "attempted_at": "2026-11-20T13:10:53.475821+00:00",
+      "fetched_at": "2026-11-20T13:10:54.940109+00:00"
     },
     {
       "id": "faculty-2a15890c06c3",
       "name": "Маньшина Александра Вадимовна",
       "teacher": "Маньшина А.В.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-15T16:42:11.331068+00:00"
+      "attempted_at": "2026-11-20T13:10:54.940207+00:00",
+      "fetched_at": "2026-11-20T13:10:56.281305+00:00"
     },
     {
       "id": "faculty-f27546a1721b",
       "name": "Маркова Ольга Николаевна",
       "teacher": "Маркова О.Н.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f27546a1721b.json",
       "groups": {},
-      "attempted_at": "2026-11-15T21:22:22.016911+00:00"
+      "attempted_at": "2026-11-20T13:10:56.281334+00:00",
+      "fetched_at": "2026-11-20T13:10:57.639244+00:00"
     },
     {
       "id": "faculty-d913a63af0ce",
       "name": "Масимова Евгения Гаврииловна",
       "teacher": "Масимова Е.Г.",
-      "status": "source_error",
+      "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-15T21:22:23.927649+00:00"
+      "attempted_at": "2026-11-20T13:10:57.639272+00:00",
+      "fetched_at": "2026-11-20T13:10:58.993191+00:00"
     },
     {
       "id": "faculty-1f461d71227f",
       "name": "Маслакова Светлана Владимировна",
       "teacher": "Маслакова С.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-1f461d71227f.json",
       "groups": {},
-      "attempted_at": "2026-11-15T21:22:25.762427+00:00"
+      "attempted_at": "2026-11-20T13:10:58.993223+00:00",
+      "fetched_at": "2026-11-20T13:11:00.444958+00:00"
     },
     {
       "id": "faculty-e6a9156d6f1b",
       "name": "Матвеева Ольга Ивановна",
       "teacher": "Матвеева О.И.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-e6a9156d6f1b.json",
       "groups": {
         "23290907/2092": [
@@ -1212,25 +1217,28 @@
           "уроки поклонения черному квадрату малевича"
         ]
       },
-      "attempted_at": "2026-11-16T01:21:35.990178+00:00"
+      "attempted_at": "2026-11-20T13:11:00.445035+00:00",
+      "fetched_at": "2026-11-20T13:11:01.920111+00:00"
     },
     {
       "id": "faculty-27a562309702",
       "name": "Матвеева Светлана Павловна",
       "teacher": "Матвеева С.П.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-27a562309702.json",
       "groups": {},
-      "attempted_at": "2026-11-16T01:21:37.618383+00:00"
+      "attempted_at": "2026-11-20T13:11:01.920221+00:00",
+      "fetched_at": "2026-11-20T13:11:03.260995+00:00"
     },
     {
       "id": "faculty-29469a3b9ba9",
       "name": "Матвеева Юлия Аникториевна",
       "teacher": "Матвеева Ю.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-29469a3b9ba9.json",
       "groups": {},
-      "attempted_at": "2026-11-16T01:21:39.191310+00:00"
+      "attempted_at": "2026-11-20T13:11:03.261034+00:00",
+      "fetched_at": "2026-11-20T13:11:04.719109+00:00"
     },
     {
       "id": "faculty-f85890a8a60c",
@@ -1243,8 +1251,8 @@
           "ОПБД"
         ]
       },
-      "attempted_at": "2026-11-16T08:07:24.298715+00:00",
-      "fetched_at": "2026-11-16T08:07:25.846450+00:00"
+      "attempted_at": "2026-11-20T13:11:04.719258+00:00",
+      "fetched_at": "2026-11-20T13:11:06.074359+00:00"
     },
     {
       "id": "faculty-77a21bd98518",
@@ -1253,39 +1261,42 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-77a21bd98518.json",
       "groups": {},
-      "attempted_at": "2026-11-16T08:07:25.846486+00:00",
-      "fetched_at": "2026-11-16T08:07:27.407978+00:00"
+      "attempted_at": "2026-11-20T13:11:06.074398+00:00",
+      "fetched_at": "2026-11-20T13:11:07.544192+00:00"
     },
     {
       "id": "faculty-8882c5308fbe",
       "name": "Меньшиков Игорь Георгиевич",
       "teacher": "Меньшиков И.Г.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8882c5308fbe.json",
       "groups": {},
-      "attempted_at": "2026-11-16T08:07:27.408019+00:00"
+      "attempted_at": "2026-11-20T13:11:07.544281+00:00",
+      "fetched_at": "2026-11-20T13:11:09.022762+00:00"
     },
     {
       "id": "faculty-2b0f4c4004a8",
       "name": "Михайловская Виктория Валерьевна",
       "teacher": "Михайловская В.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-2b0f4c4004a8.json",
       "groups": {},
-      "attempted_at": "2026-11-16T08:07:28.946157+00:00"
+      "attempted_at": "2026-11-20T13:11:09.022838+00:00",
+      "fetched_at": "2026-11-20T13:11:10.493327+00:00"
     },
     {
       "id": "faculty-3ba58257825a",
       "name": "Молькова Лолита Юрьевна",
       "teacher": "Молькова Л.Ю.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3ba58257825a.json",
       "groups": {
         "25290907/1091": [
           "ОАП"
         ]
       },
-      "attempted_at": "2026-11-16T08:07:30.497652+00:00"
+      "attempted_at": "2026-11-20T13:11:10.493413+00:00",
+      "fetched_at": "2026-11-20T13:11:11.969594+00:00"
     },
     {
       "id": "faculty-e873dedba45e",
@@ -1301,8 +1312,8 @@
           "Физ. культура"
         ]
       },
-      "attempted_at": "2026-11-16T11:58:37.313813+00:00",
-      "fetched_at": "2026-11-16T11:58:38.988298+00:00"
+      "attempted_at": "2026-11-20T13:11:11.969690+00:00",
+      "fetched_at": "2026-11-20T13:11:13.440252+00:00"
     },
     {
       "id": "faculty-049acfaa4f21",
@@ -1311,14 +1322,14 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-049acfaa4f21.json",
       "groups": {},
-      "attempted_at": "2026-11-16T11:58:38.988371+00:00",
-      "fetched_at": "2026-11-16T11:58:40.495329+00:00"
+      "attempted_at": "2026-11-20T13:11:13.440332+00:00",
+      "fetched_at": "2026-11-20T13:11:14.797831+00:00"
     },
     {
       "id": "faculty-3c7319fda0f2",
       "name": "Муравьева Юлия Александровна",
       "teacher": "Муравьева Ю.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-3c7319fda0f2.json",
       "groups": {
         "25290907/1091": [
@@ -1331,7 +1342,8 @@
           "ДМ с ЭМЛ"
         ]
       },
-      "attempted_at": "2026-11-16T11:58:40.495372+00:00"
+      "attempted_at": "2026-11-20T13:11:14.797862+00:00",
+      "fetched_at": "2026-11-20T13:11:16.276346+00:00"
     },
     {
       "id": "faculty-f72122972383",
@@ -1347,72 +1359,78 @@
           "Психология общения"
         ]
       },
-      "attempted_at": "2026-11-16T11:58:42.014041+00:00",
-      "fetched_at": "2026-11-16T11:58:43.517494+00:00"
+      "attempted_at": "2026-11-20T13:11:16.276431+00:00",
+      "fetched_at": "2026-11-20T13:11:17.625746+00:00"
     },
     {
       "id": "faculty-f01395cdd5e0",
       "name": "Назаров Сергей Юрьевич",
       "teacher": "Назаров С.Ю.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f01395cdd5e0.json",
       "groups": {
         "25290907/1091": [
           "БЖД"
         ]
       },
-      "attempted_at": "2026-11-16T11:58:43.517525+00:00"
+      "attempted_at": "2026-11-20T13:11:17.625775+00:00",
+      "fetched_at": "2026-11-20T13:11:18.984587+00:00"
     },
     {
       "id": "faculty-4c9a96cf95ce",
       "name": "Нестеренок Вадим Владимирович",
       "teacher": "Нестеренок В.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-4c9a96cf95ce.json",
       "groups": {},
-      "attempted_at": "2026-11-16T11:58:45.022076+00:00"
+      "attempted_at": "2026-11-20T13:11:18.984615+00:00",
+      "fetched_at": "2026-11-20T13:11:20.341482+00:00"
     },
     {
       "id": "faculty-93810ba1770f",
       "name": "Никитина Екатерина Сергеевна",
       "teacher": "Никитина Е.С.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-93810ba1770f.json",
       "groups": {},
-      "attempted_at": "2026-11-16T11:58:46.524826+00:00"
+      "attempted_at": "2026-11-20T13:11:20.341512+00:00",
+      "fetched_at": "2026-11-20T13:11:21.821701+00:00"
     },
     {
       "id": "faculty-10e21641a19c",
       "name": "Никольский Валентин Валентинович",
       "teacher": "Никольский В.В.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-10e21641a19c.json",
       "groups": {},
-      "attempted_at": "2026-11-16T18:40:30.098636+00:00"
+      "attempted_at": "2026-11-20T13:11:21.821779+00:00",
+      "fetched_at": "2026-11-20T13:11:23.179852+00:00"
     },
     {
       "id": "faculty-bde84e497bec",
       "name": "Нургалиева Елена Александровна",
       "teacher": "Нургалиева Е.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-bde84e497bec.json",
       "groups": {},
-      "attempted_at": "2026-11-16T18:40:34.803926+00:00"
+      "attempted_at": "2026-11-20T13:11:23.179891+00:00",
+      "fetched_at": "2026-11-20T13:11:24.650776+00:00"
     },
     {
       "id": "faculty-c4090c1b5041",
       "name": "Окунева Жанна Анатольевна",
       "teacher": "Окунева Ж.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c4090c1b5041.json",
       "groups": {},
-      "attempted_at": "2026-11-16T18:40:37.661254+00:00"
+      "attempted_at": "2026-11-20T13:11:24.650854+00:00",
+      "fetched_at": "2026-11-20T13:11:26.242633+00:00"
     },
     {
       "id": "faculty-d4bc1b1889da",
       "name": "Ольнев Александр Александрович",
       "teacher": "Ольнев А.А.",
-      "status": "stale",
+      "status": "ready",
       "schedule_file": "schedule-teacher-faculty-d4bc1b1889da.json",
       "groups": {
         "25290907/1091": [
@@ -1422,7 +1440,8 @@
           "Компьютерные сети"
         ]
       },
-      "attempted_at": "2026-11-17T02:08:28.891990+00:00"
+      "attempted_at": "2026-11-20T13:11:26.242751+00:00",
+      "fetched_at": "2026-11-20T13:11:27.722455+00:00"
     },
     {
       "id": "faculty-5fcdf5c0dc2e",
