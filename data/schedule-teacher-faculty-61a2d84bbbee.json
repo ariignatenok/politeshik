@@ -4,9 +4,9 @@
   "teacher": "Кудрявцева Е.В.",
   "full_name": "Кудрявцева Елена Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-19",
+  "to": "2026-12-03",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -135,9 +135,6 @@
       "lessons": []
     },
     "2026-11-08": {
-      "lessons": []
-    },
-    "2026-11-09": {
       "lessons": []
     },
     "2026-11-10": {
@@ -305,9 +302,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -325,9 +322,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -355,9 +352,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -368,6 +365,352 @@
         },
         {
           "lesson_number": 2,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/3092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/2094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "lessons": []
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "lessons": []
+    },
+    "2026-11-24": {
+      "lessons": []
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/2094",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/2093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "lessons": []
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/2093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "lessons": []
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "з26290909/3112",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "з26290909/3112"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "з26290909/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "з26290909/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/2093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 4,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "з26290909/3112",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "з26290909/3112"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "з26290909/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "з26290909/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
           "subject": "ЭВМ",
           "teacher": "Кудрявцева Е.В.",
           "group": "25290907/3092",
@@ -387,7 +730,7 @@
           "original_classroom": null
         },
         {
-          "lesson_number": 3,
+          "lesson_number": 2,
           "subject": "ЭВМ",
           "teacher": "Кудрявцева Е.В.",
           "group": "25290907/2094",
@@ -405,9 +748,29 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ЭВМ",
+          "teacher": "Кудрявцева Е.В.",
+          "group": "25290907/3093",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

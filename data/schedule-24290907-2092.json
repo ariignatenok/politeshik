@@ -1042,13 +1042,13 @@
         {
           "lesson_number": 1,
           "subject": "Програм. в 1С:Предпр. 8",
-          "teacher": "Панченко М.С.",
+          "teacher": "Мр. Панченко",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
           "auditorium": "404",
-          "campus": "П",
+          "campus": "Приморский",
           "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
@@ -1061,13 +1061,13 @@
         {
           "lesson_number": 2,
           "subject": "Програм. в 1С:Предпр. 8",
-          "teacher": "Панченко М.С.",
+          "teacher": "Мр. Панченко",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
           "auditorium": "404",
-          "campus": "П",
+          "campus": "Приморский",
           "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [

@@ -4,9 +4,9 @@
   "teacher": "Кялина Е.М.",
   "full_name": "Кялина Екатерина Михайловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-03",
-  "to": "2026-11-19",
+  "to": "2026-12-02",
   "days": {
     "2026-11-03": {
       "day_name": "Вторник",
@@ -594,9 +594,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -614,9 +614,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -641,9 +641,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -661,9 +661,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"
@@ -681,9 +681,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -698,6 +698,62 @@
     },
     "2026-11-19": {
       "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Материаловедение",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Охрана труда",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "lessons": []
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
       "lessons": [
         {
           "lesson_number": 1,
@@ -740,7 +796,250 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "lessons": []
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.01 Управл. монт. холод. оборуд. (раздел ГПМ)",
+          "teacher": "Кялина Е.М.",
+          "group": "24291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.02.01 Управл. монт. холод. оборуд. (раздел ГПМ)",
+          "teacher": "Кялина Е.М.",
+          "group": "24291506/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291506/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Метрология, стандартизация и подтв. соотв.",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Материаловедение",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "lessons": []
+    },
+    "2026-11-28": {
+      "lessons": []
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "lessons": []
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Метрология, стандартизация и подтв. соотв.",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.01 Управл. монт. холод. оборуд. (раздел ГПМ)",
+          "teacher": "Кялина Е.М.",
+          "group": "24291506/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291506/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.02.01 Управл. монт. холод. оборуд. (раздел ГПМ)",
+          "teacher": "Кялина Е.М.",
+          "group": "24291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.02.01 Управл. монт. холод. оборуд. (раздел ГПМ)",
+          "teacher": "Кялина Е.М.",
+          "group": "24291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Материаловедение",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Материаловедение",
+          "teacher": "Кялина Е.М.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

@@ -4,9 +4,9 @@
   "teacher": "Леленкова Е.Н.",
   "full_name": "Леленкова Елена Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-02",
-  "to": "2026-11-20",
+  "to": "2026-12-04",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -1069,9 +1069,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1089,9 +1089,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1109,9 +1109,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -1129,9 +1129,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -1156,9 +1156,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1176,9 +1176,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1196,9 +1196,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -1216,9 +1216,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -1243,9 +1243,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1263,12 +1263,617 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "122",
+          "campus": "П",
+          "classroom": "каб. 122 (Приморский)",
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
             "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "24294315/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24294315/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1315,10 +1920,251 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-20": {
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 0,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 0,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 1,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.08.01 л.р",
+          "teacher": "Леленкова Е.Н.",
+          "group": "23294315/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23294315/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-04": {
       "day_name": "Пятница",
       "lessons": [
         {
@@ -1365,7 +2211,7 @@
           "lesson_number": 3,
           "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
           "teacher": "Леленкова Е.Н.",
-          "group": "23294315/1092",
+          "group": "24294315/3111",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -1375,7 +2221,7 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "23294315/1092"
+            "24294315/3111"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1383,9 +2229,9 @@
         },
         {
           "lesson_number": 4,
-          "subject": "МДК.04.01 Орг. и техн. приг. хол. и гор. дес., нап. сложн. ассорт....",
+          "subject": "МДК.05.01 Орг. и техн. пригот.хлебобул. мучных конд. изделий слож. ассорт.",
           "teacher": "Леленкова Е.Н.",
-          "group": "23294315/1091",
+          "group": "24294315/3111",
           "subgroup": 0,
           "is_stream": false,
           "status": "ok",
@@ -1395,14 +2241,14 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "23294315/1091"
+            "24294315/3111"
           ],
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

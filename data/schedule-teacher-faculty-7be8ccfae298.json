@@ -4,9 +4,9 @@
   "teacher": "Кузнецова Л.И.",
   "full_name": "Кузнецова Лиана Ивановна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-20",
   "from": "2026-11-03",
-  "to": "2026-11-20",
+  "to": "2026-12-04",
   "days": {
     "2026-11-03": {
       "day_name": "Вторник",
@@ -579,6 +579,628 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26291506/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-18": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290901/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25292706/2091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25290901/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290901/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290911/2092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-19": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26293803/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26293803/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": "П",
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-20": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25290909/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Кузнецова Л.И.",
+          "group": "24290907/3093",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "24290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25290901/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290911/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "lessons": []
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290911/2092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25292706/2091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26291506/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25291506/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26293801/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26293803/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26293803/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290901/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25290901/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25294316/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294316/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в ПД",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25290909/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290911/1092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25290901/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290901/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "lessons": []
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25292706/2091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25292706/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "26290911/2092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Кузнецова Л.И.",
+          "group": "25291506/1091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
           "campus": null,
           "classroom": null,
           "note": null,
@@ -610,52 +1232,12 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-18": {
+    "2026-12-02": {
       "day_name": "Среда",
       "lessons": [
-        {
-          "lesson_number": 1,
-          "subject": "Ин. яз.",
-          "teacher": "Кузнецова Л.И.",
-          "group": "26290901/1091",
-          "subgroup": 2,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26290901/1091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
-        {
-          "lesson_number": 2,
-          "subject": "Ин. яз. в проф. деят.",
-          "teacher": "Кузнецова Л.И.",
-          "group": "25292706/2091",
-          "subgroup": 1,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "25292706/2091"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        },
         {
           "lesson_number": 3,
           "subject": "Ин. яз. в проф. деят.",
@@ -680,8 +1262,8 @@
           "lesson_number": 4,
           "subject": "Ин. яз.",
           "teacher": "Кузнецова Л.И.",
-          "group": "26290911/2092",
-          "subgroup": 1,
+          "group": "26290911/1092",
+          "subgroup": 2,
           "is_stream": false,
           "status": "ok",
           "zam": "0",
@@ -690,17 +1272,17 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "26290911/2092"
+            "26290911/1092"
           ],
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-19": {
+    "2026-12-03": {
       "day_name": "Четверг",
       "lessons": [
         {
@@ -764,10 +1346,10 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-20": {
+    "2026-12-04": {
       "day_name": "Пятница",
       "lessons": [
         {
@@ -792,9 +1374,9 @@
         },
         {
           "lesson_number": 2,
-          "subject": "Ин. яз. в ПД",
+          "subject": "Ин. яз.",
           "teacher": "Кузнецова Л.И.",
-          "group": "24290907/3093",
+          "group": "26290901/1091",
           "subgroup": 2,
           "is_stream": false,
           "status": "ok",
@@ -804,7 +1386,7 @@
           "classroom": null,
           "note": null,
           "group_list": [
-            "24290907/3093"
+            "26290901/1091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -829,29 +1411,9 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
-        },
-        {
-          "lesson_number": 4,
-          "subject": "Ин. яз.",
-          "teacher": "Кузнецова Л.И.",
-          "group": "26290911/1092",
-          "subgroup": 2,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26290911/1092"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

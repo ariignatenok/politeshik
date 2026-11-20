@@ -35,27 +35,7 @@
     },
     "2026-11-18": {
       "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 4,
-          "subject": "МДК.04.02 Основы Этики Этикета и Эстетики",
-          "teacher": "Плотникова Д.А.",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "312",
-          "campus": "Энгельса",
-          "classroom": "каб. 312 (Энгельса)",
-          "note": null,
-          "group_list": [
-            "25290907/3111"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
+      "lessons": [],
       "week_number": 12,
       "week_type": "Знаменатель"
     },
