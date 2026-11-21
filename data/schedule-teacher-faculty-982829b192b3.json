@@ -4,9 +4,9 @@
   "teacher": "Тлеумбетов Т.Д.",
   "full_name": "Тлеумбетов Тимур Денисович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-18",
+  "checked_at": "2026-11-21",
   "from": "2026-11-02",
-  "to": "2026-11-21",
+  "to": "2026-12-05",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -584,6 +584,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -604,6 +605,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -624,6 +626,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -644,6 +647,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -671,6 +675,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -691,6 +696,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -808,6 +814,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -828,6 +835,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -982,9 +990,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -1002,12 +1010,756 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3112"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3111",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-21": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "345",
+          "campus": "Э",
+          "classroom": "каб. 345 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "345",
+          "campus": "Э",
+          "classroom": "каб. 345 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/2092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3111",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290909/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3093",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "lessons": []
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/1095",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/2093",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/2094",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "УП.04.01 Учебная практика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3092",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3093",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290911/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/2093",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2093"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290909/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290909/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "ИТ в ПД лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290911/3112",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
           "note": null,
           "group_list": [
             "26290911/3112"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/2094",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/2094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/1095",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/1095"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
+      "lessons": []
+    },
+    "2026-12-04": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3091",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Информатика",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "26290909/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26290909/3091"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1054,10 +1806,10 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     },
-    "2026-11-21": {
+    "2026-12-05": {
       "day_name": "Суббота",
       "lessons": [
         {
@@ -1099,9 +1851,29 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "ОАП_лр",
+          "teacher": "Тлеумбетов Т.Д.",
+          "group": "25290907/3092",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

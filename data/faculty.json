@@ -1738,8 +1738,8 @@
           "Правовое обеспечение ПД"
         ]
       },
-      "attempted_at": "2026-11-18T18:12:56.162198+00:00",
-      "fetched_at": "2026-11-18T18:12:57.896652+00:00"
+      "attempted_at": "2026-11-21T02:30:41.648751+00:00",
+      "fetched_at": "2026-11-21T02:30:43.127470+00:00"
     },
     {
       "id": "faculty-f6ea627f1c4a",
@@ -1748,8 +1748,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f6ea627f1c4a.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:12:57.896721+00:00",
-      "fetched_at": "2026-11-18T18:12:59.673856+00:00"
+      "attempted_at": "2026-11-21T02:30:43.127539+00:00",
+      "fetched_at": "2026-11-21T02:30:44.603264+00:00"
     },
     {
       "id": "faculty-be432be381f9",
@@ -1762,8 +1762,8 @@
           "Физ. культура"
         ]
       },
-      "attempted_at": "2026-11-18T18:12:59.673939+00:00",
-      "fetched_at": "2026-11-18T18:13:02.741118+00:00"
+      "attempted_at": "2026-11-21T02:30:44.603325+00:00",
+      "fetched_at": "2026-11-21T02:30:46.055961+00:00"
     },
     {
       "id": "faculty-cebe0fe805df",
@@ -1772,8 +1772,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-cebe0fe805df.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:02.741207+00:00",
-      "fetched_at": "2026-11-18T18:13:04.291761+00:00"
+      "attempted_at": "2026-11-21T02:30:46.056042+00:00",
+      "fetched_at": "2026-11-21T02:30:47.410825+00:00"
     },
     {
       "id": "faculty-61b6d224a0a2",
@@ -1782,8 +1782,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-61b6d224a0a2.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:04.291789+00:00",
-      "fetched_at": "2026-11-18T18:13:06.371769+00:00"
+      "attempted_at": "2026-11-21T02:30:47.410854+00:00",
+      "fetched_at": "2026-11-21T02:30:48.888324+00:00"
     },
     {
       "id": "faculty-2e145418011e",
@@ -1792,8 +1792,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-2e145418011e.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:06.371855+00:00",
-      "fetched_at": "2026-11-18T18:13:09.452031+00:00"
+      "attempted_at": "2026-11-21T02:30:48.888373+00:00",
+      "fetched_at": "2026-11-21T02:30:50.361040+00:00"
     },
     {
       "id": "faculty-10469696c214",
@@ -1802,8 +1802,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-10469696c214.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:09.452121+00:00",
-      "fetched_at": "2026-11-18T18:13:12.622964+00:00"
+      "attempted_at": "2026-11-21T02:30:50.361118+00:00",
+      "fetched_at": "2026-11-21T02:30:51.836362+00:00"
     },
     {
       "id": "faculty-3e3e72a1b0a2",
@@ -1816,8 +1816,8 @@
           "Матем. аппарат в отр. ИТ"
         ]
       },
-      "attempted_at": "2026-11-18T18:13:12.623038+00:00",
-      "fetched_at": "2026-11-18T18:13:14.997631+00:00"
+      "attempted_at": "2026-11-21T02:30:51.836444+00:00",
+      "fetched_at": "2026-11-21T02:30:53.194447+00:00"
     },
     {
       "id": "faculty-c03ea348a29e",
@@ -1826,8 +1826,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c03ea348a29e.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:14.997668+00:00",
-      "fetched_at": "2026-11-18T18:13:17.370903+00:00"
+      "attempted_at": "2026-11-21T02:30:53.194475+00:00",
+      "fetched_at": "2026-11-21T02:30:54.548145+00:00"
     },
     {
       "id": "faculty-ec314451fd1e",
@@ -1843,8 +1843,8 @@
           "Ин. яз. в ПД"
         ]
       },
-      "attempted_at": "2026-11-18T18:13:17.370943+00:00",
-      "fetched_at": "2026-11-18T18:13:20.278758+00:00"
+      "attempted_at": "2026-11-21T02:30:54.548172+00:00",
+      "fetched_at": "2026-11-21T02:30:56.020516+00:00"
     },
     {
       "id": "faculty-b64fa733add1",
@@ -1853,8 +1853,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-b64fa733add1.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:20.278829+00:00",
-      "fetched_at": "2026-11-18T18:13:24.523775+00:00"
+      "attempted_at": "2026-11-21T02:30:56.020575+00:00",
+      "fetched_at": "2026-11-21T02:30:57.378964+00:00"
     },
     {
       "id": "faculty-3235afbd6230",
@@ -1863,8 +1863,8 @@
       "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:24.523814+00:00",
-      "fetched_at": "2026-11-18T18:13:26.814608+00:00"
+      "attempted_at": "2026-11-21T02:30:57.378998+00:00",
+      "fetched_at": "2026-11-21T02:30:58.733776+00:00"
     },
     {
       "id": "faculty-982829b192b3",
@@ -1880,8 +1880,8 @@
           "ИТ в ПД лр"
         ]
       },
-      "attempted_at": "2026-11-18T18:13:26.814634+00:00",
-      "fetched_at": "2026-11-18T18:13:28.555581+00:00"
+      "attempted_at": "2026-11-21T02:30:58.733806+00:00",
+      "fetched_at": "2026-11-21T02:31:00.205834+00:00"
     },
     {
       "id": "faculty-01999c98f27b",
@@ -1890,8 +1890,8 @@
       "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:28.555657+00:00",
-      "fetched_at": "2026-11-18T18:13:30.391859+00:00"
+      "attempted_at": "2026-11-21T02:31:00.205933+00:00",
+      "fetched_at": "2026-11-21T02:31:01.562627+00:00"
     },
     {
       "id": "faculty-fa360b11545a",
@@ -1900,8 +1900,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-fa360b11545a.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:30.391884+00:00",
-      "fetched_at": "2026-11-18T18:13:34.993590+00:00"
+      "attempted_at": "2026-11-21T02:31:01.562655+00:00",
+      "fetched_at": "2026-11-21T02:31:03.035341+00:00"
     },
     {
       "id": "faculty-189b53945859",
@@ -1910,8 +1910,8 @@
       "status": "awaiting_source",
       "schedule_file": "schedule-teacher-faculty-189b53945859.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:34.993665+00:00",
-      "fetched_at": "2026-11-18T18:13:36.868045+00:00"
+      "attempted_at": "2026-11-21T02:31:03.035391+00:00",
+      "fetched_at": "2026-11-21T02:31:04.387699+00:00"
     },
     {
       "id": "faculty-433728c880fc",
@@ -1924,8 +1924,8 @@
           "МДК.02.02 ИСРПО"
         ]
       },
-      "attempted_at": "2026-11-18T18:13:36.868072+00:00",
-      "fetched_at": "2026-11-18T18:13:38.628645+00:00"
+      "attempted_at": "2026-11-21T02:31:04.387735+00:00",
+      "fetched_at": "2026-11-21T02:31:05.866405+00:00"
     },
     {
       "id": "faculty-7f0089cd8cbb",
@@ -1934,8 +1934,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7f0089cd8cbb.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:38.628684+00:00",
-      "fetched_at": "2026-11-18T18:13:40.475340+00:00"
+      "attempted_at": "2026-11-21T02:31:05.866460+00:00",
+      "fetched_at": "2026-11-21T02:31:07.224328+00:00"
     },
     {
       "id": "faculty-c63a2b32787e",
@@ -1944,8 +1944,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c63a2b32787e.json",
       "groups": {},
-      "attempted_at": "2026-11-18T18:13:40.475370+00:00",
-      "fetched_at": "2026-11-18T18:13:42.041174+00:00"
+      "attempted_at": "2026-11-21T02:31:07.224388+00:00",
+      "fetched_at": "2026-11-21T02:31:08.577007+00:00"
     },
     {
       "id": "faculty-7a1e08221a25",
@@ -1954,8 +1954,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7a1e08221a25.json",
       "groups": {},
-      "attempted_at": "2026-11-19T00:31:24.353757+00:00",
-      "fetched_at": "2026-11-19T00:31:26.018508+00:00"
+      "attempted_at": "2026-11-21T02:31:08.577039+00:00",
+      "fetched_at": "2026-11-21T02:31:10.052330+00:00"
     },
     {
       "id": "faculty-c5bb74ed5fbc",
@@ -1968,8 +1968,8 @@
           "История ОГСЭ"
         ]
       },
-      "attempted_at": "2026-11-19T00:31:26.018561+00:00",
-      "fetched_at": "2026-11-19T00:31:27.862372+00:00"
+      "attempted_at": "2026-11-21T02:31:10.052398+00:00",
+      "fetched_at": "2026-11-21T02:31:11.528015+00:00"
     },
     {
       "id": "faculty-00610de08487",
@@ -1982,8 +1982,8 @@
           "Компьютерные сети"
         ]
       },
-      "attempted_at": "2026-11-19T00:31:27.862404+00:00",
-      "fetched_at": "2026-11-19T00:31:29.484423+00:00"
+      "attempted_at": "2026-11-21T02:31:11.528080+00:00",
+      "fetched_at": "2026-11-21T02:31:13.006748+00:00"
     },
     {
       "id": "faculty-8b0d83aa0c37",
@@ -1996,8 +1996,8 @@
           "МДК.11.01 ТРиЗБД"
         ]
       },
-      "attempted_at": "2026-11-19T00:31:29.484454+00:00",
-      "fetched_at": "2026-11-19T00:31:31.068914+00:00"
+      "attempted_at": "2026-11-21T02:31:13.006839+00:00",
+      "fetched_at": "2026-11-21T02:31:14.463730+00:00"
     },
     {
       "id": "faculty-9e033e676817",
@@ -2006,8 +2006,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9e033e676817.json",
       "groups": {},
-      "attempted_at": "2026-11-19T00:31:31.068948+00:00",
-      "fetched_at": "2026-11-19T00:31:32.712961+00:00"
+      "attempted_at": "2026-11-21T02:31:14.463798+00:00",
+      "fetched_at": "2026-11-21T02:31:15.936469+00:00"
     },
     {
       "id": "faculty-56f8c3a61d19",

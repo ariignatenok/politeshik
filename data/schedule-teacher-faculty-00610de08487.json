@@ -4,9 +4,9 @@
   "teacher": "Чекан С.И.",
   "full_name": "Чекан Сергей Иванович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-19",
+  "checked_at": "2026-11-21",
   "from": "2026-11-02",
-  "to": "2026-11-21",
+  "to": "2026-12-03",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -449,6 +449,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/3091"
@@ -489,6 +490,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -509,6 +511,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -529,6 +532,7 @@
           "auditorium": "417",
           "campus": "Э",
           "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -873,9 +877,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1095"
@@ -893,9 +897,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1095"
@@ -913,9 +917,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "326",
+          "campus": "Э",
+          "classroom": "каб. 326 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3092"
@@ -933,9 +938,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "326",
+          "campus": "Э",
+          "classroom": "каб. 326 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3092"
@@ -946,6 +952,298 @@
         }
       ],
       "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "lessons": []
+    },
+    "2026-11-24": {
+      "lessons": []
+    },
+    "2026-11-25": {
+      "lessons": []
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "24290901/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "24290901/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "25290907/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "25290907/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "lessons": []
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "25290907/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "25290907/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "25290907/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "25290907/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "24290901/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "24290901/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "lessons": []
+    },
+    "2026-12-02": {
+      "lessons": []
+    },
+    "2026-12-03": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "24290901/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Компьютерные сети",
+          "teacher": "Чекан С.И.",
+          "group": "24290901/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }

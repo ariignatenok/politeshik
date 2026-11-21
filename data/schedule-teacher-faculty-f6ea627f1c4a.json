@@ -4,9 +4,9 @@
   "teacher": "Смирнов А.В.",
   "full_name": "Смирнов Александр Валентинович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-18",
+  "checked_at": "2026-11-21",
   "from": "2026-11-02",
-  "to": "2026-11-21",
+  "to": "2026-12-04",
   "days": {
     "2026-11-02": {
       "day_name": "Понедельник",
@@ -1316,9 +1316,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1336,9 +1336,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1356,9 +1356,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1376,9 +1376,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -1396,9 +1396,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/1091"
@@ -1423,9 +1423,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1443,9 +1443,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1463,6 +1463,237 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
+          "auditorium": "106",
+          "campus": "Э",
+          "classroom": "каб. 106 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.06.01 Электромонтажные работы",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 12,
+      "week_type": "Знаменатель"
+    },
+    "2026-11-22": {
+      "lessons": []
+    },
+    "2026-11-23": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "304",
+          "campus": "Э",
+          "classroom": "каб. 304 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-24": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-25": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Электрообор. холод. машин и устан.",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Электротехника и электроника",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Электротехника и электроника",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-26": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.03.01 АСУ в электроэнергет. системах",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1475,8 +1706,135 @@
           "original_classroom": null
         },
         {
+          "lesson_number": 2,
+          "subject": "МДК.03.01 АСУ в электроэнергет. системах",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.03.01 АСУ в электроэнергет. системах",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
           "lesson_number": 4,
-          "subject": "МДК.06.01 Электромонтажные работы",
+          "subject": "МДК.03.02 Учёт и реализация электрической энергии",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-27": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
           "teacher": "Смирнов А.В.",
           "group": "23291303/1092",
           "subgroup": 0,
@@ -1495,7 +1853,432 @@
           "original_classroom": null
         }
       ],
-      "week_number": 12,
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-28": {
+      "day_name": "Суббота",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Электротехника и электроника",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Электрообор. холод. машин и устан.",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Электрообор. холод. машин и устан.",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
+    },
+    "2026-11-29": {
+      "lessons": []
+    },
+    "2026-11-30": {
+      "day_name": "Понедельник",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "МДК.03.02 Учёт и реализация электрической энергии",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-01": {
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.03.01 АСУ в электроэнергет. системах",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-02": {
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.01.01 Техническое обслуживание ЭО ЭССиС",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.03.01 АСУ в электроэнергет. системах",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/2091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/2091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-03": {
+      "day_name": "Четверг",
+      "lessons": [
+        {
+          "lesson_number": 2,
+          "subject": "Электрообор. холод. машин и устан.",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Электротехника и электроника",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Электрообор. холод. машин и устан.",
+          "teacher": "Смирнов А.В.",
+          "group": "25291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
+      "week_type": "Знаменатель"
+    },
+    "2026-12-04": {
+      "day_name": "Пятница",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "МДК.03.02 Учёт и реализация электрической энергии",
+          "teacher": "Смирнов А.В.",
+          "group": "24291303/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24291303/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "МДК.06.01 Электромонтажные работы",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 3,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "МДК.04.01 Техническая диагностика ЭО",
+          "teacher": "Смирнов А.В.",
+          "group": "23291303/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "23291303/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        }
+      ],
+      "week_number": 14,
       "week_type": "Знаменатель"
     }
   }
