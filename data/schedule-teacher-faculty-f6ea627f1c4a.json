@@ -4,7 +4,7 @@
   "teacher": "Смирнов А.В.",
   "full_name": "Смирнов Александр Валентинович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1627,9 +1627,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "229",
+          "campus": "П",
+          "classroom": "каб. 229 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -1647,9 +1647,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "229",
+          "campus": "П",
+          "classroom": "каб. 229 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -1667,9 +1667,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "229",
+          "campus": "П",
+          "classroom": "каб. 229 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -1868,9 +1868,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -1888,9 +1888,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -1908,9 +1908,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -2139,9 +2139,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -2159,9 +2159,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -2179,9 +2179,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"

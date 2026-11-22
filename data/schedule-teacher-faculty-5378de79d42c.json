@@ -4,7 +4,7 @@
   "teacher": "Симоненко С.И.",
   "full_name": "Симоненко Святослав Иванович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1073,9 +1073,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "314",
+          "campus": "П",
+          "classroom": "каб. 314 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -1093,9 +1093,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "314",
+          "campus": "П",
+          "classroom": "каб. 314 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1474,9 +1474,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "314",
+          "campus": "П",
+          "classroom": "каб. 314 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1494,9 +1494,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "314",
+          "campus": "П",
+          "classroom": "каб. 314 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
