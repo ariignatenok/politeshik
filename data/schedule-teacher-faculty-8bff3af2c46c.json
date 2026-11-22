@@ -4,7 +4,7 @@
   "teacher": "Зубарев А.А.",
   "full_name": "Зубарев Алексей Алексеевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-20",
+  "checked_at": "2026-11-22",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -699,8 +699,8 @@
           "group": "25290907/2091, 25290907/2092",
           "subgroup": 0,
           "is_stream": true,
-          "status": "replacement",
-          "zam": "1",
+          "status": "ok",
+          "zam": "0",
           "auditorium": "110",
           "campus": "Э",
           "classroom": "каб. 110 (Энгельса)",
@@ -709,9 +709,9 @@
             "25290907/2091",
             "25290907/2092"
           ],
-          "original_subject": "МДК.04.01 Внедрение и поддержка КС",
-          "original_teacher": "Иванова Д.В.",
-          "original_classroom": "каб. 110 (Энгельса)"
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
         },
         {
           "lesson_number": 3,
@@ -944,6 +944,26 @@
       "day_name": "Понедельник",
       "lessons": [
         {
+          "lesson_number": 2,
+          "subject": "История",
+          "teacher": "Зубарев А.А.",
+          "group": "26290911/2092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/2092"
+          ],
+          "original_subject": "Физика",
+          "original_teacher": "Кузьмичев В.В.",
+          "original_classroom": "каб. 547 (Энгельса)"
+        },
+        {
           "lesson_number": 3,
           "subject": "История",
           "teacher": "Зубарев А.А.",
@@ -952,9 +972,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"
@@ -972,9 +992,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -992,9 +1012,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "547",
+          "campus": "Э",
+          "classroom": "каб. 547 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"

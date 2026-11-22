@@ -4,7 +4,7 @@
   "teacher": "Зернова Е.Н.",
   "full_name": "Зернова Елена Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-20",
+  "checked_at": "2026-11-22",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1328,8 +1328,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1091"
@@ -1348,8 +1348,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1091"
@@ -1360,13 +1360,13 @@
         },
         {
           "lesson_number": 3,
-          "subject": "МДК.02.03 Мат. моделирование",
+          "subject": "ОТМЕНА",
           "teacher": "Зернова Е.Н.",
           "group": "23290907/1092",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1374,9 +1374,9 @@
           "group_list": [
             "23290907/1092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "МДК.02.03 Мат. моделирование",
+          "original_teacher": "Зернова Е.Н.",
+          "original_classroom": "Дистант"
         },
         {
           "lesson_number": 4,
@@ -1387,9 +1387,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"
