@@ -4,7 +4,7 @@
   "teacher": "Кучеренко Н.Л.",
   "full_name": "Кучеренко Наталья Леонидовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-20",
+  "checked_at": "2026-11-22",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1059,9 +1059,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "208",
+          "campus": "Э",
+          "classroom": "каб. 208 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1079,9 +1079,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "208",
+          "campus": "Э",
+          "classroom": "каб. 208 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1091"
@@ -1099,9 +1099,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "208",
+          "campus": "Э",
+          "classroom": "каб. 208 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1091"
@@ -1119,9 +1119,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "208",
+          "campus": "Э",
+          "classroom": "каб. 208 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1092"
