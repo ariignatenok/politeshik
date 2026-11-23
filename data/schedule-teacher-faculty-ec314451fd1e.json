@@ -4,7 +4,7 @@
   "teacher": "Талалаева Д.А.",
   "full_name": "Талалаева Дарья Александровна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-11-27",
   "days": {
@@ -579,9 +579,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -1029,9 +1026,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "П",
+          "classroom": "каб. 218 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1049,9 +1046,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "П",
+          "classroom": "каб. 218 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1076,9 +1073,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1096,9 +1093,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1116,9 +1113,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1136,9 +1133,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"

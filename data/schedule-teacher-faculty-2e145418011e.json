@@ -4,7 +4,7 @@
   "teacher": "Смирнова Н.И.",
   "full_name": "Смирнова Наталья Ивановна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -992,9 +992,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "СЗАЛ",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1091"
@@ -1012,9 +1012,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "СЗАЛ",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -1039,9 +1039,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1091"
@@ -1059,9 +1059,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1079,9 +1079,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1091"
@@ -1106,9 +1106,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1126,9 +1126,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -1146,9 +1146,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1173,9 +1173,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3091"
@@ -1193,9 +1193,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1213,9 +1213,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1233,9 +1233,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -1260,9 +1260,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1280,9 +1280,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1092"
@@ -1300,9 +1300,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1092"
@@ -1333,9 +1333,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1091"
@@ -1353,9 +1353,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -1373,9 +1373,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1400,9 +1400,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1092"
@@ -1420,9 +1420,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -1440,9 +1440,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1091"
@@ -1460,9 +1460,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1487,9 +1487,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/1092"
@@ -1507,9 +1507,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1092"
@@ -1527,9 +1527,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1554,9 +1554,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "23294315/1091"
@@ -1574,9 +1574,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3091"
@@ -1594,9 +1594,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1621,9 +1621,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -1641,9 +1641,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "СЗАЛ",
+          "campus": "П",
+          "classroom": "каб. СЗАЛ (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"

@@ -4,7 +4,7 @@
   "teacher": "Сысоева А.Д.",
   "full_name": "Сысоева Анастасия Дмитриевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-06",
   "to": "2026-12-04",
   "days": {
@@ -121,9 +121,6 @@
       "lessons": []
     },
     "2026-11-15": {
-      "lessons": []
-    },
-    "2026-11-16": {
       "lessons": []
     },
     "2026-11-17": {
@@ -247,9 +244,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "235",
+          "campus": "П",
+          "classroom": "каб. 235 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -267,9 +264,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "235",
+          "campus": "П",
+          "classroom": "каб. 235 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -312,9 +309,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -332,9 +329,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -365,9 +362,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "228",
+          "campus": "П",
+          "classroom": "каб. 228 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -385,9 +382,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "П",
+          "classroom": "каб. 218 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
