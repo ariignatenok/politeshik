@@ -4,7 +4,7 @@
   "teacher": "Большакова А.В.",
   "full_name": "Большакова Анна Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-05",
   "to": "2026-12-03",
   "days": {
@@ -240,15 +240,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
-    "2026-11-17": {
-      "lessons": []
-    },
-    "2026-11-18": {
-      "lessons": []
-    },
     "2026-11-19": {
       "day_name": "Четверг",
       "lessons": [
@@ -386,9 +377,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -406,9 +397,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -426,9 +417,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1092"
@@ -446,9 +437,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1092"
@@ -466,9 +457,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2092"
@@ -511,9 +502,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -531,9 +522,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -551,9 +542,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1092"
@@ -571,9 +562,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2092"
@@ -591,9 +582,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "226",
+          "campus": "П",
+          "classroom": "каб. 226 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2092"

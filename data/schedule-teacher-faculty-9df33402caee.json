@@ -4,7 +4,7 @@
   "teacher": "Баженова Т.С.",
   "full_name": "Баженова Татьяна Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1159,9 +1159,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "319",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1179,9 +1179,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "319",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1199,9 +1199,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "319",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1219,9 +1219,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "319",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1246,9 +1246,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1266,9 +1266,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1286,9 +1286,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1306,9 +1306,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1333,9 +1333,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1353,9 +1353,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1373,9 +1373,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1393,9 +1393,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1420,9 +1420,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1440,9 +1440,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1467,9 +1467,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1487,9 +1487,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1520,9 +1520,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1540,9 +1540,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1560,9 +1560,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1580,9 +1580,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1607,9 +1607,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1627,9 +1627,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1647,9 +1647,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1674,9 +1674,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1694,9 +1694,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1714,9 +1714,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1734,9 +1734,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1761,9 +1761,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1781,9 +1781,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1801,9 +1801,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1828,9 +1828,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1848,9 +1848,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1868,9 +1868,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1888,9 +1888,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "319",
+          "campus": "П",
+          "classroom": "каб. 319 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"

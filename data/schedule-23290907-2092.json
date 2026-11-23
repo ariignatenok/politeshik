@@ -1180,7 +1180,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1198,9 +1198,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "511",
+          "campus": "Э",
+          "classroom": "каб. 511 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1217,9 +1217,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "511",
+          "campus": "Э",
+          "classroom": "каб. 511 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"

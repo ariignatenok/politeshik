@@ -1401,9 +1401,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск5",
+          "campus": "Э",
+          "classroom": "каб. ск5 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1420,9 +1420,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1439,9 +1439,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "551",
+          "campus": "Э",
+          "classroom": "каб. 551 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1459,7 +1459,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1477,9 +1477,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "301",
+          "campus": "Э",
+          "classroom": "каб. 301 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1496,9 +1496,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"

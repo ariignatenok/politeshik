@@ -4,7 +4,7 @@
   "teacher": "Андреев В.А.",
   "full_name": "Андреев Владимир Александрович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -658,12 +658,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
-    "2026-11-17": {
-      "lessons": []
-    },
     "2026-11-18": {
       "day_name": "Среда",
       "lessons": [
@@ -955,9 +949,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -975,9 +969,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"

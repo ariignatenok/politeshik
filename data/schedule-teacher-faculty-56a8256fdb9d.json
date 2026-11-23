@@ -4,7 +4,7 @@
   "teacher": "Щербак А.В.",
   "full_name": "Щербак Алена Валериевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -1280,9 +1280,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "402",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1300,9 +1300,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "402",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1320,9 +1320,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "402",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1347,9 +1347,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1367,9 +1367,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1397,9 +1397,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1417,9 +1417,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1437,9 +1437,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1476,9 +1476,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"
@@ -1496,9 +1496,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1516,9 +1516,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"
@@ -1544,7 +1544,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1564,7 +1564,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1590,9 +1590,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"
@@ -1610,9 +1610,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1630,9 +1630,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "25293801/3091"
@@ -1650,9 +1650,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"
@@ -1677,9 +1677,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"
@@ -1697,9 +1697,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "П",
+          "classroom": "каб. 402 (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"

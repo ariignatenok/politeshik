@@ -4,7 +4,7 @@
   "teacher": "Берковиц А.В.",
   "full_name": "Берковиц Александр Владимирович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-23",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -767,9 +767,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -787,9 +787,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -807,9 +807,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -834,9 +834,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -854,9 +854,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -874,9 +874,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -894,9 +894,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1131,9 +1131,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1151,9 +1151,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1171,9 +1171,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -1191,9 +1191,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "П",
+          "classroom": "каб. 211 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"

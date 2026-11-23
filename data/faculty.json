@@ -11,8 +11,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-fef89b8bfbf9.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:37.632290+00:00",
-      "fetched_at": "2026-11-21T10:08:39.288064+00:00"
+      "attempted_at": "2026-11-23T14:27:09.457177+00:00",
+      "fetched_at": "2026-11-23T14:27:10.801859+00:00"
     },
     {
       "id": "faculty-3ce882e215c8",
@@ -31,8 +31,8 @@
           "ОПБД"
         ]
       },
-      "attempted_at": "2026-11-21T10:08:39.288095+00:00",
-      "fetched_at": "2026-11-21T10:08:40.830172+00:00"
+      "attempted_at": "2026-11-23T14:27:10.801898+00:00",
+      "fetched_at": "2026-11-23T14:27:12.194003+00:00"
     },
     {
       "id": "faculty-ae1169086001",
@@ -45,8 +45,8 @@
           "ОСиС"
         ]
       },
-      "attempted_at": "2026-11-21T10:08:40.830219+00:00",
-      "fetched_at": "2026-11-21T10:08:42.688434+00:00"
+      "attempted_at": "2026-11-23T14:27:12.194077+00:00",
+      "fetched_at": "2026-11-23T14:27:13.580008+00:00"
     },
     {
       "id": "faculty-68d9711e8c64",
@@ -55,8 +55,8 @@
       "status": "awaiting_source",
       "schedule_file": "schedule-teacher-faculty-68d9711e8c64.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:42.688469+00:00",
-      "fetched_at": "2026-11-21T10:08:44.077992+00:00"
+      "attempted_at": "2026-11-23T14:27:13.580088+00:00",
+      "fetched_at": "2026-11-23T14:27:14.931070+00:00"
     },
     {
       "id": "faculty-7cbb895cc502",
@@ -65,8 +65,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-7cbb895cc502.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:44.078021+00:00",
-      "fetched_at": "2026-11-21T10:08:45.595201+00:00"
+      "attempted_at": "2026-11-23T14:27:14.931097+00:00",
+      "fetched_at": "2026-11-23T14:27:16.457336+00:00"
     },
     {
       "id": "faculty-6b744383922e",
@@ -75,8 +75,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-6b744383922e.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:45.595290+00:00",
-      "fetched_at": "2026-11-21T10:08:47.157903+00:00"
+      "attempted_at": "2026-11-23T14:27:16.457407+00:00",
+      "fetched_at": "2026-11-23T14:27:18.026728+00:00"
     },
     {
       "id": "faculty-9df33402caee",
@@ -85,8 +85,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-9df33402caee.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:47.157976+00:00",
-      "fetched_at": "2026-11-21T10:08:48.673690+00:00"
+      "attempted_at": "2026-11-23T14:27:18.026826+00:00",
+      "fetched_at": "2026-11-23T14:27:19.497335+00:00"
     },
     {
       "id": "faculty-8691ed508560",
@@ -95,8 +95,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-8691ed508560.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:48.673743+00:00",
-      "fetched_at": "2026-11-21T10:08:50.393580+00:00"
+      "attempted_at": "2026-11-23T14:27:19.497398+00:00",
+      "fetched_at": "2026-11-23T14:27:21.057666+00:00"
     },
     {
       "id": "faculty-00393e9e4364",
@@ -105,8 +105,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-00393e9e4364.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:50.393653+00:00",
-      "fetched_at": "2026-11-21T10:08:51.936757+00:00"
+      "attempted_at": "2026-11-23T14:27:21.057767+00:00",
+      "fetched_at": "2026-11-23T14:27:22.648353+00:00"
     },
     {
       "id": "faculty-29f8b3697f67",
@@ -115,8 +115,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-29f8b3697f67.json",
       "groups": {},
-      "attempted_at": "2026-11-21T17:38:20.532160+00:00",
-      "fetched_at": "2026-11-21T17:38:22.496428+00:00"
+      "attempted_at": "2026-11-23T14:27:22.648435+00:00",
+      "fetched_at": "2026-11-23T14:27:24.009600+00:00"
     },
     {
       "id": "faculty-e3efadbcac1c",
@@ -125,8 +125,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-e3efadbcac1c.json",
       "groups": {},
-      "attempted_at": "2026-11-21T17:38:22.496458+00:00",
-      "fetched_at": "2026-11-21T17:38:24.259503+00:00"
+      "attempted_at": "2026-11-23T14:27:24.009686+00:00",
+      "fetched_at": "2026-11-23T14:27:25.349398+00:00"
     },
     {
       "id": "faculty-c20afdfad898",
@@ -135,8 +135,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-c20afdfad898.json",
       "groups": {},
-      "attempted_at": "2026-11-21T17:38:24.259528+00:00",
-      "fetched_at": "2026-11-21T17:38:26.155605+00:00"
+      "attempted_at": "2026-11-23T14:27:25.349433+00:00",
+      "fetched_at": "2026-11-23T14:27:26.810548+00:00"
     },
     {
       "id": "faculty-a143e7c90cb7",
@@ -145,8 +145,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-a143e7c90cb7.json",
       "groups": {},
-      "attempted_at": "2026-11-21T17:38:26.155688+00:00",
-      "fetched_at": "2026-11-21T17:38:27.925296+00:00"
+      "attempted_at": "2026-11-23T14:27:26.810736+00:00",
+      "fetched_at": "2026-11-23T14:27:28.163173+00:00"
     },
     {
       "id": "faculty-021571213883",
@@ -159,8 +159,8 @@
           "ЭВМ"
         ]
       },
-      "attempted_at": "2026-11-21T17:38:27.925323+00:00",
-      "fetched_at": "2026-11-21T17:38:29.540278+00:00"
+      "attempted_at": "2026-11-23T14:27:28.163214+00:00",
+      "fetched_at": "2026-11-23T14:27:29.619293+00:00"
     },
     {
       "id": "faculty-487dfcd45374",
@@ -2073,8 +2073,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-ccbf05d535b4.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:21.383230+00:00",
-      "fetched_at": "2026-11-21T10:08:23.156163+00:00"
+      "attempted_at": "2026-11-23T14:26:54.854522+00:00",
+      "fetched_at": "2026-11-23T14:26:56.309057+00:00"
     },
     {
       "id": "faculty-f62b38246923",
@@ -2083,8 +2083,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-f62b38246923.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:23.156228+00:00",
-      "fetched_at": "2026-11-21T10:08:24.774343+00:00"
+      "attempted_at": "2026-11-23T14:26:56.309089+00:00",
+      "fetched_at": "2026-11-23T14:26:57.662812+00:00"
     },
     {
       "id": "faculty-7f6cd957201e",
@@ -2093,8 +2093,8 @@
       "status": "awaiting_source",
       "schedule_file": null,
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:24.774372+00:00",
-      "fetched_at": "2026-11-21T10:08:26.444105+00:00"
+      "attempted_at": "2026-11-23T14:26:57.662835+00:00",
+      "fetched_at": "2026-11-23T14:26:59.001349+00:00"
     },
     {
       "id": "faculty-80dd129dc6bc",
@@ -2103,8 +2103,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-80dd129dc6bc.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:26.444128+00:00",
-      "fetched_at": "2026-11-21T10:08:27.987690+00:00"
+      "attempted_at": "2026-11-23T14:26:59.001365+00:00",
+      "fetched_at": "2026-11-23T14:27:00.473868+00:00"
     },
     {
       "id": "faculty-33b6d5431b91",
@@ -2113,8 +2113,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-33b6d5431b91.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:27.987759+00:00",
-      "fetched_at": "2026-11-21T10:08:29.511962+00:00"
+      "attempted_at": "2026-11-23T14:27:00.474022+00:00",
+      "fetched_at": "2026-11-23T14:27:01.951545+00:00"
     },
     {
       "id": "faculty-56a8256fdb9d",
@@ -2123,8 +2123,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-56a8256fdb9d.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:29.512004+00:00",
-      "fetched_at": "2026-11-21T10:08:31.273793+00:00"
+      "attempted_at": "2026-11-23T14:27:01.951629+00:00",
+      "fetched_at": "2026-11-23T14:27:03.454383+00:00"
     },
     {
       "id": "faculty-14764eb0d37b",
@@ -2133,8 +2133,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-14764eb0d37b.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:31.273875+00:00",
-      "fetched_at": "2026-11-21T10:08:33.049586+00:00"
+      "attempted_at": "2026-11-23T14:27:03.454470+00:00",
+      "fetched_at": "2026-11-23T14:27:05.003589+00:00"
     },
     {
       "id": "faculty-0db1cfc2eb2a",
@@ -2143,8 +2143,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-0db1cfc2eb2a.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:33.049661+00:00",
-      "fetched_at": "2026-11-21T10:08:34.592727+00:00"
+      "attempted_at": "2026-11-23T14:27:05.003648+00:00",
+      "fetched_at": "2026-11-23T14:27:06.476255+00:00"
     },
     {
       "id": "faculty-65a1d3c4ffc7",
@@ -2157,8 +2157,8 @@
           "МДК.01.03 Разработка мобильных приложений"
         ]
       },
-      "attempted_at": "2026-11-21T10:08:34.592793+00:00",
-      "fetched_at": "2026-11-21T10:08:36.118708+00:00"
+      "attempted_at": "2026-11-23T14:27:06.476319+00:00",
+      "fetched_at": "2026-11-23T14:27:07.984290+00:00"
     },
     {
       "id": "faculty-047d043706bd",
@@ -2167,8 +2167,8 @@
       "status": "ready",
       "schedule_file": "schedule-teacher-faculty-047d043706bd.json",
       "groups": {},
-      "attempted_at": "2026-11-21T10:08:36.118754+00:00",
-      "fetched_at": "2026-11-21T10:08:37.632238+00:00"
+      "attempted_at": "2026-11-23T14:27:07.984341+00:00",
+      "fetched_at": "2026-11-23T14:27:09.457137+00:00"
     }
   ],
   "unresolved": [
