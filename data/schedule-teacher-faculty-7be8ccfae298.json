@@ -4,7 +4,7 @@
   "teacher": "Кузнецова Л.И.",
   "full_name": "Кузнецова Лиана Ивановна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -563,9 +563,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -919,9 +916,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -939,9 +936,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -959,9 +956,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -979,9 +976,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -1006,9 +1003,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -1026,9 +1023,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -1053,9 +1050,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "104",
+          "campus": "П",
+          "classroom": "каб. 104 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1200,9 +1197,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -1220,9 +1217,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1294,9 +1291,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "104",
+          "campus": "П",
+          "classroom": "каб. 104 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -1314,9 +1311,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "104",
+          "campus": "П",
+          "classroom": "каб. 104 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -1334,9 +1331,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "104",
+          "campus": "П",
+          "classroom": "каб. 104 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"

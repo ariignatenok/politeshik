@@ -4,7 +4,7 @@
   "teacher": "Кузьмичев В.В.",
   "full_name": "Кузьмичев Виталий Валерьевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -414,31 +414,7 @@
       "lessons": []
     },
     "2026-11-25": {
-      "day_name": "Среда",
-      "lessons": [
-        {
-          "lesson_number": 4,
-          "subject": "Физика",
-          "teacher": "Кузьмичев В.В.",
-          "group": "26290911/2092",
-          "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
-          "note": null,
-          "group_list": [
-            "26290911/2092"
-          ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
-        }
-      ],
-      "week_number": 13,
-      "week_type": "Числитель"
+      "lessons": []
     },
     "2026-11-26": {
       "lessons": []

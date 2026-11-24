@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "23290907/2092",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1300,9 +1300,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "445",
           "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1319,9 +1319,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "445",
           "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"

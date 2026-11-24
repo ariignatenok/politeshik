@@ -4,7 +4,7 @@
   "teacher": "Костин Ю.Н.",
   "full_name": "Костин Юрий Николаевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -394,9 +394,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -562,9 +559,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "П",
+          "classroom": "каб. 401 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/1094"
@@ -582,9 +579,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "П",
+          "classroom": "каб. 401 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/1094"
@@ -609,9 +606,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -629,9 +626,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -649,9 +646,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -669,9 +666,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1095"
