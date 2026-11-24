@@ -4,7 +4,7 @@
   "teacher": "Жеребчевская Е.Е.",
   "full_name": "Жеребчевская Екатерина Евгеньевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -995,9 +995,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "217",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1015,9 +1015,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "217",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1035,9 +1035,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "217",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -1055,9 +1055,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "217",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1082,9 +1082,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1102,9 +1102,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -1122,9 +1122,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1436,9 +1436,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1456,9 +1456,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -1476,9 +1476,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"

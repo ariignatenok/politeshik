@@ -1601,12 +1601,12 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "Ин. яз. в ПД",
+          "subject": "ОТМЕНА",
           "teacher": "Саитова В.С.",
           "subgroup": 1,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1614,8 +1614,8 @@
           "group_list": [
             "25290907/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "Ин. яз. в ПД",
+          "original_teacher": "Саитова В.С.",
           "original_classroom": null
         },
         {
@@ -1627,7 +1627,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1645,9 +1645,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1665,7 +1665,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [

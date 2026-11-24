@@ -4,7 +4,7 @@
   "teacher": "Горбанёва Ю.С.",
   "full_name": "Горбанёва Юлия Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-24",
   "from": "2026-11-06",
   "to": "2026-12-04",
   "days": {
@@ -114,18 +114,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
-    "2026-11-17": {
-      "lessons": []
-    },
-    "2026-11-18": {
-      "lessons": []
-    },
-    "2026-11-19": {
-      "lessons": []
-    },
     "2026-11-20": {
       "day_name": "Пятница",
       "lessons": [
@@ -194,9 +182,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "308",
+          "campus": "Э",
+          "classroom": "каб. 308 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"

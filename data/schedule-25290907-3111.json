@@ -166,12 +166,12 @@
       "lessons": [
         {
           "lesson_number": 2,
-          "subject": "МДК.11.01 ТРиЗБД",
+          "subject": "ОТМЕНА",
           "teacher": "Андреев В.А.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -179,18 +179,18 @@
           "group_list": [
             "25290907/3111"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "МДК.11.01 ТРиЗБД",
+          "original_teacher": "Андреев В.А.",
           "original_classroom": null
         },
         {
           "lesson_number": 3,
-          "subject": "МДК.11.01 ТРиЗБД",
+          "subject": "ОТМЕНА",
           "teacher": "Андреев В.А.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -198,8 +198,8 @@
           "group_list": [
             "25290907/3111"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "МДК.11.01 ТРиЗБД",
+          "original_teacher": "Андреев В.А.",
           "original_classroom": null
         },
         {
@@ -210,9 +210,28 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "439",
+          "campus": "Э",
+          "classroom": "каб. 439 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "25290907/3111"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "ТВиМС",
+          "teacher": "Ежов Е.И.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "439",
+          "campus": "Э",
+          "classroom": "каб. 439 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3111"

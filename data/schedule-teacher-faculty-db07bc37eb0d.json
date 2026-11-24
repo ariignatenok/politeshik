@@ -4,7 +4,7 @@
   "teacher": "Зернова Е.Н.",
   "full_name": "Зернова Елена Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1415,8 +1415,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -1435,8 +1435,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -1455,8 +1455,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1475,8 +1475,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1502,8 +1502,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/3091"
@@ -1522,8 +1522,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/3091"
@@ -1541,9 +1541,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"

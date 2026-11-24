@@ -4,7 +4,7 @@
   "teacher": "Зубарев А.А.",
   "full_name": "Зубарев Алексей Алексеевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -699,8 +699,8 @@
           "group": "25290907/2091, 25290907/2092",
           "subgroup": 0,
           "is_stream": true,
-          "status": "ok",
-          "zam": "0",
+          "status": "replacement",
+          "zam": "1",
           "auditorium": "110",
           "campus": "Э",
           "classroom": "каб. 110 (Энгельса)",
@@ -709,9 +709,9 @@
             "25290907/2091",
             "25290907/2092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "МДК.04.01 Внедрение и поддержка КС",
+          "original_teacher": "Иванова Д.В.",
+          "original_classroom": "каб. 110 (Энгельса)"
         },
         {
           "lesson_number": 3,
@@ -1043,7 +1043,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1063,7 +1063,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1083,7 +1083,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1109,9 +1109,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "321",
+          "campus": "П",
+          "classroom": "каб. 321 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1092"
@@ -1129,9 +1129,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "321",
+          "campus": "П",
+          "classroom": "каб. 321 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -1450,9 +1450,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -1470,9 +1470,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1092"
