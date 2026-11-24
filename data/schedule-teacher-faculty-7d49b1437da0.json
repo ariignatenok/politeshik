@@ -4,7 +4,7 @@
   "teacher": "Герчикова И.Г.",
   "full_name": "Герчикова Ирина Григорьевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -434,9 +434,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -662,9 +659,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1092"
@@ -682,9 +679,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -702,9 +699,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"
@@ -722,9 +719,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "409",
+          "campus": "Э",
+          "classroom": "каб. 409 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"
@@ -883,9 +880,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "235",
+          "campus": "П",
+          "classroom": "каб. 235 (Приморский)",
           "note": null,
           "group_list": [
             "24294316/3091"

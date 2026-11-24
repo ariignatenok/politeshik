@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "23290907/2092",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1179,9 +1179,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "243",
           "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1220,6 +1220,25 @@
           "auditorium": "511",
           "campus": "Э",
           "classroom": "каб. 511 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "23290907/2092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "секретные практики 1С:Бухалтерия",
+          "teacher": "Долгова И.В.",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "ok",
+          "zam": "0",
+          "auditorium": "ПТЗ",
+          "campus": "Энгельса",
+          "classroom": "каб. ПТЗ (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"

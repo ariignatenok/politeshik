@@ -4,7 +4,7 @@
   "teacher": "Бурова Т.Е.",
   "full_name": "Бурова Татьяна Евгеньевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-02",
   "days": {
@@ -646,9 +646,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -666,9 +666,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/1091"
@@ -686,9 +686,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -706,9 +706,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -733,9 +733,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26291506/1091"
@@ -753,9 +753,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -792,9 +792,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/1091"
@@ -812,9 +812,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2091"
@@ -832,9 +832,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26294315/2092"
@@ -852,9 +852,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"

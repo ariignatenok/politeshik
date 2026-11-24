@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "26290911/3111",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1458,9 +1458,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "408",
           "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. 408 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"

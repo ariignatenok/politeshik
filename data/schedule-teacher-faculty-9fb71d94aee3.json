@@ -4,7 +4,7 @@
   "teacher": "Гарифуллина И.А.",
   "full_name": "Гарифуллина Ирина Алексеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-21",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -442,9 +442,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -674,9 +671,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -694,9 +691,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1092"

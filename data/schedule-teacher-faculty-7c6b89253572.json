@@ -4,7 +4,7 @@
   "teacher": "Голубев Д.М.",
   "full_name": "Голубев Дэнис Михайлович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-24",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -415,12 +415,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
-    "2026-11-17": {
-      "lessons": []
-    },
     "2026-11-18": {
       "day_name": "Среда",
       "lessons": [
@@ -643,9 +637,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "Э",
+          "classroom": "каб. 402 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -663,9 +657,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "Э",
+          "classroom": "каб. 402 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -683,9 +677,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "402",
+          "campus": "Э",
+          "classroom": "каб. 402 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1091"
@@ -703,9 +697,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/1091"
