@@ -4,7 +4,7 @@
   "teacher": "Малькова Е.Т.",
   "full_name": "Малькова Елена Тимофеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-03",
   "days": {
@@ -388,9 +388,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -552,9 +549,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -572,9 +569,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -599,9 +596,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -619,9 +616,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"
@@ -639,9 +636,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2091"
@@ -659,9 +656,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "307",
+          "campus": "Э",
+          "classroom": "каб. 307 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"

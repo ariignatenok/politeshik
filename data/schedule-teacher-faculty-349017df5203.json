@@ -4,7 +4,7 @@
   "teacher": "Лаврентьева О.Г.",
   "full_name": "Лаврентьева Ольга Геворговна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-06",
   "to": "2026-12-04",
   "days": {
@@ -204,9 +204,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -328,9 +325,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "410",
+          "campus": "Э",
+          "classroom": "каб. 410 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -348,9 +345,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "410",
+          "campus": "Э",
+          "classroom": "каб. 410 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -378,9 +375,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "231",
+          "campus": "П",
+          "classroom": "каб. 231 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -398,9 +395,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "231",
+          "campus": "П",
+          "classroom": "каб. 231 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -418,9 +415,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "231",
+          "campus": "П",
+          "classroom": "каб. 231 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -514,9 +511,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -534,9 +531,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -554,9 +551,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "217",
+          "campus": "П",
+          "classroom": "каб. 217 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"

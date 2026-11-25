@@ -4,7 +4,7 @@
   "teacher": "Медведева О.В.",
   "full_name": "Медведева Ольга Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -528,9 +528,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -792,6 +789,26 @@
       "day_name": "Вторник",
       "lessons": [
         {
+          "lesson_number": 1,
+          "subject": "Химия",
+          "teacher": "Медведева О.В.",
+          "group": "26293803/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26293803/3091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
           "lesson_number": 2,
           "subject": "Химия",
           "teacher": "Медведева О.В.",
@@ -800,9 +817,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "116",
+          "campus": "П",
+          "classroom": "каб. 116 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -820,9 +837,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "116",
+          "campus": "П",
+          "classroom": "каб. 116 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -847,9 +864,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"
@@ -867,9 +884,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -1017,9 +1034,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "116",
+          "campus": "П",
+          "classroom": "каб. 116 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -1037,9 +1054,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "116",
+          "campus": "П",
+          "classroom": "каб. 116 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -1057,9 +1074,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "116",
+          "campus": "П",
+          "classroom": "каб. 116 (Приморский)",
           "note": null,
           "group_list": [
             "26294316/3091"
@@ -1077,9 +1094,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "116",
+          "campus": "П",
+          "classroom": "каб. 116 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"

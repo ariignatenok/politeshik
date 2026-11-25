@@ -4,7 +4,7 @@
   "teacher": "Матвеева Ю.А.",
   "full_name": "Матвеева Юлия Аникториевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -751,9 +751,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "109",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -771,9 +771,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "109",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -791,9 +791,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "109",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -807,7 +807,31 @@
       "week_type": "Числитель"
     },
     "2026-11-24": {
-      "lessons": []
+      "day_name": "Вторник",
+      "lessons": [
+        {
+          "lesson_number": 3,
+          "subject": "МДК.03.01 Выполнение работ по профессии «Официант»",
+          "teacher": "Матвеева Ю.А.",
+          "group": "25294316/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294316/1092"
+          ],
+          "original_subject": "Физ. культура",
+          "original_teacher": "Смирнова Н.И.",
+          "original_classroom": "каб. СЗАЛ (Приморский)"
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
     },
     "2026-11-25": {
       "day_name": "Среда",
@@ -821,9 +845,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -841,9 +865,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -861,9 +885,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -888,9 +912,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -908,9 +932,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -944,9 +968,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -964,9 +988,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "24294315/3111"
@@ -984,9 +1008,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"
@@ -1014,9 +1038,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1034,9 +1058,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1091"
@@ -1054,9 +1078,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1074,9 +1098,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/1092"
@@ -1101,9 +1125,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "109",
+          "campus": "П",
+          "classroom": "каб. 109 (Приморский)",
           "note": null,
           "group_list": [
             "25294316/3091"

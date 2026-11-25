@@ -4,7 +4,7 @@
   "teacher": "Матвеева С.П.",
   "full_name": "Матвеева Светлана Павловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -544,9 +544,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2091"
@@ -577,9 +577,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -597,9 +597,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -617,9 +617,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -680,9 +680,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -700,9 +700,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"
@@ -730,9 +730,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -750,9 +750,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/3091"
@@ -770,9 +770,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "212",
+          "campus": "П",
+          "classroom": "каб. 212 (Приморский)",
           "note": null,
           "group_list": [
             "25294315/1092"

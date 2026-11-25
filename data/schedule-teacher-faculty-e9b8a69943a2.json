@@ -4,7 +4,7 @@
   "teacher": "Лысикова А.В.",
   "full_name": "Лысикова Александра Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -617,9 +617,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -637,9 +637,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3091"
@@ -657,9 +657,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"
@@ -684,9 +684,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -704,9 +704,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"
@@ -833,9 +833,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26293803/3091"
@@ -853,9 +853,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "232",
+          "campus": "П",
+          "classroom": "каб. 232 (Приморский)",
           "note": null,
           "group_list": [
             "26293801/3091"

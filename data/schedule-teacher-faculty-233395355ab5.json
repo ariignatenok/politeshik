@@ -4,7 +4,7 @@
   "teacher": "Кялина Е.М.",
   "full_name": "Кялина Екатерина Михайловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-02",
   "days": {
@@ -764,9 +764,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "117",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -784,9 +784,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "117",
           "campus": "П",
-          "classroom": null,
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -814,9 +814,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -834,9 +834,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"
@@ -861,9 +861,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -881,9 +881,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -920,9 +920,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "25291506/1091"
@@ -940,9 +940,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/2091"
@@ -967,9 +967,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -987,9 +987,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "117",
+          "campus": "П",
+          "classroom": "каб. 117 (Приморский)",
           "note": null,
           "group_list": [
             "24291506/1091"
@@ -1008,7 +1008,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1028,7 +1028,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "П",
           "classroom": null,
           "note": null,
           "group_list": [
