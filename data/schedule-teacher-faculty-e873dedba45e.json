@@ -4,7 +4,7 @@
   "teacher": "Моторина Е.Л.",
   "full_name": "Моторина Елена Львовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -612,9 +612,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -944,9 +941,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -964,9 +961,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -984,9 +981,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1011,9 +1008,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1091"
@@ -1031,9 +1028,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -1051,9 +1048,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/1091"
@@ -1071,9 +1068,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -1098,9 +1095,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -1118,9 +1115,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -1138,9 +1135,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск1",
+          "campus": "Э",
+          "classroom": "каб. ск1 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"

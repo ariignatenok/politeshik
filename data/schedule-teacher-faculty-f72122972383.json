@@ -4,7 +4,7 @@
   "teacher": "Назаров Д.А.",
   "full_name": "Назаров Денис Александрович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-09",
   "to": "2026-12-01",
   "days": {
@@ -336,9 +336,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1094"
@@ -356,9 +356,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -383,9 +383,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -403,9 +403,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1091"

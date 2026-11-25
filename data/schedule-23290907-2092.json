@@ -1346,8 +1346,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1365,8 +1365,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1384,8 +1384,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1403,8 +1403,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"

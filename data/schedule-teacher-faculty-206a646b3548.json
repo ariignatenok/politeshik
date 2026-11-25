@@ -4,7 +4,7 @@
   "teacher": "Пшеницына М.А.",
   "full_name": "Пшеницына Мария Александровна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -959,6 +959,26 @@
           "subject": "Ин. яз. в проф. деят.",
           "teacher": "Пшеницына М.А.",
           "group": "24290901/1091",
+          "subgroup": 1,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290901/1091"
+          ],
+          "original_subject": "Ин. яз. в проф. деят.",
+          "original_teacher": "Егорова К.А.",
+          "original_classroom": "каб. 546 (Энгельса)"
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Ин. яз. в проф. деят.",
+          "teacher": "Пшеницына М.А.",
+          "group": "24290901/1091",
           "subgroup": 2,
           "is_stream": false,
           "status": "ok",
@@ -993,9 +1013,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -1013,9 +1033,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -1033,9 +1053,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/3111"
@@ -1053,9 +1073,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -1080,9 +1100,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1100,9 +1120,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -1120,9 +1140,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -1140,9 +1160,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "548",
+          "campus": "Э",
+          "classroom": "каб. 548 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1091"

@@ -4,7 +4,7 @@
   "teacher": "Петрова С.Н.",
   "full_name": "Петрова Светлана Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -613,9 +613,6 @@
     "2026-11-15": {
       "lessons": []
     },
-    "2026-11-16": {
-      "lessons": []
-    },
     "2026-11-17": {
       "day_name": "Вторник",
       "lessons": [
@@ -925,9 +922,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"
@@ -945,9 +942,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/2091"
@@ -965,9 +962,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -985,9 +982,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -1012,9 +1009,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -1032,9 +1029,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -1052,9 +1049,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1091"
@@ -1079,9 +1076,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -1099,9 +1096,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"

@@ -4,7 +4,7 @@
   "teacher": "Никитина Е.С.",
   "full_name": "Никитина Екатерина Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1394,9 +1394,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -1414,9 +1414,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -1434,9 +1434,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -1454,9 +1454,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1481,9 +1481,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -1501,9 +1501,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1521,9 +1521,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -1541,9 +1541,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -1568,9 +1568,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -1588,9 +1588,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1608,9 +1608,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -1628,9 +1628,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "255",
+          "campus": "Э",
+          "classroom": "каб. 255 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -1986,9 +1986,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ЭНГ",
+          "campus": "П",
+          "classroom": "каб. ЭНГ (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"
@@ -2006,9 +2006,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ЭНГ",
+          "campus": "П",
+          "classroom": "каб. ЭНГ (Приморский)",
           "note": null,
           "group_list": [
             "з26293801/3111"

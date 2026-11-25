@@ -4,7 +4,7 @@
   "teacher": "Панченко М.С.",
   "full_name": "Панченко Михаил Станиславович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -880,9 +880,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -900,9 +900,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -920,9 +920,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/1094"
@@ -947,9 +947,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -967,9 +967,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -987,9 +987,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1007,9 +1007,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1034,9 +1034,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/2091"
@@ -1054,9 +1054,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "П",
+          "classroom": "каб. 404 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/2091"

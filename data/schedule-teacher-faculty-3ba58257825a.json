@@ -4,7 +4,7 @@
   "teacher": "Молькова Л.Ю.",
   "full_name": "Молькова Лолита Юрьевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-22",
+  "checked_at": "2026-11-25",
   "from": "2026-11-02",
   "to": "2026-12-02",
   "days": {
@@ -855,8 +855,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -875,8 +875,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -901,9 +901,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -922,8 +922,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/3091"
@@ -942,8 +942,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/3091"

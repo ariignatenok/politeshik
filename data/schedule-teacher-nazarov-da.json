@@ -383,9 +383,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -403,9 +403,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1091"
