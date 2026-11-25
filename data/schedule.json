@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "25290909/3091",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -864,6 +864,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1136,6 +1137,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1220,6 +1222,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1332,6 +1335,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1416,6 +1420,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1480,6 +1485,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1582,6 +1588,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"

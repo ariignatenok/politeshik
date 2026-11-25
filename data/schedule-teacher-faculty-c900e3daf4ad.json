@@ -4,7 +4,7 @@
   "teacher": "Рябова М.Н.",
   "full_name": "Рябова Марина Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -704,6 +704,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -1205,9 +1206,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1225,9 +1227,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -1245,9 +1248,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -1265,9 +1268,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -1292,9 +1296,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1305,43 +1310,43 @@
         },
         {
           "lesson_number": 2,
-          "subject": "МДК.04.02 Цифровая среда и ИКТ",
+          "subject": "МДК.01.01 Основы проектирования цифровой техники",
           "teacher": "Рябова М.Н.",
           "group": "24290901/1091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "550",
+          "campus": "Э",
+          "classroom": "каб. 550 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "МДК.04.02 Цифровая среда и ИКТ",
+          "original_teacher": "Рябова М.Н.",
+          "original_classroom": "каб. 550 (Энгельса)"
         },
         {
           "lesson_number": 3,
-          "subject": "МДК.04.02 Цифровая среда и ИКТ",
+          "subject": "МДК.01.01 Основы проектирования цифровой техники",
           "teacher": "Рябова М.Н.",
           "group": "24290901/1091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "550",
+          "campus": "Э",
+          "classroom": "каб. 550 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "МДК.04.02 Цифровая среда и ИКТ",
+          "original_teacher": "Рябова М.Н.",
+          "original_classroom": "каб. 550 (Энгельса)"
         },
         {
           "lesson_number": 4,
@@ -1352,9 +1357,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/3091"

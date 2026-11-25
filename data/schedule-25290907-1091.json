@@ -2,7 +2,7 @@
   "schema": 1,
   "group": "25290907/1091",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1033,6 +1033,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1052,6 +1053,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1116,6 +1118,7 @@
           "auditorium": "Бассей с нерпами",
           "campus": "Энгельса",
           "classroom": "Бассей с нерпами (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1180,6 +1183,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1544,6 +1548,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1693,6 +1698,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1732,6 +1738,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1771,6 +1778,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"

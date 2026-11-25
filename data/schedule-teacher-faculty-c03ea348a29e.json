@@ -4,7 +4,7 @@
   "teacher": "Сысоева А.Д.",
   "full_name": "Сысоева Анастасия Дмитриевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-06",
   "to": "2026-12-04",
   "days": {
@@ -237,43 +237,43 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "Математика",
+          "subject": "ОТМЕНА",
           "teacher": "Сысоева А.Д.",
           "group": "26294316/3091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "235",
-          "campus": "П",
-          "classroom": "каб. 235 (Приморский)",
+          "status": "cancellation",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "26294316/3091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "Математика",
+          "original_teacher": "Сысоева А.Д.",
+          "original_classroom": "каб. 235 (Приморский)"
         },
         {
           "lesson_number": 2,
-          "subject": "Математика",
+          "subject": "ОТМЕНА",
           "teacher": "Сысоева А.Д.",
           "group": "26294316/3091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "235",
-          "campus": "П",
-          "classroom": "каб. 235 (Приморский)",
+          "status": "cancellation",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "26294316/3091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "Математика",
+          "original_teacher": "Сысоева А.Д.",
+          "original_classroom": "каб. 235 (Приморский)"
         }
       ],
       "week_number": 13,
