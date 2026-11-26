@@ -4,7 +4,7 @@
   "teacher": "Андреев Д.В.",
   "full_name": "Андреев Дмитрий Викторович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -457,6 +457,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -477,6 +478,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -504,6 +506,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -524,6 +527,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -554,6 +558,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -574,6 +579,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -594,6 +600,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -630,6 +637,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -650,6 +658,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -670,6 +679,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -697,6 +707,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -717,6 +728,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -737,6 +749,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -764,9 +777,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "415",
+          "campus": "Э",
+          "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -784,9 +798,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "415",
+          "campus": "Э",
+          "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"

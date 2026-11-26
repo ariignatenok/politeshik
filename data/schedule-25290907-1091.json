@@ -1815,12 +1815,12 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "БЖД",
+          "subject": "ОТМЕНА",
           "teacher": "Назаров С.Ю.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1828,8 +1828,8 @@
           "group_list": [
             "25290907/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "БЖД",
+          "original_teacher": "Назаров С.Ю.",
           "original_classroom": null
         },
         {
@@ -1840,9 +1840,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1859,9 +1859,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1878,9 +1879,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"

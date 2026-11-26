@@ -4,7 +4,7 @@
   "teacher": "Бондарева А.В.",
   "full_name": "Бондарева Анжелика Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1144,6 +1144,26 @@
     "2026-11-25": {
       "day_name": "Среда",
       "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Статистика",
+          "teacher": "Бондарева А.В.",
+          "group": "25293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25293801/3091"
+          ],
+          "original_subject": "Физ. культура",
+          "original_teacher": "Смирнова Н.И.",
+          "original_classroom": "каб. СЗАЛ (Приморский)"
+        },
         {
           "lesson_number": 2,
           "subject": "МДК.06.03 Эконом. и бух. учёт орган. обществ. питания",

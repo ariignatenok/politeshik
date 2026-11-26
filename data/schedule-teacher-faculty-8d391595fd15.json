@@ -4,7 +4,7 @@
   "teacher": "Вакулин А.И.",
   "full_name": "Вакулин Андрей Игоревич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-26",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -948,9 +948,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -968,9 +968,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -988,9 +988,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -1015,9 +1015,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -1035,9 +1035,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -1055,9 +1055,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -1075,9 +1075,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -1102,9 +1102,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1122,9 +1122,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "599б",
+          "campus": "Э",
+          "classroom": "каб. 599б (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3092"
