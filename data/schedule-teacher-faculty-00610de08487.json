@@ -4,7 +4,7 @@
   "teacher": "Чекан С.И.",
   "full_name": "Чекан Сергей Иванович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -810,6 +810,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/3091"
@@ -830,6 +831,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -850,6 +852,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -880,6 +883,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1095"
@@ -900,6 +904,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1095"
@@ -978,9 +983,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "326",
+          "campus": "Э",
+          "classroom": "каб. 326 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -998,9 +1004,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "410",
+          "campus": "Э",
+          "classroom": "каб. 410 (Энгельса)",
           "note": null,
           "group_list": [
             "24290901/1091"
@@ -1018,9 +1024,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -1038,9 +1045,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "322",
+          "campus": "Э",
+          "classroom": "каб. 322 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3111"

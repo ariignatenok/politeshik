@@ -4,7 +4,7 @@
   "teacher": "Черемонцева И.В.",
   "full_name": "Черемонцева Ирина Васильевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -677,9 +677,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "417",
+          "campus": "Э",
+          "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -697,9 +698,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "417",
+          "campus": "Э",
+          "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -717,9 +719,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "417",
+          "campus": "Э",
+          "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/1091"
@@ -744,9 +747,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "417",
+          "campus": "Э",
+          "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -764,9 +768,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "417",
+          "campus": "Э",
+          "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -784,9 +789,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "417",
+          "campus": "Э",
+          "classroom": "каб. 417 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2091"

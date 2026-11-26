@@ -4,7 +4,7 @@
   "teacher": "Трегубова Л.А.",
   "full_name": "Трегубова Людмила Анатольевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1217,9 +1217,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "\"",
+          "auditorium": null,
           "campus": "П",
-          "classroom": "каб. \" (Приморский)",
+          "classroom": null,
           "note": null,
           "group_list": [
             "24293801/3091"
@@ -1264,9 +1264,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "\"",
+          "auditorium": null,
           "campus": "П",
-          "classroom": "каб. \" (Приморский)",
+          "classroom": null,
           "note": null,
           "group_list": [
             "24293801/3091"

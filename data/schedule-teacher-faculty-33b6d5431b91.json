@@ -4,7 +4,7 @@
   "teacher": "Шиманская К.В.",
   "full_name": "Шиманская Каролина Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -856,6 +856,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -876,6 +877,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -896,6 +898,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -916,6 +919,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -1180,6 +1184,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -1200,6 +1205,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -1266,9 +1272,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "326",
+          "campus": "Э",
+          "classroom": "каб. 326 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -1286,9 +1293,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "326",
+          "campus": "Э",
+          "classroom": "каб. 326 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -1306,9 +1314,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "318",
+          "campus": "Э",
+          "classroom": "каб. 318 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1326,9 +1335,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "318",
+          "campus": "Э",
+          "classroom": "каб. 318 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1353,9 +1363,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "318",
+          "campus": "Э",
+          "classroom": "каб. 318 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -1373,9 +1384,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "318",
+          "campus": "Э",
+          "classroom": "каб. 318 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -1393,9 +1405,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "318",
+          "campus": "Э",
+          "classroom": "каб. 318 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1413,9 +1426,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "318",
+          "campus": "Э",
+          "classroom": "каб. 318 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"

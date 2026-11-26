@@ -4,7 +4,7 @@
   "teacher": "Тузова Д.А.",
   "full_name": "Тузова Диана Анатольевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1227,9 +1227,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -1247,9 +1247,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -1267,9 +1267,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "23290907/3091"
@@ -1294,9 +1294,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290907/1095"
@@ -1314,9 +1315,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290907/1095"
@@ -1334,9 +1336,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1347,13 +1350,13 @@
         },
         {
           "lesson_number": 4,
-          "subject": "МДК.02.02 ИСРПО",
+          "subject": "ОТМЕНА",
           "teacher": "Тузова Д.А.",
           "group": "23290907/1094",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1361,8 +1364,8 @@
           "group_list": [
             "23290907/1094"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "МДК.02.02 ИСРПО",
+          "original_teacher": "Тузова Д.А.",
           "original_classroom": null
         }
       ],
@@ -1381,9 +1384,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/3111"
@@ -1401,9 +1404,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/3111"
@@ -1421,9 +1424,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1441,9 +1444,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1461,9 +1464,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "403",
+          "campus": "П",
+          "classroom": "каб. 403 (Приморский)",
           "note": null,
           "group_list": [
             "24290907/1093"

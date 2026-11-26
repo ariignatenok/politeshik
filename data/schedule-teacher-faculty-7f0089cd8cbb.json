@@ -4,7 +4,7 @@
   "teacher": "Федотова Г.Н.",
   "full_name": "Федотова Галина Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-03",
   "to": "2026-12-03",
   "days": {
@@ -401,9 +401,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -421,9 +421,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -451,9 +451,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -471,9 +471,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2091"
@@ -491,9 +491,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3093"

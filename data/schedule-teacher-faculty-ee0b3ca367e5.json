@@ -4,7 +4,7 @@
   "teacher": "Шаврова Л.С.",
   "full_name": "Шаврова Любовь Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-23",
+  "checked_at": "2026-11-26",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -835,6 +835,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -970,9 +971,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "432",
+          "campus": "Э",
+          "classroom": "каб. 432 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -990,9 +991,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3093"
@@ -1010,9 +1012,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "432",
+          "campus": "Э",
+          "classroom": "каб. 432 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"
