@@ -4,7 +4,7 @@
   "teacher": "Краснопёрова А.Д.",
   "full_name": "Краснопёрова Алина Денисовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -741,6 +741,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -761,6 +762,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -788,6 +790,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -808,6 +811,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -828,6 +832,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -855,6 +860,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -875,6 +881,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -902,6 +909,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3091"
@@ -922,6 +930,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3091"
@@ -942,6 +951,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -962,6 +972,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -989,6 +1000,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3091"
@@ -1009,6 +1021,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -1042,6 +1055,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1062,6 +1076,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -1082,6 +1097,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -1102,6 +1118,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1122,6 +1139,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -1149,6 +1167,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -1169,6 +1188,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1189,6 +1209,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -1209,6 +1230,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1236,6 +1258,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1256,6 +1279,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1276,6 +1300,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -1300,9 +1325,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1320,9 +1346,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1340,9 +1367,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -1360,9 +1388,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1091"
@@ -1387,9 +1416,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -1407,9 +1437,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -1427,9 +1458,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1460,9 +1492,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -1480,9 +1513,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -1500,9 +1534,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з26290909/3112"
@@ -1520,9 +1555,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"

@@ -4,7 +4,7 @@
   "teacher": "Коротышева Л.Б.",
   "full_name": "Коротышева Людмила Брониславовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1239,9 +1239,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3091"
@@ -1259,9 +1259,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/2091"
@@ -1279,9 +1279,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"

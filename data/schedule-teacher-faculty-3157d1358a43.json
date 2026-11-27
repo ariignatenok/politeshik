@@ -4,7 +4,7 @@
   "teacher": "Коннова А.Е.",
   "full_name": "Коннова Арина Евгеньевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -697,6 +697,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -717,6 +718,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -737,6 +739,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -757,6 +760,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26292706/1092"
@@ -784,6 +788,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -804,6 +809,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -828,9 +834,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -848,9 +855,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26292706/1092"
@@ -868,9 +876,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -895,9 +904,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -928,9 +938,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -948,9 +958,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "110",
+          "campus": "Э",
+          "classroom": "каб. 110 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"

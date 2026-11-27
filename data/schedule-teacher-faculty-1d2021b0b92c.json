@@ -4,7 +4,7 @@
   "teacher": "Казаков Д.Н.",
   "full_name": "Казаков Дмитрий Николаевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -658,6 +658,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -678,6 +679,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -705,6 +707,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -725,6 +728,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -745,6 +749,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -765,6 +770,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -792,6 +798,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -812,6 +819,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -839,6 +847,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -859,6 +868,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -1108,6 +1118,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -1128,6 +1139,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -1148,6 +1160,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1175,9 +1188,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -1195,9 +1208,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1092"
@@ -1215,9 +1228,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1242,9 +1256,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -1262,9 +1277,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1282,9 +1298,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "436",
+          "campus": "Э",
+          "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -1312,9 +1329,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/3091"
@@ -1332,9 +1349,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -1352,9 +1369,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -1372,9 +1389,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1091"
@@ -1392,9 +1409,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "445",
+          "campus": "Э",
+          "classroom": "каб. 445 (Энгельса)",
           "note": null,
           "group_list": [
             "23290901/1092"

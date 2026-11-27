@@ -4,7 +4,7 @@
   "teacher": "Кузнецова Л.И.",
   "full_name": "Кузнецова Лиана Ивановна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -1077,9 +1077,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1097,9 +1097,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"
@@ -1117,9 +1117,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1150,9 +1150,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/2091"
@@ -1170,9 +1170,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/2092"

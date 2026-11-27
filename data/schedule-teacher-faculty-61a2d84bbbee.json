@@ -4,7 +4,7 @@
   "teacher": "Кудрявцева Е.В.",
   "full_name": "Кудрявцева Елена Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -521,9 +521,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -541,9 +541,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -574,9 +574,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "з26290909/3112"
@@ -594,9 +594,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "209",
+          "campus": "Э",
+          "classroom": "каб. 209 (Энгельса)",
           "note": null,
           "group_list": [
             "з26290909/3111"

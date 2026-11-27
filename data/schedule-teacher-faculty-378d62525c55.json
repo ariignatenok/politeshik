@@ -4,7 +4,7 @@
   "teacher": "Кулакова Д.М.",
   "full_name": "Кулакова Диана Маратовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1069,6 +1069,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1089,6 +1090,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1113,9 +1115,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1133,9 +1136,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1153,9 +1157,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1173,9 +1178,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "320",
+          "campus": "Э",
+          "classroom": "каб. 320 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1200,9 +1206,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "443",
+          "campus": "Э",
+          "classroom": "каб. 443 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1220,9 +1226,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "443",
+          "campus": "Э",
+          "classroom": "каб. 443 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1240,9 +1246,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "415",
+          "campus": "Э",
+          "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1260,9 +1267,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "415",
+          "campus": "Э",
+          "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1293,9 +1301,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1313,9 +1322,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1333,9 +1343,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1353,9 +1364,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"

@@ -1750,9 +1750,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1769,9 +1770,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск5",
+          "campus": "Э",
+          "classroom": "каб. ск5 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1788,9 +1789,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "315",
+          "campus": "Э",
+          "classroom": "каб. 315 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
