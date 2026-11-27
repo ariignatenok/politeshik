@@ -4,7 +4,7 @@
   "teacher": "Ивашкова Н.А.",
   "full_name": "Ивашкова Надежда Александровна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1691,9 +1691,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "23291303/1092"
@@ -1711,9 +1711,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/1091"
@@ -1731,9 +1731,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1751,9 +1751,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -1771,9 +1771,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "405",
+          "campus": "Э",
+          "classroom": "каб. 405 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -1798,9 +1798,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -1818,9 +1818,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/1091"
@@ -1838,9 +1838,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "545",
+          "campus": "Э",
+          "classroom": "каб. 545 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"

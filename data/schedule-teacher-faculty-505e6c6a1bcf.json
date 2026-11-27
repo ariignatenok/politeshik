@@ -4,7 +4,7 @@
   "teacher": "Жеребчевская Е.Е.",
   "full_name": "Жеребчевская Екатерина Евгеньевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1138,7 +1138,71 @@
       "week_type": "Числитель"
     },
     "2026-11-25": {
-      "lessons": []
+      "day_name": "Среда",
+      "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "Физика",
+          "teacher": "Жеребчевская Е.Е.",
+          "group": "26291506/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26291506/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Физика",
+          "teacher": "Жеребчевская Е.Е.",
+          "group": "26293801/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26293801/3091"
+          ],
+          "original_subject": "Физ. культура",
+          "original_teacher": "Смирнова Н.И.",
+          "original_classroom": "каб. СЗАЛ (Приморский)"
+        },
+        {
+          "lesson_number": 3,
+          "subject": "Физика",
+          "teacher": "Жеребчевская Е.Е.",
+          "group": "26294316/3091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "26294316/3091"
+          ],
+          "original_subject": "Физ. культура",
+          "original_teacher": "Смирнова Н.И.",
+          "original_classroom": "каб. СЗАЛ (Приморский)"
+        }
+      ],
+      "week_number": 13,
+      "week_type": "Числитель"
     },
     "2026-11-26": {
       "day_name": "Четверг",
@@ -1152,9 +1216,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1172,9 +1236,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1192,9 +1256,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -1212,9 +1276,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1232,9 +1296,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "305",
+          "campus": "Э",
+          "classroom": "каб. 305 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1260,7 +1324,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1280,7 +1344,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1300,7 +1364,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1320,7 +1384,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1346,9 +1410,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "247",
+          "campus": "Э",
+          "classroom": "каб. 247 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1366,9 +1430,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "247",
+          "campus": "Э",
+          "classroom": "каб. 247 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -1386,9 +1450,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "247",
+          "campus": "Э",
+          "classroom": "каб. 247 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1406,9 +1470,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "247",
+          "campus": "Э",
+          "classroom": "каб. 247 (Энгельса)",
           "note": null,
           "group_list": [
             "з25290909/3111"

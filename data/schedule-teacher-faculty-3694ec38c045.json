@@ -4,7 +4,7 @@
   "teacher": "Ефимова-Сойни Е.А.",
   "full_name": "Ефимова-Сойни Елена Абрамовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -781,9 +781,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -801,9 +801,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2092"
@@ -821,9 +821,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -841,9 +841,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "222",
+          "campus": "Э",
+          "classroom": "каб. 222 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -869,7 +869,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -889,7 +889,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -915,9 +915,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "207",
+          "campus": "Э",
+          "classroom": "каб. 207 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -935,9 +935,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "207",
+          "campus": "Э",
+          "classroom": "каб. 207 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"

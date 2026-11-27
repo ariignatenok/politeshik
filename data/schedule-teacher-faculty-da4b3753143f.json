@@ -4,7 +4,7 @@
   "teacher": "Журавлева О.А.",
   "full_name": "Журавлева Ольга Алексеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -852,6 +852,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -877,8 +878,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -897,8 +898,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -917,8 +918,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1095"
@@ -937,8 +938,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1095"
@@ -964,8 +965,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1093"
@@ -984,8 +985,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "23290907/1093"
@@ -1004,8 +1005,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "24290907/3111"
@@ -1024,8 +1025,8 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "campus": "Дистант",
+          "classroom": "Дистант",
           "note": null,
           "group_list": [
             "24290907/3111"

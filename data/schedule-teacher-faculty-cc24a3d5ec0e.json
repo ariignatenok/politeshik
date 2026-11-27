@@ -4,7 +4,7 @@
   "teacher": "Иванова Д.В.",
   "full_name": "Иванова Дарья Васильевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -746,6 +746,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -806,6 +807,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -920,6 +922,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -940,6 +943,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -960,6 +964,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -990,6 +995,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1010,6 +1016,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1030,6 +1037,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1050,6 +1058,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1077,6 +1086,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1118,6 +1128,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -1145,6 +1156,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -1165,6 +1177,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1185,6 +1198,7 @@
           "auditorium": "415",
           "campus": "Э",
           "classroom": "каб. 415 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1209,9 +1223,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -1229,9 +1244,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2092"
@@ -1249,9 +1265,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1269,9 +1286,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1289,9 +1307,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1316,9 +1335,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1336,9 +1356,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3112"
@@ -1356,12 +1377,34 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.02.01 Внедрение и поддержка информационных ресурсов",
+          "teacher": "Иванова Д.В.",
+          "group": "з25290909/3111",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "з25290909/3111"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -1383,9 +1426,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "з25290909/3111"
@@ -1403,9 +1447,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1423,12 +1468,34 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1094"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 5,
+          "subject": "МДК.02.01 Внедрение и поддержка информационных ресурсов",
+          "teacher": "Иванова Д.В.",
+          "group": "з25290909/3112",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "401",
+          "campus": "Э",
+          "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
+          "note": null,
+          "group_list": [
+            "з25290909/3112"
           ],
           "original_subject": null,
           "original_teacher": null,

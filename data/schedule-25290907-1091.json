@@ -1906,9 +1906,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1925,9 +1926,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "203",
+          "campus": "Э",
+          "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"

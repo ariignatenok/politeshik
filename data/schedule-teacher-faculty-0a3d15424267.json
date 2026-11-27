@@ -4,7 +4,7 @@
   "teacher": "Данилова О.С.",
   "full_name": "Данилова Ольга Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -746,6 +746,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -766,6 +767,7 @@
           "auditorium": "203",
           "campus": "Э",
           "classroom": "каб. 203 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -813,6 +815,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -1146,6 +1149,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1359,9 +1363,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1379,9 +1383,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "428",
+          "campus": "Э",
+          "classroom": "каб. 428 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2094"
@@ -1399,9 +1403,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"
@@ -1419,9 +1424,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "335",
+          "campus": "Э",
+          "classroom": "каб. 335 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/2091"
@@ -1446,9 +1452,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1092"
@@ -1466,9 +1473,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/3092"

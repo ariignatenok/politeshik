@@ -4,7 +4,7 @@
   "teacher": "Ежов Е.И.",
   "full_name": "Ежов Евгений Игоревич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -785,9 +785,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "439",
+          "campus": "Э",
+          "classroom": "каб. 439 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -805,9 +805,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "439",
+          "campus": "Э",
+          "classroom": "каб. 439 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -832,9 +832,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "439",
+          "campus": "Э",
+          "classroom": "каб. 439 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -852,9 +852,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "439",
+          "campus": "Э",
+          "classroom": "каб. 439 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"

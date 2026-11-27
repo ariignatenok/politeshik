@@ -1487,12 +1487,12 @@
       "lessons": [
         {
           "lesson_number": 3,
-          "subject": "МДК.01.03 Разработка мобильных приложений",
+          "subject": "ОТМЕНА",
           "teacher": "Яценко А.И.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1500,18 +1500,18 @@
           "group_list": [
             "23290907/2092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "МДК.01.03 Разработка мобильных приложений",
+          "original_teacher": "Яценко А.И.",
           "original_classroom": null
         },
         {
           "lesson_number": 4,
-          "subject": "МДК.01.03 Разработка мобильных приложений",
+          "subject": "ОТМЕНА",
           "teacher": "Яценко А.И.",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -1519,8 +1519,8 @@
           "group_list": [
             "23290907/2092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "МДК.01.03 Разработка мобильных приложений",
+          "original_teacher": "Яценко А.И.",
           "original_classroom": null
         }
       ],
