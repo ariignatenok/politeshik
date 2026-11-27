@@ -4,7 +4,7 @@
   "teacher": "Грауэр Л.В.",
   "full_name": "Грауэр Лидия Вальтеровна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -817,9 +817,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
+          "auditorium": "207",
           "campus": "Э",
-          "classroom": null,
+          "classroom": "каб. 207 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1094"
@@ -892,7 +892,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [

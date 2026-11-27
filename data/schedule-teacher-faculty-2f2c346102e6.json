@@ -4,7 +4,7 @@
   "teacher": "Васильев С.Ю.",
   "full_name": "Васильев Сергей Юрьевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-03",
   "to": "2026-12-05",
   "days": {
@@ -644,6 +644,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -664,6 +665,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -977,6 +979,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -997,6 +1000,7 @@
           "auditorium": "436",
           "campus": "Э",
           "classroom": "каб. 436 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1024,6 +1028,7 @@
           "auditorium": "325",
           "campus": "Э",
           "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1089,9 +1094,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "443",
+          "campus": "Э",
+          "classroom": "каб. 443 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1109,9 +1114,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "301",
+          "campus": "Э",
+          "classroom": "каб. 301 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -1136,9 +1141,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "301",
+          "campus": "Э",
+          "classroom": "каб. 301 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -1156,9 +1161,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"
@@ -1183,9 +1189,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "325",
+          "campus": "Э",
+          "classroom": "каб. 325 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290907/1092"
@@ -1203,9 +1210,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "322",
+          "campus": "Э",
+          "classroom": "каб. 322 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1223,9 +1231,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "322",
+          "campus": "Э",
+          "classroom": "каб. 322 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290909/3091"

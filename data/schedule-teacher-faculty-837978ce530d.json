@@ -4,7 +4,7 @@
   "teacher": "Голованков Д.В.",
   "full_name": "Голованков Денис Владимирович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-03",
   "days": {
@@ -1033,9 +1033,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "Э",
+          "classroom": "каб. 211 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -1053,9 +1053,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "211",
+          "campus": "Э",
+          "classroom": "каб. 211 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -1080,9 +1080,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -1100,9 +1100,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -1120,9 +1120,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -1140,9 +1140,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "26290912/1091"
@@ -1168,7 +1168,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1188,7 +1188,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [
@@ -1208,7 +1208,7 @@
           "status": "ok",
           "zam": "0",
           "auditorium": null,
-          "campus": null,
+          "campus": "Э",
           "classroom": null,
           "note": null,
           "group_list": [

@@ -4,7 +4,7 @@
   "teacher": "Герасимова М.П.",
   "full_name": "Герасимова Мария Павловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1378,9 +1378,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "243",
+          "campus": "Э",
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -1398,9 +1398,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -1418,9 +1419,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "341",
+          "campus": "Э",
+          "classroom": "каб. 341 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -1438,9 +1440,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "243",
+          "campus": "Э",
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -1465,9 +1467,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25292706/2091"
@@ -1485,9 +1488,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "339",
+          "campus": "Э",
+          "classroom": "каб. 339 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -1505,9 +1509,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "243",
+          "campus": "Э",
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"
@@ -1525,9 +1529,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "243",
+          "campus": "Э",
+          "classroom": "каб. 243 (Энгельса)",
           "note": null,
           "group_list": [
             "26291510/3091"

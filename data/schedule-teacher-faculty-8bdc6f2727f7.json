@@ -4,7 +4,7 @@
   "teacher": "Волков Д.И.",
   "full_name": "Волков Дмитрий Иванович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-27",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1344,9 +1344,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1093"
@@ -1364,9 +1364,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1384,9 +1384,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1091"
@@ -1404,9 +1404,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/1092"
@@ -1422,6 +1422,26 @@
     "2026-11-27": {
       "day_name": "Пятница",
       "lessons": [
+        {
+          "lesson_number": 1,
+          "subject": "БЖД",
+          "teacher": "Волков Д.И.",
+          "group": "25294316/1091",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "25294316/1091"
+          ],
+          "original_subject": "Физ. культура",
+          "original_teacher": "Смирнова Н.И.",
+          "original_classroom": "каб. СЗАЛ (Приморский)"
+        },
         {
           "lesson_number": 1,
           "subject": "БЖД",
