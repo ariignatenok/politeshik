@@ -4,7 +4,7 @@
   "teacher": "Муравьева Ю.А.",
   "full_name": "Муравьева Юлия Александровна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-03",
   "to": "2026-12-05",
   "days": {
@@ -1414,9 +1414,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
@@ -1434,9 +1434,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -1454,9 +1454,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -1474,9 +1474,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1095"
@@ -1494,9 +1494,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/3091"
@@ -1521,9 +1521,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1094"
@@ -1541,9 +1541,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3091"
@@ -1561,9 +1561,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "210",
+          "campus": "Э",
+          "classroom": "каб. 210 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/1091"

@@ -4,7 +4,7 @@
   "teacher": "Ревина О.С.",
   "full_name": "Ревина Оксана Сергеевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-26",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1834,9 +1834,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -1854,9 +1855,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -1874,9 +1876,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -1894,9 +1897,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "23292706/1091"
@@ -1921,9 +1925,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/2091"
@@ -1941,9 +1946,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/2091"
@@ -1961,9 +1967,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/1091"
@@ -1981,9 +1988,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/1091"
@@ -2011,9 +2019,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/1091"
@@ -2031,9 +2040,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/1091"
@@ -2051,9 +2061,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "347",
+          "campus": "Э",
+          "classroom": "каб. 347 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24292706/1091"
@@ -2071,9 +2082,9 @@
           "is_stream": true,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/1091",
@@ -2092,9 +2103,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "501",
+          "campus": "Э",
+          "classroom": "каб. 501 (Энгельса)",
           "note": null,
           "group_list": [
             "23292706/1092"

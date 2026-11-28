@@ -4,7 +4,7 @@
   "teacher": "Родинов И.И.",
   "full_name": "Родинов Иван Иванович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-26",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-02",
   "days": {
@@ -552,9 +552,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "24292706/2091"
@@ -572,9 +572,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "24292706/2091"
@@ -592,9 +592,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "404",
+          "campus": "Э",
+          "classroom": "каб. 404 (Энгельса)",
           "note": null,
           "group_list": [
             "24292706/1091"

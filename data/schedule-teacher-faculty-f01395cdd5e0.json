@@ -4,7 +4,7 @@
   "teacher": "Назаров С.Ю.",
   "full_name": "Назаров Сергей Юрьевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-02",
   "days": {
@@ -226,13 +226,13 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "БЖД",
+          "subject": "ОТМЕНА",
           "teacher": "Назаров С.Ю.",
           "group": "25290907/1091",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
+          "status": "cancellation",
+          "zam": "1",
           "auditorium": null,
           "campus": null,
           "classroom": null,
@@ -240,8 +240,8 @@
           "group_list": [
             "25290907/1091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
+          "original_subject": "БЖД",
+          "original_teacher": "Назаров С.Ю.",
           "original_classroom": null
         }
       ],
@@ -266,9 +266,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "257",
+          "campus": "Э",
+          "classroom": "каб. 257 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/1091"

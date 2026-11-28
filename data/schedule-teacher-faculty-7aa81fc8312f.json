@@ -4,7 +4,7 @@
   "teacher": "Петрова С.Н.",
   "full_name": "Петрова Светлана Николаевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -1123,9 +1123,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1095"
@@ -1143,9 +1143,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -1163,9 +1163,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/3091"
@@ -1183,9 +1183,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "ск6",
+          "campus": "Э",
+          "classroom": "каб. ск6 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"

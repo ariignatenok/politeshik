@@ -4,7 +4,7 @@
   "teacher": "Прокофьев А.А.",
   "full_name": "Прокофьев Антон Андреевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -772,6 +772,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2093"
@@ -792,6 +793,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2093"
@@ -913,6 +915,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3092"
@@ -933,6 +936,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3092"
@@ -953,6 +957,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/3091"
@@ -1038,6 +1043,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2091"
@@ -1058,6 +1064,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2091"
@@ -1088,9 +1095,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2091"
@@ -1108,9 +1116,10 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "349",
+          "campus": "Э",
+          "classroom": "каб. 349 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "24290907/2091"

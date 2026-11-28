@@ -4,7 +4,7 @@
   "teacher": "Печковский А.В.",
   "full_name": "Печковский Александр Владимирович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -856,9 +856,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "509",
+          "campus": "Э",
+          "classroom": "каб. 509 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/1091"
@@ -876,9 +876,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "509",
+          "campus": "Э",
+          "classroom": "каб. 509 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -896,9 +896,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "509",
+          "campus": "Э",
+          "classroom": "каб. 509 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -916,9 +916,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "105",
+          "campus": "Э",
+          "classroom": "каб. 105 (Энгельса)",
           "note": null,
           "group_list": [
             "24291303/2091"
@@ -949,9 +949,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "509",
+          "campus": "Э",
+          "classroom": "каб. 509 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1091"
@@ -969,9 +969,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "509",
+          "campus": "Э",
+          "classroom": "каб. 509 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"
@@ -989,9 +989,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "509",
+          "campus": "Э",
+          "classroom": "каб. 509 (Энгельса)",
           "note": null,
           "group_list": [
             "25291312/1092"

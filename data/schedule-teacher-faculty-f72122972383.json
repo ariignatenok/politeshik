@@ -4,7 +4,7 @@
   "teacher": "Назаров Д.А.",
   "full_name": "Назаров Денис Александрович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-09",
   "to": "2026-12-01",
   "days": {
@@ -376,23 +376,23 @@
       "lessons": [
         {
           "lesson_number": 1,
-          "subject": "Психология общения",
+          "subject": "ОТМЕНА",
           "teacher": "Назаров Д.А.",
           "group": "24290907/1092",
           "subgroup": 0,
           "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": "310",
-          "campus": "Э",
-          "classroom": "каб. 310 (Энгельса)",
+          "status": "cancellation",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
           "note": null,
           "group_list": [
             "24290907/1092"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "Психология общения",
+          "original_teacher": "Назаров Д.А.",
+          "original_classroom": "каб. 310 (Энгельса)"
         },
         {
           "lesson_number": 2,
@@ -409,6 +409,26 @@
           "note": null,
           "group_list": [
             "24290907/1091"
+          ],
+          "original_subject": null,
+          "original_teacher": null,
+          "original_classroom": null
+        },
+        {
+          "lesson_number": 4,
+          "subject": "Психология общения",
+          "teacher": "Назаров Д.А.",
+          "group": "24290907/1092",
+          "subgroup": 0,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": null,
+          "campus": null,
+          "classroom": null,
+          "note": null,
+          "group_list": [
+            "24290907/1092"
           ],
           "original_subject": null,
           "original_teacher": null,
@@ -430,9 +450,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "311",
+          "campus": "Э",
+          "classroom": "каб. 311 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -463,9 +483,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"
@@ -483,9 +503,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1093"
@@ -503,9 +523,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/3111"
@@ -523,9 +543,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "310",
+          "campus": "Э",
+          "classroom": "каб. 310 (Энгельса)",
           "note": null,
           "group_list": [
             "24290907/1092"

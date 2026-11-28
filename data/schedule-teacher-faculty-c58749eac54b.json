@@ -4,7 +4,7 @@
   "teacher": "Рамазанов М.Ф.",
   "full_name": "Рамазанов Магомед Фазилович",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-26",
+  "checked_at": "2026-11-28",
   "from": "2026-11-05",
   "to": "2026-12-04",
   "days": {
@@ -536,9 +536,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3112"
@@ -556,9 +556,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "600",
+          "campus": "Э",
+          "classroom": "каб. 600 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3111"
