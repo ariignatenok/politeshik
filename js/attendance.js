@@ -12,12 +12,12 @@ const Att = {
     return !match || !sub || match[1] === String(sub);
   },
   /**
-   * Оставляет пары, которые видит текущий пользователь: студент — только своей подгруппы, староста и преподаватели — все.
+   * Фильтрует личное расписание по подгруппе, в том числе для старосты.
    * @param {Array<Object>} list Пары расписания.
    * @returns {Array<Object>} Отфильтрованные пары.
    */
   mine(list) {
-    if (Cloud.isAdmin || Cloud.isStaff) return list;
+    if (Cloud.isSuperAdmin || Cloud.isStaff) return list;
     return list.filter((l) => Att.subOk(l, Store.s.settings.subgroup));
   },
   /**
