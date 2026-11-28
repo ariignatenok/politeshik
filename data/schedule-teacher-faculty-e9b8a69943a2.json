@@ -4,7 +4,7 @@
   "teacher": "Лысикова А.В.",
   "full_name": "Лысикова Александра Владимировна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-03",
   "to": "2026-12-04",
   "days": {
@@ -743,9 +743,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -763,9 +763,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"
@@ -778,21 +778,22 @@
           "lesson_number": 3,
           "subject": "Обществознание",
           "teacher": "Лысикова А.В.",
-          "group": "26290911/1091",
+          "group": "26290911/1091, 26290911/3091",
           "subgroup": 0,
-          "is_stream": false,
-          "status": "ok",
-          "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "is_stream": true,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "113",
+          "campus": "Э",
+          "classroom": "каб. 113 (Энгельса)",
           "note": null,
           "group_list": [
-            "26290911/1091"
+            "26290911/1091",
+            "26290911/3091"
           ],
-          "original_subject": null,
-          "original_teacher": null,
-          "original_classroom": null
+          "original_subject": "Физика",
+          "original_teacher": "Кузьмичев В.В.",
+          "original_classroom": "каб. 113 (Энгельса)"
         },
         {
           "lesson_number": 4,
@@ -803,9 +804,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "201",
+          "campus": "Э",
+          "classroom": "каб. 201 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"

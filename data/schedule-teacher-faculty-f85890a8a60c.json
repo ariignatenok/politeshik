@@ -4,7 +4,7 @@
   "teacher": "Медведева Е.Е.",
   "full_name": "Медведева Евгения Евгеньевна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-03",
   "to": "2026-12-03",
   "days": {
@@ -258,6 +258,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1091"
@@ -278,6 +279,7 @@
           "auditorium": "401",
           "campus": "Э",
           "classroom": "каб. 401 (Энгельса)",
+          "computers": true,
           "note": null,
           "group_list": [
             "25290907/1093"

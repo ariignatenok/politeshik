@@ -4,7 +4,7 @@
   "teacher": "Меньшиков И.Г.",
   "full_name": "Меньшиков Игорь Георгиевич",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1254,9 +1254,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "ЭНГ",
-          "campus": "П",
-          "classroom": "каб. ЭНГ (Приморский)",
+          "auditorium": "544",
+          "campus": "Э",
+          "classroom": "каб. 544 (Энгельса)",
           "note": null,
           "group_list": [
             "26294315/2091"
@@ -1274,9 +1274,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "ЭНГ",
-          "campus": "П",
-          "classroom": "каб. ЭНГ (Приморский)",
+          "auditorium": "544",
+          "campus": "Э",
+          "classroom": "каб. 544 (Энгельса)",
           "note": null,
           "group_list": [
             "26294315/2091"
@@ -1294,9 +1294,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "ЭНГ",
-          "campus": "П",
-          "classroom": "каб. ЭНГ (Приморский)",
+          "auditorium": "544",
+          "campus": "Э",
+          "classroom": "каб. 544 (Энгельса)",
           "note": null,
           "group_list": [
             "26294315/1092"
@@ -1314,9 +1314,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": "ЭНГ",
-          "campus": "П",
-          "classroom": "каб. ЭНГ (Приморский)",
+          "auditorium": "544",
+          "campus": "Э",
+          "classroom": "каб. 544 (Энгельса)",
           "note": null,
           "group_list": [
             "26294315/1092"

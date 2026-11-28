@@ -4,7 +4,7 @@
   "teacher": "Матвеева О.И.",
   "full_name": "Матвеева Ольга Ивановна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1072,9 +1072,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "25292706/1091"
@@ -1092,9 +1092,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1091"
@@ -1112,9 +1112,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -1139,9 +1139,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -1159,9 +1159,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1094"
@@ -1179,9 +1179,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1212,9 +1212,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -1232,9 +1232,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/2092"
@@ -1252,9 +1252,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "218",
+          "campus": "Э",
+          "classroom": "каб. 218 (Энгельса)",
           "note": null,
           "group_list": [
             "23290907/1093"

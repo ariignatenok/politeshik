@@ -4,7 +4,7 @@
   "teacher": "Лявданская Е.В.",
   "full_name": "Лявданская Елена Викторовна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-05",
   "days": {
@@ -1492,9 +1492,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/3091"
@@ -1512,9 +1512,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1091"
@@ -1532,9 +1532,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/2091"
@@ -1552,9 +1552,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -1579,9 +1579,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290901/1092"
@@ -1599,9 +1599,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/3091"
@@ -1619,9 +1619,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26291312/3091"
@@ -1646,9 +1646,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -1666,9 +1666,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"
@@ -1696,9 +1696,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3092"
@@ -1716,9 +1716,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1093"
@@ -1736,9 +1736,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1092"
@@ -1756,9 +1756,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "202",
+          "campus": "Э",
+          "classroom": "каб. 202 (Энгельса)",
           "note": null,
           "group_list": [
             "26292706/1091"

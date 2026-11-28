@@ -4,7 +4,7 @@
   "teacher": "Любицкая Е.К.",
   "full_name": "Любицкая Екатерина Кирилловна",
   "source": "https://polytech-schedule.ru",
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-28",
   "from": "2026-11-02",
   "to": "2026-12-04",
   "days": {
@@ -1053,9 +1053,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/2091"
@@ -1073,9 +1073,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "441",
+          "campus": "Э",
+          "classroom": "каб. 441 (Энгельса)",
           "note": null,
           "group_list": [
             "26290909/3091"
@@ -1100,9 +1100,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "302",
+          "campus": "Э",
+          "classroom": "каб. 302 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/1094"
@@ -1110,6 +1110,26 @@
           "original_subject": null,
           "original_teacher": null,
           "original_classroom": null
+        },
+        {
+          "lesson_number": 2,
+          "subject": "Ин. яз.",
+          "teacher": "Любицкая Е.К.",
+          "group": "26290911/1094",
+          "subgroup": 2,
+          "is_stream": false,
+          "status": "replacement",
+          "zam": "1",
+          "auditorium": "302",
+          "campus": "Э",
+          "classroom": "каб. 302 (Энгельса)",
+          "note": null,
+          "group_list": [
+            "26290911/1094"
+          ],
+          "original_subject": "Ин. яз.",
+          "original_teacher": "Егорова К.А.",
+          "original_classroom": "каб. 302 (Энгельса)"
         },
         {
           "lesson_number": 3,
@@ -1120,9 +1140,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "302",
+          "campus": "Э",
+          "classroom": "каб. 302 (Энгельса)",
           "note": null,
           "group_list": [
             "25290901/2091"
@@ -1153,9 +1173,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "302",
+          "campus": "Э",
+          "classroom": "каб. 302 (Энгельса)",
           "note": null,
           "group_list": [
             "25290907/2093"
@@ -1173,9 +1193,9 @@
           "is_stream": false,
           "status": "ok",
           "zam": "0",
-          "auditorium": null,
-          "campus": null,
-          "classroom": null,
+          "auditorium": "302",
+          "campus": "Э",
+          "classroom": "каб. 302 (Энгельса)",
           "note": null,
           "group_list": [
             "26290911/3112"
