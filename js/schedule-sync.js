@@ -55,7 +55,7 @@ const ScheduleSync = {
   valid(data, group = ScheduleSync.group) {
     if (!data || data.schema !== 1 || data.group !== group || !data.days ||
         !/^\d{4}-\d{2}-\d{2}$/.test(data.checked_at || '')) return false;
-    if(data.status==='awaiting_source')return data.source==='https://polytech-schedule.ru' &&
+    if(data.status==='awaiting_source')return ['https://polytech-shedule.ru', 'https://polytech-schedule.ru'].includes(data.source) &&
       typeof data.days==='object' && !Array.isArray(data.days) && Object.keys(data.days).length===0;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(data.from || '') || !/^\d{4}-\d{2}-\d{2}$/.test(data.to || '')) return false;
     const dates = Object.keys(data.days).sort();
@@ -252,7 +252,7 @@ const ScheduleSync = {
       outside = data && data.status!=='awaiting_source' && !ScheduleSync.day(selected) ? '<p>На выбранную неделю источник ещё не опубликовал данные. Показано сохранённое расписание.</p>' : '';
     return '<section class="card"><b>Расписание группы ' + ScheduleSync.group + '</b><p>' + status +
       '</p>' + outside + '<p>Проверка источника — примерно каждые 15 минут; на открытой странице — каждые 5 минут.' +
-      '</p><a href="https://polytech-schedule.ru" target="_blank" rel="noopener">Источник: Расписание ИСПО</a>' +
+      '</p><a href="https://polytech-shedule.ru" target="_blank" rel="noopener">Источник: Расписание ИСПО</a>' +
       ' <button class="btn sm" data-action="sched-sync"' + (ScheduleSync.busy ? ' disabled' : '') +
       '>Проверить обновления</button></section>';
   }

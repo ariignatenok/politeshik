@@ -3,21 +3,15 @@ import datetime as dt
 import json
 import pathlib
 import re
-import urllib.parse
-import urllib.request
 from zoneinfo import ZoneInfo
 import sys as _sys
 _sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from schedule_integrity import validate_content, trusted_history
+from polytech_source import SOURCE, teacher_key, timetable
 
 TEACHER = "Назаров Д.А."
 FULL_NAME = "Назаров Денис Александрович"
-SOURCE = "https://polytech-schedule.ru"
 OUTPUT = pathlib.Path(__file__).resolve().parents[1] / "data" / "schedule-teacher-nazarov-da.json"
-
-
-def teacher_key(value):
-    return re.sub(r"[\s.]", "", str(value)).casefold().replace("ё", "е")
 
 
 def build_snapshot(response, previous, today, teacher=TEACHER, full_name=FULL_NAME):
@@ -43,7 +37,7 @@ def build_snapshot(response, previous, today, teacher=TEACHER, full_name=FULL_NA
         raise ValueError("No teacher lessons; preserving the last valid copy")
     validate_content(days, previous)
     history = trusted_history(previous.get("days", {})) if previous.get("teacher") == teacher else {}
-    merged = {date: day for date, day in history.items() if (today - dt.timedelta(weeks=40)).isoformat() <= date < start.isoformat()}
+    merged = {date: day for date, day in history.items() if (today - dt.timedelta(weeks=40)).isoformat() <= date < min(days)}
     end = dt.date.fromisoformat(max(days))
     published_start = dt.date.fromisoformat(min(days))
     for offset in range((end - published_start).days + 1):
@@ -54,11 +48,7 @@ def build_snapshot(response, previous, today, teacher=TEACHER, full_name=FULL_NA
 
 def main():
     today = dt.datetime.now(ZoneInfo("Europe/Moscow")).date()
-    monday = today - dt.timedelta(days=today.weekday())
-    params = urllib.parse.urlencode({"start_date": (monday - dt.timedelta(days=7)).isoformat(), "end_date": (monday + dt.timedelta(days=34)).isoformat(), "teacher": TEACHER})
-    request = urllib.request.Request(SOURCE + "/api/schedule/range?" + params, headers={"Accept": "application/json", "User-Agent": "Politeshik-teacher-sync/1.0"})
-    with urllib.request.urlopen(request, timeout=25) as response:
-        data = json.load(response)
+    data = timetable(today, teacher=TEACHER)
     previous = json.loads(OUTPUT.read_text()) if OUTPUT.exists() else {}
     snapshot = build_snapshot(data, previous, today)
     content = json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n"

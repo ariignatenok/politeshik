@@ -4,15 +4,13 @@ import datetime as dt
 import json
 import pathlib
 import sys
-import urllib.parse
-import urllib.request
 import sys as _sys
 _sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from schedule_integrity import validate_content, trusted_history
+from polytech_source import SOURCE, timetable
 from zoneinfo import ZoneInfo
 
 GROUP = "25290909/3091"
-SOURCE = "https://polytech-schedule.ru"
 OUTPUT = pathlib.Path(__file__).resolve().parents[1] / "data" / "schedule.json"
 
 
@@ -47,6 +45,8 @@ def build_snapshot(response, previous, today, group=GROUP):
     days = response.get("days")
     validate_days(days, start, end, group)
     validate_content(days, previous)
+    if response.get("published_xml"):
+        start = dt.date.fromisoformat(min(days))
     end = dt.date.fromisoformat(max(days))
     history = trusted_history(previous.get("days", {})) if previous.get("group") == group else {}
     keep_after = today - dt.timedelta(weeks=40)
@@ -68,16 +68,7 @@ def build_snapshot(response, previous, today, group=GROUP):
 def main(group=GROUP, output=OUTPUT):
     """Fetch over verified HTTPS and atomically replace the validated feed."""
     today = dt.datetime.now(ZoneInfo("Europe/Moscow")).date()
-    monday = today - dt.timedelta(days=today.weekday())
-    params = urllib.parse.urlencode({
-        "start_date": (monday - dt.timedelta(days=7)).isoformat(),
-        "end_date": (monday + dt.timedelta(days=34)).isoformat(),
-        "group": group,
-    })
-    request = urllib.request.Request(SOURCE + "/api/schedule/range?" + params,
-                                     headers={"Accept": "application/json", "User-Agent": "Politeshik-schedule-sync/1.0"})
-    with urllib.request.urlopen(request, timeout=40) as response:
-        payload = json.load(response)
+    payload = timetable(today, group=group)
     previous = json.loads(output.read_text()) if output.exists() else {}
     snapshot = build_snapshot(payload, previous, today, group)
     content = json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n"

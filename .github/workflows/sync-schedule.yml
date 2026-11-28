@@ -7,6 +7,7 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/polytech_source.py
       - scripts/sync_schedule.py
       - scripts/schedule_integrity.py
       - scripts/sync_teacher_schedule.py

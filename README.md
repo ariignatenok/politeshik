@@ -50,8 +50,8 @@
 
 ## Автоматическое расписание ИСПО
 
-Для всех трёх групп расписание загружается из `https://polytech-schedule.ru/api/schedule/range`
-с отдельным параметром `group`. Файлы: `data/schedule.json` , `data/schedule-26290911-3111.json` и `data/schedule-23290907-2092.json`.
+Расписание групп и преподавателей загружается из опубликованных XML-файлов `https://polytech-shedule.ru/data/<номер>.xml`.
+Импорт сохраняет подгруппы, замены и отмены, а результаты по группам публикуются в отдельных файлах `data/schedule*.json`.
 GitHub Actions (`.github/workflows/sync-schedule.yml`) проверяет источник каждые 15 минут;
 GitHub может запускать задания с задержкой. Задание также запускается при изменении скрипта
 и вручную через Actions → Sync Polytech schedule → Run workflow. Секреты Supabase не нужны.

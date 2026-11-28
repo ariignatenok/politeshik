@@ -4,12 +4,10 @@ import datetime as dt
 import hashlib
 import json
 import pathlib
-import urllib.parse
-import urllib.request
-import time
 import sys
 from zoneinfo import ZoneInfo
-from sync_teacher_schedule import build_snapshot, teacher_key, SOURCE
+from sync_teacher_schedule import build_snapshot
+from polytech_source import SOURCE, teacher_key, timetable
 from schedule_integrity import safe_lesson, safe_text
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -18,12 +16,6 @@ GROUP_FILES = {'25290909/3091':'schedule.json','26290911/3111':'schedule-2629091
 def identity(name):
     parts = name.split()
     return {'id':'faculty-'+hashlib.sha256(name.encode()).hexdigest()[:12], 'name':name, 'teacher':name if name=='Мукбиль Мансур Хассан Мухаммад' else parts[0]+' '+''.join(p[0]+'.' for p in parts[1:])}
-
-def request(path, params):
-    req = urllib.request.Request(SOURCE+path+'?'+urllib.parse.urlencode(params),headers={'Accept':'application/json','User-Agent':'Politeshik-faculty-sync/1.0'})
-    time.sleep(1)
-    with urllib.request.urlopen(req,timeout=12) as r:
-        return json.load(r)
 
 def fetch_teacher(record, today):
     result = dict(record)
@@ -35,8 +27,7 @@ def fetch_teacher(record, today):
         if '--resume' in sys.argv and previous.get('checked_at')==today.isoformat():
             result.update(status='ready',schedule_file=file)
             return result
-        monday=today-dt.timedelta(days=today.weekday())
-        raw=request('/api/schedule/range',{'start_date':(monday-dt.timedelta(days=7)).isoformat(),'end_date':(monday+dt.timedelta(days=34)).isoformat(),'teacher':result['teacher']})
+        raw=timetable(today,teacher=result['teacher'])
         if not raw.get('days') or not any(d.get('lessons') for d in raw['days'].values()):
             result.update(status='awaiting_source',schedule_file=file if previous else None,fetched_at=dt.datetime.now(dt.timezone.utc).isoformat())
             return result

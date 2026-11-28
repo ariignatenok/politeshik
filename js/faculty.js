@@ -86,7 +86,7 @@ const Faculty = {
     UI.open(row.name,'<p>Загружаем расписание…</p>');
     try{const data=await Faculty.fetchJson(row.schedule_file);
       if(data.kind!=='teacher'||Faculty.key(data.teacher)!==Faculty.key(row.teacher))throw Error('Расписание другого преподавателя');
-      UI.open(row.name,'<p class="hint">Данные от '+U.esc(data.checked_at)+' · polytech-schedule.ru</p>'+Object.entries(data.days).filter(([date,d])=>date>=U.iso(U.mondayOf(U.today()))&&d.lessons.length).map(([date,d])=>'<section class="card"><h2>'+U.esc(U.fmtLong(U.fromISO(date)))+'</h2>'+d.lessons.map(l=>'<p><b>'+l.lesson_number+' пара · '+U.esc(l.subject)+'</b><br>'+l.group_list.map(U.esc).join(', ')+' · '+U.esc(l.classroom||l.auditorium||'Аудитория не указана')+'</p>').join('')+'</section>').join(''),{wide:true});
+      UI.open(row.name,'<p class="hint">Данные от '+U.esc(data.checked_at)+' · polytech-shedule.ru</p>'+Object.entries(data.days).filter(([date,d])=>date>=U.iso(U.mondayOf(U.today()))&&d.lessons.length).map(([date,d])=>'<section class="card"><h2>'+U.esc(U.fmtLong(U.fromISO(date)))+'</h2>'+d.lessons.map(l=>'<p><b>'+l.lesson_number+' пара · '+U.esc(l.subject)+'</b><br>'+l.group_list.map(U.esc).join(', ')+' · '+U.esc(l.classroom||l.auditorium||'Аудитория не указана')+'</p>').join('')+'</section>').join(''),{wide:true});
     }catch(error){toast(error.message)}
   }
 };

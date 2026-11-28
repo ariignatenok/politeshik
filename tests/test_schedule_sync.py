@@ -9,6 +9,7 @@ import unittest
 spec = importlib.util.spec_from_file_location("sync", pathlib.Path(__file__).resolve().parents[1] / "scripts/sync_schedule.py")
 sync = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sync)
+from polytech_source import parse_period
 
 
 class ScheduleSyncTest(unittest.TestCase):
@@ -51,6 +52,20 @@ class ScheduleSyncTest(unittest.TestCase):
         self.lesson["group_list"] = [group]
         result = sync.build_snapshot(self.response(), {}, self.today, group)
         self.assertEqual(result["group"], group)
+
+
+    def test_xml_keeps_cancelled_and_active_subgroups_separate(self):
+        def row(rid, subgroup, version, subject):
+            return f"""<My><ID>{rid}</ID><DAT>2026-11-25T00:00:00</DAT><UR>1</UR>
+                <IDGG>{subgroup}</IDGG><SPGRUP.NAIM>25290907/1091</SPGRUP.NAIM>
+                <ZAM>{version}</ZAM><SPPRED.NAIM>{subject}</SPPRED.NAIM></My>"""
+
+        xml = "<dataroot>" + row(10, 1, 2, "Ин. яз.") + row(11, 2, 0, "Ин. яз.") + row(10, 1, 1, "ОТМЕНА") + "</dataroot>"
+        first, last, lessons = parse_period(xml)
+        self.assertEqual(first, dt.date(2026, 11, 25))
+        self.assertEqual(first, last)
+        self.assertEqual([(l["subgroup"], l["status"]) for _, l in lessons], [(1, "cancellation"), (2, "ok")])
+        self.assertEqual(lessons[0][1]["original_subject"], "Ин. яз.")
 
 
 if __name__ == "__main__":
