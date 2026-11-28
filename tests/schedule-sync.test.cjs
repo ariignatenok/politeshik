@@ -28,6 +28,7 @@ test('source overrides local/cloud weeks and preserves subject links', () => {
   assert.equal(Weeks.on('2026-11-10')[2].subjectId, 's_opbd');
   assert.equal(ScheduleSync.subject('ИТ в ПД лр'), 's_it');
   assert.equal(Weeks.on('2026-11-14').length, 0);
+  delete ScheduleSync.snapshot.days['2026-11-30'];
   Store.s.weeks['2026-11-30'] = [{day: 0, pair: 1, subjectId: 'old'}];
   assert.equal(Weeks.on('2026-11-30')[0].subjectId, 'old');
 });
@@ -179,4 +180,24 @@ test('catalog quarantine preserves material and unrelated attendance and mascot 
  const {ScheduleSync,Store}=app(),state=Store.s;
  state.subjects.push({id:'polluted',name:'ху\u200bйня',short:'bad'});state.notes=[{id:'personal',text:'Моя заметка'},{id:'class-note',subjectId:'polluted',text:'Сохранить материал'}];state.homework=[];state.cards=[];state.attendance={marks:{'2026-11-16|1':'п'}};state.profile={mascot:{body:'pink'}};
  ScheduleSync.cleanCatalog(state);assert.equal(state.subjects.find(s=>s.id==='polluted').name,'Предмет требует проверки');assert.equal(state.notes.length,2);assert.equal(state.attendance.marks['2026-11-16|1'],'п');assert.equal(state.profile.mascot.body,'pink');
+});
+
+test('25290907/1091 uses the selected subgroup in a student or leader cabinet', () => {
+  const {ScheduleSync, Weeks, Att, Store, Cloud} = app();
+  const date = '2026-11-25';
+  ScheduleSync.group = '25290907/1091';
+  ScheduleSync.snapshot = JSON.parse(fs.readFileSync(path.join(root, 'data/schedule-25290907-1091.json'), 'utf8'));
+
+  for (const isAdmin of [false, true]) {
+    Cloud.isAdmin = isAdmin;
+    for (const subgroup of ['1', '2']) {
+      Store.s.settings.subgroup = subgroup;
+      const lessons = Att.mine(Weeks.on(date));
+      assert.deepEqual(Array.from(lessons, l => l.pair), [1, 2, 3]);
+      assert.equal(lessons[0].subgroup, 'подгр.' + subgroup);
+      assert.equal(lessons[0].sourceStatus, subgroup === '1' ? 'cancellation' : 'ok');
+      assert.deepEqual(Array.from(Att.pairs(date, subgroup), p => p.pair), subgroup === '1' ? [2, 3] : [1, 2, 3]);
+      assert.equal(ScheduleSync.changes().some(c => c.date === date && c.pair === 1), subgroup === '1');
+    }
+  }
 });
