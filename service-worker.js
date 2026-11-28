@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_VERSION = 'bworkmedia20261119';
+const CACHE_VERSION = 'bsubgroups20261128';
 const CACHE_NAME = 'politeshik-' + CACHE_VERSION;
 const NETWORK_TIMEOUT_MS = 5000;
 const SHELL = [

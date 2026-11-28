@@ -1874,8 +1874,15 @@ const Cloud = (() => {
       if (error || !data || tenant!==C.tenantId || uid!==C.uid) return false;
       const changed=data.some(x=>ROSTER_BY_ID[x.rid]&&ROSTER_BY_ID[x.rid].sub!==x.subgroup);
       applySubgroups(data);
-      const mine=!Profile.visiting()&&ROSTER_BY_ID[C.profile?.rid];if(mine){C.profile.subgroup=mine.sub;Store.s.settings.subgroup=mine.sub;}
-      if(render&&changed)App.renderSoft();
+      const mine = !Profile.visiting() && ROSTER_BY_ID[C.profile?.rid];
+      const subgroup = mine && (mine.sub || C.profile.subgroup || '');
+      const ownChanged = mine && Store.s.settings.subgroup !== subgroup;
+      if (mine) {
+        C.profile.subgroup = subgroup;
+        Store.s.settings.subgroup = subgroup;
+        if (ownChanged && render) Store.save();
+      }
+      if (render && (changed || ownChanged)) App.renderSoft();
       return true;
     } catch (error) {
       return false;
